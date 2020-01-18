@@ -7,6 +7,7 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using ProjTaskReminder.Model;
 using ProjTaskRemindet.Utils;
 
 
@@ -33,6 +34,8 @@ namespace ProjTaskReminder
             fab.Click += FabOnClick;
 
             simpleList = (ListView)FindViewById(Resource.Id.simpleListView);
+            //simpleList.setHasFixedSize(true);
+            //simpleList.SetLayerType(new LinearLayout(this), new Android.Graphics.Paint());
 
             FillList();
         }
@@ -40,15 +43,21 @@ namespace ProjTaskReminder
         [Obsolete]
         private void FillList()
         {
-            List<string> list = new List<string>();
+            List<Task> list = new List<Task>();
 
             for (int i = 0; i < countryList.Length; ++i)
             {
-                list.Add(countryList[i]);
+                Task task = new Task();
+                task.setTitle(countryList[i]);
+                task.setDescription(countryList[i]);
+                task.setDate_due(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
+                list.Add(task);
             }
             
             ListViewAdapter listViewAdapter = new ListViewAdapter(this.ApplicationContext, list);
             simpleList.SetAdapter(listViewAdapter);
+
+            listViewAdapter.NotifyDataSetChanged();
 
             //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, Resource.Layout.list_item, Resource.Id.txtTitle, countryList);
             //simpleList.SetAdapter(arrayAdapter);

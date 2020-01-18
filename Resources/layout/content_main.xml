@@ -17,9 +17,10 @@
 
     <ListView
         android:id="@+id/simpleListView"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_alignParentBottom="true"
+        android:scrollbars="vertical"
         android:listSelector="@android:color/holo_purple"
         android:divider="@color/material_blue_grey_800"
         android:dividerHeight="1dp" />

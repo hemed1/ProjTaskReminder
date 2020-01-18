@@ -15,6 +15,7 @@ using Android.Widget;
 using static Android.Support.V7.Widget.RecyclerView;
 using static Android.Support.V7.Widget.CardView;
 using ProjTaskRemindet;
+using ProjTaskReminder.Model;
 
 //using Android.App.Activity;
 //using Android.Content;
@@ -27,7 +28,7 @@ namespace ProjTaskRemindet.Utils
         private readonly Context context;
         //private MainActivity mainActivity;
         //private List<Task> TaskList;
-        private readonly List<string> TaskList;
+        private readonly List<Task> TaskList;
 
         //private Resources resources;
         //private int selectMode = 0;
@@ -35,25 +36,25 @@ namespace ProjTaskRemindet.Utils
 
         private LayoutInflater layoutInflater;
 
-        public override int Count => 21;
+        //public override int Count => 21;
 
         
 
-        public ListViewAdapter(Context applicationContext, List<string> itemsList)
+        public ListViewAdapter(Context applicationContext, List<Task> itemsList)
         {
             this.context = applicationContext;
             this.TaskList = itemsList;
 
             layoutInflater = LayoutInflater.From(this.context);
-            //layoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        
         }
 
-        //public  int Count()
-        //{
-        //    return 2;
-        //}
-
+        public override int Count
+        {
+            get
+            {
+                return this.TaskList.Count;
+            }
+        }
 
         public override Java.Lang.Object GetItem(int position)
         {
@@ -86,7 +87,13 @@ namespace ProjTaskRemindet.Utils
             if (position < TaskList.Count)
             {
                 TextView txtTitle = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtTitle);
-                txtTitle.SetText(TaskList[position], TextView.BufferType.Normal);
+                TextView txtDescription = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtDescription);
+                TextView txtDateDue = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtDateDue);
+
+
+                txtTitle.SetText(TaskList[position].getTitle(), TextView.BufferType.Normal);
+                txtDescription.SetText(TaskList[position].getDescription(), TextView.BufferType.Normal);
+                txtDateDue.SetText(TaskList[position].getDate_due(), TextView.BufferType.Normal);
             }
 
 
