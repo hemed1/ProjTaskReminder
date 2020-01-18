@@ -72,13 +72,7 @@ namespace ProjTaskRemindet.Utils
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
-            //if (position >= TaskList.Count)
-            //{
-            //    return convertView;
-            //}
-
-            //layoutInflater = LayoutInflater.From(this.context);
-
+          
             if (convertView == null)
             {
                 convertView = layoutInflater.Inflate(ProjTaskReminder.Resource.Layout.list_item, parent, false);
@@ -96,9 +90,6 @@ namespace ProjTaskRemindet.Utils
                 txtDateDue.SetText(TaskList[position].getDate_due(), TextView.BufferType.Normal);
             }
 
-
-            //ImageView icon = (ImageView)convertView.FindViewById(Resource.Id.icon);
-            //icon.setImageResource(TaskList[i]);
 
             return convertView;
         }

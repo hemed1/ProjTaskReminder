@@ -9,7 +9,9 @@ using Android.Views;
 using Android.Widget;
 using ProjTaskReminder.Model;
 using ProjTaskRemindet.Utils;
-
+using ProjTaskReminder.Data;
+using static ProjTaskReminder.Data.DBTaskReminder;
+using SQLite;
 
 namespace ProjTaskReminder
 {
@@ -17,7 +19,10 @@ namespace ProjTaskReminder
     public class MainActivity : AppCompatActivity
     {
 
-        ListView simpleList;
+        private ListView            simpleList;
+        private DBTaskReminder      dBTaskReminder;
+
+
         private readonly string[]  countryList = new string[6] { "India", "China", "australia", "Portugle", "America", "NewZealand" };
 
         
@@ -27,6 +32,15 @@ namespace ProjTaskReminder
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
 
+            SetControlsIO();
+
+            ConnectToDB();
+
+            FillList();
+        }
+
+        private void SetControlsIO()
+        {
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
@@ -36,8 +50,6 @@ namespace ProjTaskReminder
             simpleList = (ListView)FindViewById(Resource.Id.simpleListView);
             //simpleList.setHasFixedSize(true);
             //simpleList.SetLayerType(new LinearLayout(this), new Android.Graphics.Paint());
-
-            FillList();
         }
 
         [Obsolete]
@@ -53,16 +65,53 @@ namespace ProjTaskReminder
                 task.setDate_due(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
                 list.Add(task);
             }
-            
+
+            list = GetTasksFromDB();
+
             ListViewAdapter listViewAdapter = new ListViewAdapter(this.ApplicationContext, list);
             simpleList.SetAdapter(listViewAdapter);
 
             listViewAdapter.NotifyDataSetChanged();
 
+            // Directly from array
             //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, Resource.Layout.list_item, Resource.Id.txtTitle, countryList);
             //simpleList.SetAdapter(arrayAdapter);
 
         }
+
+        private bool ConnectToDB()
+        {
+            bool result = true;
+            
+
+
+            dBTaskReminder = new DBTaskReminder("TaskReminder.db");
+
+            return result;
+        }
+
+        private List<Task> GetTasksFromDB()
+        {
+            List<Task> tasks = new List<Task>();
+
+            TableQuery<TBL_Tasks> table = dBTaskReminder.DB.Table<TBL_Tasks>();
+
+            var stock = dBTaskReminder.DB.Get<TBL_Tasks>(2); // primary key id of 5
+            var stockList = dBTaskReminder.DB.Table<TBL_Tasks>();
+
+            foreach (TBL_Tasks s in table)
+            {
+                Task task = new Task();
+
+                task.setTaskID(s.ID);
+                task.setTitle(s.Title);
+                task.setDescription(s.Description);
+
+                tasks.Add(task);
+            }
+            return tasks;
+        }
+
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.menu_main, menu);
@@ -86,10 +135,11 @@ namespace ProjTaskReminder
             Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
                 .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
         }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
+            
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 	}

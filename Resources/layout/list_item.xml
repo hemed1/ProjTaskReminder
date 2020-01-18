@@ -16,7 +16,20 @@
 
     
      
-        
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
+        android:layoutDirection="rtl"
+        android:minHeight="100dp"
+        app:cardBackgroundColor="#383838"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="10dp"
+        app:cardUseCompatPadding="false">        
 
     <!--<ImageView
         android:id="@+id/icon"
@@ -29,7 +42,7 @@
 
     <LinearLayout
          android:layout_width="match_parent"
-         android:layout_height="wrap_content"
+         android:layout_height="match_parent"
          xmlns:android="http://schemas.android.com/apk/res/android"
          android:orientation="vertical"
          android:id="@+id/layoutCardTask">
@@ -40,8 +53,7 @@
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        
-        android:textSize="19sp"
+        android:textSize="18sp"
         android:text="Title"
         android:textColor="@android:color/holo_blue_dark" />
 
@@ -52,8 +64,8 @@
         android:id="@+id/txtDescription"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textSize="17sp"
-        android:layout_marginTop="-2dp"
+        android:textSize="16sp"
+        android:layout_marginTop="-4dp"
         android:text="Description"
         android:textColor="@android:color/black" />
     
@@ -61,8 +73,8 @@
         android:id="@+id/txtDateDue"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:textSize="14sp"
+        android:layout_marginTop="-1dp"
+        android:textSize="12sp"
         android:text="17/01/2020"
         android:textColor="@android:color/darker_gray" />
 
@@ -70,5 +82,6 @@
 
     </LinearLayout>
 
+    </android.support.v7.widget.CardView>
 
 </RelativeLayout>
