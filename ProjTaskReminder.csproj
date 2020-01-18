@@ -60,6 +60,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityTaskDetails.cs" />
     <Compile Include="Data\DBTaskReminder.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Model\Task.cs" />
@@ -118,6 +119,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\list_item.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_task_details.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

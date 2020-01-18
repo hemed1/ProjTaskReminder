@@ -35,40 +35,38 @@ namespace ProjTaskReminder.Data
             Connect();
         }
 
-        private void Connect()
+        private SQLiteConnection Connect()
         {
             SQLiteConnection db = null;
+            string fullPath;
 
 
-            DB_PATH = "/storage/emulated/0/Android/data/com.meirhemed.projtaskreminder/files";         //System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);  //Environment.SpecialFolder.LocalApplicationData
+            Context context = Android.App.Application.Context;
 
-            string fullPath = Path.Combine(DB_PATH, DB_NAME);      //"/Assets/" + DB_NAME;            
+            // /storage/emulated/0/Android/data/com.meirhemed.projtaskreminder/files
+            DB_PATH = context.GetExternalFilesDir("").AbsolutePath;         //System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);  //"/Assets/" + DB_NAME;             //Environment.SpecialFolder.LocalApplicationData
+
+            fullPath = Path.Combine(DB_PATH, DB_NAME);      
 
             try
             {
-                //System.IO.DirectoryInfo info =  System.IO.Directory.CreateDirectory(DB_PATH);
-
-                Context context = Android.App.Application.Context;
-                var filePath = context.GetExternalFilesDir("");
-
-                // /storage/emulated/0/Android/data/com.meirhemed.projtaskreminder/files
-
-                Uri originalDbFileUri;  // = new Uri("ms-appx:///Assets/"+DB_NAME);
-                Uri.TryCreate("ms-appx:///Assets/" + DB_NAME, UriKind.Absolute, out originalDbFileUri);
-
                 db = new SQLiteConnection(fullPath);
 
                 this.DB = db;
 
                 db.CreateTable<TBL_Tasks>();
 
-             }
+            }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
-            
+            //System.IO.DirectoryInfo info =  System.IO.Directory.CreateDirectory(DB_PATH);
+            //Uri originalDbFileUri;  // = new Uri("ms-appx:///Assets/"+DB_NAME);
+            //Uri.TryCreate("ms-appx:///Assets/" + DB_NAME, UriKind.Absolute, out originalDbFileUri);
+
+            return db;
         }
 
         private void RecordInser(SQLiteConnection db)

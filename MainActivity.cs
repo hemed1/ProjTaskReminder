@@ -12,6 +12,7 @@ using ProjTaskRemindet.Utils;
 using ProjTaskReminder.Data;
 using static ProjTaskReminder.Data.DBTaskReminder;
 using SQLite;
+using Android.Content;
 
 namespace ProjTaskReminder
 {
@@ -20,8 +21,8 @@ namespace ProjTaskReminder
     {
 
         private ListView            simpleList;
-        private DBTaskReminder      dBTaskReminder;
-
+        private DBTaskReminder      DBTaskReminder;
+        private List<Task> TasksList = new List<Task>();
 
         private readonly string[]  countryList = new string[6] { "India", "China", "australia", "Portugle", "America", "NewZealand" };
 
@@ -48,6 +49,7 @@ namespace ProjTaskReminder
             fab.Click += FabOnClick;
 
             simpleList = (ListView)FindViewById(Resource.Id.simpleListView);
+
             //simpleList.setHasFixedSize(true);
             //simpleList.SetLayerType(new LinearLayout(this), new Android.Graphics.Paint());
         }
@@ -55,24 +57,24 @@ namespace ProjTaskReminder
         [Obsolete]
         private void FillList()
         {
-            List<Task> list = new List<Task>();
 
-            for (int i = 0; i < countryList.Length; ++i)
-            {
-                Task task = new Task();
-                task.setTitle(countryList[i]);
-                task.setDescription(countryList[i]);
-                task.setDate_due(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
-                list.Add(task);
-            }
+            TasksList = GetTasksFromDB();
 
-            list = GetTasksFromDB();
-
-            ListViewAdapter listViewAdapter = new ListViewAdapter(this.ApplicationContext, list);
+            ListViewAdapter listViewAdapter = new ListViewAdapter(this.ApplicationContext, TasksList);
             simpleList.SetAdapter(listViewAdapter);
 
             listViewAdapter.NotifyDataSetChanged();
 
+
+
+            //for (int i = 0; i < countryList.Length; ++i)
+            //{
+            //    Task task = new Task();
+            //    task.setTitle(countryList[i]);
+            //    task.setDescription(countryList[i]);
+            //    task.setDate_due(DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
+            //    list.Add(task);
+            //}
             // Directly from array
             //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, Resource.Layout.list_item, Resource.Id.txtTitle, countryList);
             //simpleList.SetAdapter(arrayAdapter);
@@ -84,20 +86,19 @@ namespace ProjTaskReminder
             bool result = true;
             
 
-
-            dBTaskReminder = new DBTaskReminder("TaskReminder.db");
+            DBTaskReminder = new DBTaskReminder("TaskReminder.db");
 
             return result;
         }
 
         private List<Task> GetTasksFromDB()
         {
-            List<Task> tasks = new List<Task>();
+            TasksList.Clear();
 
-            TableQuery<TBL_Tasks> table = dBTaskReminder.DB.Table<TBL_Tasks>();
+            TableQuery<TBL_Tasks> table = DBTaskReminder.DB.Table<TBL_Tasks>();
 
-            var stock = dBTaskReminder.DB.Get<TBL_Tasks>(2); // primary key id of 5
-            var stockList = dBTaskReminder.DB.Table<TBL_Tasks>();
+            var stock = DBTaskReminder.DB.Get<TBL_Tasks>(2); // primary key id of 5
+            var stockList = DBTaskReminder.DB.Table<TBL_Tasks>();
 
             foreach (TBL_Tasks s in table)
             {
@@ -107,9 +108,10 @@ namespace ProjTaskReminder
                 task.setTitle(s.Title);
                 task.setDescription(s.Description);
 
-                tasks.Add(task);
+                TasksList.Add(task);
             }
-            return tasks;
+
+            return TasksList;
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -132,11 +134,37 @@ namespace ProjTaskReminder
         private void FabOnClick(object sender, EventArgs eventArgs)
         {
             View view = (View) sender;
-            Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
-                .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
+
+            Toast.MakeText(view.Context, "Click", ToastLength.Long);
+
+            OpenTaskDetailsPage(TasksList[0], true, Application.Context);
+
+            //Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
+            //              .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        private void OpenTaskDetailsPage(Task task, bool isNewMode, Context context)
+        {
+            Intent intent = new Intent(this, typeof(ActivityTaskDetails));
+            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+            intent.PutExtra("TaskID", task.getTaskID());
+            //intent.putExtra("task", task);  //TODO: Seriize
+
+            ////MainActivity.CurrentTask = task;
+
+            ActivityTaskDetails.isNewMode = isNewMode;
+            ActivityTaskDetails.CurrentTask = task;
+            ////ActivityTaskDetails.dbHandler = MainActivity.dbHandler;
+            ActivityTaskDetails.context = context;      //Application.Context;
+            ////ActivityTaskDetails.mainActivity = mainActivity;
+
+            context.StartActivity(intent);
+            //startActivityForResult(intent, REQUEST_CODE_UPDATE_TASK);
+
+        }
+
+    public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             

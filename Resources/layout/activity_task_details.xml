@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/layoutMain"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_light_background"
+    tools:context=".Activities.ActivityTaskDetails">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:layoutDirection="rtl"
+        app:cardBackgroundColor="@color/cardview_dark_background"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="10dp">
+
+     <!--   app:layout_constraintBottom_toTopOf="@+id/cardRichText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.000">
+-->
+
+        <RelativeLayout
+            android:id="@+id/layDetails"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp">
+
+            <EditText
+                android:id="@+id/txtDetailsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ems="10"
+                android:gravity="top|right"
+                android:hint="הקלד כותרת"
+                android:inputType="textMultiLine"
+                android:maxHeight="110dp"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/txtDetailsDescription"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/txtDetailsTitle"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="-4dp"
+                android:layout_marginBottom="63dp"
+                android:maxHeight="200dp"
+                android:gravity="top|right"
+                android:hint="הקלד מידע"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="19sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/lblDateTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="70dp"
+                android:layout_marginEnd="70dp"
+                android:layout_marginBottom="12dp"
+                android:text="הקש כאן לקבוע זמן תזכורת"
+                android:textAlignment="center"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="16sp"/>
+
+            <Button
+                android:id="@+id/btnDelete"
+                style="@android:style/Widget.Material.Button.Colored"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginBottom="0dp"
+                android:backgroundTint="@color/cardview_dark_background"
+                app:backgroundTint="?android:attr/colorBackground"
+                android:backgroundTintMode="multiply" />
+
+            <Button
+                android:id="@+id/btnSave"
+                style="@android:style/Widget.Material.Button.Colored"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignBottom="@id/btnDelete"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="2dp"
+                android:backgroundTint="@color/cardview_dark_background"
+                app:backgroundTint="?android:attr/colorBackground"
+                android:backgroundTintMode="multiply" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardDetailsTiming"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="2dp"
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        android:visibility="invisible"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="6dp"
+        app:cardUseCompatPadding="true">
+
+
+        <RelativeLayout
+            android:id="@+id/layExtra"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="8dp"
+            android:paddingTop="1dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="1dp">
+
+            <TextView
+                android:id="@+id/lblDetailsDate"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/details_date"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtDetailsDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/lblDetailsDate"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/lblDetailsDate"
+                android:text="@string/int_pick_Date"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtDetailsDateDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/lblDetailsDate"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/txtDetailsDate"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/lblDetailsTime"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lblDetailsDate"
+                android:layout_marginTop="3dp"
+                android:text="@string/details_time"
+                android:textColor="@@color/cardview_light_background"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtDetailsTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/lblDetailsTime"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/lblDetailsTime"
+                android:text="@string/int_pick_Time"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/lblDetailsRepeat"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lblDetailsTime"
+                android:layout_marginTop="5dp"
+                android:text="@string/details_repeat"
+                android:textColor="@@color/cardview_light_background"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/txtDetailsRepeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtDetailsTime"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/lblDetailsRepeat"
+                android:text="פעם אחת"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/lblBackColor"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lblDetailsTime"
+                android:layout_marginTop="5dp"
+                android:text="@string/details_card_color"
+                android:textColor="@@color/cardview_light_background"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imgColor1"
+                android:layout_width="28dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@+id/lblBackColor"
+                android:layout_marginStart="9dp"
+                android:layout_marginBottom="-7dp"
+                android:layout_toEndOf="@id/lblBackColor"
+                android:background="@color/card_color1" />
+
+
+            <ImageView
+                android:id="@+id/imgColor2"
+                android:layout_width="28dp"
+                android:layout_height="30dp"
+                android:layout_alignStart="@+id/imgColor1"
+                android:layout_alignBottom="@+id/imgColor1"
+                android:layout_marginStart="32dp"
+                android:background="@color/card_color2" />
+
+            <ImageView
+                android:id="@+id/imgColor3"
+                android:layout_width="28dp"
+                android:layout_height="30dp"
+                android:layout_alignStart="@+id/imgColor2"
+                android:layout_alignBottom="@+id/imgColor1"
+                android:layout_marginStart="32dp"
+                android:background="@color/card_color3" />
+
+            <ImageView
+                android:id="@+id/imgColor4"
+                android:layout_width="28dp"
+                android:layout_height="30dp"
+                android:layout_alignStart="@+id/imgColor3"
+                android:layout_alignBottom="@+id/imgColor1"
+                android:layout_marginStart="32dp"
+                android:background="@color/card_color4" />
+
+            <ImageView
+                android:id="@+id/imgColor5"
+                android:layout_width="28dp"
+                android:layout_height="30dp"
+                android:layout_alignStart="@+id/imgColor4"
+                android:layout_alignBottom="@+id/imgColor1"
+                android:layout_marginStart="32dp"
+                android:background="@color/card_color5" />
+
+            <ImageView
+                android:id="@+id/imgColor6"
+                android:layout_width="28dp"
+                android:layout_height="30dp"
+                android:layout_alignStart="@+id/imgColor5"
+                android:layout_alignBottom="@+id/imgColor1"
+                android:layout_marginStart="32dp"
+                android:background="@color/card_color6" />
+
+            <ImageView
+                android:id="@+id/imgColor7"
+                android:layout_width="28dp"
+                android:layout_height="30dp"
+                android:layout_alignStart="@+id/imgColor6"
+                android:layout_alignBottom="@+id/imgColor1"
+                android:layout_marginStart="32dp"
+                android:background="@color/card_color7" />
+
+            <ImageView
+                android:id="@+id/imgColor8"
+                android:layout_width="28dp"
+                android:layout_height="30dp"
+                android:layout_alignStart="@+id/imgColor7"
+                android:layout_alignBottom="@+id/imgColor1"
+                android:layout_marginStart="32dp"
+                android:background="@color/card_color8" />
+
+            <TextView
+                android:id="@+id/txtDetailsColor"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/lblDetailsTime"
+                android:layout_alignStart="@id/lblDetailsTime"
+                android:layout_marginTop="6dp"
+                android:text="דוגמת צבע"
+                android:textColor="#000"
+                android:textSize="17sp"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/lblDetailsLastUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="1dp"
+                android:layout_marginBottom="1dp"
+                android:text="@string/details_lastupdate"
+                android:textColor="@@color/cardview_light_background" />
+
+            <TextView
+                android:id="@+id/lblDetailsLastUpdateValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/lblDetailsLastUpdate"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@id/lblDetailsLastUpdate"
+                android:text=""
+                android:textColor="#000" />
+
+            <EditText
+                android:id="@+id/txtTakeFocus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/lblDetailsLastUpdateValue"
+                android:layout_alignRight="@+id/lblDetailsLastUpdateValue"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="145dp"
+                android:layout_marginTop="90dp"
+                android:layout_marginBottom="80dp"
+                android:background="@android:color/transparent"
+                android:inputType="textPersonName"
+                android:text=""
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardRichText"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layoutDirection="rtl"
+        android:textDirection="rtl"
+        android:visibility="visible"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="50dp">
+
+        <!--app:layout_constraintHorizontal_bias="0.0"-->
+        <!--app:cardCornerRadius="6dp"-->
+        <!--app:cardElevation="6dp"-->
+        <!--app:cardUseCompatPadding="true"-->
+
+        <RelativeLayout
+            android:id="@+id/layRichText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="0dp"
+            android:paddingTop="3dp"
+            android:paddingRight="0dp"
+            android:paddingLeft="0dp">
+
+            <ToggleButton
+                android:id="@+id/btnFontBold"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="6dp"
+                android:contentDescription="Bold the font"
+                android:scaleY="0.65"
+                android:textOff=" "
+                android:textOn=" "
+                android:checked="true"/>
+
+            <ToggleButton
+                android:id="@+id/btnFontUnderline"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignStart="@+id/btnFontBold"
+                android:layout_alignBottom="@+id/btnFontBold"
+                android:scaleY="0.65"
+                android:text=""
+                android:textOff=" "
+                android:textOn=" "
+                
+                android:layout_marginStart="42dp"/>
+
+            <Button
+                android:id="@+id/btnFontForeColor"
+                style="@android:style/Widget.Material.Button.Inset"
+                android:layout_width="36dp"
+                android:layout_height="50dp"
+                android:layout_alignStart="@+id/btnFontUnderline"
+                android:layout_alignBottom="@+id/btnFontBold"
+                android:layout_marginStart="42dp"
+                
+                android:scaleY="0.65"/>
+
+            <Button
+                android:id="@+id/btnFontBackColor"
+                style="@android:style/Widget.Material.Button.Inset"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignStart="@+id/btnFontForeColor"
+                android:layout_alignBottom="@+id/btnFontBold"
+                android:layout_marginStart="42dp"
+                android:scaleY="0.65"/>
+
+            <Button
+                android:id="@+id/btnFontSize"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignStart="@+id/btnFontBackColor"
+                android:layout_alignBottom="@+id/btnFontBold"
+                android:layout_marginStart="42dp"
+                android:scaleY="0.65"/>
+                
+
+            <Button
+                android:id="@+id/btnFontName"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignStart="@+id/btnFontSize"
+                android:layout_alignBottom="@+id/btnFontBold"
+                android:scaleY="0.65"
+                android:layout_marginStart="42dp"/>
+                <!--android:background="@mipmap/font_name1" />-->
+
+            <ToggleButton
+                android:id="@+id/btnFontStrike"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignStart="@+id/btnFontName"
+                android:layout_alignBottom="@+id/btnFontBold"
+                android:scaleY="0.65"
+                android:text=""
+                android:textOff=" "
+                android:textOn=" "
+                android:layout_marginStart="42dp"/>
+                <!--android:scaleY="0.75"-->
+
+
+            <ToggleButton
+                android:id="@+id/btnFontBullets"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignStart="@+id/btnFontStrike"
+                android:layout_alignBottom="@+id/btnFontBold"
+                android:scaleY="0.65"
+                android:text=""
+                android:textOff=" "
+                android:textOn=" "
+                android:layout_marginStart="42dp"/>
+                android:background="@mipmap/font_bullets1" />
+            <!--style="@style/Base.ThemeOverlay.AppCompat"-->
+
+            <Button
+                android:id="@+id/btnFlatHtml"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignStart="@+id/btnFontBullets"
+                android:layout_alignBottom="@+id/btnFontBold"
+                android:text="R"
+                android:layout_marginStart="42dp"/>
+            <!--android:background="@mipmap/font_name3"-->
+            <!--android:scaleY="0.65"-->
+            <!--android:background="@mipmap/font_name1" />-->
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

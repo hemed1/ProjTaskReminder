@@ -1,4 +1,24 @@
 <resources>
-    <string name="app_name">פתקים ותזכורות</string>
+
+
+  <string name="details_date">תאריך:</string>
+  <string name="details_time">זמן:</string>
+  <string name="details_repeat">חוזר:</string>
+  <string name="details_card_color">צבע רקע:</string>
+  <string name="details_lastupdate">עודכן בתאריך:</string>
+  <string name="int_pick_Date">הקש כאן לבחירת תאריך</string>
+  <string name="int_pick_Time">הקש כאן לבחירת זמן</string>
+  <string name="repeat_once_word">פעם אחת</string>
+
+  <string name="notification_channel_id">תזכורות רגילות</string>
+  <!--<string name="notification_channel_id">NOTIFICATION_CHANNEL_ID</string>-->
+  <string name="notification_channel_description">תזכורות רגילות</string>
+  <string name="notification_snooze_message">נודניק</string>
+  <string name="title_activity_alarm">AlarmActivity</string>
+  <string name="title_activity_setting">activitySetting</string>
+
+
+
+  <string name="app_name">פתקים ותזכורות</string>
     <string name="action_settings">Settings</string>
 </resources>
