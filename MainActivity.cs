@@ -20,9 +20,9 @@ namespace ProjTaskReminder
     public class MainActivity : AppCompatActivity
     {
 
-        private static ListView            simpleList;
+        private ListView            simpleList;
         public static DBTaskReminder      DBTaskReminder;
-        private static List<Task> TasksList = new List<Task>();
+        private List<Task> TasksList = new List<Task>();
 
         private static Context context;
         private readonly string[]  countryList = new string[6] { "India", "China", "australia", "Portugle", "America", "NewZealand" };
@@ -51,7 +51,7 @@ namespace ProjTaskReminder
             FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.Click += FabOnClick;
 
-            ActivityTaskDetails.YourEvent += new EventHandler(TaskDetailsSave_Click);
+            ActivityTaskDetails.OnSaveButton += new EventHandler(TaskDetailsSave_Click);
 
             //public event EventHandler YourEvent;
             //        or
@@ -106,13 +106,13 @@ namespace ProjTaskReminder
             //simpleList.SetLayerType(new LinearLayout(this), new Android.Graphics.Paint());
         }
 
-        public static void TaskDetailsSave_Click(object sender, EventArgs e)
+        public void TaskDetailsSave_Click(object sender, EventArgs e)
         {
             FillList();
         }
 
         [Obsolete]
-        private static void FillList()
+        private void FillList()
         {
 
             TasksList = GetTasksFromDB();
@@ -148,7 +148,7 @@ namespace ProjTaskReminder
             return result;
         }
 
-        private static List<Task> GetTasksFromDB()
+        private List<Task> GetTasksFromDB()
         {
             TasksList.Clear();
 

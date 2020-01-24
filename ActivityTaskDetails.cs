@@ -102,7 +102,8 @@ namespace ProjTaskReminder
 
         //public event btnSave_Click2(object sender, EventArgs eventArgs);
         private static OnSaveButtonInterface listenerSaveButton;
-        public static event EventHandler YourEvent;
+
+        public static event EventHandler OnSaveButton;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -188,7 +189,7 @@ namespace ProjTaskReminder
                 item.Description = task.getDescription();
                 MainActivity.DBTaskReminder.DB.Insert(item);
 
-                if (YourEvent != null)
+                if (OnSaveButton != null)
                 {
                     btnSave_Click(null, null);
                 }
@@ -213,16 +214,17 @@ namespace ProjTaskReminder
         //[Export("btnOneClick")]
         public static void btnSave_Click(object sender, EventArgs eventArgs)
         {
-            //EventHandler d=null;
-            MainActivity.btnSave_Click(null, null);
-            //return d;
+            OnSaveButton(null, EventArgs.Empty);
+
+            //MainActivity.TaskDetailsSave_Click(null, null);
+
         }
 
         // Assign the listener implementing events interface that will receive the events
-        public static void OnSaveButton(OnSaveButtonInterface listener)
-        {
-            listenerSaveButton = listener;
-        }
+        //public static void OnSaveButton(OnSaveButtonInterface listener)
+        //{
+        //    listenerSaveButton = listener;
+        //}
 
         public interface OnSaveButtonInterface
         {
