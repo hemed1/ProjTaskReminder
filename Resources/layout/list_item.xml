@@ -28,7 +28,7 @@
         android:minHeight="100dp"
         app:cardBackgroundColor="#383838"
         app:cardElevation="5dp"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="6dp"
         app:cardUseCompatPadding="false">        
 
     <!--<ImageView

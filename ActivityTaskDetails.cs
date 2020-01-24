@@ -100,6 +100,10 @@ namespace ProjTaskReminder
         //private MainActivityServices mainActivityServices;
         //private RichTextHandle richTextHandle;
 
+        //public event btnSave_Click2(object sender, EventArgs eventArgs);
+        private static OnSaveButtonInterface listenerSaveButton;
+        public static event EventHandler YourEvent;
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -184,6 +188,12 @@ namespace ProjTaskReminder
                 item.Description = task.getDescription();
                 MainActivity.DBTaskReminder.DB.Insert(item);
 
+                if (YourEvent != null)
+                {
+                    btnSave_Click(null, null);
+                }
+                
+
                 Finish();
             }
             catch (Exception ex)
@@ -200,11 +210,23 @@ namespace ProjTaskReminder
             CurrentTask.setDescription(txtDetailsDescription.Text);
         }
 
-        private EventHandler btnSave_Click(object sender, EventArgs eventArgs)
+        //[Export("btnOneClick")]
+        public static void btnSave_Click(object sender, EventArgs eventArgs)
         {
-            EventHandler d=null;
+            //EventHandler d=null;
+            MainActivity.btnSave_Click(null, null);
+            //return d;
+        }
 
-            return d;
+        // Assign the listener implementing events interface that will receive the events
+        public static void OnSaveButton(OnSaveButtonInterface listener)
+        {
+            listenerSaveButton = listener;
+        }
+
+        public interface OnSaveButtonInterface
+        {
+            void SetSaveButton(long recordsEffected);
         }
     }
 
@@ -314,7 +336,7 @@ namespace ProjTaskReminder
 ////{
 ////    richTextHandle.richTextFontName(txtDetailsDescription);
 ////}
-////        });
+///        });
 ////        btnFontSize.setOnClickListener(new View.OnClickListener() {
 ////            @Override
 ////            public void onClick(View v)

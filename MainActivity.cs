@@ -20,10 +20,11 @@ namespace ProjTaskReminder
     public class MainActivity : AppCompatActivity
     {
 
-        private ListView            simpleList;
+        private static ListView            simpleList;
         public static DBTaskReminder      DBTaskReminder;
-        private List<Task> TasksList = new List<Task>();
+        private static List<Task> TasksList = new List<Task>();
 
+        private static Context context;
         private readonly string[]  countryList = new string[6] { "India", "China", "australia", "Portugle", "America", "NewZealand" };
 
         
@@ -32,6 +33,8 @@ namespace ProjTaskReminder
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
+
+            context = this.ApplicationContext;
 
             SetControlsIO();
 
@@ -48,19 +51,73 @@ namespace ProjTaskReminder
             FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
             fab.Click += FabOnClick;
 
-            simpleList = (ListView)FindViewById(Resource.Id.simpleListView);
+            ActivityTaskDetails.YourEvent += new EventHandler(TaskDetailsSave_Click);
+
+            //public event EventHandler YourEvent;
+            //        or
+            //public event EventHandler YourEventWithParameters;
+            //        Fire the eventhandler like this:
+            //        if (YourEvent!= null)
+            //        {
+            //              YourEvent(this, EventArgs.Empty);
+            //        }
+    //            then If you have a second class Class2 , and the event handler is present in Class1
+    //            So inside Class2
+    //            you create an object of class1.
+    //            Class1 obj = new Class1();
+    //            Class1.YourEvent+=OnEventHandlingInClass2;
+    //          The signature of OnEventHandlingInClass2 will be:
+    //          void OnEventHandlingInClass2(object sender, EventArgs e)
+    //        {
+    //        }
+    //        or in second scenario.
+    //        Class1.YourEventWithParameters+=OnEventHandlingInClass2;
+    //        The signature of OnEventHandlingInClass2 will be:
+    //void OnEventHandlingInClass2(object sender, parameer T)
+    //        {
+    //        }
+
+    //ActivityTaskDetails.OnSaveButton(new ActivityTaskDetails.OnSaveButtonInterface()
+    //{
+    //    public void SetSaveButton(long recordsEffected)
+    //    {
+    //        //updateTaskInlist();
+    //    }
+    //});
+    //new System.Windows.RoutedEventHandler(btnOkClick);
+    //ActivityTaskDetails.btnSave_Click += (object sender, EventArgs eventArgs) =>     //new btnSave_Click<object, EventArgs>()
+    //ActivityTaskDetails.btnSave_Click(null, null);     //new btnSave_Click<object, EventArgs>()
+    //ActivityTaskDetails.btnSave_Click += ActivityTaskDetails.OnSaveButtonInterface;     // (null, null);           //(new ActivityTaskDetails.OnSaveButton()
+    //ActivityTaskDetails.btnSave_Click += (object sender, EventArgs eventArgs) =>
+    //{
+    //public override void SetSaveButton(long recordsEffected)
+    //{
+
+    //}
+    //});
+    //{
+    //    FillList();
+    //};
+
+
+    simpleList = (ListView)FindViewById(Resource.Id.simpleListView);
 
             //simpleList.setHasFixedSize(true);
             //simpleList.SetLayerType(new LinearLayout(this), new Android.Graphics.Paint());
         }
 
+        public static void TaskDetailsSave_Click(object sender, EventArgs e)
+        {
+            FillList();
+        }
+
         [Obsolete]
-        private void FillList()
+        private static void FillList()
         {
 
             TasksList = GetTasksFromDB();
 
-            ListViewAdapter listViewAdapter = new ListViewAdapter(this.ApplicationContext, TasksList);
+            ListViewAdapter listViewAdapter = new ListViewAdapter(context, TasksList);
             simpleList.SetAdapter(listViewAdapter);
 
             listViewAdapter.NotifyDataSetChanged();
@@ -91,7 +148,7 @@ namespace ProjTaskReminder
             return result;
         }
 
-        private List<Task> GetTasksFromDB()
+        private static List<Task> GetTasksFromDB()
         {
             TasksList.Clear();
 
@@ -141,7 +198,7 @@ namespace ProjTaskReminder
 
             OpenTaskDetailsPage(task, true, Application.Context);
 
-            FillList();
+            //FillList();
 
             //Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
             //              .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
