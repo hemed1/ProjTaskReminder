@@ -1,65 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-
-    
-
-
-    <!--Task Details screen-->
-    <!--<color name="DetailsBackgroundMain">#fdfdfd</color>
-    <color name="DetailsBackgroundMainFields">#f5fa7c</color>
-    <color name="DetailsFieldsTextForegroundColor">#080808</color>
-    <color name="DetailsFieldsTextForegroundColor2">#fafafa</color>-->
-
-    <!--// Details Timing card-->
+    <color name="details_background_main">#fdfdfd</color>
+    <color name="details_background_main_fields">#f5fa7c</color>
+    <color name="details_fields_text_foreground_color">#080808</color>
+    <color name="details_fields_text_foreground_color2">#fafafa</color>
     <color name="DetailsBackgroundOtherFields">#c9c5c5</color>
-    <!--<color name="DetailsBackgroundOtherFields">#676a96</color>--><!--
     <color name="DetailsFieldsTitles">#ffffff</color>
     <color name="DetailsFieldsValues">#616060</color>
-    --><!--<color name="DetailsFieldsValues">#c9c5c5</color>-->
-
-    <!--Card in list-->
-    <!--// Them 2
-    // The Cards in list background color
-    // the same like 'card_color5' - #ffffff-->
-    <!--<color name="CardBackgroundColor2">#383838</color>
-    --><!--37,37,37--><!--  --><!--28,28,28--><!--
-    --><!--<color name="CardBackgroundColor2">#252525</color>--><!--
-    // The List Control background color
-    <color name="CardListBackgroundColor2">#080808</color>          --><!--8,8,8--><!--
-    // The Text in card foreground color
-    <color name="CardFieldsTextForegroundColor2">#fafafa</color>    --><!--250,250,250--><!--
-    // The Text in Bottom (not important color) of the card foreground color (like date, time)
-    <color name="CardFieldsForegroundColorLowDetails2">#c9c5c5</color>-->
-
-
-    <!--// Them 1
-    // The Cards in list background color
-    // the same like 'card_color7' - #ffffff-->
-    <!--<color name="CardBackgroundColor">#FFF</color>
-    // The List Control background color
+    <color name="CardBackgroundColor2">#252525</color>
+    <color name="CardListBackgroundColor2">#080808</color>
+    <color name="CardFieldsTextForegroundColor2">#fafafa</color>
+    <color name="CardFieldsForegroundColorLowDetails2">#c9c5c5</color>   
+    <color name="CardBackgroundColor">#FFF</color>
     <color name="CardListBackgroundColor">#f1efef</color>
-    // The Text in card foreground color
     <color name="CardFieldsTextForegroundColor">#080a8b</color>
-    --><!--252525--><!--
-    // The Text in Bottom (not important color) of the card foreground color (like date, time)
-    <color name="CardFieldsForegroundColorLowDetails">#585858</color>-->
-
-    <!--Task details screen back colors-->
     <color name="card_color1">#859fd9</color>
     <color name="card_color2">#81cf81</color>
     <color name="card_color3">#d4b0dc</color>
     <color name="card_color4">#e1caa8</color>
-    <color name="card_color5">#383838</color>
-    <!--<color name="card_color5">#252525</color>-->
+    <color name="card_color5">#252525</color>
     <color name="card_color6">#efeb68</color>
     <color name="card_color7">#ffffff</color>
-    <!--<color name="card_color77">#eceaea</color>-->
     <color name="card_color8">#a49d9d</color>
-    <!--<color name="card_color5">#d18a8a</color>-->
-    <!--#859fd9-->
-
-    <!--Task details screen Text Fore colors-->
     <color name="text_forecolor1">#121d94</color>
     <color name="text_forecolor2">#de2d2a</color>
     <color name="text_forecolor3">#7a0ea3</color>
@@ -68,14 +30,9 @@
     <color name="text_forecolor6">#efeb68</color>
     <color name="text_forecolor7">#ffffff</color>
     <color name="text_forecolor8">#d18a8a</color>
-
     <color name="selected_back_color">#8cacdc</color>
-
-
-
-  <color name="colorPrimary">#2c3e50</color>
-  <color name="colorPrimaryDark">#1B3147</color>
-  <color name="colorAccent">#3498db</color>
-  <color name="colorHint">#999696</color>
-
+    <color name="colorPrimary">#2c3e50</color>
+    <color name="colorPrimaryDark">#1B3147</color>
+    <color name="colorAccent">#3498db</color>
+    <color name="colorHint">#999696</color>
 </resources>

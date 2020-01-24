@@ -13,8 +13,7 @@ using Android.Views;
 using Android.Widget;
 using ProjTaskReminder.Data;
 using ProjTaskReminder.Model;
-
-
+using static ProjTaskReminder.Data.DBTaskReminder;
 
 namespace ProjTaskReminder
 {
@@ -153,9 +152,62 @@ namespace ProjTaskReminder
             btnFontStrike = FindViewById<ToggleButton>(Resource.Id.btnFontStrike);
             btnFontBullets = FindViewById<ToggleButton>(Resource.Id.btnFontBullets);
             btnFlatHtml = FindViewById<Button>(Resource.Id.btnFlatHtml);
+
+            //btnSave.Click += btnSave_Click(null, null);
+
+            btnSave.Click += (sender, e) =>
+            {
+                SaveRecord(CurrentTask);
+            };
+
+            //btnSave.SetOnClickListener(new View.OnClickListener()
+            //{
+            //    public void onClick(View v)
+            //        {
+            //            // Perform action on click
+            //        }
+            //});
         }
 
+        private bool SaveRecord(Task task)
+        {
+            bool d=true;
+
+            SetObjectByControls();
+
+            // only insert the data if it doesn't already exist
+            var item = new TBL_Tasks();
+
+            try
+            {
+                item.Title = task.getTitle();
+                item.Description = task.getDescription();
+                MainActivity.DBTaskReminder.DB.Insert(item);
+
+                Finish();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return d;
+        }
+
+        private void SetObjectByControls()
+        {
+            CurrentTask.setTitle(txtDetailsTitle.Text);
+            CurrentTask.setDescription(txtDetailsDescription.Text);
+        }
+
+        private EventHandler btnSave_Click(object sender, EventArgs eventArgs)
+        {
+            EventHandler d=null;
+
+            return d;
+        }
     }
+
 }
 
 

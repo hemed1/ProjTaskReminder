@@ -54,8 +54,13 @@ namespace ProjTaskReminder.Data
 
                 this.DB = db;
 
-                db.CreateTable<TBL_Tasks>();
+                //db.DropTable<TBL_Tasks>();
+                var r = db.GetTableInfo("TBL_Tasks");
 
+                if (r.Count == 0)
+                {
+                    var t = db.CreateTable<TBL_Tasks>();
+                }
             }
             catch (Exception ex)
             {
@@ -87,12 +92,14 @@ namespace ProjTaskReminder.Data
 
             Console.WriteLine("Reading data");
             
-            TableQuery< TBL_Tasks> table = db.Table<TBL_Tasks>();
-
+            TableQuery<TBL_Tasks> tableQuery = db.Table<TBL_Tasks>();
+            TableMapping tableMap = db.GetMapping<TBL_Tasks>();
+            //db.Delete<TBL_Tasks>(2);
             var stock = db.Get<TBL_Tasks>(2); // primary key id of 5
-            var stockList = db.Table<TBL_Tasks>();
 
-            foreach (TBL_Tasks s in table)
+            //tableMap.Columns[0].Name = "ID";
+
+            foreach (TBL_Tasks s in tableQuery)
             {
                 Console.WriteLine(s.ID + " " + s.Title);
             }
@@ -103,7 +110,7 @@ namespace ProjTaskReminder.Data
         [Table("TBL_Tasks")]
         public class TBL_Tasks
         {
-            [PrimaryKey, AutoIncrement, Column("_ID")]
+            [PrimaryKey, AutoIncrement, Column("ID")]
             public int ID { get; set; }
             [MaxLength(8)]
             public string Title { get; set; }

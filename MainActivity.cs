@@ -21,7 +21,7 @@ namespace ProjTaskReminder
     {
 
         private ListView            simpleList;
-        private DBTaskReminder      DBTaskReminder;
+        public static DBTaskReminder      DBTaskReminder;
         private List<Task> TasksList = new List<Task>();
 
         private readonly string[]  countryList = new string[6] { "India", "China", "australia", "Portugle", "America", "NewZealand" };
@@ -97,8 +97,8 @@ namespace ProjTaskReminder
 
             TableQuery<TBL_Tasks> table = DBTaskReminder.DB.Table<TBL_Tasks>();
 
-            var stock = DBTaskReminder.DB.Get<TBL_Tasks>(2); // primary key id of 5
-            var stockList = DBTaskReminder.DB.Table<TBL_Tasks>();
+            //var stock = DBTaskReminder.DB.Get<TBL_Tasks>(2); // primary key id of 5
+            //var stockList = DBTaskReminder.DB.Table<TBL_Tasks>();
 
             foreach (TBL_Tasks s in table)
             {
@@ -137,7 +137,11 @@ namespace ProjTaskReminder
 
             Toast.MakeText(view.Context, "Click", ToastLength.Long);
 
-            OpenTaskDetailsPage(TasksList[0], true, Application.Context);
+            Task task = new Task();
+
+            OpenTaskDetailsPage(task, true, Application.Context);
+
+            FillList();
 
             //Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
             //              .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
@@ -160,16 +164,25 @@ namespace ProjTaskReminder
             ////ActivityTaskDetails.mainActivity = mainActivity;
 
             context.StartActivity(intent);
-            //startActivityForResult(intent, REQUEST_CODE_UPDATE_TASK);
+            
+            //Bundle bundle;  // = new bundle();
+            //Intent backIntent;
+            //context.StartIntentSender(intent, backIntent , null, null, 0, bundle);
 
         }
 
-    public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
-	}
+        public override void OnActivityReenter(int resultCode, Intent data)
+        {
+            base.OnActivityReenter(resultCode, data);
+
+            FileList();
+        }
+    }
 }
 
