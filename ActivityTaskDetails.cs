@@ -26,73 +26,73 @@ namespace ProjTaskReminder
         private EditText txtDetailsTitle;
         private EditText txtDetailsDescription;
         private TextView txtDetailsDate;
-        private TextView txtDetailsDateDay;
-        private TextView txtDetailsTime;
-        private TextView txtDetailsRepeat;
-        private TextView lblDetailsLastUpdateValue;
-        private TextView txtDetailsColor;
-        private EditText txtTakeFocus;
-        private ImageView imgColor1;
-        private ImageView imgColor2;
-        private ImageView imgColor3;
-        private ImageView imgColor4;
-        private ImageView imgColor5;
-        private ImageView imgColor6;
-        private ImageView imgColor7;
-        private ImageView imgColor8;
+        //private TextView txtDetailsDateDay;
+        //private TextView txtDetailsTime;
+        //private TextView txtDetailsRepeat;
+        //private TextView lblDetailsLastUpdateValue;
+        //private TextView txtDetailsColor;
+        //private EditText txtTakeFocus;
+        //private ImageView imgColor1;
+        //private ImageView imgColor2;
+        //private ImageView imgColor3;
+        //private ImageView imgColor4;
+        //private ImageView imgColor5;
+        //private ImageView imgColor6;
+        //private ImageView imgColor7;
+        //private ImageView imgColor8;
         private Button btnSave;
         private Button btnDelete;
 
-        private ToggleButton btnFontBold;
-        private ToggleButton btnFontUnderline;
-        private ToggleButton btnFontStrike;
-        private ToggleButton btnFontBullets;
-        private ToggleButton btnSpanCheck;
-        private Button btnFontBackColor;
-        private Button btnFontForeColor;
-        private Button btnFontName;
-        private Button btnFontSize;
-        private Button btnFlatHtml;
+        //private ToggleButton btnFontBold;
+        //private ToggleButton btnFontUnderline;
+        //private ToggleButton btnFontStrike;
+        //private ToggleButton btnFontBullets;
+        //private readonly ToggleButton btnSpanCheck;
+        //private Button btnFontBackColor;
+        //private Button btnFontForeColor;
+        //private Button btnFontName;
+        //private Button btnFontSize;
+        //private Button btnFlatHtml;
 
 
 
-        private TextView lblDateTime;
-        private CardView cardDetails;
-        private CardView cardDetailsTiming;
-        private CardView cardRichText;
+        //private TextView lblDateTime;
+        //private CardView cardDetails;
+        //private CardView cardDetailsTiming;
+        //private CardView cardRichText;
         //private ConstraintLayout layoutMain;
 
-        public static Drawable ExternalDrawable;
+        //public static Drawable ExternalDrawable;
         public static bool isNewMode;
-        //public static DatabaseHandler dbHandler;
-        public DBTaskReminder dbHandler;
-        private bool isShowSaveDialog;
+        ////public static DatabaseHandler dbHandler;
+        //public DBTaskReminder dbHandler;
+        //private bool isShowSaveDialog;
         public static Context context;
-        public static MainActivity mainActivity;
-        private static Menu CurrentMenu;
+        //public static MainActivity mainActivity;
+        //private static Menu CurrentMenu;
 
-        private const int RESULT_EXIT_UPDATED = 0;  // RESULT_OK;
-        private const int RESULT_EXIT_DELETE = 0;   // RESULT_OK;
-        private const int RESULT_EXIT = 1;          // RESULT_CANCELED;
-        private const int RESULT_HTML_EDIT = 996;
-        private int returnResult;
-        private Intent returnedIntent;
-        private bool isSaved;
-        private bool isChangesMade = false;
-        private string oldTitle;
-        private string oldDescription;
-        private string oldDate;
-        private string oldTime;
-        private string oldColor;
-        private bool oldIsArchive;
+        //private const int RESULT_EXIT_UPDATED = 0;  // RESULT_OK;
+        //private const int RESULT_EXIT_DELETE = 0;   // RESULT_OK;
+        //private const int RESULT_EXIT = 1;          // RESULT_CANCELED;
+        //private const int RESULT_HTML_EDIT = 996;
+        //private int returnResult;
+        //private Intent returnedIntent;
+        //private bool isSaved;
+        //private bool isChangesMade = false;
+        //private string oldTitle;
+        //private string oldDescription;
+        //private string oldDate;
+        //private string oldTime;
+        //private string oldColor;
+        //private bool oldIsArchive;
 
 
         //private static PersonalEvents.OnSaveButton listenerSaveButton;
         //private static PersonalEvents.OnDeleteButton listenerDeleteButton;
 
 
-        private static int RichTextForeColor = 0;
-        private static int RichTextBackColor = 0;
+        //private static int RichTextForeColor = 0;
+        //private static int RichTextBackColor = 0;
 
         //private static SpannableString      currentSpannableString;
         //private static ParcelableSpan[] currentParcelableSpan;
@@ -101,10 +101,12 @@ namespace ProjTaskReminder
         //private RichTextHandle richTextHandle;
 
         //public event btnSave_Click2(object sender, EventArgs eventArgs);
-        private static OnSaveButtonInterface listenerSaveButton;
+        //private static OnSaveButtonInterface listenerSaveButton;
 
         public static event EventHandler OnSaveButton;
-
+        public static event Action<int, Result, Intent> OnActivityResult;
+        private Intent inputIntent;
+        private int taskID;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -112,6 +114,14 @@ namespace ProjTaskReminder
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_task_details);
+
+            inputIntent = this.Intent;
+            if (!string.IsNullOrEmpty(inputIntent.GetStringExtra("TaskID")))
+            {
+                taskID = int.Parse(inputIntent.GetStringExtra("TaskID"));
+            }
+
+            int id = taskID;
 
             SetControlsIO();
 
@@ -123,55 +133,62 @@ namespace ProjTaskReminder
             txtDetailsTitle = FindViewById<EditText>(Resource.Id.txtDetailsTitle);
             txtDetailsDescription = FindViewById<EditText>(Resource.Id.txtDetailsDescription);
             txtDetailsDate = FindViewById<TextView>(Resource.Id.txtDetailsDate);
-            txtDetailsDateDay = FindViewById<TextView>(Resource.Id.txtDetailsDateDay);
-            txtDetailsTime = FindViewById<TextView>(Resource.Id.txtDetailsTime);
-            txtDetailsRepeat = FindViewById<TextView>(Resource.Id.txtDetailsRepeat);
-            TextView lblDetailsDate = FindViewById<TextView>(Resource.Id.lblDetailsDate);
-            TextView lblDetailsTime = FindViewById<TextView>(Resource.Id.lblDetailsTime);
-            lblDetailsLastUpdateValue = FindViewById<TextView>(Resource.Id.lblDetailsLastUpdateValue);
-            txtDetailsColor = FindViewById<TextView>(Resource.Id.txtDetailsColor);
-            txtTakeFocus = FindViewById<EditText>(Resource.Id.txtTakeFocus);
-            imgColor1 = FindViewById<ImageView>(Resource.Id.imgColor1);
-            imgColor2 = FindViewById<ImageView>(Resource.Id.imgColor2);
-            imgColor3 = FindViewById<ImageView>(Resource.Id.imgColor3);
-            imgColor4 = FindViewById<ImageView>(Resource.Id.imgColor4);
-            imgColor5 = FindViewById<ImageView>(Resource.Id.imgColor5);
-            imgColor6 = FindViewById<ImageView>(Resource.Id.imgColor6);
-            imgColor7 = FindViewById<ImageView>(Resource.Id.imgColor7);
-            imgColor8 = FindViewById<ImageView>(Resource.Id.imgColor8);
+            //txtDetailsDateDay = FindViewById<TextView>(Resource.Id.txtDetailsDateDay);
+            //txtDetailsTime = FindViewById<TextView>(Resource.Id.txtDetailsTime);
+            //txtDetailsRepeat = FindViewById<TextView>(Resource.Id.txtDetailsRepeat);
+            //TextView lblDetailsDate = FindViewById<TextView>(Resource.Id.lblDetailsDate);
+            //TextView lblDetailsTime = FindViewById<TextView>(Resource.Id.lblDetailsTime);
+            //lblDetailsLastUpdateValue = FindViewById<TextView>(Resource.Id.lblDetailsLastUpdateValue);
+            //txtDetailsColor = FindViewById<TextView>(Resource.Id.txtDetailsColor);
+            //txtTakeFocus = FindViewById<EditText>(Resource.Id.txtTakeFocus);
+            //imgColor1 = FindViewById<ImageView>(Resource.Id.imgColor1);
+            //imgColor2 = FindViewById<ImageView>(Resource.Id.imgColor2);
+            //imgColor3 = FindViewById<ImageView>(Resource.Id.imgColor3);
+            //imgColor4 = FindViewById<ImageView>(Resource.Id.imgColor4);
+            //imgColor5 = FindViewById<ImageView>(Resource.Id.imgColor5);
+            //imgColor6 = FindViewById<ImageView>(Resource.Id.imgColor6);
+            //imgColor7 = FindViewById<ImageView>(Resource.Id.imgColor7);
+            //imgColor8 = FindViewById<ImageView>(Resource.Id.imgColor8);
 
             btnSave = FindViewById<Button>(Resource.Id.btnSave);
             btnDelete = FindViewById<Button>(Resource.Id.btnDelete);
-            lblDateTime = FindViewById<TextView>(Resource.Id.lblDateTime);
-            cardDetails = FindViewById<CardView>(Resource.Id.cardDetails);
-            cardDetails = FindViewById<CardView>(Resource.Id.cardDetails);
-            cardDetailsTiming = FindViewById<CardView>(Resource.Id.cardDetailsTiming);
+            //lblDateTime = FindViewById<TextView>(Resource.Id.lblDateTime);
+            //cardDetails = FindViewById<CardView>(Resource.Id.cardDetails);
+            //cardDetailsTiming = FindViewById<CardView>(Resource.Id.cardDetailsTiming);
             //layoutMain = FindViewById(Resource.Id.layoutMain);
 
-            btnFontBold = FindViewById<ToggleButton>(Resource.Id.btnFontBold);
-            btnFontBackColor = FindViewById<Button>(Resource.Id.btnFontBackColor);
-            btnFontForeColor = FindViewById<Button>(Resource.Id.btnFontForeColor);
-            btnFontName = FindViewById<Button>(Resource.Id.btnFontName);
-            btnFontSize = FindViewById<Button>(Resource.Id.btnFontSize);
-            btnFontUnderline = FindViewById<ToggleButton>(Resource.Id.btnFontUnderline);
-            btnFontStrike = FindViewById<ToggleButton>(Resource.Id.btnFontStrike);
-            btnFontBullets = FindViewById<ToggleButton>(Resource.Id.btnFontBullets);
-            btnFlatHtml = FindViewById<Button>(Resource.Id.btnFlatHtml);
+            //btnFontBold = FindViewById<ToggleButton>(Resource.Id.btnFontBold);
+            //btnFontBackColor = FindViewById<Button>(Resource.Id.btnFontBackColor);
+            //btnFontForeColor = FindViewById<Button>(Resource.Id.btnFontForeColor);
+            //btnFontName = FindViewById<Button>(Resource.Id.btnFontName);
+            //btnFontSize = FindViewById<Button>(Resource.Id.btnFontSize);
+            //btnFontUnderline = FindViewById<ToggleButton>(Resource.Id.btnFontUnderline);
+            //btnFontStrike = FindViewById<ToggleButton>(Resource.Id.btnFontStrike);
+            //btnFontBullets = FindViewById<ToggleButton>(Resource.Id.btnFontBullets);
+            //btnFlatHtml = FindViewById<Button>(Resource.Id.btnFlatHtml);
 
             //btnSave.Click += btnSave_Click(null, null);
 
-            btnSave.Click += (sender, e) =>
+            btnSave.Click += (sender, e) =>           //new EventHandler(SaveRecord); 
             {
                 SaveRecord(CurrentTask);
             };
 
-            //btnSave.SetOnClickListener(new View.OnClickListener()
-            //{
-            //    public void onClick(View v)
-            //        {
-            //            // Perform action on click
-            //        }
-            //});
+            btnDelete.Click += (sender, e) =>           //new EventHandler(SaveRecord); 
+            {
+                DeleteRecord(CurrentTask);
+            };
+        }
+
+        private void DeleteRecord(Task currentTask)
+        {
+            MainActivity.DBTaskReminder.DB.Delete<TBL_Tasks>(currentTask.getTaskID());  // "ID==" +currentTask.getTaskID().ToString(), null);
+
+            OnActivityResult(999, Result.Ok, inputIntent);
+
+            //SetResult(Result.Ok, inputIntent);
+
+            Finish();
         }
 
         private bool SaveRecord(Task task)
@@ -191,29 +208,45 @@ namespace ProjTaskReminder
 
                 if (OnSaveButton != null)
                 {
-                    btnSave_Click(null, null);
+                    // Raise the event to the Caller
+                    //OnSaveButton(null, EventArgs.Empty);
+                    //Save_Click(null, null);
                 }
-                
 
+                inputIntent.PutExtra("Result", "true");
+
+                OnActivityResult(111, Result.Ok, inputIntent);
+
+                //SetResult(Result.Ok, inputIntent);
+                
                 Finish();
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
 
             return d;
         }
 
+        //private void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        //{
+        //    //base.OnActivityReenter(requestCode,resultCode, data);
+
+        //    //FillIn();
+        //}
+
         private void SetObjectByControls()
         {
             CurrentTask.setTitle(txtDetailsTitle.Text);
             CurrentTask.setDescription(txtDetailsDescription.Text);
+            CurrentTask.setDate_due(txtDetailsDate.Text);
         }
 
         //[Export("btnOneClick")]
-        public static void btnSave_Click(object sender, EventArgs eventArgs)
+        public static void Save_Click(object sender, EventArgs eventArgs)
         {
+            // Raise the event to the Caller
             OnSaveButton(null, EventArgs.Empty);
 
             //MainActivity.TaskDetailsSave_Click(null, null);
@@ -226,7 +259,7 @@ namespace ProjTaskReminder
         //    listenerSaveButton = listener;
         //}
 
-        public interface OnSaveButtonInterface
+        public interface IOnSaveButtonInterface
         {
             void SetSaveButton(long recordsEffected);
         }
