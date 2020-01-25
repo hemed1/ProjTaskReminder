@@ -276,7 +276,14 @@ namespace ProjTaskReminder.Model
 
         public void setDate_due(string date_due)
         {
-            this.date_due = date_due.Trim();
+            if (date_due != null)
+            {
+                this.date_due = date_due.Trim();
+            }
+            else
+            {
+                this.date_due = string.Empty;
+            }
         }
 
         public string getDateOnly_last_update()

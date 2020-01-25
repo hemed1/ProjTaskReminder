@@ -132,9 +132,9 @@ namespace ProjTaskRemindet.Utils
                     convertView = layoutInflater.Inflate(ProjTaskReminder.Resource.Layout.list_item, parent, false);
                 }
 
-                if (position >= 0 && position < 8)  //TaskList.Count)
+                if (position >= 0 && position < TaskList.Count)
                 {
-                    listViewHolder = new ListViewAdapter.ListViewHolder(convertView, position);        //, context);
+                    listViewHolder = new ListViewAdapter.ListViewHolder(convertView, position, TaskList);        //, context);
                 }
             }
             catch (Exception ex)
@@ -142,7 +142,7 @@ namespace ProjTaskRemindet.Utils
                 Console.WriteLine(ex.Message);
             }
 
-            if (listViewHolder!=null && position >= 0 && position < 8)  //TaskList.Count)
+            if (listViewHolder!=null && position >= 0 && position < TaskList.Count)
             {
                 Task task = TaskList[position];
                 listViewHolder.title.SetText(task.getTitle(), TextView.BufferType.Normal);
@@ -166,12 +166,12 @@ namespace ProjTaskRemindet.Utils
             private int ItemPosition { get; set; }
 
 
-            public ListViewHolder(View convertView, int position)     //: base(convertView) //, Context containerContext) 
+            public ListViewHolder(View convertView, int position, List<Task> tasks)     //: base(convertView) //, Context containerContext) 
             {
                 //int position = 2;   // this.ItemPosition;   // this.Position
                 ItemPosition = position;
-
-                if (convertView != null && position >= 0 && position < 8)
+                
+                if (convertView != null && position >= 0 && position < tasks.Count)
                 {
                     try
                     {
@@ -188,7 +188,8 @@ namespace ProjTaskRemindet.Utils
                 }
 
 
-                //if (position < TaskList.Count)
+                // Remove the 'Selected' methods of the original ListView
+                //if (position < tasks.Count)
                 //{
                 //    convertView.SetOnClickListener(InitOnItemClick(position));     // OnActivityResult
                 //}

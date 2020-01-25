@@ -140,7 +140,7 @@ namespace ProjTaskReminder
             listViewAdapter = new ListViewAdapter(context, TasksList);
             simpleList.SetAdapter(listViewAdapter);
 
-            listViewAdapter.NotifyDataSetChanged();
+            //listViewAdapter.NotifyDataSetChanged();
 
 
 
@@ -184,7 +184,7 @@ namespace ProjTaskReminder
                 task.setTaskID(s.ID);
                 task.setTitle(s.Title);
                 task.setDescription(s.Description);
-                task.setDate_due(s.DateDue);
+                //task.setDate_due(s.DateDue);
 
                 TasksList.Add(task);
             }

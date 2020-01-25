@@ -18,12 +18,12 @@
 
     <ImageView
         android:id="@+id/imgMain"
-        android:layout_alignBottom="@id/lblMainCaption"
+        android:layout_alignParentTop="true"
         android:background="@drawable/abc_ic_clear_material"
+        android:gravity="top|left"
         android:layout_width="100dp"
         android:layout_height="100dp"/>
-    <!--android:layout_alignParentTop="true"-->
-
+    
 
     <ListView  
         android:id="@+id/simpleListView"
