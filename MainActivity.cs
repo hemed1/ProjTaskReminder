@@ -67,7 +67,7 @@ namespace ProjTaskReminder
             listViewAdapter = new ListViewAdapter(context, TasksList);
             
             //listViewAdapter.SetOnClickListener += new EventHandler(OnItemClick);
-            listViewAdapter.SetOnItemClick += new EventHandler(OnItemClickFromAdapter);
+            //listViewAdapter.SetOnItemClick += new EventHandler(OnItemClickFromAdapter);
 
             simpleList = (ListView)FindViewById(Resource.Id.simpleListView);        // RecyclerView
 

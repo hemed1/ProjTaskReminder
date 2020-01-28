@@ -6,12 +6,12 @@ using Android.App;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ProjTaskReminder")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("פתקים ותזכורות")]
+[assembly: AssemblyDescription("פתקים, פיסות-מידע, תזכורות")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ProjTaskReminder")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCompany("Meir Hemd")]
+[assembly: AssemblyProduct("Task & Reminders")]
+[assembly: AssemblyCopyright("Hemed Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
