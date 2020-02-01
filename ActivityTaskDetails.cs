@@ -112,19 +112,31 @@ namespace ProjTaskReminder
         {
             base.OnCreate(savedInstanceState);
 
+            Utils.Utils.LoggerWrite("Enter 5", true);
+
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_task_details);
 
+            Utils.Utils.LoggerWrite("Enter 6", true);
+
             inputIntent = this.Intent;
+
             if (!string.IsNullOrEmpty(inputIntent.GetStringExtra("TaskID")))
             {
                 taskID = int.Parse(inputIntent.GetStringExtra("TaskID"));
             }
 
-            int id = taskID;
 
             SetControlsIO();
 
+            if (isNewMode)
+            {
+
+            }
+            else 
+            {
+                SetControlsByObject();
+            }
 
         }
 
@@ -193,7 +205,7 @@ namespace ProjTaskReminder
 
         private bool SaveRecord(Task task)
         {
-            bool d=true;
+            bool result = true;
 
             SetObjectByControls();
 
@@ -206,15 +218,15 @@ namespace ProjTaskReminder
                 item.Description = task.getDescription();
                 MainActivity.DBTaskReminder.DB.Insert(item);
 
-                if (OnSaveButton != null)
-                {
-                    // Raise the event to the Caller
-                    //OnSaveButton(null, EventArgs.Empty);
-                    //Save_Click(null, null);
-                }
-
                 inputIntent.PutExtra("Result", "true");
 
+                // Raise the event to the Caller
+                if (OnSaveButton != null)
+                {
+                    //OnSaveButton(null, EventArgs.Empty);
+                }
+
+                // Second option to - Raise the event to the Caller
                 OnActivityResult(111, Result.Ok, inputIntent);
 
                 //SetResult(Result.Ok, inputIntent);
@@ -226,7 +238,7 @@ namespace ProjTaskReminder
                 Console.WriteLine(ex.Message);
             }
 
-            return d;
+            return result;
         }
 
         //private void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -243,14 +255,11 @@ namespace ProjTaskReminder
             CurrentTask.setDate_due(txtDetailsDate.Text);
         }
 
-        //[Export("btnOneClick")]
-        public static void Save_Click(object sender, EventArgs eventArgs)
+        private void SetControlsByObject()
         {
-            // Raise the event to the Caller
-            OnSaveButton(null, EventArgs.Empty);
-
-            //MainActivity.TaskDetailsSave_Click(null, null);
-
+            txtDetailsTitle.Text = CurrentTask.getTitle();
+            txtDetailsDescription.Text = CurrentTask.getDescription();
+            //txtDetailsDate.Text = CurrentTask.getDate_due();
         }
 
         // Assign the listener implementing events interface that will receive the events
@@ -259,10 +268,6 @@ namespace ProjTaskReminder
         //    listenerSaveButton = listener;
         //}
 
-        public interface IOnSaveButtonInterface
-        {
-            void SetSaveButton(long recordsEffected);
-        }
     }
 
 }

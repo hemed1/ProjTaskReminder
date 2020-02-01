@@ -13,8 +13,74 @@ using Android.Widget;
 
 namespace ProjTaskReminder.Utils
 {
+
     public static class Utils
     {
+
+        public static string                LOG_FILE_PATH;
+        public static string                LOG_FILE_NAME;
+
+        public static void LoggerWrite(string data, bool appendLines)
+        {
+            string fileName = string.Empty;
+            byte[] bytesData;
+            FileStream file;
+
+
+
+
+            data += DateTime.Now.ToString("dd/MM/yyyy HH:mm") + System.Environment.NewLine + data;
+
+
+            // /storage/emulated/0/Android/data/com.meirhemed.projtaskreminder/files
+            //System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);  //"/Assets/" + DB_NAME;             
+            //Environment.SpecialFolder.LocalApplicationData
+            // Environment.getExternalStorageDirectory().getAbsolutePath() + "/MHTaskReminder/"
+            Context context = Android.App.Application.Context;
+            //Java.IO.File pathFile = context.GetExternalFilesDir("MUSIC");
+
+
+            try
+            {
+                //Java.IO.File[] jjj = context.GetExternalFilesDirs("MUSIC");
+                //Java.IO.File[] mmm = context.GetExternalMediaDirs();
+                //string zzz = System.Environment.SystemDirectory;
+                //string aaa = System.Environment.CurrentDirectory;
+                //string bbb = System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonMusic);
+                //string fff = System.IO.Directory.GetCurrentDirectory();
+                //string hjhj = LOG_FILE_PATH = System.IO.Directory.GetCurrentDirectory();
+                //Java.IO.File hdhd = Android.OS.Environment.DataDirectory;
+                //string folderNameDocuments = Android.OS.Environment.DirectoryDocuments;
+                //string folderNameMusic = Android.OS.Environment.DirectoryMusic;
+                //Java.IO.File externalPath = Android.OS.Environment.ExternalStorageDirectory;
+                //string externalPathFile = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+                //string folderMusic = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
+                //LOG_FILE_PATH = externalPath + "/ProjTaskReminder";    //, FileCreationMode.Append).AbsolutePath;
+
+                //if (!Directory.Exists(LOG_FILE_PATH))
+                //{
+                //    //Directory.CreateDirectory(LOG_FILE_PATH);
+                //}
+
+                LOG_FILE_PATH = context.GetExternalFilesDir("").AbsolutePath;
+                LOG_FILE_NAME = "LogTaskReminder.txt";
+
+                fileName = Path.Combine(LOG_FILE_PATH, LOG_FILE_NAME);
+
+                file = new FileStream(fileName, FileMode.Append, FileAccess.Write);       // FileMode.Append
+
+                bytesData = Encoding.ASCII.GetBytes(data);
+
+                file.Write(bytesData);
+
+                file.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         /// Get all files - Recorsive
         public static string[] GetFolderFiles(string path, string fileExtentionToSearch, bool searchInFolders)

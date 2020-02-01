@@ -15,10 +15,11 @@ using SQLite;
 using Android.Content;
 using Android.Support.V7.Widget;
 
+
 namespace ProjTaskReminder
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
-    public class MainActivity : AppCompatActivity
+    public class MainActivity : AppCompatActivity   //, ListView.IOnItemClickListener
     {
 
         private ListView simpleList;    //RecyclerView
@@ -38,12 +39,18 @@ namespace ProjTaskReminder
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
 
+            Utils.Utils.LoggerWrite("Enter 1", true);
+
             context = this.ApplicationContext;
 
             SetControlsIO();
 
+            Utils.Utils.LoggerWrite("Enter 2", true);
+
             ConnectToDB();
 
+            Utils.Utils.LoggerWrite("Enter 3", true);
+            
             FillList();
         }
 
@@ -71,6 +78,18 @@ namespace ProjTaskReminder
 
             simpleList = (ListView)FindViewById(Resource.Id.simpleListView);        // RecyclerView
 
+            simpleList.ItemClick += OnItemClick;
+            //simpleList.SetOnClickListener(simpleListItem_DoubleClick);
+            //simpleList.OnItemClickListener += OnItemClick
+
+
+            ImageButton bntMainMusic = (ImageButton)FindViewById(Resource.Id.bntMainMusic);
+            ImageButton btnMainWeather = (ImageButton)FindViewById(Resource.Id.btnMainWeather);
+            ImageButton btnMainEmail = (ImageButton)FindViewById(Resource.Id.btnMainEmail);
+
+            bntMainMusic.Click += btnMainMusic_Click;
+
+
             // RecyclerView
             //LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
             //simpleList.SetLayoutManager(mLayoutManager);
@@ -78,8 +97,6 @@ namespace ProjTaskReminder
             //simpleList.setHasFixedSize(true);
             //simpleList.SetLayerType(new LinearLayout(this), new Android.Graphics.Paint());
 
-
-            //simpleList.OnItemClickListener += OnItemClick
 
             //public event EventHandler YourEvent;
             //        or
@@ -131,6 +148,25 @@ namespace ProjTaskReminder
 
         }
 
+        private void btnMainMusic_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(ActivityMusic));
+            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+            intent.PutExtra("TaskID", "Meir");
+            //intent.putExtra("task", task);  //TODO: Seriize
+
+            //ActivityTaskDetails.isNewMode = isNewMode;
+            //ActivityTaskDetails.CurrentTask = task;
+            ////ActivityTaskDetails.dbHandler = MainActivity.dbHandler;
+            ActivityTaskDetails.context = context;      //Application.Context;
+            ////ActivityTaskDetails.mainActivity = mainActivity;
+
+            StartActivityForResult(intent, 2345);
+            //context.StartActivity(intent);
+            
+        }
+
         [Obsolete]
         private void FillList()
         {
@@ -142,7 +178,7 @@ namespace ProjTaskReminder
 
             //listViewAdapter.NotifyDataSetChanged();
 
-
+            Utils.Utils.LoggerWrite("Enter 4", true);
 
             //for (int i = 0; i < countryList.Length; ++i)
             //{
@@ -161,9 +197,16 @@ namespace ProjTaskReminder
         private bool ConnectToDB()
         {
             bool result = true;
-            
 
-            DBTaskReminder = new DBTaskReminder("TaskReminder.db");
+
+            try
+            {
+                DBTaskReminder = new DBTaskReminder("TaskReminder.db");
+            }
+            catch (Exception ex)
+            {
+                Utils.Utils.LoggerWrite(ex.Message, true);
+            }
 
             return result;
         }
@@ -176,6 +219,7 @@ namespace ProjTaskReminder
 
             //var stock = DBTaskReminder.DB.Get<TBL_Tasks>(2); // primary key id of 5
             //var stockList = DBTaskReminder.DB.Table<TBL_Tasks>();
+
 
             foreach (TBL_Tasks s in table)
             {
@@ -190,6 +234,34 @@ namespace ProjTaskReminder
             }
 
             return TasksList;
+        }
+
+        private void OpenTaskDetailsPage(Task task, bool isNewMode, Context context)
+        {
+            Intent intent = new Intent(this, typeof(ActivityTaskDetails));
+            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+            intent.PutExtra("TaskID", task.getTaskID());
+            //intent.putExtra("task", task);  //TODO: Seriize
+
+            MainActivity.CurrentTask = task;
+
+            ActivityTaskDetails.isNewMode = isNewMode;
+            ActivityTaskDetails.CurrentTask = task;
+            ////ActivityTaskDetails.dbHandler = MainActivity.dbHandler;
+            ActivityTaskDetails.context = context;      //Application.Context;
+            ////ActivityTaskDetails.mainActivity = mainActivity;
+
+            StartActivityForResult(intent, 1234);
+            //context.StartActivity(intent);
+
+            //var req = new Intent();
+            //req.SetComponent(new ComponentName("com.example.Tristan.Android", "com.example.Tristan.Android.IsoldeQueryActivity"));
+            //StartActivityForResult(req, 1234);
+            //var rtn = await TristanStateCompletion.Task;
+            //if (!rtn) bomb("can't get state");
+            //TristanStateCompletion = null;
+            
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -209,9 +281,22 @@ namespace ProjTaskReminder
             return base.OnOptionsItemSelected(item);
         }
 
-        private void OnItemClick(object sender, EventArgs e)
+        private void OnItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            OnItemClickFromAdapter(sender, e);
+            CurrentTask = TasksList[e.Position];
+
+            OpenTaskDetailsPage(CurrentTask, false, Application.Context);
+
+            //View.IOnClickListener ii = simpleListItem_DoubleClick(sender, e);
+
+            //OnItemClickFromAdapter(sender, e);
+        }
+
+        public View.IOnClickListener simpleListItem_DoubleClick(View.IOnClickListener vvv)
+        {
+            OpenTaskDetailsPage(CurrentTask, false, Application.Context);
+
+            return null;    // View.IOnClickListener;
         }
 
         private void OnItemClickFromAdapter(object sender, EventArgs e)
@@ -257,39 +342,6 @@ namespace ProjTaskReminder
             }
             //Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
             //              .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
-        }
-
-        private void OpenTaskDetailsPage(Task task, bool isNewMode, Context context)
-        {
-            Intent intent = new Intent(this, typeof(ActivityTaskDetails));
-            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-            intent.PutExtra("TaskID", task.getTaskID());
-            //intent.putExtra("task", task);  //TODO: Seriize
-
-            ////MainActivity.CurrentTask = task;
-
-            ActivityTaskDetails.isNewMode = isNewMode;
-            ActivityTaskDetails.CurrentTask = task;
-            ////ActivityTaskDetails.dbHandler = MainActivity.dbHandler;
-            ActivityTaskDetails.context = context;      //Application.Context;
-            ////ActivityTaskDetails.mainActivity = mainActivity;
-
-            StartActivityForResult(intent, 1234);
-            //context.StartActivity(intent);
-
-            //var req = new Intent();
-            //req.SetComponent(new ComponentName("com.example.Tristan.Android", "com.example.Tristan.Android.IsoldeQueryActivity"));
-            //StartActivityForResult(req, 1234);
-            //var rtn = await TristanStateCompletion.Task;
-            //if (!rtn) bomb("can't get state");
-            //TristanStateCompletion = null;
-
-
-            //Bundle bundle;  // = new bundle();
-            //Intent backIntent;
-            //context.StartIntentSender(intent, backIntent , null, null, 0, bundle);
-
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
