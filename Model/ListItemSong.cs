@@ -132,7 +132,7 @@ namespace ProjTaskReminder.Model
 
         public void setImagePicture(Drawable drawable)
         {
-            ImageItem.SetImageDrawable(drawable);
+            //ImageItem.SetImageDrawable(drawable);
             //ImageItem.setBackground(drawable);
         }
 

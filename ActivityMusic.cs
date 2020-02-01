@@ -43,13 +43,13 @@ namespace ProjTaskReminder
 
         private void SetControlsIO()
         {
-            btnPrev = (Button)FindViewById(Resource.Id.btnPrev);
-            btnNext = (Button)FindViewById(Resource.Id.btnNext);
-            btnPlay = (Button)FindViewById(Resource.Id.btnPlay);
-            //mediaPlayer = (MediaPlayer)FindViewById(Resource.Id.mediaControllerMain);
-            barSeek = (SeekBar)FindViewById(Resource.Id.barSeek);
+            //btnPrev = (Button)FindViewById(Resource.Id.btnPrev);
+            //btnNext = (Button)FindViewById(Resource.Id.btnNext);
+            //btnPlay = (Button)FindViewById(Resource.Id.btnPlay);
+            ////mediaPlayer = (MediaPlayer)FindViewById(Resource.Id.mediaControllerMain);
+            //barSeek = (SeekBar)FindViewById(Resource.Id.barSeek);
 
-            barSeek.BringToFront();
+            //barSeek.BringToFront();
 
             ListPositionIndex = -1;
             ListItemsRecycler = new List<KeyValuePair<string, string>>();
