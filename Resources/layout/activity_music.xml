@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+
             android:layout_marginTop="2dp"
             android:text="Artist"
             android:textAlignment="center"
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            
             android:layout_marginTop="1dp"
             android:text="Album"
             android:textAlignment="center"
@@ -67,6 +67,7 @@
         android:layout_height="40dp"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
+        
         android:paddingStart="10dp"
         android:paddingEnd="5dp">
 
@@ -75,7 +76,7 @@
             android:id="@+id/barSeek"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:layout_marginStart="28dp"
+            
             android:layout_marginTop="1dp"
             android:layout_marginEnd="40dp"
             android:layout_marginBottom="1dp"
@@ -85,7 +86,7 @@
             android:id="@+id/lblPosLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="42dp"
@@ -113,6 +114,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
+        
         android:paddingStart="1dp"
         android:paddingEnd="1dp">
 
@@ -131,7 +133,7 @@
             android:layout_marginBottom="80dp"
             android:layout_marginEnd="0dp"
             android:layout_marginStart="160dp"
-            android:layout_marginTop="0p"
+            android:layout_marginTop="0dp"
             android:layout_gravity="center"
             android:background="@android:drawable/ic_media_play"
             android:backgroundTint="@android:color/white"
@@ -143,7 +145,7 @@
             android:layout_height="35dp"
             android:layout_marginBottom="0dp"
             android:layout_marginEnd="1dp"
-            android:layout_marginStart="1dp"
+            
             android:layout_marginTop="1dp"
             android:layout_gravity="left|top"
             android:background="@android:drawable/ic_media_previous"
@@ -154,7 +156,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginBottom="0dp"
-            android:layout_marginStart="340dp"
+            
             android:layout_marginTop="1dp"
             android:layout_gravity="right"
             android:background="@android:drawable/ic_media_next"
@@ -162,12 +164,13 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/layDetails4"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
         android:layout_gravity="bottom"
+        
         android:layout_marginTop="20dp"
         android:paddingStart="1dp"
         android:paddingEnd="1dp">
@@ -177,7 +180,7 @@
             style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="8dp"
+            
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
@@ -188,19 +191,19 @@
             style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="1dp"
+            
             android:layout_marginTop="1dp"
             android:layout_marginEnd="1dp"
             android:layout_marginBottom="80dp"
             android:text="כל השירים" />
 
-        <MediaController
+<!--        <MediaController
             android:minWidth="100dp"
             android:minHeight="25dp"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:id="@+id/mediaController1" />
-        
-        </LinearLayout>
+            android:id="@+id/mediaControllerMain" />
+-->        
+    </RelativeLayout>
 
 </LinearLayout>

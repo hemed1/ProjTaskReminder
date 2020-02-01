@@ -338,3 +338,7 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Sources Backups/ProjTaskReminder.sln
+/Sources Backups/ProjTaskReminder.csproj
+/Sources Backups/activity_music.xml
+/Sources Backups/activity_music - Copy.xml
