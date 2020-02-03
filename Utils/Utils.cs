@@ -83,22 +83,22 @@ namespace ProjTaskReminder.Utils
 
 
         /// Get all files - Recorsive
-        public static string[] GetFolderFiles(string path, string fileExtentionToSearch, bool searchInFolders)
+        public static List<string> GetFolderFiles(string path, string fileExtentionToSearch, bool searchInFolders)
         {
             string file;
-            string[] files = new string[100];
-            string[] directory;
+            List<string> files = new List<string>();
+            string[] directories;
             //static ArrayList<File>  foundfiles
             String[] multiSearchValuse = new String[0];
 
 
             fileExtentionToSearch = fileExtentionToSearch.ToLower();
 
-            directory = Directory.GetDirectories(path);    //   File(path);
+            directories = Directory.GetDirectories(path);    //   File(path);
 
-            files = Directory.GetFiles(path, fileExtentionToSearch);
+            files = Directory.GetFiles(path, fileExtentionToSearch).ToList();
 
-            if (files == null)
+            if (files == null || files.Count()==0)
             {
                 return files;
             }
@@ -109,20 +109,20 @@ namespace ProjTaskReminder.Utils
             //            fileExtentionToSearch = multiSearchValuse[0];
             //        }
 
-            for (int i = 0; i < files.Length; i++)
+            for (int i = 0; i < files.Count; i++)
             {
                 file = files[i];
 
                 if (searchInFolders && Directory.Exists(file))
                 {
-                    GetFolderFiles(file, fileExtentionToSearch, searchInFolders);
+                    files.AddRange(GetFolderFiles(file, fileExtentionToSearch, searchInFolders));
                 }
                 else if (file.ToLower().EndsWith(fileExtentionToSearch))
                 {
+                    files.Add(file);
                     //songsFiles.add(file);
                 }
             }
-
 
 
             return files;

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -62,13 +62,13 @@
 
     </LinearLayout>
 
-    <RelativeLayout
+   <RelativeLayout
         android:id="@+id/layDetails2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
-        
+        android:layout_marginStart="5dp"
         android:paddingStart="10dp"
         android:paddingEnd="5dp">
 
@@ -77,9 +77,9 @@
             android:id="@+id/barSeek"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            
-            android:layout_marginTop="1dp"
+            android:layout_marginStart="30dp"
             android:layout_marginEnd="40dp"
+            android:layout_marginTop="1dp"
             android:layout_marginBottom="1dp"
             android:layout_gravity="bottom"/>
 
@@ -110,23 +110,23 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/layDetails3"
+        android:id="@+id/layPlayButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="20dp"
-        
+        android:layout_marginStart="0dp"
         android:paddingStart="1dp"
         android:paddingEnd="1dp">
 
-        <ImageView
+<!--        <ImageView
             android:id="@+id/imgLine"
             android:layout_width="350dp"
             android:layout_height="5dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStrat="8dp"
             android:visibility="visible" />
-
+-->
         <Button
             android:id="@+id/btnPlay"
             android:layout_width="35dp"
@@ -146,7 +146,7 @@
             android:layout_height="35dp"
             android:layout_marginBottom="0dp"
             android:layout_marginEnd="1dp"
-            
+            android:layout_marginStart="10dp"            
             android:layout_marginTop="1dp"
             android:layout_gravity="left|top"
             android:background="@android:drawable/ic_media_previous"
@@ -157,7 +157,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginBottom="0dp"
-            
+            android:layout_marginStart="340dp"
             android:layout_marginTop="1dp"
             android:layout_gravity="right"
             android:background="@android:drawable/ic_media_next"
@@ -168,10 +168,10 @@
     <RelativeLayout
         android:id="@+id/layDetails4"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="bottom"
-        
+        android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:paddingStart="1dp"
         android:paddingEnd="1dp">
@@ -181,9 +181,9 @@
             style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
             android:layout_marginBottom="8dp"
             android:text="תקיות" />
 
@@ -192,10 +192,10 @@
             style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            
+            android:layout_marginStart="10dp"
             android:layout_marginTop="1dp"
             android:layout_marginEnd="1dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="8dp"
             android:text="כל השירים" />
 
     </RelativeLayout>
