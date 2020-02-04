@@ -62,9 +62,13 @@ namespace ProjTaskReminder.Utils
                 //    //Directory.CreateDirectory(LOG_FILE_PATH);
                 //}
 
-                LOG_FILE_PATH = context.GetExternalFilesDir("").AbsolutePath;
+                string folderNameMusic = Android.OS.Environment.DirectoryMusic;
+                LOG_FILE_PATH = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
                 LOG_FILE_NAME = "LogTaskReminder.txt";
+                string songPath = LOG_FILE_PATH + "/" + LOG_FILE_NAME;
 
+                //LOG_FILE_PATH = context.GetExternalFilesDir("").AbsolutePath;
+                
                 fileName = Path.Combine(LOG_FILE_PATH, LOG_FILE_NAME);
 
                 file = new FileStream(fileName, FileMode.Append, FileAccess.Write);       // FileMode.Append

@@ -21,29 +21,30 @@
         android:id="@+id/btnMainEmail"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_alignParentTop="true"
         android:background="@drawable/abc_ic_clear_material"
-        android:gravity="top|left"
         android:tooltipText="Send Email"
         android:scaleType="fitXY"
         android:src="@mipmap/mail_read8"
         android:clickable="true"
         android:soundEffectsEnabled="true" />
 
+    <!--android:gravity="top|left"-->
 <!--        tools:src="@mipmap/mail_read8"
         android:src="#ff1b5e20"
 --><!--android:onClick="btnMainSendMail_Click"-->
 
     <ImageButton
         android:id="@+id/bntMainMusic"
-        android:layout_marginHorizontal="110dp"
-        android:background="@drawable/abc_ic_clear_material"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:tooltipText="Your Music"
+        android:layout_marginHorizontal="250dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/abc_ic_clear_material"
         android:scaleType="fitXY"
-        android:layout_toRightOf="@id/btnMainEmail"
-        android:src="@mipmap/music1"/>
+        android:clickable="true"
+        android:src="@mipmap/mail_read8"/>
 
     <!--android:src="#ffb71c1c"-->
 
@@ -51,12 +52,13 @@
         android:id="@+id/btnMainWeather"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_toRightOf="@id/bntMainMusic"
-        android:layout_marginHorizontal="220dp"
+        android:layout_marginHorizontal="320dp"
+        android:layout_alignParentTop="true"
         android:background="@drawable/abc_btn_radio_material"
         android:tooltipText="Weather"
         android:scaleType="fitXY"
-        android:src="@mipmap/weather2"/>
+        android:clickable="true"
+        android:src="@mipmap/mail_read8"/>
 
     <!--android:src="#ff0d47a1"-->
 

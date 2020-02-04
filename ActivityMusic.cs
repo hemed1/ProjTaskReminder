@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
@@ -14,6 +14,7 @@ using Android.Runtime;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using Java.Util;
 using ProjTaskReminder.Model;
 
 namespace ProjTaskReminder
@@ -34,11 +35,11 @@ namespace ProjTaskReminder
 
 
         public static Context context;
-        private List<KeyValuePair<string, string>>          ListItemsPath;
-        private List<KeyValuePair<string, ListItemSong>>    ListItemsRecycler;
+        private List<KeyValuePair<string, string>> ListItemsPath;
+        private List<KeyValuePair<string, ListItemSong>> ListItemsRecycler;
         private int ListPositionIndex;
         private bool isPlayingNow;
-
+        private Thread thread;
 
 
 
@@ -68,22 +69,22 @@ namespace ProjTaskReminder
             lblPosLeft = (TextView)FindViewById(Resource.Id.lblPosLeft);
 
 
-            ListPositionIndex = -1;
+            ListPositionIndex = 0;
             ListItemsRecycler = new List<KeyValuePair<string, ListItemSong>>();
+            ListItemsPath = new List<KeyValuePair<string, string>>();
 
             string folderNameMusic = Android.OS.Environment.DirectoryMusic;
+            string folderMusic = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
+            string songPath = folderMusic + "/love_the_one.mp3";
+
+            //songPath = externalPath + "/ProjTaskReminder";    //, FileCreationMode.Append).AbsolutePath;
             //Java.IO.File externalPath = Android.OS.Environment.ExternalStorageDirectory;
             //string externalPathFile = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
-            string folderMusic = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
-            //LOG_FILE_PATH = externalPath + "/ProjTaskReminder";    //, FileCreationMode.Append).AbsolutePath;
-            string songPath = folderMusic + "/love_the_one.mp3";
+
             KeyValuePair<string, string> songKeys = new KeyValuePair<string, string>("love_the_one.mp3", songPath);
             ListItemsPath.Add(songKeys);
 
             ListItemSong song = new ListItemSong("love_the_one", "Neil Young", "Album");
-            //song.setSongName("love_the_one");
-            //song.setArtist("Neil Young");
-            //song.setAlbum("Album");
             KeyValuePair<string, ListItemSong> songItem = new KeyValuePair<string, ListItemSong>("love_the_one", song);
             ListItemsRecycler.Add(songItem);
 
@@ -99,7 +100,7 @@ namespace ProjTaskReminder
 
         private void PlaySongPlay(object sender, EventArgs eventArgs)
         {
-            if (!isPlayingNow && ListPositionIndex < ListItemsRecycler.Count - 1)
+            if (!isPlayingNow && ListPositionIndex <= ListItemsRecycler.Count - 1)
             {
                 isPlayingNow = true;
                 LoadSongIntoPlayer(ListPositionIndex);
@@ -110,7 +111,6 @@ namespace ProjTaskReminder
                 MusicPause();
             }
 
-            //seekMusic(5000);
         }
 
         private void PlaySongNext(object sender, EventArgs eventArgs)
@@ -143,24 +143,20 @@ namespace ProjTaskReminder
             {
                 MusicPause();
 
-                string songPath;
-
-                //songPath = this.Resources.GetLayout(Resource.Raw.love_the_one).Value;
-                songPath= ListItemsRecycler[listPositionIndex].Value;
                 int resourceID = Resource.Raw.love_the_one;
 
-                Android.Net.Uri uri = Android.Net.Uri.Parse(songPath);
+                string folderNameMusic = Android.OS.Environment.DirectoryMusic;
+                string folderMusic = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
+                string songPath = folderMusic + "/Brad.mp3";
+
+                //string songPath;
+                //songPath = this.Resources.GetLayout(Resource.Raw.love_the_one).Value;
+                //songPath= ListItemsRecycler[listPositionIndex].Value;
+                //Android.Net.Uri uri = Android.Net.Uri.Parse(songPath);
 
                 mediaPlayer = MediaPlayer.Create(this, resourceID);   // uri);
-                
-                mediaPlayer.SetScreenOnWhilePlaying(true);
 
-                if (mediaPlayer != null)
-                {
-                    mediaPlayer.SeekTo(0);
-                    barSeek.Max = mediaPlayer.Duration;
-                    barSeek.SetProgress(0, false);
-                }
+                mediaPlayer.SetScreenOnWhilePlaying(true);
 
                 //mediaPlayer.SetOnCompletionListener(MediaPlayer.IOnCompletionListener());
                 //{
@@ -176,20 +172,21 @@ namespace ProjTaskReminder
                 //int resourceID = Resource.raw.love_the_one;
                 //mediaPlayer = MediaPlayer.Create(this, resourceID);  //listItems.get(listPositionIndex).getResourceID()
 
+                // Set the Song props - Name, Artist, Album, Duration
+                SetSongControls(listPositionIndex);
+
                 MusicPlay();
+
             }
             catch (Exception ex)
             {
                 //Println("Error while load a song into Media player.. \n" + e.getMessage());
             }
 
-            // Set the Song props - Name, Artist, Album, Duration
-            //setSongControls(listPositionIndex);
 
-            
 
         }
-        
+
         private void MusicPause()
         {
             if (mediaPlayer != null)
@@ -199,10 +196,11 @@ namespace ProjTaskReminder
                 //    thread.interrupt();
                 //    thread = null;
                 //}
+
                 mediaPlayer.Pause();
-                
+
                 //mediaPlayer.Stop();
-                btnPlay.SetBackgroundResource(GetDrawable(ic_media_play));
+                btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPlay);
             }
 
         }
@@ -213,11 +211,11 @@ namespace ProjTaskReminder
             {
                 mediaPlayer.Start();
 
-                //btnPlay.setBackgroundResource(android.R.drawable.ic_media_pause);
+                btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPause);
 
                 //setPicsScroll();
 
-                //updateSongPositionThread();
+                UpdateSongPositionThread();
             }
         }
 
@@ -228,7 +226,7 @@ namespace ProjTaskReminder
         }
 
         // Set the Song props - Name, Artist, Album, Duration
-        private void setSongControls(int listPositionIndex)
+        private void SetSongControls(int listPositionIndex)
         {
             Drawable drawable;
             Bitmap bitmap;
@@ -236,9 +234,18 @@ namespace ProjTaskReminder
 
             ListItemSong item = ListItemsRecycler[listPositionIndex].Value;
 
-            lblSongName.Text=item.getSongName();
-            lblSongArtist.Text=item.getArtist();
-            lblAlbum.Text=item.getAlbum();
+            lblSongName.Text = item.getSongName();
+            lblSongArtist.Text = item.getArtist();
+            lblAlbum.Text = item.getAlbum();
+
+            if (mediaPlayer != null)
+            {
+                mediaPlayer.SeekTo(0);
+                barSeek.Max = mediaPlayer.Duration;
+                barSeek.SetProgress(0, false);
+            }
+
+            UpdateProgressControls();
 
             //item.setDuration(mediaPlayer.getDuration());
 
@@ -279,17 +286,92 @@ namespace ProjTaskReminder
 
         }
 
-        private void updateProgressControls()
+        private void UpdateProgressControls()
         {
             int currentPos = mediaPlayer.CurrentPosition;
             int duration = mediaPlayer.Duration;
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss");
-            lblPosNow.Text=dateFormat.Format(new Java.Util.Date(currentPos));
-            lblPosLeft.Text=dateFormat.Format(new Java.Util.Date(duration));
-            //lblPosLeft.setText(dateFormat.format(new Date(duration - currentPos)));
+            lblPosNow.Text=dateFormat.Format(new Date(currentPos));
+            lblPosLeft.Text=dateFormat.Format(new Date(duration));
+
+            //lblPosNow.Text = new DateTime(currentPos).ToString("mm:ss");
+            //lblPosLeft.Text = new DateTime(duration).ToString("mm:ss");
         }
 
+        public void UpdateSongPositionThread()
+        {
+            //TimerRunSongProgress();
+
+            var first = new Thread(new ThreadStart(firstThread));
+            //var second = new Thread(new ThreadStart(secondThread));
+            //btnStart.TouchUpInside += delegate {
+            
+            first.Start();
+
+            while (mediaPlayer != null && mediaPlayer.IsPlaying)
+            {
+                Thread.Sleep(500);
+                firstThread();
+            }
+
+            // causes a 10ms delay between starting the next thread
+
+            //second.Start();
+
+
+            //        thread = new Thread()
+            //        {
+            //            @Override
+            //            public void run()
+            //            {
+            //                try
+            //                {
+            //                    while (mediaPlayer != null && mediaPlayer.isPlaying())
+            //                    {
+            //                        Thread.sleep(500);
+            //                        runOnUiThread(new Runnable()
+            //                        {
+            //                            @Override
+            //                            public void run()
+            //                            {
+            //                                int newPosition = mediaPlayer.getCurrentPosition();
+            //                                barSeek.setProgress(newPosition);
+            //                            }
+            //                        });
+            //
+            //                    }
+            //                } catch (InterruptedException e)
+            //                {
+            //                    e.printStackTrace();
+            //                }
+            //            }
+            //        };
+            //
+            //        thread.start();
+        }
+
+        private void firstThread()
+        {
+            int newPosition = mediaPlayer.CurrentPosition;
+            barSeek.Progress = newPosition;
+
+            UpdateProgressControls();
+        }
+
+        private void secondThread()
+        {
+            //int i=0;
+            //string text = string.Empty;
+            //while (i < 10)
+            //{
+            //    text = string.Format("1st thread going i from {0} to {1}", i, ++i);
+            //    InvokeOnMainThread(delegate () {
+            //        thread1.Text = text;
+            //    });
+
+            //}
+        }
     }
 
-}
+        }
