@@ -26,6 +26,8 @@ namespace ProjTaskReminder
         private EditText txtDetailsTitle;
         private EditText txtDetailsDescription;
         private TextView txtDetailsDate;
+        
+
         //private TextView txtDetailsDateDay;
         //private TextView txtDetailsTime;
         //private TextView txtDetailsRepeat;
@@ -56,7 +58,7 @@ namespace ProjTaskReminder
 
 
 
-        //private TextView lblDateTime;
+        private EditText lblDateTime;
         //private CardView cardDetails;
         //private CardView cardDetailsTiming;
         //private CardView cardRichText;
@@ -108,16 +110,18 @@ namespace ProjTaskReminder
         private Intent inputIntent;
         private int taskID;
 
+
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            Utils.Utils.LoggerWrite("Enter 5", true);
+            //Utils.Utils.LoggerWrite("Enter 5", true);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_task_details);
 
-            Utils.Utils.LoggerWrite("Enter 6", true);
+            //Utils.Utils.LoggerWrite("Enter 6", true);
 
             inputIntent = this.Intent;
 
@@ -131,13 +135,39 @@ namespace ProjTaskReminder
 
             if (isNewMode)
             {
-
+                newTaskDetails();
             }
             else 
             {
                 SetControlsByObject();
             }
 
+
+            if (isNewMode || (txtDetailsTitle.Text.ToString().Trim().Equals("") && txtDetailsDescription.Text.ToString().Trim().Equals("")))
+            {
+                txtDetailsDescription.Focusable=true;
+                txtDetailsDescription.RequestFocus();
+                ////Util.focusOnEditTextControl(txtDetailsDescription);
+                //Util.openKeyboard();
+            }
+            else
+            {
+                txtDetailsDescription.RequestFocus();
+                //Utils.Utils.closeKeyboard();
+            }
+
+        }
+
+        private void newTaskDetails()
+        {
+
+            CurrentTask = MainActivity.newTaskDetails();
+
+            ////txtDetailsColor.setText(CurrentTask.getBackgroundColor());
+
+            SetControlsByObject();
+
+            //Log.d("newTaskDetails", String.valueOf(CurrentTask.getDate()));
         }
 
         private void SetControlsIO()
@@ -145,6 +175,7 @@ namespace ProjTaskReminder
             txtDetailsTitle = FindViewById<EditText>(Resource.Id.txtDetailsTitle);
             txtDetailsDescription = FindViewById<EditText>(Resource.Id.txtDetailsDescription);
             txtDetailsDate = FindViewById<TextView>(Resource.Id.txtDetailsDate);
+            //txtDetailsDate = FindViewById<EditText>(Resource.Id.txtDetailsDate);
             //txtDetailsDateDay = FindViewById<TextView>(Resource.Id.txtDetailsDateDay);
             //txtDetailsTime = FindViewById<TextView>(Resource.Id.txtDetailsTime);
             //txtDetailsRepeat = FindViewById<TextView>(Resource.Id.txtDetailsRepeat);
@@ -164,7 +195,7 @@ namespace ProjTaskReminder
 
             btnSave = FindViewById<Button>(Resource.Id.btnSave);
             btnDelete = FindViewById<Button>(Resource.Id.btnDelete);
-            //lblDateTime = FindViewById<TextView>(Resource.Id.lblDateTime);
+            lblDateTime = FindViewById<EditText>(Resource.Id.lblDateTime);
             //cardDetails = FindViewById<CardView>(Resource.Id.cardDetails);
             //cardDetailsTiming = FindViewById<CardView>(Resource.Id.cardDetailsTiming);
             //layoutMain = FindViewById(Resource.Id.layoutMain);
@@ -210,13 +241,25 @@ namespace ProjTaskReminder
             SetObjectByControls();
 
             // only insert the data if it doesn't already exist
-            var item = new TBL_Tasks();
+            TBL_Tasks item = new TBL_Tasks();
 
             try
             {
                 item.Title = task.getTitle();
                 item.Description = task.getDescription();
-                MainActivity.DBTaskReminder.DB.Insert(item);
+                item.DateDue = task.getDate_due();
+
+                if (isNewMode)
+                {
+                    MainActivity.DBTaskReminder.DB.Insert(item);
+                }
+                else
+                {
+                    //Set Task object in array
+                    List<KeyValuePair<String, String>> values = MainActivity.getTaskValues(CurrentTask);
+
+                    MainActivity.DBTaskReminder.UpdateRecord("TBL_Tasks", values, new object[] { CurrentTask.getTaskID() });
+                }
 
                 inputIntent.PutExtra("Result", "true");
 
@@ -227,7 +270,7 @@ namespace ProjTaskReminder
                 }
 
                 // Second option to - Raise the event to the Caller
-                OnActivityResult(111, Result.Ok, inputIntent);
+                //OnActivityResult(111, Result.Ok, inputIntent);
 
                 //SetResult(Result.Ok, inputIntent);
                 
@@ -252,14 +295,14 @@ namespace ProjTaskReminder
         {
             CurrentTask.setTitle(txtDetailsTitle.Text);
             CurrentTask.setDescription(txtDetailsDescription.Text);
-            CurrentTask.setDate_due(txtDetailsDate.Text);
+            CurrentTask.setDate_due(lblDateTime.Text);
         }
 
         private void SetControlsByObject()
         {
             txtDetailsTitle.Text = CurrentTask.getTitle();
             txtDetailsDescription.Text = CurrentTask.getDescription();
-            //txtDetailsDate.Text = CurrentTask.getDate_due();
+            lblDateTime.Text = CurrentTask.getDate_due();
         }
 
         // Assign the listener implementing events interface that will receive the events

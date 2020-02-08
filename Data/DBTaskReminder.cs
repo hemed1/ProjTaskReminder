@@ -105,6 +105,120 @@ namespace ProjTaskReminder.Data
             }
         }
 
+        public bool DeleteRecord(string tableName, int id)
+        {
+            bool result = true;
+
+            string sqlScript = "DELETE FROM " + tableName + " " +
+                               "WHERE TaskID=" + id.ToString();
+
+            try
+            {
+                //this.DB = this.getWritableDatabase();
+                DB.Execute(sqlScript);
+                DB.Close();
+            }
+            catch (Exception ex)
+            {
+                result = false;
+                //Log.d("DataBase", "Error in 'deleteRecord()': " + ex.getMessage());
+                Utils.Utils.WriteToLog("DataBase - Error in 'deleteRecord()': \n" + ex.Message, true);
+                //throw ex;
+            }
+
+            return result;
+        }
+
+        public long AddRecord(string tableName, List<KeyValuePair<string, string>> values)
+        {
+            string sqlScript = "";
+            long recordsEffected=0;
+
+
+            try
+            {
+                //ContentValues contentValues = addContentValues(values);
+                sqlScript = "INSERT INTO " + tableName + " (";
+                for (int i = 0; i < values.Count; i++)
+                {
+                    sqlScript += values[i].Key+",";
+                }
+                sqlScript = sqlScript.Substring(0, sqlScript.Length - 1);
+                sqlScript += ")" + "VALUES ( ";
+                for (int i = 0; i < values.Count; i++)
+                {
+                    sqlScript += values[i].Value + ",";
+                }
+                sqlScript = sqlScript.Substring(0, sqlScript.Length - 1);
+                this.DB.Execute(sqlScript, null);
+                //recordsEffected = DB.insert(tableName, null, contentValues);
+
+                DB.Close();
+            }
+            catch (Exception ex)
+            {
+                string msg = "DataSet - Error in 'addRecord()'" + "\n" + ex.Message;
+                Utils.Utils.WriteToLog(msg, true);
+                recordsEffected = -1;
+            }
+
+            return recordsEffected;
+        }
+
+        public long UpdateRecord(string tableName, List<KeyValuePair<string, string>> values, object[] args)
+        {
+            long recordsEffected = 0;
+            string sqlScript = "";
+
+
+            try
+            {
+                sqlScript = "UPDATE " + tableName + " SET ";
+                for (int i = 0; i < values.Count; i++)
+                {
+                    sqlScript += values[i].Key + "='" + values[i].Value + "'" + ",";
+                }
+                sqlScript = sqlScript.Substring(0, sqlScript.Length - 1);
+                //ContentValues contentValues = addContentValues(values);
+
+                if (args==null)
+                {
+                    recordsEffected = DB.Execute(sqlScript);
+                    //recordsEffected = DB.update(tableName, contentValues, null, null);
+                }
+                else
+                {
+                    sqlScript += " WHERE  ID=?";
+                    recordsEffected = DB.Execute(sqlScript, args[0]);
+                    //recordsEffected = DB.update(tableName, contentValues, values.get(0).first + "=?", new string[] { values.get(0).second });
+                }
+                //Log.d("DataSet - 'updateRecord()'", "Record was updated OK - recordsEffected: "+string.valueOf(recordsEffected));
+            }
+            catch (Exception ex)
+            {
+                string msg = "DataSet - Error in 'updateRecord()'";
+                //Log.d(msg, ex.getMessage());
+                Utils.Utils.WriteToLog(msg + "\n" + ex.Message, true);
+                //throw ex;
+            }
+
+            ////DB.Close();
+
+            return recordsEffected;
+        }
+
+        private ContentValues addContentValues(List<KeyValuePair<String, String>> values)
+        {
+            ContentValues contentValues = new ContentValues();
+
+            for (int i = 0; i < values.Count; i++)
+            {
+                contentValues.Put(values[i].Key, values[i].Value);
+            }
+
+            return contentValues;
+        }
+
 
 
         [Table("TBL_Tasks")]

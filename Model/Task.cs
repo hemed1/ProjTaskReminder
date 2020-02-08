@@ -16,7 +16,7 @@ using Android.Text;
 
 namespace ProjTaskReminder.Model
 {
-    public class Task
+    public class Task 
     {
         private int taskID;
         private string title;
@@ -30,7 +30,9 @@ namespace ProjTaskReminder.Model
         private Boolean IsArchive;
         private Boolean isSelected;
 
-        private Timer timer;
+        private Thread timer;
+        //private System.Timers.Timer timer;
+        //private Java.Util.Timer timer;
         private TimerTask timer_task;
         private string text;
 
@@ -50,12 +52,13 @@ namespace ProjTaskReminder.Model
             return taskID;
         }
 
-        public Timer getTimer()
+        public Thread getTimer()   // System.Timers.Timer | Java.Util.Timer
         {
             return timer;
         }
 
-        public void setTimer(Timer timer)
+        public void setTimer(Thread timer)  //Java.Util.Timer timer)
+        //public void setTimer(System.Timers.Timer timer)  //Java.Util.Timer timer)
         {
             this.timer = timer;
         }
@@ -355,6 +358,7 @@ namespace ProjTaskReminder.Model
             string strTime;
             DateTime? result=null;
 
+
             if (!((this.date_due != null && !this.getDate_due().Equals("")) && (this.time_due != null && !this.getTime_due().Equals(""))))
             {
                 return result;
@@ -365,7 +369,7 @@ namespace ProjTaskReminder.Model
 
             //Log.d("Task - getDate - Date: ", "*"+strDate+" "+strTime+"*");
 
-            return result;   /// Util.getDateFromString(strDate + " " + strTime);
+            return Utils.Utils.getDateFromString(strDate + " " + strTime);
         }
 
         private string trimSpannedText()

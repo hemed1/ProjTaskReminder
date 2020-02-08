@@ -39,8 +39,8 @@ namespace ProjTaskReminder
         private List<KeyValuePair<string, ListItemSong>> ListItemsRecycler;
         private int ListPositionIndex;
         private bool isPlayingNow;
-        private Thread thread;
-
+        private Thread ThreadTask;
+        private event Action ActionOnPlayingMusic;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -100,10 +100,13 @@ namespace ProjTaskReminder
 
         private void PlaySongPlay(object sender, EventArgs eventArgs)
         {
-            if (!isPlayingNow && ListPositionIndex <= ListItemsRecycler.Count - 1)
-            {
-                isPlayingNow = true;
-                LoadSongIntoPlayer(ListPositionIndex);
+            if (!isPlayingNow)
+            { 
+                if (ListPositionIndex <= ListItemsRecycler.Count - 1)
+                {
+                    isPlayingNow = true;
+                    LoadSongIntoPlayer(ListPositionIndex);
+                }
             }
             else
             {
@@ -144,19 +147,22 @@ namespace ProjTaskReminder
                 MusicPause();
 
                 int resourceID = Resource.Raw.love_the_one;
+                //int resourceID = ListItemsRecycler.get(listPositionIndex).getResourceID();
 
-                string folderNameMusic = Android.OS.Environment.DirectoryMusic;
-                string folderMusic = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
-                string songPath = folderMusic + "/Brad.mp3";
-
-                //string songPath;
-                //songPath = this.Resources.GetLayout(Resource.Raw.love_the_one).Value;
-                //songPath= ListItemsRecycler[listPositionIndex].Value;
+                //string folderNameMusic = Android.OS.Environment.DirectoryMusic;
+                //string folderMusic = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
+                //string songPath = folderMusic + "/Brad.mp3";
+                //songPath= ListItemsPath[listPositionIndex].Value;
                 //Android.Net.Uri uri = Android.Net.Uri.Parse(songPath);
 
                 mediaPlayer = MediaPlayer.Create(this, resourceID);   // uri);
 
                 mediaPlayer.SetScreenOnWhilePlaying(true);
+
+                // Set the Song props - Name, Artist, Album, Duration
+                SetSongControls(listPositionIndex);
+
+                MusicPlay();
 
                 //mediaPlayer.SetOnCompletionListener(MediaPlayer.IOnCompletionListener());
                 //{
@@ -166,17 +172,6 @@ namespace ProjTaskReminder
                 //        PlaySongNext();
                 //    }
                 //});
-                //int resourceID = ListItemsRecycler.get(listPositionIndex).getResourceID();
-                //mediaPlayer = MediaPlayer.create(getApplicationContext(), resourceID);  //listItems.get(listPositionIndex).getResourceID()
-
-                //int resourceID = Resource.raw.love_the_one;
-                //mediaPlayer = MediaPlayer.Create(this, resourceID);  //listItems.get(listPositionIndex).getResourceID()
-
-                // Set the Song props - Name, Artist, Album, Duration
-                SetSongControls(listPositionIndex);
-
-                MusicPlay();
-
             }
             catch (Exception ex)
             {
@@ -217,6 +212,25 @@ namespace ProjTaskReminder
 
                 UpdateSongPositionThread();
             }
+        }
+
+        public void MusicStop()
+        {
+            //TimerStop();
+
+            //TimerStopSongProgress();
+
+            if (mediaPlayer != null)
+            {
+                mediaPlayer.Stop();
+                mediaPlayer.Release();
+                //mediaPlayer.reset();
+            }
+
+            mediaPlayer = null;
+            //ThreadTask.Abort();
+            ThreadTask = null;
+
         }
 
         private void seekMusic(int interval)
@@ -291,9 +305,16 @@ namespace ProjTaskReminder
             int currentPos = mediaPlayer.CurrentPosition;
             int duration = mediaPlayer.Duration;
 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss");
-            lblPosNow.Text=dateFormat.Format(new Date(currentPos));
-            lblPosLeft.Text=dateFormat.Format(new Date(duration));
+            try
+            {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss");
+                lblPosNow.Text = dateFormat.Format(new Date(currentPos));
+                lblPosLeft.Text = dateFormat.Format(new Date(duration));
+            }
+            catch (Exception ex)
+            {
+
+            }
 
             //lblPosNow.Text = new DateTime(currentPos).ToString("mm:ss");
             //lblPosLeft.Text = new DateTime(duration).ToString("mm:ss");
@@ -303,20 +324,16 @@ namespace ProjTaskReminder
         {
             //TimerRunSongProgress();
 
-            var first = new Thread(new ThreadStart(firstThread));
+            ActionOnPlayingMusic += OnPlayingMusic;
+
+            ThreadTask = new Thread(new ThreadStart(firstThread));
             //var second = new Thread(new ThreadStart(secondThread));
             //btnStart.TouchUpInside += delegate {
-            
-            first.Start();
 
-            while (mediaPlayer != null && mediaPlayer.IsPlaying)
-            {
-                Thread.Sleep(500);
-                firstThread();
-            }
+            ThreadTask.Start();
+
 
             // causes a 10ms delay between starting the next thread
-
             //second.Start();
 
 
@@ -353,10 +370,29 @@ namespace ProjTaskReminder
 
         private void firstThread()
         {
+            while (mediaPlayer != null && mediaPlayer.IsPlaying)
+            {
+                Thread.Sleep(1000);
+
+                RunOnUiThread(ActionOnPlayingMusic);    // =>
+                //{
+                    //int newPosition = mediaPlayer.CurrentPosition;
+                    //barSeek.Progress = newPosition;
+                //};
+
+                UpdateProgressControls();
+            }
+
+            //ThreadTask.Abort();
+            ThreadTask = null;
+
+
+        }
+
+        protected void OnPlayingMusic()     //int songsListIndex, int currentMusicPlayerPosition)
+        {
             int newPosition = mediaPlayer.CurrentPosition;
             barSeek.Progress = newPosition;
-
-            UpdateProgressControls();
         }
 
         private void secondThread()
@@ -372,6 +408,123 @@ namespace ProjTaskReminder
 
             //}
         }
+
+        protected override void OnDestroy()
+        {
+            //if (thread != null)
+            //{
+            //    thread.Interrupt();
+            //    thread = null;
+            //}
+
+            MusicStop();
+
+            Toast.MakeText(this, "Destroing Media Player control", ToastLength.Long).Show();
+
+            base.OnDestroy();
+        }
+
+    //    private void picsTimer_onTick()
+    //    {
+    //        boolean isGetToEdge = false;
+
+    //        scrHorizon.smoothScrollTo(keepX, 0);
+    //        //scrHorizon.scrollTo(keepX, 0);
+    //        //scrHorizon.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+
+    //        keepX += PICS_TIMER_SCROLL_DELTA;
+
+    //        if (PICS_TIMER_SCROLL_DELTA > 0)
+    //        {
+    //            if (keepX > (imgSongArtist1.getWidth() * 3) - 1000)  //scrHorizon.getRight())
+    //            {
+    //                //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist3, 2);
+    //                isGetToEdge = true;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            if (keepX < PICS_TIMER_SCROLL_DELTA * -1 - 450)
+    //            {
+    //                //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist1, 1);
+    //                isGetToEdge = true;
+    //            }
+    //        }
+
+    //        if (isGetToEdge)
+    //        {
+    //            PICS_TIMER_SCROLL_DELTA = PICS_TIMER_SCROLL_DELTA * -1;
+    //            keepX += PICS_TIMER_SCROLL_DELTA;
+    //        }
+
+    //    }
+
+    //    private void TimerRunSongProgress()
+    //    {
+    //        TimerTaskSongProgress = new TimerTask()
+    //    {
+    //        @Override
+    //        public void run()
+    //        {
+    //            TimerSongProgress_onTick();
+    //        }
+    //    };
+
+    //    // Run the Timer
+    //    TimerSongProgress = new Timer();
+    //    TimerSongProgress.schedule(TimerTaskSongProgress, 900, 900);
+    //}
+
+    //    private void TimerStopSongProgress()
+    //    {
+    //        if (TimerSongProgress != null)
+    //        {
+    //            TimerSongProgress.cancel();
+    //            TimerSongProgress.purge();
+    //            TimerTaskSongProgress.cancel();
+    //            TimerSongProgress = null;
+    //            TimerTaskSongProgress = null;
+    //        }
+    //    }
+
+    //    private void TimerSongProgress_onTick()
+    //    {
+    //        int newPosition = mediaPlayer.getCurrentPosition();
+    //        barSeek.setProgress(newPosition);
+    //    }
+
+
+    //    private void TimerRun()
+    //    {
+    //        IsTimerWork = true;
+    //        picsTimerTask = new TimerTask()
+    //        {
+    //            @Override
+    //            public void run()
+    //        {
+    //            picsTimer_onTick();
+    //        }
+    //        };
+
+    //    // Run the Timer
+    //    picsTimer = new Timer();
+    //    picsTimer.schedule(picsTimerTask, 500, PICS_TIMER_INTERVAL);
+    //    }
+
+    //    private void TimerStop()
+    //    {
+    //        if (IsTimerWork)
+    //        {
+    //            picsTimer.cancel();
+    //            picsTimer.purge();
+    //            picsTimerTask.cancel();
+    //            picsTimer = null;
+    //            picsTimerTask = null;
+    //            //picsTimerTask.run();
+    //        }
+    //        IsTimerWork = false;
+    //    }
+
     }
 
-        }
+}

@@ -1,77 +1,95 @@
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:orientation="vertical"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:id="@+id/lblMainCaption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:textSize="17sp"
-        android:background="@drawable/abc_btn_check_material"
-        android:textColor="@android:color/holo_red_dark"
-        android:text="Hello World!" />
+       <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
 
-    <ImageButton
-        android:id="@+id/btnMainEmail"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/abc_ic_clear_material"
-        android:tooltipText="Send Email"
-        android:scaleType="fitXY"
-        android:src="@mipmap/mail_read8"
-        android:clickable="true"
-        android:soundEffectsEnabled="true" />
 
-    <!--android:gravity="top|left"-->
-<!--        tools:src="@mipmap/mail_read8"
-        android:src="#ff1b5e20"
---><!--android:onClick="btnMainSendMail_Click"-->
-
-    <ImageButton
-        android:id="@+id/bntMainMusic"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginHorizontal="250dp"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/abc_ic_clear_material"
-        android:scaleType="fitXY"
-        android:clickable="true"
-        android:src="@mipmap/mail_read8"/>
-
-    <!--android:src="#ffb71c1c"-->
-
-    <ImageButton
-        android:id="@+id/btnMainWeather"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginHorizontal="320dp"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/abc_btn_radio_material"
-        android:tooltipText="Weather"
-        android:scaleType="fitXY"
-        android:clickable="true"
-        android:src="@mipmap/mail_read8"/>
-
-    <!--android:src="#ff0d47a1"-->
-
-    <ListView  
-        android:id="@+id/simpleListView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:scrollbars="vertical"
-        android:listSelector="@android:color/holo_purple"
-        android:divider="@color/material_blue_grey_800"
-        android:dividerHeight="1dp"
-        android:layout_alignParentBottom="true"/>
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp">
 
+        <TextView
+            android:id="@+id/lblMainCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:layout_gravity="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:text="Hello World!"/>
+    </LinearLayout>
+
+
+   
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">        
+
+        <ImageButton
+            android:id="@+id/btnMainEmail"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="20dp"
+            android:tooltipText="Send Email"
+            android:scaleType="fitXY"
+            android:clickable="true"
+            android:src="@mipmap/mail_read8"
+            android:soundEffectsEnabled="true" />
+
+         <ImageButton
+            android:id="@+id/bntMainMusic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="150dp"
+            android:scaleType="fitXY"
+            android:clickable="true"
+            android:src="@mipmap/mail_read8"/>
+
+         <ImageButton
+            android:id="@+id/btnMainWeather"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="250dp"
+            android:scaleType="fitXY"
+            android:clickable="true"
+            android:src="@mipmap/mail_read8"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:baselineAligned="true"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="80dp">        
+
+        <ListView  
+            android:id="@+id/simpleListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:layout_marginTop="10dp"
+            android:listSelector="@android:color/holo_purple"
+            android:divider="@color/material_blue_grey_800"
+            android:dividerHeight="0dp"
+            android:background="#f1efef"
+            android:layout_alignParentBottom="true"/>
+    
+    </LinearLayout>
+    
     <!--android.support.v7.widget.RecyclerView-->
 
-</RelativeLayout>
+</LinearLayout>
