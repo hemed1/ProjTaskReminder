@@ -7,6 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
     android:maxHeight="200dp"
     android:paddingBottom="3dp"
     android:paddingTop="3dp"
@@ -26,9 +28,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
-        android:layout_marginEnd="3dp"
+        android:layout_marginEnd="2dp"
         android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginBottom="2dp"
         android:paddingBottom="2dp"
         android:paddingTop="0dp"
         android:paddingStart="0dp"
@@ -37,7 +39,7 @@
         android:maxHeight="200dp"
         app:cardBackgroundColor="#FFF"
         app:cardElevation="3dp"
-        app:cardCornerRadius="2dp"
+        app:cardCornerRadius="3dp"
         app:cardUseCompatPadding="false">        
 
         <!--<ImageView
@@ -78,7 +80,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:layout_marginTop="-2dp"
+                    android:layout_marginTop="-3dp"
                     android:text="Description"
                     android:textColor="#080808" />
     

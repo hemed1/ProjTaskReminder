@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
-
+using System.Threading;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -48,7 +48,6 @@ namespace ProjTaskReminder.Utils
             try
             {
                 string folderNameMusic = Android.OS.Environment.DirectoryMusic;
-                string externalPathFile="";
 
                 //Java.IO.File[] jjj = context.GetExternalFilesDirs("MUSIC");
                 //Java.IO.File[] mmm = context.GetExternalMediaDirs();
@@ -60,26 +59,33 @@ namespace ProjTaskReminder.Utils
                 //Java.IO.File hdhd = Android.OS.Environment.DataDirectory;
                 //string folderNameDocuments = Android.OS.Environment.DirectoryDocuments;
                 //Java.IO.File externalPath = Android.OS.Environment.ExternalStorageDirectory;
-                externalPathFile = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
-                //string folderMusic = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
+
+
+                LOG_FILE_PATH = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
+                //LOG_FILE_PATH = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+                //LOG_FILE_PATH = context.GetExternalFilesDir("").AbsolutePath;
 
                 //if (!Directory.Exists(LOG_FILE_PATH))
                 //{
                 //    //Directory.CreateDirectory(LOG_FILE_PATH);
                 //}
 
-
-                //LOG_FILE_PATH = externalPathFile;
-                LOG_FILE_PATH = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
-                //LOG_FILE_PATH = externalPathFile + "/ProjTaskReminder";
-                //LOG_FILE_PATH = context.GetExternalFilesDir("").AbsolutePath;
                 LOG_FILE_NAME = "LogTaskReminder.txt";
-                string songPath = LOG_FILE_PATH + "/" + LOG_FILE_NAME;
 
-                
+                string songPath = LOG_FILE_PATH + "/" + LOG_FILE_NAME;
                 fileName = Path.Combine(LOG_FILE_PATH, LOG_FILE_NAME);
 
-                file = new FileStream(fileName, FileMode.Append, FileAccess.Write);       // FileMode.Append
+                try
+                {
+                    file = new FileStream(fileName, ((appendLines)?FileMode.Append: FileMode.Create), FileAccess.Write);       // FileMode.Append
+                }
+                catch 
+                {
+                    LOG_FILE_PATH = context.GetExternalFilesDir("").AbsolutePath;
+                    songPath = LOG_FILE_PATH + "/" + LOG_FILE_NAME;
+                    fileName = Path.Combine(LOG_FILE_PATH, LOG_FILE_NAME);
+                    file = new FileStream(fileName, ((appendLines) ? FileMode.Append : FileMode.Create), FileAccess.Write);       // FileMode.Append
+                }
 
                 bytesData = Encoding.ASCII.GetBytes(data);
 
@@ -191,6 +197,15 @@ namespace ProjTaskReminder.Utils
         {
             //long timezoneAlteredTime = getDateTimeDiff();
 
+
+          // Make the Hebrew Calendar the current calendar and
+          // Hebrew (Israel) the current thread culture.
+            //HebrewCalendar hc = new HebrewCalendar();
+            //CultureInfo culture = CultureInfo.CreateSpecificCulture("he-IL");
+            //culture.DateTimeFormat.Calendar = hc;
+            //Thread.CurrentThread.CurrentCulture = culture;
+
+            //DateTime date = DateTime.Date;
             Calendar cal = new GregorianCalendar(GregorianCalendarTypes.Localized);  //.GetInstance(TimeZone.getTimeZone("Asia/Jerusalem"));
             //cal.setTimeInMillis(timezoneAlteredTime);
 
@@ -211,7 +226,7 @@ namespace ProjTaskReminder.Utils
 
             //cal = date; //.setTime(date);
 
-            result = cal.ToDateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second, date.Millisecond);
+            result = cal.ToDateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second, date.Millisecond).AddHours(2);
 
             //Log.d("Util - getDateFixed() - Final", String.valueOf(result));
 
@@ -231,7 +246,7 @@ namespace ProjTaskReminder.Utils
 
             //Log.d("Util - getDateFixed() 1","Day: "+String.valueOf(day)+"  Month: "+String.valueOf(month)+"  Year: "+ String.valueOf(year) + "  Fixed: " +String.valueOf(date));
 
-            date = getDateFixed(date);
+            ////date = getDateFixed(date);
 
             //Log.d("Util - getDateFixed() 2", String.valueOf(date));
 

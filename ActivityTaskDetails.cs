@@ -44,6 +44,9 @@ namespace ProjTaskReminder
         //private ImageView imgColor8;
         private Button btnSave;
         private Button btnDelete;
+        private Button btnSetDate;
+        private DatePicker datePicker1;
+        private TimePicker timePicker1;
 
         //private ToggleButton btnFontBold;
         //private ToggleButton btnFontUnderline;
@@ -175,6 +178,13 @@ namespace ProjTaskReminder
             txtDetailsTitle = FindViewById<EditText>(Resource.Id.txtDetailsTitle);
             txtDetailsDescription = FindViewById<EditText>(Resource.Id.txtDetailsDescription);
             txtDetailsDate = FindViewById<TextView>(Resource.Id.txtDetailsDate);
+            btnSave = FindViewById<Button>(Resource.Id.btnSave);
+            btnSetDate = FindViewById<Button>(Resource.Id.btnSetDate);
+            btnDelete = FindViewById<Button>(Resource.Id.btnDelete);
+            lblDateTime = FindViewById<EditText>(Resource.Id.lblDateTime);
+            datePicker1 = FindViewById<DatePicker>(Resource.Id.datePicker1);
+            timePicker1 = FindViewById<TimePicker>(Resource.Id.timePicker1);
+            
             //txtDetailsDate = FindViewById<EditText>(Resource.Id.txtDetailsDate);
             //txtDetailsDateDay = FindViewById<TextView>(Resource.Id.txtDetailsDateDay);
             //txtDetailsTime = FindViewById<TextView>(Resource.Id.txtDetailsTime);
@@ -192,14 +202,9 @@ namespace ProjTaskReminder
             //imgColor6 = FindViewById<ImageView>(Resource.Id.imgColor6);
             //imgColor7 = FindViewById<ImageView>(Resource.Id.imgColor7);
             //imgColor8 = FindViewById<ImageView>(Resource.Id.imgColor8);
-
-            btnSave = FindViewById<Button>(Resource.Id.btnSave);
-            btnDelete = FindViewById<Button>(Resource.Id.btnDelete);
-            lblDateTime = FindViewById<EditText>(Resource.Id.lblDateTime);
             //cardDetails = FindViewById<CardView>(Resource.Id.cardDetails);
             //cardDetailsTiming = FindViewById<CardView>(Resource.Id.cardDetailsTiming);
             //layoutMain = FindViewById(Resource.Id.layoutMain);
-
             //btnFontBold = FindViewById<ToggleButton>(Resource.Id.btnFontBold);
             //btnFontBackColor = FindViewById<Button>(Resource.Id.btnFontBackColor);
             //btnFontForeColor = FindViewById<Button>(Resource.Id.btnFontForeColor);
@@ -221,6 +226,35 @@ namespace ProjTaskReminder
             {
                 DeleteRecord(CurrentTask);
             };
+
+            btnSetDate.Click += (sender, e) =>           //new EventHandler(SaveRecord); 
+            {
+                OpenDatePicker();
+            };
+
+            datePicker1.Click += (sender, e) =>           //new EventHandler(SaveRecord); 
+            {
+                sender = CurrentTask;
+                OnDateChange(sender, null);
+            };
+
+
+
+        }
+
+        private void OpenDatePicker()
+        {
+            datePicker1.Visibility = (datePicker1.Visibility==ViewStates.Invisible) ? datePicker1.Visibility = ViewStates.Visible : datePicker1.Visibility = ViewStates.Invisible;
+            datePicker1.BringToFront();
+        }
+
+        private void OnDateChange(object sender, DatePicker.IOnDateChangedListener obj)
+        {
+            Task task = (Task)sender;
+
+            lblDateTime.Text = datePicker1.DayOfMonth.ToString().PadLeft(2, '0') + "/" + datePicker1.Month.ToString().PadLeft(2, '0') + "/" + datePicker1.Year.ToString().PadLeft(4, '0');
+            
+            Toast.MakeText(this, task.getDescription() + " - " + lblDateTime.Text, ToastLength.Long).Show();
         }
 
         private void DeleteRecord(Task currentTask)
@@ -238,6 +272,7 @@ namespace ProjTaskReminder
         {
             bool result = true;
 
+
             SetObjectByControls();
 
             // only insert the data if it doesn't already exist
@@ -247,7 +282,7 @@ namespace ProjTaskReminder
             {
                 item.Title = task.getTitle();
                 item.Description = task.getDescription();
-                item.DateDue = task.getDate_due();
+                item.DateDue = task.getDate_due() + " " + task.getTime_due();
 
                 if (isNewMode)
                 {
@@ -255,11 +290,15 @@ namespace ProjTaskReminder
                 }
                 else
                 {
-                    //Set Task object in array
+                    // Set Task object in array
                     List<KeyValuePair<String, String>> values = MainActivity.getTaskValues(CurrentTask);
 
                     MainActivity.DBTaskReminder.UpdateRecord("TBL_Tasks", values, new object[] { CurrentTask.getTaskID() });
                 }
+
+                MainActivity.isShowTimerReminder = true;
+
+                Toast.MakeText(this, "Saved", ToastLength.Long).Show();
 
                 inputIntent.PutExtra("Result", "true");
 
@@ -295,14 +334,18 @@ namespace ProjTaskReminder
         {
             CurrentTask.setTitle(txtDetailsTitle.Text);
             CurrentTask.setDescription(txtDetailsDescription.Text);
-            CurrentTask.setDate_due(lblDateTime.Text);
+            if (!lblDateTime.Text.Trim().Equals(""))
+            {
+                CurrentTask.setDate_due(lblDateTime.Text.Trim().Substring(0, 10));
+                CurrentTask.setTime_due(lblDateTime.Text.Trim().Substring(11, 5));
+            }
         }
 
         private void SetControlsByObject()
         {
             txtDetailsTitle.Text = CurrentTask.getTitle();
             txtDetailsDescription.Text = CurrentTask.getDescription();
-            lblDateTime.Text = CurrentTask.getDate_due();
+            lblDateTime.Text = CurrentTask.getDate_due() + " " + CurrentTask.getTime_due();
         }
 
         // Assign the listener implementing events interface that will receive the events

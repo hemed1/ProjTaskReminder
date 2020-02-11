@@ -147,7 +147,7 @@ namespace ProjTaskRemindet.Utils
                 Task task = TaskList[position];
                 listViewHolder.title.SetText(task.getTitle(), TextView.BufferType.Normal);
                 listViewHolder.description.SetText(task.getDescription(), TextView.BufferType.Normal);
-                listViewHolder.date_date.SetText(task.getDate_due(), TextView.BufferType.Normal);
+                listViewHolder.date_date.SetText(task.getTime_due() + "  " +task.getDate_due(), TextView.BufferType.Normal);
             }
 
             //convertView.SetOnClickListener(InitOnItemClick(position));

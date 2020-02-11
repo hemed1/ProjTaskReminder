@@ -50,7 +50,7 @@ namespace ProjTaskReminder
         public static List<Object[]> TimersArray;
         public static string MainMessageText;
         public static int DefaultCardBackgroundColor;
-        private bool isShowTimerReminder;
+        public static bool isShowTimerReminder;
         private event Action ActionOnTaskDateDue;
         private int TimerInterval;
 
@@ -83,9 +83,11 @@ namespace ProjTaskReminder
 
             FloatingActionButton btnMainNew = FindViewById<FloatingActionButton>(Resource.Id.btnMainNew);
             btnMainNew.Click += btnMainNew_OnClick;
+            //btnMainNew.SetBackgroundResource(Android.Resource.Drawable.IcMediaNext);
 
             FloatingActionButton btnMainDelete = FindViewById<FloatingActionButton>(Resource.Id.btnMainDelete);
             btnMainDelete.Click += btnMainDelete_OnClick;
+            btnMainDelete.SetBackgroundResource(Android.Resource.Drawable.IcDelete);
 
             ActivityTaskDetails.OnSaveButton += new EventHandler(TaskDetailsSave_Click);
 
@@ -113,7 +115,7 @@ namespace ProjTaskReminder
 
             TimersArray = new List<object[]>();
 
-            TimerInterval = 180000;  // 1000 * 60 * 30
+            TimerInterval = 600000;  // 1000 * 60 * 30
 
             // RecyclerView
             //LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -207,8 +209,8 @@ namespace ProjTaskReminder
                 {
                     Task task = TasksList[i];
 
-                    //task.setDate_due(DateTime.Now.AddHours(2).ToString("dd/MM/yyyy"));
-                    //task.setTime_due(DateTime.Now.AddHours(2).AddMinutes(i+1).ToString("HH:mm"));
+                    //task.setDate_due(DateTime.Now.ToString("dd/MM/yyyy"));
+                    //task.setTime_due(DateTime.Now.AddMinutes(i+1).ToString("HH:mm"));
 
                     
                     //if (i == 0)
@@ -282,7 +284,11 @@ namespace ProjTaskReminder
                 task.setTaskID(record.ID);
                 task.setTitle(record.Title);
                 task.setDescription(record.Description);
-                task.setDate_due(record.DateDue);
+                if (record.DateDue!=null && !record.DateDue.Trim().Equals(""))
+                {
+                    task.setDate_due(record.DateDue.Trim().Substring(0, 10));
+                    task.setTime_due(record.DateDue.Trim().Substring(11, 5));
+                }
 
                 TasksList.Add(task);
             }
@@ -424,8 +430,6 @@ namespace ProjTaskReminder
         {
             View view = (View)sender;
 
-            Toast.MakeText(view.Context, "Delete", ToastLength.Long).Show();
-
             //simpleList.Selected;
             //simpleList.SelectedItem;
             //simpleList.SelectedView;
@@ -436,8 +440,11 @@ namespace ProjTaskReminder
 
                 DBTaskReminder.DB.Delete<TBL_Tasks>(task.getTaskID());  // "ID==" +currentTask.getTaskID().ToString(), null);
 
+                Toast.MakeText(view.Context, "Deletet", ToastLength.Long).Show();
+
                 FillList();
             }
+
             //Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
             //              .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
         }
@@ -473,36 +480,39 @@ namespace ProjTaskReminder
 
 
 
-
+            //isShowTimerReminder = true;
+            //MainMessageText = "טיימר - ";
             timerDate = currentTask.getDate();
 
             if (timerDate == null)
             {
+                // Show mssage if there is message in que
                 showGlobalMessageOnToast();
                 return;
             }
 
 
-            DateTime today = DateTime.Now.AddHours(2);       //Util.getDateInstance().getTime();
+            DateTime today = Utils.Utils.getDateFixed(DateTime.Now);       //Util.getDateInstance().getTime();
 
             if (timerDate.Value.CompareTo(today) <= 0)
             {
+                // Show mssage if there is message in que
                 showGlobalMessageOnToast();
                 return;
             }
 
-            
+
 
 
             //TimersDescriptionAttribute timersDescriptionAttribute = new TimersDescriptionAttribute("Raised");
 
             // Run the Timer
-//            Java.Util.Timer timer = new Java.Util.Timer();
+            //            Java.Util.Timer timer = new Java.Util.Timer();
 
-//            MyTask timerTask = new MyTask(timer, currentTask);
+            //            MyTask timerTask = new MyTask(timer, currentTask);
 
-//            timerTask.IntervalTime = 36000;
-//            timerTask.ActionOnPlayingMusic += picsTimer_onTick;     // (currentTask, null);  //timerTask.picsTimer_onTick;
+            //            timerTask.IntervalTime = 36000;
+            //            timerTask.ActionOnPlayingMusic += picsTimer_onTick;     // (currentTask, null);  //timerTask.picsTimer_onTick;
             //timerTask.ActionOnPlayingMusic += timerTask.picsTimer_onTick;
             //{
             //    @Override
@@ -511,29 +521,31 @@ namespace ProjTaskReminder
             //    picsTimer_onTick(currentTask);
             //}
 
-//            timer.Schedule(timerTask, 4, 3000);  //, timerDate);
+            //            timer.Schedule(timerTask, 4, 3000);  //, timerDate);
             //timer.Notify();
 
+
+            Toast.MakeText(this, "Task date: " + timerDate.Value.ToString("dd/MM/yyyy HH:mm") + "   Now: " + Utils.Utils.getDateFixed(DateTime.Now).ToString("dd/MM/yyyy HH:mm"), ToastLength.Long).Show();
 
             CurrentTask = currentTask;
             ActionOnTaskDateDue += TimerNextTime;
 
-            TimerInterval = 18000;  // 1000 * 60 * 30
+            TimerInterval = 30000;  // 30 seconds
 
-            Thread timer = new Thread(new ThreadStart(firstThread));
-            //var second = new Thread(new ThreadStart(secondThread));
-            //btnStart.TouchUpInside += delegate {
+            Thread timer = new Thread(new ThreadStart(TimerThreadExecute));
 
             timer.Start();
 
 
-
-//            System.Timers.Timer timer = new System.Timers.Timer();
+            //var second = new Thread(new ThreadStart(secondThread));
+            //btnStart.TouchUpInside += delegate {
+            // System.Timers.Timer timer = new System.Timers.Timer();
 
             addTimerToKillArray(currentTask.getTaskID(), timer, 0);     // timer timerTask);
 
             currentTask.setTimer(timer);
             //currentTask.setTimer_task(timerTask);
+
 
             //////timer.BeginInit();   //.S.schedule(timerTask, timerDate);
 //            timer.AutoReset = true;
@@ -572,14 +584,14 @@ namespace ProjTaskReminder
             }
         }
 
-        private void firstThread()
+        private void TimerThreadExecute()      //Task task)
         {
-            picsTimer_onTick(CurrentTask, null);
+            TimerExecute(CurrentTask, null);
         }
 
         private void TimerNextTime()    // string ss)
         {
-            DateTime dateNow = DateTime.Now.AddHours(2);
+            DateTime dateNow = Utils.Utils.getDateFixed(DateTime.Now);
             string strDateNow = dateNow.ToString("dd/MM/yyyy HH:mm");
 
             //return strDateNow;
@@ -614,7 +626,7 @@ namespace ProjTaskReminder
                 //    picsTimer_onTick(); // ParentTask);
                 //});
 
-                DateTime dateNow = DateTime.Now.AddHours(2);       // args.SignalTime;
+                DateTime dateNow = Utils.Utils.getDateFixed(DateTime.Now);       // args.SignalTime;
                 Task currentTask = ParentTask;
 
 
@@ -634,7 +646,7 @@ namespace ProjTaskReminder
 
                     picsTimer_onTick(); // ParentTask);
 
-                    dateNow = DateTime.Now.AddHours(2);
+                    dateNow = Utils.Utils.getDateFixed(DateTime.Now);
                     strDateNow = dateNow.ToString("dd/MM/yyyy HH:mm");
 
                     //RunOnUiThread(ActionOnPlayingMusic);    // =>
@@ -661,7 +673,7 @@ namespace ProjTaskReminder
                     return;
                 }
 
-                DateTime dateNow = DateTime.Now.AddHours(2);       // args.SignalTime;
+                DateTime dateNow = Utils.Utils.getDateFixed(DateTime.Now);       // args.SignalTime;
                 Task currentTask = (Task)sender;       // CurrentTask;
 
                 if (currentTask.getDate() == null)
@@ -691,59 +703,74 @@ namespace ProjTaskReminder
 
         }
 
-        protected void picsTimer_onTick(Task currentTask) //, ElapsedEventArgs args)
-        {
-        }
+     
         //ElapsedEventHandler(object sender, ElapsedEventArgs e)
-        private ElapsedEventHandler picsTimer_onTick(object sender, ElapsedEventArgs args)
+        private ElapsedEventHandler TimerExecute(object sender, ElapsedEventArgs args)
         {
-            if (sender == null)     // || args==null)
+
+            if (sender == null)
             {
                 return null;
             }
 
-            DateTime dateNow = DateTime.Now.AddHours(2);       // args.SignalTime;
-            Task currentTask = (Task)sender;       // CurrentTask;
+            long counter = 0;
+            // Limited for 3 Days
+            long limitSeconds = 1000 * 60 * 60 * 24 * 3;        
+            DateTime dateNow;
+            Task currentTask = (Task)sender;
+
+
+
 
             if (currentTask.getDate() == null)
             {
                 return null;
             }
 
+            dateNow = Utils.Utils.getDateFixed(DateTime.Now);
             string strDateTask = currentTask.getDate().Value.ToString("dd/MM/yyyy HH:mm");
             string strDateNow = dateNow.ToString("dd/MM/yyyy HH:mm");
-            //event Action ActionOnTaskDateDue;
 
-            
 
-            while (strDateNow != strDateTask)
+
+            while (counter <= limitSeconds && strDateNow.CompareTo(strDateTask) < 0)
             {
                 Thread.Sleep(TimerInterval);
 
                 RunOnUiThread(() =>
                 {
-                    dateNow = DateTime.Now.AddHours(2);
+                    dateNow = Utils.Utils.getDateFixed(DateTime.Now);
                     strDateNow = dateNow.ToString("dd/MM/yyyy HH:mm");
                 });
+
+                counter += TimerInterval;
 
                 //RunOnUiThread(ActionOnTaskDateDue); // (strDateNow));    // =>
                 //{
                 //int newPosition = mediaPlayer.CurrentPosition;
                 //barSeek.Progress = newPosition;
                 //};
-
-                //dateNow = DateTime.Now.AddHours(2);
-                //strDateNow = dateNow.ToString("dd/MM/yyyy HH:mm");
             }
 
+            picsTimer_onTick(currentTask);
 
             TimerStop(currentTask);
 
-            //Log.d("timer Tik ", currentTask.getTitle() + " - " + currentTask.getDate_due() + currentTask.getTime_due());
-
-            showNotifications(currentTask);
 
             return null;    // new ElapsedEventHandler(null, new ElapsedEventArgs());
+        }
+
+        private void picsTimer_onTick(Task task)
+        {
+
+            int resourceID = Resource.Raw.love_the_one;
+            Android.Media.MediaPlayer mediaPlayer = Android.Media.MediaPlayer.Create(this, resourceID);   // uri);
+            mediaPlayer.SetScreenOnWhilePlaying(true);
+            mediaPlayer.Start();
+
+            //Toast.MakeText(this, "Timer is tiking: "+task.getDescription(), ToastLength.Long).Show();
+
+            showNotifications(task);
         }
 
         private void TimerStop(Task currentTask)
@@ -763,8 +790,8 @@ namespace ProjTaskReminder
 
             if (timer != null)
             {
-                //timer.Abort();
-                timer = null;
+                timer.Abort();
+                //timer = null;
                 //TimerTask timerTask = (TimerTask)timersArray[2];
                 //timer.Cancel();
                 //timer.Dispose();
@@ -836,7 +863,7 @@ namespace ProjTaskReminder
                     {
                         timersCount++;
 
-                        //timer.Abort();
+                        timer.Abort();
                         timer = null;
 
                         //timer.Cancel();
@@ -866,6 +893,9 @@ namespace ProjTaskReminder
             //}
         }
 
+        /// <summary>
+        /// Show mssage if there is message in que
+        /// </summary>
         public void showGlobalMessageOnToast()
         {
             if (isShowTimerReminder && !MainMessageText.Trim().Equals(""))
@@ -875,22 +905,23 @@ namespace ProjTaskReminder
             }
         }
 
-        protected void showNotifications()  //Task currentTask)
-        {
-            showNotifications(CurrentTask);
-        }
+        //protected void showNotifications()  //Task currentTask)
+        //{
+        //    showNotifications(CurrentTask);
+        //}
+
         protected void showNotifications(Task currentTask)
         {
-            Toast.MakeText(this, "Timer is tik:" + currentTask.getDescription(), ToastLength.Long).Show();
+            
+            // Sgow android notification
 
-            //return currentTask;
         }
 
         public static Task newTaskDetails()
         {
             DateTime date;
 
-            date = DateTime.Now.AddHours(2);     //Util.getDateInstance().getTime();
+            date = Utils.Utils.getDateFixed(DateTime.Now);     //Util.getDateInstance().getTime();
 
             CurrentTask = new Task();
 
