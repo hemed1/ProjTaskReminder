@@ -193,7 +193,7 @@ namespace ProjTaskReminder.Utils
             return result;
         }
 
-        public static Calendar getDateInstance()
+        public static Calendar getDateNow()
         {
             //long timezoneAlteredTime = getDateTimeDiff();
 
@@ -222,11 +222,13 @@ namespace ProjTaskReminder.Utils
 
 
 
-            cal = getDateInstance();
+            cal = getDateNow();
 
             //cal = date; //.setTime(date);
 
-            result = cal.ToDateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second, date.Millisecond).AddHours(2);
+            result = cal.ToDateTime(date.Year, date.Month, date.Day, date.Hour, date.Minute, date.Second, date.Millisecond);
+
+            //result = result.AddHours(2);
 
             //Log.d("Util - getDateFixed() - Final", String.valueOf(result));
 
@@ -240,7 +242,7 @@ namespace ProjTaskReminder.Utils
             Calendar cal;
 
 
-            cal = getDateInstance();     //new GregorianCalendar(year, month, day, hour, minutes);
+            cal = getDateNow();     //new GregorianCalendar(year, month, day, hour, minutes);
 
             date = cal.ToDateTime(year, month, day, hour, minutes, 0, 0);
 

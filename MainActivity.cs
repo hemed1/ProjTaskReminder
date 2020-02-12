@@ -215,7 +215,7 @@ namespace ProjTaskReminder
                     
                     //if (i == 0)
                     //{
-                        TimerStop(task);
+                        //TimerStop(task);
 
                         TimerRun(task);
                     //}
@@ -284,7 +284,7 @@ namespace ProjTaskReminder
                 task.setTaskID(record.ID);
                 task.setTitle(record.Title);
                 task.setDescription(record.Description);
-                if (record.DateDue!=null && !record.DateDue.Trim().Equals(""))
+                if (!string.IsNullOrEmpty(record.DateDue) && record.DateDue!=null && !record.DateDue.Trim().Equals(""))
                 {
                     task.setDate_due(record.DateDue.Trim().Substring(0, 10));
                     task.setTime_due(record.DateDue.Trim().Substring(11, 5));
@@ -434,16 +434,16 @@ namespace ProjTaskReminder
             //simpleList.SelectedItem;
             //simpleList.SelectedView;
 
-            if (simpleList.SelectedItemPosition > 0 && simpleList.SelectedItemPosition < TasksList.Count)
-            {
-                Task task = TasksList[simpleList.SelectedItemPosition];
+            //if (simpleList.SelectedItemPosition > 0 && simpleList.SelectedItemPosition < TasksList.Count)
+            //{
+            //    Task task = TasksList[simpleList.SelectedItemPosition];
 
-                DBTaskReminder.DB.Delete<TBL_Tasks>(task.getTaskID());  // "ID==" +currentTask.getTaskID().ToString(), null);
+            //    DBTaskReminder.DB.Delete<TBL_Tasks>(task.getTaskID());  // "ID==" +currentTask.getTaskID().ToString(), null);
 
-                Toast.MakeText(view.Context, "Deletet", ToastLength.Long).Show();
+            //    Toast.MakeText(view.Context, "Deletet", ToastLength.Long).Show();
 
-                FillList();
-            }
+            //    FillList();
+            //}
 
             //Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
             //              .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
@@ -492,7 +492,7 @@ namespace ProjTaskReminder
             }
 
 
-            DateTime today = Utils.Utils.getDateFixed(DateTime.Now);       //Util.getDateInstance().getTime();
+            DateTime today = Utils.Utils.getDateFixed(DateTime.Now);       //Util.getDateNow.getTime();
 
             if (timerDate.Value.CompareTo(today) <= 0)
             {
@@ -502,10 +502,8 @@ namespace ProjTaskReminder
             }
 
 
-
-
             //TimersDescriptionAttribute timersDescriptionAttribute = new TimersDescriptionAttribute("Raised");
-
+            //
             // Run the Timer
             //            Java.Util.Timer timer = new Java.Util.Timer();
 
@@ -520,7 +518,7 @@ namespace ProjTaskReminder
             //{
             //    picsTimer_onTick(currentTask);
             //}
-
+            //
             //            timer.Schedule(timerTask, 4, 3000);  //, timerDate);
             //timer.Notify();
 
@@ -534,9 +532,6 @@ namespace ProjTaskReminder
 
             Thread timer = new Thread(new ThreadStart(TimerThreadExecute));
 
-            timer.Start();
-
-
             //var second = new Thread(new ThreadStart(secondThread));
             //btnStart.TouchUpInside += delegate {
             // System.Timers.Timer timer = new System.Timers.Timer();
@@ -546,16 +541,18 @@ namespace ProjTaskReminder
             currentTask.setTimer(timer);
             //currentTask.setTimer_task(timerTask);
 
+            timer.Start();
+
 
             //////timer.BeginInit();   //.S.schedule(timerTask, timerDate);
-//            timer.AutoReset = true;
-//            timer.Interval = 1000;   //1 * 60 * 60 * 1000 = 3600000;
-//            timer.Enabled = true;
+            //            timer.AutoReset = true;
+            //            timer.Interval = 1000;   //1 * 60 * 60 * 1000 = 3600000;
+            //            timer.Enabled = true;
             //////System.ComponentModel.ISynchronizeInvoke
             //////timer.SynchronizingObject = currentTask
             //////ElapsedEventHandler(object sender, ElapsedEventArgs e)
             /////TimerCallback timerCallback = new TimerCallback(picsTimer_onTick(object, ElapsedEventArgs));
-//            timer.Elapsed += picsTimer_onTick(currentTask, null);
+            //            timer.Elapsed += picsTimer_onTick(currentTask, null);
             //timer.Start();
 
 
@@ -597,6 +594,237 @@ namespace ProjTaskReminder
             //return strDateNow;
         }
 
+        //ElapsedEventHandler(object sender, ElapsedEventArgs e)
+        private ElapsedEventHandler TimerExecute(object sender, ElapsedEventArgs args)
+        {
+
+            if (sender == null)
+            {
+                return null;
+            }
+
+            long counter = 0;
+            // Limited for 3 Days
+            long limitSeconds = 1000 * 60 * 60 * 24 * 3;        
+            DateTime dateNow;
+            Task currentTask = (Task)sender;
+
+
+
+
+            if (currentTask.getDate() == null)
+            {
+                return null;
+            }
+
+            dateNow = Utils.Utils.getDateFixed(DateTime.Now);
+            string strDateTask = currentTask.getDate().Value.ToString("dd/MM/yyyy HH:mm");
+            string strDateNow = dateNow.ToString("dd/MM/yyyy HH:mm");
+
+
+
+            while (counter <= limitSeconds && strDateNow.CompareTo(strDateTask) < 0)
+            {
+                Thread.Sleep(TimerInterval);
+
+                RunOnUiThread(() =>
+                {
+                    dateNow = Utils.Utils.getDateFixed(DateTime.Now);
+                    strDateNow = dateNow.ToString("dd/MM/yyyy HH:mm");
+                });
+
+                counter += TimerInterval;
+
+                //RunOnUiThread(ActionOnTaskDateDue); // (strDateNow));    // =>
+                //{
+                //int newPosition = mediaPlayer.CurrentPosition;
+                //barSeek.Progress = newPosition;
+                //};
+            }
+
+            picsTimer_onTick(currentTask);
+
+            TimerStop(currentTask);
+
+
+            return null;    // new ElapsedEventHandler(null, new ElapsedEventArgs());
+        }
+
+        private void picsTimer_onTick(Task task)
+        {
+
+            int resourceID = Resource.Raw.maybe_one_day;
+            Android.Media.MediaPlayer mediaPlayer = Android.Media.MediaPlayer.Create(this, resourceID);   // uri);
+            mediaPlayer.SetScreenOnWhilePlaying(true);
+            mediaPlayer.Start();
+
+            //Toast.MakeText(this, "Timer is tiking: "+task.getDescription(), ToastLength.Long).Show();
+
+            showNotifications(task);
+        }
+
+        private void TimerStop(Task currentTask)
+        {
+            int index = searchIDInTimersList(currentTask.getTaskID());
+
+            if (index == -1)
+            {
+                return;
+            }
+
+            object[] timersArray = TimersArray[index];
+
+            Thread timer = (Thread)timersArray[1];
+            //System.Timers.Timer timer = (System.Timers.Timer)timersArray[1];
+            //Java.Util.Timer timer = (Java.Util.Timer)timersArray[1];
+
+            if (timer != null && timer.IsAlive)
+            {
+                timer.Abort();
+                //timer = null;
+                //TimerTask timerTask = (TimerTask)timersArray[2];
+                //timer.Cancel();
+                //timer.Dispose();
+                //timer = null;
+                //timer.Stop();
+                //timer.Dispose();
+                //timerTask.cancel();
+                //timer = null;
+                //timerTask = null;
+                currentTask.setTimer(null);
+                currentTask.setTimer_task(null);
+                //Log.d("Destroy Timer ", currentTask.getTitle());
+            }
+
+        }
+
+        private void addTimerToKillArray(int taskID, Thread timer, object timerTask)  // System.Timers.Timer | Java.Util.Timer
+        {
+            Object[] timersArray = new Object[3];
+            timersArray[0] = taskID;
+            timersArray[1] = timer;
+            timersArray[2] = timerTask;
+
+            TimersArray.Add(timersArray);
+        }
+
+        private static int searchIDInTimersList(int id)
+        {
+            int result = -1;
+
+            for (int i = 0; i < TimersArray.Count; i++)
+            {
+                Object[] timersArray = TimersArray[i];
+
+                if ((int)timersArray[0] == id)
+                {
+                    result = i;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+        private void killOldTimers()
+        {
+            bool error = false;
+            int timersCount = 0;
+
+
+
+            if (TimersArray == null)
+            {
+                TimersArray = new List<Object[]>();
+                return;
+            }
+
+
+            for (int i = TimersArray.Count - 1; i >= 0; i--)
+            {
+                try
+                {
+                    Object[] timersArray = TimersArray[i];
+                    Thread timer = (Thread)timersArray[1];
+                    //System.Timers.Timer timer = (System.Timers.Timer)timersArray[1];
+                    //Java.Util.Timer timer = (Java.Util.Timer)timersArray[1];
+                    //TimerTask timerTask = (TimerTask)timersArray[2];
+                    if (timer != null && timer.IsAlive)
+                    {
+                        timersCount++;
+
+                        timer.Abort();
+                        timer = null;
+
+                        //timer.Cancel();
+                        //timer.Dispose();
+                        //timer.Stop();
+                        //timer.Dispose();
+                        //timer.Cancel();
+                        //timer.purge();
+                        //timerTask.cancel();
+                        //timer = null;
+                        //timerTask = null;
+                    }
+                    TimersArray.RemoveAt(i);
+                }
+                catch (Exception ex)
+                {
+                    error = true;
+                }
+            }
+
+            TimersArray = null;
+            TimersArray = new List<Object[]>();
+
+            //if (!error && timersCount>0)
+            //{
+            //Toast.makeText(this, "Kill " + String.valueOf(timersCount)+"/"+String.valueOf(TimersArray.size())+" old timers", Toast.LENGTH_SHORT).show();
+            //}
+        }
+
+        /// <summary>
+        /// Show mssage if there is message in que
+        /// </summary>
+        public void showGlobalMessageOnToast()
+        {
+            if (isShowTimerReminder && !MainMessageText.Trim().Equals(""))
+            {
+                Toast.MakeText(this, MainMessageText, ToastLength.Long).Show();
+                MainMessageText = "";
+            }
+        }
+
+        //protected void showNotifications()  //Task currentTask)
+        //{
+        //    showNotifications(CurrentTask);
+        //}
+
+        protected void showNotifications(Task currentTask)
+        {
+            
+            // Sgow android notification
+
+        }
+
+        public static Task newTaskDetails()
+        {
+            DateTime date;
+
+            date = Utils.Utils.getDateFixed(DateTime.Now);     //Util.getDateNow.getTime();
+
+            CurrentTask = new Task();
+
+            CurrentTask.setDate_due("");
+            CurrentTask.setBackgroundColor(DefaultCardBackgroundColor.ToString());
+            CurrentTask.setDate_last_update(Utils.Utils.getDateFormattedString(date));
+            CurrentTask.setRepeat("פעם אחת");
+
+            //Log.d("new task", CurrentTask.getDate_due());
+
+            return CurrentTask;
+        }
+
         public class MyTask : Java.Util.TimerTask      // timerTask = new Java.Util.TimerTask();
         {
             private Java.Util.Timer ParentTimer { get; set; }
@@ -630,7 +858,7 @@ namespace ProjTaskReminder
                 Task currentTask = ParentTask;
 
 
-                if (currentTask!=null && currentTask.getDate() == null)
+                if (currentTask != null && currentTask.getDate() == null)
                 {
                     return;
                 }
@@ -703,237 +931,6 @@ namespace ProjTaskReminder
 
         }
 
-     
-        //ElapsedEventHandler(object sender, ElapsedEventArgs e)
-        private ElapsedEventHandler TimerExecute(object sender, ElapsedEventArgs args)
-        {
-
-            if (sender == null)
-            {
-                return null;
-            }
-
-            long counter = 0;
-            // Limited for 3 Days
-            long limitSeconds = 1000 * 60 * 60 * 24 * 3;        
-            DateTime dateNow;
-            Task currentTask = (Task)sender;
-
-
-
-
-            if (currentTask.getDate() == null)
-            {
-                return null;
-            }
-
-            dateNow = Utils.Utils.getDateFixed(DateTime.Now);
-            string strDateTask = currentTask.getDate().Value.ToString("dd/MM/yyyy HH:mm");
-            string strDateNow = dateNow.ToString("dd/MM/yyyy HH:mm");
-
-
-
-            while (counter <= limitSeconds && strDateNow.CompareTo(strDateTask) < 0)
-            {
-                Thread.Sleep(TimerInterval);
-
-                RunOnUiThread(() =>
-                {
-                    dateNow = Utils.Utils.getDateFixed(DateTime.Now);
-                    strDateNow = dateNow.ToString("dd/MM/yyyy HH:mm");
-                });
-
-                counter += TimerInterval;
-
-                //RunOnUiThread(ActionOnTaskDateDue); // (strDateNow));    // =>
-                //{
-                //int newPosition = mediaPlayer.CurrentPosition;
-                //barSeek.Progress = newPosition;
-                //};
-            }
-
-            picsTimer_onTick(currentTask);
-
-            TimerStop(currentTask);
-
-
-            return null;    // new ElapsedEventHandler(null, new ElapsedEventArgs());
-        }
-
-        private void picsTimer_onTick(Task task)
-        {
-
-            int resourceID = Resource.Raw.love_the_one;
-            Android.Media.MediaPlayer mediaPlayer = Android.Media.MediaPlayer.Create(this, resourceID);   // uri);
-            mediaPlayer.SetScreenOnWhilePlaying(true);
-            mediaPlayer.Start();
-
-            //Toast.MakeText(this, "Timer is tiking: "+task.getDescription(), ToastLength.Long).Show();
-
-            showNotifications(task);
-        }
-
-        private void TimerStop(Task currentTask)
-        {
-            int index = searchIDInTimersList(currentTask.getTaskID());
-
-            if (index == -1)
-            {
-                return;
-            }
-
-            object[] timersArray = TimersArray[index];
-
-            Thread timer = (Thread)timersArray[1];
-            //System.Timers.Timer timer = (System.Timers.Timer)timersArray[1];
-            //Java.Util.Timer timer = (Java.Util.Timer)timersArray[1];
-
-            if (timer != null)
-            {
-                timer.Abort();
-                //timer = null;
-                //TimerTask timerTask = (TimerTask)timersArray[2];
-                //timer.Cancel();
-                //timer.Dispose();
-                //timer = null;
-                //timer.Stop();
-                //timer.Dispose();
-                //timerTask.cancel();
-                //timer = null;
-                //timerTask = null;
-                currentTask.setTimer(null);
-                currentTask.setTimer_task(null);
-                //Log.d("Destroy Timer ", currentTask.getTitle());
-            }
-
-        }
-
-        private void addTimerToKillArray(int taskID, Thread timer, object timerTask)  // System.Timers.Timer | Java.Util.Timer
-        {
-            Object[] timersArray = new Object[3];
-            timersArray[0] = taskID;
-            timersArray[1] = timer;
-            timersArray[2] = timerTask;
-
-            TimersArray.Add(timersArray);
-        }
-
-        private static int searchIDInTimersList(int id)
-        {
-            int result = -1;
-
-            for (int i = 0; i < TimersArray.Count; i++)
-            {
-                Object[] timersArray = TimersArray[i];
-
-                if ((int)timersArray[0] == id)
-                {
-                    result = i;
-                    break;
-                }
-            }
-
-            return result;
-        }
-
-        private void killOldTimers()
-        {
-            bool error = false;
-            int timersCount = 0;
-
-
-
-            if (TimersArray == null)
-            {
-                TimersArray = new List<Object[]>();
-                return;
-            }
-
-
-            for (int i = TimersArray.Count - 1; i >= 0; i--)
-            {
-                try
-                {
-                    Object[] timersArray = TimersArray[i];
-                    Thread timer = (Thread)timersArray[1];
-                    //System.Timers.Timer timer = (System.Timers.Timer)timersArray[1];
-                    //Java.Util.Timer timer = (Java.Util.Timer)timersArray[1];
-                    //TimerTask timerTask = (TimerTask)timersArray[2];
-                    if (timer != null)
-                    {
-                        timersCount++;
-
-                        timer.Abort();
-                        timer = null;
-
-                        //timer.Cancel();
-                        //timer.Dispose();
-                        //timer.Stop();
-                        //timer.Dispose();
-                        //timer.Cancel();
-                        //timer.purge();
-                        //timerTask.cancel();
-                        //timer = null;
-                        //timerTask = null;
-                    }
-                    TimersArray.RemoveAt(i);
-                }
-                catch (Exception ex)
-                {
-                    error = true;
-                }
-            }
-
-            TimersArray = null;
-            TimersArray = new List<Object[]>();
-
-            //if (!error && timersCount>0)
-            //{
-            //Toast.makeText(this, "Kill " + String.valueOf(timersCount)+"/"+String.valueOf(TimersArray.size())+" old timers", Toast.LENGTH_SHORT).show();
-            //}
-        }
-
-        /// <summary>
-        /// Show mssage if there is message in que
-        /// </summary>
-        public void showGlobalMessageOnToast()
-        {
-            if (isShowTimerReminder && !MainMessageText.Trim().Equals(""))
-            {
-                Toast.MakeText(this, MainMessageText, ToastLength.Long).Show();
-                MainMessageText = "";
-            }
-        }
-
-        //protected void showNotifications()  //Task currentTask)
-        //{
-        //    showNotifications(CurrentTask);
-        //}
-
-        protected void showNotifications(Task currentTask)
-        {
-            
-            // Sgow android notification
-
-        }
-
-        public static Task newTaskDetails()
-        {
-            DateTime date;
-
-            date = Utils.Utils.getDateFixed(DateTime.Now);     //Util.getDateInstance().getTime();
-
-            CurrentTask = new Task();
-
-            CurrentTask.setDate_due("");
-            CurrentTask.setBackgroundColor(DefaultCardBackgroundColor.ToString());
-            CurrentTask.setDate_last_update(Utils.Utils.getDateFormattedString(date));
-            CurrentTask.setRepeat("פעם אחת");
-
-            //Log.d("new task", CurrentTask.getDate_due());
-
-            return CurrentTask;
-        }
 
     }
 }

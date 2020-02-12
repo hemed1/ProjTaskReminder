@@ -115,6 +115,7 @@ namespace ProjTaskReminder
 
 
 
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -232,18 +233,44 @@ namespace ProjTaskReminder
                 OpenDatePicker();
             };
 
-            datePicker1.Click += (sender, e) =>           //new EventHandler(SaveRecord); 
-            {
-                sender = CurrentTask;
-                OnDateChange(sender, null);
-            };
+            //datePicker1.SetOnDateChangedListener+=OnDateChange2;           //new EventHandler(SaveRecord); 
+            //{
+            //    sender = CurrentTask;
+            //    OnDateChange(sender, null);
+            //};
+            datePicker1.DateChanged += OnDateChange2; //(sender, e) =>           //new EventHandler(SaveRecord); 
+            //{
+            //    sender = CurrentTask;
+            //    OnDateChange(sender, null);
+            //};
+            //datePicker1.Click += (sender, e) =>           //new EventHandler(SaveRecord); 
+            //{
+            //    sender = CurrentTask;
+            //    OnDateChange(sender, null);
+            //};
 
 
 
         }
 
+        private void OnDateChange2(object sender, DatePicker.DateChangedEventArgs e)
+        {
+            Task task = CurrentTask;    //(Task)sender;
+
+            lblDateTime.Text = e.DayOfMonth.ToString().PadLeft(2, '0') + "/" + e.MonthOfYear.ToString().PadLeft(2, '0') + "/" + e.Year.ToString().PadLeft(4, '0');
+
+            Toast.MakeText(this, task.getDescription() + " - " + lblDateTime.Text, ToastLength.Long).Show();
+
+        }
+
+        private DatePicker.IOnDateChangedListener OnDateChange3(DatePicker view, int year, int month, int dayOfMonth)
+        {
+            return null;
+        }
+
         private void OpenDatePicker()
         {
+            datePicker1.BringToFront();
             datePicker1.Visibility = (datePicker1.Visibility==ViewStates.Invisible) ? datePicker1.Visibility = ViewStates.Visible : datePicker1.Visibility = ViewStates.Invisible;
             datePicker1.BringToFront();
         }

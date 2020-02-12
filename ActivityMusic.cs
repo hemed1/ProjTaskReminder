@@ -32,6 +32,8 @@ namespace ProjTaskReminder
         private TextView lblAlbum;
         private TextView lblPosNow;
         private TextView lblPosLeft;
+        private int CurrentSongPosition;
+
 
 
         public static Context context;
@@ -96,16 +98,25 @@ namespace ProjTaskReminder
             btnPlay.Click += PlaySongPlay;
 
             isPlayingNow = false;
+            CurrentSongPosition = 0;
         }
 
         private void PlaySongPlay(object sender, EventArgs eventArgs)
         {
             if (!isPlayingNow)
-            { 
-                if (ListPositionIndex <= ListItemsRecycler.Count - 1)
+            {
+                if (CurrentSongPosition == 0)
+                {
+                    if (ListPositionIndex <= ListItemsRecycler.Count - 1)
+                    {
+                        isPlayingNow = true;
+                        LoadSongIntoPlayer(ListPositionIndex, true);
+                    }
+                }
+                else
                 {
                     isPlayingNow = true;
-                    LoadSongIntoPlayer(ListPositionIndex);
+                    LoadSongIntoPlayer(ListPositionIndex, false);
                 }
             }
             else
@@ -139,30 +150,40 @@ namespace ProjTaskReminder
             //seekMusic(-5000);
         }
 
-        private void LoadSongIntoPlayer(int listPositionIndex)
+        private void LoadSongIntoPlayer(int listPositionIndex, bool playFromStart = true)
         {
 
             try
             {
-                MusicPause();
+                if (playFromStart)
+                {
+                    MusicPause();
 
-                int resourceID = Resource.Raw.love_the_one;
-                //int resourceID = ListItemsRecycler.get(listPositionIndex).getResourceID();
+                    CurrentSongPosition = 0;
+                    int resourceID = Resource.Raw.love_the_one;
+                    //int resourceID = ListItemsRecycler.get(listPositionIndex).getResourceID();
 
-                //string folderNameMusic = Android.OS.Environment.DirectoryMusic;
-                //string folderMusic = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
-                //string songPath = folderMusic + "/Brad.mp3";
-                //songPath= ListItemsPath[listPositionIndex].Value;
-                //Android.Net.Uri uri = Android.Net.Uri.Parse(songPath);
+                    //string folderNameMusic = Android.OS.Environment.DirectoryMusic;
+                    //string folderMusic = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
+                    //string songPath = folderMusic + "/Brad.mp3";
+                    //songPath= ListItemsPath[listPositionIndex].Value;
+                    //Android.Net.Uri uri = Android.Net.Uri.Parse(songPath);
 
-                mediaPlayer = MediaPlayer.Create(this, resourceID);   // uri);
+                    mediaPlayer = MediaPlayer.Create(this, resourceID);   // uri);
 
-                mediaPlayer.SetScreenOnWhilePlaying(true);
+                    mediaPlayer.SetScreenOnWhilePlaying(true);
 
-                // Set the Song props - Name, Artist, Album, Duration
-                SetSongControls(listPositionIndex);
+                    // Set the Song props - Name, Artist, Album, Duration
+                    SetSongControls(listPositionIndex);
 
-                MusicPlay();
+                    MusicPlay();
+                }
+                else
+                {
+                    MusicPlay();
+                    mediaPlayer.SeekTo(CurrentSongPosition);
+                    //mediaPlayer.Notify();
+                }
 
                 //mediaPlayer.SetOnCompletionListener(MediaPlayer.IOnCompletionListener());
                 //{
@@ -254,6 +275,7 @@ namespace ProjTaskReminder
 
             if (mediaPlayer != null)
             {
+                CurrentSongPosition = 0;
                 mediaPlayer.SeekTo(0);
                 barSeek.Max = mediaPlayer.Duration;
                 barSeek.SetProgress(0, false);
@@ -304,6 +326,7 @@ namespace ProjTaskReminder
         {
             int currentPos = mediaPlayer.CurrentPosition;
             int duration = mediaPlayer.Duration;
+            CurrentSongPosition = currentPos;
 
             try
             {
@@ -393,6 +416,7 @@ namespace ProjTaskReminder
         {
             int newPosition = mediaPlayer.CurrentPosition;
             barSeek.Progress = newPosition;
+            CurrentSongPosition = mediaPlayer.CurrentPosition;
         }
 
         private void secondThread()
