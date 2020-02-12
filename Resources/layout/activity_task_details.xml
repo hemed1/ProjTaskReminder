@@ -71,12 +71,13 @@
 
             <EditText
                 android:id="@+id/lblDateTime"
-                android:layout_width="match_parent"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="70dp"
-                android:layout_marginEnd="70dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="60dp"
                 android:layout_marginBottom="12dp"
+                android:layout_alignEnd="@id/btnSetDate"
                 android:text="הקש כאן לקבוע זמן תזכורת"
                 android:inputType="text"
                 android:textAlignment="center"

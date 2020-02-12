@@ -257,7 +257,8 @@ namespace ProjTaskReminder
         {
             Task task = CurrentTask;    //(Task)sender;
 
-            lblDateTime.Text = e.DayOfMonth.ToString().PadLeft(2, '0') + "/" + e.MonthOfYear.ToString().PadLeft(2, '0') + "/" + e.Year.ToString().PadLeft(4, '0');
+            lblDateTime.Text = e.DayOfMonth.ToString().PadLeft(2, '0') + "/" + e.MonthOfYear.ToString().PadLeft(2, '0') + "/" + e.Year.ToString().PadLeft(4, '0') + " " +
+                               Utils.Utils.getDateFixed(DateTime.Now).ToString("HH:mm");
 
             Toast.MakeText(this, task.getDescription() + " - " + lblDateTime.Text, ToastLength.Long).Show();
 
