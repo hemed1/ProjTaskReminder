@@ -88,9 +88,9 @@ namespace ProjTaskReminder
             btnMainNew.Click += btnMainNew_OnClick;
             //btnMainNew.SetBackgroundResource(Android.Resource.Drawable.IcMediaNext);
 
-            FloatingActionButton btnMainDelete = FindViewById<FloatingActionButton>(Resource.Id.btnMainDelete);
-            btnMainDelete.Click += btnMainDelete_OnClick;
-            btnMainDelete.SetBackgroundResource(Android.Resource.Drawable.IcDelete);
+            //FloatingActionButton btnMainDelete = FindViewById<FloatingActionButton>(Resource.Id.btnMainDelete);
+            //btnMainDelete.Click += btnMainDelete_OnClick;
+            //btnMainDelete.SetBackgroundResource(Android.Resource.Drawable.IcDelete);
 
             ActivityTaskDetails.OnSaveButton += new EventHandler(TaskDetailsSave_Click);
 
@@ -429,9 +429,9 @@ namespace ProjTaskReminder
             //              .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
         }
 
-        private void btnMainDelete_OnClick(object sender, EventArgs eventArgs)
-        {
-            View view = (View)sender;
+        //private void btnMainDelete_OnClick(object sender, EventArgs eventArgs)
+        //{
+        //    View view = (View)sender;
 
             //simpleList.Selected;
             //simpleList.SelectedItem;
@@ -450,7 +450,7 @@ namespace ProjTaskReminder
 
             //Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
             //              .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
-        }
+        //}
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -956,7 +956,7 @@ namespace ProjTaskReminder
             if (result)
             {
                 string message = "Database was copied OK";
-                Toast.MakeText(this, message, ToastLength.Long).Show();
+                //Toast.MakeText(this, message, ToastLength.Long).Show();
                 //Utils.Utils.WriteToLog(message, true);
             }
         }

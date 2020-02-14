@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layoutDirection="ltr"
-    android:background="@color/material_blue_grey_900">
+    android:background="@drawable/gradient1">
 
 
 
@@ -34,14 +34,14 @@
 
         <TextView
             android:id="@+id/lblAlbum"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
             android:layout_marginTop="7dp"
             android:text="Album"
             android:layout_alignParentTop="true"
             android:textAlignment="center"
-            android:textColor="@android:color/white"
+            android:textColor="#f1efef"
             android:textSize="20sp"
             android:textStyle="bold"
             android:typeface="serif" />
@@ -78,7 +78,7 @@
             android:layout_marginTop="3dp"
             android:text="Artist"
             android:textAlignment="textEnd"
-            android:textColor="@android:color/white"
+            android:textColor="#f1efef"
             android:textSize="18sp"
             android:textStyle="bold"/>
 
