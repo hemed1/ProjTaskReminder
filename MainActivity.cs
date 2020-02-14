@@ -16,6 +16,7 @@ using Android.Content;
 using Android.Support.V7.Widget;
 using System.Timers;
 using System.Threading;
+using System.IO;
 //using System.Threading.Timer;
 
 
@@ -25,7 +26,7 @@ namespace ProjTaskReminder
     public class MainActivity : AppCompatActivity   //, ListView.IOnItemClickListener
     {
 
-        public static string    DB_NAME = "MH_Tasks";
+        public static string    DB_TASK_DB_NAME = "TaskReminder.db";
         public static string    DB_TABLE_NAME = "TBL_Tasks";
         public static string    DB_TABLE_SETTING = "TBL_Setting";
         private static string   DB_FIELDNAME_ID = "TaskID";
@@ -71,8 +72,10 @@ namespace ProjTaskReminder
 
             ConnectToDB();
 
+            BackupDataBaseFile();
+
             //Utils.Utils.WriteToLog("Enter 3", true);
-            
+
             FillList();
         }
 
@@ -257,7 +260,7 @@ namespace ProjTaskReminder
 
             try
             {
-                DBTaskReminder = new DBTaskReminder("TaskReminder.db");
+                DBTaskReminder = new DBTaskReminder(DB_TASK_DB_NAME);
             }
             catch (Exception ex)
             {
@@ -931,6 +934,32 @@ namespace ProjTaskReminder
 
         }
 
+        protected override void OnDestroy()
+        {
+            BackupDataBaseFile();
+
+            base.OnDestroy();
+        }
+
+        private void BackupDataBaseFile()
+        {
+            string folderBackup = Android.OS.Environment.DirectoryMusic;    // "ProjTaskReminder"
+            string sourcePath = context.GetExternalFilesDir("").AbsolutePath;
+            string targetPath = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
+            //targetPath = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+
+            string fullPathSource = Path.Combine(DBTaskReminder.DB_PATH, DBTaskReminder.DB_NAME);
+            string fullPathTarget = Path.Combine(targetPath, DBTaskReminder.DB_NAME);
+
+            bool result = Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
+
+            if (result)
+            {
+                string message = "Database was copied OK";
+                Toast.MakeText(this, message, ToastLength.Long).Show();
+                //Utils.Utils.WriteToLog(message, true);
+            }
+        }
 
     }
 }

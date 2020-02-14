@@ -34,7 +34,7 @@ namespace ProjTaskReminder.Utils
 
 
 
-            data = DateTime.Now.ToString("dd/MM/yyyy HH:mm") + LINE_SEPERATOR + data + LINE_SEPERATOR;
+            data = LINE_SEPERATOR + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + LINE_SEPERATOR + data + LINE_SEPERATOR;
             Context context = Android.App.Application.Context;
 
 
@@ -47,7 +47,7 @@ namespace ProjTaskReminder.Utils
 
             try
             {
-                string folderNameMusic = Android.OS.Environment.DirectoryMusic;
+                string folderBackup = Android.OS.Environment.DirectoryMusic;        // "ProjTaskReminder"
 
                 //Java.IO.File[] jjj = context.GetExternalFilesDirs("MUSIC");
                 //Java.IO.File[] mmm = context.GetExternalMediaDirs();
@@ -61,14 +61,14 @@ namespace ProjTaskReminder.Utils
                 //Java.IO.File externalPath = Android.OS.Environment.ExternalStorageDirectory;
 
 
-                LOG_FILE_PATH = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
+                LOG_FILE_PATH = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
                 //LOG_FILE_PATH = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
                 //LOG_FILE_PATH = context.GetExternalFilesDir("").AbsolutePath;
 
-                //if (!Directory.Exists(LOG_FILE_PATH))
-                //{
-                //    //Directory.CreateDirectory(LOG_FILE_PATH);
-                //}
+                if (!Directory.Exists(LOG_FILE_PATH))
+                {
+                    Directory.CreateDirectory(LOG_FILE_PATH);
+                }
 
                 LOG_FILE_NAME = "LogTaskReminder.txt";
 
@@ -373,5 +373,25 @@ namespace ProjTaskReminder.Utils
         //    }
         //}
 
+        public static bool CopyFile(string sourcePath, string targetPath)
+        {
+            bool result = false;
+
+
+            try
+            {
+                if (File.Exists(sourcePath))
+                {
+                    File.Copy(sourcePath, targetPath, true);
+                    result = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                WriteToLog(ex.Message, true);
+            }
+
+            return result;
+        }
     }
 }

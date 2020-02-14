@@ -24,12 +24,15 @@ namespace ProjTaskReminder.Data
         public SQLiteConnection DB { get; set; }
 
 
-        private string DB_PATH;
-        private string DB_NAME;
-
+        public string DB_PATH;
+        public string DB_NAME;
+        private Context context;     //= Android.App.Application.Context;
 
         public DBTaskReminder(string dbName)
         {
+            context = Android.App.Application.Context;
+
+            DB_PATH = context.GetExternalFilesDir("").AbsolutePath;
             DB_NAME = dbName;       // "TaskReminderDB"
 
             Connect();
@@ -41,10 +44,8 @@ namespace ProjTaskReminder.Data
             string fullPath;
 
 
-            Context context = Android.App.Application.Context;
-
             // /storage/emulated/0/Android/data/com.meirhemed.projtaskreminder/files
-            DB_PATH = context.GetExternalFilesDir("").AbsolutePath;         //System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);  //"/Assets/" + DB_NAME;             //Environment.SpecialFolder.LocalApplicationData
+            //DB_PATH = context.GetExternalFilesDir("").AbsolutePath;         //System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);  //"/Assets/" + DB_NAME;             //Environment.SpecialFolder.LocalApplicationData
 
             fullPath = Path.Combine(DB_PATH, DB_NAME);      
 

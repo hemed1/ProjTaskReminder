@@ -17,6 +17,7 @@
         android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
         android:layoutDirection="rtl"
+        android:textDirection="rtl"
         app:cardBackgroundColor="#f1efef"
         app:cardCornerRadius="6dp"
         app:cardElevation="0dp"
@@ -71,7 +72,7 @@
 
             <EditText
                 android:id="@+id/lblDateTime"
-                android:layout_width="130dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="0dp"
@@ -80,7 +81,8 @@
                 android:layout_alignEnd="@id/btnSetDate"
                 android:text="הקש כאן לקבוע זמן תזכורת"
                 android:inputType="text"
-                android:textAlignment="center"
+                android:textDirection="ltr"
+                android:layoutDirection="ltr"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"/>
 

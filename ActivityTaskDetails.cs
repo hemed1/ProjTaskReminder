@@ -26,10 +26,10 @@ namespace ProjTaskReminder
         private EditText txtDetailsTitle;
         private EditText txtDetailsDescription;
         private TextView txtDetailsDate;
-        
+        private TextView txtDetailsTime;
+
 
         //private TextView txtDetailsDateDay;
-        //private TextView txtDetailsTime;
         //private TextView txtDetailsRepeat;
         //private TextView lblDetailsLastUpdateValue;
         //private TextView txtDetailsColor;
@@ -179,16 +179,15 @@ namespace ProjTaskReminder
             txtDetailsTitle = FindViewById<EditText>(Resource.Id.txtDetailsTitle);
             txtDetailsDescription = FindViewById<EditText>(Resource.Id.txtDetailsDescription);
             txtDetailsDate = FindViewById<TextView>(Resource.Id.txtDetailsDate);
+            txtDetailsTime = FindViewById<TextView>(Resource.Id.txtDetailsTime);
+            lblDateTime = FindViewById<EditText>(Resource.Id.lblDateTime);
             btnSave = FindViewById<Button>(Resource.Id.btnSave);
             btnSetDate = FindViewById<Button>(Resource.Id.btnSetDate);
             btnDelete = FindViewById<Button>(Resource.Id.btnDelete);
-            lblDateTime = FindViewById<EditText>(Resource.Id.lblDateTime);
             datePicker1 = FindViewById<DatePicker>(Resource.Id.datePicker1);
             timePicker1 = FindViewById<TimePicker>(Resource.Id.timePicker1);
             
-            //txtDetailsDate = FindViewById<EditText>(Resource.Id.txtDetailsDate);
             //txtDetailsDateDay = FindViewById<TextView>(Resource.Id.txtDetailsDateDay);
-            //txtDetailsTime = FindViewById<TextView>(Resource.Id.txtDetailsTime);
             //txtDetailsRepeat = FindViewById<TextView>(Resource.Id.txtDetailsRepeat);
             //TextView lblDetailsDate = FindViewById<TextView>(Resource.Id.lblDetailsDate);
             //TextView lblDetailsTime = FindViewById<TextView>(Resource.Id.lblDetailsTime);
@@ -233,12 +232,12 @@ namespace ProjTaskReminder
                 OpenDatePicker();
             };
 
-            //datePicker1.SetOnDateChangedListener+=OnDateChange2;           //new EventHandler(SaveRecord); 
+            //datePicker1.SetOnDateChangedListener+=OnDateChanged;           //new EventHandler(SaveRecord); 
             //{
             //    sender = CurrentTask;
             //    OnDateChange(sender, null);
             //};
-            datePicker1.DateChanged += OnDateChange2; //(sender, e) =>           //new EventHandler(SaveRecord); 
+            datePicker1.DateChanged += OnDateChanged; //(sender, e) =>           //new EventHandler(SaveRecord); 
             //{
             //    sender = CurrentTask;
             //    OnDateChange(sender, null);
@@ -249,41 +248,56 @@ namespace ProjTaskReminder
             //    OnDateChange(sender, null);
             //};
 
-
+            timePicker1.TimeChanged += OnTimeChanged;
 
         }
 
-        private void OnDateChange2(object sender, DatePicker.DateChangedEventArgs e)
+        private void OnDateChanged(object sender, DatePicker.DateChangedEventArgs e)
         {
             Task task = CurrentTask;    //(Task)sender;
 
-            lblDateTime.Text = e.DayOfMonth.ToString().PadLeft(2, '0') + "/" + e.MonthOfYear.ToString().PadLeft(2, '0') + "/" + e.Year.ToString().PadLeft(4, '0') + " " +
-                               Utils.Utils.getDateFixed(DateTime.Now).ToString("HH:mm");
+            txtDetailsDate.Text = e.DayOfMonth.ToString().PadLeft(2, '0') + "/" + e.MonthOfYear.ToString().PadLeft(2, '0') + "/" + e.Year.ToString().PadLeft(4, '0');
 
-            Toast.MakeText(this, task.getDescription() + " - " + lblDateTime.Text, ToastLength.Long).Show();
+            lblDateTime.Text = txtDetailsDate.Text + " " + txtDetailsTime.Text;
+            //Toast.MakeText(this, txtDetailsDate.Text, ToastLength.Long).Show();
+            datePicker1.Visibility = ViewStates.Invisible;
 
+            OpenTimePicker();
         }
 
-        private DatePicker.IOnDateChangedListener OnDateChange3(DatePicker view, int year, int month, int dayOfMonth)
+        private void OnTimeChanged(object sender, TimePicker.TimeChangedEventArgs e)
         {
-            return null;
+            Task task = CurrentTask;    //(Task)sender;
+
+            txtDetailsTime.Text = e.HourOfDay.ToString().PadLeft(2, '0') + ":" + e.Minute.ToString().PadLeft(2, '0');
+
+            lblDateTime.Text = txtDetailsDate.Text + " " + txtDetailsTime.Text;
+
+            //Toast.MakeText(this, txtDetailsTime.Text, ToastLength.Long).Show();
+            timePicker1.Visibility = ViewStates.Invisible;
         }
+
 
         private void OpenDatePicker()
         {
-            datePicker1.BringToFront();
-            datePicker1.Visibility = (datePicker1.Visibility==ViewStates.Invisible) ? datePicker1.Visibility = ViewStates.Visible : datePicker1.Visibility = ViewStates.Invisible;
+            datePicker1.Visibility = ViewStates.Visible;
             datePicker1.BringToFront();
         }
 
-        private void OnDateChange(object sender, DatePicker.IOnDateChangedListener obj)
+        private void OpenTimePicker()
         {
-            Task task = (Task)sender;
-
-            lblDateTime.Text = datePicker1.DayOfMonth.ToString().PadLeft(2, '0') + "/" + datePicker1.Month.ToString().PadLeft(2, '0') + "/" + datePicker1.Year.ToString().PadLeft(4, '0');
-            
-            Toast.MakeText(this, task.getDescription() + " - " + lblDateTime.Text, ToastLength.Long).Show();
+            timePicker1.Visibility = ViewStates.Visible;    //(timePicker1.Visibility == ViewStates.Invisible) ? ViewStates.Visible : ViewStates.Invisible;
+            timePicker1.BringToFront();
         }
+
+        //private void OnDateChanged(object sender, DatePicker.IOnDateChangedListener obj)
+        //{
+        //    Task task = (Task)sender;
+
+        //    lblDateTime.Text = datePicker1.DayOfMonth.ToString().PadLeft(2, '0') + "/" + datePicker1.Month.ToString().PadLeft(2, '0') + "/" + datePicker1.Year.ToString().PadLeft(4, '0');
+            
+        //    Toast.MakeText(this, task.getDescription() + " - " + lblDateTime.Text, ToastLength.Long).Show();
+        //}
 
         private void DeleteRecord(Task currentTask)
         {
@@ -362,7 +376,13 @@ namespace ProjTaskReminder
         {
             CurrentTask.setTitle(txtDetailsTitle.Text);
             CurrentTask.setDescription(txtDetailsDescription.Text);
-            if (!lblDateTime.Text.Trim().Equals(""))
+            lblDateTime.Text = txtDetailsDate.Text + " " + txtDetailsTime.Text;
+            if (!txtDetailsDate.Text.Trim().Equals("") && (!txtDetailsTime.Text.Trim().Equals("")))
+            {
+                CurrentTask.setDate_due(txtDetailsDate.Text.Trim());
+                CurrentTask.setTime_due(txtDetailsTime.Text.Trim());
+            }
+            else if (!lblDateTime.Text.Trim().Equals(""))
             {
                 CurrentTask.setDate_due(lblDateTime.Text.Trim().Substring(0, 10));
                 CurrentTask.setTime_due(lblDateTime.Text.Trim().Substring(11, 5));
@@ -374,6 +394,8 @@ namespace ProjTaskReminder
             txtDetailsTitle.Text = CurrentTask.getTitle();
             txtDetailsDescription.Text = CurrentTask.getDescription();
             lblDateTime.Text = CurrentTask.getDate_due() + " " + CurrentTask.getTime_due();
+            txtDetailsDate.Text = CurrentTask.getDate_due();
+            txtDetailsTime.Text = CurrentTask.getTime_due();
         }
 
         // Assign the listener implementing events interface that will receive the events
