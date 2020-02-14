@@ -256,7 +256,7 @@ namespace ProjTaskReminder
         {
             Task task = CurrentTask;    //(Task)sender;
 
-            txtDetailsDate.Text = e.DayOfMonth.ToString().PadLeft(2, '0') + "/" + e.MonthOfYear.ToString().PadLeft(2, '0') + "/" + e.Year.ToString().PadLeft(4, '0');
+            txtDetailsDate.Text = e.DayOfMonth.ToString().PadLeft(2, '0') + "/" + (e.MonthOfYear+1).ToString().PadLeft(2, '0') + "/" + e.Year.ToString().PadLeft(4, '0');
 
             lblDateTime.Text = txtDetailsDate.Text + " " + txtDetailsTime.Text;
             //Toast.MakeText(this, txtDetailsDate.Text, ToastLength.Long).Show();
@@ -338,9 +338,11 @@ namespace ProjTaskReminder
                     MainActivity.DBTaskReminder.UpdateRecord("TBL_Tasks", values, new object[] { CurrentTask.getTaskID() });
                 }
 
+                MainActivity.CurrentTask = CurrentTask;
                 MainActivity.isShowTimerReminder = true;
+                MainActivity.MainMessageText = "נשמר";
 
-                Toast.MakeText(this, "Saved", ToastLength.Long).Show();
+                //Toast.MakeText(this, "נשמר", ToastLength.Long).Show();
 
                 inputIntent.PutExtra("Result", "true");
 

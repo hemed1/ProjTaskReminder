@@ -17,6 +17,7 @@ using Android.Support.V7.Widget;
 using System.Timers;
 using System.Threading;
 using System.IO;
+using Java.Util;
 //using System.Threading.Timer;
 
 
@@ -473,6 +474,15 @@ namespace ProjTaskReminder
         {
             //base.OnActivityReenter(requestCode,resultCode, data);
 
+//            if (resultCode == Result.Ok)
+//            {
+                if (!ActivityTaskDetails.isNewMode)
+                {
+                    TimerStop(CurrentTask);
+                    TimerRun(CurrentTask);
+                }
+//            }
+
             FillList();
         }
 
@@ -505,6 +515,53 @@ namespace ProjTaskReminder
             }
 
 
+            //Toast.MakeText(this, "Task date: " + timerDate.Value.ToString("dd/MM/yyyy HH:mm") + "   Now: " + Utils.Utils.getDateFixed(DateTime.Now).ToString("dd/MM/yyyy HH:mm"), ToastLength.Long).Show();
+
+            CurrentTask = currentTask;
+            ActionOnTaskDateDue += TimerNextTime;
+
+            TimerInterval = 30000;  // 30 seconds
+
+            Thread timer = new Thread(new ThreadStart(TimerThreadExecute));
+
+            addTimerToKillArray(currentTask.getTaskID(), timer, 0);     // timer timerTask);
+
+            currentTask.setTimer(timer);
+            //currentTask.setTimer_task(timerTask);
+
+            timer.Start();
+
+
+            dateStr = timerDate.Value.ToString("dd/MM/yyyy HH:mm");          //.ToShortDateString();   //  Util.getDateFormattedString(timerDate);
+
+            if (isShowTimerReminder && !MainMessageText.Trim().Equals(""))
+            {
+                string text = "יצר תזכורת ביום " + " day " + " " + dateStr;
+                MainMessageText = MainMessageText + " - " + text;
+                showGlobalMessageOnToast();
+            }
+
+
+            //var second = new Thread(new ThreadStart(secondThread));
+            //btnStart.TouchUpInside += delegate {
+            // System.Timers.Timer timer = new System.Timers.Timer();
+            //TimerTask timerTask = new TimerTask(picsTimer_onTick);
+            //timerTask.Run += picsTimer_onTick2;
+            //Java.Util.Timer timer2 = new Java.Util.Timer();
+            //timer2.Schedule(timerTask, timerDate);
+            //////timer.BeginInit();   //.S.schedule(timerTask, timerDate);
+            //timer2.AutoReset = true;
+            //timer.Interval = 1000;   //1 * 60 * 60 * 1000 = 3600000;
+            //timer2.Enabled = true;
+            //////System.ComponentModel.ISynchronizeInvoke
+            //////timer.SynchronizingObject = currentTask
+            //////ElapsedEventHandler(object sender, ElapsedEventArgs e)
+            /////TimerCallback timerCallback = new TimerCallback(picsTimer_onTick(object, ElapsedEventArgs));
+            //timer.Elapsed += picsTimer_onTick(currentTask, null);
+            //timer.Start();
+            //JobSchedulerService jobSchedulerService = new JobSchedulerService()
+            //CustomTimerTask customTimerTask = new CustomTimerTask(this);
+            //timer.ScheduleAtFixedRate(customTimerTask, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute), 5000);
             //TimersDescriptionAttribute timersDescriptionAttribute = new TimersDescriptionAttribute("Raised");
             //
             // Run the Timer
@@ -526,62 +583,6 @@ namespace ProjTaskReminder
             //timer.Notify();
 
 
-            Toast.MakeText(this, "Task date: " + timerDate.Value.ToString("dd/MM/yyyy HH:mm") + "   Now: " + Utils.Utils.getDateFixed(DateTime.Now).ToString("dd/MM/yyyy HH:mm"), ToastLength.Long).Show();
-
-            CurrentTask = currentTask;
-            ActionOnTaskDateDue += TimerNextTime;
-
-            TimerInterval = 30000;  // 30 seconds
-
-            Thread timer = new Thread(new ThreadStart(TimerThreadExecute));
-
-            //var second = new Thread(new ThreadStart(secondThread));
-            //btnStart.TouchUpInside += delegate {
-            // System.Timers.Timer timer = new System.Timers.Timer();
-
-            addTimerToKillArray(currentTask.getTaskID(), timer, 0);     // timer timerTask);
-
-            currentTask.setTimer(timer);
-            //currentTask.setTimer_task(timerTask);
-
-            timer.Start();
-
-
-            //////timer.BeginInit();   //.S.schedule(timerTask, timerDate);
-            //            timer.AutoReset = true;
-            //            timer.Interval = 1000;   //1 * 60 * 60 * 1000 = 3600000;
-            //            timer.Enabled = true;
-            //////System.ComponentModel.ISynchronizeInvoke
-            //////timer.SynchronizingObject = currentTask
-            //////ElapsedEventHandler(object sender, ElapsedEventArgs e)
-            /////TimerCallback timerCallback = new TimerCallback(picsTimer_onTick(object, ElapsedEventArgs));
-            //            timer.Elapsed += picsTimer_onTick(currentTask, null);
-            //timer.Start();
-
-
-
-
-            //JobSchedulerService jobSchedulerService = new JobSchedulerService()
-            //CustomTimerTask customTimerTask = new CustomTimerTask(this);
-            //timer.ScheduleAtFixedRate(customTimerTask, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute), 5000);
-
-
-            dateStr = timerDate.Value.ToString("dd/MM/yyyy HH:mm");          //.ToShortDateString();   //  Util.getDateFormattedString(timerDate);
-
-
-            //if (isShowTimerReminder)
-            ///{
-            //Log.d("Create Timer date: ", "ID: " + String.valueOf(currentTask.getTaskID()) + " - " + "Title: " + currentTask.getTitle() +
-            //        " -    Today: " + String.valueOf(today) + "    Timer time: " + String.valueOf(timerDate) + "   Convert.to string " + dateStr);
-            //}
-
-
-            if (isShowTimerReminder && !MainMessageText.Trim().Equals(""))
-            {
-                string text = "יצר תזכורת ביום " + " day " + " " + dateStr;
-                MainMessageText = MainMessageText + " - " + text;
-                showGlobalMessageOnToast();
-            }
         }
 
         private void TimerThreadExecute()      //Task task)

@@ -7,12 +7,12 @@
     <color name="DetailsBackgroundOtherFields">#c9c5c5</color>
     <color name="DetailsFieldsTitles">#ffffff</color>
     <color name="DetailsFieldsValues">#616060</color>
+    <color name="CardBackgroundColor">#FFF</color>  
     <color name="CardBackgroundColor2">#252525</color>
+    <color name="CardListBackgroundColor">#f1efef</color>
     <color name="CardListBackgroundColor2">#080808</color>
     <color name="CardFieldsTextForegroundColor2">#fafafa</color>
     <color name="CardFieldsForegroundColorLowDetails2">#c9c5c5</color>   
-    <color name="CardBackgroundColor">#FFF</color>
-    <color name="CardListBackgroundColor">#f1efef</color>
     <color name="CardFieldsTextForegroundColor">#080a8b</color>
     <color name="card_color1">#859fd9</color>
     <color name="card_color2">#81cf81</color>
