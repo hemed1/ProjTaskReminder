@@ -36,11 +36,14 @@
         android:paddingStart="0dp"
         android:paddingEnd="0dp"       
         android:layoutDirection="rtl"
-        android:maxHeight="200dp"
+        android:maxHeight="80dp"
         app:cardBackgroundColor="#FFF"
-        app:cardElevation="3dp"
-        app:cardCornerRadius="3dp"
+        android:elevation="5dp"
+        app:cardCornerRadius="5dp"
         app:cardUseCompatPadding="false">        
+
+        <!--app:cardElevation="13dp"
+            android:elevation="5dp"-->
 
         <!--<ImageView
             android:id="@+id/icon"
@@ -62,7 +65,6 @@
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp">
 
-                <!--android:layout_alignStart="@id/icon"-->
 
                 <TextView
                     android:id="@+id/txtTitle"
@@ -87,7 +89,7 @@
     
                 <TextView
                     android:id="@+id/txtDateDue"
-                    android:layout_width="fill_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-1dp"
                     android:textSize="11sp"

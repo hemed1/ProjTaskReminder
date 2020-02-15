@@ -14,7 +14,7 @@ using Android.Widget;
 
 using static Android.Support.V7.Widget.RecyclerView;
 using static Android.Support.V7.Widget.CardView;
-using ProjTaskRemindet;
+using ProjTaskReminder.Utils;
 using ProjTaskReminder.Model;
 using Android.Support.V7.Widget;
 
@@ -147,7 +147,10 @@ namespace ProjTaskRemindet.Utils
                 Task task = TaskList[position];
                 listViewHolder.title.SetText(task.getTitle(), TextView.BufferType.Normal);
                 listViewHolder.description.SetText(task.getDescription(), TextView.BufferType.Normal);
-                listViewHolder.date_date.SetText(task.getTime_due() + "  " +task.getDate_due(), TextView.BufferType.Normal);
+                if (!task.getDate_due().Equals(""))
+                {
+                    listViewHolder.date_date.SetText(task.getTime_due() + "  " + task.getDate_due() + "  יום " + ProjTaskReminder.Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
+                }
             }
 
             //convertView.SetOnClickListener(InitOnItemClick(position));
@@ -178,7 +181,6 @@ namespace ProjTaskRemindet.Utils
                         title = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtTitle);
                         description = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtDescription);
                         date_date = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtDateDue);
-
                         cardView = (CardView)convertView.FindViewById(ProjTaskReminder.Resource.Id.cardTask);
                     }
                     catch (Exception ex)

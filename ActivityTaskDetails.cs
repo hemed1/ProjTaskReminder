@@ -11,9 +11,11 @@ using Android.Runtime;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
-using ProjTaskReminder.Data;
+using ProjTaskRemindet.Utils;
 using ProjTaskReminder.Model;
 using static ProjTaskReminder.Data.DBTaskReminder;
+
+
 
 namespace ProjTaskReminder
 {
@@ -27,6 +29,12 @@ namespace ProjTaskReminder
         private EditText txtDetailsDescription;
         private TextView txtDetailsDate;
         private TextView txtDetailsTime;
+        private EditText lblDateTime;
+        private Button btnSave;
+        private Button btnDelete;
+        private Button btnSetDate;
+        private DatePicker datePicker1;
+        private TimePicker timePicker1;
 
 
         //private TextView txtDetailsDateDay;
@@ -42,12 +50,6 @@ namespace ProjTaskReminder
         //private ImageView imgColor6;
         //private ImageView imgColor7;
         //private ImageView imgColor8;
-        private Button btnSave;
-        private Button btnDelete;
-        private Button btnSetDate;
-        private DatePicker datePicker1;
-        private TimePicker timePicker1;
-
         //private ToggleButton btnFontBold;
         //private ToggleButton btnFontUnderline;
         //private ToggleButton btnFontStrike;
@@ -58,10 +60,6 @@ namespace ProjTaskReminder
         //private Button btnFontName;
         //private Button btnFontSize;
         //private Button btnFlatHtml;
-
-
-
-        private EditText lblDateTime;
         //private CardView cardDetails;
         //private CardView cardDetailsTiming;
         //private CardView cardRichText;
@@ -112,6 +110,7 @@ namespace ProjTaskReminder
         public static event Action<int, Result, Intent> OnActivityResult;
         private Intent inputIntent;
         private int taskID;
+        private bool IsUpdateDialogDate;
 
 
 
@@ -250,10 +249,17 @@ namespace ProjTaskReminder
 
             timePicker1.TimeChanged += OnTimeChanged;
 
+            IsUpdateDialogDate = true;
         }
 
         private void OnDateChanged(object sender, DatePicker.DateChangedEventArgs e)
         {
+            if (!IsUpdateDialogDate)
+            {
+                IsUpdateDialogDate = true;
+                return;
+            }
+
             Task task = CurrentTask;    //(Task)sender;
 
             txtDetailsDate.Text = e.DayOfMonth.ToString().PadLeft(2, '0') + "/" + (e.MonthOfYear+1).ToString().PadLeft(2, '0') + "/" + e.Year.ToString().PadLeft(4, '0');
@@ -280,12 +286,23 @@ namespace ProjTaskReminder
 
         private void OpenDatePicker()
         {
+            if (!txtDetailsDate.Text.Trim().Equals(""))
+            {
+                IsUpdateDialogDate = false;
+                DateTime currentDate= Utils.Utils.getDateFormatUSA(txtDetailsDate.Text.Trim()).AddMonths(-1);
+                datePicker1.UpdateDate(currentDate.Year, currentDate.Month, currentDate.Day);
+            }
             datePicker1.Visibility = ViewStates.Visible;
             datePicker1.BringToFront();
         }
 
         private void OpenTimePicker()
         {
+            if (!txtDetailsDate.Text.Trim().Equals("") && !txtDetailsTime.Text.Trim().Equals(""))
+            {
+                //DateTime currentDate = Utils.Utils.getDateFormatUSA(txtDetailsDate.Text.Trim()+" " + txtDetailsTime.Text.Trim());
+                //timePicker1.UpdateDate(currentDate.Year, currentDate.Month, currentDate.Day);
+            }
             timePicker1.Visibility = ViewStates.Visible;    //(timePicker1.Visibility == ViewStates.Invisible) ? ViewStates.Visible : ViewStates.Invisible;
             timePicker1.BringToFront();
         }
@@ -353,9 +370,9 @@ namespace ProjTaskReminder
                 }
 
                 // Second option to - Raise the event to the Caller
-                //OnActivityResult(111, Result.Ok, inputIntent);
+                //OnActivityResult(1234, Result.Ok, inputIntent);
 
-                //SetResult(Result.Ok, inputIntent);
+                SetResult(Result.Ok, inputIntent);
                 
                 Finish();
             }

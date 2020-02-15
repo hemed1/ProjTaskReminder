@@ -9,6 +9,7 @@
   <string name="int_pick_Date">הקש כאן לבחירת תאריך</string>
   <string name="int_pick_Time">הקש כאן לבחירת זמן</string>
   <string name="repeat_once_word">פעם אחת</string>
+  <string name="list_title">הפתקים והמשימות שלי</string>
 
   <string name="notification_channel_id">תזכורות רגילות</string>
   <!--<string name="notification_channel_id">NOTIFICATION_CHANNEL_ID</string>-->

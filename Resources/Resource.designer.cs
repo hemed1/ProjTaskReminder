@@ -4453,76 +4453,79 @@ namespace ProjTaskReminder
 			public const int delete3 = 2131558408;
 			
 			// aapt resource value: 0x7F0D0009
-			public const int font_name3 = 2131558409;
+			public const int font_backcolor1 = 2131558409;
 			
 			// aapt resource value: 0x7F0D000A
-			public const int ic_launcher = 2131558410;
+			public const int font_name3 = 2131558410;
 			
 			// aapt resource value: 0x7F0D000B
-			public const int ic_launcher_foreground = 2131558411;
+			public const int ic_launcher = 2131558411;
 			
 			// aapt resource value: 0x7F0D000C
-			public const int ic_launcher_round = 2131558412;
+			public const int ic_launcher_foreground = 2131558412;
 			
 			// aapt resource value: 0x7F0D000D
-			public const int mail_read3 = 2131558413;
+			public const int ic_launcher_round = 2131558413;
 			
 			// aapt resource value: 0x7F0D000E
-			public const int mail_read4 = 2131558414;
+			public const int mail_read3 = 2131558414;
 			
 			// aapt resource value: 0x7F0D000F
-			public const int mail_read5 = 2131558415;
+			public const int mail_read4 = 2131558415;
 			
 			// aapt resource value: 0x7F0D0010
-			public const int mail_read6 = 2131558416;
+			public const int mail_read5 = 2131558416;
 			
 			// aapt resource value: 0x7F0D0011
-			public const int mail_read7 = 2131558417;
+			public const int mail_read6 = 2131558417;
 			
 			// aapt resource value: 0x7F0D0012
-			public const int mail_read8 = 2131558418;
+			public const int mail_read7 = 2131558418;
 			
 			// aapt resource value: 0x7F0D0013
-			public const int music1 = 2131558419;
+			public const int mail_read8 = 2131558419;
 			
 			// aapt resource value: 0x7F0D0014
-			public const int music2 = 2131558420;
+			public const int music1 = 2131558420;
 			
 			// aapt resource value: 0x7F0D0015
-			public const int music3 = 2131558421;
+			public const int music2 = 2131558421;
 			
 			// aapt resource value: 0x7F0D0016
-			public const int notes1 = 2131558422;
+			public const int music3 = 2131558422;
 			
 			// aapt resource value: 0x7F0D0017
-			public const int plus1 = 2131558423;
+			public const int note1 = 2131558423;
 			
 			// aapt resource value: 0x7F0D0018
-			public const int plus2 = 2131558424;
+			public const int plus1 = 2131558424;
 			
 			// aapt resource value: 0x7F0D0019
-			public const int plus3 = 2131558425;
+			public const int plus2 = 2131558425;
 			
 			// aapt resource value: 0x7F0D001A
-			public const int plus5 = 2131558426;
+			public const int plus3 = 2131558426;
 			
 			// aapt resource value: 0x7F0D001B
-			public const int save1 = 2131558427;
+			public const int plus5 = 2131558427;
 			
 			// aapt resource value: 0x7F0D001C
-			public const int save2 = 2131558428;
+			public const int save1 = 2131558428;
 			
 			// aapt resource value: 0x7F0D001D
-			public const int save4 = 2131558429;
+			public const int save2 = 2131558429;
 			
 			// aapt resource value: 0x7F0D001E
-			public const int save5 = 2131558430;
+			public const int save4 = 2131558430;
 			
 			// aapt resource value: 0x7F0D001F
-			public const int setting = 2131558431;
+			public const int save5 = 2131558431;
 			
 			// aapt resource value: 0x7F0D0020
-			public const int weather2 = 2131558432;
+			public const int setting = 2131558432;
+			
+			// aapt resource value: 0x7F0D0021
+			public const int weather2 = 2131558433;
 			
 			static Mipmap()
 			{
@@ -4743,46 +4746,49 @@ namespace ProjTaskReminder
 			public const int int_pick_Time = 2131689526;
 			
 			// aapt resource value: 0x7F0F0037
-			public const int mtrl_chip_close_icon_content_description = 2131689527;
+			public const int list_title = 2131689527;
 			
 			// aapt resource value: 0x7F0F0038
-			public const int notification_channel_description = 2131689528;
+			public const int mtrl_chip_close_icon_content_description = 2131689528;
 			
 			// aapt resource value: 0x7F0F0039
-			public const int notification_channel_id = 2131689529;
+			public const int notification_channel_description = 2131689529;
 			
 			// aapt resource value: 0x7F0F003A
-			public const int notification_snooze_message = 2131689530;
+			public const int notification_channel_id = 2131689530;
 			
 			// aapt resource value: 0x7F0F003B
-			public const int password_toggle_content_description = 2131689531;
+			public const int notification_snooze_message = 2131689531;
 			
 			// aapt resource value: 0x7F0F003C
-			public const int path_password_eye = 2131689532;
+			public const int password_toggle_content_description = 2131689532;
 			
 			// aapt resource value: 0x7F0F003D
-			public const int path_password_eye_mask_strike_through = 2131689533;
+			public const int path_password_eye = 2131689533;
 			
 			// aapt resource value: 0x7F0F003E
-			public const int path_password_eye_mask_visible = 2131689534;
+			public const int path_password_eye_mask_strike_through = 2131689534;
 			
 			// aapt resource value: 0x7F0F003F
-			public const int path_password_strike_through = 2131689535;
+			public const int path_password_eye_mask_visible = 2131689535;
 			
 			// aapt resource value: 0x7F0F0040
-			public const int repeat_once_word = 2131689536;
+			public const int path_password_strike_through = 2131689536;
 			
 			// aapt resource value: 0x7F0F0041
-			public const int search_menu_title = 2131689537;
+			public const int repeat_once_word = 2131689537;
 			
 			// aapt resource value: 0x7F0F0042
-			public const int status_bar_notification_info_overflow = 2131689538;
+			public const int search_menu_title = 2131689538;
 			
 			// aapt resource value: 0x7F0F0043
-			public const int title_activity_alarm = 2131689539;
+			public const int status_bar_notification_info_overflow = 2131689539;
 			
 			// aapt resource value: 0x7F0F0044
-			public const int title_activity_setting = 2131689540;
+			public const int title_activity_alarm = 2131689540;
+			
+			// aapt resource value: 0x7F0F0045
+			public const int title_activity_setting = 2131689541;
 			
 			static String()
 			{

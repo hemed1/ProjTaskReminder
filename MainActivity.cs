@@ -39,6 +39,8 @@ namespace ProjTaskReminder
         private static string    DB_FIELDNAME_LAST_UPDATE = "LastUpdate";
         private static string    DB_FIELDNAME_IS_ARCHIVE = "IsArchive";
 
+        // The code for get result from TasDetails screen
+        public const int        SHOW_SCREEN_TASK_DETAILS = 1234;
 
         private ListView simpleList;    //RecyclerView
         private ListViewAdapter listViewAdapter;
@@ -213,16 +215,12 @@ namespace ProjTaskReminder
                 {
                     Task task = TasksList[i];
 
-                    //task.setDate_due(DateTime.Now.ToString("dd/MM/yyyy"));
-                    //task.setTime_due(DateTime.Now.AddMinutes(i+1).ToString("HH:mm"));
+                    isShowTimerReminder = (CurrentTask != null && CurrentTask.getTaskID() == task.getTaskID());
 
-                    
-                    //if (i == 0)
-                    //{
-                        //TimerStop(task);
+                    //TimerStop(task);
 
-                        TimerRun(task);
-                    //}
+                    TimerRun(task);
+
                 }
                 catch (Exception ex)
                 {
@@ -360,16 +358,16 @@ namespace ProjTaskReminder
             ActivityTaskDetails.context = context;      //Application.Context;
             ////ActivityTaskDetails.mainActivity = mainActivity;
 
-            StartActivityForResult(intent, 1234);
+            StartActivityForResult(intent, SHOW_SCREEN_TASK_DETAILS);
             //context.StartActivity(intent);
 
             //var req = new Intent();
             //req.SetComponent(new ComponentName("com.example.Tristan.Android", "com.example.Tristan.Android.IsoldeQueryActivity"));
-            //StartActivityForResult(req, 1234);
+            //StartActivityForResult(req, SHOW_SCREEN_TASK_DETAILS);
             //var rtn = await TristanStateCompletion.Task;
             //if (!rtn) bomb("can't get state");
             //TristanStateCompletion = null;
-            
+
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -468,22 +466,18 @@ namespace ProjTaskReminder
         //protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         //{
         //this.OnActivityResult(requestCode, resultCode, data);
-        //if (requestCode == 1234)
+        //if (requestCode == SHOW_SCREEN_TASK_DETAILS)
         //{
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
         {
             //base.OnActivityReenter(requestCode,resultCode, data);
 
-//            if (resultCode == Result.Ok)
-//            {
-                if (!ActivityTaskDetails.isNewMode)
-                {
-                    TimerStop(CurrentTask);
-                    TimerRun(CurrentTask);
-                }
-//            }
+            if (resultCode == Result.Ok && requestCode== SHOW_SCREEN_TASK_DETAILS)
+            {
+                FillList();
+            }
 
-            FillList();
+            
         }
 
         private void TimerRun(Task currentTask)
@@ -493,8 +487,7 @@ namespace ProjTaskReminder
 
 
 
-            //isShowTimerReminder = true;
-            //MainMessageText = "טיימר - ";
+
             timerDate = currentTask.getDate();
 
             if (timerDate == null)
@@ -515,7 +508,7 @@ namespace ProjTaskReminder
             }
 
 
-            //Toast.MakeText(this, "Task date: " + timerDate.Value.ToString("dd/MM/yyyy HH:mm") + "   Now: " + Utils.Utils.getDateFixed(DateTime.Now).ToString("dd/MM/yyyy HH:mm"), ToastLength.Long).Show();
+            //Toast.MakeText(this, "Task date: " + Utils.Utils.getDateFormattedString(timerDate.Value) + "     Now: " + Utils.Utils.getDateFormattedString(Utils.Utils.getDateFixed(DateTime.Now)), ToastLength.Long).Show();
 
             CurrentTask = currentTask;
             ActionOnTaskDateDue += TimerNextTime;
@@ -532,11 +525,11 @@ namespace ProjTaskReminder
             timer.Start();
 
 
-            dateStr = timerDate.Value.ToString("dd/MM/yyyy HH:mm");          //.ToShortDateString();   //  Util.getDateFormattedString(timerDate);
+            dateStr = Utils.Utils.getDateFormattedString(timerDate.Value); 
 
             if (isShowTimerReminder && !MainMessageText.Trim().Equals(""))
             {
-                string text = "יצר תזכורת ביום " + " day " + " " + dateStr;
+                string text = "יצר תזכורת ביום " + " " + Utils.Utils.getDateDayName(timerDate.Value) + "  " + dateStr;
                 MainMessageText = MainMessageText + " - " + text;
                 showGlobalMessageOnToast();
             }
@@ -585,19 +578,12 @@ namespace ProjTaskReminder
 
         }
 
-        private void TimerThreadExecute()      //Task task)
+        private void TimerThreadExecute()
         {
             TimerExecute(CurrentTask, null);
         }
 
-        private void TimerNextTime()    // string ss)
-        {
-            DateTime dateNow = Utils.Utils.getDateFixed(DateTime.Now);
-            string strDateNow = dateNow.ToString("dd/MM/yyyy HH:mm");
-
-            //return strDateNow;
-        }
-
+ 
         //ElapsedEventHandler(object sender, ElapsedEventArgs e)
         private ElapsedEventHandler TimerExecute(object sender, ElapsedEventArgs args)
         {
@@ -609,7 +595,7 @@ namespace ProjTaskReminder
 
             long counter = 0;
             // Limited for 3 Days
-            long limitSeconds = 1000 * 60 * 60 * 24 * 3;        
+            long limitSeconds = 1000 * 60 * 60 * 24 * 3;       
             DateTime dateNow;
             Task currentTask = (Task)sender;
 
@@ -621,10 +607,10 @@ namespace ProjTaskReminder
                 return null;
             }
 
-            dateNow = Utils.Utils.getDateFixed(DateTime.Now);
-            string strDateTask = currentTask.getDate().Value.ToString("dd/MM/yyyy HH:mm");
-            string strDateNow = dateNow.ToString("dd/MM/yyyy HH:mm");
 
+            dateNow = Utils.Utils.getDateFixed(DateTime.Now);
+            string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
+            string strDateTask = Utils.Utils.getDateFormattedString(currentTask.getDate().Value);
 
 
             while (counter <= limitSeconds && strDateNow.CompareTo(strDateTask) < 0)
@@ -634,7 +620,7 @@ namespace ProjTaskReminder
                 RunOnUiThread(() =>
                 {
                     dateNow = Utils.Utils.getDateFixed(DateTime.Now);
-                    strDateNow = dateNow.ToString("dd/MM/yyyy HH:mm");
+                    strDateNow = Utils.Utils.getDateFormattedString(dateNow);
                 });
 
                 counter += TimerInterval;
@@ -657,7 +643,7 @@ namespace ProjTaskReminder
         private void picsTimer_onTick(Task task)
         {
 
-            int resourceID = Resource.Raw.maybe_one_day;
+            int resourceID = Resource.Raw.deduction;
             Android.Media.MediaPlayer mediaPlayer = Android.Media.MediaPlayer.Create(this, resourceID);   // uri);
             mediaPlayer.SetScreenOnWhilePlaying(true);
             mediaPlayer.Start();
@@ -665,6 +651,14 @@ namespace ProjTaskReminder
             //Toast.MakeText(this, "Timer is tiking: "+task.getDescription(), ToastLength.Long).Show();
 
             showNotifications(task);
+        }
+
+        private void TimerNextTime()    // string ss)
+        {
+            DateTime dateNow = Utils.Utils.getDateFixed(DateTime.Now);
+            string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
+
+            //return strDateNow;
         }
 
         private void TimerStop(Task currentTask)
@@ -867,8 +861,8 @@ namespace ProjTaskReminder
                     return;
                 }
 
-                string strDateNow = dateNow.ToString("dd/MM/yyyy HH:mm");
-                string strDateTask = currentTask.getDate().Value.ToString("dd/MM/yyyy HH:mm");
+                string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
+                string strDateTask = Utils.Utils.getDateFormattedString(currentTask.getDate().Value);
 
                 IsRunning = true;
 
@@ -879,7 +873,7 @@ namespace ProjTaskReminder
                     picsTimer_onTick(); // ParentTask);
 
                     dateNow = Utils.Utils.getDateFixed(DateTime.Now);
-                    strDateNow = dateNow.ToString("dd/MM/yyyy HH:mm");
+                    strDateNow = Utils.Utils.getDateFormattedString(dateNow);
 
                     //RunOnUiThread(ActionOnPlayingMusic);    // =>
                     //{
@@ -914,8 +908,8 @@ namespace ProjTaskReminder
                 }
 
 
-                string strNow = dateNow.ToString("dd/MM/yyyy HH:mm");
-                string strDateTask = currentTask.getDate().Value.ToString("dd/MM/yyyy HH:mm");
+                string strNow = Utils.Utils.getDateFormattedString(dateNow);
+                string strDateTask = Utils.Utils.getDateFormattedString(currentTask.getDate().Value);
 
                 if (strNow != strDateTask)
                 {

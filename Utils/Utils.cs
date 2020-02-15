@@ -257,20 +257,12 @@ namespace ProjTaskReminder.Utils
 
         public static String getDateFormattedString(DateTime date)
         {
-            ////string monthStr;
-            ////string dayStr;
             string dateStr;
 
 
-
-            // TODO:  Maybe delete
-            //date = getDateFixed(date);
-
             //Locale locale = new Locale.Builder().setLanguage("iw").setRegion("IL").build();
-
             ////DateFormat timeFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");   //, locale);
             ////timeFormat.setTimeZone(TimeZone.getTimeZone("Asia/Jerusalem"));
-
             ////dateStr = timeFormat.format(date);
 
             dateStr = date.ToString("dd/MM/yyyy HH:mm");
@@ -279,6 +271,58 @@ namespace ProjTaskReminder.Utils
 
 
             return dateStr;
+        }
+
+        /// <summary>
+        /// Return DateTime in USA format 'MM/dd/yyyy'
+        /// </summary>
+        /// <param name="dateStr"></param>
+        /// <returns></returns>
+        public static DateTime getDateFormatUSA(string dateStr)
+        {
+            DateTime date;
+
+            dateStr = dateStr.Substring(3, 2) + "/" + dateStr.Substring(0, 2) + "/" + dateStr.Substring(6, 4);
+
+            if (!DateTime.TryParse(dateStr, out date))
+            {
+                return DateTime.MinValue;
+            }
+
+            return date;
+        }
+
+        public static string getDateDayName(DateTime date)
+        {
+            string dayName = "";
+
+
+            switch (date.DayOfWeek)
+            {
+                case DayOfWeek.Sunday:
+                    dayName = "א'";
+                    break;
+                case DayOfWeek.Monday:
+                    dayName = "ב'";
+                    break;
+                case DayOfWeek.Tuesday:
+                    dayName = "ג'";
+                    break;
+                case DayOfWeek.Wednesday:
+                    dayName = "ד'";
+                    break;
+                case DayOfWeek.Thursday:
+                    dayName = "ה'";
+                    break;
+                case DayOfWeek.Friday:
+                    dayName = "ו'";
+                    break;
+                case DayOfWeek.Saturday:
+                    dayName = "שבת";
+                    break;
+            }
+
+            return dayName;
         }
 
         public static void openKeyboard()
