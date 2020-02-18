@@ -72,13 +72,12 @@
 
             <EditText
                 android:id="@+id/lblDateTime"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="60dp"
-                android:layout_marginBottom="12dp"
+                android:layout_alignBottom="@id/btnDelete"
                 android:layout_alignEnd="@id/btnSetDate"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="-5dp"
                 android:text="הקש כאן לקבוע זמן תזכורת"
                 android:inputType="text"
                 android:textDirection="ltr"
@@ -96,10 +95,12 @@
                 android:layout_marginStart="2dp"
                 android:layout_marginBottom="0dp"
                 android:text="Delete"
-                android:background="@mipmap/delete3"
+                android:textColor="@android:color/black"
                 android:backgroundTint="@android:color/white"
                 app:backgroundTint="?android:attr/colorBackground"
                 android:backgroundTintMode="src_over" />
+            
+            <!--android:background="@mipmap/delete3"-->
 
             <Button
                 android:id="@+id/btnSave"
@@ -110,24 +111,28 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="2dp"
                 android:text="Save"
-                android:background="@mipmap/save4"
+                android:textColor="@android:color/black"
                 android:backgroundTint="@android:color/white"
                 app:backgroundTint="?android:attr/colorBackground"
-                android:backgroundTintMode="src_over" />
+                android:backgroundTintMode="multiply" />
+
+                <!--android:background="@mipmap/save4"-->
 
             <Button
                 android:id="@+id/btnSetDate"
                 style="@android:style/Widget.Material.Button.Colored"
-                android:layout_width="80dp"
+                android:layout_width="50dp"
                 android:layout_height="40dp"
                 android:layout_alignBottom="@id/btnDelete"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="80dp"
-                android:text="Date"
+                android:layout_alignEnd="@id/btnSave"
+                android:layout_marginRight="80dp"
+                android:text="D"
                 android:textColor="@android:color/black"
                 android:backgroundTint="@android:color/white"
                 app:backgroundTint="?android:attr/colorBackground"
                 android:backgroundTintMode="src_over" />
+
+                <!--android:layout_alignParentEnd="true"-->
 
             <TimePicker
                 android:layout_width="wrap_content"

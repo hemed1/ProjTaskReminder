@@ -9,9 +9,8 @@
     android:orientation="vertical"
     android:layoutDirection="rtl"
     android:textDirection="rtl"
-    android:maxHeight="200dp"
-    android:paddingBottom="3dp"
-    android:paddingTop="3dp"
+    android:paddingBottom="0dp"
+    android:paddingTop="2dp"
     android:paddingStart="5dp"
     android:paddingEnd="5dp"
     android:layout_marginStart="5dp"
@@ -29,18 +28,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:layout_marginEnd="3dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="2dp"
-        android:paddingBottom="2dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:paddingBottom="0dp"
         android:paddingTop="0dp"
         android:paddingStart="0dp"
         android:paddingEnd="0dp"       
         android:layoutDirection="rtl"
-        android:maxHeight="80dp"
+        android:minHeight="100dp"
         app:cardBackgroundColor="#FFF"
-        android:elevation="5dp"
+        app:cardElevation="5dp"
         app:cardCornerRadius="5dp"
-        app:cardUseCompatPadding="false">        
+        app:cardUseCompatPadding="true">        
 
         <!--app:cardElevation="13dp"
             android:elevation="5dp"-->
@@ -84,6 +83,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:layout_marginTop="-3dp"
+                    android:maxHeight="240dp"
                     android:text="Description"
                     android:textColor="#080808" />
     

@@ -320,6 +320,9 @@ namespace ProjTaskReminder
         {
             MainActivity.DBTaskReminder.DB.Delete<TBL_Tasks>(currentTask.getTaskID());  // "ID==" +currentTask.getTaskID().ToString(), null);
 
+            MainActivity.isShowTimerReminder = true;
+            MainActivity.MainMessageText = "נמחק";
+
             OnActivityResult(999, Result.Ok, inputIntent);
 
             //SetResult(Result.Ok, inputIntent);

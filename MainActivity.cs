@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Android.App;
 using Android.OS;
 using Android.Runtime;
@@ -79,7 +80,7 @@ namespace ProjTaskReminder
 
             //Utils.Utils.WriteToLog("Enter 3", true);
 
-            FillList();
+            FillListFromDB();
         }
 
         private void SetControlsIO()
@@ -200,22 +201,24 @@ namespace ProjTaskReminder
             
         }
 
-        [Obsolete]
+        
+        private void FillListFromDB()
+        {
+            TasksList = GetTasksFromDB();
+
+            FillList();
+        }
+
         private void FillList()
         {
-
             killOldTimers();
 
 
-            TasksList = GetTasksFromDB();
-             
-            for (int i=0; i < TasksList.Count; i++)
+            for (int i = 0; i < TasksList.Count; i++)
             {
                 try
                 {
                     Task task = TasksList[i];
-
-                    isShowTimerReminder = (CurrentTask != null && CurrentTask.getTaskID() == task.getTaskID());
 
                     //TimerStop(task);
 
@@ -230,13 +233,12 @@ namespace ProjTaskReminder
             }
 
 
-            listViewAdapter = new ListViewAdapter(context, TasksList);
-            simpleList.SetAdapter(listViewAdapter);
+            SortList();
 
-            //listViewAdapter.NotifyDataSetChanged();
+            //RefreshListAdapter();
 
 
-            //Utils.Utils.WriteToLog("Enter 4", true);
+            
 
             //for (int i = 0; i < countryList.Length; ++i)
             //{
@@ -249,7 +251,22 @@ namespace ProjTaskReminder
             // Directly from array
             //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, Resource.Layout.list_item, Resource.Id.txtTitle, countryList);
             //simpleList.SetAdapter(arrayAdapter);
+        }
 
+        private void SortList()
+        {
+            TasksList = TasksList.OrderBy(a => a.getDate()).ToList();
+
+            RefreshListAdapter();
+        }
+
+        [Obsolete]
+        private void RefreshListAdapter()
+        {
+            listViewAdapter = new ListViewAdapter(context, TasksList);
+            simpleList.SetAdapter(listViewAdapter);
+
+            listViewAdapter.NotifyDataSetChanged();
         }
 
         private bool ConnectToDB()
@@ -472,9 +489,32 @@ namespace ProjTaskReminder
         {
             //base.OnActivityReenter(requestCode,resultCode, data);
 
-            if (resultCode == Result.Ok && requestCode== SHOW_SCREEN_TASK_DETAILS)
+            if (resultCode == Result.Ok)
             {
-                FillList();
+                switch (requestCode)
+                {
+                    case SHOW_SCREEN_TASK_DETAILS:
+                        {
+                            if (ActivityTaskDetails.isNewMode)
+                            {
+                                TasksList.Add(CurrentTask);
+                                SortList();
+                            }
+                            else
+                            {
+                                SortList();
+                                //FillList();
+                            }
+                            break;
+                        }
+                    // Delete
+                    case 999:
+                        {
+                            FillList();
+                            break;
+                        }
+                }
+
             }
 
             
@@ -529,10 +569,12 @@ namespace ProjTaskReminder
 
             if (isShowTimerReminder && !MainMessageText.Trim().Equals(""))
             {
-                string text = "יצר תזכורת ביום " + " " + Utils.Utils.getDateDayName(timerDate.Value) + "  " + dateStr;
+                string text = "יצר תזכורת ביום " + Utils.Utils.getDateDayName(timerDate.Value) + "  " + dateStr;
                 MainMessageText = MainMessageText + " - " + text;
                 showGlobalMessageOnToast();
             }
+
+            isShowTimerReminder = false;
 
 
             //var second = new Thread(new ThreadStart(secondThread));
