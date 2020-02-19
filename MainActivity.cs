@@ -497,11 +497,14 @@ namespace ProjTaskReminder
                         {
                             if (ActivityTaskDetails.isNewMode)
                             {
+                                TimerRun(CurrentTask);
                                 TasksList.Add(CurrentTask);
                                 SortList();
                             }
                             else
                             {
+                                TimerStop(CurrentTask);
+                                TimerRun(CurrentTask);
                                 SortList();
                                 //FillList();
                             }
@@ -510,7 +513,10 @@ namespace ProjTaskReminder
                     // Delete
                     case 999:
                         {
-                            FillList();
+                            TimerStop(CurrentTask);
+                            TasksList.Remove(CurrentTask);
+                            SortList();
+                            //FillList();
                             break;
                         }
                 }

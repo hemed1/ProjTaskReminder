@@ -149,7 +149,7 @@ namespace ProjTaskRemindet.Utils
                 listViewHolder.description.SetText(task.getDescription(), TextView.BufferType.Normal);
                 if (!task.getDate_due().Equals(""))
                 {
-                    listViewHolder.date_date.SetText(task.getDate_due() + "  " + task.getTime_due() + "  יום " + ProjTaskReminder.Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
+                    listViewHolder.date_date.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
                 }
             }
 
