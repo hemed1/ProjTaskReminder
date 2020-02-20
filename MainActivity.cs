@@ -19,6 +19,9 @@ using System.Timers;
 using System.Threading;
 using System.IO;
 using Java.Util;
+using ProjTaskReminder.Utils;
+using Android.Text;
+using Android.Text.Style;
 //using System.Threading.Timer;
 
 
@@ -28,24 +31,24 @@ namespace ProjTaskReminder
     public class MainActivity : AppCompatActivity   //, ListView.IOnItemClickListener
     {
 
-        public static string    DB_TASK_DB_NAME = "TaskReminder.db";
-        public static string    DB_TABLE_NAME = "TBL_Tasks";
-        public static string    DB_TABLE_SETTING = "TBL_Setting";
-        private static string   DB_FIELDNAME_ID = "TaskID";
-        private static string   DB_FIELDNAME_TITLE = "Title";
-        private static string   DB_FIELDNAME_DESC = "Description";
-        private static string   DB_FIELDNAME_DATE = "DateDue";
-        private static string   DB_FIELDNAME_REPEAT = "Repeat";
-        private static string    DB_FIELDNAME_COLOR = "Color";
-        private static string    DB_FIELDNAME_LAST_UPDATE = "LastUpdate";
-        private static string    DB_FIELDNAME_IS_ARCHIVE = "IsArchive";
+        public static string DB_TASK_DB_NAME = "TaskReminder.db";
+        public static string DB_TABLE_NAME = "TBL_Tasks";
+        public static string DB_TABLE_SETTING = "TBL_Setting";
+        private static string DB_FIELDNAME_ID = "TaskID";
+        private static string DB_FIELDNAME_TITLE = "Title";
+        private static string DB_FIELDNAME_DESC = "Description";
+        private static string DB_FIELDNAME_DATE = "DateDue";
+        private static string DB_FIELDNAME_REPEAT = "Repeat";
+        private static string DB_FIELDNAME_COLOR = "Color";
+        private static string DB_FIELDNAME_LAST_UPDATE = "LastUpdate";
+        private static string DB_FIELDNAME_IS_ARCHIVE = "IsArchive";
 
         // The code for get result from TasDetails screen
-        public const int        SHOW_SCREEN_TASK_DETAILS = 1234;
+        public const int SHOW_SCREEN_TASK_DETAILS = 1234;
 
         private ListView simpleList;    //RecyclerView
         private ListViewAdapter listViewAdapter;
-        public static DBTaskReminder      DBTaskReminder;
+        public static DBTaskReminder DBTaskReminder;
         private List<Task> TasksList = new List<Task>();
 
         private static Context context;
@@ -58,6 +61,9 @@ namespace ProjTaskReminder
         public static bool isShowTimerReminder;
         private event Action ActionOnTaskDateDue;
         private int TimerInterval;
+        private MH_Notification mh_Notification;
+
+        private Android.Support.V4.App.NotificationCompat.Builder notificationBuilder;
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -72,7 +78,7 @@ namespace ProjTaskReminder
 
             SetControlsIO();
 
-            //Utils.Utils.WriteToLog("Enter 2", true);
+            Initialize();
 
             ConnectToDB();
 
@@ -103,7 +109,7 @@ namespace ProjTaskReminder
             TasksList = new List<Task>();
 
             listViewAdapter = new ListViewAdapter(context, TasksList);
-            
+
             //listViewAdapter.SetOnClickListener += new EventHandler(OnItemClick);
             //listViewAdapter.SetOnItemClick += new EventHandler(OnItemClickFromAdapter);
 
@@ -120,9 +126,6 @@ namespace ProjTaskReminder
 
             bntMainMusic.Click += btnMainMusic_Click;
 
-            TimersArray = new List<object[]>();
-
-            TimerInterval = 600000;  // 1000 * 60 * 30
 
             // RecyclerView
             //LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -182,6 +185,27 @@ namespace ProjTaskReminder
 
         }
 
+        private void Initialize()
+        {
+
+            TimersArray = new List<object[]>();
+
+            TimerInterval = 600000;  // 1000 * 60 * 30
+
+            //mainActivityServices = new MainActivityServices(MainActivity.this, this, this);
+            //IsManualHtml = false;
+            //setControlsColors();
+
+            Utils.Utils.activity = this;
+            Utils.Utils.context = context;
+
+            // Open Notification Channel. Must be in the start init
+            // Done again in 'Util.createNotificationBuilder()'
+            mh_Notification = new MH_Notification(this, context);
+            mh_Notification.createNotificationChannel();
+
+        }
+
         private void btnMainMusic_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(ActivityMusic));
@@ -198,10 +222,10 @@ namespace ProjTaskReminder
 
             StartActivityForResult(intent, 2345);
             //context.StartActivity(intent);
-            
+
         }
 
-        
+
         private void FillListFromDB()
         {
             TasksList = GetTasksFromDB();
@@ -238,7 +262,7 @@ namespace ProjTaskReminder
             //RefreshListAdapter();
 
 
-            
+
 
             //for (int i = 0; i < countryList.Length; ++i)
             //{
@@ -303,7 +327,7 @@ namespace ProjTaskReminder
                 task.setTaskID(record.ID);
                 task.setTitle(record.Title);
                 task.setDescription(record.Description);
-                if (!string.IsNullOrEmpty(record.DateDue) && record.DateDue!=null && !record.DateDue.Trim().Equals(""))
+                if (!string.IsNullOrEmpty(record.DateDue) && record.DateDue != null && !record.DateDue.Trim().Equals(""))
                 {
                     task.setDate_due(record.DateDue.Trim().Substring(0, 10));
                     task.setTime_due(record.DateDue.Trim().Substring(11, 5));
@@ -332,7 +356,7 @@ namespace ProjTaskReminder
             values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_TITLE, currentTask.getTitle()));
             //Log.d("Just before save", currentTask.getDescriptionWithHtml());
             //values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_DESC, currentTask.getDescriptionWithHtml()));     // Html.toHtml(currentTask.getDescription())
-            values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_DESC, currentTask.getDescription()));
+            values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_DESC, currentTask.getDescriptionWithHtml()));
             values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_DATE, strDateTime));
             //values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_COLOR, currentTask.getBackgroundColor()));
             //values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_REPEAT, currentTask.getRepeat()));
@@ -433,7 +457,7 @@ namespace ProjTaskReminder
 
         private void btnMainNew_OnClick(object sender, EventArgs eventArgs)
         {
-            View view = (View) sender;
+            View view = (View)sender;
 
             //Toast.MakeText(view.Context, "Click", ToastLength.Long).Show();
 
@@ -449,29 +473,29 @@ namespace ProjTaskReminder
         //{
         //    View view = (View)sender;
 
-            //simpleList.Selected;
-            //simpleList.SelectedItem;
-            //simpleList.SelectedView;
+        //simpleList.Selected;
+        //simpleList.SelectedItem;
+        //simpleList.SelectedView;
 
-            //if (simpleList.SelectedItemPosition > 0 && simpleList.SelectedItemPosition < TasksList.Count)
-            //{
-            //    Task task = TasksList[simpleList.SelectedItemPosition];
+        //if (simpleList.SelectedItemPosition > 0 && simpleList.SelectedItemPosition < TasksList.Count)
+        //{
+        //    Task task = TasksList[simpleList.SelectedItemPosition];
 
-            //    DBTaskReminder.DB.Delete<TBL_Tasks>(task.getTaskID());  // "ID==" +currentTask.getTaskID().ToString(), null);
+        //    DBTaskReminder.DB.Delete<TBL_Tasks>(task.getTaskID());  // "ID==" +currentTask.getTaskID().ToString(), null);
 
-            //    Toast.MakeText(view.Context, "Deletet", ToastLength.Long).Show();
+        //    Toast.MakeText(view.Context, "Deletet", ToastLength.Long).Show();
 
-            //    FillList();
-            //}
+        //    FillList();
+        //}
 
-            //Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
-            //              .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
+        //Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
+        //              .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
         //}
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            
+
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
@@ -523,7 +547,7 @@ namespace ProjTaskReminder
 
             }
 
-            
+
         }
 
         private void TimerRun(Task currentTask)
@@ -561,17 +585,13 @@ namespace ProjTaskReminder
 
             TimerInterval = 30000;  // 30 seconds
 
-            Thread timer = new Thread(new ThreadStart(TimerThreadExecute));
 
-            addTimerToKillArray(currentTask.getTaskID(), timer, 0);     // timer timerTask);
-
-            currentTask.setTimer(timer);
-            //currentTask.setTimer_task(timerTask);
-
-            timer.Start();
+            TimerExecute2(currentTask);
+            //TimerExecute(currentTask);
+            //TimerExecute3(currentTask, timerDate);
 
 
-            dateStr = Utils.Utils.getDateFormattedString(timerDate.Value); 
+            dateStr = Utils.Utils.getDateFormattedString(timerDate.Value);
 
             if (isShowTimerReminder && !MainMessageText.Trim().Equals(""))
             {
@@ -583,57 +603,63 @@ namespace ProjTaskReminder
             isShowTimerReminder = false;
 
 
-            //var second = new Thread(new ThreadStart(secondThread));
-            //btnStart.TouchUpInside += delegate {
-            // System.Timers.Timer timer = new System.Timers.Timer();
-            //TimerTask timerTask = new TimerTask(picsTimer_onTick);
-            //timerTask.Run += picsTimer_onTick2;
-            //Java.Util.Timer timer2 = new Java.Util.Timer();
-            //timer2.Schedule(timerTask, timerDate);
-            //////timer.BeginInit();   //.S.schedule(timerTask, timerDate);
-            //timer2.AutoReset = true;
-            //timer.Interval = 1000;   //1 * 60 * 60 * 1000 = 3600000;
-            //timer2.Enabled = true;
-            //////System.ComponentModel.ISynchronizeInvoke
-            //////timer.SynchronizingObject = currentTask
-            //////ElapsedEventHandler(object sender, ElapsedEventArgs e)
-            /////TimerCallback timerCallback = new TimerCallback(picsTimer_onTick(object, ElapsedEventArgs));
-            //timer.Elapsed += picsTimer_onTick(currentTask, null);
-            //timer.Start();
-            //JobSchedulerService jobSchedulerService = new JobSchedulerService()
-            //CustomTimerTask customTimerTask = new CustomTimerTask(this);
-            //timer.ScheduleAtFixedRate(customTimerTask, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute), 5000);
-            //TimersDescriptionAttribute timersDescriptionAttribute = new TimersDescriptionAttribute("Raised");
-            //
-            // Run the Timer
-            //            Java.Util.Timer timer = new Java.Util.Timer();
+            //MyTask timerTask = new MyTask(timer, currentTask);
+            //timerTask.IntervalTime = 36000;
+            //timerTask.ActionOnPlayingMusic += picsTimer_onTick;     // (currentTask, null);  //timerTask.picsTimer_onTick;
 
-            //            MyTask timerTask = new MyTask(timer, currentTask);
+        }
 
-            //            timerTask.IntervalTime = 36000;
-            //            timerTask.ActionOnPlayingMusic += picsTimer_onTick;     // (currentTask, null);  //timerTask.picsTimer_onTick;
-            //timerTask.ActionOnPlayingMusic += timerTask.picsTimer_onTick;
-            //{
-            //    @Override
-            //    public void run()
-            //{
-            //    picsTimer_onTick(currentTask);
-            //}
-            //
-            //            timer.Schedule(timerTask, 4, 3000);  //, timerDate);
-            //timer.Notify();
+        #region Timer as System.Threading.Thread
 
+        private void TimerExecute(Task currentTask)
+        {
+            System.Threading.Thread timer = new System.Threading.Thread(new ThreadStart(TimerThreadExecute));
 
+            //Thread second = new Thread(new ThreadStart(secondThread));
+
+            currentTask.setTimer(timer);
+            addTimerToKillArray(currentTask.getTaskID(), timer, null);     // timer timerTask);
+
+            timer.Start();
         }
 
         private void TimerThreadExecute()
         {
-            TimerExecute(CurrentTask, null);
+            TimerRunning(CurrentTask, null);
         }
 
- 
-        //ElapsedEventHandler(object sender, ElapsedEventArgs e)
-        private ElapsedEventHandler TimerExecute(object sender, ElapsedEventArgs args)
+        private void TimerStop(Task currentTask)
+        {
+            int index = searchIDInTimersList(currentTask.getTaskID());
+
+            if (index == -1)
+            {
+                return;
+            }
+
+            object[] taskTimers = TimersArray[index];
+
+            System.Threading.Thread timer = (Thread)taskTimers[1];
+            TimersArray.Remove(taskTimers);
+
+            //System.Timers.Timer timer = (System.Timers.Timer)timersArray[1];
+            //Java.Util.Timer timer = (Java.Util.Timer)timersArray[1];
+
+            if (timer != null && timer.IsAlive)
+            {
+                timer.Abort();
+                //timer = null;
+                //TimerTask timerTask = (TimerTask)timersArray[2];
+                //timerTask.cancel();
+                //timer = null;
+                //timerTask = null;
+                currentTask.setTimer(timer);
+                currentTask.setTimer_task(null);
+            }
+
+        }
+
+        private ElapsedEventHandler TimerRunning(object sender, ElapsedEventArgs args)
         {
 
             if (sender == null)
@@ -643,10 +669,10 @@ namespace ProjTaskReminder
 
             long counter = 0;
             // Limited for 3 Days
-            long limitSeconds = 1000 * 60 * 60 * 24 * 3;       
-            DateTime dateNow;
-            Task currentTask = (Task)sender;
+            long limitSeconds = 1000 * 60 * 60 * 24 * 3;
 
+
+            Task currentTask = (Task)sender;
 
 
 
@@ -656,7 +682,7 @@ namespace ProjTaskReminder
             }
 
 
-            dateNow = Utils.Utils.getDateFixed(DateTime.Now);
+            DateTime dateNow = Utils.Utils.getDateFixed(DateTime.Now);
             string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
             string strDateTask = Utils.Utils.getDateFormattedString(currentTask.getDate().Value);
 
@@ -680,6 +706,8 @@ namespace ProjTaskReminder
                 //};
             }
 
+
+            // Do the Job - Notification
             picsTimer_onTick(currentTask);
 
             TimerStop(currentTask);
@@ -688,9 +716,114 @@ namespace ProjTaskReminder
             return null;    // new ElapsedEventHandler(null, new ElapsedEventArgs());
         }
 
+        #endregion
+
+
+        #region Timer as System.Timers.Timer
+
+        private void TimerExecute2(Task currentTask)
+        {
+            System.Timers.Timer timer = new System.Timers.Timer();
+
+            currentTask.setTimer(timer);
+            addTimerToKillArray(currentTask.getTaskID(), timer, null);     // timer timerTask);
+
+            //timer.BeginInit();   
+            timer.AutoReset = true;
+            timer.Elapsed += TimerRunning2;
+            timer.Interval = TimerInterval; // 30 seconds
+            timer.Enabled = true;
+            //timer.Start();
+
+            //timer.ScheduleAtFixedRate(customTimerTask, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute), 5000);
+        }
+
+        private void TimerRunning2(object sender, ElapsedEventArgs e)
+        {
+            //Toast.MakeText(this, "Timer Ticking...", ToastLength.Short).Show();
+
+            Task currentTask = CurrentTask;
+
+            DateTime dateNow = Utils.Utils.getDateFixed(DateTime.Now);
+            string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
+            string strDateTask = Utils.Utils.getDateFormattedString(CurrentTask.getDate().Value);
+
+            if (strDateNow.CompareTo(strDateTask) >= 0)
+            {
+                System.Timers.Timer timer = ((System.Timers.Timer)sender);
+
+                TimerStop2(currentTask);
+
+                // Do the Job - Notification
+                picsTimer_onTick(currentTask);
+            }
+
+        }
+
+        private void TimerStop2(Task currentTask)
+        {
+            int index = searchIDInTimersList(currentTask.getTaskID());
+
+            if (index == -1)
+            {
+                return;
+            }
+
+            object[] taskTimers = TimersArray[index];
+
+            System.Timers.Timer timer = (System.Timers.Timer)taskTimers[1];
+            TimersArray.Remove(taskTimers);
+
+            if (timer != null && timer.Enabled)
+            {
+                timer.Stop();
+                timer.Close();
+                timer.Dispose();
+                timer = null;
+
+                currentTask.setTimer(timer);
+                currentTask.setTimer_task(null);
+            }
+        }
+
+        #endregion
+
+
+        #region Tier as Java.Util.Timer
+
+        private void TimerExecute3(Task currentTask, Date timerDate)
+        {
+            Java.Util.TimerTask timerTask = null;  // = new Java.Util.TimerTask(picsTimer_onTick);
+            long ticks = timerTask.ScheduledExecutionTime();
+            timerTask.Run();
+
+            Java.Util.Timer timer = new Java.Util.Timer();
+            timer.Schedule(timerTask, timerDate);
+
+            //currentTask.setTimer(timer);
+            //addTimerToKillArray(currentTask.getTaskID(), timer, 0);     // timer timerTask);
+
+
+            // Run the Timer
+            //timerTask.ActionOnPlayingMusic += timerTask.picsTimer_onTick;
+            //{
+            //    @Override
+            //    public void run()
+            //{
+            //    picsTimer_onTick(currentTask);
+            //}
+            //
+            //            timer.Schedule(timerTask, 4, 3000);  //, timerDate);
+            //timer.Notify();
+
+        }
+
+        #endregion
+
+
         private void picsTimer_onTick(Task task)
         {
-
+            // Play Notification sound
             int resourceID = Resource.Raw.deduction;
             Android.Media.MediaPlayer mediaPlayer = Android.Media.MediaPlayer.Create(this, resourceID);   // uri);
             mediaPlayer.SetScreenOnWhilePlaying(true);
@@ -709,39 +842,15 @@ namespace ProjTaskReminder
             //return strDateNow;
         }
 
-        private void TimerStop(Task currentTask)
+        private void addTimerToKillArray(int taskID, System.Timers.Timer timer, object timerTask)  //  | Java.Util.Timer
         {
-            int index = searchIDInTimersList(currentTask.getTaskID());
+            Object[] timersArray = new Object[3];
 
-            if (index == -1)
-            {
-                return;
-            }
+            timersArray[0] = taskID;
+            timersArray[1] = timer;
+            timersArray[2] = timerTask;
 
-            object[] timersArray = TimersArray[index];
-
-            Thread timer = (Thread)timersArray[1];
-            //System.Timers.Timer timer = (System.Timers.Timer)timersArray[1];
-            //Java.Util.Timer timer = (Java.Util.Timer)timersArray[1];
-
-            if (timer != null && timer.IsAlive)
-            {
-                timer.Abort();
-                //timer = null;
-                //TimerTask timerTask = (TimerTask)timersArray[2];
-                //timer.Cancel();
-                //timer.Dispose();
-                //timer = null;
-                //timer.Stop();
-                //timer.Dispose();
-                //timerTask.cancel();
-                //timer = null;
-                //timerTask = null;
-                currentTask.setTimer(null);
-                currentTask.setTimer_task(null);
-                //Log.d("Destroy Timer ", currentTask.getTitle());
-            }
-
+            TimersArray.Add(timersArray);
         }
 
         private void addTimerToKillArray(int taskID, Thread timer, object timerTask)  // System.Timers.Timer | Java.Util.Timer
@@ -848,8 +957,50 @@ namespace ProjTaskReminder
 
         protected void showNotifications(Task currentTask)
         {
-            
-            // Sgow android notification
+            //Util.turnOnScreen(this);
+
+            // Show android notification
+            showNotificationToScreen(currentTask);
+
+            //showAlarmScreen(currentTask);
+
+            //showReminderDialog(currentTask);
+
+
+        }
+
+        private void showNotificationToScreen(Task currentTask)
+        {
+
+            if (currentTask == null)
+            {
+                return;
+            }
+
+            int notificationID = currentTask.getTaskID();
+
+
+            String title = currentTask.getTitle().Trim();
+            string titleText = "";
+            SpannableString titleSpannableString = new SpannableString(titleText);
+
+            if (!title.Equals(""))
+            {
+                titleText = title;  //.SubSequence(0, title.length());   // + " - ";    // + "\n";
+                titleSpannableString = new SpannableString(titleText);
+                StyleSpan styleSpan = new StyleSpan(Android.Graphics.TypefaceStyle.Bold);   // Typeface Typeface.BOLD);
+                titleSpannableString.SetSpan(styleSpan, 0, titleSpannableString.Length(), SpanTypes.ExclusiveExclusive); // .SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+
+            SpannedString description = currentTask.getDescription();
+
+            SpannableStringBuilder builder = new SpannableStringBuilder();
+            builder.Append(titleSpannableString);
+            builder.Append(description);
+
+            //Log.d("Noti", builder.subSequence(0, builder.length()-0).toString());
+
+            notificationBuilder = mh_Notification.createNotificationBuilder(titleSpannableString, description, Resource.Mipmap.note1, notificationID);  // getString(R.string.app_name), builder
 
         }
 

@@ -9,12 +9,12 @@
     android:orientation="vertical"
     android:layoutDirection="rtl"
     android:textDirection="rtl"
-    android:paddingBottom="3dp"
-    android:paddingTop="5dp"
+    android:paddingTop="3dp"
+    android:paddingBottom="6dp"
     android:paddingStart="5dp"
     android:paddingEnd="5dp"
-    android:layout_marginStart="3dp"
-    android:layout_marginEnd="3dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="11dp"
     android:layout_marginTop="0dp"
     android:layout_marginBottom="0dp">
 
@@ -26,12 +26,12 @@
         android:id="@+id/cardTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
-        android:paddingBottom="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
         android:paddingTop="0dp"
+        android:paddingBottom="00dp"
         android:paddingStart="0dp"
         android:paddingEnd="0dp"       
         android:layoutDirection="rtl"
@@ -58,11 +58,12 @@
                 android:layout_height="match_parent"
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
-                android:paddingTop="1dp"
+                android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp">
 
+                <!--android:background="@android:color/holo_blue_light"-->
 
                 <TextView
                     android:id="@+id/txtTitle"
@@ -81,8 +82,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:layout_marginTop="-3dp"
-                    android:maxHeight="220dp"
+                    android:layout_marginTop="-4dp"
+                    android:maxHeight="230dp"
                     android:text="Description"
                     android:textColor="#080808" />
     

@@ -16,6 +16,7 @@ using Android.Views;
 using Android.Widget;
 using Java.Util;
 using ProjTaskReminder.Model;
+using System.Timers;
 
 namespace ProjTaskReminder
 {
@@ -33,7 +34,22 @@ namespace ProjTaskReminder
         private TextView lblPosNow;
         private TextView lblPosLeft;
         private int CurrentSongPosition;
+        private ImageView imgSongArtist1;
+        private ImageView imgSongArtist2;
+        private ImageView imgSongArtist3;
 
+
+        private TimerTask TimerTaskSongProgress;
+        private System.Timers.Timer TimerSongProgress;
+        private TimerTask picsTimerTask;
+        private System.Timers.Timer picsTimer;
+        private bool IsTimerWork;
+        private bool IsHaveToScroll;
+        private int keepX;
+        private int PICS_TIMER_INTERVAL = 18;
+        private int PICS_TIMER_SCROLL_DELTA = 5;
+        private HorizontalScrollView scrHorizon;
+        private event Action ActionOnPicsScrolling;
 
 
         public static Context context;
@@ -70,6 +86,10 @@ namespace ProjTaskReminder
             lblPosNow = (TextView)FindViewById(Resource.Id.lblPosNow);
             lblPosLeft = (TextView)FindViewById(Resource.Id.lblPosLeft);
 
+            imgSongArtist1 = (ImageView)FindViewById(Resource.Id.imgSongArtist1);
+            imgSongArtist2 = (ImageView)FindViewById(Resource.Id.imgSongArtist2);
+            imgSongArtist3 = (ImageView)FindViewById(Resource.Id.imgSongArtist3);
+            scrHorizon = (HorizontalScrollView)FindViewById(Resource.Id.scrHorizon);
 
             ListPositionIndex = 0;
             ListItemsRecycler = new List<KeyValuePair<string, ListItemSong>>();
@@ -99,6 +119,8 @@ namespace ProjTaskReminder
 
             isPlayingNow = false;
             CurrentSongPosition = 0;
+            IsTimerWork = false;
+            IsHaveToScroll = true;
         }
 
         private void PlaySongPlay(object sender, EventArgs eventArgs)
@@ -118,6 +140,8 @@ namespace ProjTaskReminder
                     isPlayingNow = true;
                     LoadSongIntoPlayer(ListPositionIndex, false);
                 }
+                IsHaveToScroll = !IsHaveToScroll;
+                //setPicsScroll();
             }
             else
             {
@@ -448,106 +472,211 @@ namespace ProjTaskReminder
             base.OnDestroy();
         }
 
-    //    private void picsTimer_onTick()
-    //    {
-    //        boolean isGetToEdge = false;
+        private void setPicsScroll()
+        {
 
-    //        scrHorizon.smoothScrollTo(keepX, 0);
-    //        //scrHorizon.scrollTo(keepX, 0);
-    //        //scrHorizon.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+            if (IsHaveToScroll)
+            {
+                if (IsTimerWork)
+                {
+                    TimerStop();
+                }
+                return;
+            }
 
-    //        keepX += PICS_TIMER_SCROLL_DELTA;
+            ActionOnPicsScrolling += TimerRun();
 
-    //        if (PICS_TIMER_SCROLL_DELTA > 0)
-    //        {
-    //            if (keepX > (imgSongArtist1.getWidth() * 3) - 1000)  //scrHorizon.getRight())
-    //            {
-    //                //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist3, 2);
-    //                isGetToEdge = true;
-    //            }
-    //        }
-    //        else
-    //        {
-    //            if (keepX < PICS_TIMER_SCROLL_DELTA * -1 - 450)
-    //            {
-    //                //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist1, 1);
-    //                isGetToEdge = true;
-    //            }
-    //        }
+            scrHorizon.PostDelayed(ActionOnPicsScrolling, 1000);    
+            //{
+                //new Runnable()
+                //public void run()
+                //{
+                //    if (!IsTimerWork)
+                //    {
+                //        TimerRun();
+                //    }
+                //}
+            //}
 
-    //        if (isGetToEdge)
-    //        {
-    //            PICS_TIMER_SCROLL_DELTA = PICS_TIMER_SCROLL_DELTA * -1;
-    //            keepX += PICS_TIMER_SCROLL_DELTA;
-    //        }
+        }
 
-    //    }
+        private Action TimerRun()
+        {
+            IsTimerWork = true;
 
-    //    private void TimerRunSongProgress()
-    //    {
-    //        TimerTaskSongProgress = new TimerTask()
-    //    {
-    //        @Override
-    //        public void run()
-    //        {
-    //            TimerSongProgress_onTick();
-    //        }
-    //    };
+            //picsTimerTask = new TimerTask()
+            //{
+            //    @Override
+            //    public void run()
+            //    {
+            //        picsTimer_onTick();
+            //    }
+            //};
 
-    //    // Run the Timer
-    //    TimerSongProgress = new Timer();
-    //    TimerSongProgress.schedule(TimerTaskSongProgress, 900, 900);
-    //}
+            // Run the Timer
+            picsTimer = new System.Timers.Timer();
+            picsTimer.Interval = 500;
+            picsTimer.AutoReset = true;
+            picsTimer.Elapsed += picsTimer_onTick;
+            picsTimer.Enabled = true;
+            //picsTimer.schedule(picsTimerTask, 500, PICS_TIMER_INTERVAL);
 
-    //    private void TimerStopSongProgress()
-    //    {
-    //        if (TimerSongProgress != null)
-    //        {
-    //            TimerSongProgress.cancel();
-    //            TimerSongProgress.purge();
-    //            TimerTaskSongProgress.cancel();
-    //            TimerSongProgress = null;
-    //            TimerTaskSongProgress = null;
-    //        }
-    //    }
+            return null;
+        }
 
-    //    private void TimerSongProgress_onTick()
-    //    {
-    //        int newPosition = mediaPlayer.getCurrentPosition();
-    //        barSeek.setProgress(newPosition);
-    //    }
+        private void TimerStop()
+        {
+            if (IsTimerWork)
+            {
+                picsTimer.Stop();
+                picsTimer.Close();
+                picsTimer.Dispose();
+                picsTimer = null;
+                //picsTimerTask.cancel();
+                //picsTimerTask = null;
+                //picsTimerTask.run();
+            }
+            IsTimerWork = false;
+        }
+
+        private void picsTimer_onTick(object sender, ElapsedEventArgs e)
+        {
+            bool isGetToEdge = false;
 
 
-    //    private void TimerRun()
-    //    {
-    //        IsTimerWork = true;
-    //        picsTimerTask = new TimerTask()
-    //        {
-    //            @Override
-    //            public void run()
-    //        {
-    //            picsTimer_onTick();
-    //        }
-    //        };
+            scrHorizon.SmoothScrollTo(keepX, 0);
 
-    //    // Run the Timer
-    //    picsTimer = new Timer();
-    //    picsTimer.schedule(picsTimerTask, 500, PICS_TIMER_INTERVAL);
-    //    }
+            //scrHorizon.scrollTo(keepX, 0);
+            //scrHorizon.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
 
-    //    private void TimerStop()
-    //    {
-    //        if (IsTimerWork)
-    //        {
-    //            picsTimer.cancel();
-    //            picsTimer.purge();
-    //            picsTimerTask.cancel();
-    //            picsTimer = null;
-    //            picsTimerTask = null;
-    //            //picsTimerTask.run();
-    //        }
-    //        IsTimerWork = false;
-    //    }
+            keepX += PICS_TIMER_SCROLL_DELTA;
+
+            if (PICS_TIMER_SCROLL_DELTA > 0)
+            {
+                if (keepX > (imgSongArtist1.Width * 3) - 500)  //scrHorizon.getRight())
+                {
+                    //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist3, 2);
+                    isGetToEdge = true;
+                }
+            }
+            else
+            {
+                if (keepX < PICS_TIMER_SCROLL_DELTA * -1 - 450)
+                {
+                    //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist1, 1);
+                    isGetToEdge = true;
+                }
+            }
+
+            if (isGetToEdge)
+            {
+                PICS_TIMER_SCROLL_DELTA = PICS_TIMER_SCROLL_DELTA * -1;
+                keepX += PICS_TIMER_SCROLL_DELTA;
+            }
+
+        }
+
+
+        //    private void picsTimer_onTick()
+        //    {
+        //        boolean isGetToEdge = false;
+
+        //        scrHorizon.smoothScrollTo(keepX, 0);
+        //        //scrHorizon.scrollTo(keepX, 0);
+        //        //scrHorizon.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+
+        //        keepX += PICS_TIMER_SCROLL_DELTA;
+
+        //        if (PICS_TIMER_SCROLL_DELTA > 0)
+        //        {
+        //            if (keepX > (imgSongArtist1.getWidth() * 3) - 1000)  //scrHorizon.getRight())
+        //            {
+        //                //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist3, 2);
+        //                isGetToEdge = true;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            if (keepX < PICS_TIMER_SCROLL_DELTA * -1 - 450)
+        //            {
+        //                //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist1, 1);
+        //                isGetToEdge = true;
+        //            }
+        //        }
+
+        //        if (isGetToEdge)
+        //        {
+        //            PICS_TIMER_SCROLL_DELTA = PICS_TIMER_SCROLL_DELTA * -1;
+        //            keepX += PICS_TIMER_SCROLL_DELTA;
+        //        }
+
+        //    }
+
+        //    private void TimerRunSongProgress()
+        //    {
+        //        TimerTaskSongProgress = new TimerTask()
+        //    {
+        //        @Override
+        //        public void run()
+        //        {
+        //            TimerSongProgress_onTick();
+        //        }
+        //    };
+
+        //    // Run the Timer
+        //    TimerSongProgress = new Timer();
+        //    TimerSongProgress.schedule(TimerTaskSongProgress, 900, 900);
+        //}
+
+        //    private void TimerStopSongProgress()
+        //    {
+        //        if (TimerSongProgress != null)
+        //        {
+        //            TimerSongProgress.cancel();
+        //            TimerSongProgress.purge();
+        //            TimerTaskSongProgress.cancel();
+        //            TimerSongProgress = null;
+        //            TimerTaskSongProgress = null;
+        //        }
+        //    }
+
+        //    private void TimerSongProgress_onTick()
+        //    {
+        //        int newPosition = mediaPlayer.getCurrentPosition();
+        //        barSeek.setProgress(newPosition);
+        //    }
+
+
+        //    private void TimerRun()
+        //    {
+        //        IsTimerWork = true;
+        //        picsTimerTask = new TimerTask()
+        //        {
+        //            @Override
+        //            public void run()
+        //        {
+        //            picsTimer_onTick();
+        //        }
+        //        };
+
+        //    // Run the Timer
+        //    picsTimer = new Timer();
+        //    picsTimer.schedule(picsTimerTask, 500, PICS_TIMER_INTERVAL);
+        //    }
+
+        //    private void TimerStop()
+        //    {
+        //        if (IsTimerWork)
+        //        {
+        //            picsTimer.cancel();
+        //            picsTimer.purge();
+        //            picsTimerTask.cancel();
+        //            picsTimer = null;
+        //            picsTimerTask = null;
+        //            //picsTimerTask.run();
+        //        }
+        //        IsTimerWork = false;
+        //    }
 
     }
 

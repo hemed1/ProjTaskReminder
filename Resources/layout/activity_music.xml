@@ -20,7 +20,64 @@
         android:paddingStart="1dp"
         android:paddingEnd="1dp">
 
-        <ImageView
+
+       <HorizontalScrollView
+            android:id="@+id/scrHorizon"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="1dp">
+
+
+                <ImageView
+                    android:id="@+id/imgSongArtist1"
+                    android:layout_width="410dp"
+                    android:layout_height="310dp"
+                    android:src="@mipmap/music1"                    
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitCenter" />
+
+                <ImageView
+                    android:id="@+id/imgSongArtist2"
+                    android:layout_width="410dp"
+                    android:layout_height="310dp"
+                    android:src="@mipmap/music3"                    
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitCenter" />
+
+                <ImageView
+                    android:id="@+id/imgSongArtist3"
+                    android:layout_width="410dp"
+                    android:layout_height="310dp"
+                    android:src="@mipmap/music2"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitCenter" />
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+<!--        <ImageView
             android:id="@+id/imageMusic1"
             android:layout_width="410dp"
             android:layout_height="310dp"
@@ -31,7 +88,7 @@
             android:layout_marginRight="20dp"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"/>
-
+-->
         <TextView
             android:id="@+id/lblAlbum"
             android:layout_width="match_parent"

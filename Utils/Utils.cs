@@ -9,6 +9,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Text;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
@@ -18,7 +19,7 @@ namespace ProjTaskReminder.Utils
 
     public static class Utils
     {
-        private const string                LINE_SEPERATOR = "\n";
+        public const string                LINE_SEPERATOR = "\n";
         public static string                LOG_FILE_PATH;
         public static string                LOG_FILE_NAME;
 
@@ -323,6 +324,40 @@ namespace ProjTaskReminder.Utils
             }
 
             return dayName;
+        }
+
+        public static SpannedString trimSpannedText(SpannedString spannedInput)
+        {
+            SpannedString spanned = (SpannedString)spannedInput;
+            int end = -1;
+            int start = -1;
+
+
+            if (spanned == null)
+            {
+                return spanned;
+            }
+            if (spanned.ToString().Equals(""))
+            {
+                return spanned;
+            }
+            if (spanned.SubSequence(spanned.Length() - 1, spanned.Length()).ToString().Equals("\n"))
+            {
+                start = spanned.Length() - 2;
+                end = spanned.Length();
+            }
+
+
+            //end = spanned.getSpanEnd(new BackgroundColorSpan(Color.MAGENTA));
+            //start = spanned.getSpanStart(new BackgroundColorSpan(Color.MAGENTA));
+            //BackgroundColorSpan[] bbb = spanned.getSpans(start, end, new BackgroundColorSpan(Color.MAGENTA).getClass());
+
+            if (start != -1 && end != -1)
+            {
+                //spanned.Delete(start, end);
+            }
+
+            return spanned;
         }
 
         public static void openKeyboard()

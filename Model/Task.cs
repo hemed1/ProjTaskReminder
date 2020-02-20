@@ -30,8 +30,8 @@ namespace ProjTaskReminder.Model
         private Boolean IsArchive;
         private Boolean isSelected;
 
-        private Thread timer;
-        //private System.Timers.Timer timer;
+        //private Thread timer;
+        private System.Timers.Timer timer;
         //private Java.Util.Timer timer;
         private TimerTask timer_task;
         private string text;
@@ -52,13 +52,23 @@ namespace ProjTaskReminder.Model
             return taskID;
         }
 
-        public Thread getTimer()   // System.Timers.Timer | Java.Util.Timer
+        //public Thread getTimer()   // System.Timers.Timer | Java.Util.Timer
+        //{
+        //    return timer;
+        //}
+
+        public void setTimer(System.Threading.Thread timer)  //Java.Util.Timer timer)
+        //public void setTimer(System.Timers.Timer timer)  //Java.Util.Timer timer)
         {
-            return timer;
+            //this.timer = (timer;
         }
 
-        public void setTimer(Thread timer)  //Java.Util.Timer timer)
-        //public void setTimer(System.Timers.Timer timer)  //Java.Util.Timer timer)
+        public System.Timers.Timer getTimer()  // | Java.Util.Timer
+        {
+            return this.timer;
+        }
+
+        public void setTimer(System.Timers.Timer timer)  //Java.Util.Timer timer)
         {
             this.timer = timer;
         }
@@ -92,42 +102,42 @@ namespace ProjTaskReminder.Model
             return description;
         }
 
-        public string getDescription()
-        {
-            return description;
-        }
-
-        //public Spanned getDescription()
+        //public string getDescription()
         //{
-        //    int pos1 = -1;
-        //    int pos2 = -1;
-
-
-
-        //    Log.d("Task - getDescription - HtmlScript before", "***" + description + "***");
-        //    //Log.d("Task object: getDescription Flat", "*"+descriptionPure+"*");
-
-        //    // TODO: Bug in Html.fromHtml(), erase font-size changes
-        //    Spanned spanned = Html.fromHtml(description);
-
-        //    Spanned tmpSpanned = richTextReInsertFontSize(description, spanned);
-
-        //    if (tmpSpanned != null)
-        //    {
-        //        spanned = tmpSpanned;
-        //    }
-        //    else
-        //    {
-        //        spanned = Util.trimSpannedText(spanned);
-        //    }
-
-        //    if (spanned != null)
-        //    {
-        //        Log.d("Task - getDescription - HtmlScript after", "***" + Html.toHtml(spanned) + "***");
-        //    }
-
-        //    return spanned;
+        //    return description;
         //}
+
+        public SpannedString getDescription()
+        {
+            int pos1 = -1;
+            int pos2 = -1;
+
+
+
+            //Log.d("Task - getDescription - HtmlScript before", "***" + description + "***");
+            //Log.d("Task object: getDescription Flat", "*"+descriptionPure+"*");
+
+            // TODO: Bug in Html.fromHtml(), erase font-size changes
+            SpannedString spanned = (SpannedString)Html.FromHtml(description);
+
+            SpannedString tmpSpanned=null;       // = richTextReInsertFontSize(description, spanned);
+
+            if (tmpSpanned != null)
+            {
+                spanned = tmpSpanned;
+            }
+            else
+            {
+                spanned = Utils.Utils.trimSpannedText(spanned);
+            }
+
+            if (spanned != null)
+            {
+                //Log.d("Task - getDescription - HtmlScript after", "***" + Html.toHtml(spanned) + "***");
+            }
+
+            return spanned;
+        }
 
         //private Spanned richTextReInsertFontSize(string originalDescription, Spanned originalSpanned)
         //{

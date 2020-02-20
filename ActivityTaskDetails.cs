@@ -343,7 +343,7 @@ namespace ProjTaskReminder
             try
             {
                 item.Title = task.getTitle();
-                item.Description = task.getDescription();
+                item.Description = task.getDescriptionWithHtml();
                 item.DateDue = task.getDate_due() + " " + task.getTime_due();
 
                 if (isNewMode)
@@ -414,7 +414,7 @@ namespace ProjTaskReminder
         private void SetControlsByObject()
         {
             txtDetailsTitle.Text = CurrentTask.getTitle();
-            txtDetailsDescription.Text = CurrentTask.getDescription();
+            txtDetailsDescription.Text = CurrentTask.getDescriptionWithHtml();
             lblDateTime.Text = CurrentTask.getDate_due() + " " + CurrentTask.getTime_due();
             txtDetailsDate.Text = CurrentTask.getDate_due();
             txtDetailsTime.Text = CurrentTask.getTime_due();

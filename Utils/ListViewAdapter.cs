@@ -146,7 +146,7 @@ namespace ProjTaskRemindet.Utils
             {
                 Task task = TaskList[position];
                 listViewHolder.title.SetText(task.getTitle(), TextView.BufferType.Normal);
-                listViewHolder.description.SetText(task.getDescription(), TextView.BufferType.Normal);
+                listViewHolder.description.SetText(task.getDescriptionWithHtml(), TextView.BufferType.Normal);
                 if (!task.getDate_due().Equals(""))
                 {
                     listViewHolder.date_date.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);

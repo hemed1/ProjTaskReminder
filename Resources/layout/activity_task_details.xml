@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
-        android:layoutDirection="rtl"
+        android:layoutDirection="ltr"
         android:textDirection="rtl"
         app:cardBackgroundColor="#f1efef"
         app:cardCornerRadius="7dp"
@@ -61,7 +61,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginTop="-4dp"
                 android:layout_marginBottom="63dp"
-                android:maxHeight="200dp"
+                android:maxHeight="195dp"
                 android:gravity="top|right"
                 android:hint="הקלד מידע"
                 android:inputType="textMultiLine"
@@ -69,21 +69,6 @@
                 android:textColor="@android:color/black"
                 android:textSize="19sp"
                 android:textStyle="normal" />
-
-            <EditText
-                android:id="@+id/lblDateTime"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/btnDelete"
-                android:layout_alignEnd="@id/btnSetDate"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="-5dp"
-                android:text="הקש לקבוע זמן תזכורת"
-                android:inputType="text"
-                android:textDirection="ltr"
-                android:layoutDirection="ltr"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"/>
 
             <Button
                 android:id="@+id/btnDelete"
@@ -118,19 +103,35 @@
 
                 <!--android:background="@mipmap/save4"-->
 
+            <EditText
+                android:id="@+id/lblDateTime"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/btnDelete"
+                android:layout_alignEnd="@id/btnSetDate"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="-5dp"
+                android:text="הקש לקבוע זמן תזכורת"
+                android:inputType="text"
+                android:textDirection="ltr"
+                android:layoutDirection="ltr"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"/>
+
             <Button
                 android:id="@+id/btnSetDate"
                 style="@android:style/Widget.Material.Button.Colored"
-                android:layout_width="50dp"
+                android:layout_width="45dp"
                 android:layout_height="40dp"
                 android:layout_alignBottom="@id/btnDelete"
                 android:layout_alignStart="@id/btnSave"
-                android:layout_marginStart="30dp"
-                android:text="D"
+                android:layout_marginStart="-40dp"
+                android:text=""
+                android:background="@android:drawable/ic_menu_my_calendar"
                 android:textColor="@android:color/black"
                 android:backgroundTint="@android:color/white"
                 app:backgroundTint="?android:attr/colorBackground"
-                android:backgroundTintMode="src_over" />
+                android:backgroundTintMode="multiply" />
 
                 <!--android:layout_alignParentEnd="true"-->
 
