@@ -637,25 +637,7 @@ namespace ProjTaskReminder
                 return;
             }
 
-            object[] taskTimers = TimersArray[index];
-
-            System.Threading.Thread timer = (Thread)taskTimers[1];
-            TimersArray.Remove(taskTimers);
-
-            //System.Timers.Timer timer = (System.Timers.Timer)timersArray[1];
-            //Java.Util.Timer timer = (Java.Util.Timer)timersArray[1];
-
-            if (timer != null && timer.IsAlive)
-            {
-                timer.Abort();
-                //timer = null;
-                //TimerTask timerTask = (TimerTask)timersArray[2];
-                //timerTask.cancel();
-                //timer = null;
-                //timerTask = null;
-                currentTask.setTimer(timer);
-                currentTask.setTimer_task(null);
-            }
+            TimerKill(index, currentTask);
 
         }
 
@@ -707,10 +689,10 @@ namespace ProjTaskReminder
             }
 
 
+            TimerStop(currentTask);
+
             // Do the Job - Notification
             picsTimer_onTick(currentTask);
-
-            TimerStop(currentTask);
 
 
             return null;    // new ElapsedEventHandler(null, new ElapsedEventArgs());
@@ -752,7 +734,7 @@ namespace ProjTaskReminder
             {
                 System.Timers.Timer timer = ((System.Timers.Timer)sender);
 
-                TimerStop2(currentTask);
+                TimerStop(currentTask);
 
                 // Do the Job - Notification
                 picsTimer_onTick(currentTask);
@@ -760,34 +742,47 @@ namespace ProjTaskReminder
 
         }
 
-        private void TimerStop2(Task currentTask)
+        #endregion
+
+        private void TimerKill(int timerArrayIndex, Task currentTask)
         {
-            int index = searchIDInTimersList(currentTask.getTaskID());
-
-            if (index == -1)
+            try
             {
-                return;
-            }
+                Object[] timersArray = TimersArray[timerArrayIndex];
 
-            object[] taskTimers = TimersArray[index];
+                //Thread timer = (Thread)timersArray[1];
+                System.Timers.Timer timer = (System.Timers.Timer)timersArray[1];
+                //Java.Util.Timer timer = (Java.Util.Timer)timersArray[1];
+                //TimerTask timerTask = (TimerTask)timersArray[2];
 
-            System.Timers.Timer timer = (System.Timers.Timer)taskTimers[1];
-            TimersArray.Remove(taskTimers);
+                if (timer != null && timer.Enabled)
+                //if (timer != null && timer.IsAlive)
+                {
+                    timer.Stop();
+                    timer.Close();
+                    timer.Dispose();
+                    timer = null;
 
-            if (timer != null && timer.Enabled)
-            {
-                timer.Stop();
-                timer.Close();
-                timer.Dispose();
-                timer = null;
+                    //timer.Abort();
+                    //timer = null;
+
+                    //timer.purge();
+                    //timer.c.Cancel();
+                    //timerTask.cancel();
+                    //timer = null;
+                    //timerTask = null;
+                }
+
+                ////TimersArray.RemoveAt(timerArrayIndex);
 
                 currentTask.setTimer(timer);
                 currentTask.setTimer_task(null);
             }
+            catch (Exception ex)
+            {
+                Utils.Utils.WriteToLog("TimerKill: " + Utils.Utils.LINE_SEPERATOR + ex.Message);
+            }
         }
-
-        #endregion
-
 
         #region Tier as Java.Util.Timer
 
@@ -883,10 +878,7 @@ namespace ProjTaskReminder
 
         private void killOldTimers()
         {
-            bool error = false;
-            int timersCount = 0;
-
-
+ 
 
             if (TimersArray == null)
             {
@@ -897,45 +889,13 @@ namespace ProjTaskReminder
 
             for (int i = TimersArray.Count - 1; i >= 0; i--)
             {
-                try
-                {
-                    Object[] timersArray = TimersArray[i];
-                    Thread timer = (Thread)timersArray[1];
-                    //System.Timers.Timer timer = (System.Timers.Timer)timersArray[1];
-                    //Java.Util.Timer timer = (Java.Util.Timer)timersArray[1];
-                    //TimerTask timerTask = (TimerTask)timersArray[2];
-                    if (timer != null && timer.IsAlive)
-                    {
-                        timersCount++;
-
-                        timer.Abort();
-                        timer = null;
-
-                        //timer.Cancel();
-                        //timer.Dispose();
-                        //timer.Stop();
-                        //timer.Dispose();
-                        //timer.Cancel();
-                        //timer.purge();
-                        //timerTask.cancel();
-                        //timer = null;
-                        //timerTask = null;
-                    }
-                    TimersArray.RemoveAt(i);
-                }
-                catch (Exception ex)
-                {
-                    error = true;
-                }
+                Object[] timersArray = TimersArray[i];
+                TimerKill(i, searchTaskByID((int)timersArray[0]));
             }
 
             TimersArray = null;
             TimersArray = new List<Object[]>();
 
-            //if (!error && timersCount>0)
-            //{
-            //Toast.makeText(this, "Kill " + String.valueOf(timersCount)+"/"+String.valueOf(TimersArray.size())+" old timers", Toast.LENGTH_SHORT).show();
-            //}
         }
 
         /// <summary>
@@ -980,19 +940,21 @@ namespace ProjTaskReminder
             int notificationID = currentTask.getTaskID();
 
 
-            String title = currentTask.getTitle().Trim();
-            string titleText = "";
-            SpannableString titleSpannableString = new SpannableString(titleText);
+            string title = currentTask.getTitle().Trim();
+            string titleText = title;
+            string titleSpannableString = titleText;
+            //SpannableString titleSpannableString = new SpannableString(titleText);
 
             if (!title.Equals(""))
             {
                 titleText = title;  //.SubSequence(0, title.length());   // + " - ";    // + "\n";
-                titleSpannableString = new SpannableString(titleText);
-                StyleSpan styleSpan = new StyleSpan(Android.Graphics.TypefaceStyle.Bold);   // Typeface Typeface.BOLD);
-                titleSpannableString.SetSpan(styleSpan, 0, titleSpannableString.Length(), SpanTypes.ExclusiveExclusive); // .SPAN_EXCLUSIVE_EXCLUSIVE);
+                //titleSpannableString = new SpannableString(titleText);
+                //StyleSpan styleSpan = new StyleSpan(Android.Graphics.TypefaceStyle.Bold);   // Typeface Typeface.BOLD);
+                //titleSpannableString.SetSpan(styleSpan, 0, titleSpannableString.Length(), SpanTypes.ExclusiveExclusive); // .SPAN_EXCLUSIVE_EXCLUSIVE);
             }
 
-            SpannedString description = currentTask.getDescription();
+            string description = currentTask.getDescriptionWithHtml(); 
+            //SpannedString description = currentTask.getDescription();
 
             SpannableStringBuilder builder = new SpannableStringBuilder();
             builder.Append(titleSpannableString);
@@ -1155,6 +1117,10 @@ namespace ProjTaskReminder
             }
         }
 
+        private Task searchTaskByID(int taskID)
+        {
+            return TasksList.FirstOrDefault(a => a.getTaskID() == taskID);
+        }
     }
 }
 

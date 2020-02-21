@@ -158,7 +158,7 @@ namespace ProjTaskReminder.Utils
 
     }
                                                                                             // CharSequence
-    public NotificationCompat.Builder createNotificationBuilder(SpannableString title, SpannedString description, int icon, int notificationID)  // CharSequence
+    public NotificationCompat.Builder createNotificationBuilder(string title, string description, int icon, int notificationID)  // CharSequence, SpannableString
         {
 
         createNotificationChannel();
@@ -168,49 +168,52 @@ namespace ProjTaskReminder.Utils
         // Snooze inside the notification
         intentSnooze = createIntentSnooze(notificationID);
 
-        SpannedString spannedDescription = description;
+        string spannedDescription = description;
+        //SpannedString spannedDescription = description;
 
-        string descriptionPureHtml = Html.ToHtml(spannedDescription);
+        string descriptionPureHtml = spannedDescription;
+        //string descriptionPureHtml = Html.ToHtml(spannedDescription);
 
         string descriptionPure = spannedDescription.ToString().Trim();
 
         Utils.WriteToLog("description in notification: " + descriptionPureHtml);
 
-        List<string> descriptionLines = new List<string>();
-        String[] descriptionLines2 = descriptionPureHtml.Split(Utils.LINE_SEPERATOR);       //"<br>")
-        NotificationCompat.InboxStyle descriptionLinesStyle = new NotificationCompat.InboxStyle();
+        ////List<string> descriptionLines = new List<string>();
+        ////String[] descriptionLines2 = descriptionPureHtml.Split(Utils.LINE_SEPERATOR);       //"<br>")
+        ////NotificationCompat.InboxStyle descriptionLinesStyle = new NotificationCompat.InboxStyle();
 
         //descriptionLines.add(description);
 
-        for (int i = 0; i < descriptionLines2.Length; i++)
-        {
-            //Log.d("Split description in notification2", descriptionLines2[i]);
-            ((NotificationCompat.InboxStyle)descriptionLinesStyle).AddLine(Html.FromHtml(descriptionLines2[i]));
-        }
+        ////for (int i = 0; i < descriptionLines2.Length; i++)
+        ////{
+        ////        //Log.d("Split description in notification2", descriptionLines2[i]);
+        ////    //((NotificationCompat.InboxStyle)descriptionLinesStyle).AddLine(HdescriptionLines2[i]);
+        ////    //((NotificationCompat.InboxStyle)descriptionLinesStyle).AddLine(Html.FromHtml(descriptionLines2[i]));
+        ////}
 
         int color = Android.Graphics.Color.Blue;
 
         try
         {
             NotificationBuilder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                    .SetSmallIcon(icon)
-                    //.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), largeIconID))
-                    .SetContentTitle(title)
-                    .SetContentText(description)
-                    //.setSubText("Notes")
-                    .SetNumber(notificationID)
-                    .SetPriority(NotificationCompat.PriorityHigh)       //.PRIORITY_HIGH)              // PRIORITY_MAX  //.PRIORITY_DEFAULT
-                                                                                //.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM))
-                                                                                // Set the intent that will fire when the user taps the notification
-                    .SetContentIntent(intentAction)
-                    // Set the intent that will fire when the user taps the snoozer
-                    .AddAction(Resource.Mipmap.note1, context.GetString(Resource.String.notification_snooze_message), intentSnooze)
-                    //.addAction(replyAction(notificationID))
-                    .SetVisibility((int)NotificationVisibility.Public)   // Notification..VISIBILITY_PUBLIC)
-                    .SetColor(color)
-                    .SetAutoCancel(true)
+                        .SetSmallIcon(icon)
+                        //.setLargeIcon(BitmapFactory.decodeResource(context.getResources(), largeIconID))
+                        .SetContentTitle(title)
+                        .SetContentText(description)
+                        //.setSubText("Notes")
+                        .SetNumber(notificationID)
+                        .SetPriority(NotificationCompat.PriorityHigh)       //.PRIORITY_HIGH)              // PRIORITY_MAX  //.PRIORITY_DEFAULT
+                                                                            //.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM))
+                                                                            // Set the intent that will fire when the user taps the notification
+                        .SetContentIntent(intentAction)
+                        // Set the intent that will fire when the user taps the snoozer
+                        .AddAction(Resource.Mipmap.note1, context.GetString(Resource.String.notification_snooze_message), intentSnooze)
+                        //.addAction(replyAction(notificationID))
+                        .SetVisibility((int)NotificationVisibility.Public)   // Notification..VISIBILITY_PUBLIC)
+                        .SetColor(color)
+                        .SetAutoCancel(true);
                     //.setStyle(new NotificationCompat.BigTextStyle().bigText("This is the expandable content text"))
-                    .SetStyle(descriptionLinesStyle);
+                    //.SetStyle(descriptionLinesStyle);
             //                                              .setStyle(new NotificationCompat.InboxStyle()
             //                                                                            .addLine("This is the first line")
             //                                                                            .addLine("This is the second line")
