@@ -405,6 +405,11 @@ namespace ProjTaskReminder
                 CurrentTask.setDate_due(lblDateTime.Text.Trim().Substring(0, 10));
                 CurrentTask.setTime_due(lblDateTime.Text.Trim().Substring(11, 5));
             }
+            else
+            {
+                CurrentTask.setDate_due("");
+                CurrentTask.setTime_due("");
+            }
             CurrentTask.setDate_last_update(Utils.Utils.getDateFormattedString(Utils.Utils.getDateFixed(DateTime.Now)));
         }
 

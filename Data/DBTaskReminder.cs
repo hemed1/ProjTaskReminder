@@ -32,7 +32,10 @@ namespace ProjTaskReminder.Data
         {
             context = Android.App.Application.Context;
 
-            DB_PATH = context.GetExternalFilesDir("").AbsolutePath;
+            if (string.IsNullOrEmpty(DB_PATH))
+            {
+                DB_PATH = context.GetExternalFilesDir("").AbsolutePath;
+            }
             DB_NAME = dbName;       
 
             Connect();
@@ -56,13 +59,43 @@ namespace ProjTaskReminder.Data
 
                 this.DB = db;
 
-                //db.DropTable<TBL_Tasks>();
-                var r = db.GetTableInfo("TBL_Tasks");
+                //mDBcon.ConnectionString = "Data Source=" + DataSourcePath;
+                //mDBcon.Open();
 
-                if (r.Count == 0)
+                //db.DropTable<TBL_Tasks>();
+                List<SQLiteConnection.ColumnInfo> columns = db.GetTableInfo("TBL_Tasks");
+                
+                if (columns.Count == 0)
                 {
                     var t = db.CreateTable<TBL_Tasks>();
                 }
+                else if (columns.Count<5)
+                {
+                    //this.DB.Open();
+                    //string commanScript = "ALTER TABLE TBL_Tasks ADD COLUMN DateLastUpdate varchar;";
+                    //commanScript = "CREATE TABLE IF NOT EXISTS tags (ISBN VARCHAR(15), Tag VARCHAR(15));";
+
+                    //SQLiteCommand cmd = db.CreateCommand(commanScript, null);        //new SQLiteCommand(this.DB);
+
+                    //cmd.CommandText = commanScript;
+                    //cmd.ExecuteNonQuery();
+                }
+
+//                SQLiteConnection.ColumnInfo columnInfo = new SQLiteConnection.ColumnInfo();
+//                columnInfo.Name = "DateLastUpdate";
+//                //columnInfo.notnull=1
+//                columns.Add(columnInfo);
+                //db.Close();
+                //SQLite.TableAttribute aa=new TableAttribute()
+                //TableQuery a = (TableQuery<TBL_Tasks>);
+                //TableMapping tableMap = db.GetMapping<TBL_Tasks>();
+                //db.TableMappings.First().InsertColumns
+                //tableMap.Columns.
+                //columns[0].
+                //TableMapping tableMap = db.GetMapping<TBL_Tasks>();
+                //tableMap.Columns
+                //db.Update()
+
             }
             catch (Exception ex)
             {
@@ -97,7 +130,7 @@ namespace ProjTaskReminder.Data
             TableQuery<TBL_Tasks> tableQuery = db.Table<TBL_Tasks>();
             TableMapping tableMap = db.GetMapping<TBL_Tasks>();
             //db.Delete<TBL_Tasks>(2);
-            var stock = db.Get<TBL_Tasks>(2); // primary key id of 5
+            //var stock = db.Get<TBL_Tasks>(2); // primary key id of 2
 
             //tableMap.Columns[0].Name = "ID";
 
@@ -232,6 +265,7 @@ namespace ProjTaskReminder.Data
             public string Title { get; set; }
             public string Description { get; set; }
             public string DateDue { get; set; }
+            public string DateLastUpdate { get; set; }
         }
     }
 

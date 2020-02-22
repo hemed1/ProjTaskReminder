@@ -70,6 +70,10 @@ namespace ProjTaskReminder.Model
 
         public void setTimer(System.Timers.Timer timer)  //Java.Util.Timer timer)
         {
+            //if (timer.Equals(this.timer) && timer==null && this.timer.Enabled)
+            //{
+
+            //}
             this.timer = timer;
         }
 

@@ -87,6 +87,8 @@ namespace ProjTaskReminder
             BackupDataBaseFile();
 
             FillListFromDB();
+
+            focusListOnToday(Utils.Utils.getDateFixed(DateTime.Now));
         }
 
         private void SetControlsIO()
@@ -287,7 +289,26 @@ namespace ProjTaskReminder
 
             TasksList = TasksList.OrderByDescending(a => a.getDate()).ToList();
 
+            int id = -1;
+
+            // For scroll to handled task
+            if (ActivityTaskDetails.isNewMode)
+            {
+                //CurrentTask = tasksList.get(tasksList.size() - 1);
+            }
+
+            if (CurrentTask != null && CurrentTask.getTaskID() > 0)
+            {
+                id = CurrentTask.getTaskID();
+            }
+
             RefreshListAdapter();
+
+            if (id>-1)
+            {
+                // Scroll to handled task
+                focusListByID(id);
+            }
         }
 
         [Obsolete]
@@ -297,6 +318,38 @@ namespace ProjTaskReminder
             simpleList.SetAdapter(listViewAdapter);
 
             listViewAdapter.NotifyDataSetChanged();
+        }
+
+        private void focusListByID(int id)
+        {
+            if (TasksList.Count == 0 || id == -1)
+            {
+                return;
+            }
+
+            int index = searchIndexListByID(id);
+
+            if (index > -1)
+            {
+                //simpleList.Adapter.
+                //simpleList.VerticalScrollbarPosition(index);
+                //listRecycler.scrollToPosition(index);
+            }
+
+        }
+        private void focusListOnToday(DateTime date)
+        {
+            if (TasksList.Count == 0)
+            {
+                return;
+            }
+
+            int index = searchDateInList(TasksList, date);
+
+            if (index > -1)
+            {
+                //listRecycler.scrollToPosition(index);
+            }
         }
 
         private bool ConnectToDB()
@@ -752,8 +805,14 @@ namespace ProjTaskReminder
             if (strDateNow.CompareTo(strDateTask) >= 0)
             {
                 System.Timers.Timer timer = ((System.Timers.Timer)sender);
+                timer.Stop();
+                timer.Close();
+                timer.Dispose();
+                timer = null;
 
                 TimerStop(currentTask);
+
+                Toast.MakeText(context, "Killed the Timer", ToastLength.Short).Show();
 
                 // Do the Job - Notification
                 picsTimer_onTick(currentTask);
@@ -774,8 +833,8 @@ namespace ProjTaskReminder
                     return;
                 }
 
-                //System.Threading.Thread timer = (Thread)timersArray[1];
                 System.Timers.Timer timer = (System.Timers.Timer)taskTimerArray[1];
+                //System.Threading.Thread timer = (Thread)timersArray[1];
                 //Java.Util.Timer timer = (Java.Util.Timer)timersArray[1];
                 //TimerTask timerTask = (TimerTask)timersArray[2];
 
@@ -1159,6 +1218,49 @@ namespace ProjTaskReminder
         {
             return TasksList.FirstOrDefault(a => a.getTaskID() == taskID);
         }
+        private int searchIndexListByID(int taskID)
+        {
+            int result = -1;
+
+            for (int i=0; i<TasksList.Count; i++)
+            {
+                if (TasksList[i].getTaskID()==taskID)
+                {
+                    result = i;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+        private int searchDateInList(List<Task> tasksList, DateTime date)
+        {
+            int result = -1;
+            //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            string dateStrToFind;
+            string dateStrTask;
+
+
+
+            dateStrToFind = Utils.Utils.getDateFormattedString(date);    //simpleDateFormat.format(date);
+
+            for (int i = 0; i < tasksList.Count; i++)
+            {
+                dateStrTask = tasksList[i].getDate_due();
+                if (!dateStrTask.Equals(""))
+                {
+                    if (dateStrTask.CompareTo(dateStrToFind) == 0)
+                    {
+                        result = i;
+                        break;
+                    }
+                }
+            }
+
+            return result;
+        }
+
     }
 }
 
