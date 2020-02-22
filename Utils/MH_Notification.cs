@@ -157,7 +157,7 @@ namespace ProjTaskReminder.Utils
         }
 
     }
-                                                                                            // CharSequence
+                                                                                            
     public NotificationCompat.Builder createNotificationBuilder(string title, string description, int icon, int notificationID)  // CharSequence, SpannableString
         {
 
@@ -176,7 +176,7 @@ namespace ProjTaskReminder.Utils
 
         string descriptionPure = spannedDescription.ToString().Trim();
 
-        Utils.WriteToLog("description in notification: " + descriptionPureHtml);
+        //Utils.WriteToLog("description in notification: " + descriptionPureHtml);
 
         ////List<string> descriptionLines = new List<string>();
         ////String[] descriptionLines2 = descriptionPureHtml.Split(Utils.LINE_SEPERATOR);       //"<br>")
@@ -239,7 +239,7 @@ namespace ProjTaskReminder.Utils
         }
         catch (Exception ex)
         {
-            Utils.WriteToLog("Error in Util createNotificationBuilderl()" + "\n" + ex.Message);
+            Utils.WriteToLog("createNotificationBuilderl() - Error: " + "\n" + ex.Message);
         }
 
 

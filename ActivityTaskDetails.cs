@@ -163,14 +163,10 @@ namespace ProjTaskReminder
 
         private void newTaskDetails()
         {
-
-            CurrentTask = MainActivity.newTaskDetails();
-
-            ////txtDetailsColor.setText(CurrentTask.getBackgroundColor());
+            // Done in 'MainActivity'
+            //CurrentTask = MainActivity.newTaskDetails();
 
             SetControlsByObject();
-
-            //Log.d("newTaskDetails", String.valueOf(CurrentTask.getDate()));
         }
 
         private void SetControlsIO()
@@ -322,6 +318,7 @@ namespace ProjTaskReminder
 
             MainActivity.isShowTimerReminder = true;
             MainActivity.MainMessageText = "נמחק";
+            MainActivity.showGlobalMessageOnToast();
 
             OnActivityResult(999, Result.Ok, inputIntent);
 
@@ -354,7 +351,6 @@ namespace ProjTaskReminder
                 {
                     // Set Task object in array
                     List<KeyValuePair<String, String>> values = MainActivity.getTaskValues(CurrentTask);
-
                     MainActivity.DBTaskReminder.UpdateRecord("TBL_Tasks", values, new object[] { CurrentTask.getTaskID() });
                 }
 
@@ -409,6 +405,7 @@ namespace ProjTaskReminder
                 CurrentTask.setDate_due(lblDateTime.Text.Trim().Substring(0, 10));
                 CurrentTask.setTime_due(lblDateTime.Text.Trim().Substring(11, 5));
             }
+            CurrentTask.setDate_last_update(Utils.Utils.getDateFormattedString(Utils.Utils.getDateFixed(DateTime.Now)));
         }
 
         private void SetControlsByObject()

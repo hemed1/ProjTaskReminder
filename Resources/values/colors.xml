@@ -13,7 +13,8 @@
     <color name="CardListBackgroundColor2">#080808</color>
     <color name="CardFieldsTextForegroundColor2">#fafafa</color>
     <color name="CardFieldsForegroundColorLowDetails2">#c9c5c5</color>   
-    <color name="CardFieldsTextForegroundColor">#080a8b</color>
+    <color name="CardFieldsTextForegroundColor">#000</color>
+    <color name="CardFieldsTitleForegroundColor">#080a8b</color>
     <color name="card_color1">#859fd9</color>
     <color name="card_color2">#81cf81</color>
     <color name="card_color3">#d4b0dc</color>

@@ -66,6 +66,8 @@ namespace ProjTaskReminder
         private Android.Support.V4.App.NotificationCompat.Builder notificationBuilder;
 
 
+
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -83,8 +85,6 @@ namespace ProjTaskReminder
             ConnectToDB();
 
             BackupDataBaseFile();
-
-            //Utils.Utils.WriteToLog("Enter 3", true);
 
             FillListFromDB();
         }
@@ -222,7 +222,6 @@ namespace ProjTaskReminder
 
             StartActivityForResult(intent, 2345);
             //context.StartActivity(intent);
-
         }
 
 
@@ -235,6 +234,11 @@ namespace ProjTaskReminder
 
         private void FillList()
         {
+
+            Toast.MakeText(this, "Fill list with items...", ToastLength.Short).Show();
+
+            
+            
             killOldTimers();
 
 
@@ -279,7 +283,9 @@ namespace ProjTaskReminder
 
         private void SortList()
         {
-            TasksList = TasksList.OrderBy(a => a.getDate()).ToList();
+            Toast.MakeText(this, "Refresh items...", ToastLength.Short).Show();
+
+            TasksList = TasksList.OrderByDescending(a => a.getDate()).ToList();
 
             RefreshListAdapter();
         }
@@ -301,6 +307,7 @@ namespace ProjTaskReminder
             try
             {
                 DBTaskReminder = new DBTaskReminder(DB_TASK_DB_NAME);
+                DBTaskReminder.DB_PATH = context.GetExternalFilesDir("").AbsolutePath;
             }
             catch (Exception ex)
             {
@@ -312,6 +319,9 @@ namespace ProjTaskReminder
 
         private List<Task> GetTasksFromDB()
         {
+            Toast.MakeText(this, "Load items from Database", ToastLength.Short).Show();
+
+
             TasksList.Clear();
 
             TableQuery<TBL_Tasks> table = DBTaskReminder.DB.Table<TBL_Tasks>();
@@ -354,8 +364,7 @@ namespace ProjTaskReminder
             /// TODO: Primary key - no needvalues.Add(new KeyValuePair<string, string>(DB_FIELDNAME_ID, currentTask.getTaskID().ToString()));
             ///
             values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_TITLE, currentTask.getTitle()));
-            //Log.d("Just before save", currentTask.getDescriptionWithHtml());
-            //values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_DESC, currentTask.getDescriptionWithHtml()));     // Html.toHtml(currentTask.getDescription())
+            //values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_DESC, currentTask.getDescription);     // Html.toHtml(currentTask.getDescription())
             values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_DESC, currentTask.getDescriptionWithHtml()));
             values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_DATE, strDateTime));
             //values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_COLOR, currentTask.getBackgroundColor()));
@@ -381,7 +390,6 @@ namespace ProjTaskReminder
             }
             else
             {
-                //Log.d("Open New task screen - TaskID: ", String.valueOf(taskID));
                 task = newTaskDetails();
             }
 
@@ -391,7 +399,7 @@ namespace ProjTaskReminder
             intent.PutExtra("TaskID", task.getTaskID());
             //intent.putExtra("task", task);  //TODO: Seriize
 
-            MainActivity.CurrentTask = task;
+            CurrentTask = task;
 
             ActivityTaskDetails.isNewMode = isNewMode;
             ActivityTaskDetails.CurrentTask = task;
@@ -420,9 +428,19 @@ namespace ProjTaskReminder
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             int id = item.ItemId;
-            if (id == Resource.Id.action_settings)
+
+            switch (id)
             {
-                return true;
+                case Resource.Id.menu_settings:
+                    break;
+
+                case Resource.Id.menu_db_backup:
+                    BackupDataBaseFile();
+                    break;
+
+                case Resource.Id.menu_db_restore:
+                    RestoreDataBaseFile();
+                    break;
             }
 
             return base.OnOptionsItemSelected(item);
@@ -595,7 +613,7 @@ namespace ProjTaskReminder
 
             if (isShowTimerReminder && !MainMessageText.Trim().Equals(""))
             {
-                string text = "יצר תזכורת ביום " + Utils.Utils.getDateDayName(timerDate.Value) + "  " + dateStr;
+                string text = "יצר תזכורת ביום " + Utils.Utils.getDateDayName(timerDate.Value) + "  " + dateStr;        // + "  (Now: " + Utils.Utils.getDateFormattedString(Utils.Utils.getDateFixed(DateTime.Now)) + ")";
                 MainMessageText = MainMessageText + " - " + text;
                 showGlobalMessageOnToast();
             }
@@ -618,7 +636,7 @@ namespace ProjTaskReminder
             //Thread second = new Thread(new ThreadStart(secondThread));
 
             currentTask.setTimer(timer);
-            addTimerToKillArray(currentTask.getTaskID(), timer, null);     // timer timerTask);
+            addTimerToKillArray(currentTask.getTaskID(), timer, null, currentTask);     // timer timerTask);
 
             timer.Start();
         }
@@ -638,7 +656,6 @@ namespace ProjTaskReminder
             }
 
             TimerKill(index, currentTask);
-
         }
 
         private ElapsedEventHandler TimerRunning(object sender, ElapsedEventArgs args)
@@ -708,12 +725,13 @@ namespace ProjTaskReminder
             System.Timers.Timer timer = new System.Timers.Timer();
 
             currentTask.setTimer(timer);
-            addTimerToKillArray(currentTask.getTaskID(), timer, null);     // timer timerTask);
+            addTimerToKillArray(currentTask.getTaskID(), timer, null, currentTask);     // timer timerTask);
 
             //timer.BeginInit();   
-            timer.AutoReset = true;
-            timer.Elapsed += TimerRunning2;
+            timer.AutoReset = true;             // Continue repeatly
+            timer.Elapsed += TimerRunning2;     // (null, null);
             timer.Interval = TimerInterval; // 30 seconds
+            //timer.SynchronizingObject = currentTask;
             timer.Enabled = true;
             //timer.Start();
 
@@ -722,6 +740,7 @@ namespace ProjTaskReminder
 
         private void TimerRunning2(object sender, ElapsedEventArgs e)
         {
+            // Cant in Threading proccess
             //Toast.MakeText(this, "Timer Ticking...", ToastLength.Short).Show();
 
             Task currentTask = CurrentTask;
@@ -748,14 +767,19 @@ namespace ProjTaskReminder
         {
             try
             {
-                Object[] timersArray = TimersArray[timerArrayIndex];
+                Object[] taskTimerArray = TimersArray[timerArrayIndex];
 
-                //Thread timer = (Thread)timersArray[1];
-                System.Timers.Timer timer = (System.Timers.Timer)timersArray[1];
+                if (taskTimerArray[1] == null)
+                {
+                    return;
+                }
+
+                //System.Threading.Thread timer = (Thread)timersArray[1];
+                System.Timers.Timer timer = (System.Timers.Timer)taskTimerArray[1];
                 //Java.Util.Timer timer = (Java.Util.Timer)timersArray[1];
                 //TimerTask timerTask = (TimerTask)timersArray[2];
 
-                if (timer != null && timer.Enabled)
+                if (timer != null)  // && timer.Enabled)
                 //if (timer != null && timer.IsAlive)
                 {
                     timer.Stop();
@@ -773,7 +797,7 @@ namespace ProjTaskReminder
                     //timerTask = null;
                 }
 
-                ////TimersArray.RemoveAt(timerArrayIndex);
+                TimersArray.RemoveAt(timerArrayIndex);
 
                 currentTask.setTimer(timer);
                 currentTask.setTimer_task(null);
@@ -837,23 +861,25 @@ namespace ProjTaskReminder
             //return strDateNow;
         }
 
-        private void addTimerToKillArray(int taskID, System.Timers.Timer timer, object timerTask)  //  | Java.Util.Timer
+        private void addTimerToKillArray(int taskID, System.Timers.Timer timer, object timerTask, Task currentTask)         //   Java.Util.Timer
         {
-            Object[] timersArray = new Object[3];
+            Object[] timersArray = new Object[4];
 
             timersArray[0] = taskID;
             timersArray[1] = timer;
             timersArray[2] = timerTask;
+            timersArray[3] = currentTask;
 
             TimersArray.Add(timersArray);
         }
 
-        private void addTimerToKillArray(int taskID, Thread timer, object timerTask)  // System.Timers.Timer | Java.Util.Timer
+        private void addTimerToKillArray(int taskID, System.Threading.Thread timer, object timerTask, Task currentTask)                  // Java.Util.Timer
         {
-            Object[] timersArray = new Object[3];
+            Object[] timersArray = new Object[4];
             timersArray[0] = taskID;
             timersArray[1] = timer;
             timersArray[2] = timerTask;
+            timersArray[3] = currentTask;
 
             TimersArray.Add(timersArray);
         }
@@ -890,7 +916,7 @@ namespace ProjTaskReminder
             for (int i = TimersArray.Count - 1; i >= 0; i--)
             {
                 Object[] timersArray = TimersArray[i];
-                TimerKill(i, searchTaskByID((int)timersArray[0]));
+                TimerKill(i, (Task)timersArray[3]);     // searchTaskByID((int)timersArray[0]));
             }
 
             TimersArray = null;
@@ -901,11 +927,11 @@ namespace ProjTaskReminder
         /// <summary>
         /// Show mssage if there is message in que
         /// </summary>
-        public void showGlobalMessageOnToast()
+        public static void showGlobalMessageOnToast()
         {
             if (isShowTimerReminder && !MainMessageText.Trim().Equals(""))
             {
-                Toast.MakeText(this, MainMessageText, ToastLength.Long).Show();
+                Toast.MakeText(context, MainMessageText, ToastLength.Long).Show();
                 MainMessageText = "";
             }
         }
@@ -925,8 +951,6 @@ namespace ProjTaskReminder
             //showAlarmScreen(currentTask);
 
             //showReminderDialog(currentTask);
-
-
         }
 
         private void showNotificationToScreen(Task currentTask)
@@ -959,7 +983,6 @@ namespace ProjTaskReminder
             SpannableStringBuilder builder = new SpannableStringBuilder();
             builder.Append(titleSpannableString);
             builder.Append(description);
-
             //Log.d("Noti", builder.subSequence(0, builder.length()-0).toString());
 
             notificationBuilder = mh_Notification.createNotificationBuilder(titleSpannableString, description, Resource.Mipmap.note1, notificationID);  // getString(R.string.app_name), builder
@@ -968,18 +991,12 @@ namespace ProjTaskReminder
 
         public static Task newTaskDetails()
         {
-            DateTime date;
-
-            date = Utils.Utils.getDateFixed(DateTime.Now);     //Util.getDateNow.getTime();
-
             CurrentTask = new Task();
 
             CurrentTask.setDate_due("");
             CurrentTask.setBackgroundColor(DefaultCardBackgroundColor.ToString());
-            CurrentTask.setDate_last_update(Utils.Utils.getDateFormattedString(date));
+            CurrentTask.setDate_last_update(Utils.Utils.getDateFormattedString(Utils.Utils.getDateFixed(DateTime.Now)));
             CurrentTask.setRepeat("פעם אחת");
-
-            //Log.d("new task", CurrentTask.getDate_due());
 
             return CurrentTask;
         }
@@ -1094,14 +1111,16 @@ namespace ProjTaskReminder
         {
             BackupDataBaseFile();
 
+            Toast.MakeText(this, "Close Application", ToastLength.Long).Show();
+
             base.OnDestroy();
         }
 
         private void BackupDataBaseFile()
         {
-            string folderBackup = Android.OS.Environment.DirectoryMusic;    // "ProjTaskReminder"
-            string sourcePath = context.GetExternalFilesDir("").AbsolutePath;
-            string targetPath = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
+            string backupFolderName = Android.OS.Environment.DirectoryMusic;    // "ProjTaskReminder"
+            string targetPath = Android.OS.Environment.GetExternalStoragePublicDirectory(backupFolderName).AbsolutePath;
+            string sourcePath = DBTaskReminder.DB_PATH;
             //targetPath = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
 
             string fullPathSource = Path.Combine(DBTaskReminder.DB_PATH, DBTaskReminder.DB_NAME);
@@ -1114,6 +1133,25 @@ namespace ProjTaskReminder
                 string message = "Database was copied OK";
                 //Toast.MakeText(this, message, ToastLength.Long).Show();
                 //Utils.Utils.WriteToLog(message, true);
+            }
+        }
+
+        private void RestoreDataBaseFile()
+        {
+            string backupFolderName = Android.OS.Environment.DirectoryMusic;    // "ProjTaskReminder"
+            string sourcePath = Android.OS.Environment.GetExternalStoragePublicDirectory(backupFolderName).AbsolutePath;
+            string targetPath = DBTaskReminder.DB_PATH;
+            //targetPath = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+
+            string fullPathTarget = Path.Combine(DBTaskReminder.DB_PATH, DBTaskReminder.DB_NAME);
+            string fullPathSource = Path.Combine(targetPath, DBTaskReminder.DB_NAME);
+
+            bool result = Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
+
+            if (result)
+            {
+                string message = "Database was restored OK";
+                Toast.MakeText(this, message, ToastLength.Long).Show();
             }
         }
 

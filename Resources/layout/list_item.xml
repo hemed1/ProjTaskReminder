@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:layoutDirection="rtl"
     android:textDirection="rtl"
-    android:paddingTop="3dp"
+    android:paddingTop="5dp"
     android:paddingBottom="6dp"
     android:paddingStart="5dp"
     android:paddingEnd="5dp"
@@ -35,7 +35,7 @@
         android:paddingStart="0dp"
         android:paddingEnd="0dp"       
         android:layoutDirection="rtl"
-        app:cardBackgroundColor="#FFF"
+        app:cardBackgroundColor="@color/CardBackgroundColor"
         app:cardElevation="5dp"
         app:cardCornerRadius="5dp"
         app:cardUseCompatPadding="false">        
@@ -58,7 +58,7 @@
                 android:layout_height="match_parent"
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
-                android:paddingTop="2dp"
+                android:paddingTop="1dp"
                 android:paddingBottom="2dp"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp">
@@ -69,10 +69,10 @@
                     android:id="@+id/txtTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="17sp"
                     android:text="Title"
                     android:textStyle="bold"
-                    android:textColor="@android:color/holo_purple" />
+                    android:textColor="@color/CardFieldsTitleForegroundColor" />
 
                     <!--android:layout_gravity="top"-->
                     <!--android:layout_alignStart="@id/icon"-->
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="-1dp"
                     android:textSize="11sp"
-                    android:text="17/01/2020"
+                    android:text=""
                     android:textColor="#616060" />
 
         

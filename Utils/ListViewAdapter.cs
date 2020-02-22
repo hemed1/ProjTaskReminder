@@ -77,7 +77,7 @@ namespace ProjTaskRemindet.Utils
         //        Task task = TaskList[position];
         //        listViewHolder.title.SetText(task.getTitle(), TextView.BufferType.Normal);
         //        listViewHolder.description.SetText(task.getDescription(), TextView.BufferType.Normal);
-        //        listViewHolder.date_date.SetText(task.getDate_due(), TextView.BufferType.Normal);
+        //        listViewHolder.date_due.SetText(task.getDate_due(), TextView.BufferType.Normal);
         //    }
         //}
 
@@ -149,7 +149,7 @@ namespace ProjTaskRemindet.Utils
                 listViewHolder.description.SetText(task.getDescriptionWithHtml(), TextView.BufferType.Normal);
                 if (!task.getDate_due().Equals(""))
                 {
-                    listViewHolder.date_date.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
+                    listViewHolder.date_due.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
                 }
             }
 
@@ -162,7 +162,7 @@ namespace ProjTaskRemindet.Utils
         {
             public TextView title;
             public TextView description;
-            public TextView date_date;
+            public TextView date_due;
             public CardView cardView;
 
             public event EventHandler SetOnItemClick;
@@ -180,7 +180,7 @@ namespace ProjTaskRemindet.Utils
                     {
                         title = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtTitle);
                         description = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtDescription);
-                        date_date = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtDateDue);
+                        date_due = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtDateDue);
                         cardView = (CardView)convertView.FindViewById(ProjTaskReminder.Resource.Id.cardTask);
                     }
                     catch (Exception ex)
@@ -205,7 +205,7 @@ namespace ProjTaskRemindet.Utils
 
                 //    title.SetText(tasks[position].getTitle(), TextView.BufferType.Normal);
                 //    description.SetText(tasks[position].getDescription(), TextView.BufferType.Normal);
-                //    date_date.SetText(tasks[position].getDate_due(), TextView.BufferType.Normal);
+                //    date_due.SetText(tasks[position].getDate_due(), TextView.BufferType.Normal);
                 //}
             }
 
