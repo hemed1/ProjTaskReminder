@@ -8,10 +8,6 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
-using ProjTaskReminder.Model;
-using ProjTaskRemindet.Utils;
-using ProjTaskReminder.Data;
-using static ProjTaskReminder.Data.DBTaskReminder;
 using SQLite;
 using Android.Content;
 using Android.Support.V7.Widget;
@@ -19,9 +15,13 @@ using System.Timers;
 using System.Threading;
 using System.IO;
 using Java.Util;
-using ProjTaskReminder.Utils;
 using Android.Text;
-using Android.Text.Style;
+
+using ProjTaskReminder.Model;
+using ProjTaskRemindet.Utils;
+using ProjTaskReminder.Data;
+using ProjTaskReminder.Utils;
+
 //using System.Threading.Timer;
 
 
@@ -64,8 +64,11 @@ namespace ProjTaskReminder
         private MH_Notification mh_Notification;
 
         private Android.Support.V4.App.NotificationCompat.Builder notificationBuilder;
+        private TaskTimerElapsed ActionOnTaskTimerTick;     // , ElapsedEventHandler
+        //private event Action<object, ElapsedEventArgs, Task> ActionOnTaskTimerTick;     // , ElapsedEventHandler
 
 
+        public delegate ElapsedEventHandler delegateMethod(object timer, ElapsedEventArgs args, Task currentTask);
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -239,8 +242,8 @@ namespace ProjTaskReminder
 
             Toast.MakeText(this, "Fill list with items...", ToastLength.Short).Show();
 
-            
-            
+
+
             killOldTimers();
 
 
@@ -304,7 +307,7 @@ namespace ProjTaskReminder
 
             RefreshListAdapter();
 
-            if (id>-1)
+            if (id > -1)
             {
                 // Scroll to handled task
                 focusListByID(id);
@@ -331,9 +334,7 @@ namespace ProjTaskReminder
 
             if (index > -1)
             {
-                //simpleList.Adapter.
-                //simpleList.VerticalScrollbarPosition(index);
-                //listRecycler.scrollToPosition(index);
+                ScroolListToItem(index);
             }
 
         }
@@ -348,10 +349,34 @@ namespace ProjTaskReminder
 
             if (index > -1)
             {
-                //listRecycler.scrollToPosition(index);
+                ScroolListToItem(index);
             }
         }
 
+        private void ScroolListToItem(int index)
+        {
+
+            View itemView = simpleList.GetChildAt(index);
+
+            if (itemView != null)
+            {
+                int scrolly = (-1 * itemView.Top) + simpleList.FirstVisiblePosition * itemView.Height;
+                scrolly = (int)itemView.GetY();
+                simpleList.ScrollY = scrolly;
+            }
+
+            //simpleList.ScrollChange += (o, e) =>
+            //{
+            //    if (simpleList.FirstVisiblePosition == 0 && Convert.ToInt32(simpleList.GetChildAt(index).GetY()) == 0)
+            //    {
+            //        // Reach top
+            //    }
+            //};
+            //int pos = simpleList.FirstVisiblePosition;
+            //simpleList.VerticalScrollbarPosition(index);
+            //listRecycler.scrollToPosition(index);
+
+        }
         private bool ConnectToDB()
         {
             bool result = true;
@@ -359,8 +384,7 @@ namespace ProjTaskReminder
 
             try
             {
-                DBTaskReminder = new DBTaskReminder(DB_TASK_DB_NAME);
-                DBTaskReminder.DB_PATH = context.GetExternalFilesDir("").AbsolutePath;
+                DBTaskReminder = new DBTaskReminder(DB_TASK_DB_NAME, context.GetExternalFilesDir("").AbsolutePath, DB_TABLE_NAME);
             }
             catch (Exception ex)
             {
@@ -402,7 +426,7 @@ namespace ProjTaskReminder
             return TasksList;
         }
 
-        public static List<KeyValuePair<String, String>> getTaskValues(Task currentTask)
+        public static List<KeyValuePair<String, String>> SetTaskValuesForDB(Task currentTask)
         {
             List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>();
             //List<KeyValuePair<string,CharSequence>> values2 = new ArrayList<>();
@@ -780,10 +804,19 @@ namespace ProjTaskReminder
             currentTask.setTimer(timer);
             addTimerToKillArray(currentTask.getTaskID(), timer, null, currentTask);     // timer timerTask);
 
+            ActionOnTaskTimerTick = new TaskTimerElapsed(currentTask);
+            ActionOnTaskTimerTick.OnTimerTick += MainActivity_ActionOnTaskTimerTick;
+            //ActionOnTaskTimerTick += MainActivity_ActionOnTaskTimerTick;
+            //ActionOnTaskTimerTick += delegateMethod2;  
+            //ActionOnTaskTimerTick.Invoke(timer, null);  //, currentTask);
+
             //timer.BeginInit();   
             timer.AutoReset = true;             // Continue repeatly
-            timer.Elapsed += TimerRunning2;     // (null, null);
+            //timer.Elapsed += ActionOnTaskTimerTick222; 
+            //timer.Elapsed += ActionOnTaskTimerTick;
+            timer.Elapsed += ActionOnTaskTimerTick.Timer_Elapsed; // Timer_Elapsed;     // (null, null);
             timer.Interval = TimerInterval; // 30 seconds
+            //timer.Elapsed += MainActivity_ActionOnTaskTimerTick;
             //timer.SynchronizingObject = currentTask;
             timer.Enabled = true;
             //timer.Start();
@@ -791,12 +824,33 @@ namespace ProjTaskReminder
             //timer.ScheduleAtFixedRate(customTimerTask, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute), 5000);
         }
 
-        private void TimerRunning2(object sender, ElapsedEventArgs e)
+        //private void MainActivity_ActionOnTaskTimerTick(object sender, ElapsedEventArgs e, Task currentTask)
+        //{
+        //    ActionOnTaskTimerTick(sender, e, currentTask);
+        //}
+
+        //private void MainActivity_ActionOnTaskTimerTick2(object sender, ElapsedEventArgs e)
+        //{
+        //    ActionOnTaskTimerTick(sender, e, CurrentTask);
+        //}
+
+        private void delegateMethod2(object timer, ElapsedEventArgs args, Task currentTask)
         {
+            throw new NotImplementedException();
+        }
+
+        protected  void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            //ActionOnTaskTimerTick(sender, e, CurrentTask);
+        }
+
+
+        public void MainActivity_ActionOnTaskTimerTick(object sender, ElapsedEventArgs e, Task currentTask)
+        { 
             // Cant in Threading proccess
             //Toast.MakeText(this, "Timer Ticking...", ToastLength.Short).Show();
 
-            Task currentTask = CurrentTask;
+            //Task currentTask = CurrentTask;
 
             DateTime dateNow = Utils.Utils.getDateFixed(DateTime.Now);
             string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
@@ -804,6 +858,10 @@ namespace ProjTaskReminder
 
             if (strDateNow.CompareTo(strDateTask) >= 0)
             {
+                if (!(sender is System.Timers.Timer))
+                {
+                    return;
+                }
                 System.Timers.Timer timer = ((System.Timers.Timer)sender);
                 timer.Stop();
                 timer.Close();
@@ -812,7 +870,8 @@ namespace ProjTaskReminder
 
                 TimerStop(currentTask);
 
-                Toast.MakeText(context, "Killed the Timer", ToastLength.Short).Show();
+                // Can't show asyncnic in Timer Thread
+                //Toast.MakeText(context, "Killed the Timer", ToastLength.Short).Show();
 
                 // Do the Job - Notification
                 picsTimer_onTick(currentTask);
@@ -826,6 +885,10 @@ namespace ProjTaskReminder
         {
             try
             {
+                if (timerArrayIndex>=TasksList.Count)
+                {
+                    return;
+                }
                 Object[] taskTimerArray = TimersArray[timerArrayIndex];
 
                 if (taskTimerArray[1] == null)
@@ -867,7 +930,7 @@ namespace ProjTaskReminder
             }
         }
 
-        #region Tier as Java.Util.Timer
+        #region Timer as Java.Util.Timer
 
         private void TimerExecute3(Task currentTask, Date timerDate)
         {
@@ -964,13 +1027,11 @@ namespace ProjTaskReminder
         private void killOldTimers()
         {
  
-
             if (TimersArray == null)
             {
                 TimersArray = new List<Object[]>();
                 return;
             }
-
 
             for (int i = TimersArray.Count - 1; i >= 0; i--)
             {
@@ -994,11 +1055,6 @@ namespace ProjTaskReminder
                 MainMessageText = "";
             }
         }
-
-        //protected void showNotifications()  //Task currentTask)
-        //{
-        //    showNotifications(CurrentTask);
-        //}
 
         protected void showNotifications(Task currentTask)
         {
@@ -1212,6 +1268,8 @@ namespace ProjTaskReminder
                 string message = "Database was restored OK";
                 Toast.MakeText(this, message, ToastLength.Long).Show();
             }
+
+            FillListFromDB();
         }
 
         private Task searchTaskByID(int taskID)
@@ -1262,5 +1320,23 @@ namespace ProjTaskReminder
         }
 
     }
+
+    public class TaskTimerElapsed
+    {
+        private Task currentTask;
+        public  event Action<object, ElapsedEventArgs, Task> OnTimerTick;
+
+        public TaskTimerElapsed(Task task)
+        {
+            this.currentTask = task;
+        }
+
+        public void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            OnTimerTick(sender, e, currentTask);
+        }
+
+    }
+
 }
 

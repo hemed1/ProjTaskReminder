@@ -155,7 +155,7 @@ namespace ProjTaskReminder
             }
             else
             {
-                txtDetailsDescription.RequestFocus();
+                //txtDetailsDescription.RequestFocus();
                 //Utils.Utils.closeKeyboard();
             }
 
@@ -345,12 +345,13 @@ namespace ProjTaskReminder
 
                 if (isNewMode)
                 {
-                    MainActivity.DBTaskReminder.DB.Insert(item);
+                    MainActivity.DBTaskReminder.RecordInser(item);
+                    //MainActivity.DBTaskReminder.DB.Insert(item);
                 }
                 else
                 {
                     // Set Task object in array
-                    List<KeyValuePair<String, String>> values = MainActivity.getTaskValues(CurrentTask);
+                    List<KeyValuePair<String, String>> values = MainActivity.SetTaskValuesForDB(CurrentTask);
                     MainActivity.DBTaskReminder.UpdateRecord("TBL_Tasks", values, new object[] { CurrentTask.getTaskID() });
                 }
 

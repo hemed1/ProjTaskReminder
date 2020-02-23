@@ -11,7 +11,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-
+using ProjTaskReminder.Model;
 using SQLite;
 
 
@@ -26,30 +26,31 @@ namespace ProjTaskReminder.Data
 
         public string DB_PATH;
         public string DB_NAME;          // "TaskReminderDB"
+        public string DB_TABLE_NAME;    // "TaskReminderDB"
         private Context context;        // Android.App.Application.Context;
 
-        public DBTaskReminder(string dbName)
+
+
+        public DBTaskReminder(string dbName, string dbPath, string tableName)
         {
             context = Android.App.Application.Context;
 
-            if (string.IsNullOrEmpty(DB_PATH))
-            {
-                DB_PATH = context.GetExternalFilesDir("").AbsolutePath;
-            }
-            DB_NAME = dbName;       
-
-            Connect();
-        }
-
-        private SQLiteConnection Connect()
-        {
-            SQLiteConnection db = null;
-            string fullPath;
-
+            DB_NAME = dbName;
+            DB_PATH = dbPath;
+            DB_TABLE_NAME = tableName;
 
             // /storage/emulated/0/Android/data/com.meirhemed.projtaskreminder/files
             //DB_PATH = context.GetExternalFilesDir("").AbsolutePath;         
             //DB_PATH = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);  //"/Assets/" + DB_NAME;             //Environment.SpecialFolder.LocalApplicationData
+
+            Connect(DB_TABLE_NAME);
+        }
+
+        private SQLiteConnection Connect(string tableName)      // "TBL_Tasks"
+        {
+            SQLiteConnection db = null;
+            string fullPath;
+
 
             fullPath = Path.Combine(DB_PATH, DB_NAME);      
 
@@ -63,7 +64,7 @@ namespace ProjTaskReminder.Data
                 //mDBcon.Open();
 
                 //db.DropTable<TBL_Tasks>();
-                List<SQLiteConnection.ColumnInfo> columns = db.GetTableInfo("TBL_Tasks");
+                List<SQLiteConnection.ColumnInfo> columns = db.GetTableInfo(tableName);
                 
                 if (columns.Count == 0)
                 {
@@ -72,7 +73,7 @@ namespace ProjTaskReminder.Data
                 else if (columns.Count<5)
                 {
                     //this.DB.Open();
-                    //string commanScript = "ALTER TABLE TBL_Tasks ADD COLUMN DateLastUpdate varchar;";
+                    //string commanScript = "ALTER TABLE TBL_Tasks ADD COLUMN DateLastUpdate VARCHAR(11);";
                     //commanScript = "CREATE TABLE IF NOT EXISTS tags (ISBN VARCHAR(15), Tag VARCHAR(15));";
 
                     //SQLiteCommand cmd = db.CreateCommand(commanScript, null);        //new SQLiteCommand(this.DB);
@@ -81,10 +82,10 @@ namespace ProjTaskReminder.Data
                     //cmd.ExecuteNonQuery();
                 }
 
-//                SQLiteConnection.ColumnInfo columnInfo = new SQLiteConnection.ColumnInfo();
-//                columnInfo.Name = "DateLastUpdate";
-//                //columnInfo.notnull=1
-//                columns.Add(columnInfo);
+                //                SQLiteConnection.ColumnInfo columnInfo = new SQLiteConnection.ColumnInfo();
+                //                columnInfo.Name = "DateLastUpdate";
+                //                //columnInfo.notnull=1
+                //                columns.Add(columnInfo);
                 //db.Close();
                 //SQLite.TableAttribute aa=new TableAttribute()
                 //TableQuery a = (TableQuery<TBL_Tasks>);
@@ -109,59 +110,45 @@ namespace ProjTaskReminder.Data
             return db;
         }
 
-        private void RecordInser(SQLiteConnection db)
+        public long RecordInser(Object record)  //, Type tableTyp = TBL_Tasks)
         {
-            if (db.Table<TBL_Tasks>().Count() == 0)
-            {
-                // only insert the data if it doesn't already exist
-                var item = new TBL_Tasks();
-                item.Title = "Apple";
-                item.Description = "Apple Indsroy";
-                db.Insert(item);
+            long recordsEffected = 0;
 
-                item = new TBL_Tasks();
-                item.Title = "Google";
-                item.Description = "Google Indsroy";
-                db.Insert(item);
-            }
-
-            Console.WriteLine("Reading data");
-            
-            TableQuery<TBL_Tasks> tableQuery = db.Table<TBL_Tasks>();
-            TableMapping tableMap = db.GetMapping<TBL_Tasks>();
-            //db.Delete<TBL_Tasks>(2);
-            //var stock = db.Get<TBL_Tasks>(2); // primary key id of 2
-
-            //tableMap.Columns[0].Name = "ID";
-
-            foreach (TBL_Tasks s in tableQuery)
-            {
-                Console.WriteLine(s.ID + " " + s.Title);
-            }
-        }
-
-        public bool DeleteRecord(string tableName, int id)
-        {
-            bool result = true;
-
-            string sqlScript = "DELETE FROM " + tableName + " " +
-                               "WHERE TaskID=" + id.ToString();
 
             try
             {
-                //this.DB = this.getWritableDatabase();
-                DB.Execute(sqlScript);
-                DB.Close();
+                recordsEffected = DB.Insert(record);
             }
             catch (Exception ex)
             {
-                result = false;
-                //Log.d("DataBase", "Error in 'deleteRecord()': " + ex.getMessage());
-                Utils.Utils.WriteToLog("DataBase - Error in 'deleteRecord()': \n" + ex.Message, true);
-                //throw ex;
+                string msg = "DataSet - Error in 'RecordInser()'" + "\n" + ex.Message;
+                Utils.Utils.WriteToLog(msg, true);
             }
 
-            return result;
+            return recordsEffected;
+
+            //if (db.Table<TBL_Tasks>().Count() == 0)
+            //{
+            // only insert the data if it doesn't already exist
+            //var item = new TBL_Tasks();
+            //item.Title = "Apple";
+            //item.Description = "Apple Indsroy";
+            //db.Insert(item);
+            //item = new TBL_Tasks();
+            //item.Title = "Google";
+            //item.Description = "Google Indsroy";
+            //db.Insert(item);
+            //}
+            //Console.WriteLine("Reading data");
+            //TableQuery<TBL_Tasks> tableQuery = DB.Table<TBL_Tasks>();
+            //TableMapping tableMap = DB.GetMapping<TBL_Tasks>();
+            //db.Delete<TBL_Tasks>(2);
+            //var stock = db.Get<TBL_Tasks>(2); // primary key id of 2
+            //tableMap.Columns[0].Name = "ID";
+            //foreach (TBL_Tasks s in tableQuery)
+            //{
+            //    Console.WriteLine(s.ID + " " + s.Title);
+            //}
         }
 
         public long AddRecord(string tableName, List<KeyValuePair<string, string>> values)
@@ -242,6 +229,30 @@ namespace ProjTaskReminder.Data
             return recordsEffected;
         }
 
+        public bool DeleteRecord(string tableName, int id)
+        {
+            bool result = true;
+
+            string sqlScript = "DELETE FROM " + tableName + " " +
+                               "WHERE TaskID=" + id.ToString();
+
+            try
+            {
+                //this.DB = this.getWritableDatabase();
+                DB.Execute(sqlScript);
+                DB.Close();
+            }
+            catch (Exception ex)
+            {
+                result = false;
+                //Log.d("DataBase", "Error in 'deleteRecord()': " + ex.getMessage());
+                Utils.Utils.WriteToLog("DataBase - Error in 'deleteRecord()': \n" + ex.Message, true);
+                //throw ex;
+            }
+
+            return result;
+        }
+
         private ContentValues addContentValues(List<KeyValuePair<String, String>> values)
         {
             ContentValues contentValues = new ContentValues();
@@ -254,19 +265,8 @@ namespace ProjTaskReminder.Data
             return contentValues;
         }
 
-
-
-        [Table("TBL_Tasks")]
-        public class TBL_Tasks
-        {
-            [PrimaryKey, AutoIncrement, Column("ID")]
-            public int ID { get; set; }
-            [MaxLength(8)]
-            public string Title { get; set; }
-            public string Description { get; set; }
-            public string DateDue { get; set; }
-            public string DateLastUpdate { get; set; }
-        }
+    
+    
     }
 
     
