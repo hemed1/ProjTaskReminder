@@ -91,7 +91,7 @@ namespace ProjTaskReminder
 
             FillListFromDB();
 
-            focusListOnToday(Utils.Utils.getDateFixed(DateTime.Now));
+            focusListOnToday(Utils.Utils.GetDateNow());
         }
 
         private void SetControlsIO()
@@ -288,17 +288,13 @@ namespace ProjTaskReminder
 
         private void SortList()
         {
+            int id = -1;
+
+
+
             Toast.MakeText(this, "Refresh items...", ToastLength.Short).Show();
 
             TasksList = TasksList.OrderByDescending(a => a.getDate()).ToList();
-
-            int id = -1;
-
-            // For scroll to handled task
-            if (ActivityTaskDetails.isNewMode)
-            {
-                //CurrentTask = tasksList.get(tasksList.size() - 1);
-            }
 
             if (CurrentTask != null && CurrentTask.getTaskID() > 0)
             {
@@ -356,14 +352,15 @@ namespace ProjTaskReminder
         private void ScroolListToItem(int index)
         {
 
-            View itemView = simpleList.GetChildAt(index);
-
-            if (itemView != null)
-            {
-                int scrolly = (-1 * itemView.Top) + simpleList.FirstVisiblePosition * itemView.Height;
-                scrolly = (int)itemView.GetY();
-                simpleList.ScrollY = scrolly;
-            }
+            simpleList.SmoothScrollToPosition(index);
+            
+            //View itemView = simpleList.GetChildAt(index);
+            //if (itemView != null)
+            //{
+            //    int scrolly = (-1 * itemView.Top) + simpleList.FirstVisiblePosition * itemView.Height;
+            //    scrolly = (int)itemView.GetY();
+            //    simpleList.ScrollY = scrolly;
+            //}
 
             //simpleList.ScrollChange += (o, e) =>
             //{
@@ -663,7 +660,7 @@ namespace ProjTaskReminder
             }
 
 
-            DateTime today = Utils.Utils.getDateFixed(DateTime.Now);       //Util.getDateNow.getTime();
+            DateTime today = Utils.Utils.GetDateNow();       //Util.GetDateNow.getTime();
 
             if (timerDate.Value.CompareTo(today) <= 0)
             {
@@ -673,7 +670,7 @@ namespace ProjTaskReminder
             }
 
 
-            //Toast.MakeText(this, "Task date: " + Utils.Utils.getDateFormattedString(timerDate.Value) + "     Now: " + Utils.Utils.getDateFormattedString(Utils.Utils.getDateFixed(DateTime.Now)), ToastLength.Long).Show();
+            //Toast.MakeText(this, "Task date: " + Utils.Utils.getDateFormattedString(timerDate.Value) + "     Now: " + Utils.Utils.getDateFormattedString(Utils.Utils.GetDateNow()), ToastLength.Long).Show();
 
             CurrentTask = currentTask;
             ActionOnTaskDateDue += TimerNextTime;
@@ -690,7 +687,7 @@ namespace ProjTaskReminder
 
             if (isShowTimerReminder && !MainMessageText.Trim().Equals(""))
             {
-                string text = "יצר תזכורת ביום " + Utils.Utils.getDateDayName(timerDate.Value) + "  " + dateStr;        // + "  (Now: " + Utils.Utils.getDateFormattedString(Utils.Utils.getDateFixed(DateTime.Now)) + ")";
+                string text = "יצר תזכורת ביום " + Utils.Utils.getDateDayName(timerDate.Value) + "  " + dateStr;        // + "  (Now: " + Utils.Utils.getDateFormattedString(Utils.Utils.GetDateNow()) + ")";
                 MainMessageText = MainMessageText + " - " + text;
                 showGlobalMessageOnToast();
             }
@@ -758,7 +755,7 @@ namespace ProjTaskReminder
             }
 
 
-            DateTime dateNow = Utils.Utils.getDateFixed(DateTime.Now);
+            DateTime dateNow = Utils.Utils.GetDateNow();
             string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
             string strDateTask = Utils.Utils.getDateFormattedString(currentTask.getDate().Value);
 
@@ -769,7 +766,7 @@ namespace ProjTaskReminder
 
                 RunOnUiThread(() =>
                 {
-                    dateNow = Utils.Utils.getDateFixed(DateTime.Now);
+                    dateNow = Utils.Utils.GetDateNow();
                     strDateNow = Utils.Utils.getDateFormattedString(dateNow);
                 });
 
@@ -804,8 +801,8 @@ namespace ProjTaskReminder
             currentTask.setTimer(timer);
             addTimerToKillArray(currentTask.getTaskID(), timer, null, currentTask);     // timer timerTask);
 
-            ActionOnTaskTimerTick = new TaskTimerElapsed(currentTask);
-            ActionOnTaskTimerTick.OnTimerTick += MainActivity_ActionOnTaskTimerTick;
+            ActionOnTaskTimerTick = new TaskTimerElapsed(currentTask, timer);
+            ActionOnTaskTimerTick.OnTimerTick += Timer_Elapsed;
             //ActionOnTaskTimerTick += MainActivity_ActionOnTaskTimerTick;
             //ActionOnTaskTimerTick += delegateMethod2;  
             //ActionOnTaskTimerTick.Invoke(timer, null);  //, currentTask);
@@ -839,30 +836,25 @@ namespace ProjTaskReminder
             throw new NotImplementedException();
         }
 
-        protected  void Timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            //ActionOnTaskTimerTick(sender, e, CurrentTask);
-        }
-
-
-        public void MainActivity_ActionOnTaskTimerTick(object sender, ElapsedEventArgs e, Task currentTask)
+        public void Timer_Elapsed(object sender, ElapsedEventArgs e, Task currentTask, System.Timers.Timer timerObject)     // ElapsedEventHandler
         { 
             // Cant in Threading proccess
             //Toast.MakeText(this, "Timer Ticking...", ToastLength.Short).Show();
 
             //Task currentTask = CurrentTask;
 
-            DateTime dateNow = Utils.Utils.getDateFixed(DateTime.Now);
+            DateTime dateNow = Utils.Utils.GetDateNow();
             string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
             string strDateTask = Utils.Utils.getDateFormattedString(CurrentTask.getDate().Value);
 
             if (strDateNow.CompareTo(strDateTask) >= 0)
             {
-                if (!(sender is System.Timers.Timer))
-                {
-                    return;
-                }
-                System.Timers.Timer timer = ((System.Timers.Timer)sender);
+                //if (!(sender is System.Timers.Timer))
+                //{
+                //    return;
+                //}
+                System.Timers.Timer timer = timerObject;
+                //System.Timers.Timer timer = ((System.Timers.Timer)sender);
                 timer.Stop();
                 timer.Close();
                 timer.Dispose();
@@ -877,6 +869,7 @@ namespace ProjTaskReminder
                 picsTimer_onTick(currentTask);
             }
 
+            //return null;
         }
 
         #endregion
@@ -977,7 +970,7 @@ namespace ProjTaskReminder
 
         private void TimerNextTime()    // string ss)
         {
-            DateTime dateNow = Utils.Utils.getDateFixed(DateTime.Now);
+            DateTime dateNow = Utils.Utils.GetDateNow();
             string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
 
             //return strDateNow;
@@ -1110,7 +1103,7 @@ namespace ProjTaskReminder
 
             CurrentTask.setDate_due("");
             CurrentTask.setBackgroundColor(DefaultCardBackgroundColor.ToString());
-            CurrentTask.setDate_last_update(Utils.Utils.getDateFormattedString(Utils.Utils.getDateFixed(DateTime.Now)));
+            CurrentTask.setDate_last_update(Utils.Utils.getDateFormattedString(Utils.Utils.GetDateNow()));
             CurrentTask.setRepeat("פעם אחת");
 
             return CurrentTask;
@@ -1145,7 +1138,7 @@ namespace ProjTaskReminder
                 //    picsTimer_onTick(); // ParentTask);
                 //});
 
-                DateTime dateNow = Utils.Utils.getDateFixed(DateTime.Now);       // args.SignalTime;
+                DateTime dateNow = Utils.Utils.GetDateNow();       // args.SignalTime;
                 Task currentTask = ParentTask;
 
 
@@ -1165,7 +1158,7 @@ namespace ProjTaskReminder
 
                     picsTimer_onTick(); // ParentTask);
 
-                    dateNow = Utils.Utils.getDateFixed(DateTime.Now);
+                    dateNow = Utils.Utils.GetDateNow();
                     strDateNow = Utils.Utils.getDateFormattedString(dateNow);
 
                     //RunOnUiThread(ActionOnPlayingMusic);    // =>
@@ -1192,7 +1185,7 @@ namespace ProjTaskReminder
                     return;
                 }
 
-                DateTime dateNow = Utils.Utils.getDateFixed(DateTime.Now);       // args.SignalTime;
+                DateTime dateNow = Utils.Utils.GetDateNow();       // args.SignalTime;
                 Task currentTask = (Task)sender;       // CurrentTask;
 
                 if (currentTask.getDate() == null)
@@ -1305,10 +1298,11 @@ namespace ProjTaskReminder
 
             for (int i = 0; i < tasksList.Count; i++)
             {
-                dateStrTask = tasksList[i].getDate_due();
-                if (!dateStrTask.Equals(""))
+                DateTime? taskDate = tasksList[i].getDate();
+                //dateStrTask = tasksList[i].getDate();
+                if (taskDate.HasValue)
                 {
-                    if (dateStrTask.CompareTo(dateStrToFind) == 0)
+                    if (taskDate.Value.CompareTo(date) == 0)
                     {
                         result = i;
                         break;
@@ -1324,16 +1318,21 @@ namespace ProjTaskReminder
     public class TaskTimerElapsed
     {
         private Task currentTask;
-        public  event Action<object, ElapsedEventArgs, Task> OnTimerTick;
+        public  event Action<object, ElapsedEventArgs, Task, System.Timers.Timer> OnTimerTick;
+        public System.Timers.Timer TimerObject;
 
-        public TaskTimerElapsed(Task task)
+
+        public TaskTimerElapsed(Task task, System.Timers.Timer timerObject)
         {
             this.currentTask = task;
+            this.TimerObject = timerObject;
         }
 
-        public void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        public void Timer_Elapsed(object sender, ElapsedEventArgs e) //, Task taskObject, System.Timers.Timer timerObject)      // ElapsedEventHandler
         {
-            OnTimerTick(sender, e, currentTask);
+            OnTimerTick(sender, e, currentTask, TimerObject);
+
+            //return null;
         }
 
     }

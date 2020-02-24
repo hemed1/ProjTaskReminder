@@ -330,6 +330,7 @@ namespace ProjTaskReminder
         private bool SaveRecord(Task task)
         {
             bool result = true;
+            long recorsWasEffected = 0;
 
 
             SetObjectByControls();
@@ -345,35 +346,60 @@ namespace ProjTaskReminder
 
                 if (isNewMode)
                 {
-                    MainActivity.DBTaskReminder.RecordInser(item);
+                    recorsWasEffected = MainActivity.DBTaskReminder.RecordInser(item);
                     //MainActivity.DBTaskReminder.DB.Insert(item);
                 }
                 else
                 {
                     // Set Task object in array
                     List<KeyValuePair<String, String>> values = MainActivity.SetTaskValuesForDB(CurrentTask);
-                    MainActivity.DBTaskReminder.UpdateRecord("TBL_Tasks", values, new object[] { CurrentTask.getTaskID() });
+                    recorsWasEffected = MainActivity.DBTaskReminder.UpdateRecord(MainActivity.DB_TABLE_NAME, values, new object[] { CurrentTask.getTaskID() });
                 }
 
-                MainActivity.CurrentTask = CurrentTask;
+
                 MainActivity.isShowTimerReminder = true;
-                MainActivity.MainMessageText = "נשמר";
-
-                //Toast.MakeText(this, "נשמר", ToastLength.Long).Show();
-
-                inputIntent.PutExtra("Result", "true");
 
                 // Raise the event to the Caller
-                if (OnSaveButton != null)
+                if (recorsWasEffected>0)
                 {
+                    if (isNewMode)
+                    {
+                        TBL_Tasks record = (TBL_Tasks)MainActivity.DBTaskReminder.getLastRecord(MainActivity.DB_TABLE_NAME);
+                        CurrentTask.setTaskID(record.ID);
+                    }
+
+                    MainActivity.CurrentTask = CurrentTask;
+                    MainActivity.MainMessageText = "נשמר";
+
+                    //Toast.MakeText(this, "נשמר", ToastLength.Long).Show();
+
+                    inputIntent.PutExtra("Result", "true");
+
+                    //CurrentTask.setTitle(record.Title);
+                    //CurrentTask.setDescription(record.Description);
+                    //if (!string.IsNullOrEmpty(record.DateDue) && record.DateDue != null && !record.DateDue.Trim().Equals(""))
+                    //{
+                    //    CurrentTask.setDate_due(record.DateDue.Trim().Substring(0, 10));
+                    //    CurrentTask.setTime_due(record.DateDue.Trim().Substring(11, 5));
+                    //}
+                    //if (OnSaveButton != null)
+                    //{
                     //OnSaveButton(null, EventArgs.Empty);
+                    //}
+                    // Second option to - Raise the event to the Caller
+                    //if (OnActivityResult != null)
+                    //{
+                    //    //OnActivityResult(1234, Result.Ok, inputIntent);
+                    //}
+                    SetResult(Result.Ok, inputIntent);
+                }
+                else
+                {
+                    MainActivity.MainMessageText = "השמירה נכשלה";
+                    SetResult(Result.Canceled, inputIntent);
                 }
 
-                // Second option to - Raise the event to the Caller
-                //OnActivityResult(1234, Result.Ok, inputIntent);
 
-                SetResult(Result.Ok, inputIntent);
-                
                 Finish();
             }
             catch (Exception ex)
@@ -411,7 +437,7 @@ namespace ProjTaskReminder
                 CurrentTask.setDate_due("");
                 CurrentTask.setTime_due("");
             }
-            CurrentTask.setDate_last_update(Utils.Utils.getDateFormattedString(Utils.Utils.getDateFixed(DateTime.Now)));
+            CurrentTask.setDate_last_update(Utils.Utils.getDateFormattedString(Utils.Utils.GetDateNow()));
         }
 
         private void SetControlsByObject()

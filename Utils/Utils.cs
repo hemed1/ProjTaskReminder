@@ -194,6 +194,11 @@ namespace ProjTaskReminder.Utils
             return result;
         }
 
+        public static DateTime GetDateNow()
+        {
+            return getDateFixed(DateTime.Now);
+        }
+
         public static Calendar getDateNow()
         {
             //long timezoneAlteredTime = getDateTimeDiff();

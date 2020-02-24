@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -93,7 +92,6 @@ namespace ProjTaskReminder.Data
                 //db.TableMappings.First().InsertColumns
                 //tableMap.Columns.
                 //columns[0].
-                //TableMapping tableMap = db.GetMapping<TBL_Tasks>();
                 //tableMap.Columns
                 //db.Update()
 
@@ -247,6 +245,75 @@ namespace ProjTaskReminder.Data
                 result = false;
                 //Log.d("DataBase", "Error in 'deleteRecord()': " + ex.getMessage());
                 Utils.Utils.WriteToLog("DataBase - Error in 'deleteRecord()': \n" + ex.Message, true);
+                //throw ex;
+            }
+
+            return result;
+        }
+
+        public object getRecordByID(int id, string tableName)
+        {
+            var result = DB.Get<TBL_Tasks>(id);  // primary key id of 5
+
+            //TableQuery<TBL_Tasks> table = DB.Table<TBL_Tasks>();
+            //result = table.Where(a => a.ID == id).FirstOrDefault();
+            //foreach (TBL_Tasks record in table)
+            //{
+            //}
+
+            //TableMapping tableMap = DB.GetMapping<TBL_Tasks>();
+
+            //string sqlScript = "SELECT * FROM " + TableName + " WHERE ID=?";
+            //List<object> objects = DB.Query(tableMap, sqlScript, new object[1] { id });
+
+            DB.Close();
+
+            return result;
+        }
+
+        public object getLastRecord(string tableName) //: where T = TBL_Tasks
+        {
+            TBL_Tasks result = null;
+            //var result = DB.Get<TBL_Tasks>(id);  // primary key id of 5
+
+            //List < ColumnInfo >= DB.GetTableInfo(tableName);
+            TableQuery<TBL_Tasks> table = DB.Table<TBL_Tasks>();
+
+            result = table.Last();
+            //foreach (TBL_Tasks record in table)
+            //{
+            //}
+
+            //TableMapping tableMap = DB.GetMapping<TBL_Tasks>();
+
+            //string sqlScript = "SELECT * FROM " + TableName + " WHERE ID=?";
+            //List<object> objects = DB.Query(tableMap, sqlScript, new object[1] { id });
+
+            DB.Close();
+
+            return result;
+        }
+
+        public bool addFieldToTable(String tableName, String fieldName, String fieldType)
+        {
+            String sqlScript;
+            bool result = false;
+
+
+            sqlScript = "ALTER TABLE " + tableName + " ADD COLUMN " + fieldName + " " + fieldType;
+
+            //Utils.Utils.WriteToLog("DataBase - 'addFieldToTable()': " + tableName + "'" + fieldName);
+
+            try
+            {
+                //this.DB = this.getWritableDatabase();
+                this.DB.Execute(sqlScript, null);
+                DB.Close();
+            }
+            catch (Exception ex)
+            {
+                //Log.d("DataBase", "Error in 'addFieldToTable()': " + ex.getMessage());
+                Utils.Utils.WriteToLog("DataBase - Error in 'addFieldToTable()': " + tableName + "' \n" + ex.Message);
                 //throw ex;
             }
 
