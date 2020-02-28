@@ -335,12 +335,16 @@ namespace ProjTaskReminder
 
             SetObjectByControls();
 
-            TBL_Tasks item = new TBL_Tasks(); ;
+            TBL_Tasks item;
 
             // only insert the data if it doesn't already exist
-            if (!isNewMode)
+            if (isNewMode)
             {
-                item.ID = CurrentTask.getTaskID();
+                item = new TBL_Tasks();
+            }
+            else
+            {
+                item = (TBL_Tasks)CurrentTask.TableRecord;
             }
 
 
@@ -357,10 +361,10 @@ namespace ProjTaskReminder
                 }
                 else
                 {
-                    //recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(item);
+                    recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(item);
                     // Set Task object in array
-                    List<KeyValuePair<String, String>> values = MainActivity.SetTaskValuesForDB(CurrentTask);
-                    recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(MainActivity.DB_TABLE_NAME, values, new object[] { CurrentTask.getTaskID() });
+                    //List<KeyValuePair<String, String>> values = MainActivity.SetTaskValuesForDB(CurrentTask);
+                    //recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(MainActivity.DB_TABLE_NAME, values, new object[] { CurrentTask.getTaskID() });
                 }
 
 
@@ -369,12 +373,6 @@ namespace ProjTaskReminder
                 // Raise the event to the Caller
                 if (recorsWasEffected>0)
                 {
-                    //if (isNewMode)
-                    //{
-                    //    TBL_Tasks record = (TBL_Tasks)MainActivity.DBTaskReminder.getLastRecord(MainActivity.DB_TABLE_NAME);
-                        CurrentTask.setTaskID(item.ID);
-                    //}
-
                     MainActivity.CurrentTask = CurrentTask;
                     MainActivity.MainMessageText = "נשמר";
 
@@ -391,6 +389,7 @@ namespace ProjTaskReminder
                     //{
                     //    //OnActivityResult(1234, Result.Ok, inputIntent);
                     //}
+
                     SetResult(Result.Ok, inputIntent);
                 }
                 else

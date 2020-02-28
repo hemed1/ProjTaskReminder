@@ -18,6 +18,7 @@ using Java.Util;
 using ProjTaskReminder.Model;
 using ProjTaskReminder.Utils;
 using System.Timers;
+using System.IO;
 
 namespace ProjTaskReminder
 {
@@ -88,16 +89,21 @@ namespace ProjTaskReminder
             //string folderNameDocuments = Android.OS.Environment.DirectoryDocuments;
             //Java.IO.File externalPath = Android.OS.Environment.ExternalStorageDirectory;
 
-
+            string file = "";
             string path = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
 
             Utils.Utils.GetFolderFiles(path, "*.mp3", true, "*.jpg");
 
             ListItemsPath = Utils.Utils.FilesExtra;
 
+            ListItemsRecycler.Clear();
+
             for (int i=0; i<ListItemsPath.Count; i++)
             {
-                ListItemSong listItemSong = new ListItemSong(ListItemsPath[i].Key, "Artist " + i.ToString(), "Album " + i.ToString());
+                file = Directory.GetParent(ListItemsPath[i].Key).FullName;
+                file = ListItemsPath[i].Key.Substring(file.Length + 1);
+                file = Utils.Utils.FixSongName(file);
+                ListItemSong listItemSong = new ListItemSong(file, "Artist " + i.ToString(), "Album " + i.ToString());
                 ListItemsRecycler.Add(new KeyValuePair<string, ListItemSong>(listItemSong.getSongName(), listItemSong));
             }
         }
@@ -111,6 +117,7 @@ namespace ProjTaskReminder
             barSeek = (SeekBar)FindViewById(Resource.Id.barSeek);
 
             barSeek.BringToFront();
+            barSeek.ProgressChanged += OnSeekbarChanged;
 
             lblSongName = (TextView)FindViewById(Resource.Id.lblSongName);
             lblSongArtist = (TextView)FindViewById(Resource.Id.lblSongArtist);
@@ -149,6 +156,7 @@ namespace ProjTaskReminder
 
 
             mediaPlayer = new MediaPlayer();
+            mediaPlayer.Completion += OnSongFinish;
 
             btnPrev.Click += PlaySongPrev;
             btnNext.Click += PlaySongNext;
@@ -160,6 +168,24 @@ namespace ProjTaskReminder
             IsHaveToScroll = true;
         }
 
+        private void OnSeekbarChanged(object sender, SeekBar.ProgressChangedEventArgs e)
+        {
+            //UpdateProgressControls();
+
+            CurrentSongPosition = e.Progress;
+
+            if (e.FromUser)
+            {
+                mediaPlayer.SeekTo(CurrentSongPosition);
+            }
+
+        }
+
+        private void OnSongFinish(object sender, EventArgs eventArgs)
+        {
+            PlaySongNext(sender, eventArgs);
+        }
+
         private void PlaySongPlay(object sender, EventArgs eventArgs)
         {
             if (!isPlayingNow)
@@ -168,7 +194,6 @@ namespace ProjTaskReminder
                 {
                     if (ListPositionIndex <= ListItemsRecycler.Count - 1)
                     {
-                        isPlayingNow = true;
                         LoadSongIntoPlayer(ListPositionIndex);  //, true);
                     }
                 }
@@ -224,6 +249,7 @@ namespace ProjTaskReminder
                 MusicPause();
 
                 CurrentSongPosition = 0;
+                
                 int resourceID = Resource.Raw.love_the_one;
                 //int resourceID = ListItemsRecycler.get(listPositionIndex).getResourceID();
 
@@ -293,6 +319,8 @@ namespace ProjTaskReminder
             {
                 mediaPlayer.Start();
 
+                isPlayingNow = true;
+
                 btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPause);
 
                 //setPicsScroll();
@@ -342,6 +370,7 @@ namespace ProjTaskReminder
             if (mediaPlayer != null)
             {
                 CurrentSongPosition = 0;
+                //MusicStop();
                 mediaPlayer.SeekTo(0);
                 barSeek.Max = mediaPlayer.Duration;
                 barSeek.SetProgress(0, false);

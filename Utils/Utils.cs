@@ -111,8 +111,6 @@ namespace ProjTaskReminder.Utils
             List<string> files = new List<string>();
             List<KeyValuePair<string, List<string>>> filesResult = new List<KeyValuePair<string, List<string>>>();
             List<string> directories = new List<string>(); ; 
-            //static ArrayList<File>  foundfiles
-            String[] multiSearchValuse = new String[0];
 
 
 
@@ -130,13 +128,12 @@ namespace ProjTaskReminder.Utils
 
             if (directories == null || directories.Count()==0)
             {
-                //directories = new List<string>() { path }.ToArray();
                 return files;
             }
 
             //        if (fileExtentionToSearch.contains(";"))
             //        {
-            //            multiSearchValuse = fileExtentionToSearch.split(";");
+            //            String[] multiSearchValuse = fileExtentionToSearch.split(";");
             //            fileExtentionToSearch = multiSearchValuse[0];
             //        }
 
@@ -156,25 +153,26 @@ namespace ProjTaskReminder.Utils
                         FilesExtra = new List<KeyValuePair<string, List<string>>>();
                     }
 
-                    path = Directory.GetParent(file).FullName;
-                    List<string> dirs = Directory.GetFiles(path, fileExtentionToSearch2).ToList();
+                    List<string> filesPicts = new List<string>();
+
+                    if (!fileExtentionToSearch2.Equals(""))
+                    {
+                        path = Directory.GetParent(file).FullName;
+                        filesPicts = Directory.GetFiles(path, fileExtentionToSearch2).ToList();
+                    }
+
                     //if (Directory.Exists(file))
                     //{
                     //    dirs = GetFolderFiles(Directory.GetParent(file).FullName, fileExtentionToSearch2, searchInFolders, "");
                     //}
 
-                    KeyValuePair<string, List<string>> fileProp = new KeyValuePair<string, List<string>>(file, dirs);
+                    KeyValuePair<string, List<string>> fileProp = new KeyValuePair<string, List<string>>(file, filesPicts);
                     FilesExtra.Add(fileProp);
 
 
                     if (searchInFolders && Directory.Exists(file))
                     {
                         files.AddRange(GetFolderFiles(file, fileExtentionToSearch, searchInFolders));
-                    }
-                    else    //if (file.ToLower().EndsWith(fileExtentionToSearch))
-                    {
-                        //files.Add(file);
-                        //songsFiles.add(file);
                     }
                 }
             }
@@ -540,5 +538,27 @@ namespace ProjTaskReminder.Utils
 
             return result;
         }
+
+        public static string FixSongName(string songName)
+        {
+            string chars ="abcdefghijklmnopqrstuvwxyz";
+
+            if (chars.Contains(songName.Substring(0, 1)))
+            {
+                songName = songName.Substring(0, 1).ToUpper() + songName.Substring(1);
+            }
+            if (songName.Contains("- "))
+            {
+                int pos = songName.IndexOf("- ");
+                if (pos + 3 < songName.Length - 1)
+                {
+                    int len = songName.Length;
+                    songName = songName.Substring(0, pos + 2) + songName.Substring(pos + 2, len-pos-2).ToUpper();
+                }
+            }
+
+            return songName;
+        }
+
     }
 }

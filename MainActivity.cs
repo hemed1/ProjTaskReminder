@@ -414,6 +414,7 @@ namespace ProjTaskReminder
                     task.setDate_due(record.DateDue.Trim().Substring(0, 10));
                     task.setTime_due(record.DateDue.Trim().Substring(11, 5));
                 }
+                task.TableRecord = record;
 
                 TasksList.Add(task);
             }
@@ -1266,7 +1267,11 @@ namespace ProjTaskReminder
             string fullPathTarget = Path.Combine(DBTaskReminder.DB_PATH, DBTaskReminder.DB_NAME);
             string fullPathSource = Path.Combine(targetPath, DBTaskReminder.DB_NAME);
 
+            DBTaskReminder.DB.Close();
+
             bool result = Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
+            
+            ConnectToDB();
 
             if (result)
             {

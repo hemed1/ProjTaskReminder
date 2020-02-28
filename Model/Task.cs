@@ -30,6 +30,8 @@ namespace ProjTaskReminder.Model
         private Boolean IsArchive;
         private Boolean isSelected;
 
+        public Object TableRecord { get; set; }
+
         //private Thread timer;
         private System.Timers.Timer timer;
         //private Java.Util.Timer timer;
