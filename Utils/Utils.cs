@@ -23,8 +23,11 @@ namespace ProjTaskReminder.Utils
         public static string                LOG_FILE_PATH;
         public static string                LOG_FILE_NAME;
 
+        public static List<KeyValuePair<string, List<string>>> FilesExtra;
+
         public static Context context;
         public static Activity activity;
+
 
         public static void WriteToLog(string data, bool appendLines = true)
         {
@@ -88,7 +91,7 @@ namespace ProjTaskReminder.Utils
                     file = new FileStream(fileName, ((appendLines) ? FileMode.Append : FileMode.Create), FileAccess.Write);       // FileMode.Append
                 }
 
-                bytesData = Encoding.ASCII.GetBytes(data);
+                bytesData = Encoding.UTF8.GetBytes(data);        // Encoding.UTF8..ASCII.GetBytes(data);
 
                 file.Write(bytesData);
 
@@ -102,23 +105,32 @@ namespace ProjTaskReminder.Utils
 
 
         /// Get all files - Recorsive
-        public static List<string> GetFolderFiles(string path, string fileExtentionToSearch, bool searchInFolders)
+        public static List<string> GetFolderFiles(string path, string fileExtentionToSearch, bool searchInFolders, string fileExtentionToSearch2="")
         {
             string file;
             List<string> files = new List<string>();
-            string[] directories;
+            List<KeyValuePair<string, List<string>>> filesResult = new List<KeyValuePair<string, List<string>>>();
+            List<string> directories = new List<string>(); ; 
             //static ArrayList<File>  foundfiles
             String[] multiSearchValuse = new String[0];
 
 
+
+
             fileExtentionToSearch = fileExtentionToSearch.ToLower();
 
-            directories = Directory.GetDirectories(path);    //   File(path);
-
-            files = Directory.GetFiles(path, fileExtentionToSearch).ToList();
-
-            if (files == null || files.Count()==0)
+            try
             {
+                directories = Directory.GetDirectories(path).ToList();    //   File(path);
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            if (directories == null || directories.Count()==0)
+            {
+                //directories = new List<string>() { path }.ToArray();
                 return files;
             }
 
@@ -128,24 +140,75 @@ namespace ProjTaskReminder.Utils
             //            fileExtentionToSearch = multiSearchValuse[0];
             //        }
 
-            for (int i = 0; i < files.Count; i++)
+            for (int j = 0; j < directories.Count(); j++)
             {
-                file = files[i];
+                path = directories[j];
+                files = Directory.GetFiles(path, fileExtentionToSearch).ToList();
 
-                if (searchInFolders && Directory.Exists(file))
+                for (int i = 0; i < files.Count; i++)
                 {
-                    files.AddRange(GetFolderFiles(file, fileExtentionToSearch, searchInFolders));
-                }
-                else if (file.ToLower().EndsWith(fileExtentionToSearch))
-                {
-                    files.Add(file);
-                    //songsFiles.add(file);
+                    file = files[i];
+
+                    List<string> fileExtra = new List<string>();
+
+                    if (FilesExtra == null)
+                    {
+                        FilesExtra = new List<KeyValuePair<string, List<string>>>();
+                    }
+
+                    path = Directory.GetParent(file).FullName;
+                    List<string> dirs = Directory.GetFiles(path, fileExtentionToSearch2).ToList();
+                    //if (Directory.Exists(file))
+                    //{
+                    //    dirs = GetFolderFiles(Directory.GetParent(file).FullName, fileExtentionToSearch2, searchInFolders, "");
+                    //}
+
+                    KeyValuePair<string, List<string>> fileProp = new KeyValuePair<string, List<string>>(file, dirs);
+                    FilesExtra.Add(fileProp);
+
+
+                    if (searchInFolders && Directory.Exists(file))
+                    {
+                        files.AddRange(GetFolderFiles(file, fileExtentionToSearch, searchInFolders));
+                    }
+                    else    //if (file.ToLower().EndsWith(fileExtentionToSearch))
+                    {
+                        //files.Add(file);
+                        //songsFiles.add(file);
+                    }
                 }
             }
 
 
             return files;
         }
+
+        //public static List<string> AddFilesToArray(List<string> files, string file, string fileExtentionToSearch, bool searchInFolders, string fileExtentionToSearch2 = "")
+        //{
+        //    List<string> fileExtra = new List<string>();
+
+        //    if (FilesExtra == null)
+        //    {
+        //        FilesExtra = new List<KeyValuePair<string, List<string>>>();
+        //    }
+
+        //    List<string> tmpFiles = GetFolderFiles(file, fileExtentionToSearch, searchInFolders, fileExtentionToSearch2);
+        //    KeyValuePair<string, List<string>> fileProp = new KeyValuePair<string, List<string>>(file, tmpFiles);
+        //    FilesExtra.Add(fileProp);
+
+
+        //    if (searchInFolders && Directory.Exists(file))
+        //    {
+        //        files.AddRange(GetFolderFiles(file, fileExtentionToSearch, searchInFolders));
+        //    }
+        //    else if (file.ToLower().EndsWith(fileExtentionToSearch))
+        //    {
+        //        files.Add(file);
+        //        //songsFiles.add(file);
+        //    }
+
+        //    retrun files;
+        //}
 
         public static DateTime getDateFromString(string dateString)
         {

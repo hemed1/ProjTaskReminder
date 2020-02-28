@@ -335,8 +335,14 @@ namespace ProjTaskReminder
 
             SetObjectByControls();
 
+            TBL_Tasks item = new TBL_Tasks(); ;
+
             // only insert the data if it doesn't already exist
-            TBL_Tasks item = new TBL_Tasks();
+            if (!isNewMode)
+            {
+                item.ID = CurrentTask.getTaskID();
+            }
+
 
             try
             {
@@ -351,9 +357,10 @@ namespace ProjTaskReminder
                 }
                 else
                 {
+                    //recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(item);
                     // Set Task object in array
                     List<KeyValuePair<String, String>> values = MainActivity.SetTaskValuesForDB(CurrentTask);
-                    recorsWasEffected = MainActivity.DBTaskReminder.UpdateRecord(MainActivity.DB_TABLE_NAME, values, new object[] { CurrentTask.getTaskID() });
+                    recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(MainActivity.DB_TABLE_NAME, values, new object[] { CurrentTask.getTaskID() });
                 }
 
 
@@ -362,11 +369,11 @@ namespace ProjTaskReminder
                 // Raise the event to the Caller
                 if (recorsWasEffected>0)
                 {
-                    if (isNewMode)
-                    {
-                        TBL_Tasks record = (TBL_Tasks)MainActivity.DBTaskReminder.getLastRecord(MainActivity.DB_TABLE_NAME);
-                        CurrentTask.setTaskID(record.ID);
-                    }
+                    //if (isNewMode)
+                    //{
+                    //    TBL_Tasks record = (TBL_Tasks)MainActivity.DBTaskReminder.getLastRecord(MainActivity.DB_TABLE_NAME);
+                        CurrentTask.setTaskID(item.ID);
+                    //}
 
                     MainActivity.CurrentTask = CurrentTask;
                     MainActivity.MainMessageText = "נשמר";
@@ -375,16 +382,9 @@ namespace ProjTaskReminder
 
                     inputIntent.PutExtra("Result", "true");
 
-                    //CurrentTask.setTitle(record.Title);
-                    //CurrentTask.setDescription(record.Description);
-                    //if (!string.IsNullOrEmpty(record.DateDue) && record.DateDue != null && !record.DateDue.Trim().Equals(""))
-                    //{
-                    //    CurrentTask.setDate_due(record.DateDue.Trim().Substring(0, 10));
-                    //    CurrentTask.setTime_due(record.DateDue.Trim().Substring(11, 5));
-                    //}
                     //if (OnSaveButton != null)
                     //{
-                    //OnSaveButton(null, EventArgs.Empty);
+                    //    OnSaveButton(null, EventArgs.Empty);
                     //}
                     // Second option to - Raise the event to the Caller
                     //if (OnActivityResult != null)
@@ -396,6 +396,7 @@ namespace ProjTaskReminder
                 else
                 {
                     MainActivity.MainMessageText = "השמירה נכשלה";
+                    Toast.MakeText(this, MainActivity.MainMessageText, ToastLength.Long).Show();
                     SetResult(Result.Canceled, inputIntent);
                 }
 

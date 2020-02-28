@@ -116,6 +116,8 @@ namespace ProjTaskReminder.Data
             try
             {
                 recordsEffected = DB.Insert(record);
+                Object recordUpdated = getLastRecord(MainActivity.DB_TABLE_NAME);
+                ((TBL_Tasks)record).ID = ((TBL_Tasks)recordUpdated).ID;
             }
             catch (Exception ex)
             {
@@ -149,7 +151,7 @@ namespace ProjTaskReminder.Data
             //}
         }
 
-        public long AddRecord(string tableName, List<KeyValuePair<string, string>> values)
+        public long RecordInser(string tableName, List<KeyValuePair<string, string>> values)
         {
             string sqlScript = "";
             long recordsEffected=0;
@@ -185,7 +187,26 @@ namespace ProjTaskReminder.Data
             return recordsEffected;
         }
 
-        public long UpdateRecord(string tableName, List<KeyValuePair<string, string>> values, object[] args)
+        public long RecordUpdate(Object record)  //, Type tableTyp = TBL_Tasks)
+        {
+            long recordsEffected = 0;
+
+
+            try
+            {
+                recordsEffected = DB.Update(record);
+            }
+            catch (Exception ex)
+            {
+                string msg = "DataSet - Error in 'RecordUpdate()'" + "\n" + ex.Message;
+                Utils.Utils.WriteToLog(msg, true);
+            }
+
+            return recordsEffected;
+
+        }
+
+        public long RecordUpdate(string tableName, List<KeyValuePair<string, string>> values, object[] args)
         {
             long recordsEffected = 0;
             string sqlScript = "";
@@ -216,7 +237,7 @@ namespace ProjTaskReminder.Data
             }
             catch (Exception ex)
             {
-                string msg = "DataSet - Error in 'updateRecord()'";
+                string msg = "DataSet - Error in 'RecordUpdate()'";
                 //Log.d(msg, ex.getMessage());
                 Utils.Utils.WriteToLog(msg + "\n" + ex.Message, true);
                 //throw ex;
@@ -271,7 +292,7 @@ namespace ProjTaskReminder.Data
             return result;
         }
 
-        public object getLastRecord(string tableName) //: where T = TBL_Tasks
+        public Object getLastRecord(string tableName) //: where T = TBL_Tasks
         {
             TBL_Tasks result = null;
             //var result = DB.Get<TBL_Tasks>(id);  // primary key id of 5

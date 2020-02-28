@@ -16,6 +16,7 @@ using Android.Views;
 using Android.Widget;
 using Java.Util;
 using ProjTaskReminder.Model;
+using ProjTaskReminder.Utils;
 using System.Timers;
 
 namespace ProjTaskReminder
@@ -53,7 +54,7 @@ namespace ProjTaskReminder
 
 
         public static Context context;
-        private List<KeyValuePair<string, string>> ListItemsPath;
+        private List<KeyValuePair<string, List<string>>> ListItemsPath;
         private List<KeyValuePair<string, ListItemSong>> ListItemsRecycler;
         private int ListPositionIndex;
         private bool isPlayingNow;
@@ -68,6 +69,37 @@ namespace ProjTaskReminder
             SetContentView(Resource.Layout.activity_music);
 
             SetControlsIO();
+
+            LoadFilesFromPhone();
+        }
+
+        private void LoadFilesFromPhone()
+        {
+            string folderBackup = Android.OS.Environment.DirectoryMusic;        // "ProjTaskReminder"
+
+            //Java.IO.File[] jjj = context.GetExternalFilesDirs("MUSIC");
+            //Java.IO.File[] mmm = context.GetExternalMediaDirs();
+            //string zzz = System.Environment.SystemDirectory;
+            //string aaa = System.Environment.CurrentDirectory;
+            //string bbb = System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonMusic);
+            //string fff = System.IO.Directory.GetCurrentDirectory();
+            //string hjhj = LOG_FILE_PATH = System.IO.Directory.GetCurrentDirectory();
+            //Java.IO.File hdhd = Android.OS.Environment.DataDirectory;
+            //string folderNameDocuments = Android.OS.Environment.DirectoryDocuments;
+            //Java.IO.File externalPath = Android.OS.Environment.ExternalStorageDirectory;
+
+
+            string path = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
+
+            Utils.Utils.GetFolderFiles(path, "*.mp3", true, "*.jpg");
+
+            ListItemsPath = Utils.Utils.FilesExtra;
+
+            for (int i=0; i<ListItemsPath.Count; i++)
+            {
+                ListItemSong listItemSong = new ListItemSong(ListItemsPath[i].Key, "Artist " + i.ToString(), "Album " + i.ToString());
+                ListItemsRecycler.Add(new KeyValuePair<string, ListItemSong>(listItemSong.getSongName(), listItemSong));
+            }
         }
 
         private void SetControlsIO()
@@ -93,20 +125,25 @@ namespace ProjTaskReminder
 
             ListPositionIndex = 0;
             ListItemsRecycler = new List<KeyValuePair<string, ListItemSong>>();
-            ListItemsPath = new List<KeyValuePair<string, string>>();
+            
 
             string folderNameMusic = Android.OS.Environment.DirectoryMusic;
             string folderMusic = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
-            string songPath = folderMusic + "/love_the_one.mp3";
+            string songPath = folderMusic + "/Dizzy - Bleachers.mp3";
+
+            
 
             //songPath = externalPath + "/ProjTaskReminder";    //, FileCreationMode.Append).AbsolutePath;
             //Java.IO.File externalPath = Android.OS.Environment.ExternalStorageDirectory;
             //string externalPathFile = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
 
-            KeyValuePair<string, string> songKeys = new KeyValuePair<string, string>("love_the_one.mp3", songPath);
+            KeyValuePair<string, List<string>> songKeys = new KeyValuePair<string, List<string>>(folderMusic + "/Dizzy - Bleachers.mp3", new List<string>());
+            ListItemsPath = new List<KeyValuePair<string, List<string>>>();
             ListItemsPath.Add(songKeys);
+            //KeyValuePair<string, string> songKeys = new KeyValuePair<string, string>("love_the_one.mp3", songPath);
+            //ListItemsPath.Add(songKeys);
 
-            ListItemSong song = new ListItemSong("love_the_one", "Neil Young", "Album");
+            ListItemSong song = new ListItemSong("Dizzy - Bleachers", "Dizzy", "Album");
             KeyValuePair<string, ListItemSong> songItem = new KeyValuePair<string, ListItemSong>("love_the_one", song);
             ListItemsRecycler.Add(songItem);
 
@@ -132,13 +169,16 @@ namespace ProjTaskReminder
                     if (ListPositionIndex <= ListItemsRecycler.Count - 1)
                     {
                         isPlayingNow = true;
-                        LoadSongIntoPlayer(ListPositionIndex, true);
+                        LoadSongIntoPlayer(ListPositionIndex);  //, true);
                     }
                 }
                 else
                 {
                     isPlayingNow = true;
-                    LoadSongIntoPlayer(ListPositionIndex, false);
+                    MusicPlay();
+                    mediaPlayer.SeekTo(CurrentSongPosition);
+                    //mediaPlayer.Notify();
+                    //LoadSongIntoPlayer(ListPositionIndex, false);
                 }
                 IsHaveToScroll = !IsHaveToScroll;
                 //setPicsScroll();
@@ -154,7 +194,7 @@ namespace ProjTaskReminder
         private void PlaySongNext(object sender, EventArgs eventArgs)
         //private void PlaySongNext(object sender, AdapterView.ItemClickEventArgs e)
         {
-            if (ListPositionIndex < ListItemsRecycler.Count - 1)
+            if (ListPositionIndex < ListItemsRecycler.Count)    // ListItemsRecycler.Count - 1)
             {
                 ListPositionIndex++;
                 LoadSongIntoPlayer(ListPositionIndex);
@@ -166,7 +206,7 @@ namespace ProjTaskReminder
         private void PlaySongPrev(object sender, EventArgs eventArgs)
         //private void PlaySongPrev(object sender, AdapterView.ItemClickEventArgs e)
         {
-            if (ListPositionIndex < ListItemsRecycler.Count && ListPositionIndex > 0)
+            if (ListPositionIndex < ListItemsRecycler.Count && ListPositionIndex > 0)       // //  ListItemsRecycler.Count
             {
                 ListPositionIndex--;
                 LoadSongIntoPlayer(ListPositionIndex);
@@ -174,40 +214,42 @@ namespace ProjTaskReminder
             //seekMusic(-5000);
         }
 
-        private void LoadSongIntoPlayer(int listPositionIndex, bool playFromStart = true)
+        private void LoadSongIntoPlayer(int listPositionIndex)  //, bool playFromStart = true)
         {
 
             try
             {
-                if (playFromStart)
-                {
-                    MusicPause();
+                //if (playFromStart)
+                //{
+                MusicPause();
 
-                    CurrentSongPosition = 0;
-                    int resourceID = Resource.Raw.love_the_one;
-                    //int resourceID = ListItemsRecycler.get(listPositionIndex).getResourceID();
+                CurrentSongPosition = 0;
+                int resourceID = Resource.Raw.love_the_one;
+                //int resourceID = ListItemsRecycler.get(listPositionIndex).getResourceID();
 
-                    //string folderNameMusic = Android.OS.Environment.DirectoryMusic;
-                    //string folderMusic = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
-                    //string songPath = folderMusic + "/Brad.mp3";
-                    //songPath= ListItemsPath[listPositionIndex].Value;
-                    //Android.Net.Uri uri = Android.Net.Uri.Parse(songPath);
+                //string folderNameMusic = Android.OS.Environment.DirectoryMusic;
+                //string folderMusic = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
+                //string songPath = folderMusic + "/Brad.mp3";
+                string songPath= ListItemsPath[listPositionIndex].Key;
+                Android.Net.Uri uri = Android.Net.Uri.Parse(songPath);
 
-                    mediaPlayer = MediaPlayer.Create(this, resourceID);   // uri);
+                mediaPlayer = MediaPlayer.Create(this, uri);
+                //mediaPlayer = MediaPlayer.Create(this, resourceID); 
 
-                    mediaPlayer.SetScreenOnWhilePlaying(true);
+                mediaPlayer.SetScreenOnWhilePlaying(true);
 
-                    // Set the Song props - Name, Artist, Album, Duration
-                    SetSongControls(listPositionIndex);
+                // Set the Song props - Name, Artist, Album, Duration
+                SetSongControls(listPositionIndex);
 
-                    MusicPlay();
-                }
-                else
-                {
-                    MusicPlay();
-                    mediaPlayer.SeekTo(CurrentSongPosition);
-                    //mediaPlayer.Notify();
-                }
+                MusicPlay();
+
+                //}
+                //else
+                //{
+                //    MusicPlay();
+                //    mediaPlayer.SeekTo(CurrentSongPosition);
+                //    //mediaPlayer.Notify();
+                //}
 
                 //mediaPlayer.SetOnCompletionListener(MediaPlayer.IOnCompletionListener());
                 //{
