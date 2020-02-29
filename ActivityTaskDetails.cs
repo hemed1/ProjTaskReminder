@@ -344,7 +344,9 @@ namespace ProjTaskReminder
             }
             else
             {
-                item = (TBL_Tasks)CurrentTask.TableRecord;
+                item = MainActivity.DBTaskReminder.DB.Get<TBL_Tasks>(task.getTaskID());
+                //item = (TBL_Tasks)MainActivity.DBTaskReminder.GetRecordByID(item.ID, MainActivity.DB_TABLE_NAME);
+                //item = (TBL_Tasks)CurrentTask.TableRecord;
             }
 
 

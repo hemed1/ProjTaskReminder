@@ -1312,17 +1312,17 @@ namespace ProjTaskReminder
         {
             int result = -1;
             //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            string dateStrToFind;
-            string dateStrTask;
+            //string dateStrToFind;
+            //string dateStrTask;
 
 
 
-            dateStrToFind = Utils.Utils.getDateFormattedString(date);    //simpleDateFormat.format(date);
+            //dateStrToFind = Utils.Utils.getDateFormattedString(date);    //simpleDateFormat.format(date);
 
             for (int i = 0; i < tasksList.Count; i++)
             {
                 DateTime? taskDate = tasksList[i].getDate();
-                //dateStrTask = tasksList[i].getDate();
+                
                 if (taskDate.HasValue)
                 {
                     if (taskDate.Value.CompareTo(date) == 0)
@@ -1330,6 +1330,12 @@ namespace ProjTaskReminder
                         result = i;
                         break;
                     }
+                    else if (taskDate.Value.CompareTo(date) > 0)
+                    {
+                        result = i;
+                        break;
+                    }
+
                 }
             }
 

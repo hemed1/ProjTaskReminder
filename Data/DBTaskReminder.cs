@@ -194,7 +194,7 @@ namespace ProjTaskReminder.Data
             catch (Exception ex)
             {
                 string msg = "DataSet - Error in 'RecordUpdate()'" + "\n" + ex.Message;
-                Utils.Utils.WriteToLog(msg, true);
+                Utils.Utils.WriteToLog(ex.StackTrace + " - " + msg, true);
             }
 
             return recordsEffected;
@@ -267,7 +267,7 @@ namespace ProjTaskReminder.Data
             return result;
         }
 
-        public object getRecordByID(int id, string tableName)
+        public object GetRecordByID(int id, string tableName)
         {
             var result = DB.Get<TBL_Tasks>(id);  // primary key id of 5
 
@@ -282,7 +282,7 @@ namespace ProjTaskReminder.Data
             //string sqlScript = "SELECT * FROM " + TableName + " WHERE ID=?";
             //List<object> objects = DB.Query(tableMap, sqlScript, new object[1] { id });
 
-            DB.Close();
+            //DB.Close();
 
             return result;
         }

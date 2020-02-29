@@ -49,10 +49,13 @@ namespace ProjTaskReminder
         private bool IsHaveToScroll;
         private bool IsFirstPlay;
         private int keepX;
-        private int PICS_TIMER_INTERVAL = 18;
+        private int PICS_TIMER_INTERVAL = 200;
         private int PICS_TIMER_SCROLL_DELTA = 5;
+        private int PICS_TIMER_SCROLL_END_POINT;
         private HorizontalScrollView scrHorizon;
         private event Action ActionOnPicsScrolling;
+        private MH_Scroll PicturesScrolling;
+
 
 
         public static Context context;
@@ -134,6 +137,12 @@ namespace ProjTaskReminder
             imgSongArtist2 = (ImageView)FindViewById(Resource.Id.imgSongArtist2);
             imgSongArtist3 = (ImageView)FindViewById(Resource.Id.imgSongArtist3);
             scrHorizon = (HorizontalScrollView)FindViewById(Resource.Id.scrHorizon);
+            PICS_TIMER_SCROLL_END_POINT = (imgSongArtist1.Width * 3) - 500;
+            if (PICS_TIMER_SCROLL_END_POINT<2000)
+            {
+                PICS_TIMER_SCROLL_END_POINT = 2000;
+            }
+
 
             ListPositionIndex = 0;
             ListItemsRecycler = new List<KeyValuePair<string, ListItemSong>>();
@@ -167,11 +176,20 @@ namespace ProjTaskReminder
             btnNext.Click += PlaySongNext;
             btnPlay.Click += PlaySongPlay;
 
+            PicturesScrolling = new MH_Scroll(scrHorizon);
+            PicturesScrolling.SCROLL_END_POINT = PICS_TIMER_SCROLL_END_POINT;
+            PicturesScrolling.OnScrolling += PicturesScrolling_OnScrolling;
+
             isPlayingNow = false;
             CurrentSongPosition = 0;
             IsTimerWork = false;
             IsHaveToScroll = true;
             IsFirstPlay = true;
+        }
+
+        private void PicturesScrolling_OnScrolling(int scrollPossion)
+        {
+            
         }
 
         private void OnSeekbarChanged(object sender, SeekBar.ProgressChangedEventArgs e)
@@ -239,7 +257,16 @@ namespace ProjTaskReminder
             if (ListPositionIndex < ListItemsRecycler.Count)    // ListItemsRecycler.Count - 1)
             {
                 ListPositionIndex++;
-                LoadSongIntoPlayer(ListPositionIndex);
+
+                if (mediaPlayer.IsPlaying)
+                {
+                    LoadSongIntoPlayer(ListPositionIndex);
+                }
+                else
+                {
+                    // Set the Song props - Name, Artist, Album, Duration
+                    SetSongControls(ListPositionIndex);
+                }
             }
             else
             {
@@ -347,7 +374,8 @@ namespace ProjTaskReminder
 
                 btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPause);
 
-                setPicsScroll();
+                PicturesScrolling.Start();
+                //setPicsScroll();
 
                 UpdateSongPositionThread();
             }
@@ -607,9 +635,11 @@ namespace ProjTaskReminder
         {
             IsTimerWork = true;
 
+            keepX = 0;
+
             // Run the Timer
             picsTimer = new System.Timers.Timer();
-            picsTimer.Interval = 200;
+            picsTimer.Interval = PICS_TIMER_INTERVAL;
             picsTimer.AutoReset = true;
             picsTimer.Elapsed += picsTimer_onTick;
             picsTimer.Enabled = true;
@@ -633,6 +663,8 @@ namespace ProjTaskReminder
                 //picsTimerTask.run();
             }
 
+            PicturesScrolling.Stop();
+
             IsTimerWork = false;
         }
 
@@ -641,17 +673,17 @@ namespace ProjTaskReminder
             bool isGetToEdge = false;
 
 
+            keepX += PICS_TIMER_SCROLL_DELTA;
+
             scrHorizon.SmoothScrollingEnabled = true;
             scrHorizon.SmoothScrollTo(keepX, 0);
 
             //scrHorizon.scrollTo(keepX, 0);
             //scrHorizon.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
 
-            keepX += PICS_TIMER_SCROLL_DELTA;
-
             if (PICS_TIMER_SCROLL_DELTA > 0)
             {
-                if (keepX > (imgSongArtist1.Width * 3) - 500)  //scrHorizon.getRight())
+                if (keepX > PICS_TIMER_SCROLL_END_POINT)  //scrHorizon.getRight())
                 {
                     //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist3, 2);
                     isGetToEdge = true;
@@ -659,7 +691,7 @@ namespace ProjTaskReminder
             }
             else
             {
-                if (keepX < PICS_TIMER_SCROLL_DELTA * -1 - 450)
+                if (keepX < PICS_TIMER_SCROLL_END_POINT * -1)
                 {
                     //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist1, 1);
                     isGetToEdge = true;
