@@ -28,9 +28,11 @@
             android:layout_marginTop="35dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
-            android:background="@android:color/holo_red_dark"
-            android:layout_centerHorizontal="true"
+             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true">
+
+            <!--android:background="@android:color/holo_red_dark"-->
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,7 +45,7 @@
                     android:id="@+id/imgSongArtist1"
                     android:layout_width="410dp"
                     android:layout_height="380dp"
-                    android:src="@mipmap/music1"                    
+                    android:src="@mipmap/default1"                    
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="0dp"
                     android:layout_marginEnd="0dp"
@@ -55,7 +57,7 @@
                     android:id="@+id/imgSongArtist2"
                     android:layout_width="410dp"
                     android:layout_height="380dp"
-                    android:src="@mipmap/music3"                    
+                    android:src="@mipmap/default2"                    
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="0dp"
                     android:layout_marginEnd="0dp"
@@ -68,7 +70,7 @@
                     android:id="@+id/imgSongArtist3"
                     android:layout_width="410dp"
                     android:layout_height="380dp"
-                    android:src="@mipmap/music2"
+                    android:src="@mipmap/default3"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="0dp"
                     android:layout_marginStart="5dp"

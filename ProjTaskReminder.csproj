@@ -72,6 +72,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ListViewAdapter.cs" />
     <Compile Include="Utils\MH_Notification.cs" />
+    <Compile Include="Utils\MH_Scroll.cs" />
     <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>

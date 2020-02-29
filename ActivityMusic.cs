@@ -180,7 +180,7 @@ namespace ProjTaskReminder
 
             CurrentSongPosition = e.Progress;
 
-            if (barSeek.Max - e.Progress == 100)
+            if (barSeek.Max - e.Progress < 1001)
             {
                 PlaySongNext(sender, null);
             }
@@ -222,8 +222,9 @@ namespace ProjTaskReminder
                     //mediaPlayer.Notify();
                     //LoadSongIntoPlayer(ListPositionIndex, false);
                 }
+                
                 IsHaveToScroll = !IsHaveToScroll;
-                //setPicsScroll();
+                setPicsScroll();
             }
             else
             {
@@ -353,7 +354,7 @@ namespace ProjTaskReminder
 
         public void MusicStop()
         {
-            //TimerStop();
+            TimerPicsScrollStop();
 
             //TimerStopSongProgress();
 
@@ -365,7 +366,10 @@ namespace ProjTaskReminder
             }
 
             mediaPlayer = null;
-            ThreadTask.Abort();
+            if (ThreadTask != null)
+            {
+                ThreadTask.Abort();
+            }
             ThreadTask = null;
 
         }
@@ -523,7 +527,10 @@ namespace ProjTaskReminder
                 UpdateProgressControls();
             }
 
-            ThreadTask.Abort();
+            if (ThreadTask != null)
+            {
+                ThreadTask.Abort();
+            }
             ThreadTask = null;
 
 
@@ -572,28 +579,30 @@ namespace ProjTaskReminder
             {
                 if (IsTimerWork)
                 {
-                    TimerStop();
+                    TimerPicsScrollStop();
                 }
                 return;
             }
 
-            ActionOnPicsScrolling += TimerRun();
+            ActionOnPicsScrolling += TimerPicsScrollRun();
 
-            scrHorizon.PostDelayed(ActionOnPicsScrolling, 1000);    
+            TimerPicsScrollRun();
+
+            //scrHorizon.PostDelayed(ActionOnPicsScrolling, 1000);    
             //{
-                //new Runnable()
-                //public void run()
-                //{
-                //    if (!IsTimerWork)
-                //    {
-                //        TimerRun();
-                //    }
-                //}
+            //new Runnable()
+            //public void run()
+            //{
+            //    if (!IsTimerWork)
+            //    {
+            //        TimerPicsScrollRun();
+            //    }
+            //}
             //}
 
         }
 
-        private Action TimerRun()
+        private Action TimerPicsScrollRun()
         {
             IsTimerWork = true;
 
@@ -608,18 +617,19 @@ namespace ProjTaskReminder
 
             // Run the Timer
             picsTimer = new System.Timers.Timer();
-            picsTimer.Interval = 500;
+            picsTimer.Interval = 200;
             picsTimer.AutoReset = true;
             picsTimer.Elapsed += picsTimer_onTick;
             picsTimer.Enabled = true;
+            //picsTimer.Start();
             //picsTimer.schedule(picsTimerTask, 500, PICS_TIMER_INTERVAL);
 
             return null;
         }
 
-        private void TimerStop()
+        private void TimerPicsScrollStop()
         {
-            if (IsTimerWork)
+            if (IsTimerWork || picsTimer.Enabled)
             {
                 picsTimer.Stop();
                 picsTimer.Close();
@@ -629,6 +639,7 @@ namespace ProjTaskReminder
                 //picsTimerTask = null;
                 //picsTimerTask.run();
             }
+
             IsTimerWork = false;
         }
 
@@ -740,7 +751,7 @@ namespace ProjTaskReminder
         //    }
 
 
-        //    private void TimerRun()
+        //    private void TimerPicsScrollRun()
         //    {
         //        IsTimerWork = true;
         //        picsTimerTask = new TimerTask()
@@ -757,7 +768,7 @@ namespace ProjTaskReminder
         //    picsTimer.schedule(picsTimerTask, 500, PICS_TIMER_INTERVAL);
         //    }
 
-        //    private void TimerStop()
+        //    private void TimerPicsScrollStop()
         //    {
         //        if (IsTimerWork)
         //        {
