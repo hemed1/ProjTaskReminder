@@ -32,6 +32,7 @@ namespace ProjTaskReminder
     {
 
         public static string DB_TASK_DB_NAME = "TaskReminder.db";
+        public static string DB_TASK_DB_PATH = "TaskReminder.db";
         public static string DB_TABLE_NAME = "TBL_Tasks";
         public static string DB_TABLE_SETTING = "TBL_Setting";
         private static string DB_FIELDNAME_ID = "TaskID";
@@ -65,10 +66,9 @@ namespace ProjTaskReminder
 
         private Android.Support.V4.App.NotificationCompat.Builder notificationBuilder;
         private TaskTimerElapsed ActionOnTaskTimerTick;     // , ElapsedEventHandler
-        //private event Action<object, ElapsedEventArgs, Task> ActionOnTaskTimerTick;     // , ElapsedEventHandler
-
 
         public delegate ElapsedEventHandler delegateMethod(object timer, ElapsedEventArgs args, Task TaskObject);
+
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -379,12 +379,19 @@ namespace ProjTaskReminder
 
             try
             {
-                DBTaskReminder = new DBTaskReminder(DB_TASK_DB_NAME, context.GetExternalFilesDir("").AbsolutePath, DB_TABLE_NAME);
+                DB_TASK_DB_PATH = context.GetExternalFilesDir("").AbsolutePath;
+
+                DBTaskReminder = new DBTaskReminder(DB_TASK_DB_NAME, DB_TASK_DB_PATH, DB_TABLE_NAME);
             }
             catch (Exception ex)
             {
                 Utils.Utils.WriteToLog(ex.Message, true);
             }
+
+            // /storage/emulated/0/Music/
+            // /storage/emulated/0/Android/data/com.meirhemed.projtaskreminder/files
+            //DB_PATH = context.GetExternalFilesDir("").AbsolutePath;         
+            //DB_PATH = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);  //"/Assets/" + DB_NAME;             //Environment.SpecialFolder.LocalApplicationData
 
             return result;
         }
@@ -1260,12 +1267,11 @@ namespace ProjTaskReminder
         private void RestoreDataBaseFile()
         {
             string backupFolderName = Android.OS.Environment.DirectoryMusic;    // "ProjTaskReminder"
-            string sourcePath = Android.OS.Environment.GetExternalStoragePublicDirectory(backupFolderName).AbsolutePath;
+            string sourcePath = Android.OS.Environment.GetExternalStoragePublicDirectory(backupFolderName).AbsolutePath;  
             string targetPath = DBTaskReminder.DB_PATH;
-            //targetPath = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
 
-            string fullPathTarget = Path.Combine(DBTaskReminder.DB_PATH, DBTaskReminder.DB_NAME);
-            string fullPathSource = Path.Combine(targetPath, DBTaskReminder.DB_NAME);
+            string fullPathTarget = Path.Combine(targetPath, DBTaskReminder.DB_NAME);
+            string fullPathSource = Path.Combine(sourcePath, DBTaskReminder.DB_NAME);
 
             DBTaskReminder.DB.Close();
 
@@ -1276,7 +1282,7 @@ namespace ProjTaskReminder
             if (result)
             {
                 string message = "Database was restored OK";
-                Toast.MakeText(this, message, ToastLength.Long).Show();
+                Toast.MakeText(this, message, ToastLength.Short).Show();
             }
 
             FillListFromDB();

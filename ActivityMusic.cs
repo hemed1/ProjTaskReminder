@@ -47,6 +47,7 @@ namespace ProjTaskReminder
         private System.Timers.Timer picsTimer;
         private bool IsTimerWork;
         private bool IsHaveToScroll;
+        private bool IsFirstPlay;
         private int keepX;
         private int PICS_TIMER_INTERVAL = 18;
         private int PICS_TIMER_SCROLL_DELTA = 5;
@@ -102,6 +103,10 @@ namespace ProjTaskReminder
             {
                 file = Directory.GetParent(ListItemsPath[i].Key).FullName;
                 file = ListItemsPath[i].Key.Substring(file.Length + 1);
+                if (file.Length>30)
+                {
+                    file = file.Substring(0, 30);
+                }
                 file = Utils.Utils.FixSongName(file);
                 ListItemSong listItemSong = new ListItemSong(file, "Artist " + i.ToString(), "Album " + i.ToString());
                 ListItemsRecycler.Add(new KeyValuePair<string, ListItemSong>(listItemSong.getSongName(), listItemSong));
@@ -166,6 +171,7 @@ namespace ProjTaskReminder
             CurrentSongPosition = 0;
             IsTimerWork = false;
             IsHaveToScroll = true;
+            IsFirstPlay = true;
         }
 
         private void OnSeekbarChanged(object sender, SeekBar.ProgressChangedEventArgs e)
@@ -173,6 +179,11 @@ namespace ProjTaskReminder
             //UpdateProgressControls();
 
             CurrentSongPosition = e.Progress;
+
+            if (barSeek.Max - e.Progress == 100)
+            {
+                PlaySongNext(sender, null);
+            }
 
             if (e.FromUser)
             {
@@ -183,6 +194,12 @@ namespace ProjTaskReminder
 
         private void OnSongFinish(object sender, EventArgs eventArgs)
         {
+            if (IsFirstPlay)
+            {
+                IsFirstPlay = false;
+                return;
+            }
+
             PlaySongNext(sender, eventArgs);
         }
 
@@ -224,6 +241,10 @@ namespace ProjTaskReminder
                 ListPositionIndex++;
                 LoadSongIntoPlayer(ListPositionIndex);
             }
+            else
+            {
+                MusicPause();
+            }
 
             //seekMusic(5000);
         }
@@ -248,15 +269,22 @@ namespace ProjTaskReminder
                 //{
                 MusicPause();
 
+                if (ListPositionIndex >= ListItemsRecycler.Count)    // ListItemsRecycler.Count - 1)
+                {
+                    return;
+                }
+                
                 CurrentSongPosition = 0;
                 
-                int resourceID = Resource.Raw.love_the_one;
+                //int resourceID = Resource.Raw.love_the_one;
                 //int resourceID = ListItemsRecycler.get(listPositionIndex).getResourceID();
 
                 //string folderNameMusic = Android.OS.Environment.DirectoryMusic;
                 //string folderMusic = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
                 //string songPath = folderMusic + "/Brad.mp3";
+                
                 string songPath= ListItemsPath[listPositionIndex].Key;
+                
                 Android.Net.Uri uri = Android.Net.Uri.Parse(songPath);
 
                 mediaPlayer = MediaPlayer.Create(this, uri);
@@ -299,12 +327,6 @@ namespace ProjTaskReminder
         {
             if (mediaPlayer != null)
             {
-                //if (thread != null)
-                //{
-                //    thread.interrupt();
-                //    thread = null;
-                //}
-
                 mediaPlayer.Pause();
 
                 //mediaPlayer.Stop();
@@ -343,7 +365,7 @@ namespace ProjTaskReminder
             }
 
             mediaPlayer = null;
-            //ThreadTask.Abort();
+            ThreadTask.Abort();
             ThreadTask = null;
 
         }
@@ -444,7 +466,7 @@ namespace ProjTaskReminder
 
             ActionOnPlayingMusic += OnPlayingMusic;
 
-            ThreadTask = new Thread(new ThreadStart(firstThread));
+            ThreadTask = new Thread(new ThreadStart(OnThreadRunning));
             //var second = new Thread(new ThreadStart(secondThread));
             //btnStart.TouchUpInside += delegate {
 
@@ -486,13 +508,13 @@ namespace ProjTaskReminder
             //        thread.start();
         }
 
-        private void firstThread()
+        private void OnThreadRunning()
         {
             while (mediaPlayer != null && mediaPlayer.IsPlaying)
             {
                 Thread.Sleep(1000);
 
-                RunOnUiThread(ActionOnPlayingMusic);    // =>
+                RunOnUiThread(OnPlayingMusic);      // ActionOnPlayingMusic);    // =>
                 //{
                     //int newPosition = mediaPlayer.CurrentPosition;
                     //barSeek.Progress = newPosition;
@@ -501,7 +523,7 @@ namespace ProjTaskReminder
                 UpdateProgressControls();
             }
 
-            //ThreadTask.Abort();
+            ThreadTask.Abort();
             ThreadTask = null;
 
 
@@ -509,9 +531,15 @@ namespace ProjTaskReminder
 
         protected void OnPlayingMusic()     //int songsListIndex, int currentMusicPlayerPosition)
         {
-            int newPosition = mediaPlayer.CurrentPosition;
-            barSeek.Progress = newPosition;
-            CurrentSongPosition = mediaPlayer.CurrentPosition;
+            try
+            {
+                barSeek.Progress = mediaPlayer.CurrentPosition;
+                CurrentSongPosition = mediaPlayer.CurrentPosition;
+            }
+            catch (Exception ex)
+            {
+                Utils.Utils.WriteToLog(ex.Message);
+            }
         }
 
         private void secondThread()
@@ -530,12 +558,6 @@ namespace ProjTaskReminder
 
         protected override void OnDestroy()
         {
-            //if (thread != null)
-            //{
-            //    thread.Interrupt();
-            //    thread = null;
-            //}
-
             MusicStop();
 
             Toast.MakeText(this, "Destroing Media Player control", ToastLength.Long).Show();

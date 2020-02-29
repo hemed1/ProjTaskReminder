@@ -38,67 +38,43 @@ namespace ProjTaskReminder.Data
             DB_PATH = dbPath;
             DB_TABLE_NAME = tableName;
 
-            // /storage/emulated/0/Android/data/com.meirhemed.projtaskreminder/files
-            //DB_PATH = context.GetExternalFilesDir("").AbsolutePath;         
-            //DB_PATH = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);  //"/Assets/" + DB_NAME;             //Environment.SpecialFolder.LocalApplicationData
-
             Connect(DB_TABLE_NAME);
         }
 
-        private SQLiteConnection Connect(string tableName)      // "TBL_Tasks"
+        private SQLiteConnection Connect(string tableName) 
         {
             SQLiteConnection db = null;
             string fullPath;
 
 
-            fullPath = Path.Combine(DB_PATH, DB_NAME);      
+            
 
             try
             {
-                db = new SQLiteConnection(fullPath);
+                fullPath = Path.Combine(DB_PATH, DB_NAME);
 
-                this.DB = db;
+                db = new SQLiteConnection(fullPath);
 
                 //mDBcon.ConnectionString = "Data Source=" + DataSourcePath;
                 //mDBcon.Open();
 
-                //db.DropTable<TBL_Tasks>();
-                List<SQLiteConnection.ColumnInfo> columns = db.GetTableInfo(tableName);
+                this.DB = db;
+
                 
-                if (columns.Count == 0)
-                {
-                    var t = db.CreateTable<TBL_Tasks>();
-                }
-                else if (columns.Count<5)
-                {
-                    //this.DB.Open();
-                    //string commanScript = "ALTER TABLE TBL_Tasks ADD COLUMN DateLastUpdate VARCHAR(11);";
-                    //commanScript = "CREATE TABLE IF NOT EXISTS tags (ISBN VARCHAR(15), Tag VARCHAR(15));";
+                //List<SQLiteConnection.ColumnInfo> columns = db.GetTableInfo(tableName);
+                //if (DB.GetTableInfo(tableName).Exists(a=> a.notnull==1) || columns.Count == 0)
+                //{
+                //    CreateTableResult(tableName);
+                //}
+                //else if (columns.Count<5)
+                //{
+                    
 
-                    //SQLiteCommand cmd = db.CreateCommand(commanScript, null);        //new SQLiteCommand(this.DB);
-
-                    //cmd.CommandText = commanScript;
-                    //cmd.ExecuteNonQuery();
-                }
-
-                //                SQLiteConnection.ColumnInfo columnInfo = new SQLiteConnection.ColumnInfo();
-                //                columnInfo.Name = "DateLastUpdate";
-                //                //columnInfo.notnull=1
-                //                columns.Add(columnInfo);
-                //db.Close();
-                //SQLite.TableAttribute aa=new TableAttribute()
-                //TableQuery a = (TableQuery<TBL_Tasks>);
-                //TableMapping tableMap = db.GetMapping<TBL_Tasks>();
-                //db.TableMappings.First().InsertColumns
-                //tableMap.Columns.
-                //columns[0].
-                //tableMap.Columns
-                //db.Update()
-
+                //}
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace + "  -  " + ex.Message);
             }
 
             //System.IO.DirectoryInfo info =  System.IO.Directory.CreateDirectory(DB_PATH);
@@ -106,6 +82,25 @@ namespace ProjTaskReminder.Data
             //Uri.TryCreate("ms-appx:///Assets/" + DB_NAME, UriKind.Absolute, out originalDbFileUri);
 
             return db;
+        }
+
+        private void CreateTableResult(string tableName)
+        {
+            try
+            {
+                var t = DB.CreateTable<TBL_Tasks>();
+                //string commanScript = "ALTER TABLE TBL_Tasks ADD COLUMN DateLastUpdate VARCHAR(11);";
+                //commanScript = "CREATE TABLE IF NOT EXISTS tags (ISBN VARCHAR(15), Tag VARCHAR(15));";
+                //DB.Execute(commanScript, null);    
+                //SQLiteCommand cmd = db.CreateCommand(commanScript, null);        //new SQLiteCommand(this.DB);
+                //cmd.CommandText = commanScript;
+                //cmd.ExecuteNonQuery();
+                //db.DropTable<TBL_Tasks>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace+"  -  "+ex.Message);
+            }
         }
 
         public long RecordInser(Object record)  //, Type tableTyp = TBL_Tasks)
@@ -323,6 +318,8 @@ namespace ProjTaskReminder.Data
 
             sqlScript = "ALTER TABLE " + tableName + " ADD COLUMN " + fieldName + " " + fieldType;
 
+            //string commanScript = "ALTER TABLE TBL_Tasks ADD COLUMN DateLastUpdate VARCHAR(11);";
+            //commanScript = "CREATE TABLE IF NOT EXISTS tags (ISBN VARCHAR(15), Tag VARCHAR(15));";
             //Utils.Utils.WriteToLog("DataBase - 'addFieldToTable()': " + tableName + "'" + fieldName);
 
             try
