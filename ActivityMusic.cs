@@ -224,7 +224,6 @@ namespace ProjTaskReminder
                 }
                 
                 IsHaveToScroll = !IsHaveToScroll;
-                setPicsScroll();
             }
             else
             {
@@ -326,6 +325,9 @@ namespace ProjTaskReminder
 
         private void MusicPause()
         {
+
+            TimerPicsScrollStop();
+
             if (mediaPlayer != null)
             {
                 mediaPlayer.Pause();
@@ -333,7 +335,6 @@ namespace ProjTaskReminder
                 //mediaPlayer.Stop();
                 btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPlay);
             }
-
         }
 
         public void MusicPlay()
@@ -346,7 +347,7 @@ namespace ProjTaskReminder
 
                 btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPause);
 
-                //setPicsScroll();
+                setPicsScroll();
 
                 UpdateSongPositionThread();
             }
@@ -575,16 +576,16 @@ namespace ProjTaskReminder
         private void setPicsScroll()
         {
 
-            if (IsHaveToScroll)
-            {
-                if (IsTimerWork)
-                {
+            //if (IsHaveToScroll)
+            //{
+            //    if (IsTimerWork)
+            //    {
                     TimerPicsScrollStop();
-                }
-                return;
-            }
+            //    }
+            //    return;
+            //}
 
-            ActionOnPicsScrolling += TimerPicsScrollRun();
+            //ActionOnPicsScrolling += TimerPicsScrollRun();
 
             TimerPicsScrollRun();
 
@@ -606,15 +607,6 @@ namespace ProjTaskReminder
         {
             IsTimerWork = true;
 
-            //picsTimerTask = new TimerTask()
-            //{
-            //    @Override
-            //    public void run()
-            //    {
-            //        picsTimer_onTick();
-            //    }
-            //};
-
             // Run the Timer
             picsTimer = new System.Timers.Timer();
             picsTimer.Interval = 200;
@@ -629,8 +621,9 @@ namespace ProjTaskReminder
 
         private void TimerPicsScrollStop()
         {
-            if (IsTimerWork || picsTimer.Enabled)
+            if (picsTimer!=null &&  (IsTimerWork || picsTimer.Enabled))
             {
+                scrHorizon.SmoothScrollingEnabled = false;
                 picsTimer.Stop();
                 picsTimer.Close();
                 picsTimer.Dispose();
@@ -648,6 +641,7 @@ namespace ProjTaskReminder
             bool isGetToEdge = false;
 
 
+            scrHorizon.SmoothScrollingEnabled = true;
             scrHorizon.SmoothScrollTo(keepX, 0);
 
             //scrHorizon.scrollTo(keepX, 0);

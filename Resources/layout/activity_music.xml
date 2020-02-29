@@ -48,8 +48,8 @@
                     android:src="@mipmap/default1"                    
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginStart="2dp"
                     android:layout_centerHorizontal="true"
                     android:scaleType="fitCenter" />
 
@@ -60,8 +60,8 @@
                     android:src="@mipmap/default2"                    
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginStart="2dp"
                     android:scaleType="fitCenter" />
 
                     <!--android:layout_centerHorizontal="true"-->
@@ -73,8 +73,8 @@
                     android:src="@mipmap/default3"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="0dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="0dp"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
                     android:scaleType="fitCenter" />
         </LinearLayout>
 
