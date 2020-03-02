@@ -68,11 +68,13 @@
     <Compile Include="Model\ListItemSong.cs" />
     <Compile Include="Model\Task.cs" />
     <Compile Include="Model\TBL_Tasks.cs" />
+    <Compile Include="Model\Weather.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ListViewAdapter.cs" />
     <Compile Include="Utils\MH_Notification.cs" />
     <Compile Include="Utils\MH_Scroll.cs" />
+    <Compile Include="Utils\MH_Weather.cs" />
     <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>

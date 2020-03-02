@@ -47,6 +47,9 @@ namespace ProjTaskReminder
         // The code for get result from TasDetails screen
         public const int SHOW_SCREEN_TASK_DETAILS = 1234;
 
+        //ImageButton btnMainMusic = (ImageButton)FindViewById(Resource.Id.bntMainMusic);
+        private ImageView btnMainWeather;
+        //ImageButton btnMainEmail = (ImageButton)FindViewById(Resource.Id.btnMainEmail);
         private ListView simpleList;    //RecyclerView
         private ListViewAdapter listViewAdapter;
         public static DBTaskReminder DBTaskReminder;
@@ -125,11 +128,12 @@ namespace ProjTaskReminder
             //simpleList.OnItemClickListener += OnItemClick
 
 
-            ImageButton bntMainMusic = (ImageButton)FindViewById(Resource.Id.bntMainMusic);
-            ImageButton btnMainWeather = (ImageButton)FindViewById(Resource.Id.btnMainWeather);
+            ImageButton btnMainMusic = (ImageButton)FindViewById(Resource.Id.bntMainMusic);
+            btnMainWeather = (ImageView)FindViewById(Resource.Id.btnMainWeather);
             ImageButton btnMainEmail = (ImageButton)FindViewById(Resource.Id.btnMainEmail);
 
-            bntMainMusic.Click += btnMainMusic_Click;
+            btnMainMusic.Click += btnMainMusic_Click;
+            btnMainWeather.Click += btnMainWeather_Click;
 
 
             // RecyclerView
@@ -188,6 +192,36 @@ namespace ProjTaskReminder
 
 
 
+        }
+
+        
+        private void btnMainWeather_Click(object sender, EventArgs e)
+        {
+            MH_Weather mH_Weather = new MH_Weather();
+            List<Weather> weatherList = new List<Weather>();
+
+            //weatherList = mH_Weather.GetWather("Gedera");
+            //weatherList = mH_Weather.GetWather("Tel Aviv");
+            //weatherList = mH_Weather.GetWather("Jerusalem");
+            weatherList = mH_Weather.GetWather("Ashdod");
+
+            if (weatherList.Count>0)
+            {
+                Weather weather = weatherList[0];
+                
+                string iconUrl = weather.getPoster();
+
+                //CardView cardWeather = (CardView)FindViewById(Resource.Id.cardWeather);
+                TextView txtWeatherTemperture = (TextView)FindViewById(Resource.Id.txtWeatherTemperture);
+                TextView txtWeatherDescription = (TextView)FindViewById(Resource.Id.txtWeatherDescription);
+
+                txtWeatherTemperture.Text = weather.getTemperature();
+                txtWeatherDescription.Text = weather.getDescription();
+
+                Android.Net.Uri uri = Android.Net.Uri.Parse(iconUrl);
+                btnMainWeather.SetImageURI(uri);
+                //btnMainWeather = Utils.Utils.SetWeatherImage(iconUrl);
+            }
         }
 
         private void Initialize()

@@ -7,12 +7,15 @@ using System.Text;
 using System.Threading;
 using Android.App;
 using Android.Content;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
 using Android.Text;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
+using Java.IO;
+//using Java.Net;
 
 namespace ProjTaskReminder.Utils
 {
@@ -525,9 +528,9 @@ namespace ProjTaskReminder.Utils
 
             try
             {
-                if (File.Exists(sourcePath))
+                if (System.IO.File.Exists(sourcePath))
                 {
-                    File.Copy(sourcePath, targetPath, true);
+                    System.IO.File.Copy(sourcePath, targetPath, true);
                     result = true;
                 }
             }
@@ -558,6 +561,70 @@ namespace ProjTaskReminder.Utils
             }
 
             return songName;
+        }
+
+        public static ImageView SetWeatherImage(string urlAddress)
+        {
+            ImageView imageView = new ImageView(context);
+            Android.Net.Uri uri = Android.Net.Uri.Parse(urlAddress);
+            imageView.SetImageURI(uri);
+
+
+            //imageView = new ImageView(Application.Context);
+            //string posterLink = "http:" + urlAddress;   //weather.getPoster();
+            //new Utills.DownloadImageTask(imageView).execute(posterLink);
+
+            //        Bitmap bitmap = Utills.getBitmapFromUrl(posterLink);
+            //        imageView.setImageBitmap(bitmap);
+            //        Drawable drawable = Utills.LoadImageFromWebOperations(posterLink);
+            //        imageView.setImageDrawable(drawable);
+
+            //Android.Graphics.Drawables.Drawable drawable = Utils.LoadImageFromWebOperations(urlAddress);
+            //imageView.SetBackgroundDrawable(drawable);
+
+            return imageView;
+        }
+
+        public static Drawable LoadImageFromWebOperations(string urlAddress)
+        {
+            Drawable drawable = null;
+
+
+            try
+            {
+                drawable = Drawable.CreateFromPath(urlAddress);
+                //Stream stream = (Stream)new Uri(urlAddress).getContent();
+                //drawable = Drawable.CreateFromStream(stream, "src name");
+            }
+            catch (Exception ex)
+            {
+                Utils.WriteToLog(ex.Message);
+            }
+
+            return drawable;
+        }
+
+        public static Android.Graphics.Bitmap getBitmapFromUrl(string urlAddress)
+        {
+            Android.Graphics.Bitmap bmp = null;
+
+            try
+            {
+                Uri aURL = new Uri(urlAddress);
+                Java.Net.URLConnection conn = null;     // aURL.openConnection();
+                conn.Connect();
+                Stream stream = conn.InputStream;
+                BufferedInputStream bis = new BufferedInputStream(stream);
+                bmp = Android.Graphics.BitmapFactory.DecodeStream(stream);
+                bis.Close();
+                stream.Close();
+            }
+            catch (Exception e)
+            {
+                //Log.e("app", "Error getting bitmap", e);
+            }
+
+            return bmp;
         }
 
     }

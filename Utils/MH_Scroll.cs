@@ -120,7 +120,7 @@ namespace ProjTaskReminder.Utils
             }
             else
             {
-                if (keepX < SCROLL_END_POINT * -1)
+                if (keepX > SCROLL_END_POINT * -1)
                 {
                     //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist1, 1);
                     isGetToEdge = true;
@@ -130,7 +130,7 @@ namespace ProjTaskReminder.Utils
             if (isGetToEdge)
             {
                 SCROLL_DELTA = SCROLL_DELTA * -1;
-                keepX += SCROLL_DELTA;
+                //keepX += SCROLL_DELTA;
             }
 
             if (OnScrolling!=null)
