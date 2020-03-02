@@ -101,7 +101,7 @@
             android:text="Album"
             android:layout_alignParentTop="true"
             android:textAlignment="center"
-            android:textColor="#f1efef"
+            android:textColor="@color/DetailsBackgroundOtherFields"
             android:textSize="20sp"
             android:textStyle="bold"
             android:typeface="serif" />
@@ -202,9 +202,11 @@
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:baselineAligned="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="50dp"
+        android:layout_gravity="bottom"
         android:paddingStart="1dp"
         android:paddingEnd="1dp">
 
@@ -236,7 +238,7 @@
             android:layout_height="35dp"
             android:layout_marginBottom="5dp"
             android:layout_marginEnd="1dp"
-            android:layout_marginStart="10dp"            
+            android:layout_marginStart="70dp"            
             android:layout_marginTop="1dp"
             android:layout_alignParentTop="true"
             android:layout_gravity="left|top"
@@ -248,7 +250,7 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginStart="340dp"
+            android:layout_marginStart="280dp"
             android:layout_marginTop="1dp"
             android:layout_gravity="right|top"
             android:layout_alignParentTop="true"
@@ -257,6 +259,7 @@
 
     </RelativeLayout>
 
+
     <LinearLayout
         android:id="@+id/layDetails4"
         android:layout_width="match_parent"
@@ -264,7 +267,8 @@
         android:orientation="horizontal"
         android:layout_gravity="bottom"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
         android:paddingStart="1dp"
         android:paddingEnd="1dp">
 

@@ -364,18 +364,20 @@ namespace ProjTaskReminder
                 else
                 {
                     recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(item);
+                    item = MainActivity.DBTaskReminder.DB.Get<TBL_Tasks>(task.getTaskID());
+                    task.TableRecord = item;
                     // Set Task object in array
                     //List<KeyValuePair<String, String>> values = MainActivity.SetTaskValuesForDB(CurrentTask);
                     //recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(MainActivity.DB_TABLE_NAME, values, new object[] { CurrentTask.getTaskID() });
                 }
 
 
-                MainActivity.isShowTimerReminder = true;
 
                 // Raise the event to the Caller
                 if (recorsWasEffected>0)
                 {
                     MainActivity.CurrentTask = CurrentTask;
+                    MainActivity.isShowTimerReminder = true;
                     MainActivity.MainMessageText = "נשמר";
 
                     //Toast.MakeText(this, "נשמר", ToastLength.Long).Show();
@@ -396,8 +398,7 @@ namespace ProjTaskReminder
                 }
                 else
                 {
-                    MainActivity.MainMessageText = "השמירה נכשלה";
-                    Toast.MakeText(this, MainActivity.MainMessageText, ToastLength.Long).Show();
+                    Toast.MakeText(this, "השמירה נכשלה", ToastLength.Long).Show();
                     SetResult(Result.Canceled, inputIntent);
                 }
 

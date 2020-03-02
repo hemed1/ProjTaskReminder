@@ -80,6 +80,9 @@ namespace ProjTaskReminder.Utils
         {
             IsTimerWork = true;
 
+            //keepX = 1000;
+            //Timer_onTick(null, null);
+
             keepX = 0;
 
             // Run the Timer
