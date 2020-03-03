@@ -76,10 +76,12 @@ namespace ProjTaskReminder.Utils
         //    }
         //}
 
-        public List<Weather> GetWather(string searchTerm)
+        public Weather GetWather(string searchTerm)
         {
             string responseObj = "";
             Uri url=null;
+            Weather weather = null;
+
 
 
 
@@ -155,18 +157,27 @@ namespace ProjTaskReminder.Utils
                     //JSONObject objectrequest = objectCurrent.GetJSONObject("request");
                     //"request":{ "type":"City","query":"Tel Aviv-Yafo, Israel","language":"en","unit":"m"}
 
-                    Weather weather = new Weather();
+                    weather = new Weather();
 
                     weather.setTemperature(objectCurrent.GetString("temperature"));
                     weather.setDescription(objectCurrent.GetString("weather_descriptions"));
                     weather.setWind_kph(objectCurrent.GetString("wind_speed"));
-                    weather.setPoster(objectCurrent.GetString("weather_icons"));
+                    string icon = objectCurrent.GetString("weather_icons");
+                    icon = icon.Replace("[\""+"https:\\/\\/assets", @"https://assets");
+                    icon = icon.Replace("[", "");
+                    icon = icon.Replace("]", "");
+                    icon = icon.Replace("\"", "");
+                    weather.setPoster(icon);
                     weather.setIs_day(objectCurrent.GetString("is_day").ToString());
                     weather.setCloud(objectCurrent.GetString("cloudcover"));
 
                     weather.setLast_update(objectLocation.GetString("localtime"));
                     weather.setCountry(objectLocation.GetString("country"));
-                    weather.setCity(objectLocation.GetString("name"));         // "type":"City","query":"Tel Aviv-Yafo, Israel"
+                    icon = objectLocation.GetString("name");
+                    icon = icon.Replace("[", "");
+                    icon = icon.Replace("]", "");
+                    icon = icon.Replace("\"", "");
+                    weather.setCity(icon);         // "type":"City","query":"Tel Aviv-Yafo, Israel"
                     weather.setRegion(objectLocation.GetString("region"));
                     weather.setLocal_time(objectLocation.GetString("localtime"));
                     weather.setTz_id(objectLocation.GetString("timezone_id"));
@@ -179,7 +190,7 @@ namespace ProjTaskReminder.Utils
                     //Android.Net.Uri uri = Android.Net.Uri.Parse(weather.getPoster());
                     //weather.getImageView().SetImageURI(uri);
 
-                    WeatherList.Add(weather);
+                    //WeatherList.Add(weather);
                 }
                 catch (JSONException ex)
                 {
@@ -202,7 +213,7 @@ namespace ProjTaskReminder.Utils
             //Android.Net.NetworkRequest networkRequest = new Android.Net.NetworkRequest();
 
 
-            return WeatherList;
+            return weather;
         }
 
         private void CallbackResponse(IAsyncResult ar)

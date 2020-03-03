@@ -54,6 +54,9 @@ namespace ProjTaskReminder
         private ListViewAdapter listViewAdapter;
         public static DBTaskReminder DBTaskReminder;
         private List<Task> TasksList = new List<Task>();
+        private List<Weather> WeatherList = new List<Weather>();
+        private int WeatherCounter=0;
+
 
         private static Context context;
         //private readonly string[]  countryList = new string[6] { "India", "China", "australia", "Portugle", "America", "NewZealand" };
@@ -111,12 +114,12 @@ namespace ProjTaskReminder
             //btnMainDelete.SetBackgroundResource(Android.Resource.Drawable.IcDelete);
 
             ActivityTaskDetails.OnSaveButton += new EventHandler(TaskDetailsSave_Click);
-
             ActivityTaskDetails.OnActivityResult += OnActivityResult;
 
-            TasksList = new List<Task>();
 
+            TasksList = new List<Task>();
             listViewAdapter = new ListViewAdapter(context, TasksList);
+            WeatherList = new List<Weather>();
 
             //listViewAdapter.SetOnClickListener += new EventHandler(OnItemClick);
             //listViewAdapter.SetOnItemClick += new EventHandler(OnItemClickFromAdapter);
@@ -198,26 +201,57 @@ namespace ProjTaskReminder
         private void btnMainWeather_Click(object sender, EventArgs e)
         {
             MH_Weather mH_Weather = new MH_Weather();
-            List<Weather> weatherList = new List<Weather>();
+            Weather weather=null;
 
-            //weatherList = mH_Weather.GetWather("Gedera");
-            //weatherList = mH_Weather.GetWather("Tel Aviv");
-            //weatherList = mH_Weather.GetWather("Jerusalem");
-            weatherList = mH_Weather.GetWather("Ashdod");
 
-            if (weatherList.Count>0)
+
+            if (WeatherList.Count==0)
             {
-                Weather weather = weatherList[0];
-                
-                string iconUrl = weather.getPoster();
+                weather =mH_Weather.GetWather("Ashdod");
+                WeatherList.Add(weather);
+            }
+            else if (WeatherList.Count == 1)
+            {
+                weather =mH_Weather.GetWather("Tel Aviv");
+                WeatherList.Add(weather);
+            }
+            else if (WeatherList.Count == 2)
+            {
+                weather =mH_Weather.GetWather("Jerusalem");
+                WeatherList.Add(weather);
+            }
+            else if (WeatherList.Count == 3)
+            {
+                weather =mH_Weather.GetWather("Gedera");
+                WeatherList.Add(weather);
+            }
+            else
+            {
+                if (WeatherCounter < 3)
+                {
+                    WeatherCounter++;
+                }
+                else 
+                {
+                    WeatherCounter = 0;
+                }
+                weather = WeatherList[WeatherCounter];
+            }
 
+
+            if (weather!=null)
+            {
                 //CardView cardWeather = (CardView)FindViewById(Resource.Id.cardWeather);
+                
+                TextView txtWeatherPlace = (TextView)FindViewById(Resource.Id.txtWeatherPlace);
                 TextView txtWeatherTemperture = (TextView)FindViewById(Resource.Id.txtWeatherTemperture);
                 TextView txtWeatherDescription = (TextView)FindViewById(Resource.Id.txtWeatherDescription);
 
+                txtWeatherPlace.Text = weather.getCity();
                 txtWeatherTemperture.Text = weather.getTemperature();
                 txtWeatherDescription.Text = weather.getDescription();
 
+                string iconUrl = weather.getPoster();
                 Android.Net.Uri uri = Android.Net.Uri.Parse(iconUrl);
                 btnMainWeather.SetImageURI(uri);
                 //btnMainWeather = Utils.Utils.SetWeatherImage(iconUrl);

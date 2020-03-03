@@ -4121,31 +4121,34 @@ namespace ProjTaskReminder
 			public const int txtWeatherDescription = 2131230985;
 			
 			// aapt resource value: 0x7F08010A
-			public const int txtWeatherTemperture = 2131230986;
+			public const int txtWeatherPlace = 2131230986;
 			
 			// aapt resource value: 0x7F08010B
-			public const int uniform = 2131230987;
+			public const int txtWeatherTemperture = 2131230987;
 			
 			// aapt resource value: 0x7F08010C
-			public const int unlabeled = 2131230988;
+			public const int uniform = 2131230988;
 			
 			// aapt resource value: 0x7F08010D
-			public const int up = 2131230989;
+			public const int unlabeled = 2131230989;
 			
 			// aapt resource value: 0x7F08010E
-			public const int useLogo = 2131230990;
+			public const int up = 2131230990;
 			
 			// aapt resource value: 0x7F08010F
-			public const int view_offset_helper = 2131230991;
+			public const int useLogo = 2131230991;
 			
 			// aapt resource value: 0x7F080110
-			public const int visible = 2131230992;
+			public const int view_offset_helper = 2131230992;
 			
 			// aapt resource value: 0x7F080111
-			public const int withText = 2131230993;
+			public const int visible = 2131230993;
 			
 			// aapt resource value: 0x7F080112
-			public const int wrap_content = 2131230994;
+			public const int withText = 2131230994;
+			
+			// aapt resource value: 0x7F080113
+			public const int wrap_content = 2131230995;
 			
 			static Id()
 			{

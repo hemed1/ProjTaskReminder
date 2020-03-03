@@ -568,7 +568,7 @@ namespace ProjTaskReminder.Utils
             ImageView imageView = new ImageView(context);
             Android.Net.Uri uri = Android.Net.Uri.Parse(urlAddress);
             imageView.SetImageURI(uri);
-
+            Drawable drawable =  imageView.Drawable;
 
             //imageView = new ImageView(Application.Context);
             //string posterLink = "http:" + urlAddress;   //weather.getPoster();
