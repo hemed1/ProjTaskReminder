@@ -563,29 +563,49 @@ namespace ProjTaskReminder.Utils
             return songName;
         }
 
-        public static ImageView SetWeatherImage(string urlAddress)
+        public static Drawable GetImageDrawableFromUrl(string urlAddress)
         {
-            ImageView imageView = new ImageView(context);
-            Android.Net.Uri uri = Android.Net.Uri.Parse(urlAddress);
-            imageView.SetImageURI(uri);
-            Drawable drawable =  imageView.Drawable;
+            Drawable drawable = null;
+
+            ImageView imageView = GetImageViewFromhUrl(urlAddress);
+
+            if (imageView != null)
+            {
+                drawable = imageView.Drawable;
+            }
 
             //imageView = new ImageView(Application.Context);
             //string posterLink = "http:" + urlAddress;   //weather.getPoster();
             //new Utills.DownloadImageTask(imageView).execute(posterLink);
 
-            //        Bitmap bitmap = Utills.getBitmapFromUrl(posterLink);
-            //        imageView.setImageBitmap(bitmap);
-            //        Drawable drawable = Utills.LoadImageFromWebOperations(posterLink);
-            //        imageView.setImageDrawable(drawable);
+            return drawable;
+        }
 
+        public static ImageView GetImageViewFromhUrl(string urlAddress)
+        {
+            ImageView imageView = null;
+
+            try
+            {
+                imageView = new ImageView(context);
+                Android.Net.Uri uri = Android.Net.Uri.Parse(urlAddress);
+                imageView.SetImageURI(uri);
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            //imageView = new ImageView(Application.Context);
+            //string posterLink = "http:" + urlAddress;   //weather.getPoster();
+            //new Utills.DownloadImageTask(imageView).execute(posterLink);
             //Android.Graphics.Drawables.Drawable drawable = Utils.LoadImageFromWebOperations(urlAddress);
             //imageView.SetBackgroundDrawable(drawable);
 
             return imageView;
         }
 
-        public static Drawable LoadImageFromWebOperations(string urlAddress)
+        public static Drawable GetDrawableFrom(string urlAddress)
         {
             Drawable drawable = null;
 
@@ -595,6 +615,8 @@ namespace ProjTaskReminder.Utils
                 drawable = Drawable.CreateFromPath(urlAddress);
                 //Stream stream = (Stream)new Uri(urlAddress).getContent();
                 //drawable = Drawable.CreateFromStream(stream, "src name");
+                //Android.Graphics.Drawables.Drawable drawable = Utils.LoadImageFromWebOperations(urlAddress);
+                //imageView.SetBackgroundDrawable(drawable);
             }
             catch (Exception ex)
             {
@@ -604,7 +626,7 @@ namespace ProjTaskReminder.Utils
             return drawable;
         }
 
-        public static Android.Graphics.Bitmap getBitmapFromUrl(string urlAddress)
+        public static Android.Graphics.Bitmap GetBitmapFromUrl(string urlAddress)
         {
             Android.Graphics.Bitmap bmp = null;
 

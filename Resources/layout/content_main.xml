@@ -36,7 +36,7 @@
             android:id="@+id/bntMainMusic"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="47dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="50dp"
             android:scaleType="fitXY"
             android:background="@mipmap/music1"
@@ -47,70 +47,301 @@
             android:id="@+id/cardWeather"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginTop="50dp">
-        
-            <LinearLayout
-                android:id="@+id/layoutWeather"
+
+            <HorizontalScrollView
+                android:id="@+id/scrollWeather"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:paddingTop="0dp"
-                android:paddingBottom="2dp"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp">
+                android:paddingEnd="2dp"
+                android:paddingStart="2dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp">
 
-                <ImageButton
-                    android:id="@+id/btnMainWeather"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardWeather1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:scaleType="fitXY"
-                    android:layout_gravity="bottom"
-                    android:background="@mipmap/weather2"
-                    android:soundEffectsEnabled="true"/>
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginTop="0dp">
 
-                <TextView
-                    android:id="@+id/txtWeatherPlace"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:text="New-York"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@android:color/black"/>
-
-                <TextView
-                    android:id="@+id/txtWeatherTemperture"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textSize="19sp"
-                    android:text="17 C"
-                    android:layout_below="@id/txtWeatherPlace"
-                    android:layout_marginTop="10dp"
-                    android:textColor="@android:color/holo_blue_dark"/>
-
-                <TextView
-                    android:id="@+id/txtWeatherDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:text="Cloudy"
-                    android:textSize="19sp"
-                    android:textColor="@android:color/black"
-                    android:layout_below="@id/txtWeatherTemperture"
-                    android:layout_marginTop="10dp"/>
-                <!--android:textColor="@android:color/black"-->
-
-
-            </LinearLayout>        
         
+                    <LinearLayout
+                        android:id="@+id/layoutWeather1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:orientation="vertical"
+                        android:paddingTop="0dp"
+                        android:paddingBottom="2dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp">
+
+                        <TextView
+                            android:id="@+id/txtWeatherPlace1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textStyle="bold"
+                            android:textSize="19sp"
+                            android:text="New-York"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherTemperture1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:text="17 C"
+                            android:layout_below="@id/txtWeatherPlace1"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/holo_blue_dark"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherDescription1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Cloudy"
+                            android:textSize="17sp"
+                            android:textColor="#616060"
+                            android:layout_below="@id/txtWeatherTemperture1"
+                            android:layout_marginTop="0dp"/>
+                        <!--android:textColor="@android:color/black"-->
+
+                        <ImageButton
+                            android:id="@+id/btnMainWeather1"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:scaleType="fitXY"
+                            android:baselineAlignBottom="true"
+                            android:background="@mipmap/weather2"
+                            android:soundEffectsEnabled="true"/>
+
+                    </LinearLayout>        
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardWeather2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginTop="0dp">
+
+        
+                    <LinearLayout
+                        android:id="@+id/layoutWeather2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:orientation="vertical"
+                        android:paddingTop="0dp"
+                        android:paddingBottom="2dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp">
+
+                        <TextView
+                            android:id="@+id/txtWeatherPlace2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textStyle="bold"
+                            android:textSize="19sp"
+                            android:text="New-York"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherTemperture2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:text="17 C"
+                            android:layout_below="@id/txtWeatherPlace2"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/holo_blue_dark"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherDescription2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Cloudy"
+                            android:textSize="17sp"
+                            android:textColor="#616060"
+                            android:layout_below="@id/txtWeatherTemperture2"
+                            android:layout_marginTop="0dp"/>
+                        <!--android:textColor="@android:color/black"-->
+
+                        <ImageButton
+                            android:id="@+id/btnMainWeather2"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:scaleType="fitXY"
+                            android:baselineAlignBottom="true"
+                            android:background="@mipmap/weather2"
+                            android:soundEffectsEnabled="true"/>
+
+                    </LinearLayout>        
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardWeather3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginTop="0dp">
+
+        
+                    <LinearLayout
+                        android:id="@+id/layoutWeather3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:orientation="vertical"
+                        android:paddingTop="0dp"
+                        android:paddingBottom="2dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp">
+
+                        <TextView
+                            android:id="@+id/txtWeatherPlace3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textStyle="bold"
+                            android:textSize="19sp"
+                            android:text="New-York"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherTemperture3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:text="17 C"
+                            android:layout_below="@id/txtWeatherPlace3"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/holo_blue_dark"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherDescription3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Cloudy"
+                            android:textSize="17sp"
+                            android:textColor="#616060"
+                            android:layout_below="@id/txtWeatherTemperture3"
+                            android:layout_marginTop="0dp"/>
+                        <!--android:textColor="@android:color/black"-->
+
+                        <ImageButton
+                            android:id="@+id/btnMainWeather3"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:scaleType="fitXY"
+                            android:baselineAlignBottom="true"
+                            android:background="@mipmap/weather2"
+                            android:soundEffectsEnabled="true"/>
+
+                    </LinearLayout>        
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardWeather4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginTop="0dp">
+
+        
+                    <LinearLayout
+                        android:id="@+id/layoutWeather4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:orientation="vertical"
+                        android:paddingTop="0dp"
+                        android:paddingBottom="2dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp">
+
+                        <TextView
+                            android:id="@+id/txtWeatherPlace4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textStyle="bold"
+                            android:textSize="19sp"
+                            android:text="New-York"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherTemperture4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:text="17 C"
+                            android:layout_below="@id/txtWeatherPlace4"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/holo_blue_dark"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherDescription4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Cloudy"
+                            android:textSize="17sp"
+                            android:textColor="#616060"
+                            android:layout_below="@id/txtWeatherTemperture4"
+                            android:layout_marginTop="0dp"/>
+                        <!--android:textColor="@android:color/black"-->
+
+                        <ImageButton
+                            android:id="@+id/btnMainWeather4"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:scaleType="fitXY"
+                            android:baselineAlignBottom="true"
+                            android:background="@mipmap/weather2"
+                            android:soundEffectsEnabled="true"/>
+
+                    </LinearLayout>        
+
+                </android.support.v7.widget.CardView>
+        
+            </HorizontalScrollView>
+
         </android.support.v7.widget.CardView>
-        
 
     </LinearLayout>
 

@@ -15,6 +15,7 @@ using Org.Json;
 using ProjTaskReminder.Model;
 using System.Net;
 using System.IO;
+using System.Timers;
 //using Newtonsoft
 
 namespace ProjTaskReminder.Utils
@@ -26,7 +27,10 @@ namespace ProjTaskReminder.Utils
         public static string URL_RIGHT_MOVIES = "&apikey=c8c455ad";
         //public static string URL_LEFT_WEATHER  = "https://api.apixu.com/v1/current.json?key=bd7acb3eb7fd424fbdd105519181908&q=";
         public static string URL_LEFT_WEATHER  = "http://api.weatherstack.com/current?access_key=f2896ef52242c1e367e2170ce40352ba&query=";
-        
+        public static string URL_RIGHT_WEATHER = "";  //"&page=2";
+
+
+
         //http://api.weatherstack.com/current
         //  ? access_key = YOUR_ACCESS_KEY
         //  & query = New York
@@ -36,14 +40,21 @@ namespace ProjTaskReminder.Utils
         //  & language = en
         //  & callback = MY_CALLBACK
 
-        public static string URL_RIGHT_WEATHER = "";  //"&page=2";
+
+        public int WEATER_TIMER_INTERVAL { get; set; }
+        private System.Timers.Timer timerChangePlace;
+        public event Action<object, int> OnChanePlace;
+        private int currentListIndex;
+        public bool IsScrollng { get; set; } 
 
         private bool isSiteWasFound;
         private List<Weather> WeatherList;
 
-        public void MHH_Weather()
+
+        public MH_Weather()
         {
             WeatherList = new List<Weather>();
+            WEATER_TIMER_INTERVAL = 60000;
         }
 
 
@@ -76,13 +87,61 @@ namespace ProjTaskReminder.Utils
         //    }
         //}
 
+        public void StartChangePlace()
+        {
+            currentListIndex = 0;
+
+            timerChangePlace = new System.Timers.Timer();
+            timerChangePlace.Interval = WEATER_TIMER_INTERVAL;
+            timerChangePlace.AutoReset = true;
+            timerChangePlace.Elapsed += Timer_onTick;
+            timerChangePlace.Enabled = true;
+            //timerScroll.Start();
+
+            IsScrollng = true;
+        }
+
+        public void StotChangePlace()
+        {
+            currentListIndex = 0;
+
+            timerChangePlace.Stop();
+            timerChangePlace.Close();
+            timerChangePlace.Dispose();
+            timerChangePlace = null;
+            //timerScroll.Start();
+
+            IsScrollng = false;
+
+            if (OnChanePlace != null && currentListIndex<=WeatherList.Count)
+            {
+                OnChanePlace(WeatherList[currentListIndex], currentListIndex);
+            }
+
+        }
+
+        private void Timer_onTick(object sender, ElapsedEventArgs e)
+        {
+            currentListIndex++;
+
+            if (OnChanePlace!=null)
+            {
+                if (currentListIndex>-1 && currentListIndex> WeatherList.Count-1)
+                {
+                    currentListIndex = 0;
+                }
+                // Refreh current weather
+                GetWather(WeatherList[currentListIndex].getCity());
+
+                OnChanePlace(WeatherList[currentListIndex], currentListIndex);
+            }
+        }
+
         public Weather GetWather(string searchTerm)
         {
             string responseObj = "";
             Uri url=null;
             Weather weather = null;
-
-
 
 
             isSiteWasFound = false;
@@ -100,6 +159,7 @@ namespace ProjTaskReminder.Utils
                 request.MaximumResponseHeadersLength = 4;
                 // Set credentials to use for this request.
                 request.Credentials = CredentialCache.DefaultCredentials;
+                
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
                 Console.WriteLine("Content length is {0}", response.ContentLength);
@@ -110,9 +170,6 @@ namespace ProjTaskReminder.Utils
 
                 // Pipes the stream to a higher level stream reader with the required encoding format. 
                 StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-
-                //Console.WriteLine("Response stream received.");
-                //Console.WriteLine(readStream.ReadToEnd());
 
                 isSiteWasFound = true;
 
@@ -126,6 +183,11 @@ namespace ProjTaskReminder.Utils
                 //"timezone_id":"Asia\/Jerusalem","localtime":"2020-03-02 19:30","localtime_epoch":1583177400,"utc_offset":"2.0"},
                 //"current":{ "observation_time":"05:30 PM","temperature":17,"weather_code":116,"weather_icons":["https:\/\/assets.weatherstack.com\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png"],
                 //"weather_descriptions":["Partly cloudy"],"wind_speed":10,"wind_degree":311,"wind_dir":"NW","pressure":1021,"precip":0,"humidity":60,"cloudcover":7,"feelslike":17,"uv_index":1,"visibility":10,"is_day":"no"}}
+
+                isSiteWasFound = true;
+
+                weather = CallbackResponse(responseObj);
+
             }
             catch (Exception ex)
             {
@@ -135,12 +197,29 @@ namespace ProjTaskReminder.Utils
 
 
 
-            isSiteWasFound = true;
-            WeatherList = new List<Weather>();
+            //weatherRecyclerViewAdpter = new WeatherRecyclerViewAdpter(getApplicationContext(), weatherList);
+            //listRecycler.setAdapter(weatherRecyclerViewAdpter);
+            //weatherRecyclerViewAdpter.notifyDataSetChanged();  // Very Important !!! Otherwise we wont see anything displayed
 
+
+            //System.Net.WebRequest webRequest = System.Net.WebRequest.Create(url);
+            //webRequest.Method = "GET";
+            //object state=1;
+            //var response = await webRequest.GetResponse();
+            //System.Net.WebResponse response = webRequest.GetResponse();  //.BeginGetResponse(CallbackResponse, state);
+            //Android.Net.NetworkRequest networkRequest = new Android.Net.NetworkRequest();
+
+
+            return weather;
+        }
+
+        private Weather CallbackResponse(string responseObj)
+        {
+            Weather weather = null;
+            
 
             Org.Json.JSONObject weatherMain = new Org.Json.JSONObject(responseObj);
-            
+
             Org.Json.JSONArray weatherArray = new Org.Json.JSONArray();
             weatherArray.Put(weatherMain);
 
@@ -163,10 +242,16 @@ namespace ProjTaskReminder.Utils
                     weather.setDescription(objectCurrent.GetString("weather_descriptions"));
                     weather.setWind_kph(objectCurrent.GetString("wind_speed"));
                     string icon = objectCurrent.GetString("weather_icons");
-                    icon = icon.Replace("[\""+"https:\\/\\/assets", @"https://assets");
+                    icon = icon.Replace("[\"" + "https:\\/\\/assets", @"https://assets");
                     icon = icon.Replace("[", "");
                     icon = icon.Replace("]", "");
                     icon = icon.Replace("\"", "");
+                    icon = icon.Replace(@"\/", "//");
+                    icon = icon.Replace(@"\\", "//");
+                    //Android.Net.Uri uri = Android.Net.Uri.Parse(icon);
+                    //Android.Net.Uri uri = Android.Net.Uri.Parse(icon);
+                    //icon = uri.Path;
+                    //icon = uri.AbsolutePath;
                     weather.setPoster(icon);
                     weather.setIs_day(objectCurrent.GetString("is_day").ToString());
                     weather.setCloud(objectCurrent.GetString("cloudcover"));
@@ -177,6 +262,9 @@ namespace ProjTaskReminder.Utils
                     icon = icon.Replace("[", "");
                     icon = icon.Replace("]", "");
                     icon = icon.Replace("\"", "");
+                    icon = icon.Replace("[\"", "");
+                    icon = icon.Replace("\"]", "");
+                    //icon = icon.Replace('\'', (char)32); 
                     weather.setCity(icon);         // "type":"City","query":"Tel Aviv-Yafo, Israel"
                     weather.setRegion(objectLocation.GetString("region"));
                     weather.setLocal_time(objectLocation.GetString("localtime"));
@@ -185,12 +273,19 @@ namespace ProjTaskReminder.Utils
                     //"localtime_epoch":1583177400,"utc_offset":"2.0"
                     //wind_degree":311,"wind_dir":"NW","pressure":1021,"precip":0,"humidity":60,"cloudcover":7,"feelslike":17
 
-                    weather.setImageView(Utils.SetWeatherImage(weather.getPoster()));
+                    weather.setImageView(Utils.GetImageViewFromhUrl(weather.getPoster()));
                     //weather.setImageView(new ImageView(Application.Context));
                     //Android.Net.Uri uri = Android.Net.Uri.Parse(weather.getPoster());
                     //weather.getImageView().SetImageURI(uri);
 
-                    //WeatherList.Add(weather);
+                    if (WeatherList.Count < 4)
+                    {
+                        WeatherList.Add(weather);
+                    }
+                    else
+                    {
+                        WeatherList[currentListIndex] = weather;
+                    }
                 }
                 catch (JSONException ex)
                 {
@@ -199,104 +294,35 @@ namespace ProjTaskReminder.Utils
                     //ex.printStackTrace();
                 }
             }
-
-            //weatherRecyclerViewAdpter = new WeatherRecyclerViewAdpter(getApplicationContext(), weatherList);
-            //listRecycler.setAdapter(weatherRecyclerViewAdpter);
-            //weatherRecyclerViewAdpter.notifyDataSetChanged();  // Very Important !!! Otherwise we wont see anything displayed
-
-
-            //System.Net.WebRequest webRequest = System.Net.WebRequest.Create(url);
-            //webRequest.Method = "GET";
-            //object state=1;
-            //var response = await webRequest.GetResponse();
-            //System.Net.WebResponse response = webRequest.GetResponse();  //.BeginGetResponse(CallbackResponse, state);
-            //Android.Net.NetworkRequest networkRequest = new Android.Net.NetworkRequest();
 
 
             return weather;
-        }
 
-        private void CallbackResponse(IAsyncResult ar)
-        {
-        
-            isSiteWasFound = true;
-
-            object responseObj = ar.AsyncState;
-
-            Org.Json.JSONObject weatherMain = new Org.Json.JSONObject();
-            
-            Org.Json.JSONArray weatherArray = new Org.Json.JSONArray();
-            weatherArray.Put(weatherMain);
-
-            for (int i = 0; i < weatherArray.Length(); i++)
-            {
-                try
-                {
-                    Org.Json.JSONObject weatherObject =  weatherArray.GetJSONObject(i);
-
-                    JSONObject objectLocation = weatherObject.GetJSONObject("location");
-                    JSONObject objectCurrent = weatherObject.GetJSONObject("current");
-                    JSONObject objectCondition = objectCurrent.GetJSONObject("condition");
-
-                    Weather weather = new Weather();
-
-                    weather.setTemperature(objectCurrent.GetString("temp_c"));
-                    weather.setDescription(objectCondition.GetString("text"));
-                    weather.setWind_kph(objectCurrent.GetString("wind_kph"));
-                    weather.setLast_update(objectCurrent.GetString("last_updated"));
-                    weather.setPoster(objectCondition.GetString("icon"));
-                    weather.setCountry(objectLocation.GetString("country"));
-                    weather.setCity(objectLocation.GetString("name"));
-                    weather.setRegion(objectLocation.GetString("region"));
-                    weather.setLocal_time(objectLocation.GetString("localtime"));
-                    weather.setIs_day(objectCurrent.GetString("is_day").ToString());
-                    weather.setCloud(objectCurrent.GetString("cloud"));
-                    weather.setTz_id(objectLocation.GetString("tz_id"));
-
-                    weather.setImageView(new ImageView(Application.Context));
-                    Uri uri = new Uri(weather.getPoster());
-                    //weather.getImageView().SetImageURI(uri);
-
-                    WeatherList.Add(weather);
-                }
-                catch (JSONException ex)
-                {
-                    Utils.WriteToLog(ex.Message);
-                    //Log.d("Error: ", ex.getMessage());
-                    //ex.printStackTrace();
-                }
-            }
-
-            //weatherRecyclerViewAdpter = new WeatherRecyclerViewAdpter(getApplicationContext(), weatherList);
-            //listRecycler.setAdapter(weatherRecyclerViewAdpter);
-            //weatherRecyclerViewAdpter.notifyDataSetChanged();  // Very Important !!! Otherwise we wont see anything displayed
-
-            //return WeatherList;
         }
 
 
 
-//new Response.ErrorListener()
-//                {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error)
-//        {
-//            if (error != null)
-//            {
-//                isSiteWasFound = false;
-//                string message = "לא מצא נתונים מתאימים";               //error.getMessage();
-//                                                                        //Log.d("app", error.getMessage());
-//                View view = getLayoutInflater().inflate(R.layout.activity_main, null);
-//                Snackbar.make(view, message, Snackbar.LENGTH_LONG).setAction("Action", null).show();
-//            }
-//        }
-//    });
+        //new Response.ErrorListener()
+        //                {
+        //                    @Override
+        //                    public void onErrorResponse(VolleyError error)
+        //        {
+        //            if (error != null)
+        //            {
+        //                isSiteWasFound = false;
+        //                string message = "לא מצא נתונים מתאימים";               //error.getMessage();
+        //                                                                        //Log.d("app", error.getMessage());
+        //                View view = getLayoutInflater().inflate(R.layout.activity_main, null);
+        //                Snackbar.make(view, message, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+        //            }
+        //        }
+        //    });
 
 
-//        if (isSiteWasFound)
-//        {
-            //queue.add(jsonObjectRequest);
-//        }
+        //        if (isSiteWasFound)
+        //        {
+        //queue.add(jsonObjectRequest);
+        //        }
 
         
     }

@@ -23,8 +23,9 @@ namespace ProjTaskReminder.Utils
         public int SCROLL_INTERVAL = 200;
         public int SCROLL_DELTA = 7;
         public int SCROLL_END_POINT = 2400;
-        
+
         public event Action<int> OnScrolling;
+        public bool IsScrollng { get; set; }
 
 
         public MH_Scroll()
@@ -36,6 +37,7 @@ namespace ProjTaskReminder.Utils
         {
             this.ScrollControl = scrollViewControl;
             IsTimerWork = false;
+            IsScrollng = false;
         }
 
 
@@ -79,6 +81,7 @@ namespace ProjTaskReminder.Utils
         private Action TimerPicsScrollRun()
         {
             IsTimerWork = true;
+            IsScrollng = true;
 
             //keepX = 1000;
             //Timer_onTick(null, null);
@@ -129,7 +132,8 @@ namespace ProjTaskReminder.Utils
 
             if (isGetToEdge)
             {
-                SCROLL_DELTA = SCROLL_DELTA * -1;
+                keepX = 1;
+                //SCROLL_DELTA = SCROLL_DELTA * -1;
                 //keepX += SCROLL_DELTA;
             }
 
@@ -155,6 +159,7 @@ namespace ProjTaskReminder.Utils
             }
 
             IsTimerWork = false;
+            IsScrollng = false;
         }
 
     }

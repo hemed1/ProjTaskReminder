@@ -176,7 +176,9 @@ namespace ProjTaskReminder
             btnPlay.Click += PlaySongPlay;
 
             PicturesScrolling = new MH_Scroll(scrHorizon);
-            PicturesScrolling.SCROLL_END_POINT = 1000;      // (imgSongArtist1.Width * 3) - 500;
+            PicturesScrolling.SCROLL_INTERVAL = 300;
+            PicturesScrolling.SCROLL_DELTA = 10;
+            PicturesScrolling.SCROLL_END_POINT = 2000;      // (imgSongArtist1.Width * 3) - 500;
             PicturesScrolling.OnScrolling += PicturesScrolling_OnScrolling;
 
             isPlayingNow = false;
@@ -410,14 +412,14 @@ namespace ProjTaskReminder
             lblSongArtist.Text = item.getArtist();
             lblAlbum.Text = item.getAlbum();
 
-            CurrentSongPosition = 0;
-
             if (mediaPlayer != null)
             {
                 mediaPlayer.SeekTo(0);
                 barSeek.Max = mediaPlayer.Duration;
                 barSeek.SetProgress(0, false);
             }
+
+            CurrentSongPosition = 0;
 
             UpdateProgressControls();
 
