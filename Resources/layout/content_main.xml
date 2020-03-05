@@ -51,6 +51,8 @@
             android:layout_marginEnd="15dp"
             android:layout_marginTop="50dp">
 
+
+
             <HorizontalScrollView
                 android:id="@+id/scrollWeather"
                 android:layout_width="match_parent"
@@ -60,30 +62,31 @@
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp">
 
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cardWeather1"
+       
+                <RelativeLayout
+                    android:id="@+id/layoutWeather"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginTop="0dp">
+                    android:paddingStart="1dp"
+                    android:paddingEnd="1dp">
 
-        
+
                     <LinearLayout
                         android:id="@+id/layoutWeather1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         xmlns:android="http://schemas.android.com/apk/res/android"
                         android:orientation="vertical"
+                        android:layout_alignParentTop="true"
                         android:paddingTop="0dp"
-                        android:paddingBottom="2dp"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp">
+                        android:paddingBottom="1dp"
+                        android:paddingStart="1dp"
+                        android:paddingEnd="1dp">
 
                         <TextView
                             android:id="@+id/txtWeatherPlace1"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:textSize="19sp"
                             android:text="New-York"
@@ -111,7 +114,7 @@
                             android:textColor="#616060"
                             android:layout_below="@id/txtWeatherTemperture1"
                             android:layout_marginTop="0dp"/>
-                        <!--android:textColor="@android:color/black"-->
+                        
 
                         <ImageButton
                             android:id="@+id/btnMainWeather1"
@@ -127,33 +130,23 @@
 
                     </LinearLayout>        
 
-                </android.support.v7.widget.CardView>
-
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cardWeather2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginTop="0dp">
-
         
                     <LinearLayout
                         android:id="@+id/layoutWeather2"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         xmlns:android="http://schemas.android.com/apk/res/android"
                         android:orientation="vertical"
+                        android:layout_alignParentTop="true"
                         android:paddingTop="0dp"
-                        android:paddingBottom="2dp"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp">
+                        android:paddingBottom="1dp"
+                        android:paddingStart="1dp"
+                        android:paddingEnd="1dp">
 
                         <TextView
                             android:id="@+id/txtWeatherPlace2"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:textSize="19sp"
                             android:text="New-York"
@@ -181,7 +174,6 @@
                             android:textColor="#616060"
                             android:layout_below="@id/txtWeatherTemperture2"
                             android:layout_marginTop="0dp"/>
-                        <!--android:textColor="@android:color/black"-->
 
                         <ImageButton
                             android:id="@+id/btnMainWeather2"
@@ -197,33 +189,23 @@
 
                     </LinearLayout>        
 
-                </android.support.v7.widget.CardView>
-
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cardWeather3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginTop="0dp">
-
-        
+       
                     <LinearLayout
                         android:id="@+id/layoutWeather3"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         xmlns:android="http://schemas.android.com/apk/res/android"
                         android:orientation="vertical"
+                        android:layout_alignParentTop="true"
                         android:paddingTop="0dp"
-                        android:paddingBottom="2dp"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp">
+                        android:paddingBottom="1dp"
+                        android:paddingStart="1dp"
+                        android:paddingEnd="1dp">
 
                         <TextView
                             android:id="@+id/txtWeatherPlace3"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:textSize="19sp"
                             android:text="New-York"
@@ -267,33 +249,23 @@
 
                     </LinearLayout>        
 
-                </android.support.v7.widget.CardView>
 
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cardWeather4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginTop="0dp">
-
-        
                     <LinearLayout
                         android:id="@+id/layoutWeather4"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         xmlns:android="http://schemas.android.com/apk/res/android"
                         android:orientation="vertical"
+                        android:layout_alignParentTop="true"
                         android:paddingTop="0dp"
-                        android:paddingBottom="2dp"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp">
+                        android:paddingBottom="1dp"
+                        android:paddingStart="1dp"
+                        android:paddingEnd="1dp">
 
                         <TextView
                             android:id="@+id/txtWeatherPlace4"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:textSize="19sp"
                             android:text="New-York"
@@ -337,7 +309,7 @@
 
                     </LinearLayout>        
 
-                </android.support.v7.widget.CardView>
+                </RelativeLayout>
         
             </HorizontalScrollView>
 

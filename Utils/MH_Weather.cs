@@ -41,7 +41,7 @@ namespace ProjTaskReminder.Utils
         //  & callback = MY_CALLBACK
 
 
-        public int WEATER_TIMER_INTERVAL { get; set; }
+        public int WEATER_CHANE_PLACE_TIMER_INTERVAL { get; set; }
         private System.Timers.Timer timerChangePlace;
         public event Action<object, int> OnChanePlace;
         private int currentListIndex;
@@ -54,7 +54,7 @@ namespace ProjTaskReminder.Utils
         public MH_Weather()
         {
             WeatherList = new List<Weather>();
-            WEATER_TIMER_INTERVAL = 60000;
+            WEATER_CHANE_PLACE_TIMER_INTERVAL = 60000;
         }
 
 
@@ -92,7 +92,7 @@ namespace ProjTaskReminder.Utils
             currentListIndex = 0;
 
             timerChangePlace = new System.Timers.Timer();
-            timerChangePlace.Interval = WEATER_TIMER_INTERVAL;
+            timerChangePlace.Interval = WEATER_CHANE_PLACE_TIMER_INTERVAL;
             timerChangePlace.AutoReset = true;
             timerChangePlace.Elapsed += Timer_onTick;
             timerChangePlace.Enabled = true;

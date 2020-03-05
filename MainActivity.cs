@@ -51,7 +51,8 @@ namespace ProjTaskReminder
         //ImageButton btnMainMusic = (ImageButton)FindViewById(Resource.Id.bntMainMusic);
         //private ImageView btnMainWeather;
         //ImageButton btnMainEmail = (ImageButton)FindViewById(Resource.Id.btnMainEmail);
-        private CardView cardWeather;
+        //private CardView cardWeather;
+
         private ListView simpleList;    //RecyclerView
         private ListViewAdapter listViewAdapter;
         public static DBTaskReminder DBTaskReminder;
@@ -122,7 +123,7 @@ namespace ProjTaskReminder
             weather = WeatherList[WeatherCounter];
 
 
-            //mH_Weather.StartChangePlace();
+            mH_Weather.StartChangePlace();
 
             //WeatherScroll.Start();
         }
@@ -248,32 +249,32 @@ namespace ProjTaskReminder
                         resourceIDTemperture = Resource.Id.txtWeatherTemperture1;
                         resourceIDDescription = Resource.Id.txtWeatherDescription1;
                         resourceIDImage = Resource.Id.btnMainWeather1;
-                        resourceIDCard = Resource.Id.cardWeather1;
+                        resourceIDCard = Resource.Id.layoutWeather1;
                         break;
                     case 1:
                         resourceIDPlace = Resource.Id.txtWeatherPlace2;
                         resourceIDTemperture = Resource.Id.txtWeatherTemperture2;
                         resourceIDDescription = Resource.Id.txtWeatherDescription2;
                         resourceIDImage = Resource.Id.btnMainWeather2;
-                        resourceIDCard = Resource.Id.cardWeather2;
+                        resourceIDCard = Resource.Id.layoutWeather2;
                         break;
                     case 2:
                         resourceIDPlace = Resource.Id.txtWeatherPlace3;
                         resourceIDTemperture = Resource.Id.txtWeatherTemperture3;
                         resourceIDDescription = Resource.Id.txtWeatherDescription3;
                         resourceIDImage = Resource.Id.btnMainWeather3;
-                        resourceIDCard = Resource.Id.cardWeather3;
+                        resourceIDCard = Resource.Id.layoutWeather3;
                         break;
                     case 3:
                         resourceIDPlace = Resource.Id.txtWeatherPlace4;
                         resourceIDTemperture = Resource.Id.txtWeatherTemperture4;
                         resourceIDDescription = Resource.Id.txtWeatherDescription4;
                         resourceIDImage = Resource.Id.btnMainWeather4;
-                        resourceIDCard = Resource.Id.cardWeather4;
+                        resourceIDCard = Resource.Id.layoutWeather4;
                         break;
                 }
 
-                CardView cardWeather = (CardView)FindViewById(resourceIDCard);
+                //LinearLayout layoutWeather = (LinearLayout)FindViewById(resourceIDCard);
                 TextView txtWeatherPlace = (TextView)FindViewById(resourceIDPlace);
                 TextView txtWeatherTemperture = (TextView)FindViewById(resourceIDTemperture);
                 TextView txtWeatherDescription = (TextView)FindViewById(resourceIDDescription);
@@ -290,7 +291,7 @@ namespace ProjTaskReminder
                 //btnMainWeather.SetBackgroundDrawable(drawable);
                 //btnMainWeather.setImageView(Utils.Utils.GetImageViewFromhUrl(weather.getPoster()));
                 
-                cardWeather.Click += btnMainWeather_Click;
+                //layoutWeather.Click += btnMainWeather_Click;
 
                 Android.Net.Uri uri = Android.Net.Uri.Parse(weather.getPoster());
                 btnMainWeather.SetImageURI(uri);
@@ -337,6 +338,7 @@ namespace ProjTaskReminder
 
             WeatherList = new List<Weather>();
             mH_Weather = new MH_Weather();
+            mH_Weather.WEATER_CHANE_PLACE_TIMER_INTERVAL = 60000;
             mH_Weather.OnChanePlace += OnWeatherChangingPlace;
 
             WeatherScroll = new MH_Scroll();
@@ -346,7 +348,6 @@ namespace ProjTaskReminder
             WeatherScroll.ScrollControl = scrollWeather;
             //WeatherScroll.OnScrolling += OnWeatherScroll;
 
-            //WeatherScroll.Start();
         }
 
         private void OnWeatherScroll(int obj)

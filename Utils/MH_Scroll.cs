@@ -109,7 +109,7 @@ namespace ProjTaskReminder.Utils
 
             ScrollControl.SmoothScrollingEnabled = true;
             ScrollControl.SmoothScrollTo(keepX, 0);
-
+            
             //scrHorizon.scrollTo(keepX, 0);
             //scrHorizon.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
 
