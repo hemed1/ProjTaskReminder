@@ -223,10 +223,10 @@
             android:layout_height="35dp"
             android:layout_marginBottom="5dp"
             android:layout_marginEnd="0dp"
-            android:layout_marginStart="160dp"
+            android:layout_marginStart="0dp"
             android:layout_marginTop="1dp"
             android:layout_alignParentTop="true"
-            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
             android:background="@android:drawable/ic_media_play"
             android:backgroundTint="@android:color/white"
             android:textSize="9dp" />
@@ -235,12 +235,12 @@
             android:id="@+id/btnPrev"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginStart="70dp"            
-            android:layout_marginTop="1dp"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="left|top"
+            android:layout_marginBottom="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="0dp"
+            android:layout_alignLeft="@id/btnPlay"
+            android:layout_alignBottom="@id/btnPlay"
             android:background="@android:drawable/ic_media_previous"
             android:backgroundTint="@android:color/white"/>
 
@@ -248,18 +248,19 @@
             android:id="@+id/btnNext"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="280dp"
-            android:layout_marginTop="1dp"
-            android:layout_gravity="right|top"
-            android:layout_alignParentTop="true"
+            android:layout_marginBottom="0dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginTop="0dp"
+            android:layout_alignRight="@id/btnPlay"
+            android:layout_alignBottom="@id/btnPlay"
             android:background="@android:drawable/ic_media_next"
             android:backgroundTint="@android:color/white"/>
 
     </RelativeLayout>
 
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/layDetails4"
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -276,10 +277,11 @@
             style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="150dp"
+            android:layout_marginEnd="0dp"
             android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginBottom="5dp"
+            android:layout_centerHorizontal="true"
             android:text="תקיות" />
 
         <Button
@@ -287,12 +289,12 @@
             style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="5dp"
             android:text="כל השירים" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

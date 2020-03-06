@@ -103,31 +103,16 @@ namespace ProjTaskReminder
 
             focusListOnToday(Utils.Utils.GetDateNow());
 
-            StartWeather();        
-        }
-
-        private void StartWeather()
-        {
+            // First city
             Weather weather;
             weather = mH_Weather.GetWather("Ashdod");
             WeatherList.Add(weather);
+            OnWeatherChangingPlace(weather, 0);
 
-            weather = mH_Weather.GetWather("Tel Aviv");
-            WeatherList.Add(weather);
-
-            weather = mH_Weather.GetWather("Jerusalem");
-            WeatherList.Add(weather);
-
-            weather = mH_Weather.GetWather("Gedera");
-            WeatherList.Add(weather);
-            weather = WeatherList[WeatherCounter];
-
-
-            mH_Weather.StartChangePlace();
-
-            //WeatherScroll.Start();
+            WeatherScroll.StartPosstion();
         }
 
+       
         private void SetControlsIO()
         {
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
@@ -169,6 +154,15 @@ namespace ProjTaskReminder
             btnMainMusic.Click += btnMainMusic_Click;
             //btnMainWeather.Click += btnMainWeather_Click;
             cardWeather.Click += btnMainWeather_Click;
+
+            ImageView btnMainWeather1 = (ImageView)FindViewById(Resource.Id.btnMainWeather1);
+            ImageView btnMainWeather2 = (ImageView)FindViewById(Resource.Id.btnMainWeather2);
+            ImageView btnMainWeather3 = (ImageView)FindViewById(Resource.Id.btnMainWeather3);
+            ImageView btnMainWeather4 = (ImageView)FindViewById(Resource.Id.btnMainWeather4);
+            btnMainWeather1.BringToFront();
+            btnMainWeather2.BringToFront();
+            btnMainWeather3.BringToFront();
+            btnMainWeather4.BringToFront();
 
             // RecyclerView
             //LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -228,6 +222,7 @@ namespace ProjTaskReminder
 
         }
 
+        [Obsolete]
         private void OnWeatherChangingPlace(object weatherObject, int indexInWeatherList)
         {
             
@@ -239,7 +234,7 @@ namespace ProjTaskReminder
                 int resourceIDTemperture=0;
                 int resourceIDDescription=0;
                 int resourceIDImage = 0;
-                int resourceIDCard = 0;
+                 int resourceIDLayouy = 0;
 
 
                 switch (indexInWeatherList)
@@ -249,32 +244,32 @@ namespace ProjTaskReminder
                         resourceIDTemperture = Resource.Id.txtWeatherTemperture1;
                         resourceIDDescription = Resource.Id.txtWeatherDescription1;
                         resourceIDImage = Resource.Id.btnMainWeather1;
-                        resourceIDCard = Resource.Id.layoutWeather1;
+                        resourceIDLayouy = Resource.Id.layoutWeather1;
                         break;
                     case 1:
                         resourceIDPlace = Resource.Id.txtWeatherPlace2;
                         resourceIDTemperture = Resource.Id.txtWeatherTemperture2;
                         resourceIDDescription = Resource.Id.txtWeatherDescription2;
                         resourceIDImage = Resource.Id.btnMainWeather2;
-                        resourceIDCard = Resource.Id.layoutWeather2;
+                        resourceIDLayouy = Resource.Id.layoutWeather2;
                         break;
                     case 2:
                         resourceIDPlace = Resource.Id.txtWeatherPlace3;
                         resourceIDTemperture = Resource.Id.txtWeatherTemperture3;
                         resourceIDDescription = Resource.Id.txtWeatherDescription3;
                         resourceIDImage = Resource.Id.btnMainWeather3;
-                        resourceIDCard = Resource.Id.layoutWeather3;
+                        resourceIDLayouy = Resource.Id.layoutWeather3;
                         break;
                     case 3:
                         resourceIDPlace = Resource.Id.txtWeatherPlace4;
                         resourceIDTemperture = Resource.Id.txtWeatherTemperture4;
                         resourceIDDescription = Resource.Id.txtWeatherDescription4;
                         resourceIDImage = Resource.Id.btnMainWeather4;
-                        resourceIDCard = Resource.Id.layoutWeather4;
+                        resourceIDLayouy = Resource.Id.layoutWeather4;
                         break;
                 }
 
-                //LinearLayout layoutWeather = (LinearLayout)FindViewById(resourceIDCard);
+                LinearLayout layoutWeather = (LinearLayout)FindViewById(resourceIDLayouy);
                 TextView txtWeatherPlace = (TextView)FindViewById(resourceIDPlace);
                 TextView txtWeatherTemperture = (TextView)FindViewById(resourceIDTemperture);
                 TextView txtWeatherDescription = (TextView)FindViewById(resourceIDDescription);
@@ -287,15 +282,35 @@ namespace ProjTaskReminder
                 txtWeatherDescription.Text = weather.getDescription();
                 //txtWeatherDescription.BringToFront();
 
-                //Drawable drawable = weather.getImageView().Drawable;
-                //btnMainWeather.SetBackgroundDrawable(drawable);
-                //btnMainWeather.setImageView(Utils.Utils.GetImageViewFromhUrl(weather.getPoster()));
-                
+                try
+                {
+                    //weather.setImageView(Utils.GetImageViewFromhUrl(weather.getPoster()));
+                    //weather.setImageView(new ImageView(Application.Context));
+                    Android.Net.Uri uri = Android.Net.Uri.Parse(weather.getPoster());
+                    btnMainWeather.SetImageURI(uri);
+                    //Android.Graphics.Bitmap drawable = weather.getImageView().GetDrawingCache(true);   //.Drawable;
+                    //btnMainWeather.SetImageDrawable(drawable);
+                }
+                catch
+                {
+
+                }
+
                 //layoutWeather.Click += btnMainWeather_Click;
+                btnMainWeather.Click += btnMainWeather_Click;
+                btnMainWeather.BringToFront();
 
-                Android.Net.Uri uri = Android.Net.Uri.Parse(weather.getPoster());
-                btnMainWeather.SetImageURI(uri);
+                weather.setImageView(btnMainWeather);
 
+                try
+                {
+                    Android.Net.Uri uri = Android.Net.Uri.Parse(weather.getPoster());
+                    btnMainWeather.SetImageURI(uri);
+                }
+                catch (Exception ex)
+                {
+                    Utils.Utils.WriteToLog("Error when try to set Weater icon: " + weather.getPoster() + Utils.Utils.LINE_SEPERATOR + ex.Message);
+                }
             }
 
         }
@@ -304,12 +319,23 @@ namespace ProjTaskReminder
         private void btnMainWeather_Click(object sender, EventArgs e)
         {
 
-            if (mH_Weather.IsScrollng)
+            if (mH_Weather.IsChangePlaces)
             {
+                WeatherScroll.Stop();
                 mH_Weather.StotChangePlace();
             }
             else
             {
+                if (mH_Weather.currentListIndex == -1)
+                {
+                    //mH_Weather.GetAllWeaters();
+                    //WeatherScroll.StartPosstion();
+                }
+                else
+                {
+                    WeatherScroll.Start();
+                }
+
                 mH_Weather.StartChangePlace();
             }
 
@@ -342,8 +368,8 @@ namespace ProjTaskReminder
             mH_Weather.OnChanePlace += OnWeatherChangingPlace;
 
             WeatherScroll = new MH_Scroll();
-            WeatherScroll.SCROLL_DELTA = 5;
-            WeatherScroll.SCROLL_END_POINT = 400;
+            WeatherScroll.SCROLL_DELTA = 6;
+            WeatherScroll.SCROLL_END_POINT = 150;
             WeatherScroll.SCROLL_INTERVAL = 300;
             WeatherScroll.ScrollControl = scrollWeather;
             //WeatherScroll.OnScrolling += OnWeatherScroll;

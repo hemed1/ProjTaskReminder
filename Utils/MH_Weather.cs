@@ -16,6 +16,7 @@ using ProjTaskReminder.Model;
 using System.Net;
 using System.IO;
 using System.Timers;
+using System.Threading;
 //using Newtonsoft
 
 namespace ProjTaskReminder.Utils
@@ -23,10 +24,10 @@ namespace ProjTaskReminder.Utils
     public class MH_Weather
     {
 
-        public static string URL_LEFT_MOVIES  = "http://www.omdbapi.com/?t=t&y=";  //2001
+        public static string URL_LEFT_MOVIES = "http://www.omdbapi.com/?t=t&y=";  //2001
         public static string URL_RIGHT_MOVIES = "&apikey=c8c455ad";
         //public static string URL_LEFT_WEATHER  = "https://api.apixu.com/v1/current.json?key=bd7acb3eb7fd424fbdd105519181908&q=";
-        public static string URL_LEFT_WEATHER  = "http://api.weatherstack.com/current?access_key=f2896ef52242c1e367e2170ce40352ba&query=";
+        public static string URL_LEFT_WEATHER = "http://api.weatherstack.com/current?access_key=f2896ef52242c1e367e2170ce40352ba&query=";
         public static string URL_RIGHT_WEATHER = "";  //"&page=2";
 
 
@@ -44,8 +45,8 @@ namespace ProjTaskReminder.Utils
         public int WEATER_CHANE_PLACE_TIMER_INTERVAL { get; set; }
         private System.Timers.Timer timerChangePlace;
         public event Action<object, int> OnChanePlace;
-        private int currentListIndex;
-        public bool IsScrollng { get; set; } 
+        public int currentListIndex;
+        public bool IsChangePlaces { get; set; }
 
         private bool isSiteWasFound;
         private List<Weather> WeatherList;
@@ -55,37 +56,40 @@ namespace ProjTaskReminder.Utils
         {
             WeatherList = new List<Weather>();
             WEATER_CHANE_PLACE_TIMER_INTERVAL = 60000;
+            currentListIndex = -1;
         }
 
+        public void GetAllWeaters()
+        {
 
-        //public async Task Login(string url)
-        //{
-        //    try
-        //    {
-        //        var uri = new Uri(url);
-                
-        //        HttpClient myClient = new HttpClient();
+            Thread ThreadTask = new Thread(new ThreadStart(OnGetAlWeaters));
 
-        //        var response = await myClient.GetAsync(uri);
-        //        if (response.IsSuccessStatusCode)
-        //        {
-        //            var content = await response.Content.ReadAsStringAsync();
-        //            var Item = JsonConvert.DeserializeObject<UserDetails>(content);
-        //            string userid = Item.UserID;
+            //var second = new Thread(new ThreadStart(secondThread));
+            //second.Start();
+            //btnStart.TouchUpInside += delegate {
 
-        //            int roleid = Item.RoleID;
-        //        }
-        //        else
-        //        {
-        //            Application.Current.Properties["response"] = response;
-        //        }
+            ThreadTask.Start();
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine(ex);
-        //    }
-        //}
+            //RunOnUiThread(OnPlayingMusic);      // ActionOnPlayingMusic);    // =>
+            //{
+            //int newPosition = mediaPlayer.CurrentPosition;
+            //barSeek.Progress = newPosition;
+            //};
+        }
+
+        private void OnGetAlWeaters()
+        {
+            Weather weather;
+
+            weather = GetWather("Ashdod");
+
+            weather = GetWather("Tel Aviv");
+
+            weather = GetWather("Jerusalem");
+
+            weather = GetWather("Gedera");
+
+        }
 
         public void StartChangePlace()
         {
@@ -96,9 +100,10 @@ namespace ProjTaskReminder.Utils
             timerChangePlace.AutoReset = true;
             timerChangePlace.Elapsed += Timer_onTick;
             timerChangePlace.Enabled = true;
-            //timerScroll.Start();
 
-            IsScrollng = true;
+            IsChangePlaces = true;
+
+            GetAllWeaters();
         }
 
         public void StotChangePlace()
@@ -111,7 +116,7 @@ namespace ProjTaskReminder.Utils
             timerChangePlace = null;
             //timerScroll.Start();
 
-            IsScrollng = false;
+            IsChangePlaces = false;
 
             if (OnChanePlace != null && currentListIndex<=WeatherList.Count)
             {
@@ -124,17 +129,18 @@ namespace ProjTaskReminder.Utils
         {
             currentListIndex++;
 
-            if (OnChanePlace!=null)
+            if (currentListIndex>-1 && currentListIndex> WeatherList.Count-1)
             {
-                if (currentListIndex>-1 && currentListIndex> WeatherList.Count-1)
-                {
-                    currentListIndex = 0;
-                }
-                // Refreh current weather
-                GetWather(WeatherList[currentListIndex].getCity());
+                currentListIndex = 0;
+            }
+            // Refreh current weather
+            GetWather(WeatherList[currentListIndex].getCity());
 
+            if (OnChanePlace != null)
+            {
                 OnChanePlace(WeatherList[currentListIndex], currentListIndex);
             }
+
         }
 
         public Weather GetWather(string searchTerm)
@@ -259,11 +265,10 @@ namespace ProjTaskReminder.Utils
                     weather.setLast_update(objectLocation.GetString("localtime"));
                     weather.setCountry(objectLocation.GetString("country"));
                     icon = objectLocation.GetString("name");
-                    icon = icon.Replace("[", "");
-                    icon = icon.Replace("]", "");
+                    icon = icon.Replace(@"[", "");
+                    icon = icon.Replace(@"]", "");
                     icon = icon.Replace("\"", "");
                     icon = icon.Replace("[\"", "");
-                    icon = icon.Replace("\"]", "");
                     //icon = icon.Replace('\'', (char)32); 
                     weather.setCity(icon);         // "type":"City","query":"Tel Aviv-Yafo, Israel"
                     weather.setRegion(objectLocation.GetString("region"));
@@ -273,10 +278,17 @@ namespace ProjTaskReminder.Utils
                     //"localtime_epoch":1583177400,"utc_offset":"2.0"
                     //wind_degree":311,"wind_dir":"NW","pressure":1021,"precip":0,"humidity":60,"cloudcover":7,"feelslike":17
 
-                    weather.setImageView(Utils.GetImageViewFromhUrl(weather.getPoster()));
-                    //weather.setImageView(new ImageView(Application.Context));
-                    //Android.Net.Uri uri = Android.Net.Uri.Parse(weather.getPoster());
-                    //weather.getImageView().SetImageURI(uri);
+                    try
+                    {
+                        //weather.setImageView(Utils.GetImageViewFromhUrl(weather.getPoster()));
+                        //weather.setImageView(new ImageView(Application.Context));
+                        //Android.Net.Uri uri = Android.Net.Uri.Parse(weather.getPoster());
+                        //weather.getImageView().SetImageURI(uri);
+                    }
+                    catch
+                    {
+
+                    }
 
                     if (WeatherList.Count < 4)
                     {
@@ -324,8 +336,36 @@ namespace ProjTaskReminder.Utils
         //queue.add(jsonObjectRequest);
         //        }
 
-        
+
+        //public async Task Login(string url)
+        //{
+        //    try
+        //    {
+        //        var uri = new Uri(url);
+
+        //        HttpClient myClient = new HttpClient();
+
+        //        var response = await myClient.GetAsync(uri);
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            var content = await response.Content.ReadAsStringAsync();
+        //            var Item = JsonConvert.DeserializeObject<UserDetails>(content);
+        //            string userid = Item.UserID;
+
+        //            int roleid = Item.RoleID;
+        //        }
+        //        else
+        //        {
+        //            Application.Current.Properties["response"] = response;
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine(ex);
+        //    }
+        //}       
     }
-    
+
 
 }

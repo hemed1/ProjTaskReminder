@@ -170,7 +170,7 @@ namespace ProjTaskReminder.Data
                 this.DB.Execute(sqlScript, null);
                 //recordsEffected = DB.insert(tableName, null, contentValues);
 
-                DB.Close();
+                //DB.Close();
             }
             catch (Exception ex)
             {
@@ -254,7 +254,7 @@ namespace ProjTaskReminder.Data
             {
                 //this.DB = this.getWritableDatabase();
                 DB.Execute(sqlScript);
-                DB.Close();
+                //DB.Close();
             }
             catch (Exception ex)
             {
@@ -305,7 +305,7 @@ namespace ProjTaskReminder.Data
             //string sqlScript = "SELECT * FROM " + TableName + " WHERE ID=?";
             //List<object> objects = DB.Query(tableMap, sqlScript, new object[1] { id });
 
-            DB.Close();
+            //DB.Close();
 
             return result;
         }
@@ -326,7 +326,7 @@ namespace ProjTaskReminder.Data
             {
                 //this.DB = this.getWritableDatabase();
                 this.DB.Execute(sqlScript, null);
-                DB.Close();
+                //DB.Close();
             }
             catch (Exception ex)
             {

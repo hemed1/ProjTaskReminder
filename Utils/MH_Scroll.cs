@@ -78,6 +78,14 @@ namespace ProjTaskReminder.Utils
             TimerPicsScrollStop();
         }
 
+        public void StartPosstion()
+        {
+            keepX = 1;
+
+            ScrollControl.SmoothScrollingEnabled = true;
+            ScrollControl.SmoothScrollTo(keepX, 0);
+        }
+
         private Action TimerPicsScrollRun()
         {
             IsTimerWork = true;
@@ -86,7 +94,7 @@ namespace ProjTaskReminder.Utils
             //keepX = 1000;
             //Timer_onTick(null, null);
 
-            keepX = 0;
+            keepX = 1;
 
             // Run the Timer
             timerScroll = new System.Timers.Timer();
@@ -96,6 +104,8 @@ namespace ProjTaskReminder.Utils
             timerScroll.Enabled = true;
             //timerScroll.Start();
             //timerScroll.schedule(picsTimerTask, 500, PICS_TIMER_INTERVAL);
+
+            StartPosstion();
 
             return null;
         }
