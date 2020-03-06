@@ -95,7 +95,7 @@
 
                         <TextView
                             android:id="@+id/txtWeatherPlace1"
-                            android:layout_width="match_parent"
+                            android:layout_width="110dp"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:textSize="19sp"
@@ -117,7 +117,7 @@
 
                         <TextView
                             android:id="@+id/txtWeatherDescription1"
-                            android:layout_width="match_parent"
+                            android:layout_width="110dp"
                             android:layout_height="wrap_content"
                             android:text="Cloudy"
                             android:textSize="17sp"
@@ -157,7 +157,7 @@
 
                         <TextView
                             android:id="@+id/txtWeatherPlace2"
-                            android:layout_width="match_parent"
+                            android:layout_width="110dp"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:textSize="19sp"
@@ -179,7 +179,7 @@
 
                         <TextView
                             android:id="@+id/txtWeatherDescription2"
-                            android:layout_width="match_parent"
+                            android:layout_width="110dp"
                             android:layout_height="wrap_content"
                             android:text="Cloudy"
                             android:textSize="17sp"
@@ -217,7 +217,7 @@
 
                         <TextView
                             android:id="@+id/txtWeatherPlace3"
-                            android:layout_width="match_parent"
+                            android:layout_width="110dp"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:textSize="19sp"
@@ -239,7 +239,7 @@
 
                         <TextView
                             android:id="@+id/txtWeatherDescription3"
-                            android:layout_width="match_parent"
+                            android:layout_width="110dp"
                             android:layout_height="wrap_content"
                             android:text="Cloudy"
                             android:textSize="17sp"
@@ -278,7 +278,7 @@
 
                         <TextView
                             android:id="@+id/txtWeatherPlace4"
-                            android:layout_width="match_parent"
+                            android:layout_width="110dp"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
                             android:textSize="19sp"
@@ -300,7 +300,7 @@
 
                         <TextView
                             android:id="@+id/txtWeatherDescription4"
-                            android:layout_width="match_parent"
+                            android:layout_width="110dp"
                             android:layout_height="wrap_content"
                             android:text="Cloudy"
                             android:textSize="17sp"

@@ -104,12 +104,12 @@ namespace ProjTaskReminder
             focusListOnToday(Utils.Utils.GetDateNow());
 
             // First city
-            Weather weather;
-            weather = mH_Weather.GetWather("Ashdod");
-            WeatherList.Add(weather);
-            OnWeatherChangingPlace(weather, 0);
+            //Weather weather;
+            //weather = mH_Weather.GetWather("Ashdod");
+            //WeatherList.Add(weather);
+            //OnWeatherChangingPlace(weather, 0);
 
-            WeatherScroll.StartPosstion();
+            //WeatherScroll.StartPosstion();
         }
 
        
@@ -327,6 +327,7 @@ namespace ProjTaskReminder
             {
                 WeatherScroll.Stop();
                 mH_Weather.StotChangePlace();
+                WeatherScroll.StartPosstion();
             }
             else
             {
@@ -365,7 +366,7 @@ namespace ProjTaskReminder
 
             WeatherScroll = new MH_Scroll();
             WeatherScroll.SCROLL_DELTA = 6;
-            WeatherScroll.SCROLL_END_POINT = 800;
+            WeatherScroll.SCROLL_END_POINT =980;
             WeatherScroll.SCROLL_INTERVAL = 300;
             WeatherScroll.ScrollControl = scrollWeather;
             //WeatherScroll.OnScrolling += OnWeatherScroll;

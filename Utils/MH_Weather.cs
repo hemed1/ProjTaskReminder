@@ -118,12 +118,13 @@ namespace ProjTaskReminder.Utils
             ThreadTask.Abort();
             ThreadTask = null;
 
+            currentListIndex = -1;
 
         }
 
         public void StartChangePlace()
         {
-            currentListIndex = 0;
+            currentListIndex = -1;
 
             timerChangePlace = new System.Timers.Timer();
             timerChangePlace.Interval = WEATER_CHANE_PLACE_TIMER_INTERVAL;
@@ -153,6 +154,7 @@ namespace ProjTaskReminder.Utils
                 OnChanePlace(WeatherList[currentListIndex], currentListIndex);
             }
 
+            currentListIndex = -1;
         }
 
         private void Timer_onTick(object sender, ElapsedEventArgs e)
