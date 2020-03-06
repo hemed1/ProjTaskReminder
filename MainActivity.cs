@@ -153,7 +153,7 @@ namespace ProjTaskReminder
 
             btnMainMusic.Click += btnMainMusic_Click;
             //btnMainWeather.Click += btnMainWeather_Click;
-            cardWeather.Click += btnMainWeather_Click;
+            //cardWeather.Click += btnMainWeather_Click;
 
             ImageView btnMainWeather1 = (ImageView)FindViewById(Resource.Id.btnMainWeather1);
             ImageView btnMainWeather2 = (ImageView)FindViewById(Resource.Id.btnMainWeather2);
@@ -163,6 +163,10 @@ namespace ProjTaskReminder
             btnMainWeather2.BringToFront();
             btnMainWeather3.BringToFront();
             btnMainWeather4.BringToFront();
+            btnMainWeather1.Click += btnMainWeather_Click;
+            btnMainWeather2.Click += btnMainWeather_Click;
+            btnMainWeather3.Click += btnMainWeather_Click;
+            btnMainWeather4.Click += btnMainWeather_Click;
 
             // RecyclerView
             //LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -326,15 +330,15 @@ namespace ProjTaskReminder
             }
             else
             {
-                if (mH_Weather.currentListIndex == -1)
-                {
+                //if (mH_Weather.currentListIndex == -1)
+                //{
                     //mH_Weather.GetAllWeaters();
                     //WeatherScroll.StartPosstion();
-                }
-                else
-                {
-                    WeatherScroll.Start();
-                }
+                //}
+                //else
+                //{
+                WeatherScroll.Start();
+                //}
 
                 mH_Weather.StartChangePlace();
             }

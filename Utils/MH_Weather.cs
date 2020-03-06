@@ -56,7 +56,7 @@ namespace ProjTaskReminder.Utils
         {
             WeatherList = new List<Weather>();
             WEATER_CHANE_PLACE_TIMER_INTERVAL = 60000;
-            currentListIndex = -1;
+            currentListIndex = 0;
         }
 
         public void GetAllWeaters()
