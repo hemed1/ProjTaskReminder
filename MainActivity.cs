@@ -301,8 +301,8 @@ namespace ProjTaskReminder
                 }
 
                 //layoutWeather.Click += btnMainWeather_Click;
-                btnMainWeather.Click += btnMainWeather_Click;
-                btnMainWeather.BringToFront();
+                //btnMainWeather.Click += btnMainWeather_Click;
+                //btnMainWeather.BringToFront();
 
                 weather.setImageView(btnMainWeather);
 
@@ -330,16 +330,7 @@ namespace ProjTaskReminder
             }
             else
             {
-                //if (mH_Weather.currentListIndex == -1)
-                //{
-                    //mH_Weather.GetAllWeaters();
-                    //WeatherScroll.StartPosstion();
-                //}
-                //else
-                //{
                 WeatherScroll.Start();
-                //}
-
                 mH_Weather.StartChangePlace();
             }
 
@@ -368,12 +359,13 @@ namespace ProjTaskReminder
 
             WeatherList = new List<Weather>();
             mH_Weather = new MH_Weather();
+            mH_Weather.activity = this;
             mH_Weather.WEATER_CHANE_PLACE_TIMER_INTERVAL = 60000;
             mH_Weather.OnChanePlace += OnWeatherChangingPlace;
 
             WeatherScroll = new MH_Scroll();
             WeatherScroll.SCROLL_DELTA = 6;
-            WeatherScroll.SCROLL_END_POINT = 150;
+            WeatherScroll.SCROLL_END_POINT = 800;
             WeatherScroll.SCROLL_INTERVAL = 300;
             WeatherScroll.ScrollControl = scrollWeather;
             //WeatherScroll.OnScrolling += OnWeatherScroll;

@@ -79,7 +79,7 @@
 
                     <LinearLayout
                         android:id="@+id/layoutWeather1"
-                        android:layout_width="match_parent"
+                        android:layout_width="115dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:layout_alignParentTop="true"
@@ -144,7 +144,7 @@
 
                     <LinearLayout
                         android:id="@+id/layoutWeather2"
-                        android:layout_width="match_parent"
+                        android:layout_width="115dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:layout_alignParentTop="true"
@@ -204,7 +204,7 @@
 
                     <LinearLayout
                         android:id="@+id/layoutWeather3"
-                        android:layout_width="match_parent"
+                        android:layout_width="115dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:layout_alignParentTop="true"
@@ -265,7 +265,7 @@
 
                     <LinearLayout
                         android:id="@+id/layoutWeather4"
-                        android:layout_width="match_parent"
+                        android:layout_width="115dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:layout_alignParentTop="true"

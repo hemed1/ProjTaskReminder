@@ -47,9 +47,11 @@ namespace ProjTaskReminder.Utils
         public event Action<object, int> OnChanePlace;
         public int currentListIndex;
         public bool IsChangePlaces { get; set; }
+        public Activity activity {get; set;}
 
         private bool isSiteWasFound;
         private List<Weather> WeatherList;
+        private Thread ThreadTask;
 
 
         public MH_Weather()
@@ -62,15 +64,18 @@ namespace ProjTaskReminder.Utils
         public void GetAllWeaters()
         {
 
-            Thread ThreadTask = new Thread(new ThreadStart(OnGetAlWeaters));
-
-            //var second = new Thread(new ThreadStart(secondThread));
-            //second.Start();
-            //btnStart.TouchUpInside += delegate {
+            ThreadTask = new Thread(new ThreadStart(StartGetAllPlaces));
+            ThreadTask.IsBackground = true;
 
             ThreadTask.Start();
 
-            //RunOnUiThread(OnPlayingMusic);      // ActionOnPlayingMusic);    // =>
+           
+        }
+
+        private void StartGetAllPlaces()
+        {
+            activity.RunOnUiThread(OnGetAlWeaters);
+
             //{
             //int newPosition = mediaPlayer.CurrentPosition;
             //barSeek.Progress = newPosition;
@@ -81,13 +86,38 @@ namespace ProjTaskReminder.Utils
         {
             Weather weather;
 
+
             weather = GetWather("Ashdod");
+            currentListIndex = 0;
+            if (OnChanePlace != null && currentListIndex <= WeatherList.Count)
+            {
+                OnChanePlace(WeatherList[currentListIndex], currentListIndex);
+            }
 
             weather = GetWather("Tel Aviv");
+            currentListIndex = 1;
+            if (OnChanePlace != null && currentListIndex <= WeatherList.Count)
+            {
+                OnChanePlace(WeatherList[currentListIndex], currentListIndex);
+            }
 
             weather = GetWather("Jerusalem");
+            currentListIndex = 2;
+            if (OnChanePlace != null && currentListIndex <= WeatherList.Count)
+            {
+                OnChanePlace(WeatherList[currentListIndex], currentListIndex);
+            }
 
             weather = GetWather("Gedera");
+            currentListIndex = 3;
+            if (OnChanePlace != null && currentListIndex <= WeatherList.Count)
+            {
+                OnChanePlace(WeatherList[currentListIndex], currentListIndex);
+            }
+
+            ThreadTask.Abort();
+            ThreadTask = null;
+
 
         }
 
