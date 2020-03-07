@@ -45,30 +45,9 @@ namespace ProjTaskReminder.Utils
         {
             bool result = false;
 
-            //if (IsHaveToScroll)
-            //{
-            //    if (IsTimerWork)
-            //    {
             TimerPicsScrollStop();
-            //    }
-            //    return;
-            //}
-
-            //ActionOnPicsScrolling += TimerPicsScrollRun();
 
             TimerPicsScrollRun();
-
-            //scrHorizon.PostDelayed(ActionOnPicsScrolling, 1000);    
-            //{
-            //new Runnable()
-            //public void run()
-            //{
-            //    if (!IsTimerWork)
-            //    {
-            //        TimerPicsScrollRun();
-            //    }
-            //}
-            //}
 
             return result;
         }

@@ -34,7 +34,7 @@ namespace ProjTaskReminder
         private TextView lblSongArtist;
         private TextView lblAlbum;
         private TextView lblPosNow;
-        private TextView lblPosLeft;
+        private TextView lblPosEnd;
         private int CurrentSongPosition;
         private ImageView imgSongArtist1;
         private ImageView imgSongArtist2;
@@ -53,8 +53,11 @@ namespace ProjTaskReminder
         private int PICS_TIMER_SCROLL_DELTA = 5;
         private int PICS_TIMER_SCROLL_END_POINT;
         private HorizontalScrollView scrHorizon;
+        private HorizontalScrollView scrHorizonSongName;
         private event Action ActionOnPicsScrolling;
-        private MH_Scroll PicturesScrolling;
+        private MH_Scroll ScrollPictures;
+        private MH_Scroll ScrollSongName;
+
 
 
 
@@ -108,12 +111,12 @@ namespace ProjTaskReminder
             {
                 file = Directory.GetParent(ListItemsPath[i].Key).FullName;
                 file = ListItemsPath[i].Key.Substring(file.Length + 1);
-                if (file.Length>30)
-                {
-                    file = file.Substring(0, 30);
-                }
+                //if (file.Length>30)
+                //{
+                //    file = file.Substring(0, 30);
+                //}
                 file = Utils.Utils.FixSongName(file);
-                ListItemSong listItemSong = new ListItemSong(file, "Artist " + i.ToString(), "Album " + i.ToString());
+                ListItemSong listItemSong = new ListItemSong(file, "Artist " + (i+1).ToString(), "Album " + (i+1).ToString());
                 ListItemsRecycler.Add(new KeyValuePair<string, ListItemSong>(listItemSong.getSongName(), listItemSong));
             }
         }
@@ -130,10 +133,11 @@ namespace ProjTaskReminder
             barSeek.ProgressChanged += OnSeekbarChanged;
 
             lblSongName = (TextView)FindViewById(Resource.Id.lblSongName);
+            scrHorizonSongName = (HorizontalScrollView)FindViewById(Resource.Id.scrHorizonSongName);
             lblSongArtist = (TextView)FindViewById(Resource.Id.lblSongArtist);
             lblAlbum = (TextView)FindViewById(Resource.Id.lblAlbum);
             lblPosNow = (TextView)FindViewById(Resource.Id.lblPosNow);
-            lblPosLeft = (TextView)FindViewById(Resource.Id.lblPosLeft);
+            lblPosEnd = (TextView)FindViewById(Resource.Id.lblPosEnd);
 
             imgSongArtist1 = (ImageView)FindViewById(Resource.Id.imgSongArtist1);
             imgSongArtist2 = (ImageView)FindViewById(Resource.Id.imgSongArtist2);
@@ -175,11 +179,17 @@ namespace ProjTaskReminder
             btnNext.Click += PlaySongNext;
             btnPlay.Click += PlaySongPlay;
 
-            PicturesScrolling = new MH_Scroll(scrHorizon);
-            PicturesScrolling.SCROLL_INTERVAL = 300;
-            PicturesScrolling.SCROLL_DELTA = 10;
-            PicturesScrolling.SCROLL_END_POINT = 2000;      // (imgSongArtist1.Width * 3) - 500;
-            PicturesScrolling.OnScrolling += PicturesScrolling_OnScrolling;
+            ScrollPictures = new MH_Scroll(scrHorizon);
+            ScrollPictures.SCROLL_INTERVAL = 300;
+            ScrollPictures.SCROLL_DELTA = 10;
+            ScrollPictures.SCROLL_END_POINT = 2000;      // (imgSongArtist1.Width * 3) - 500;
+            //ScrollPictures.OnScrolling += ScrollPictures_OnScrolling;
+
+            ScrollSongName = new MH_Scroll(scrHorizonSongName);
+            ScrollSongName.SCROLL_INTERVAL = 200;
+            ScrollSongName.SCROLL_DELTA = 8;
+            ScrollSongName.SCROLL_END_POINT = 220;      // (imgSongArtist1.Width * 3) - 500;
+            //ScrollSongName.OnScrolling += ScrollSongName_OnScrolling;
 
             isPlayingNow = false;
             CurrentSongPosition = 0;
@@ -188,7 +198,7 @@ namespace ProjTaskReminder
             IsFirstPlay = true;
         }
 
-        private void PicturesScrolling_OnScrolling(int scrollPossion)
+        private void ScrollPictures_OnScrolling(int scrollPossion)
         {
             
         }
@@ -227,7 +237,7 @@ namespace ProjTaskReminder
         {
             if (!isPlayingNow)
             {
-                if (CurrentSongPosition == 0)
+                if (barSeek.Progress == 0)
                 {
                     LoadSongIntoPlayer(ListPositionIndex);
                 }
@@ -263,6 +273,7 @@ namespace ProjTaskReminder
                 {
                     // Set the Song props - Name, Artist, Album, Duration
                     SetSongControls(ListPositionIndex);
+                    CurrentSongPosition = 0;
                 }
             }
 
@@ -274,8 +285,18 @@ namespace ProjTaskReminder
             if (ListPositionIndex < ListItemsRecycler.Count && ListPositionIndex > 0)
             {
                 ListPositionIndex--;
-                LoadSongIntoPlayer(ListPositionIndex);
+                if (isPlayingNow)
+                {
+                    LoadSongIntoPlayer(ListPositionIndex);
+                }
+                else
+                {
+                    // Set the Song props - Name, Artist, Album, Duration
+                    SetSongControls(ListPositionIndex);
+                    CurrentSongPosition = 0;
+                }
             }
+
             //seekMusic(-5000);
         }
 
@@ -340,8 +361,12 @@ namespace ProjTaskReminder
 
                 btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPause);
 
-                PicturesScrolling.Start();
-                
+                ScrollPictures.Start();
+                if (lblSongName.Text.Length > 20)
+                {
+                    ScrollSongName.Start();
+                }
+
                 //setPicsScroll();
 
                 UpdateSongPositionThread();
@@ -350,9 +375,9 @@ namespace ProjTaskReminder
 
         private void MusicPause()
         {
-            TimerPicsScrollStop();
 
-            PicturesScrolling.Stop();
+            ScrollPictures.Stop();
+            ScrollSongName.Stop();
 
             if (ThreadTask != null)
             {
@@ -371,9 +396,9 @@ namespace ProjTaskReminder
 
         public void MusicStop()
         {
-            TimerPicsScrollStop();
 
-            PicturesScrolling.Stop();
+            ScrollPictures.Stop();
+            ScrollSongName.Stop();
 
             if (ThreadTask != null)
             {
@@ -412,12 +437,12 @@ namespace ProjTaskReminder
             lblSongArtist.Text = item.getArtist();
             lblAlbum.Text = item.getAlbum();
 
-            if (mediaPlayer != null)
-            {
-                mediaPlayer.SeekTo(0);
-                barSeek.Max = mediaPlayer.Duration;
+            //if (mediaPlayer != null)
+            //{
+            //    mediaPlayer.SeekTo(0);
+            //    barSeek.Max = mediaPlayer.Duration;
                 barSeek.SetProgress(0, false);
-            }
+            //}
 
             CurrentSongPosition = 0;
 
@@ -472,7 +497,7 @@ namespace ProjTaskReminder
             {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss");
                 lblPosNow.Text = dateFormat.Format(new Date(currentPos));
-                lblPosLeft.Text = dateFormat.Format(new Date(duration));
+                lblPosEnd.Text = dateFormat.Format(new Date(duration));
             }
             catch (Exception ex)
             {
@@ -480,7 +505,7 @@ namespace ProjTaskReminder
             }
 
             //lblPosNow.Text = new DateTime(currentPos).ToString("mm:ss");
-            //lblPosLeft.Text = new DateTime(duration).ToString("mm:ss");
+            //lblPosEnd.Text = new DateTime(duration).ToString("mm:ss");
         }
 
         public void UpdateSongPositionThread()
@@ -558,207 +583,6 @@ namespace ProjTaskReminder
             base.OnDestroy();
         }
 
-        private void setPicsScroll()
-        {
-
-            //if (IsHaveToScroll)
-            //{
-            //    if (IsTimerWork)
-            //    {
-                    TimerPicsScrollStop();
-            //    }
-            //    return;
-            //}
-
-            //ActionOnPicsScrolling += TimerPicsScrollRun();
-
-            TimerPicsScrollRun();
-
-            //scrHorizon.PostDelayed(ActionOnPicsScrolling, 1000);    
-            //{
-            //new Runnable()
-            //public void run()
-            //{
-            //    if (!IsTimerWork)
-            //    {
-            //        TimerPicsScrollRun();
-            //    }
-            //}
-            //}
-
-        }
-
-        private Action TimerPicsScrollRun()
-        {
-            IsTimerWork = true;
-
-            keepX = 0;
-
-            // Run the Timer
-            picsTimer = new System.Timers.Timer();
-            picsTimer.Interval = PICS_TIMER_INTERVAL;
-            picsTimer.AutoReset = true;
-            picsTimer.Elapsed += picsTimer_onTick;
-            picsTimer.Enabled = true;
-            //picsTimer.Start();
-            //picsTimer.schedule(picsTimerTask, 500, PICS_TIMER_INTERVAL);
-
-            return null;
-        }
-
-        private void TimerPicsScrollStop()
-        {
-            if (picsTimer!=null &&  (IsTimerWork || picsTimer.Enabled))
-            {
-                scrHorizon.SmoothScrollingEnabled = false;
-                picsTimer.Stop();
-                picsTimer.Close();
-                picsTimer.Dispose();
-                picsTimer = null;
-             }
-
-            IsTimerWork = false;
-        }
-
-        private void picsTimer_onTick(object sender, ElapsedEventArgs e)
-        {
-            bool isGetToEdge = false;
-
-
-            keepX += PICS_TIMER_SCROLL_DELTA;
-
-            scrHorizon.SmoothScrollingEnabled = true;
-            scrHorizon.SmoothScrollTo(keepX, 0);
-
-            //scrHorizon.scrollTo(keepX, 0);
-            //scrHorizon.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
-
-            if (PICS_TIMER_SCROLL_DELTA > 0)
-            {
-                if (keepX > PICS_TIMER_SCROLL_END_POINT)  //scrHorizon.getRight())
-                {
-                    //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist3, 2);
-                    isGetToEdge = true;
-                }
-            }
-            else
-            {
-                if (keepX < PICS_TIMER_SCROLL_END_POINT * -1)
-                {
-                    //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist1, 1);
-                    isGetToEdge = true;
-                }
-            }
-
-            if (isGetToEdge)
-            {
-                PICS_TIMER_SCROLL_DELTA = PICS_TIMER_SCROLL_DELTA * -1;
-                keepX += PICS_TIMER_SCROLL_DELTA;
-            }
-
-        }
-
-
-        //    private void picsTimer_onTick()
-        //    {
-        //        boolean isGetToEdge = false;
-
-        //        scrHorizon.smoothScrollTo(keepX, 0);
-        //        //scrHorizon.scrollTo(keepX, 0);
-        //        //scrHorizon.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
-
-        //        keepX += PICS_TIMER_SCROLL_DELTA;
-
-        //        if (PICS_TIMER_SCROLL_DELTA > 0)
-        //        {
-        //            if (keepX > (imgSongArtist1.getWidth() * 3) - 1000)  //scrHorizon.getRight())
-        //            {
-        //                //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist3, 2);
-        //                isGetToEdge = true;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            if (keepX < PICS_TIMER_SCROLL_DELTA * -1 - 450)
-        //            {
-        //                //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist1, 1);
-        //                isGetToEdge = true;
-        //            }
-        //        }
-
-        //        if (isGetToEdge)
-        //        {
-        //            PICS_TIMER_SCROLL_DELTA = PICS_TIMER_SCROLL_DELTA * -1;
-        //            keepX += PICS_TIMER_SCROLL_DELTA;
-        //        }
-
-        //    }
-
-        //    private void TimerRunSongProgress()
-        //    {
-        //        TimerTaskSongProgress = new TimerTask()
-        //    {
-        //        @Override
-        //        public void run()
-        //        {
-        //            TimerSongProgress_onTick();
-        //        }
-        //    };
-
-        //    // Run the Timer
-        //    TimerSongProgress = new Timer();
-        //    TimerSongProgress.schedule(TimerTaskSongProgress, 900, 900);
-        //}
-
-        //    private void TimerStopSongProgress()
-        //    {
-        //        if (TimerSongProgress != null)
-        //        {
-        //            TimerSongProgress.cancel();
-        //            TimerSongProgress.purge();
-        //            TimerTaskSongProgress.cancel();
-        //            TimerSongProgress = null;
-        //            TimerTaskSongProgress = null;
-        //        }
-        //    }
-
-        //    private void TimerSongProgress_onTick()
-        //    {
-        //        int newPosition = mediaPlayer.getCurrentPosition();
-        //        barSeek.setProgress(newPosition);
-        //    }
-
-
-        //    private void TimerPicsScrollRun()
-        //    {
-        //        IsTimerWork = true;
-        //        picsTimerTask = new TimerTask()
-        //        {
-        //            @Override
-        //            public void run()
-        //        {
-        //            picsTimer_onTick();
-        //        }
-        //        };
-
-        //    // Run the Timer
-        //    picsTimer = new Timer();
-        //    picsTimer.schedule(picsTimerTask, 500, PICS_TIMER_INTERVAL);
-        //    }
-
-        //    private void TimerPicsScrollStop()
-        //    {
-        //        if (IsTimerWork)
-        //        {
-        //            picsTimer.cancel();
-        //            picsTimer.purge();
-        //            picsTimerTask.cancel();
-        //            picsTimer = null;
-        //            picsTimerTask = null;
-        //            //picsTimerTask.run();
-        //        }
-        //        IsTimerWork = false;
-        //    }
 
     }
 

@@ -97,7 +97,7 @@ namespace ProjTaskReminder
 
             ConnectToDB();
 
-            BackupDataBaseFile();
+            //BackupDataBaseFile();
 
             FillListFromDB();
 
@@ -1426,7 +1426,7 @@ namespace ProjTaskReminder
             if (result)
             {
                 string message = "Database was copied OK";
-                //Toast.MakeText(this, message, ToastLength.Long).Show();
+                Toast.MakeText(this, message, ToastLength.Long).Show();
                 //Utils.Utils.WriteToLog(message, true);
             }
         }

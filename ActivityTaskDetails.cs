@@ -261,7 +261,7 @@ namespace ProjTaskReminder
             txtDetailsDate.Text = e.DayOfMonth.ToString().PadLeft(2, '0') + "/" + (e.MonthOfYear+1).ToString().PadLeft(2, '0') + "/" + e.Year.ToString().PadLeft(4, '0');
 
             lblDateTime.Text = txtDetailsDate.Text + " " + txtDetailsTime.Text;
-            //Toast.MakeText(this, txtDetailsDate.Text, ToastLength.Long).Show();
+            
             datePicker1.Visibility = ViewStates.Invisible;
 
             OpenTimePicker();
@@ -275,7 +275,6 @@ namespace ProjTaskReminder
 
             lblDateTime.Text = txtDetailsDate.Text + " " + txtDetailsTime.Text;
 
-            //Toast.MakeText(this, txtDetailsTime.Text, ToastLength.Long).Show();
             timePicker1.Visibility = ViewStates.Invisible;
         }
 
@@ -424,15 +423,13 @@ namespace ProjTaskReminder
         {
             CurrentTask.setTitle(txtDetailsTitle.Text);
             CurrentTask.setDescription(txtDetailsDescription.Text);
-            lblDateTime.Text = txtDetailsDate.Text + " " + txtDetailsTime.Text;
-            if (!txtDetailsDate.Text.Trim().Equals("") && (!txtDetailsTime.Text.Trim().Equals("")))
+            //lblDateTime.Text = txtDetailsDate.Text + " " + txtDetailsTime.Text;
+            if (!txtDetailsDate.Text.Trim().Equals(""))
             {
-                CurrentTask.setDate_due(txtDetailsDate.Text.Trim());
-                CurrentTask.setTime_due(txtDetailsTime.Text.Trim());
+                CurrentTask.setDate_due(lblDateTime.Text.Substring(0, 10));
             }
-            else if (!lblDateTime.Text.Trim().Equals(""))
+            if (!txtDetailsTime.Text.Trim().Equals(""))
             {
-                CurrentTask.setDate_due(lblDateTime.Text.Trim().Substring(0, 10));
                 CurrentTask.setTime_due(lblDateTime.Text.Trim().Substring(11, 5));
             }
             else
