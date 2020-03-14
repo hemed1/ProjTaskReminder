@@ -116,6 +116,7 @@ namespace ProjTaskReminder
                 //    file = file.Substring(0, 30);
                 //}
                 file = Utils.Utils.FixSongName(file);
+                file = file.Substring(0, file.Length - 4);
                 ListItemSong listItemSong = new ListItemSong(file, "Artist " + (i+1).ToString(), "Album " + (i+1).ToString());
                 ListItemsRecycler.Add(new KeyValuePair<string, ListItemSong>(listItemSong.getSongName(), listItemSong));
             }
@@ -362,7 +363,7 @@ namespace ProjTaskReminder
                 btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPause);
 
                 ScrollPictures.Start();
-                if (lblSongName.Text.Length > 20)
+                if (lblSongName.Text.Length > 30)
                 {
                     ScrollSongName.Start();
                 }
@@ -434,16 +435,11 @@ namespace ProjTaskReminder
             ListItemSong item = ListItemsRecycler[listPositionIndex].Value;
 
             lblSongName.Text = item.getSongName();
+            ScrollSongName.SCROLL_END_POINT = lblSongName.Width - 200;
             lblSongArtist.Text = item.getArtist();
             lblAlbum.Text = item.getAlbum();
 
-            //if (mediaPlayer != null)
-            //{
-            //    mediaPlayer.SeekTo(0);
-            //    barSeek.Max = mediaPlayer.Duration;
-                barSeek.SetProgress(0, false);
-            //}
-
+            barSeek.SetProgress(0, false);
             CurrentSongPosition = 0;
 
             UpdateProgressControls();

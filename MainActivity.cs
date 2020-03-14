@@ -22,6 +22,7 @@ using ProjTaskRemindet.Utils;
 using ProjTaskReminder.Data;
 using ProjTaskReminder.Utils;
 using Android.Graphics.Drawables;
+using static ProjTaskReminder.Utils.Utils;
 
 //using System.Threading.Timer;
 
@@ -103,6 +104,8 @@ namespace ProjTaskReminder
 
             focusListOnToday(Utils.Utils.GetDateNow());
 
+            StartRssNewsScroll();
+
             // First city
             //Weather weather;
             //weather = mH_Weather.GetWather("Ashdod");
@@ -112,7 +115,15 @@ namespace ProjTaskReminder
             //WeatherScroll.StartPosstion();
         }
 
-       
+        private void StartRssNewsScroll()
+        {
+            List<XmlItem> items;
+
+            items = Utils.Utils.OpenXmlData(Utils.Utils.NEWS_RSS_ADDRESS2);
+
+
+        }
+
         private void SetControlsIO()
         {
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
@@ -352,6 +363,14 @@ namespace ProjTaskReminder
 
             Utils.Utils.activity = this;
             Utils.Utils.context = context;
+            Utils.Utils.LOG_FILE_NAME = "LogTaskReminder.txt";
+            Utils.Utils.LOG_FILE_PATH = context.GetExternalFilesDir("").AbsolutePath;
+            //string folderBackup = Android.OS.Environment.DirectoryMusic;        // "ProjTaskReminder"
+            //LOG_FILE_PATH = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
+            //LOG_FILE_PATH = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+
+
+
 
             // Open Notification Channel. Must be in the start init
             // Done again in 'Util.createNotificationBuilder()'
@@ -1415,14 +1434,20 @@ namespace ProjTaskReminder
         {
             string backupFolderName = Android.OS.Environment.DirectoryMusic;    // "ProjTaskReminder"
             string targetPath = Android.OS.Environment.GetExternalStoragePublicDirectory(backupFolderName).AbsolutePath;
-            string sourcePath = DBTaskReminder.DB_PATH;
             //targetPath = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+            //targetPath = context.GetExternalFilesDir("").AbsolutePath;;
+
 
             string fullPathSource = Path.Combine(DBTaskReminder.DB_PATH, DBTaskReminder.DB_NAME);
             string fullPathTarget = Path.Combine(targetPath, DBTaskReminder.DB_NAME);
 
             bool result = Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
 
+            fullPathSource = Path.Combine(Utils.Utils.LOG_FILE_PATH, Utils.Utils.LOG_FILE_NAME);
+            fullPathTarget = Path.Combine(targetPath, Utils.Utils.LOG_FILE_NAME);
+
+            result = Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
+            
             if (result)
             {
                 string message = "Database was copied OK";

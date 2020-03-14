@@ -200,8 +200,8 @@ namespace ProjTaskReminder.Utils
                 
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-                Console.WriteLine("Content length is {0}", response.ContentLength);
-                Console.WriteLine("Content type is {0}", response.ContentType);
+                //Console.WriteLine("Content length is {0}", response.ContentLength);
+                //Console.WriteLine("Content type is {0}", response.ContentType);
 
                 // Get the stream associated with the response.
                 Stream receiveStream = response.GetResponseStream();
@@ -296,13 +296,16 @@ namespace ProjTaskReminder.Utils
 
                     weather.setLast_update(objectLocation.GetString("localtime"));
                     weather.setCountry(objectLocation.GetString("country"));
-                    icon = objectLocation.GetString("name");
+                    icon = objectLocation.GetString("name").Trim();
                     icon = icon.Replace(@"[", "");
+                    icon = icon.Replace("[", "");
                     icon = icon.Replace(@"]", "");
+                    icon = icon.Replace("]", "");
+                    icon = icon.Replace("\"", "");
                     icon = icon.Replace("\"", "");
                     icon = icon.Replace("[\"", "");
                     //icon = icon.Replace('\'', (char)32); 
-                    weather.setCity(icon);         // "type":"City","query":"Tel Aviv-Yafo, Israel"
+                    weather.setCity(icon.Trim());         // "type":"City","query":"Tel Aviv-Yafo, Israel"
                     weather.setRegion(objectLocation.GetString("region"));
                     weather.setLocal_time(objectLocation.GetString("localtime"));
                     weather.setTz_id(objectLocation.GetString("timezone_id"));

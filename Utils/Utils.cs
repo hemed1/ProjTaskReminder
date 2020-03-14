@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
+using System.Xml;
 using Android.App;
 using Android.Content;
 using Android.Graphics.Drawables;
@@ -22,9 +24,14 @@ namespace ProjTaskReminder.Utils
 
     public static class Utils
     {
-        public const string                LINE_SEPERATOR = "\n";
-        public static string                LOG_FILE_PATH;
-        public static string                LOG_FILE_NAME;
+        public const string             LINE_SEPERATOR = "\n";
+        public static string            LOG_FILE_PATH;
+        public static string            LOG_FILE_NAME;
+
+        public static string            NEWS_RSS_ADDRESS1 = " http://www.ynet.co.il/Integration/StoryRss1854.xml";
+        public static string            NEWS_RSS_ADDRESS2 = " https://www.kan.org.il/rss/allnews.ashx";
+        public static string            NEWS_RSS_ADDRESS3 = " http://rss.walla.co.il/feed/22";
+
 
         public static List<KeyValuePair<string, List<string>>> FilesExtra;
 
@@ -37,6 +44,7 @@ namespace ProjTaskReminder.Utils
             string fileName = string.Empty;
             byte[] bytesData;
             FileStream file;
+            string folderBackup = "";
 
 
 
@@ -45,56 +53,33 @@ namespace ProjTaskReminder.Utils
             Context context = Android.App.Application.Context;
 
 
-            // /storage/emulated/0/Android/data/com.meirhemed.projtaskreminder/files
-            //System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);  //"/Assets/" + DB_NAME;             
-            //Environment.SpecialFolder.LocalApplicationData
-            // Environment.getExternalStorageDirectory().getAbsolutePath() + "/MHTaskReminder/"
-            //Java.IO.File pathFile = context.GetExternalFilesDir("MUSIC");
-
-
             try
             {
-                string folderBackup = Android.OS.Environment.DirectoryMusic;        // "ProjTaskReminder"
-
-                //Java.IO.File[] jjj = context.GetExternalFilesDirs("MUSIC");
-                //Java.IO.File[] mmm = context.GetExternalMediaDirs();
-                //string zzz = System.Environment.SystemDirectory;
-                //string aaa = System.Environment.CurrentDirectory;
-                //string bbb = System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonMusic);
-                //string fff = System.IO.Directory.GetCurrentDirectory();
-                //string hjhj = LOG_FILE_PATH = System.IO.Directory.GetCurrentDirectory();
-                //Java.IO.File hdhd = Android.OS.Environment.DataDirectory;
-                //string folderNameDocuments = Android.OS.Environment.DirectoryDocuments;
-                //Java.IO.File externalPath = Android.OS.Environment.ExternalStorageDirectory;
-
-
-                LOG_FILE_PATH = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
-                //LOG_FILE_PATH = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+                // Dne in ;Client; source that use these utils services
+                //LOG_FILE_NAME = "LogTaskReminder.txt";
                 //LOG_FILE_PATH = context.GetExternalFilesDir("").AbsolutePath;
+                //LOG_FILE_PATH = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
+                //LOG_FILE_PATH = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
 
-                if (!Directory.Exists(LOG_FILE_PATH))
-                {
-                    Directory.CreateDirectory(LOG_FILE_PATH);
-                }
-
-                LOG_FILE_NAME = "LogTaskReminder.txt";
-
-                string songPath = LOG_FILE_PATH + "/" + LOG_FILE_NAME;
                 fileName = Path.Combine(LOG_FILE_PATH, LOG_FILE_NAME);
 
                 try
                 {
-                    file = new FileStream(fileName, ((appendLines)?FileMode.Append: FileMode.Create), FileAccess.Write);       // FileMode.Append
+                    file = new FileStream(fileName, ((appendLines)?FileMode.Append: FileMode.Create), FileAccess.Write);
                 }
                 catch 
                 {
-                    LOG_FILE_PATH = context.GetExternalFilesDir("").AbsolutePath;
-                    songPath = LOG_FILE_PATH + "/" + LOG_FILE_NAME;
+                    folderBackup = Android.OS.Environment.DirectoryMusic;        // "ProjTaskReminder"
+                    LOG_FILE_PATH = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
+                    if (!Directory.Exists(LOG_FILE_PATH))
+                    {
+                        Directory.CreateDirectory(LOG_FILE_PATH);
+                    }
                     fileName = Path.Combine(LOG_FILE_PATH, LOG_FILE_NAME);
-                    file = new FileStream(fileName, ((appendLines) ? FileMode.Append : FileMode.Create), FileAccess.Write);       // FileMode.Append
+                    file = new FileStream(fileName, ((appendLines) ? FileMode.Append : FileMode.Create), FileAccess.Write);
                 }
 
-                bytesData = Encoding.UTF8.GetBytes(data);        // Encoding.UTF8..ASCII.GetBytes(data);
+                bytesData = Encoding.UTF8.GetBytes(data);        // Encoding.UTF8..ASCII.GetBytes(data);  // encoding="ISO-8859-1
 
                 file.Write(bytesData);
 
@@ -104,6 +89,24 @@ namespace ProjTaskReminder.Utils
             {
                 //throw ex;
             }
+
+            // /storage/emulated/0/Android/data/com.meirhemed.projtaskreminder/files
+            //System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);  //"/Assets/" + DB_NAME;             
+            //Environment.SpecialFolder.LocalApplicationData
+            // Environment.getExternalStorageDirectory().getAbsolutePath() + "/MHTaskReminder/"
+            //Java.IO.File pathFile = context.GetExternalFilesDir("MUSIC");
+            //Java.IO.File[] jjj = context.GetExternalFilesDirs("MUSIC");
+            //Java.IO.File[] mmm = context.GetExternalMediaDirs();
+            //string zzz = System.Environment.SystemDirectory;
+            //string aaa = System.Environment.CurrentDirectory;
+            //string bbb = System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonMusic);
+            //string fff = System.IO.Directory.GetCurrentDirectory();
+            //string hjhj = LOG_FILE_PATH = System.IO.Directory.GetCurrentDirectory();
+            //Java.IO.File hdhd = Android.OS.Environment.DataDirectory;
+            //string folderNameDocuments = Android.OS.Environment.DirectoryDocuments;
+            //Java.IO.File externalPath = Android.OS.Environment.ExternalStorageDirectory;
+
+
         }
 
 
@@ -649,5 +652,204 @@ namespace ProjTaskReminder.Utils
             return bmp;
         }
 
+        public static string GetHttpRequest(string urlAdddress)
+        {
+            string responseObj = "";
+            Uri url = null;
+            StreamReader readStream = null;
+
+
+            try
+            {
+                url = new Uri(urlAdddress);
+
+                // Specify the URL to receive the request.
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+                // Set some reasonable limits on resources used by this request
+                request.MaximumAutomaticRedirections = 4;
+                request.MaximumResponseHeadersLength = 4;
+                // Set credentials to use for this request.
+                request.Credentials = CredentialCache.DefaultCredentials;
+
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                //Console.WriteLine("Content length is {0}", response.ContentLength);
+                //Console.WriteLine("Content type is {0}", response.ContentType);
+
+                // Get the stream associated with the response.
+                Stream receiveStream = response.GetResponseStream();
+
+                // Pipes the stream to a higher level stream reader with the required encoding format. 
+                readStream = new StreamReader(receiveStream, Encoding.UTF8);
+
+                responseObj = readStream.ReadToEnd();
+
+                response.Close();
+                readStream.Close();
+
+                //{ "request":{ "type":"City","query":"Tel Aviv-Yafo, Israel","language":"en","unit":"m"},
+                //"location":{ "name":"Tel Aviv-Yafo","country":"Israel","region":"Tel Aviv","lat":"32.068","lon":"34.765",
+                //"timezone_id":"Asia\/Jerusalem","localtime":"2020-03-02 19:30","localtime_epoch":1583177400,"utc_offset":"2.0"},
+                //"current":{ "observation_time":"05:30 PM","temperature":17,"weather_code":116,"weather_icons":["https:\/\/assets.weatherstack.com\/images\/wsymbols01_png_64\/wsymbol_0004_black_low_cloud.png"],
+                //"weather_descriptions":["Partly cloudy"],"wind_speed":10,"wind_degree":311,"wind_dir":"NW","pressure":1021,"precip":0,"humidity":60,"cloudcover":7,"feelslike":17,"uv_index":1,"visibility":10,"is_day":"no"}}
+
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Can't reach site: " + url.AbsoluteUri + "\n" + "Error: " + ex.Message);
+            }
+
+            return responseObj;
+        }
+
+
+        public static List<XmlItem> OpenXmlData(string urlAddress)
+        {
+            List<XmlItem> result = new List<XmlItem>();
+
+
+
+
+            try
+            {
+                //StreamReader streamReader = GetHttpRequest(urlAddress);
+                //string responseObj = streamReader.ReadToEnd();
+                string responseData= GetHttpRequest(urlAddress);
+                //xmlReader = XmlReader.Create(streamReader);
+                string name = "NewXmlRss.Xml";
+                string fileFullName= Path.Combine(LOG_FILE_PATH, name);
+
+                FileStream file = new FileStream(fileFullName, FileMode.Create, FileAccess.Write);
+                byte[] bytesData = Encoding.UTF8.GetBytes(responseData);        // Encoding.UTF8..ASCII.GetBytes(data);  // encoding="ISO-8859-1
+                file.Write(bytesData);
+                file.Close();
+
+                result = ReadXmlDocument(fileFullName);
+            }
+            catch (Exception ex)
+            {
+                WriteToLog("Error in 'OpenXmlData - " + ex.Message);
+                return result;
+            }
+
+
+            //XmlReader xmlReader = null;
+            //XmlReaderResourceParser xmlReaderResourceParser = new XmlReaderResourceParser(xmlReader);
+            //xmlReader.MoveToFirstAttribute();
+
+            //while (!xmlReader.Read())
+            //{
+            //    //xmlReader.MoveToElement();
+            //    XmlItem xmlItem = new XmlItem();
+
+            //    //xmlReader.MoveToNextAttribute();
+            //    itemData = xmlReader.GetAttribute("title");
+            //    xmlItem.Title = itemData;
+
+            //    //xmlReader.MoveToNextAttribute();
+            //    itemData = xmlReader.GetAttribute("description");
+            //    xmlItem.Description = itemData;
+
+            //    //xmlReader.MoveToNextAttribute();
+            //    itemData = xmlReader.GetAttribute("pubDate");
+            //    xmlItem.PublishDate = itemData;
+
+            //    //xmlReader.MoveToNextAttribute();
+            //    itemData = xmlReader.GetAttribute("link");      // link_url
+            //    xmlItem.Link = itemData;
+
+            //    //xmlReader.MoveToNextAttribute();
+            //    itemData = xmlReader.GetAttribute("image_url"); // image
+            //    xmlItem.Link = itemData;
+
+
+            //    result.Add(xmlItem);
+            //}
+
+
+            return result;
+        }
+
+        public static List<XmlItem> ReadXmlDocument(string fileFullPath)
+        {
+            List<XmlItem> result = new List<XmlItem>();
+
+            try
+            {
+                XmlDocument doc = new XmlDocument();
+
+                doc.Load(fileFullPath);
+
+
+                // get all <item> nodes to a list
+                string itemKeyName = "item";        // "/item"
+                XmlNodeList nodelist = doc.SelectNodes(itemKeyName);
+                nodelist = doc.GetElementsByTagName(itemKeyName);
+                //nodelist = doc.DocumentElement.ChildNodes[2]
+
+                XmlElement xmlElement2 = doc.DocumentElement;
+                nodelist = xmlElement2.ChildNodes;
+
+
+                foreach (XmlNode node in nodelist) // for each <testcase> node
+                {
+                    XmlItem xmlItem = new XmlItem();
+
+                    try
+                    {
+                        //date = (string)tc.Element("date"),
+                        //name = (string)tc.Element("name"),
+                        //sub = (string)tc.Element("subject")
+
+                        //XmlElement xmlElement = node.SelectSingleNode("title").InnerText;
+                        //doc.DocumentElement.GetAttributeNode("description");
+                        //string value = doc.DocumentElement.GetAttribute(itemKeyName);
+                        
+                        if (node.Name== itemKeyName && node.SelectSingleNode("title")!=null) //node.Attributes.Count>0 &&
+                        {
+                            //xmlItem.Title = node.Attributes.GetNamedItem("title").Value;
+                            //xmlItem.Description= node.Attributes.GetNamedItem("description").Value;
+                            //xmlItem.PublishDate = node.Attributes.GetNamedItem("pubDate").Value;
+                            //xmlItem.Link = node.Attributes.GetNamedItem("link_url").Value;       //link_url
+                            //xmlItem.Image = node.Attributes.GetNamedItem("image_url").Value;  // image
+                            xmlItem.Title = node.SelectSingleNode("title").InnerText;
+                            xmlItem.Description = node.SelectSingleNode("description").InnerText;
+                            xmlItem.PublishDate = node.SelectSingleNode("pubDate").InnerText;
+                            xmlItem.Link = node.SelectSingleNode("link_url").InnerText;     //link
+                            xmlItem.Image = node.SelectSingleNode("image_url").InnerText;
+
+                            result.Add(xmlItem);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //WriteToLog("Error in reading XML - " + ex.Message);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+            return result;
+        }
+        public class XmlItem
+        {
+            public string Title { get; set; }
+            public string Description { get; set; }
+            public string PublishDate { get; set; }
+            public string Link { get; set; }
+            public string Image { get; set; }
+
+
+            public XmlItem()
+            {
+
+            }
+        }
     }
 }
