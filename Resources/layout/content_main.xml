@@ -331,18 +331,19 @@
 
     </LinearLayout>
 
-        <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="5dp"
         android:id="@+id/layRssNews">
 
             <HorizontalScrollView
                 android:id="@+id/scrollNews"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layoutDirection="ltr"
+                android:layoutDirection="rtl"
+                android:textDirection="rtl"
                 android:paddingEnd="1dp"
                 android:paddingStart="1dp"
                 android:layout_marginStart="2dp"
@@ -355,7 +356,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="normal"
                     android:textSize="19sp"
-                    android:textDirection="ltr"
+                    android:textDirection="rtl"
                     android:text="News"
                     android:inputType="textMultiLine"
                     android:scrollbars="none"
@@ -370,7 +371,7 @@
     <LinearLayout
         android:id="@+id/layList"
         android:layout_width="match_parent"
-        android:layout_height="455dp"
+        android:layout_height="400dp"
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp"

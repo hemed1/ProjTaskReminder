@@ -155,8 +155,8 @@ namespace ProjTaskReminder
                 //    //pubDate = pubDate.Substring(11, 2) + ":" + pubDate.Substring(14, 2);
                 //}
                 news += pubDate + " - " +
-                        newsItem.Title + ", " +
-                        newsItem.Description + ".  ";
+                        newsItem.Title; // + ", " +
+                        //newsItem.Description + ".  ";
             }
 
             txtRssNews.Text = news;
@@ -164,7 +164,7 @@ namespace ProjTaskReminder
             ThreadNews.Abort();
             ThreadNews = null;
 
-            NewsScroll.SCROLL_END_POINT = 8000;     // txtRssNews.Width-500;
+            NewsScroll.SCROLL_END_POINT = 12000;     // txtRssNews.Width-500;
             NewsScroll.Start();
         }
 
@@ -452,7 +452,7 @@ namespace ProjTaskReminder
             //WeatherScroll.OnScrolling += OnWeatherScroll;
 
             NewsScroll = new MH_Scroll();
-            NewsScroll.SCROLL_DELTA = 35;
+            NewsScroll.SCROLL_DELTA = 40;
             NewsScroll.SCROLL_END_POINT = 980;
             NewsScroll.SCROLL_INTERVAL = 200;
             NewsScroll.ScrollControl = scrollNews;

@@ -76,6 +76,11 @@ namespace ProjTaskReminder.Utils
             keepX = 1;
             ScrollControl.SmoothScrollingEnabled = true;
 
+            //if (this.SCROLL_DELTA < 0)
+            //{
+            //    ScrollControl.ScrollX = this.SCROLL_END_POINT;
+            //}
+
             // Run the Timer
             timerScroll = new System.Timers.Timer();
             timerScroll.Interval = SCROLL_INTERVAL;
@@ -99,7 +104,7 @@ namespace ProjTaskReminder.Utils
 
             //ScrollControl.SmoothScrollingEnabled = true;
             ScrollControl.SmoothScrollTo(keepX, 0);
-            
+
             //scrHorizon.scrollTo(keepX, 0);
             //scrHorizon.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
 
