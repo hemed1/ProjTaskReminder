@@ -783,7 +783,7 @@ namespace ProjTaskReminder.Utils
 
 
                 // get all <item> nodes to a list
-                string itemKeyName = "item";        // "/item"
+                string itemKeyName = "item";
                 XmlNodeList nodelist = doc.SelectNodes(itemKeyName);
                 nodelist = doc.GetElementsByTagName(itemKeyName);
                 //nodelist = doc.DocumentElement.ChildNodes[2]
@@ -798,26 +798,28 @@ namespace ProjTaskReminder.Utils
 
                     try
                     {
-                        //date = (string)tc.Element("date"),
-                        //name = (string)tc.Element("name"),
-                        //sub = (string)tc.Element("subject")
-
-                        //XmlElement xmlElement = node.SelectSingleNode("title").InnerText;
-                        //doc.DocumentElement.GetAttributeNode("description");
-                        //string value = doc.DocumentElement.GetAttribute(itemKeyName);
-                        
-                        if (node.Name== itemKeyName && node.SelectSingleNode("title")!=null) //node.Attributes.Count>0 &&
+                        if (node.ChildNodes.Count>1)
                         {
-                            //xmlItem.Title = node.Attributes.GetNamedItem("title").Value;
-                            //xmlItem.Description= node.Attributes.GetNamedItem("description").Value;
-                            //xmlItem.PublishDate = node.Attributes.GetNamedItem("pubDate").Value;
-                            //xmlItem.Link = node.Attributes.GetNamedItem("link_url").Value;       //link_url
-                            //xmlItem.Image = node.Attributes.GetNamedItem("image_url").Value;  // image
-                            xmlItem.Title = node.SelectSingleNode("title").InnerText;
-                            xmlItem.Description = node.SelectSingleNode("description").InnerText;
-                            xmlItem.PublishDate = node.SelectSingleNode("pubDate").InnerText;
-                            xmlItem.Link = node.SelectSingleNode("link_url").InnerText;     //link
-                            xmlItem.Image = node.SelectSingleNode("image_url").InnerText;
+                            if (node.SelectSingleNode("title") != null)
+                            {
+                                xmlItem.Title = node.SelectSingleNode("title").InnerText.Trim();
+                            }
+                            if (node.SelectSingleNode("description") != null)
+                            {
+                                xmlItem.Description = node.SelectSingleNode("description").InnerText.Trim();
+                            }
+                            if (node.SelectSingleNode("pubDate") != null)
+                            {
+                                xmlItem.PublishDate = node.SelectSingleNode("pubDate").InnerText.Trim();
+                            }
+                            if (node.SelectSingleNode("link_url") != null)
+                            {
+                                xmlItem.Link = node.SelectSingleNode("link_url").InnerText.Trim();     //link
+                            }
+                            if (node.SelectSingleNode("image_url") != null)
+                            {
+                                xmlItem.Image = node.SelectSingleNode("image_url").InnerText.Trim();   // image
+                            }
 
                             result.Add(xmlItem);
                         }
@@ -833,6 +835,19 @@ namespace ProjTaskReminder.Utils
             {
 
             }
+
+
+            //xmlItem.Title = node.Attributes.GetNamedItem("title").Value;
+            //xmlItem.Description= node.Attributes.GetNamedItem("description").Value;
+            //xmlItem.PublishDate = node.Attributes.GetNamedItem("pubDate").Value;
+            //xmlItem.Link = node.Attributes.GetNamedItem("link_url").Value;       //link_url
+            //xmlItem.Image = node.Attributes.GetNamedItem("image_url").Value;  // image
+            //date = (string)tc.Element("date"),
+            //name = (string)tc.Element("name"),
+            //sub = (string)tc.Element("subject")
+            //XmlElement xmlElement = node.SelectSingleNode("title").InnerText;
+            //doc.DocumentElement.GetAttributeNode("description");
+            //string value = doc.DocumentElement.GetAttribute(itemKeyName);
 
 
             return result;

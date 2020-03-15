@@ -60,8 +60,6 @@
                 android:layoutDirection="ltr"
                 android:paddingEnd="1dp"
                 android:paddingStart="1dp"
-                android:paddingLeft="2dp"
-                android:paddingRight="2dp"
                 android:layout_marginStart="2dp"
                 android:layout_marginEnd="2dp"
                 android:layout_marginTop="0dp">
@@ -329,6 +327,43 @@
 
         </android.support.v7.widget.CardView>
 
+
+
+    </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="28dp"
+        android:id="@+id/layRssNews">
+
+            <HorizontalScrollView
+                android:id="@+id/scrollNews"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layoutDirection="ltr"
+                android:paddingEnd="1dp"
+                android:paddingStart="1dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    android:id="@+id/txtRssNews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:textSize="19sp"
+                    android:textDirection="ltr"
+                    android:text="News"
+                    android:inputType="textMultiLine"
+                    android:scrollbars="none"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="0dp"
+                    android:textColor="@android:color/black"/>
+
+            </HorizontalScrollView>
     </LinearLayout>
 
 

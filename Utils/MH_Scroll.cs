@@ -74,10 +74,11 @@ namespace ProjTaskReminder.Utils
             //Timer_onTick(null, null);
 
             keepX = 1;
+            ScrollControl.SmoothScrollingEnabled = true;
 
             // Run the Timer
             timerScroll = new System.Timers.Timer();
-            timerScroll.Interval = 200;
+            timerScroll.Interval = SCROLL_INTERVAL;
             timerScroll.AutoReset = true;
             timerScroll.Elapsed += Timer_onTick;
             timerScroll.Enabled = true;
@@ -96,7 +97,7 @@ namespace ProjTaskReminder.Utils
 
             keepX += SCROLL_DELTA;
 
-            ScrollControl.SmoothScrollingEnabled = true;
+            //ScrollControl.SmoothScrollingEnabled = true;
             ScrollControl.SmoothScrollTo(keepX, 0);
             
             //scrHorizon.scrollTo(keepX, 0);

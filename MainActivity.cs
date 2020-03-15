@@ -62,7 +62,11 @@ namespace ProjTaskReminder
         private int WeatherCounter=0;
         private MH_Weather mH_Weather;
         private MH_Scroll WeatherScroll;
+        private MH_Scroll NewsScroll;
+        private TextView txtRssNews;
         private HorizontalScrollView scrollWeather;
+        private HorizontalScrollView scrollNews;
+        private Thread ThreadNews;
 
 
         private static Context context;
@@ -104,7 +108,7 @@ namespace ProjTaskReminder
 
             focusListOnToday(Utils.Utils.GetDateNow());
 
-            StartRssNewsScroll();
+            //StartRssNewsScroll();
 
             // First city
             //Weather weather;
@@ -115,13 +119,53 @@ namespace ProjTaskReminder
             //WeatherScroll.StartPosstion();
         }
 
-        private void StartRssNewsScroll()
+        public void StartRssNewsScroll(object sender, EventArgs e)
+        {
+
+            ThreadNews = new Thread(new ThreadStart(StartGetNews));
+            //ThreadNews.IsBackground = true;
+
+            ThreadNews.Start();
+
+        }
+
+        private void StartGetNews()
+        {
+
+            activity.RunOnUiThread(GetRssNewsScroll);
+
+        }
+
+        private void GetRssNewsScroll()
         {
             List<XmlItem> items;
 
             items = Utils.Utils.OpenXmlData(Utils.Utils.NEWS_RSS_ADDRESS2);
 
+            string news = string.Empty;
+            string pubDate = string.Empty;
 
+            for (int i=0; i<items.Count; i++)
+            {
+                XmlItem newsItem = items[i];
+
+                pubDate = newsItem.PublishDate;
+                //if (Utils.Utils.GetDateNow().Date.CompareTo(Utils.Utils.getDateFromString(newsItem.PublishDate))==0)
+                //{
+                //    //pubDate = pubDate.Substring(11, 2) + ":" + pubDate.Substring(14, 2);
+                //}
+                news += pubDate + " - " +
+                        newsItem.Title + ", " +
+                        newsItem.Description + ".  ";
+            }
+
+            txtRssNews.Text = news;
+
+            ThreadNews.Abort();
+            ThreadNews = null;
+
+            NewsScroll.SCROLL_END_POINT = 8000;     // txtRssNews.Width-500;
+            NewsScroll.Start();
         }
 
         private void SetControlsIO()
@@ -161,10 +205,15 @@ namespace ProjTaskReminder
             ImageButton btnMainEmail = (ImageButton)FindViewById(Resource.Id.btnMainEmail);
             CardView cardWeather = (CardView)FindViewById(Resource.Id.cardWeather);
             scrollWeather = (HorizontalScrollView)FindViewById(Resource.Id.scrollWeather);
+            scrollNews = (HorizontalScrollView)FindViewById(Resource.Id.scrollNews);
+            txtRssNews = (TextView)FindViewById(Resource.Id.txtRssNews);
 
             btnMainMusic.Click += btnMainMusic_Click;
             //btnMainWeather.Click += btnMainWeather_Click;
+            btnMainEmail.Click += StartRssNewsScroll;
             //cardWeather.Click += btnMainWeather_Click;
+            txtRssNews.Click += txtRssNews_Click;
+
 
             ImageView btnMainWeather1 = (ImageView)FindViewById(Resource.Id.btnMainWeather1);
             ImageView btnMainWeather2 = (ImageView)FindViewById(Resource.Id.btnMainWeather2);
@@ -235,6 +284,18 @@ namespace ProjTaskReminder
 
 
 
+        }
+
+        private void txtRssNews_Click(object sender, EventArgs e)
+        {
+            if (NewsScroll.IsScrollng)
+            {
+                NewsScroll.Stop();
+            }
+            else
+            {
+                NewsScroll.Start();
+            }
         }
 
         [Obsolete]
@@ -388,6 +449,13 @@ namespace ProjTaskReminder
             WeatherScroll.SCROLL_END_POINT =980;
             WeatherScroll.SCROLL_INTERVAL = 300;
             WeatherScroll.ScrollControl = scrollWeather;
+            //WeatherScroll.OnScrolling += OnWeatherScroll;
+
+            NewsScroll = new MH_Scroll();
+            NewsScroll.SCROLL_DELTA = 35;
+            NewsScroll.SCROLL_END_POINT = 980;
+            NewsScroll.SCROLL_INTERVAL = 200;
+            NewsScroll.ScrollControl = scrollNews;
             //WeatherScroll.OnScrolling += OnWeatherScroll;
 
         }

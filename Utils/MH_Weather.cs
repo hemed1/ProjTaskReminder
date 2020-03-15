@@ -126,11 +126,11 @@ namespace ProjTaskReminder.Utils
         {
             currentListIndex = -1;
 
-            timerChangePlace = new System.Timers.Timer();
-            timerChangePlace.Interval = WEATER_CHANE_PLACE_TIMER_INTERVAL;
-            timerChangePlace.AutoReset = true;
-            timerChangePlace.Elapsed += Timer_onTick;
-            timerChangePlace.Enabled = true;
+            //timerChangePlace = new System.Timers.Timer();
+            //timerChangePlace.Interval = WEATER_CHANE_PLACE_TIMER_INTERVAL;
+            //timerChangePlace.AutoReset = true;
+            //timerChangePlace.Elapsed += Timer_onTick;
+            //timerChangePlace.Enabled = true;
 
             IsChangePlaces = true;
 
@@ -141,13 +141,19 @@ namespace ProjTaskReminder.Utils
         {
             currentListIndex = 0;
 
-            timerChangePlace.Stop();
-            timerChangePlace.Close();
-            timerChangePlace.Dispose();
-            timerChangePlace = null;
+            //timerChangePlace.Stop();
+            //timerChangePlace.Close();
+            //timerChangePlace.Dispose();
+            //timerChangePlace = null;
             //timerScroll.Start();
 
             IsChangePlaces = false;
+
+            if (ThreadTask != null && ThreadTask.IsAlive)
+            {
+                ThreadTask.Abort();
+                ThreadTask = null;
+            }
 
             if (OnChanePlace != null && currentListIndex<=WeatherList.Count)
             {
