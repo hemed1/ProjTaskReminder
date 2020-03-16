@@ -23,14 +23,19 @@ namespace ProjTaskReminder.Utils
         public int SCROLL_INTERVAL = 200;
         public int SCROLL_DELTA = 7;
         public int SCROLL_END_POINT = 2400;
+        
 
         public event Action<int> OnScrolling;
         public bool IsScrollng { get; set; }
+        public bool IsScrollRightToLeft { get; set; }
+
 
 
         public MH_Scroll()
         {
             IsTimerWork = false;
+            IsScrollng = false;
+            IsScrollRightToLeft = false;
         }
 
         public MH_Scroll(HorizontalScrollView scrollViewControl)
@@ -38,6 +43,7 @@ namespace ProjTaskReminder.Utils
             this.ScrollControl = scrollViewControl;
             IsTimerWork = false;
             IsScrollng = false;
+            IsScrollRightToLeft = false;
         }
 
 
@@ -59,27 +65,29 @@ namespace ProjTaskReminder.Utils
 
         public void StartPosstion()
         {
-            keepX = 1;
-
             ScrollControl.SmoothScrollingEnabled = true;
+
+            if (!IsScrollRightToLeft)
+            {
+                keepX = 1;
+            }
+            else
+            {
+                keepX = this.SCROLL_END_POINT;  // ScrollControl.ScrollX
+                ScrollControl.FullScroll(FocusSearchDirection.Right);
+            }
+            
             ScrollControl.SmoothScrollTo(keepX, 0);
+            
+            //if (this.SCROLL_DELTA < 0)
+            //{
+            //    ScrollControl.SmoothScrollTo(this.SCROLL_END_POINT, 0);
+            //}
+
         }
 
         private Action TimerPicsScrollRun()
         {
-            IsTimerWork = true;
-            IsScrollng = true;
-
-            //keepX = 1000;
-            //Timer_onTick(null, null);
-
-            keepX = 1;
-            ScrollControl.SmoothScrollingEnabled = true;
-
-            //if (this.SCROLL_DELTA < 0)
-            //{
-            //    ScrollControl.ScrollX = this.SCROLL_END_POINT;
-            //}
 
             // Run the Timer
             timerScroll = new System.Timers.Timer();
@@ -92,6 +100,10 @@ namespace ProjTaskReminder.Utils
 
             StartPosstion();
 
+
+            IsTimerWork = true;
+            IsScrollng = true;
+
             return null;
         }
 
@@ -102,8 +114,8 @@ namespace ProjTaskReminder.Utils
 
             keepX += SCROLL_DELTA;
 
-            //ScrollControl.SmoothScrollingEnabled = true;
             ScrollControl.SmoothScrollTo(keepX, 0);
+            
 
             //scrHorizon.scrollTo(keepX, 0);
             //scrHorizon.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
@@ -118,7 +130,7 @@ namespace ProjTaskReminder.Utils
             }
             else
             {
-                if (keepX > SCROLL_END_POINT * -1)
+                if (!IsScrollRightToLeft && keepX > SCROLL_END_POINT * -1)
                 {
                     //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist1, 1);
                     isGetToEdge = true;
@@ -127,7 +139,14 @@ namespace ProjTaskReminder.Utils
 
             if (isGetToEdge)
             {
-                keepX = 1;
+                if (!IsScrollRightToLeft)
+                {
+                    keepX = 1;
+                }
+                else
+                {
+                    keepX = this.SCROLL_END_POINT;
+                }
                 //SCROLL_DELTA = SCROLL_DELTA * -1;
                 //keepX += SCROLL_DELTA;
             }

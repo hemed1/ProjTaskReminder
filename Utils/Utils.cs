@@ -811,6 +811,8 @@ namespace ProjTaskReminder.Utils
                             if (node.SelectSingleNode("pubDate") != null)
                             {
                                 xmlItem.PublishDate = node.SelectSingleNode("pubDate").InnerText.Trim();
+                                xmlItem.PublishDate = xmlItem.PublishDate.Replace("T", " ");
+                                xmlItem.PublishDate = xmlItem.PublishDate.Replace("Z", " ");
                             }
                             if (node.SelectSingleNode("link_url") != null)
                             {
