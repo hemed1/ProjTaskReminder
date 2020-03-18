@@ -89,28 +89,28 @@ namespace ProjTaskReminder.Utils
 
             weather = GetWather("Ashdod");
             currentListIndex = 0;
-            if (OnChanePlace != null && currentListIndex <= WeatherList.Count)
+            if (OnChanePlace != null && WeatherList.Count>0 && currentListIndex <= WeatherList.Count)
             {
                 OnChanePlace(WeatherList[currentListIndex], currentListIndex);
             }
 
             weather = GetWather("Tel Aviv");
             currentListIndex = 1;
-            if (OnChanePlace != null && currentListIndex <= WeatherList.Count)
+            if (OnChanePlace != null && WeatherList.Count > 0 && currentListIndex <= WeatherList.Count)
             {
                 OnChanePlace(WeatherList[currentListIndex], currentListIndex);
             }
 
             weather = GetWather("Jerusalem");
             currentListIndex = 2;
-            if (OnChanePlace != null && currentListIndex <= WeatherList.Count)
+            if (OnChanePlace != null && WeatherList.Count > 0 && currentListIndex <= WeatherList.Count)
             {
                 OnChanePlace(WeatherList[currentListIndex], currentListIndex);
             }
 
             weather = GetWather("Gedera");
             currentListIndex = 3;
-            if (OnChanePlace != null && currentListIndex <= WeatherList.Count)
+            if (OnChanePlace != null && WeatherList.Count > 0 && currentListIndex <= WeatherList.Count)
             {
                 OnChanePlace(WeatherList[currentListIndex], currentListIndex);
             }
@@ -155,7 +155,8 @@ namespace ProjTaskReminder.Utils
                 ThreadTask = null;
             }
 
-            if (OnChanePlace != null && currentListIndex<=WeatherList.Count)
+            // Show first city
+            if (OnChanePlace != null && WeatherList.Count>0 && currentListIndex<=WeatherList.Count)
             {
                 OnChanePlace(WeatherList[currentListIndex], currentListIndex);
             }

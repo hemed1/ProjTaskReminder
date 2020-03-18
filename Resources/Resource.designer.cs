@@ -4594,37 +4594,46 @@ namespace ProjTaskReminder
 			public const int music3 = 2131558422;
 			
 			// aapt resource value: 0x7F0D0017
-			public const int note1 = 2131558423;
+			public const int news1 = 2131558423;
 			
 			// aapt resource value: 0x7F0D0018
-			public const int plus1 = 2131558424;
+			public const int news2 = 2131558424;
 			
 			// aapt resource value: 0x7F0D0019
-			public const int plus2 = 2131558425;
+			public const int news3 = 2131558425;
 			
 			// aapt resource value: 0x7F0D001A
-			public const int plus3 = 2131558426;
+			public const int note1 = 2131558426;
 			
 			// aapt resource value: 0x7F0D001B
-			public const int plus5 = 2131558427;
+			public const int plus1 = 2131558427;
 			
 			// aapt resource value: 0x7F0D001C
-			public const int save1 = 2131558428;
+			public const int plus2 = 2131558428;
 			
 			// aapt resource value: 0x7F0D001D
-			public const int save2 = 2131558429;
+			public const int plus3 = 2131558429;
 			
 			// aapt resource value: 0x7F0D001E
-			public const int save4 = 2131558430;
+			public const int plus5 = 2131558430;
 			
 			// aapt resource value: 0x7F0D001F
-			public const int save5 = 2131558431;
+			public const int save1 = 2131558431;
 			
 			// aapt resource value: 0x7F0D0020
-			public const int setting = 2131558432;
+			public const int save2 = 2131558432;
 			
 			// aapt resource value: 0x7F0D0021
-			public const int weather2 = 2131558433;
+			public const int save4 = 2131558433;
+			
+			// aapt resource value: 0x7F0D0022
+			public const int save5 = 2131558434;
+			
+			// aapt resource value: 0x7F0D0023
+			public const int setting = 2131558435;
+			
+			// aapt resource value: 0x7F0D0024
+			public const int weather2 = 2131558436;
 			
 			static Mipmap()
 			{

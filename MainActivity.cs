@@ -139,8 +139,19 @@ namespace ProjTaskReminder
         private void GetRssNewsScroll()
         {
             List<XmlItem> items;
+            DateTime nowDate;
+
+
+            txtRssNews.Text = "טוען מידע ...";
 
             items = Utils.Utils.OpenXmlData(Utils.Utils.NEWS_RSS_ADDRESS2);
+
+            nowDate = Utils.Utils.GetDateNow().Date;
+
+            if (items.Count>0)
+            {
+                items = items.Where(a=> a.PublishDate.Date.CompareTo(nowDate) == 0).ToList();
+            }
 
             string news = string.Empty;
             string pubDate = string.Empty;
@@ -149,14 +160,19 @@ namespace ProjTaskReminder
             {
                 XmlItem newsItem = items[i];
 
-                pubDate = newsItem.PublishDate;
-                //if (Utils.Utils.GetDateNow().Date.CompareTo(Utils.Utils.getDateFromString(newsItem.PublishDate))==0)
-                //{
-                //    //pubDate = pubDate.Substring(11, 2) + ":" + pubDate.Substring(14, 2);
-                //}
+                if (newsItem.PublishDate.Date.CompareTo(nowDate) == 0)
+                {
+                    pubDate = newsItem.PublishDate.ToString("HH:mm");
+                }
+                else
+                {
+                    pubDate = newsItem.PublishDate.ToString("dd/MM/yyyy HH:mm");
+                }
+                //pubDate = newsItem.PublishDateString;
+
                 news += pubDate + " - " +
-                        newsItem.Title + "  ***  "; // + ", " +
-                        //newsItem.Description + ".  ";
+                        newsItem.Title + "  ***  ";
+                        //+ ", " + newsItem.Description + ".  ";
             }
 
             txtRssNews.Text = news;
@@ -403,8 +419,9 @@ namespace ProjTaskReminder
             }
             else
             {
-                WeatherScroll.Start();
+                WeatherScroll.Stop();
                 mH_Weather.StartChangePlace();
+                WeatherScroll.Start();
             }
 
         }
@@ -441,7 +458,7 @@ namespace ProjTaskReminder
             WeatherList = new List<Weather>();
             mH_Weather = new MH_Weather();
             mH_Weather.activity = this;
-            mH_Weather.WEATER_CHANE_PLACE_TIMER_INTERVAL = 60000;
+            mH_Weather.WEATER_CHANE_PLACE_TIMER_INTERVAL = 360000;
             mH_Weather.OnChanePlace += OnWeatherChangingPlace;
 
             WeatherScroll = new MH_Scroll();

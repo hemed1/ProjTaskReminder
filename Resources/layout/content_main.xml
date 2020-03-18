@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:orientation="horizontal"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="27dp"
         android:id="@+id/layMainButtons">
 
 
@@ -30,8 +30,9 @@
             android:layout_marginTop="50dp"
             android:layout_marginStart="15dp"
             android:scaleType="fitXY"
-            android:background="@mipmap/mail_read8"
+            android:background="@mipmap/news3"
             android:soundEffectsEnabled="true" />
+            <!--android:background="@mipmap/weather2mail_read8"-->
 
         <ImageButton
             android:id="@+id/bntMainMusic"
@@ -335,7 +336,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:id="@+id/layRssNews">
 
             <HorizontalScrollView

@@ -753,7 +753,7 @@ namespace ProjTaskReminder.Utils
 
             //    //xmlReader.MoveToNextAttribute();
             //    itemData = xmlReader.GetAttribute("pubDate");
-            //    xmlItem.PublishDate = itemData;
+            //    xmlItem.PublishDateString = itemData;
 
             //    //xmlReader.MoveToNextAttribute();
             //    itemData = xmlReader.GetAttribute("link");      // link_url
@@ -810,9 +810,35 @@ namespace ProjTaskReminder.Utils
                             }
                             if (node.SelectSingleNode("pubDate") != null)
                             {
-                                xmlItem.PublishDate = node.SelectSingleNode("pubDate").InnerText.Trim();
-                                xmlItem.PublishDate = xmlItem.PublishDate.Replace("T", " ");
-                                xmlItem.PublishDate = xmlItem.PublishDate.Replace("Z", " ");
+                                string dateString = node.SelectSingleNode("pubDate").InnerText.Trim();
+                                if (!string.IsNullOrEmpty(dateString))
+                                {
+                                    dateString = dateString.Replace("T", " ");
+                                    dateString = dateString.Replace("Z", " ");
+                                    xmlItem.PublishDateString = dateString;
+                                    string[] dateParts = dateString.Split("-");
+                                    if (dateParts!=null && dateParts.Length>1)
+                                    {
+                                        try
+                                        {
+                                            DateTime date;
+                                            int year, month, day, hours, minutes;
+                                            Int32.TryParse(dateParts[0], out year);
+                                            Int32.TryParse(dateParts[1], out month);
+                                            string dayStr = dateParts[2];
+                                            dayStr = dayStr.Substring(0, dayStr.IndexOf(" "));
+                                            Int32.TryParse(dayStr, out day);
+                                            hours = Int32.Parse(dateString.Substring(11, 2));
+                                            minutes = Int32.Parse(dateString.Substring(14, 2));
+                                            date = new DateTime(year, month, day, hours, minutes, 0);
+                                            xmlItem.PublishDate = date;
+                                        }
+                                        catch
+                                        {
+
+                                        }
+                                    }
+                                }
                             }
                             if (node.SelectSingleNode("link_url") != null)
                             {
@@ -841,7 +867,7 @@ namespace ProjTaskReminder.Utils
 
             //xmlItem.Title = node.Attributes.GetNamedItem("title").Value;
             //xmlItem.Description= node.Attributes.GetNamedItem("description").Value;
-            //xmlItem.PublishDate = node.Attributes.GetNamedItem("pubDate").Value;
+            //xmlItem.PublishDateString = node.Attributes.GetNamedItem("pubDate").Value;
             //xmlItem.Link = node.Attributes.GetNamedItem("link_url").Value;       //link_url
             //xmlItem.Image = node.Attributes.GetNamedItem("image_url").Value;  // image
             //date = (string)tc.Element("date"),
@@ -858,7 +884,8 @@ namespace ProjTaskReminder.Utils
         {
             public string Title { get; set; }
             public string Description { get; set; }
-            public string PublishDate { get; set; }
+            public string PublishDateString { get; set; }
+            public DateTime PublishDate { get; set; }
             public string Link { get; set; }
             public string Image { get; set; }
 
