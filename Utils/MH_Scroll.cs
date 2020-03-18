@@ -130,7 +130,7 @@ namespace ProjTaskReminder.Utils
             }
             else
             {
-                if (!IsScrollRightToLeft && keepX > SCROLL_END_POINT * -1)
+                if ((!IsScrollRightToLeft && keepX > SCROLL_END_POINT * -1) || (IsScrollRightToLeft && keepX < 0))
                 {
                     //MainActivity.FadeInPicture(getApplicationContext(), imgSongArtist1, 1);
                     isGetToEdge = true;

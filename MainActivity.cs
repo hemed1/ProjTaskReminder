@@ -153,10 +153,12 @@ namespace ProjTaskReminder
                 items = items.Where(a=> a.PublishDate.Date.CompareTo(nowDate) == 0).ToList();
             }
 
+            items = items.OrderByDescending(a => a.PublishDate).ToList();
+
             string news = string.Empty;
             string pubDate = string.Empty;
 
-            for (int i=0; i<items.Count; i++)
+            for (int i=items.Count-1; i>=0 ; i--)
             {
                 XmlItem newsItem = items[i];
 
@@ -180,7 +182,7 @@ namespace ProjTaskReminder
             ThreadNews.Abort();
             ThreadNews = null;
 
-            NewsScroll.SCROLL_END_POINT = 12000;     // txtRssNews.Width-500;
+            NewsScroll.SCROLL_END_POINT = txtRssNews.Text.Length * 10;      // 12000;     // txtRssNews.Width-500;
             NewsScroll.Start();
         }
 

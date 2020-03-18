@@ -105,6 +105,11 @@ namespace ProjTaskReminder
 
             ListItemsPath = Utils.Utils.FilesExtra;
 
+            if (ListItemsPath==null)
+            {
+                return;
+            }
+
             ListItemsRecycler.Clear();
 
             for (int i=0; i<ListItemsPath.Count; i++)
@@ -181,9 +186,9 @@ namespace ProjTaskReminder
             btnPlay.Click += PlaySongPlay;
 
             ScrollPictures = new MH_Scroll(scrHorizon);
-            ScrollPictures.SCROLL_INTERVAL = 300;
-            ScrollPictures.SCROLL_DELTA = 10;
-            ScrollPictures.SCROLL_END_POINT = 2000;      // (imgSongArtist1.Width * 3) - 500;
+            ScrollPictures.SCROLL_INTERVAL = 200;
+            ScrollPictures.SCROLL_DELTA = 20;
+            ScrollPictures.SCROLL_END_POINT = 2300;      // (imgSongArtist1.Width * 3) - 500;
             //ScrollPictures.OnScrolling += ScrollPictures_OnScrolling;
 
             ScrollSongName = new MH_Scroll(scrHorizonSongName);
