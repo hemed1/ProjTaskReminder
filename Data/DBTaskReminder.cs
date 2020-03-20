@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -47,7 +48,7 @@ namespace ProjTaskReminder.Data
             string fullPath;
 
 
-            
+
 
             try
             {
@@ -60,16 +61,24 @@ namespace ProjTaskReminder.Data
 
                 this.DB = db;
 
-                
                 //List<SQLiteConnection.ColumnInfo> columns = db.GetTableInfo(tableName);
-                //if (DB.GetTableInfo(tableName).Exists(a=> a.notnull==1) || columns.Count == 0)
+                //bool tableExist = DB.GetTableInfo(tableName).Count != 0;        //.Exists(a => a.Name==tableName);
+                //if (!tableExist || columns.Count == 0)
+                //{
+                //    CreateTableTasks(tableName);
+                //}
+                //else if (columns.Count < 5)
+                //{
+
+                //    //int t = 1;
+                //    //}
+                //}
+
+                //columns = db.GetTableInfo(tableName);
+                //bool tableExist = DB.GetTableInfo(tableName).Count != 0;        //.Exists(a => a.Name==tableName);
+                //if (!tableExist || columns.Count == 0)
                 //{
                 //    CreateTableResult(tableName);
-                //}
-                //else if (columns.Count<5)
-                //{
-                    
-
                 //}
             }
             catch (Exception ex)
@@ -84,7 +93,15 @@ namespace ProjTaskReminder.Data
             return db;
         }
 
-        private void CreateTableResult(string tableName)
+        public bool IsTableExists(string tableName)
+        {
+            List<SQLiteConnection.ColumnInfo> columns = DB.GetTableInfo(tableName);
+            bool tableExist = DB.GetTableInfo(tableName).Count != 0;        //.Exists(a => a.Name==tableName);
+
+            return (tableExist);    // && columns.Count == 0);
+        }
+
+        private void CreateTableTasks(string tableName)
         {
             try
             {
@@ -103,7 +120,7 @@ namespace ProjTaskReminder.Data
             }
         }
 
-        public long RecordInser(Object record)  //, Type tableTyp = TBL_Tasks)
+        public long RecordInser(Object record, string tableName)  //, Type tableTyp = TBL_Tasks)
         {
             long recordsEffected = 0;
 
@@ -111,8 +128,8 @@ namespace ProjTaskReminder.Data
             try
             {
                 recordsEffected = DB.Insert(record);
-                Object recordUpdated = getLastRecord(MainActivity.DB_TABLE_NAME);
-                ((TBL_Tasks)record).ID = ((TBL_Tasks)recordUpdated).ID;
+                Object recordUpdated = getLastRecord(tableName);     // MainActivity.DB_TABLE_NAME);
+                //((TBL_Tasks)record).ID = ((TBL_Tasks)recordUpdated).ID;
             }
             catch (Exception ex)
             {
@@ -310,6 +327,28 @@ namespace ProjTaskReminder.Data
             return result;
         }
 
+        public Object getLastRecordSettings(string tableName) //: where T = TBL_Tasks
+        {
+            TBL_Tasks result = null;
+            //var result = DB.Get<TBL_Tasks>(id);  // primary key id of 5
+
+            //List < ColumnInfo >= DB.GetTableInfo(tableName);
+            TableQuery<TBL_Tasks> table = DB.Table<TBL_Tasks>();
+
+            result = table.Last();
+            //foreach (TBL_Tasks record in table)
+            //{
+            //}
+
+            //TableMapping tableMap = DB.GetMapping<TBL_Tasks>();
+
+            //string sqlScript = "SELECT * FROM " + TableName + " WHERE ID=?";
+            //List<object> objects = DB.Query(tableMap, sqlScript, new object[1] { id });
+
+            //DB.Close();
+
+            return result;
+        }
         public bool addFieldToTable(String tableName, String fieldName, String fieldType)
         {
             String sqlScript;

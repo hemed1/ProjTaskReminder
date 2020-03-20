@@ -98,7 +98,7 @@ namespace ProjTaskReminder.Utils
             //timerScroll.Start();
             //timerScroll.schedule(picsTimerTask, 500, PICS_TIMER_INTERVAL);
 
-            StartPosstion();
+            //StartPosstion();
 
 
             IsTimerWork = true;

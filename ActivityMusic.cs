@@ -28,7 +28,7 @@ namespace ProjTaskReminder
         private Button btnPrev;
         private Button btnNext;
         private Button btnPlay;
-        private MediaPlayer mediaPlayer;
+        public static MediaPlayer mediaPlayer;
         private SeekBar barSeek;
         private TextView lblSongName;
         private TextView lblSongArtist;
@@ -62,6 +62,7 @@ namespace ProjTaskReminder
 
 
         public static Context context;
+        public static string MUSIC_PATH = "/storage/emulated/0/Music";
         private List<KeyValuePair<string, List<string>>> ListItemsPath;
         private List<KeyValuePair<string, ListItemSong>> ListItemsRecycler;
         private int ListPositionIndex;
@@ -85,7 +86,6 @@ namespace ProjTaskReminder
 
         private void LoadFilesFromPhone()
         {
-            string folderBackup = Android.OS.Environment.DirectoryMusic;        // "ProjTaskReminder"
 
             //Java.IO.File[] jjj = context.GetExternalFilesDirs("MUSIC");
             //Java.IO.File[] mmm = context.GetExternalMediaDirs();
@@ -99,9 +99,14 @@ namespace ProjTaskReminder
             //Java.IO.File externalPath = Android.OS.Environment.ExternalStorageDirectory;
 
             string file = "";
-            string path = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
+            string folderBackup = Android.OS.Environment.DirectoryMusic;        // "ProjTaskReminder"
+            ////MUSIC_PATH = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
 
-            Utils.Utils.GetFolderFiles(path, "*.mp3", true, "*.jpg");
+            lblSongName.Text = "טוען שירים ...";
+
+            Utils.Utils.GetFolderFiles(MUSIC_PATH, "*.mp3", true, "*.jpg");
+
+            lblSongName.Text = "";
 
             ListItemsPath = Utils.Utils.FilesExtra;
 
@@ -368,7 +373,7 @@ namespace ProjTaskReminder
                 btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPause);
 
                 ScrollPictures.Start();
-                if (lblSongName.Text.Length > 30)
+                if (lblSongName.Text.Length > 25)
                 {
                     ScrollSongName.Start();
                 }
@@ -440,7 +445,7 @@ namespace ProjTaskReminder
             ListItemSong item = ListItemsRecycler[listPositionIndex].Value;
 
             lblSongName.Text = item.getSongName();
-            ScrollSongName.SCROLL_END_POINT = lblSongName.Width - 200;
+            ScrollSongName.SCROLL_END_POINT = 220;  // lblSongName.Width - 200;
             lblSongArtist.Text = item.getArtist();
             lblAlbum.Text = item.getAlbum();
 

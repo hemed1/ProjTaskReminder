@@ -45,12 +45,13 @@ namespace ProjTaskReminder.Utils
         public int WEATER_CHANE_PLACE_TIMER_INTERVAL { get; set; }
         private System.Timers.Timer timerChangePlace;
         public event Action<object, int> OnChanePlace;
+        public event Action<List<Weather>> OnCompleteLoadData;
         public int currentListIndex;
         public bool IsChangePlaces { get; set; }
         public Activity activity {get; set;}
 
         private bool isSiteWasFound;
-        private List<Weather> WeatherList;
+        public List<Weather> WeatherList;
         private Thread ThreadTask;
 
 
@@ -68,7 +69,6 @@ namespace ProjTaskReminder.Utils
             ThreadTask.IsBackground = true;
 
             ThreadTask.Start();
-
            
         }
 
@@ -120,6 +120,10 @@ namespace ProjTaskReminder.Utils
 
             currentListIndex = -1;
 
+            if (OnCompleteLoadData!=null)
+            {
+                OnCompleteLoadData(this.WeatherList);
+            }
         }
 
         public void StartChangePlace()

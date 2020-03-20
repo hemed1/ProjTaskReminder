@@ -357,7 +357,7 @@ namespace ProjTaskReminder
 
                 if (isNewMode)
                 {
-                    recorsWasEffected = MainActivity.DBTaskReminder.RecordInser(item);
+                    recorsWasEffected = MainActivity.DBTaskReminder.RecordInser(item, MainActivity.DB_TABLE_NAME);
                     //MainActivity.DBTaskReminder.DB.Insert(item);
                 }
                 else
@@ -375,6 +375,12 @@ namespace ProjTaskReminder
                 // Raise the event to the Caller
                 if (recorsWasEffected>0)
                 {
+                    if (isNewMode)
+                    {
+                        Object recordUpdated = MainActivity.DBTaskReminder.getLastRecord(MainActivity.DB_TABLE_NAME);
+                        CurrentTask.setTaskID(((TBL_Tasks)recordUpdated).ID);
+                    }
+
                     MainActivity.CurrentTask = CurrentTask;
                     MainActivity.isShowTimerReminder = true;
                     MainActivity.MainMessageText = "נשמר";

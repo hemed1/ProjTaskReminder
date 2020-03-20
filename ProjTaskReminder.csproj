@@ -62,11 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityMusic.cs" />
+    <Compile Include="ActivitySettings.cs" />
     <Compile Include="ActivityTaskDetails.cs" />
     <Compile Include="Data\DBTaskReminder.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Model\ListItemSong.cs" />
     <Compile Include="Model\Task.cs" />
+    <Compile Include="Model\TBL_Settings.cs" />
     <Compile Include="Model\TBL_Tasks.cs" />
     <Compile Include="Model\Weather.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -86,6 +88,10 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_main.xml">
       <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\activity_music.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\content_main.xml">
       <SubType>Designer</SubType>
@@ -203,11 +209,6 @@
     <AndroidResource Include="Resources\mipmap-hdpi\font_name3.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_music.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\raw\love_the_one.mp3" />
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +270,21 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\news3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-hdpi\news4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-hdpi\news5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\point1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_setting.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -28,9 +28,9 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="50dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="17dp"
             android:scaleType="fitXY"
-            android:background="@mipmap/news3"
+            android:background="@mipmap/news4"
             android:soundEffectsEnabled="true" />
             <!--android:background="@mipmap/weather2mail_read8"-->
 
@@ -38,7 +38,7 @@
             android:id="@+id/bntMainMusic"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="17dp"
             android:layout_marginTop="50dp"
             android:scaleType="fitXY"
             android:background="@mipmap/music1"
@@ -49,10 +49,10 @@
             android:id="@+id/cardWeather"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="18dp"
             android:layout_marginTop="50dp">
 
-
+  
 
             <HorizontalScrollView
                 android:id="@+id/scrollWeather"
@@ -339,17 +339,31 @@
         android:layout_marginTop="3dp"
         android:id="@+id/layRssNews">
 
+            <ImageView
+                android:id="@+id/imageTimerPointWeater"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="top"
+                android:layout_marginTop="1dp"
+                android:layout_marginStart="10dp"
+                android:visibility="visible"
+                android:background="@android:color/holo_red_dark"/>
+                
+                <!--android:src="@drawable/point1"/>-->
+                <!--android:background="@android:color/holo_red_dark"/>-->
+                <!--android:background="@drawable/point1"-->
+
             <HorizontalScrollView
                 android:id="@+id/scrollNews"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layoutDirection="rtl"
                 android:textDirection="rtl"
-                android:paddingEnd="1dp"
-                android:paddingStart="1dp"
+                android:paddingEnd="3dp"
+                android:paddingStart="3dp"
                 android:layout_marginStart="2dp"
                 android:layout_marginEnd="2dp"
-                android:layout_marginTop="0dp">
+                android:layout_marginTop="9dp">
 
                 <TextView
                     android:id="@+id/txtRssNews"
@@ -358,12 +372,12 @@
                     android:textStyle="normal"
                     android:textSize="19sp"
                     android:textDirection="rtl"
-                    android:text="News"
+                    android:text=""
                     android:inputType="textMultiLine"
                     android:scrollbars="none"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="0dp"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="#080a8b"/>
 
             </HorizontalScrollView>
     </LinearLayout>
@@ -376,7 +390,7 @@
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp"
-        android:layout_marginTop="23dp">
+        android:layout_marginTop="20dp">
 
         <TextView
             android:id="@+id/lblMainCaption"

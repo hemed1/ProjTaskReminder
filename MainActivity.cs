@@ -36,7 +36,7 @@ namespace ProjTaskReminder
         public static string DB_TASK_DB_NAME = "TaskReminder.db";
         public static string DB_TASK_DB_PATH = "TaskReminder.db";
         public static string DB_TABLE_NAME = "TBL_Tasks";
-        public static string DB_TABLE_SETTING = "TBL_Setting";
+        public static string DB_TABLE_SETTING = "TBL_Settings";
         private static string DB_FIELDNAME_ID = "TaskID";
         private static string DB_FIELDNAME_TITLE = "Title";
         private static string DB_FIELDNAME_DESC = "Description";
@@ -48,6 +48,7 @@ namespace ProjTaskReminder
 
         // The code for get result from TasDetails screen
         public const int SHOW_SCREEN_TASK_DETAILS = 1234;
+        public const int SHOW_SCREEN_SETTING = 9998;
 
         //ImageButton btnMainMusic = (ImageButton)FindViewById(Resource.Id.bntMainMusic);
         //private ImageView btnMainWeather;
@@ -67,6 +68,7 @@ namespace ProjTaskReminder
         private HorizontalScrollView scrollWeather;
         private HorizontalScrollView scrollNews;
         private Thread ThreadNews;
+        private ImageView imageTimerPointWeater;
 
 
         private static Context context;
@@ -121,6 +123,9 @@ namespace ProjTaskReminder
 
         public void StartRssNewsScroll(object sender, EventArgs e)
         {
+            txtRssNews.Text = "טוען מידע ...";
+            imageTimerPointWeater.Visibility = ViewStates.Visible;
+            imageTimerPointWeater.BringToFront();
 
             ThreadNews = new Thread(new ThreadStart(StartGetNews));
             //ThreadNews.IsBackground = true;
@@ -136,13 +141,13 @@ namespace ProjTaskReminder
 
         }
 
+        [Obsolete]
         private void GetRssNewsScroll()
         {
             List<XmlItem> items;
             DateTime nowDate;
 
 
-            txtRssNews.Text = "טוען מידע ...";
 
             items = Utils.Utils.OpenXmlData(Utils.Utils.NEWS_RSS_ADDRESS2);
 
@@ -158,6 +163,9 @@ namespace ProjTaskReminder
             string news = string.Empty;
             string pubDate = string.Empty;
 
+            news = "<html><p dir=\"rtl" + "\">";
+            string newsFlate = "";
+
             for (int i=items.Count-1; i>=0 ; i--)
             {
                 XmlItem newsItem = items[i];
@@ -172,17 +180,23 @@ namespace ProjTaskReminder
                 }
                 //pubDate = newsItem.PublishDateString;
 
-                news += pubDate + " - " +
-                        newsItem.Title + "  ***  ";
-                        //+ ", " + newsItem.Description + ".  ";
+                string str = "<b>" + pubDate + "</b>" + " - " + "<span style=\"color:blue" + "\">" + newsItem.Title + "</span>" + "  ***  ";    // + "</p>";
+                news += str;
+
+                newsFlate += pubDate + " - " +
+                             newsItem.Title + "  ***  ";
+                //+ ", " + newsItem.Description + ".  ";
             }
 
-            txtRssNews.Text = news;
+            news += "</p></html>";
+            txtRssNews.SetText(Html.FromHtml(news), TextView.BufferType.Spannable);
+            //txtRssNews.Text = news;
+            //imageTimerPointWeater.Visibility = ViewStates.Invisible;
 
             ThreadNews.Abort();
             ThreadNews = null;
 
-            NewsScroll.SCROLL_END_POINT = txtRssNews.Text.Length * 10;      // 12000;     // txtRssNews.Width-500;
+            NewsScroll.SCROLL_END_POINT = newsFlate.Length * 21;      // 12000;     // txtRssNews.Width-500;
             NewsScroll.Start();
         }
 
@@ -225,6 +239,7 @@ namespace ProjTaskReminder
             scrollWeather = (HorizontalScrollView)FindViewById(Resource.Id.scrollWeather);
             scrollNews = (HorizontalScrollView)FindViewById(Resource.Id.scrollNews);
             txtRssNews = (TextView)FindViewById(Resource.Id.txtRssNews);
+            imageTimerPointWeater = (ImageView)FindViewById(Resource.Id.imageTimerPointWeater);
 
             btnMainMusic.Click += btnMainMusic_Click;
             //btnMainWeather.Click += btnMainWeather_Click;
@@ -409,6 +424,18 @@ namespace ProjTaskReminder
 
         }
 
+        private void OnWeatherCompleteLoadData(List<Weather> weatherList)
+        {
+            if (!mH_Weather.IsChangePlaces && weatherList.Count>0)
+            {
+                WeatherScroll.Start();
+            }
+            else
+            {
+                WeatherScroll.Stop();
+            }
+        }
+
         [Obsolete]
         private void btnMainWeather_Click(object sender, EventArgs e)
         {
@@ -423,7 +450,16 @@ namespace ProjTaskReminder
             {
                 WeatherScroll.Stop();
                 mH_Weather.StartChangePlace();
-                WeatherScroll.Start();
+
+                // Asyncronic - Not relevant
+                //if (mH_Weather.WeatherList.Count > 0)
+                //{
+                    //WeatherScroll.Start();
+                //}
+                //else
+                //{
+                //    WeatherScroll.StartPosstion();
+                //}
             }
 
         }
@@ -462,6 +498,7 @@ namespace ProjTaskReminder
             mH_Weather.activity = this;
             mH_Weather.WEATER_CHANE_PLACE_TIMER_INTERVAL = 360000;
             mH_Weather.OnChanePlace += OnWeatherChangingPlace;
+            mH_Weather.OnCompleteLoadData += OnWeatherCompleteLoadData;
 
             WeatherScroll = new MH_Scroll();
             WeatherScroll.SCROLL_DELTA = 6;
@@ -656,6 +693,51 @@ namespace ProjTaskReminder
                 DB_TASK_DB_PATH = context.GetExternalFilesDir("").AbsolutePath;
 
                 DBTaskReminder = new DBTaskReminder(DB_TASK_DB_NAME, DB_TASK_DB_PATH, DB_TABLE_NAME);
+
+
+                if (!DBTaskReminder.IsTableExists(DB_TABLE_NAME))
+                {
+                        try
+                        {
+                            var t = DBTaskReminder.DB.CreateTable<TBL_Tasks>();
+                            //string commanScript = "ALTER TABLE TBL_Tasks ADD COLUMN DateLastUpdate VARCHAR(11);";
+                            //commanScript = "CREATE TABLE IF NOT EXISTS tags (ISBN VARCHAR(15), Tag VARCHAR(15));";
+                            //DB.Execute(commanScript, null);    
+                            //SQLiteCommand cmd = db.CreateCommand(commanScript, null);        //new SQLiteCommand(this.DB);
+                            //cmd.CommandText = commanScript;
+                            //cmd.ExecuteNonQuery();
+                            //db.DropTable<TBL_Tasks>();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.StackTrace + "  -  " + ex.Message);
+                        }
+                }
+
+                if (!DBTaskReminder.IsTableExists(DB_TABLE_SETTING))
+                {
+                    try
+                    {
+                        var t = DBTaskReminder.DB.CreateTable<TBL_Settings>();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace + "  -  " + ex.Message);
+                    }
+
+                }
+                else
+                {
+                    TBL_Settings tBL_Settings = null;
+                    TableQuery<TBL_Settings> table = MainActivity.DBTaskReminder.DB.Table<TBL_Settings>();
+                    tBL_Settings = table.FirstOrDefault();
+                    if (tBL_Settings!=null)
+                    {
+                        ActivityMusic.MUSIC_PATH = tBL_Settings.MusicPath;
+                        Utils.Utils.NEWS_RSS_ADDRESS2 = tBL_Settings.NewsUrl;
+                        MH_Weather.URL_LEFT_WEATHER = tBL_Settings.WeatherUrl;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -786,6 +868,7 @@ namespace ProjTaskReminder
             switch (id)
             {
                 case Resource.Id.menu_settings:
+                    ShowSetting();
                     break;
 
                 case Resource.Id.menu_db_backup:
@@ -798,6 +881,27 @@ namespace ProjTaskReminder
             }
 
             return base.OnOptionsItemSelected(item);
+        }
+
+        private void ShowSetting()
+        {
+            Intent intent = new Intent(this, typeof(ActivitySettings));
+            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+            intent.PutExtra("MusicPath", ActivityMusic.MUSIC_PATH); // "/storage/emulated/0/Music");
+            intent.PutExtra("NewsUrl", Utils.Utils.NEWS_RSS_ADDRESS2);
+            intent.PutExtra("WeatherUrl", MH_Weather.URL_LEFT_WEATHER);    // "http://api.weatherstack.com/current?access_key=f2896ef52242c1e367e2170ce40352ba&query=");
+
+
+            //ActivityTaskDetails.isNewMode = isNewMode;
+            //ActivityTaskDetails.CurrentTask = task;
+            ////ActivityTaskDetails.dbHandler = MainActivity.dbHandler;
+            ActivitySettings.context = context;      //Application.Context;
+            ////ActivityTaskDetails.mainActivity = mainActivity;
+
+            StartActivityForResult(intent, SHOW_SCREEN_SETTING);
+            //context.StartActivity(intent);
+
         }
 
         private void OnItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -881,7 +985,7 @@ namespace ProjTaskReminder
         //this.OnActivityResult(requestCode, resultCode, data);
         //if (requestCode == SHOW_SCREEN_TASK_DETAILS)
         //{
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent inputIntent)
         {
             //base.OnActivityReenter(requestCode,resultCode, data);
 
@@ -904,6 +1008,56 @@ namespace ProjTaskReminder
                                 SortList();
                                 //FillList();
                             }
+                            break;
+                        }
+                    case SHOW_SCREEN_SETTING:
+                        {
+                            if (!string.IsNullOrEmpty(inputIntent.GetStringExtra("MusicPath")))
+                            {
+                                ActivityMusic.MUSIC_PATH = inputIntent.GetStringExtra("MusicPath");
+                            }
+                            if (!string.IsNullOrEmpty(inputIntent.GetStringExtra("NewsUrl")))
+                            {
+                                Utils.Utils.NEWS_RSS_ADDRESS2 = inputIntent.GetStringExtra("NewsUrl");
+                            }
+                            if (!string.IsNullOrEmpty(inputIntent.GetStringExtra("WeatherUrl")))
+                            {
+                                MH_Weather.URL_LEFT_WEATHER = inputIntent.GetStringExtra("WeatherUrl");
+                            }
+
+
+                            bool isNewMode = false;
+                            long recorsWasEffected = 0;
+                            TBL_Settings tBL_Settings = new TBL_Settings();
+
+                            
+                            TableQuery<TBL_Settings> table = MainActivity.DBTaskReminder.DB.Table<TBL_Settings>();
+                            tBL_Settings = table.FirstOrDefault();
+                            if (tBL_Settings == null)
+                            {
+                                isNewMode = true;
+                                tBL_Settings = new TBL_Settings();
+                            }
+                            
+                            tBL_Settings.MusicPath = ActivityMusic.MUSIC_PATH;
+                            tBL_Settings.NewsUrl = Utils.Utils.NEWS_RSS_ADDRESS2;
+                            tBL_Settings.WeatherUrl = MH_Weather.URL_LEFT_WEATHER;
+
+                            if (isNewMode)
+                            {
+                                recorsWasEffected = MainActivity.DBTaskReminder.RecordInser(tBL_Settings, MainActivity.DB_TABLE_SETTING);
+                            }
+                            else
+                            {
+                                List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>();
+                                list.Add(new KeyValuePair<string, string>("MusicPath", ActivityMusic.MUSIC_PATH ));
+                                list.Add(new KeyValuePair<string, string>("NewsUrl", Utils.Utils.NEWS_RSS_ADDRESS2));
+                                list.Add(new KeyValuePair<string, string>("WeatherUrl", MH_Weather.URL_LEFT_WEATHER));
+
+                                recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(DB_TABLE_SETTING, list, null);
+                                //recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(tBL_Settings);
+                            }
+
                             break;
                         }
                     // Delete
