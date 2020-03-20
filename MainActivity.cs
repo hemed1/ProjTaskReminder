@@ -1012,52 +1012,7 @@ namespace ProjTaskReminder
                         }
                     case SHOW_SCREEN_SETTING:
                         {
-                            if (!string.IsNullOrEmpty(inputIntent.GetStringExtra("MusicPath")))
-                            {
-                                ActivityMusic.MUSIC_PATH = inputIntent.GetStringExtra("MusicPath");
-                            }
-                            if (!string.IsNullOrEmpty(inputIntent.GetStringExtra("NewsUrl")))
-                            {
-                                Utils.Utils.NEWS_RSS_ADDRESS2 = inputIntent.GetStringExtra("NewsUrl");
-                            }
-                            if (!string.IsNullOrEmpty(inputIntent.GetStringExtra("WeatherUrl")))
-                            {
-                                MH_Weather.URL_LEFT_WEATHER = inputIntent.GetStringExtra("WeatherUrl");
-                            }
-
-
-                            bool isNewMode = false;
-                            long recorsWasEffected = 0;
-                            TBL_Settings tBL_Settings = new TBL_Settings();
-
-                            
-                            TableQuery<TBL_Settings> table = MainActivity.DBTaskReminder.DB.Table<TBL_Settings>();
-                            tBL_Settings = table.FirstOrDefault();
-                            if (tBL_Settings == null)
-                            {
-                                isNewMode = true;
-                                tBL_Settings = new TBL_Settings();
-                            }
-                            
-                            tBL_Settings.MusicPath = ActivityMusic.MUSIC_PATH;
-                            tBL_Settings.NewsUrl = Utils.Utils.NEWS_RSS_ADDRESS2;
-                            tBL_Settings.WeatherUrl = MH_Weather.URL_LEFT_WEATHER;
-
-                            if (isNewMode)
-                            {
-                                recorsWasEffected = MainActivity.DBTaskReminder.RecordInser(tBL_Settings, MainActivity.DB_TABLE_SETTING);
-                            }
-                            else
-                            {
-                                List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>();
-                                list.Add(new KeyValuePair<string, string>("MusicPath", ActivityMusic.MUSIC_PATH ));
-                                list.Add(new KeyValuePair<string, string>("NewsUrl", Utils.Utils.NEWS_RSS_ADDRESS2));
-                                list.Add(new KeyValuePair<string, string>("WeatherUrl", MH_Weather.URL_LEFT_WEATHER));
-
-                                recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(DB_TABLE_SETTING, list, null);
-                                //recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(tBL_Settings);
-                            }
-
+                            SaveSettingsValues(inputIntent);
                             break;
                         }
                     // Delete
@@ -1073,6 +1028,56 @@ namespace ProjTaskReminder
 
             }
 
+
+        }
+
+        private void SaveSettingsValues(Intent inputIntent)
+        {
+            if (!string.IsNullOrEmpty(inputIntent.GetStringExtra("MusicPath")))
+            {
+                ActivityMusic.MUSIC_PATH = inputIntent.GetStringExtra("MusicPath");
+            }
+            if (!string.IsNullOrEmpty(inputIntent.GetStringExtra("NewsUrl")))
+            {
+                Utils.Utils.NEWS_RSS_ADDRESS2 = inputIntent.GetStringExtra("NewsUrl");
+            }
+            if (!string.IsNullOrEmpty(inputIntent.GetStringExtra("WeatherUrl")))
+            {
+                MH_Weather.URL_LEFT_WEATHER = inputIntent.GetStringExtra("WeatherUrl");
+            }
+
+
+            bool isNewMode = false;
+            long recorsWasEffected = 0;
+            TBL_Settings tBL_Settings = new TBL_Settings();
+
+
+            TableQuery<TBL_Settings> table = MainActivity.DBTaskReminder.DB.Table<TBL_Settings>();
+            tBL_Settings = table.FirstOrDefault();
+            if (tBL_Settings == null)
+            {
+                isNewMode = true;
+                tBL_Settings = new TBL_Settings();
+            }
+
+            tBL_Settings.MusicPath = ActivityMusic.MUSIC_PATH;
+            tBL_Settings.NewsUrl = Utils.Utils.NEWS_RSS_ADDRESS2;
+            tBL_Settings.WeatherUrl = MH_Weather.URL_LEFT_WEATHER;
+
+            if (isNewMode)
+            {
+                recorsWasEffected = MainActivity.DBTaskReminder.RecordInser(tBL_Settings, MainActivity.DB_TABLE_SETTING);
+            }
+            else
+            {
+                List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>();
+                list.Add(new KeyValuePair<string, string>("MusicPath", ActivityMusic.MUSIC_PATH));
+                list.Add(new KeyValuePair<string, string>("NewsUrl", Utils.Utils.NEWS_RSS_ADDRESS2));
+                list.Add(new KeyValuePair<string, string>("WeatherUrl", MH_Weather.URL_LEFT_WEATHER));
+
+                recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(DB_TABLE_SETTING, list, null);
+                //recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(tBL_Settings);
+            }
 
         }
 

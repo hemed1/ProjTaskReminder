@@ -373,7 +373,7 @@ namespace ProjTaskReminder
                 btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPause);
 
                 ScrollPictures.Start();
-                if (lblSongName.Text.Length > 25)
+                if (lblSongName.Text.Length > 30)
                 {
                     ScrollSongName.Start();
                 }
@@ -445,7 +445,7 @@ namespace ProjTaskReminder
             ListItemSong item = ListItemsRecycler[listPositionIndex].Value;
 
             lblSongName.Text = item.getSongName();
-            ScrollSongName.SCROLL_END_POINT = 220;  // lblSongName.Width - 200;
+            ScrollSongName.SCROLL_END_POINT = lblSongName.Text.Length * 21;    // 220;  // lblSongName.Width - 200;
             lblSongArtist.Text = item.getArtist();
             lblAlbum.Text = item.getAlbum();
 
