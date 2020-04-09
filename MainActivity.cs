@@ -980,11 +980,6 @@ namespace ProjTaskReminder
             FillList();
         }
 
-        //protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
-        //{
-        //this.OnActivityResult(requestCode, resultCode, data);
-        //if (requestCode == SHOW_SCREEN_TASK_DETAILS)
-        //{
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent inputIntent)
         {
             //base.OnActivityReenter(requestCode,resultCode, data);

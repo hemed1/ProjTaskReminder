@@ -86,7 +86,6 @@ namespace ProjTaskReminder
                 ListPositionIndex = 0;
                 // Set the Song props - Name, Artist, Album, Duration
                 SetSongControls(ListPositionIndex);
-                CurrentSongPosition = 0;
             }
         }
 
@@ -258,7 +257,7 @@ namespace ProjTaskReminder
             {
                 if (barSeek.Progress == 0)
                 {
-                    LoadSongIntoPlayer(ListPositionIndex);
+                    LoadSongIntoPlayer(ListPositionIndex, true);
                 }
                 else
                 {
@@ -286,13 +285,13 @@ namespace ProjTaskReminder
 
                 if (isPlayingNow)
                 {
-                    LoadSongIntoPlayer(ListPositionIndex);
+                    LoadSongIntoPlayer(ListPositionIndex, true);
                 }
                 else
                 {
-                    // Set the Song props - Name, Artist, Album, Duration
-                    SetSongControls(ListPositionIndex);
-                    CurrentSongPosition = 0;
+                    LoadSongIntoPlayer(ListPositionIndex, false);
+                    //// Set the Song props - Name, Artist, Album, Duration
+                    //SetSongControls(ListPositionIndex);
                 }
             }
 
@@ -306,20 +305,20 @@ namespace ProjTaskReminder
                 ListPositionIndex--;
                 if (isPlayingNow)
                 {
-                    LoadSongIntoPlayer(ListPositionIndex);
+                    LoadSongIntoPlayer(ListPositionIndex, true);
                 }
                 else
                 {
-                    // Set the Song props - Name, Artist, Album, Duration
-                    SetSongControls(ListPositionIndex);
-                    CurrentSongPosition = 0;
+                    LoadSongIntoPlayer(ListPositionIndex, false);
+                    //// Set the Song props - Name, Artist, Album, Duration
+                    //SetSongControls(ListPositionIndex);
                 }
             }
 
             //seekMusic(-5000);
         }
 
-        private void LoadSongIntoPlayer(int listPositionIndex)
+        private void LoadSongIntoPlayer(int listPositionIndex, bool withPlay = true)
         {
 
             try
@@ -358,8 +357,10 @@ namespace ProjTaskReminder
                 // Set the Song props - Name, Artist, Album, Duration
                 SetSongControls(listPositionIndex);
 
-                MusicPlay();
-
+                if (withPlay)
+                {
+                    MusicPlay();
+                }
             }
             catch (Exception ex)
             {
@@ -462,7 +463,7 @@ namespace ProjTaskReminder
 
             UpdateProgressControls();
 
-            
+            CurrentSongPosition = 0;
 
             //if (item.getPicsToSongPathsArray().size() > 0)
             //{

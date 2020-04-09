@@ -111,7 +111,7 @@ namespace ProjTaskReminder
         private Intent inputIntent;
         private int taskID;
         private bool IsUpdateDialogDate;
-        private bool IsChangesWasMade = true;
+        private bool IsSaveNeededBeforeExit = true;
 
 
 
@@ -246,7 +246,7 @@ namespace ProjTaskReminder
             timePicker1.TimeChanged += OnTimeChanged;
 
             IsUpdateDialogDate = true;
-            IsChangesWasMade = true;
+            IsSaveNeededBeforeExit = true;
         }
 
         private void OnDateChanged(object sender, DatePicker.DateChangedEventArgs e)
@@ -320,9 +320,16 @@ namespace ProjTaskReminder
             MainActivity.MainMessageText = "נמחק";
             MainActivity.showGlobalMessageOnToast();
 
-            OnActivityResult(999, Result.Ok, inputIntent);
+            IsSaveNeededBeforeExit = false;
+            
+            inputIntent.PutExtra("Delete", "true");
 
-            //SetResult(Result.Ok, inputIntent);
+            SetResult(Result.Ok, inputIntent);
+
+            if (OnActivityResult != null)
+            {
+                OnActivityResult(999, Result.Ok, inputIntent);
+            }
 
             Finish();
         }
@@ -333,7 +340,13 @@ namespace ProjTaskReminder
             long recorsWasEffected = 0;
 
 
+
+            IsSaveNeededBeforeExit = false;
+
             SetObjectByControls();
+
+            //TODO: if changes was made
+            //IsSaveNeededBeforeExit = true;
 
             TBL_Tasks item;
 
@@ -390,17 +403,17 @@ namespace ProjTaskReminder
 
                     inputIntent.PutExtra("Result", "true");
 
+                    SetResult(Result.Ok, inputIntent);
+
                     //if (OnSaveButton != null)
                     //{
                     //    OnSaveButton(null, EventArgs.Empty);
                     //}
                     // Second option to - Raise the event to the Caller
-                    //if (OnActivityResult != null)
-                    //{
-                    //    //OnActivityResult(1234, Result.Ok, inputIntent);
-                    //}
-
-                    SetResult(Result.Ok, inputIntent);
+                    if (OnActivityResult != null)
+                    {
+                        OnActivityResult(MainActivity.SHOW_SCREEN_TASK_DETAILS, Result.Ok, inputIntent);
+                    }
                 }
                 else
                 {
@@ -458,7 +471,7 @@ namespace ProjTaskReminder
 
         protected override void OnDestroy()
         {
-            if (!IsChangesWasMade)
+            if (IsSaveNeededBeforeExit)
             {
                 SaveRecord(CurrentTask);
             }
