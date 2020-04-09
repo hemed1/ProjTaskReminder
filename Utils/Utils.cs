@@ -44,6 +44,7 @@ namespace ProjTaskReminder.Utils
             string fileName = string.Empty;
             byte[] bytesData;
             FileStream file;
+            StreamWriter fileWriter=null;
             string folderBackup = "";
 
 
@@ -51,6 +52,7 @@ namespace ProjTaskReminder.Utils
 
             data = LINE_SEPERATOR + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + LINE_SEPERATOR + data + LINE_SEPERATOR;
             Context context = Android.App.Application.Context;
+            UTF8Encoding encoding = new UTF8Encoding();
 
 
             try
@@ -65,7 +67,11 @@ namespace ProjTaskReminder.Utils
 
                 try
                 {
-                    file = new FileStream(fileName, ((appendLines)?FileMode.Append: FileMode.Create), FileAccess.Write);
+                    fileWriter = new StreamWriter(fileName, appendLines, encoding);
+
+                    fileWriter.Write(data);
+                    
+                    //file = new FileStream(fileName, ((appendLines)?FileMode.Append: FileMode.Create), FileAccess.Write);
                 }
                 catch 
                 {
@@ -76,14 +82,21 @@ namespace ProjTaskReminder.Utils
                         Directory.CreateDirectory(LOG_FILE_PATH);
                     }
                     fileName = Path.Combine(LOG_FILE_PATH, LOG_FILE_NAME);
-                    file = new FileStream(fileName, ((appendLines) ? FileMode.Append : FileMode.Create), FileAccess.Write);
+
+                    fileWriter = new StreamWriter(fileName, appendLines, encoding);
+
+                    fileWriter.Write(data);
+
+                    //file = new FileStream(fileName, ((appendLines) ? FileMode.Append : FileMode.Create), FileAccess.Write);
                 }
 
-                bytesData = Encoding.UTF8.GetBytes(data);        // Encoding.UTF8..ASCII.GetBytes(data);  // encoding="ISO-8859-1
+                fileWriter.Close();
 
-                file.Write(bytesData);
+                //bytesData = Encoding.UTF8.GetBytes(data);        // Encoding.UTF8..ASCII.GetBytes(data);  // encoding="ISO-8859-1
 
-                file.Close();
+                //file.Write(bytesData);
+
+                //file.Close();
             }
             catch (Exception ex)
             {

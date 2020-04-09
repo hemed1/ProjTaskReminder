@@ -80,6 +80,14 @@ namespace ProjTaskReminder
             SetControlsIO();
 
             LoadFilesFromPhone();
+
+            if (ListItemsRecycler.Count > 0)
+            {
+                ListPositionIndex = 0;
+                // Set the Song props - Name, Artist, Album, Duration
+                SetSongControls(ListPositionIndex);
+                CurrentSongPosition = 0;
+            }
         }
 
 
@@ -184,7 +192,7 @@ namespace ProjTaskReminder
 
 
             mediaPlayer = new MediaPlayer();
-            mediaPlayer.Completion += OnSongFinish;
+            //mediaPlayer.Completion += OnSongFinish;
 
             btnPrev.Click += PlaySongPrev;
             btnNext.Click += PlaySongNext;
@@ -445,7 +453,7 @@ namespace ProjTaskReminder
             ListItemSong item = ListItemsRecycler[listPositionIndex].Value;
 
             lblSongName.Text = item.getSongName();
-            ScrollSongName.SCROLL_END_POINT = lblSongName.Text.Length * 21;    // 220;  // lblSongName.Width - 200;
+            ScrollSongName.SCROLL_END_POINT = lblSongName.Text.Length * 5;    // 220;  // lblSongName.Width - 200;
             lblSongArtist.Text = item.getArtist();
             lblAlbum.Text = item.getAlbum();
 

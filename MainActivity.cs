@@ -196,7 +196,7 @@ namespace ProjTaskReminder
             ThreadNews.Abort();
             ThreadNews = null;
 
-            NewsScroll.SCROLL_END_POINT = newsFlate.Length * 21;      // 12000;     // txtRssNews.Width-500;
+            NewsScroll.SCROLL_END_POINT = newsFlate.Length * 20;      // 12000;     // txtRssNews.Width-500;
             NewsScroll.Start();
         }
 

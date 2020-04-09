@@ -111,7 +111,7 @@ namespace ProjTaskReminder
         private Intent inputIntent;
         private int taskID;
         private bool IsUpdateDialogDate;
-
+        private bool IsChangesWasMade = true;
 
 
 
@@ -246,6 +246,7 @@ namespace ProjTaskReminder
             timePicker1.TimeChanged += OnTimeChanged;
 
             IsUpdateDialogDate = true;
+            IsChangesWasMade = true;
         }
 
         private void OnDateChanged(object sender, DatePicker.DateChangedEventArgs e)
@@ -454,6 +455,19 @@ namespace ProjTaskReminder
             txtDetailsDate.Text = CurrentTask.getDate_due();
             txtDetailsTime.Text = CurrentTask.getTime_due();
         }
+
+        protected override void OnDestroy()
+        {
+            if (!IsChangesWasMade)
+            {
+                SaveRecord(CurrentTask);
+            }
+
+            //Toast.MakeText(this, "Close Note", ToastLength.Long).Show();
+
+            base.OnDestroy();
+        }
+
 
         // Assign the listener implementing events interface that will receive the events
         //public static void OnSaveButton(OnSaveButtonInterface listener)
