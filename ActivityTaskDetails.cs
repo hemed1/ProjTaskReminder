@@ -324,12 +324,12 @@ namespace ProjTaskReminder
             
             inputIntent.PutExtra("Delete", "true");
 
-            SetResult(Result.Ok, inputIntent);
-
             if (OnActivityResult != null)
             {
                 OnActivityResult(999, Result.Ok, inputIntent);
             }
+
+            SetResult(Result.Canceled, inputIntent);
 
             Finish();
         }

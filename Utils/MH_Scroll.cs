@@ -44,8 +44,21 @@ namespace ProjTaskReminder.Utils
             IsTimerWork = false;
             IsScrollng = false;
             IsScrollRightToLeft = false;
+            ScrollControl.Click += Scroll_OnClick;
         }
 
+        private void Scroll_OnClick(object sender, EventArgs e)
+        {
+            if (this.IsScrollng)
+            {
+                Stop();
+            }
+            else
+            {
+                Start();
+            }
+
+        }
 
         public bool Start()
         {

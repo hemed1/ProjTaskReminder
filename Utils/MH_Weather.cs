@@ -26,9 +26,10 @@ namespace ProjTaskReminder.Utils
 
         public static string URL_LEFT_MOVIES = "http://www.omdbapi.com/?t=t&y=";  //2001
         public static string URL_RIGHT_MOVIES = "&apikey=c8c455ad";
-        //public static string URL_LEFT_WEATHER  = "https://api.apixu.com/v1/current.json?key=bd7acb3eb7fd424fbdd105519181908&q=";
-        public static string URL_LEFT_WEATHER = "http://api.weatherstack.com/current?access_key=f2896ef52242c1e367e2170ce40352ba&query=";
+        //public static string URL_LEFT_WEATHER  = "https://api.apixu.com/v1/current.json?key={0}&q={1}";        //bd7acb3eb7fd424fbdd105519181908&q=";
+        public static string URL_LEFT_WEATHER = "http://api.weatherstack.com/current?access_key={0}&query={1}";   // f2896ef52242c1e367e2170ce40352ba
         public static string URL_RIGHT_WEATHER = "";  //"&page=2";
+        public static string URL_WEATHER_KEY_ID = "f2896ef52242c1e367e2170ce40352ba";  //"&page=2";
 
 
 
@@ -89,28 +90,28 @@ namespace ProjTaskReminder.Utils
 
             weather = GetWather("Ashdod");
             currentListIndex = 0;
-            if (OnChanePlace != null && WeatherList.Count>0 && currentListIndex <= WeatherList.Count)
+            if (weather!=null && OnChanePlace != null && WeatherList.Count>0 && currentListIndex < WeatherList.Count)
             {
                 OnChanePlace(WeatherList[currentListIndex], currentListIndex);
             }
 
             weather = GetWather("Tel Aviv");
             currentListIndex = 1;
-            if (OnChanePlace != null && WeatherList.Count > 0 && currentListIndex <= WeatherList.Count)
+            if (weather != null && OnChanePlace != null && WeatherList.Count > 0 && currentListIndex < WeatherList.Count)
             {
                 OnChanePlace(WeatherList[currentListIndex], currentListIndex);
             }
 
             weather = GetWather("Jerusalem");
             currentListIndex = 2;
-            if (OnChanePlace != null && WeatherList.Count > 0 && currentListIndex <= WeatherList.Count)
+            if (weather != null && OnChanePlace != null && WeatherList.Count > 0 && currentListIndex < WeatherList.Count)
             {
                 OnChanePlace(WeatherList[currentListIndex], currentListIndex);
             }
 
             weather = GetWather("Gedera");
             currentListIndex = 3;
-            if (OnChanePlace != null && WeatherList.Count > 0 && currentListIndex <= WeatherList.Count)
+            if (weather != null && OnChanePlace != null && WeatherList.Count > 0 && currentListIndex < WeatherList.Count)
             {
                 OnChanePlace(WeatherList[currentListIndex], currentListIndex);
             }
@@ -120,7 +121,7 @@ namespace ProjTaskReminder.Utils
 
             currentListIndex = -1;
 
-            if (OnCompleteLoadData!=null)
+            if (WeatherList != null && WeatherList.Count > 0 && OnCompleteLoadData !=null)
             {
                 OnCompleteLoadData(this.WeatherList);
             }
@@ -160,7 +161,7 @@ namespace ProjTaskReminder.Utils
             }
 
             // Show first city
-            if (OnChanePlace != null && WeatherList.Count>0 && currentListIndex<=WeatherList.Count)
+            if (WeatherList!= null && WeatherList.Count > 0 && OnChanePlace != null && currentListIndex < WeatherList.Count)
             {
                 OnChanePlace(WeatherList[currentListIndex], currentListIndex);
             }
@@ -198,7 +199,9 @@ namespace ProjTaskReminder.Utils
 
             try
             {
-                url = new Uri(URL_LEFT_WEATHER + searchTerm + URL_RIGHT_WEATHER);
+                string urlAddress = string.Format(URL_LEFT_WEATHER, URL_WEATHER_KEY_ID, searchTerm);        // + URL_RIGHT_WEATHER
+                
+                url = new Uri(urlAddress);
 
                 // Specify the URL to receive the request.
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);

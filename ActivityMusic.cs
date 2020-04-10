@@ -105,7 +105,7 @@ namespace ProjTaskReminder
             //string folderNameDocuments = Android.OS.Environment.DirectoryDocuments;
             //Java.IO.File externalPath = Android.OS.Environment.ExternalStorageDirectory;
 
-            string file = "";
+            
             string folderBackup = Android.OS.Environment.DirectoryMusic;        // "ProjTaskReminder"
             ////MUSIC_PATH = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
 
@@ -126,15 +126,13 @@ namespace ProjTaskReminder
 
             for (int i=0; i<ListItemsPath.Count; i++)
             {
-                file = Directory.GetParent(ListItemsPath[i].Key).FullName;
-                file = ListItemsPath[i].Key.Substring(file.Length + 1);
-                //if (file.Length>30)
-                //{
-                //    file = file.Substring(0, 30);
-                //}
+                string path = Directory.GetParent(ListItemsPath[i].Key).FullName;
+                string file = ListItemsPath[i].Key.Substring(path.Length + 1);
                 file = Utils.Utils.FixSongName(file);
-                file = file.Substring(0, file.Length - 4);
+                file = file.Substring(0, file.Length - 4);  // + "  Testing...";
                 ListItemSong listItemSong = new ListItemSong(file, "Artist " + (i+1).ToString(), "Album " + (i+1).ToString());
+                listItemSong.setSongPath(path);
+
                 ListItemsRecycler.Add(new KeyValuePair<string, ListItemSong>(listItemSong.getSongName(), listItemSong));
             }
         }
@@ -207,6 +205,7 @@ namespace ProjTaskReminder
             ScrollSongName.SCROLL_INTERVAL = 200;
             ScrollSongName.SCROLL_DELTA = 8;
             ScrollSongName.SCROLL_END_POINT = 220;      // (imgSongArtist1.Width * 3) - 500;
+            ScrollSongName.IsScrollRightToLeft = false;
             //ScrollSongName.OnScrolling += ScrollSongName_OnScrolling;
 
             isPlayingNow = false;
@@ -283,7 +282,7 @@ namespace ProjTaskReminder
             {
                 ListPositionIndex++;
 
-                if (isPlayingNow)
+                if (isPlayingNow)   //mediaPlayer.IsPlaying
                 {
                     LoadSongIntoPlayer(ListPositionIndex, true);
                 }
@@ -346,13 +345,14 @@ namespace ProjTaskReminder
 
                 mediaPlayer.SetScreenOnWhilePlaying(true);
 
-                CurrentSongPosition = 0;
+                //CurrentSongPosition = 0;
                 mediaPlayer.SeekTo(0);
                 barSeek.Max = mediaPlayer.Duration;
                 barSeek.SetProgress(0, false);
+                CurrentSongPosition = 0;
 
-                ListItemSong listItemSong = ListItemsRecycler[listPositionIndex].Value;
-                listItemSong.setDuration(mediaPlayer.Duration);
+                //ListItemSong listItemSong = ListItemsRecycler[listPositionIndex].Value;
+                //listItemSong.setDuration(mediaPlayer.Duration);
 
                 // Set the Song props - Name, Artist, Album, Duration
                 SetSongControls(listPositionIndex);
@@ -375,6 +375,9 @@ namespace ProjTaskReminder
         {
             if (mediaPlayer != null)
             {
+                ScrollSongName.Stop();
+                ScrollPictures.Stop();
+
                 mediaPlayer.Start();
 
                 isPlayingNow = true;
@@ -382,8 +385,10 @@ namespace ProjTaskReminder
                 btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPause);
 
                 ScrollPictures.Start();
-                if (lblSongName.Text.Length > 30)
+
+                if (lblSongName.Text.Length > 31)
                 {
+                    ScrollSongName.SCROLL_END_POINT = lblSongName.Text.Length * 9;    // 220;  // lblSongName.Width - 200;
                     ScrollSongName.Start();
                 }
 
@@ -447,19 +452,21 @@ namespace ProjTaskReminder
         /// <param name="listPositionIndex"></param>
         private void SetSongControls(int listPositionIndex)
         {
-            Drawable drawable;
-            Bitmap bitmap;
+            //Drawable drawable;
+            //Bitmap bitmap;
 
 
             ListItemSong item = ListItemsRecycler[listPositionIndex].Value;
 
+            item.setDuration(mediaPlayer.Duration);
+
             lblSongName.Text = item.getSongName();
-            ScrollSongName.SCROLL_END_POINT = lblSongName.Text.Length * 5;    // 220;  // lblSongName.Width - 200;
+            ScrollSongName.SCROLL_END_POINT = lblSongName.Text.Length * 9;    // 220;  // lblSongName.Width - 200;
             lblSongArtist.Text = item.getArtist();
             lblAlbum.Text = item.getAlbum();
 
-            barSeek.SetProgress(0, false);
-            CurrentSongPosition = 0;
+            //barSeek.SetProgress(0, false);
+            //CurrentSongPosition = 0;
 
             UpdateProgressControls();
 
@@ -557,8 +564,8 @@ namespace ProjTaskReminder
             {
                 ThreadTask.Abort();
             }
-            ThreadTask = null;
 
+            ThreadTask = null;
 
         }
 

@@ -127,18 +127,21 @@
             android:padding="2dp"
             android:layout_alignTop="@id/layDetailsPos">
 
-            <!--<LinearLayout
-                android:id="@+id/layMusicSongName"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:padding="2dp">-->
+                android:padding="2dp"
+                android:id="@+id/layMusicSongName">
 
                 <TextView
                     android:id="@+id/lblSongName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Song Name"
+                    android:textDirection="ltr"
+                    android:inputType="textMultiLine"
+                    android:scrollbars="none"
                     android:textAlignment="textEnd"
                     android:layout_marginStart="1dp"
                     android:layout_marginEnd="1dp"
@@ -146,7 +149,7 @@
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
-            <!--</LinearLayout>-->
+            </LinearLayout>
         
         </HorizontalScrollView>>
 

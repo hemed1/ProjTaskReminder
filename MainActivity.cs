@@ -426,7 +426,7 @@ namespace ProjTaskReminder
 
         private void OnWeatherCompleteLoadData(List<Weather> weatherList)
         {
-            if (!mH_Weather.IsChangePlaces && weatherList.Count>0)
+            if (weatherList!=null && weatherList.Count > 0 && !mH_Weather.IsChangePlaces)
             {
                 WeatherScroll.Start();
             }
