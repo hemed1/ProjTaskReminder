@@ -3932,7 +3932,7 @@ namespace ProjTaskReminder
 			public const int screen = 2131230925;
 			
 			// aapt resource value: 0x7F0800CB
-			public const int scrHorizon = 2131230923;
+			public const int scrHorizonPics = 2131230923;
 			
 			// aapt resource value: 0x7F0800CC
 			public const int scrHorizonSongName = 2131230924;

@@ -175,15 +175,17 @@ namespace ProjTaskReminder.Utils
         {
             if (timerScroll != null && (IsTimerWork || timerScroll.Enabled))
             {
-                ScrollControl.SmoothScrollingEnabled = false;
                 timerScroll.Stop();
                 timerScroll.Close();
                 timerScroll.Dispose();
                 timerScroll = null;
+                //ScrollControl.SmoothScrollingEnabled = false;
                 //picsTimerTask.cancel();
                 //picsTimerTask = null;
                 //picsTimerTask.run();
             }
+
+            //StartPosstion();
 
             IsTimerWork = false;
             IsScrollng = false;

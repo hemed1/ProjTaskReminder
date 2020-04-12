@@ -107,7 +107,7 @@ namespace ProjTaskReminder
         //private static OnSaveButtonInterface listenerSaveButton;
 
         public static event EventHandler OnSaveButton;
-        public static event Action<int, Result, Intent> OnActivityResult;
+        public static event Action<int, Result, Intent> OnExitResult;
         private Intent inputIntent;
         private int taskID;
         private bool IsUpdateDialogDate;
@@ -324,12 +324,12 @@ namespace ProjTaskReminder
             
             inputIntent.PutExtra("Delete", "true");
 
-            if (OnActivityResult != null)
-            {
-                OnActivityResult(999, Result.Ok, inputIntent);
-            }
+            SetResult(Result.Ok, inputIntent);
 
-            SetResult(Result.Canceled, inputIntent);
+            if (OnExitResult != null)
+            {
+                OnExitResult(999, Result.Ok, inputIntent);
+            }
 
             Finish();
         }
@@ -410,9 +410,9 @@ namespace ProjTaskReminder
                     //    OnSaveButton(null, EventArgs.Empty);
                     //}
                     // Second option to - Raise the event to the Caller
-                    if (OnActivityResult != null)
+                    if (OnExitResult != null)
                     {
-                        OnActivityResult(MainActivity.SHOW_SCREEN_TASK_DETAILS, Result.Ok, inputIntent);
+                        OnExitResult(MainActivity.SHOW_SCREEN_TASK_DETAILS, Result.Ok, inputIntent);
                     }
                 }
                 else

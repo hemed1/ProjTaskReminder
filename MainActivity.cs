@@ -213,8 +213,8 @@ namespace ProjTaskReminder
             //btnMainDelete.Click += btnMainDelete_OnClick;
             //btnMainDelete.SetBackgroundResource(Android.Resource.Drawable.IcDelete);
 
-            ActivityTaskDetails.OnSaveButton += new EventHandler(TaskDetailsSave_Click);
-            ActivityTaskDetails.OnActivityResult += OnActivityResult;
+            //ActivityTaskDetails.OnSaveButton += new EventHandler(TaskDetailsSave_Click);
+            ActivityTaskDetails.OnExitResult += OnExitResult;       // OnActivityResult;  
 
 
             TasksList = new List<Task>();
@@ -525,19 +525,15 @@ namespace ProjTaskReminder
         private void btnMainMusic_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(ActivityMusic));
-            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.SetFlags(ActivityFlags.NewTask);
 
             intent.PutExtra("TaskID", "Meir");
             //intent.putExtra("task", task);  //TODO: Seriize
 
-            //ActivityTaskDetails.isNewMode = isNewMode;
-            //ActivityTaskDetails.CurrentTask = task;
-            ////ActivityTaskDetails.dbHandler = MainActivity.dbHandler;
-            ActivityTaskDetails.context = context;      //Application.Context;
-            ////ActivityTaskDetails.mainActivity = mainActivity;
+            ActivityMusic.context = context;      //Application.Context;
 
-            StartActivityForResult(intent, 2345);
-            //context.StartActivity(intent);
+            //StartActivityForResult(intent, 2345);
+            context.StartActivity(intent);
         }
 
 
@@ -830,7 +826,7 @@ namespace ProjTaskReminder
             }
 
             Intent intent = new Intent(this, typeof(ActivityTaskDetails));
-            //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.SetFlags(ActivityFlags.NewTask);
 
             intent.PutExtra("TaskID", task.getTaskID());
             //intent.putExtra("task", task);  //TODO: Seriize
@@ -843,15 +839,8 @@ namespace ProjTaskReminder
             ActivityTaskDetails.context = context;      //Application.Context;
             ////ActivityTaskDetails.mainActivity = mainActivity;
 
-            StartActivityForResult(intent, SHOW_SCREEN_TASK_DETAILS);
-            //context.StartActivity(intent);
-
-            //var req = new Intent();
-            //req.SetComponent(new ComponentName("com.example.Tristan.Android", "com.example.Tristan.Android.IsoldeQueryActivity"));
-            //StartActivityForResult(req, SHOW_SCREEN_TASK_DETAILS);
-            //var rtn = await TristanStateCompletion.Task;
-            //if (!rtn) bomb("can't get state");
-            //TristanStateCompletion = null;
+            //StartActivityForResult(intent, SHOW_SCREEN_TASK_DETAILS);
+            context.StartActivity(intent);
 
         }
 
@@ -977,10 +966,23 @@ namespace ProjTaskReminder
 
         public void TaskDetailsSave_Click(object sender, EventArgs e)
         {
-            FillList();
+            if (ActivityTaskDetails.isNewMode)
+            {
+                TimerRun(CurrentTask);
+                TasksList.Add(CurrentTask);
+                SortList();
+            }
+            else
+            {
+                TimerStop(CurrentTask);
+                TimerRun(CurrentTask);
+                SortList();
+                //FillList();
+            }
+
         }
 
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent inputIntent)
+        protected void OnExitResult(int requestCode, Result resultCode, Intent inputIntent)
         {
             //base.OnActivityReenter(requestCode,resultCode, data);
 
@@ -1005,11 +1007,6 @@ namespace ProjTaskReminder
                             }
                             break;
                         }
-                    case SHOW_SCREEN_SETTING:
-                        {
-                            SaveSettingsValues(inputIntent);
-                            break;
-                        }
                     // Delete
                     case 999:
                         {
@@ -1023,6 +1020,25 @@ namespace ProjTaskReminder
 
             }
 
+
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent inputIntent)
+        {
+            //base.OnActivityReenter(requestCode,resultCode, data);
+
+            if (resultCode == Result.Ok)
+            {
+                switch (requestCode)
+                {
+                    case SHOW_SCREEN_SETTING:
+                        {
+                            SaveSettingsValues(inputIntent);
+                            break;
+                        }
+                }
+
+            }
 
         }
 
@@ -1420,7 +1436,7 @@ namespace ProjTaskReminder
             // Play Notification sound
             int resourceID = Resource.Raw.deduction;
             Android.Media.MediaPlayer mediaPlayer = Android.Media.MediaPlayer.Create(this, resourceID);   // uri);
-            mediaPlayer.SetScreenOnWhilePlaying(true);
+            //mediaPlayer.SetScreenOnWhilePlaying(true);
             mediaPlayer.Start();
 
             //Toast.MakeText(this, "Timer is tiking: "+task.getDescription(), ToastLength.Long).Show();
@@ -1666,6 +1682,8 @@ namespace ProjTaskReminder
         protected override void OnDestroy()
         {
             BackupDataBaseFile();
+
+            ActivityMusic.MusicStopFinal();
 
             Toast.MakeText(this, "Close Application", ToastLength.Long).Show();
 

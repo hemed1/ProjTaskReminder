@@ -9,6 +9,7 @@ using System.Threading;
 using System.Xml;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
@@ -32,6 +33,7 @@ namespace ProjTaskReminder.Utils
         public static string            NEWS_RSS_ADDRESS2 = " https://www.kan.org.il/rss/allnews.ashx";
         public static string            NEWS_RSS_ADDRESS3 = " http://rss.walla.co.il/feed/22";
 
+        private const int               PERMISSIONS_REQUEST_READ_STORAGE = 111;
 
         public static List<KeyValuePair<string, List<string>>> FilesExtra;
 
@@ -470,48 +472,6 @@ namespace ProjTaskReminder.Utils
 
         }
 
-        //public static void RequestPermissions()
-        //{
-
-
-        //    if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
-        //    {
-        //        Toast.makeText(this, "Permission READ_EXTERNAL_STORAGE is Not OK", Toast.LENGTH_SHORT).show();
-        //        //return;
-        //    }
-        //    else
-        //    {
-        //        // Have to ask permmissions
-        //    }
-
-        //    // Here, thisActivity is the current activity
-        //    if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
-        //    {
-        //        //Toast.makeText(this, "Permission WRITE_CALENDAR not granted", Toast.LENGTH_SHORT).show();
-        //        // Permission is not granted
-        //        // Should we show an explanation?
-        //        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE))
-        //        {
-        //            // Show an explanation to the user *asynchronously* -- don't block
-        //            // this thread waiting for the user's response! After the user
-        //            // sees the explanation, try again to request the permission.
-        //        }
-        //        else
-        //        {
-        //            // No explanation needed; request the permission
-        //            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.READ_EXTERNAL_STORAGE }, PERMISSIONS_REQUEST_READ_STORAGE);
-
-        //            // PERMISSIONS_REQUEST_READ_STORAGE is an app-defined int constant. The callback method gets the
-        //            // result of the request.
-        //        }
-        //    }
-        //    else
-        //    {
-        //        // Permission has already been granted
-        //    }
-
-        //}
-
         //public static void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
         //{
         //    switch (requestCode)
@@ -908,5 +868,91 @@ namespace ProjTaskReminder.Utils
 
             }
         }
+
+        //private void RequestPermissions()
+        //{
+
+
+        //    if (context.CheckSelfPermission(this, Android.Manifest.Permission.ReadExternalStorage) != PackageManager.PERMISSION_GRANTED)
+        //    {
+        //        Toast.MakeText(this, "Permission READ_EXTERNAL_STORAGE is Not OK", ToastLength.Long).show();
+        //        //return;
+        //    }
+        //    else
+        //    {
+        //        // Have to ask permmissions
+        //    }
+
+        //    // Here, thisActivity is the current activity
+        //    if (context.CheckSelfPermission(this, Android.Manifest.Permission.ReadExternalStorage) != PackageManager..PERMISSION_GRANTED)
+        //    {
+        //        //Toast.makeText(this, "Permission WRITE_CALENDAR not granted", Toast.LENGTH_SHORT).show();
+        //        // Permission is not granted
+        //        // Should we show an explanation?
+        //        if (activity.ShouldShowRequestPermissionRationale(Android.Manifest.Permission.ReadExternalStorage))
+        //        {
+        //            // Show an explanation to the user *asynchronously* -- don't block
+        //            // this thread waiting for the user's response! After the user
+        //            // sees the explanation, try again to request the permission.
+        //        }
+        //        else
+        //        {
+        //            // No explanation needed; request the permission
+        //            activity.RequestPermissions(this, new String[] { Android.Manifest.Permission.ReadExternalStorage }, PERMISSIONS_REQUEST_READ_STORAGE);
+
+        //            // PERMISSIONS_REQUEST_READ_STORAGE is an app-defined int constant. The callback method gets the
+        //            // result of the request.
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // Permission has already been granted
+        //    }
+
+        //}
+
+        //public static void OnRequestPermissionsResult2(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        //{
+        //    Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        //    activity.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        //}
+        
+        //public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
+        //{
+        //    switch (requestCode)
+        //    {
+        //        case PERMISSIONS_REQUEST_READ_STORAGE:
+        //            {
+        //                // If request is cancelled, the result arrays are empty.
+        //                if (grantResults.Length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+        //                {
+        //                    // permission was granted, yay! Do the
+        //                    // contacts-related task you need to do.
+        //                }
+        //                else
+        //                {
+        //                    // permission denied, boo! Disable the
+        //                    // functionality that depends on this permission.
+        //                }
+        //                return;
+        //            }
+
+        //            // other 'case' lines to check for other
+        //            // permissions this app might request.
+        //    }
+        //}
+
+        /* Checks if external storage is available for read and write */
+        //public boolean isExternalStorageAvailable()
+        //{
+        //    String state = Android.OS.Environment.GetExternalStorageState();
+        //    if (Environment.MEDIA_MOUNTED.equals(state))
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
+
     }
 }

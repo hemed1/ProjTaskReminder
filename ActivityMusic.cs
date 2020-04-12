@@ -28,7 +28,7 @@ namespace ProjTaskReminder
         private Button btnPrev;
         private Button btnNext;
         private Button btnPlay;
-        public static MediaPlayer mediaPlayer;
+        public  static MediaPlayer mediaPlayer;
         private SeekBar barSeek;
         private TextView lblSongName;
         private TextView lblSongArtist;
@@ -52,7 +52,7 @@ namespace ProjTaskReminder
         private int PICS_TIMER_INTERVAL = 200;
         private int PICS_TIMER_SCROLL_DELTA = 5;
         private int PICS_TIMER_SCROLL_END_POINT;
-        private HorizontalScrollView scrHorizon;
+        private HorizontalScrollView scrHorizonPics;
         private HorizontalScrollView scrHorizonSongName;
         private event Action ActionOnPicsScrolling;
         private MH_Scroll ScrollPictures;
@@ -83,10 +83,20 @@ namespace ProjTaskReminder
 
             if (ListItemsRecycler.Count > 0)
             {
-                ListPositionIndex = 0;
-                // Set the Song props - Name, Artist, Album, Duration
-                SetSongControls(ListPositionIndex);
+                if (mediaPlayer == null)
+                {
+                    ListPositionIndex = 0;
+                    LoadSongIntoPlayer(ListPositionIndex, false);
+                }
+                else
+                {
+                    if (mediaPlayer!=null && mediaPlayer.IsPlaying)
+                    {
+                        MusicPlay();
+                    }
+                }
             }
+
         }
 
 
@@ -158,7 +168,7 @@ namespace ProjTaskReminder
             imgSongArtist1 = (ImageView)FindViewById(Resource.Id.imgSongArtist1);
             imgSongArtist2 = (ImageView)FindViewById(Resource.Id.imgSongArtist2);
             imgSongArtist3 = (ImageView)FindViewById(Resource.Id.imgSongArtist3);
-            scrHorizon = (HorizontalScrollView)FindViewById(Resource.Id.scrHorizon);
+            scrHorizonPics = (HorizontalScrollView)FindViewById(Resource.Id.scrHorizonPics);
             PICS_TIMER_SCROLL_END_POINT = 1000;     // (imgSongArtist1.Width * 3) - 500;
 
 
@@ -171,7 +181,7 @@ namespace ProjTaskReminder
             //string folderMusic = Android.OS.Environment.GetExternalStoragePublicDirectory(folderNameMusic).AbsolutePath;
             //string songPath = folderMusic + "/Dizzy - Bleachers.mp3";
 
-            
+
 
             //songPath = externalPath + "/ProjTaskReminder";    //, FileCreationMode.Append).AbsolutePath;
             //Java.IO.File externalPath = Android.OS.Environment.ExternalStorageDirectory;
@@ -188,14 +198,20 @@ namespace ProjTaskReminder
             //ListItemsRecycler.Add(songItem);
 
 
-            mediaPlayer = new MediaPlayer();
+            //mediaPlayer = new MediaPlayer();
+
             //mediaPlayer.Completion += OnSongFinish;
+
+            imgSongArtist1.Click += scrHorizonPics_OnClick;
+            imgSongArtist2.Click += scrHorizonPics_OnClick;
+            imgSongArtist3.Click += scrHorizonPics_OnClick;
+            scrHorizonPics.Click += scrHorizonPics_OnClick;
 
             btnPrev.Click += PlaySongPrev;
             btnNext.Click += PlaySongNext;
             btnPlay.Click += PlaySongPlay;
 
-            ScrollPictures = new MH_Scroll(scrHorizon);
+            ScrollPictures = new MH_Scroll(scrHorizonPics);
             ScrollPictures.SCROLL_INTERVAL = 200;
             ScrollPictures.SCROLL_DELTA = 20;
             ScrollPictures.SCROLL_END_POINT = 2300;      // (imgSongArtist1.Width * 3) - 500;
@@ -215,9 +231,21 @@ namespace ProjTaskReminder
             IsFirstPlay = true;
         }
 
+        private void scrHorizonPics_OnClick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void ScrollPictures_OnScrolling(int scrollPossion)
         {
-            
+            if (ScrollPictures.IsScrollng)
+            {
+                ScrollPictures.Stop();
+            }
+            else
+            {
+                ScrollPictures.Start();
+            }
         }
 
         private void OnSeekbarChanged(object sender, SeekBar.ProgressChangedEventArgs e)
@@ -284,6 +312,7 @@ namespace ProjTaskReminder
 
                 if (isPlayingNow)   //mediaPlayer.IsPlaying
                 {
+                    isPlayingNow = false;
                     LoadSongIntoPlayer(ListPositionIndex, true);
                 }
                 else
@@ -299,11 +328,15 @@ namespace ProjTaskReminder
 
         private void PlaySongPrev(object sender, EventArgs eventArgs)
         {
+            MusicPause();
+
             if (ListPositionIndex < ListItemsRecycler.Count && ListPositionIndex > 0)
             {
                 ListPositionIndex--;
+
                 if (isPlayingNow)
                 {
+                    isPlayingNow = false;
                     LoadSongIntoPlayer(ListPositionIndex, true);
                 }
                 else
@@ -322,7 +355,8 @@ namespace ProjTaskReminder
 
             try
             {
-                MusicPause();
+                MusicStop();
+                //MusicPause();
 
                 if (ListPositionIndex >= ListItemsRecycler.Count)
                 {
@@ -340,19 +374,18 @@ namespace ProjTaskReminder
                 
                 Android.Net.Uri uri = Android.Net.Uri.Parse(songPath);
 
+                //mediaPlayer = null;
+                //mediaPlayer = new MediaPlayer();
+                ///mediaPlayer = mediaPlayer.Create(this, uri);
                 mediaPlayer = MediaPlayer.Create(this, uri);
                 //mediaPlayer = MediaPlayer.Create(this, resourceID); 
 
-                mediaPlayer.SetScreenOnWhilePlaying(true);
+                //mediaPlayer.SetScreenOnWhilePlaying(true);
 
-                //CurrentSongPosition = 0;
                 mediaPlayer.SeekTo(0);
                 barSeek.Max = mediaPlayer.Duration;
                 barSeek.SetProgress(0, false);
                 CurrentSongPosition = 0;
-
-                //ListItemSong listItemSong = ListItemsRecycler[listPositionIndex].Value;
-                //listItemSong.setDuration(mediaPlayer.Duration);
 
                 // Set the Song props - Name, Artist, Album, Duration
                 SetSongControls(listPositionIndex);
@@ -373,9 +406,16 @@ namespace ProjTaskReminder
 
         public void MusicPlay()
         {
-            if (mediaPlayer != null)
+            if (mediaPlayer == null)
+            {
+                return;
+            }
+
+            try
             {
                 ScrollSongName.Stop();
+                ScrollSongName.StartPosstion();
+
                 ScrollPictures.Stop();
 
                 mediaPlayer.Start();
@@ -396,6 +436,11 @@ namespace ProjTaskReminder
 
                 UpdateSongPositionThread();
             }
+            catch (Exception ex)
+            {
+                Utils.Utils.WriteToLog(ex.StackTrace + "\n" + ex.Message);
+            }
+            
         }
 
         private void MusicPause()
@@ -404,18 +449,27 @@ namespace ProjTaskReminder
             ScrollPictures.Stop();
             ScrollSongName.Stop();
 
-            if (ThreadTask != null)
+            if (ThreadTask != null && ThreadTask.IsAlive)
             {
                 ThreadTask.Abort();
             }
             ThreadTask = null;
 
-            if (mediaPlayer != null)
+            if (mediaPlayer != null)    //&& mediaPlayer.IsPlaying
             {
                 mediaPlayer.Pause();
-
                 //mediaPlayer.Stop();
-                btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPlay);
+            }
+
+            btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPlay);
+        }
+
+        public static void MusicStopFinal()
+        {
+            if (mediaPlayer != null)
+            {
+                mediaPlayer.Stop();
+                mediaPlayer.Release();
             }
         }
 
@@ -425,7 +479,7 @@ namespace ProjTaskReminder
             ScrollPictures.Stop();
             ScrollSongName.Stop();
 
-            if (ThreadTask != null)
+            if (ThreadTask != null && ThreadTask.IsAlive)
             {
                 ThreadTask.Abort();
             }
@@ -458,7 +512,10 @@ namespace ProjTaskReminder
 
             ListItemSong item = ListItemsRecycler[listPositionIndex].Value;
 
-            item.setDuration(mediaPlayer.Duration);
+            if (mediaPlayer != null)
+            {
+                item.setDuration(mediaPlayer.Duration);
+            }
 
             lblSongName.Text = item.getSongName();
             ScrollSongName.SCROLL_END_POINT = lblSongName.Text.Length * 9;    // 220;  // lblSongName.Width - 200;
@@ -534,6 +591,7 @@ namespace ProjTaskReminder
         {
 
             //ActionOnPlayingMusic += OnPlayingMusic;
+            ThreadTask = null;
 
             ThreadTask = new Thread(new ThreadStart(OnThreadRunning));
 
@@ -547,7 +605,7 @@ namespace ProjTaskReminder
 
         private void OnThreadRunning()
         {
-            while (mediaPlayer != null && mediaPlayer.IsPlaying)
+            while (mediaPlayer != null && mediaPlayer.IsPlaying && isPlayingNow)
             {
                 Thread.Sleep(1000);
 
@@ -596,14 +654,14 @@ namespace ProjTaskReminder
             //}
         }
 
-        protected override void OnDestroy()
-        {
-            MusicStop();
+        //protected override void OnDestroy()
+        //{
+            //MusicStop();
 
-            Toast.MakeText(this, "Destroing Media Player control", ToastLength.Long).Show();
+            //Toast.MakeText(this, "Destroing Media Player control", ToastLength.Long).Show();
 
-            base.OnDestroy();
-        }
+            //base.OnDestroy();
+        //}
 
 
     }
