@@ -520,23 +520,50 @@ namespace ProjTaskReminder.Utils
 
         public static string FixSongName(string songName)
         {
-            string chars ="abcdefghijklmnopqrstuvwxyz";
+            string result = "";
+            ///string chars ="abcdefghijklmnopqrstuvwxyz";
 
-            if (chars.Contains(songName.Substring(0, 1)))
+
+            songName = songName.ToLower();
+            songName = songName.Substring(0, 1).ToUpper() + songName.Substring(1);
+
+            for (int i = 0; i < songName.Length; i++)
             {
-                songName = songName.Substring(0, 1).ToUpper() + songName.Substring(1);
-            }
-            if (songName.Contains("- "))
-            {
-                int pos = songName.IndexOf("- ");
-                if (pos + 3 < songName.Length - 1)
+                string letter = songName.Substring(i, 1);
+
+                // After Space char - Uppercas letter
+                if (i < songName.Length-1 && letter == " " && songName.Substring(i + 1, 1)!=" " && songName.Substring(i + 1, 1) != "-")
                 {
-                    int len = songName.Length;
-                    songName = songName.Substring(0, pos + 2) + songName.Substring(pos + 2, len-pos-2).ToUpper();
+                    result += letter + songName.Substring(i+1, 1).ToUpper();
+                    i++;
+                }
+                else if (i > 0 && letter != "-" && (songName.Substring(i - 1, 1) == " " || songName.Substring(i - 1, 1) == "-"))
+                {
+                    result += letter.ToUpper();
+                }
+                // When '-', make space before and after him
+                else if (letter == "-")
+                {
+                    if (i>0 && songName.Substring(i - 1, 1) != " ")
+                    {
+                        result += " " + letter;
+                    }
+                    else if (i < songName.Length - 1 && songName.Substring(i + 1, 1) != " ")
+                    {
+                        result += letter + " ";
+                    }
+                    else
+                    {
+                        result += letter;
+                    }
+                }
+                else
+                {
+                    result += letter;
                 }
             }
 
-            return songName;
+            return result;
         }
 
         public static Drawable GetImageDrawableFromUrl(string urlAddress)

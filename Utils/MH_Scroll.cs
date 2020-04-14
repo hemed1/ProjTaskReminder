@@ -80,18 +80,19 @@ namespace ProjTaskReminder.Utils
         {
             ScrollControl.SmoothScrollingEnabled = true;
 
-            if (!IsScrollRightToLeft)
+            if (IsScrollRightToLeft)
             {
                 keepX = 1;
+                //ScrollControl.FullScroll(FocusSearchDirection.Left);
             }
             else
             {
                 keepX = this.SCROLL_END_POINT;  // ScrollControl.ScrollX
-                ScrollControl.FullScroll(FocusSearchDirection.Right);
+                //ScrollControl.FullScroll(FocusSearchDirection.Right);
             }
-            
+
             ScrollControl.SmoothScrollTo(keepX, 0);
-            
+
             //if (this.SCROLL_DELTA < 0)
             //{
             //    ScrollControl.SmoothScrollTo(this.SCROLL_END_POINT, 0);
