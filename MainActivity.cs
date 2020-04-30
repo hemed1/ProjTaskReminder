@@ -58,7 +58,7 @@ namespace ProjTaskReminder
         private ListView simpleList;    //RecyclerView
         private ListViewAdapter listViewAdapter;
         public static DBTaskReminder DBTaskReminder;
-        private List<Task> TasksList = new List<Task>();
+        private static List<Task> TasksList = new List<Task>();
         private List<Weather> WeatherList = new List<Weather>();
         private int WeatherCounter=0;
         private MH_Weather mH_Weather;
@@ -200,6 +200,18 @@ namespace ProjTaskReminder
             NewsScroll.Start();
         }
 
+        private void SetListViewControls(ListViewAdapter.ListViewHolder listViewHolder, int position)
+        {
+            Task task = TasksList[position];
+            listViewHolder.title.SetText(task.getTitle(), TextView.BufferType.Normal);
+            listViewHolder.description.SetText(task.getDescriptionWithHtml(), TextView.BufferType.Normal);
+            if (!task.getDate_due().Equals(""))
+            {
+                listViewHolder.date_due.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
+            }
+
+        }
+
         private void SetControlsIO()
         {
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
@@ -219,7 +231,7 @@ namespace ProjTaskReminder
 
             TasksList = new List<Task>();
             listViewAdapter = new ListViewAdapter(context, TasksList);
-
+            listViewAdapter.OnListItemControlsView += SetListViewControls;
 
 
             //listViewAdapter.SetOnClickListener += new EventHandler(OnItemClick);
@@ -525,7 +537,14 @@ namespace ProjTaskReminder
         private void btnMainMusic_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(ActivityMusic));
-            intent.SetFlags(ActivityFlags.NewTask);
+            // (ActivityMusic.mediaPlayer == null)
+            //{
+                intent.SetFlags(ActivityFlags.NewTask);
+            //}
+            //else
+            //{
+            //    intent.SetFlags(ActivityFlags.TaskOnHome);
+            //}
 
             intent.PutExtra("TaskID", "Meir");
             //intent.putExtra("task", task);  //TODO: Seriize
@@ -619,6 +638,9 @@ namespace ProjTaskReminder
         private void RefreshListAdapter()
         {
             listViewAdapter = new ListViewAdapter(context, TasksList);
+
+            listViewAdapter.OnListItemControlsView += SetListViewControls;
+
             simpleList.SetAdapter(listViewAdapter);
 
             listViewAdapter.NotifyDataSetChanged();

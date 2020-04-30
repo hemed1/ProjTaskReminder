@@ -140,7 +140,7 @@ namespace ProjTaskReminder.Utils
 
             try
             {
-                directories = Directory.GetDirectories(path).ToList();    //   File(path);
+                directories = Directory.GetDirectories(path).ToList();    
             }
             catch (Exception ex)
             {
@@ -152,11 +152,6 @@ namespace ProjTaskReminder.Utils
                 return files;
             }
 
-            //        if (fileExtentionToSearch.contains(";"))
-            //        {
-            //            String[] multiSearchValuse = fileExtentionToSearch.split(";");
-            //            fileExtentionToSearch = multiSearchValuse[0];
-            //        }
 
             for (int j = 0; j < directories.Count(); j++)
             {
@@ -181,11 +176,6 @@ namespace ProjTaskReminder.Utils
                         path = Directory.GetParent(file).FullName;
                         filesPicts = Directory.GetFiles(path, fileExtentionToSearch2).ToList();
                     }
-
-                    //if (Directory.Exists(file))
-                    //{
-                    //    dirs = GetFolderFiles(Directory.GetParent(file).FullName, fileExtentionToSearch2, searchInFolders, "");
-                    //}
 
                     KeyValuePair<string, List<string>> fileProp = new KeyValuePair<string, List<string>>(file, filesPicts);
                     FilesExtra.Add(fileProp);

@@ -17,7 +17,7 @@ using static Android.Support.V7.Widget.CardView;
 using ProjTaskReminder.Utils;
 using ProjTaskReminder.Model;
 using Android.Support.V7.Widget;
-
+using ProjTaskReminder;
 //using Android.App.Activity;
 //using Android.Content;
 //using Android.
@@ -42,6 +42,12 @@ namespace ProjTaskRemindet.Utils
         public event EventHandler SetOnClickListener;
         public event EventHandler SetOnItemClick;
         public static event Action<View.IOnClickListener> OnActivityResult;
+        public event Action<ListViewHolder, int> OnListItemControlsView;
+
+        public int ViewResourcesID = ProjTaskReminder.Resource.Layout.list_item;
+        public int MethodNumberToSetViewControls { get; set; }
+
+        //public abstract bool SetControlsInView(int position, View convertView, ViewGroup parent);
 
         public ListViewAdapter(Context applicationContext, List<Task> itemsList)
         {
@@ -49,7 +55,20 @@ namespace ProjTaskRemindet.Utils
             TaskList = itemsList;
 
             layoutInflater = LayoutInflater.From(this.context);
-         
+
+            ViewResourcesID = ProjTaskReminder.Resource.Layout.list_item;
+            MethodNumberToSetViewControls = 1;
+        }
+
+        public ListViewAdapter(Context applicationContext, List<Task> itemsList, int methodNumberToSetViewControls)
+        {
+            this.context = applicationContext;
+            TaskList = itemsList;
+
+            layoutInflater = LayoutInflater.From(this.context);
+
+            ViewResourcesID = ProjTaskReminder.Resource.Layout.list_item;
+            MethodNumberToSetViewControls = methodNumberToSetViewControls;
         }
 
         public override int Count
@@ -114,7 +133,7 @@ namespace ProjTaskRemindet.Utils
 
             if (position > -1 && position < TaskList.Count)
             {
-                res = TaskList[position].getTaskID();
+                //res = TaskList[position].getTaskID();
             }
 
             return 0;   // res;
@@ -129,7 +148,7 @@ namespace ProjTaskRemindet.Utils
             {
                 if (convertView == null)
                 {
-                    convertView = layoutInflater.Inflate(ProjTaskReminder.Resource.Layout.list_item, parent, false);
+                    convertView = layoutInflater.Inflate(ViewResourcesID, parent, false);
                 }
 
                 if (position >= 0 && position < TaskList.Count)
@@ -142,20 +161,33 @@ namespace ProjTaskRemindet.Utils
                 Console.WriteLine(ex.Message);
             }
 
+            
+
             if (listViewHolder!=null && position >= 0 && position < TaskList.Count)
             {
-                Task task = TaskList[position];
-                listViewHolder.title.SetText(task.getTitle(), TextView.BufferType.Normal);
-                listViewHolder.description.SetText(task.getDescriptionWithHtml(), TextView.BufferType.Normal);
-                if (!task.getDate_due().Equals(""))
-                {
-                    listViewHolder.date_due.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
-                }
+                SetControlsInView(listViewHolder, position);
             }
 
             //convertView.SetOnClickListener(InitOnItemClick(position));
 
             return convertView;
+        }
+
+        public void SetControlsInView(ListViewHolder listViewHolder, int position)        // override 
+        {
+
+            if (OnListItemControlsView != null)
+            {
+                OnListItemControlsView(listViewHolder, position);
+            }
+
+            //Task task = TaskList[position];
+            //listViewHolder.title.SetText(task.getTitle(), TextView.BufferType.Normal);
+            //listViewHolder.description.SetText(task.getDescriptionWithHtml(), TextView.BufferType.Normal);
+            //if (!task.getDate_due().Equals(""))
+            //{
+            //    listViewHolder.date_due.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
+            //}
         }
 
         public class ListViewHolder // : RecyclerView.ViewHolder
