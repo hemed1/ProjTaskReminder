@@ -19,7 +19,7 @@ namespace ProjTaskReminder.Model
         private string Artist;
         private string Album;
         private string Year;
-        private int Duration;
+        private string Duration;
         private int ResourceID;
         private string SongPath;
         private List<Integer> picsToSongResourcesIDs;
@@ -50,12 +50,14 @@ namespace ProjTaskReminder.Model
             return picsToSongPathsArray;
         }
 
-        public int getDuration()
+        public string getDuration()
         {
+            Duration = (Duration==null) ? string.Empty : Duration;
+
             return Duration;
         }
 
-        public void setDuration(int duration)
+        public void setDuration(string duration)
         {
             Duration = duration;
         }

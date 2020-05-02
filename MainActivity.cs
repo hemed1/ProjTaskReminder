@@ -71,7 +71,7 @@ namespace ProjTaskReminder
         private ImageView imageTimerPointWeater;
 
 
-        private static Context context;
+        private static Context MainContext;
         //private readonly string[]  countryList = new string[6] { "India", "China", "australia", "Portugle", "America", "NewZealand" };
 
         public static Task CurrentTask;
@@ -82,10 +82,11 @@ namespace ProjTaskReminder
         private event Action ActionOnTaskDateDue;
         private int TimerInterval;
         private MH_Notification mh_Notification;
+        private Intent IntentMusic = null;
+
 
         private Android.Support.V4.App.NotificationCompat.Builder notificationBuilder;
         private TaskTimerElapsed ActionOnTaskTimerTick;     // , ElapsedEventHandler
-
         public delegate ElapsedEventHandler delegateMethod(object timer, ElapsedEventArgs args, Task TaskObject);
 
 
@@ -98,7 +99,7 @@ namespace ProjTaskReminder
 
             //Utils.Utils.WriteToLog("Enter 1", true);
 
-            context = this.ApplicationContext;
+            MainContext = this.ApplicationContext;
 
             Initialize();
 
@@ -230,7 +231,7 @@ namespace ProjTaskReminder
 
 
             TasksList = new List<Task>();
-            listViewAdapter = new ListViewAdapter(context, TasksList);
+            listViewAdapter = new ListViewAdapter(MainContext, TasksList);
             listViewAdapter.OnListItemControlsView += SetListViewControls;
 
 
@@ -490,9 +491,9 @@ namespace ProjTaskReminder
             //setControlsColors();
 
             Utils.Utils.activity = this;
-            Utils.Utils.context = context;
+            Utils.Utils.context = MainContext;
             Utils.Utils.LOG_FILE_NAME = "LogTaskReminder.txt";
-            Utils.Utils.LOG_FILE_PATH = context.GetExternalFilesDir("").AbsolutePath;
+            Utils.Utils.LOG_FILE_PATH = MainContext.GetExternalFilesDir("").AbsolutePath;
             //string folderBackup = Android.OS.Environment.DirectoryMusic;        // "ProjTaskReminder"
             //LOG_FILE_PATH = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
             //LOG_FILE_PATH = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
@@ -502,7 +503,7 @@ namespace ProjTaskReminder
 
             // Open Notification Channel. Must be in the start init
             // Done again in 'Util.createNotificationBuilder()'
-            mh_Notification = new MH_Notification(this, context);
+            mh_Notification = new MH_Notification(this, MainContext);
             mh_Notification.createNotificationChannel();
 
             WeatherList = new List<Weather>();
@@ -536,23 +537,21 @@ namespace ProjTaskReminder
 
         private void btnMainMusic_Click(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(ActivityMusic));
-            // (ActivityMusic.mediaPlayer == null)
-            //{
-                intent.SetFlags(ActivityFlags.NewTask);
-            //}
-            //else
-            //{
-            //    intent.SetFlags(ActivityFlags.TaskOnHome);
-            //}
+            if (IntentMusic == null)
+            {
+                IntentMusic = new Intent(this, typeof(ActivityMusic));
+                IntentMusic.SetFlags(ActivityFlags.NewTask);
+                //IntentMusic.PutExtra("TaskID", "Meir");
+            }
+            else
+            {
+                //intent.SetFlags(ActivityFlags.TaskOnHome);
+            }
 
-            intent.PutExtra("TaskID", "Meir");
-            //intent.putExtra("task", task);  //TODO: Seriize
-
-            ActivityMusic.context = context;      //Application.Context;
+            ActivityMusic.context = MainContext;      //Application.Context;
 
             //StartActivityForResult(intent, 2345);
-            context.StartActivity(intent);
+            MainContext.StartActivity(IntentMusic);
         }
 
 
@@ -637,7 +636,7 @@ namespace ProjTaskReminder
         [Obsolete]
         private void RefreshListAdapter()
         {
-            listViewAdapter = new ListViewAdapter(context, TasksList);
+            listViewAdapter = new ListViewAdapter(MainContext, TasksList);
 
             listViewAdapter.OnListItemControlsView += SetListViewControls;
 
@@ -708,7 +707,7 @@ namespace ProjTaskReminder
 
             try
             {
-                DB_TASK_DB_PATH = context.GetExternalFilesDir("").AbsolutePath;
+                DB_TASK_DB_PATH = MainContext.GetExternalFilesDir("").AbsolutePath;
 
                 DBTaskReminder = new DBTaskReminder(DB_TASK_DB_NAME, DB_TASK_DB_PATH, DB_TABLE_NAME);
 
@@ -764,7 +763,7 @@ namespace ProjTaskReminder
 
             // /storage/emulated/0/Music/
             // /storage/emulated/0/Android/data/com.meirhemed.projtaskreminder/files
-            //DB_PATH = context.GetExternalFilesDir("").AbsolutePath;         
+            //DB_PATH = MainContext.GetExternalFilesDir("").AbsolutePath;         
             //DB_PATH = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);  //"/Assets/" + DB_NAME;             //Environment.SpecialFolder.LocalApplicationData
 
             return result;
@@ -858,11 +857,11 @@ namespace ProjTaskReminder
             ActivityTaskDetails.isNewMode = isNewMode;
             ActivityTaskDetails.CurrentTask = task;
             ////ActivityTaskDetails.dbHandler = MainActivity.dbHandler;
-            ActivityTaskDetails.context = context;      //Application.Context;
+            ActivityTaskDetails.context = MainContext;      //Application.Context;
             ////ActivityTaskDetails.mainActivity = mainActivity;
 
             //StartActivityForResult(intent, SHOW_SCREEN_TASK_DETAILS);
-            context.StartActivity(intent);
+            MainContext.StartActivity(intent);
 
         }
 
@@ -907,11 +906,11 @@ namespace ProjTaskReminder
             //ActivityTaskDetails.isNewMode = isNewMode;
             //ActivityTaskDetails.CurrentTask = task;
             ////ActivityTaskDetails.dbHandler = MainActivity.dbHandler;
-            ActivitySettings.context = context;      //Application.Context;
+            ActivitySettings.context = MainContext;      //Application.Context;
             ////ActivityTaskDetails.mainActivity = mainActivity;
 
             StartActivityForResult(intent, SHOW_SCREEN_SETTING);
-            //context.StartActivity(intent);
+            //MainContext.StartActivity(intent);
 
         }
 
@@ -939,7 +938,7 @@ namespace ProjTaskReminder
 
             ActivityTaskDetails.CurrentTask = CurrentTask;
 
-            //Toast.MakeText(context, "Click", ToastLength.Long).Show();
+            //Toast.MakeText(MainContext, "Click", ToastLength.Long).Show();
         }
 
         private void btnMainNew_OnClick(object sender, EventArgs eventArgs)
@@ -1530,7 +1529,7 @@ namespace ProjTaskReminder
         {
             if (isShowTimerReminder && !MainMessageText.Trim().Equals(""))
             {
-                Toast.MakeText(context, MainMessageText, ToastLength.Long).Show();
+                Toast.MakeText(MainContext, MainMessageText, ToastLength.Long).Show();
                 MainMessageText = "";
             }
         }
@@ -1717,7 +1716,7 @@ namespace ProjTaskReminder
             string backupFolderName = Android.OS.Environment.DirectoryMusic;    // "ProjTaskReminder"
             string targetPath = Android.OS.Environment.GetExternalStoragePublicDirectory(backupFolderName).AbsolutePath;
             //targetPath = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
-            //targetPath = context.GetExternalFilesDir("").AbsolutePath;;
+            //targetPath = MainContext.GetExternalFilesDir("").AbsolutePath;;
 
 
             string fullPathSource = Path.Combine(DBTaskReminder.DB_PATH, DBTaskReminder.DB_NAME);

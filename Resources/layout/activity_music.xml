@@ -17,47 +17,59 @@
         android:id="@+id/layArtist"
         android:layout_width="match_parent"
         android:layout_height="480dp"
-        android:paddingStart="1dp"
-        android:paddingEnd="1dp">
+        android:layout_marginTop="3dp">
 
         <android.support.v7.widget.CardView
             android:id="@+id/cardFilesList"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="60dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            android:paddingBottom="25dp"
-            android:paddingTop="25dp"
             android:layoutDirection="ltr"
             android:textDirection="rtl"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:layout_alignParentTop="true"
             app:cardBackgroundColor="#d18a8a"
             app:cardCornerRadius="10dp"
             app:cardElevation="3dp"
             app:cardMaxElevation="10dp">
 
+        <TextView
+            android:id="@+id/lblSongsListCaption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="רשימת תיקיות"
+            android:layout_alignParentTop="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="17sp"/>
+
             <ListView
                 android:id="@+id/lstFiles"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="vertical"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
                 android:layout_alignParentTop="true"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="0dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"       
                 android:listSelector="@android:color/holo_purple"
                 android:divider="@color/material_blue_grey_800"
-                android:dividerHeight="2dp"
-                android:background="@color/CardListBackgroundColor"
-                android:visibility="invisible"
+                android:dividerHeight="1dp"
+                android:background="#d18a8a"
+                android:visibility="visible"
                 android:layout_gravity="bottom"/>
 
+            <!--android:background="#d18a8a@color/CardListBackgroundColor"-->
         </android.support.v7.widget.CardView>
 
         <TextView
@@ -330,7 +342,7 @@
         android:orientation="horizontal"
         android:layout_gravity="bottom"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="30dp"
         android:paddingStart="1dp"
         android:paddingEnd="1dp">
 
@@ -338,19 +350,19 @@
             android:id="@+id/btnFolders"
             style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
             android:layout_marginEnd="80dp"
             android:layout_marginTop="1dp"
             android:layout_marginStart="0dp"
             android:layout_marginBottom="5dp"
             android:layout_alignParentEnd="true"
-            android:text="תקיות" />
+            android:text="תיקיות" />
 
         <Button
             android:id="@+id/btnSongsList"
             style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
             android:layout_marginEnd="0dp"
             android:layout_marginTop="1dp"
             android:layout_marginStart="80dp"
