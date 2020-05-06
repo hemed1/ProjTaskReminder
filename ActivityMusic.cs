@@ -272,9 +272,10 @@ namespace ProjTaskReminder
         private void OnFolderItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
 
+            RestoreSongsList();
+
             if (IsFolderButtonPressed)
             {
-                RestoreSongsList();
                 string path = SongFoldersList[e.Position].getDate_due();
                 ListItemsRecycler = ListItemsRecycler.Where(a => a.Value.getSongPath() == path).ToList();
                 ListPositionIndex = 0;
@@ -683,13 +684,24 @@ namespace ProjTaskReminder
             btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPlay);
         }
 
-        public static void MusicStopFinal()
+        public static bool MusicStopFinal()
         {
+            bool result = true;
+
             if (mediaPlayer != null)
             {
-                mediaPlayer.Stop();
-                mediaPlayer.Release();
+                try
+                {
+                    mediaPlayer.Stop();
+                    mediaPlayer.Release();
+                }
+                catch
+                {
+                    result = false;
+                }
             }
+
+            return result;
         }
 
         public void MusicStop()
@@ -921,7 +933,8 @@ namespace ProjTaskReminder
 
             for (int i = 0; i < ListItemsRecycler.Count; i++)
             {
-                if (ListItemsRecycler[i].Key.IndexOf(fullSongPath)>-1)
+                string songPath = ListItemsRecycler[i].Key;
+                if (songPath.Length>=fullSongPath.Length && songPath.Substring(0, fullSongPath.Length)== fullSongPath)
                 {
                     result = i;
                     break;

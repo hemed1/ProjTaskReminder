@@ -1702,10 +1702,16 @@ namespace ProjTaskReminder
 
         protected override void OnDestroy()
         {
+            DBTaskReminder.DB.Close();
+
             BackupDataBaseFile();
 
-            ActivityMusic.MusicStopFinal();
+            bool isMedyaPlayerClosed = ActivityMusic.MusicStopFinal();
 
+            if (isMedyaPlayerClosed)
+            {
+                Toast.MakeText(this, "Destroy Medya Player", ToastLength.Long).Show();
+            }
             Toast.MakeText(this, "Close Application", ToastLength.Long).Show();
 
             base.OnDestroy();
