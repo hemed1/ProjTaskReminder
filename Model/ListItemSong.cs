@@ -52,7 +52,7 @@ namespace ProjTaskReminder.Model
 
         public string getDuration()
         {
-            Duration = (Duration==null) ? string.Empty : Duration;
+            Duration = (Duration==null) ? string.Empty : Duration.Trim();
 
             return Duration;
         }

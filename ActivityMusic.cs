@@ -85,20 +85,21 @@ namespace ProjTaskReminder
 
             SetControlsIO();
 
-            SONG_NAME_LIMIT_TO_SCROLL = GetCharsCountPerFontSize(lblSongName.TextSize);
+            SONG_NAME_LIMIT_TO_SCROLL = GetCharsCountPerFontSize(lblSongName);
 
             if (mediaPlayer == null)
             {
-                LoadFilesFromPhone();
+                LoadSongsFilesFromPhone();
+
                 ListPositionIndex = 0;
-                if (ListItemsRecycler.Count > 0)
+                if (ListItemsRecycler != null && ListItemsRecycler.Count > 0)
                 {
                     LoadSongIntoPlayer(ListPositionIndex, false);
                 }
             }
             else
             {
-                if (mediaPlayer != null && ListItemsRecycler.Count > 0 && ListPositionIndex<ListItemsRecycler.Count && ListPositionIndex>-1)
+                if (mediaPlayer != null && ListItemsRecycler!=null  && ListItemsRecycler.Count > 0 && ListPositionIndex<ListItemsRecycler.Count && ListPositionIndex>-1)
                 {
                     int tmpPos = CurrentSongPosition;
                     LoadSongIntoPlayer(ListPositionIndex, mediaPlayer.IsPlaying);
@@ -110,12 +111,14 @@ namespace ProjTaskReminder
 
         }
 
-        private int GetCharsCountPerFontSize(float textSize)
+        private int GetCharsCountPerFontSize(TextView txtControl)
         {
-            return (int)((22*32)/textSize);
+            float textSize = lblSongName.TextSize;
+
+            return (int)((22*32)/textSize); 
         }
 
-        private void LoadFilesFromPhone()
+        private void LoadSongsFilesFromPhone()
         {
 
             //Java.IO.File[] jjj = context.GetExternalFilesDirs("MUSIC");
@@ -155,17 +158,19 @@ namespace ProjTaskReminder
                 string path = Directory.GetParent(fileFullName).FullName;
                 string fileName = fileFullName.Substring(path.Length + 1);
                 string artist = "Artist " + (i + 1).ToString();
+                string album = Directory.GetParent(fileFullName).Name;     // GetFolderNameFromPath(path);
+
 
                 fileName = Utils.Utils.FixSongName(fileName);
                 fileName = fileName.Substring(0, fileName.Length - 4);
                 
                 int pos = fileName.IndexOf("-");
-                if (pos>-1)
+                if (pos>-1 && pos>3)
                 {
                     artist = fileName.Substring(0, pos - 1);
                 }
 
-                ListItemSong listItemSong = new ListItemSong(fileName, artist, "Album " + (i+1).ToString());
+                ListItemSong listItemSong = new ListItemSong(fileName, artist, album);
                 listItemSong.setSongPath(path);
 
                 ListItemsRecycler.Add(new KeyValuePair<string, ListItemSong>(fileFullName, listItemSong));
@@ -422,7 +427,12 @@ namespace ProjTaskReminder
 
                     Task task = new Task();
                     task.setTitle(listItemSong.getSongName());
-                    task.setDescriptionPure(listItemSong.getDuration().ToString());
+                    string seconfLine = listItemSong.getDuration();
+                    if (seconfLine=="")
+                    {
+                        seconfLine = listItemSong.getArtist();
+                    }
+                    task.setDescriptionPure(seconfLine);
                     task.setDate_due(listItemSong.getSongPath());
 
                     list.Add(task);
@@ -649,7 +659,7 @@ namespace ProjTaskReminder
                 ScrollPictures.Start();
                 if (lblSongName.Text.Length > SONG_NAME_LIMIT_TO_SCROLL)
                 {
-                    //ScrollSongName.Start();
+                    ScrollSongName.Start();
                 }
 
                 //setPicsScroll();
@@ -694,12 +704,16 @@ namespace ProjTaskReminder
                 {
                     mediaPlayer.Stop();
                     mediaPlayer.Release();
+                    mediaPlayer = null;
                 }
                 catch
                 {
                     result = false;
+                    mediaPlayer = null;
                 }
             }
+
+            result = (mediaPlayer == null);
 
             return result;
         }
@@ -756,12 +770,11 @@ namespace ProjTaskReminder
 
             if (lblSongName.Text.Length > SONG_NAME_LIMIT_TO_SCROLL)
             {
-                //ScrollSongName.Start();
+                ScrollSongName.Start();
             }
 
             UpdateProgressControls();
 
-            //CurrentSongPosition = 0;
 
 
             //Drawable drawable;

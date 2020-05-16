@@ -45,6 +45,9 @@ namespace ProjTaskRemindet.Utils
         public event Action<ListViewHolder, int> OnListItemControlsView;
 
         public int ViewResourcesID = ProjTaskReminder.Resource.Layout.list_item;
+        /// <summary>
+        /// Not Used - To Execute some external method
+        /// </summary>
         public int MethodNumberToSetViewControls { get; set; }
 
         //public abstract bool SetControlsInView(int position, View convertView, ViewGroup parent);

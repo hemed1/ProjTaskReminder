@@ -443,10 +443,14 @@ namespace ProjTaskReminder
         {
             CurrentTask.setTitle(txtDetailsTitle.Text);
             CurrentTask.setDescription(txtDetailsDescription.Text);
-            //lblDateTime.Text = txtDetailsDate.Text + " " + txtDetailsTime.Text;
+
             if (!txtDetailsDate.Text.Trim().Equals(""))
             {
                 CurrentTask.setDate_due(lblDateTime.Text.Substring(0, 10));
+            }
+            else
+            {
+                CurrentTask.setDate_due("");
             }
             if (!txtDetailsTime.Text.Trim().Equals(""))
             {
@@ -454,9 +458,9 @@ namespace ProjTaskReminder
             }
             else
             {
-                CurrentTask.setDate_due("");
                 CurrentTask.setTime_due("");
             }
+
             CurrentTask.setDate_last_update(Utils.Utils.getDateFormattedString(Utils.Utils.GetDateNow()));
         }
 
