@@ -23,6 +23,7 @@ using ProjTaskReminder.Data;
 using ProjTaskReminder.Utils;
 using Android.Graphics.Drawables;
 using static ProjTaskReminder.Utils.Utils;
+using System.Text;
 
 //using System.Threading.Timer;
 
@@ -49,6 +50,15 @@ namespace ProjTaskReminder
         // The code for get result from TasDetails screen
         public const int SHOW_SCREEN_TASK_DETAILS = 1234;
         public const int SHOW_SCREEN_SETTING = 9998;
+        private const string CARD_SEPERATOR = "**----------**";
+        private const string WRITE_DB_PREFIX_ID = "id: ";
+        private const string WRITE_DB_PREFIX_TITLE = "title: ";
+        private const string WRITE_DB_PREFIX_DESC = "desc: ";
+        private const string WRITE_DB_PREFIX_DATE = "date: ";
+        private const string WRITE_DB_PREFIX_TIME = "time: ";
+        private const string WRITE_DB_PREFIX_REPEAT = "repeat: ";
+        private const string WRITE_DB_PREFIX_LAST_UPDATE = "last_update: ";
+        private const string WRITE_DB_PREFIX_BACKGROUND_COLOR = "backcolor: ";
 
         //ImageButton btnMainMusic = (ImageButton)FindViewById(Resource.Id.bntMainMusic);
         //private ImageView btnMainWeather;
@@ -60,7 +70,7 @@ namespace ProjTaskReminder
         public static DBTaskReminder DBTaskReminder;
         private static List<Task> TasksList = new List<Task>();
         private List<Weather> WeatherList = new List<Weather>();
-        private int WeatherCounter=0;
+        private int WeatherCounter = 0;
         private MH_Weather mH_Weather;
         private MH_Scroll WeatherScroll;
         private MH_Scroll NewsScroll;
@@ -154,9 +164,9 @@ namespace ProjTaskReminder
 
             nowDate = Utils.Utils.GetDateNow().Date;
 
-            if (items.Count>0)
+            if (items.Count > 0)
             {
-                items = items.Where(a=> a.PublishDate.Date.CompareTo(nowDate) == 0).ToList();
+                items = items.Where(a => a.PublishDate.Date.CompareTo(nowDate) == 0).ToList();
             }
 
             items = items.OrderByDescending(a => a.PublishDate).ToList();
@@ -167,7 +177,7 @@ namespace ProjTaskReminder
             news = "<html><p dir=\"rtl" + "\">";
             string newsFlate = "";
 
-            for (int i=items.Count-1; i>=0 ; i--)
+            for (int i = items.Count - 1; i >= 0; i--)
             {
                 XmlItem newsItem = items[i];
 
@@ -209,6 +219,10 @@ namespace ProjTaskReminder
             if (!task.getDate_due().Equals(""))
             {
                 listViewHolder.date_due.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
+            }
+            else
+            {
+                listViewHolder.date_due.SetText(task.getDate_last_update() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(Utils.Utils.getDateFromString(task.getDate_last_update())), TextView.BufferType.Normal);
             }
 
         }
@@ -347,16 +361,16 @@ namespace ProjTaskReminder
         [Obsolete]
         private void OnWeatherChangingPlace(object weatherObject, int indexInWeatherList)
         {
-            
+
 
             if (weatherObject != null)
             {
                 Weather weather = (Weather)weatherObject;
-                int resourceIDPlace=0;
-                int resourceIDTemperture=0;
-                int resourceIDDescription=0;
+                int resourceIDPlace = 0;
+                int resourceIDTemperture = 0;
+                int resourceIDDescription = 0;
                 int resourceIDImage = 0;
-                 int resourceIDLayouy = 0;
+                int resourceIDLayouy = 0;
 
 
                 switch (indexInWeatherList)
@@ -439,7 +453,7 @@ namespace ProjTaskReminder
 
         private void OnWeatherCompleteLoadData(List<Weather> weatherList)
         {
-            if (weatherList!=null && weatherList.Count > 0 && !mH_Weather.IsChangePlaces)
+            if (weatherList != null && weatherList.Count > 0 && !mH_Weather.IsChangePlaces)
             {
                 WeatherScroll.Start();
             }
@@ -467,7 +481,7 @@ namespace ProjTaskReminder
                 // Asyncronic - Not relevant
                 //if (mH_Weather.WeatherList.Count > 0)
                 //{
-                    //WeatherScroll.Start();
+                //WeatherScroll.Start();
                 //}
                 //else
                 //{
@@ -515,7 +529,7 @@ namespace ProjTaskReminder
 
             WeatherScroll = new MH_Scroll();
             WeatherScroll.SCROLL_DELTA = 6;
-            WeatherScroll.SCROLL_END_POINT =980;
+            WeatherScroll.SCROLL_END_POINT = 980;
             WeatherScroll.SCROLL_INTERVAL = 300;
             WeatherScroll.ScrollControl = scrollWeather;
             //WeatherScroll.OnScrolling += OnWeatherScroll;
@@ -532,7 +546,7 @@ namespace ProjTaskReminder
 
         private void OnWeatherScroll(int obj)
         {
-            
+
         }
 
         private void btnMainMusic_Click(object sender, EventArgs e)
@@ -605,7 +619,7 @@ namespace ProjTaskReminder
             //    list.Add(task);
             //}
             // Directly from array
-            //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, Resource.Layout.list_item, Resource.Id.txtTitle, countryList);
+            //ArrayAdapter<string> arrayAdapter = new ArrayAdapter<string>(this, Resource.Layout.list_item, Resource.Id.txtTitle, countryList);
             //simpleList.SetAdapter(arrayAdapter);
         }
 
@@ -679,7 +693,7 @@ namespace ProjTaskReminder
         {
 
             simpleList.SmoothScrollToPosition(index);
-            
+
             //View itemView = simpleList.GetChildAt(index);
             //if (itemView != null)
             //{
@@ -714,21 +728,21 @@ namespace ProjTaskReminder
 
                 if (!DBTaskReminder.IsTableExists(DB_TABLE_NAME))
                 {
-                        try
-                        {
-                            var t = DBTaskReminder.DB.CreateTable<TBL_Tasks>();
-                            //string commanScript = "ALTER TABLE TBL_Tasks ADD COLUMN DateLastUpdate VARCHAR(11);";
-                            //commanScript = "CREATE TABLE IF NOT EXISTS tags (ISBN VARCHAR(15), Tag VARCHAR(15));";
-                            //DB.Execute(commanScript, null);    
-                            //SQLiteCommand cmd = db.CreateCommand(commanScript, null);        //new SQLiteCommand(this.DB);
-                            //cmd.CommandText = commanScript;
-                            //cmd.ExecuteNonQuery();
-                            //db.DropTable<TBL_Tasks>();
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace + "  -  " + ex.Message);
-                        }
+                    try
+                    {
+                        var t = DBTaskReminder.DB.CreateTable<TBL_Tasks>();
+                        //string commanScript = "ALTER TABLE TBL_Tasks ADD COLUMN DateLastUpdate VARCHAR(11);";
+                        //commanScript = "CREATE TABLE IF NOT EXISTS tags (ISBN VARCHAR(15), Tag VARCHAR(15));";
+                        //DB.Execute(commanScript, null);    
+                        //SQLiteCommand cmd = db.CreateCommand(commanScript, null);        //new SQLiteCommand(this.DB);
+                        //cmd.CommandText = commanScript;
+                        //cmd.ExecuteNonQuery();
+                        //db.DropTable<TBL_Tasks>();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace + "  -  " + ex.Message);
+                    }
                 }
 
                 if (!DBTaskReminder.IsTableExists(DB_TABLE_SETTING))
@@ -748,7 +762,7 @@ namespace ProjTaskReminder
                     TBL_Settings tBL_Settings = null;
                     TableQuery<TBL_Settings> table = MainActivity.DBTaskReminder.DB.Table<TBL_Settings>();
                     tBL_Settings = table.FirstOrDefault();
-                    if (tBL_Settings!=null)
+                    if (tBL_Settings != null)
                     {
                         ActivityMusic.MUSIC_PATH = tBL_Settings.MusicPath;
                         Utils.Utils.NEWS_RSS_ADDRESS2 = tBL_Settings.NewsUrl;
@@ -887,6 +901,14 @@ namespace ProjTaskReminder
 
                 case Resource.Id.menu_db_restore:
                     RestoreDataBaseFile();
+                    break;
+
+                case Resource.Id.menu_textfile_write:
+                    writeDBToTextFile();
+                    break;
+
+                case Resource.Id.menu_textfile_read:
+                    readDBFromTextFile();
                     break;
             }
 
@@ -1178,7 +1200,7 @@ namespace ProjTaskReminder
         {
             System.Threading.Thread timer = System.Threading.Thread.CurrentThread;
 
-            TaskTimerElapsed  ActionOnTaskTimerTick = new TaskTimerElapsed(currentTask, timer);
+            TaskTimerElapsed ActionOnTaskTimerTick = new TaskTimerElapsed(currentTask, timer);
             ActionOnTaskTimerTick.TimerInterval = TimerInterval;
             ActionOnTaskTimerTick.activity = this;
             ActionOnTaskTimerTick.OnThreadTick += Thread_Elapsed;
@@ -1193,7 +1215,7 @@ namespace ProjTaskReminder
 
             currentTask.setTimer(timer);
 
-            addTimerToKillArray(currentTask.getTaskID(), currentTask);     // timer timerTask);
+            //addTimerToKillArray(currentTask.getTaskID(), currentTask, timer);
 
 
             timer.Start();
@@ -1281,7 +1303,7 @@ namespace ProjTaskReminder
 
             currentTask.setTimer(timer);
 
-            addTimerToKillArray(currentTask.getTaskID(), currentTask);
+            addTimerToKillArray(currentTask.getTaskID(), currentTask, timer);
 
             ActionOnTaskTimerTick = new TaskTimerElapsed(currentTask, timer);
             ActionOnTaskTimerTick.TimerInterval = TimerInterval;
@@ -1294,7 +1316,7 @@ namespace ProjTaskReminder
             timer.Enabled = true;
             //timer.Start();
 
-          }
+        }
 
         //ActionOnTaskTimerTick += MainActivity_ActionOnTaskTimerTick;
         //ActionOnTaskTimerTick += delegateMethod2;  
@@ -1319,25 +1341,25 @@ namespace ProjTaskReminder
             //Task currentTask = CurrentTask;
 
             // TODO: Done  'TaskTimerElapsed.Timer_Elapsed()'
-//            DateTime dateNow = Utils.Utils.GetDateNow();
-//            string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
-//            string strDateTask = Utils.Utils.getDateFormattedString(currentTask.getDate().Value);
+            //            DateTime dateNow = Utils.Utils.GetDateNow();
+            //            string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
+            //            string strDateTask = Utils.Utils.getDateFormattedString(currentTask.getDate().Value);
 
-//            if (strDateNow.CompareTo(strDateTask) >= 0)
-//            {
-//                System.Timers.Timer timer = timerObject;
-                //System.Timers.Timer timer = ((System.Timers.Timer)sender);
-//                timer.Stop();
-//                timer.Close();
-//                timer.Dispose();
-//                timer = null;
+            //            if (strDateNow.CompareTo(strDateTask) >= 0)
+            //            {
+            //                System.Timers.Timer timer = timerObject;
+            //System.Timers.Timer timer = ((System.Timers.Timer)sender);
+            //                timer.Stop();
+            //                timer.Close();
+            //                timer.Dispose();
+            //                timer = null;
 
-                // No need. allready killed. just for shure.
-                TimerStop(currentTask);
+            // No need. allready killed. just for shure.
+            TimerStop(currentTask);
 
-                // Do the Job - Notification
-                picsTimer_onTick(currentTask);
- //           }
+            // Do the Job - Notification
+            picsTimer_onTick(currentTask);
+            //           }
 
             //return null;
         }
@@ -1360,7 +1382,7 @@ namespace ProjTaskReminder
         {
             try
             {
-                if (timerArrayIndex>=TasksList.Count)
+                if (timerArrayIndex >= TasksList.Count)
                 {
                     return;
                 }
@@ -1473,13 +1495,13 @@ namespace ProjTaskReminder
             //return strDateNow;
         }
 
-        private void addTimerToKillArray(int taskID, Task currentTask)       
+        private void addTimerToKillArray(int taskID, Task currentTask, System.Timers.Timer timer)
         {
-            object[] timersArray = new object[2];
+            object[] timersArray = new object[3];
 
             timersArray[0] = taskID;
-            //timersArray[1] = timer;
             timersArray[1] = currentTask;
+            timersArray[2] = timer;
 
             TimersArray.Add(timersArray);
         }
@@ -1504,7 +1526,7 @@ namespace ProjTaskReminder
 
         private void killOldTimers()
         {
- 
+
             if (TimersArray == null)
             {
                 TimersArray = new List<object[]>();
@@ -1514,9 +1536,15 @@ namespace ProjTaskReminder
             for (int i = TimersArray.Count - 1; i >= 0; i--)
             {
                 object[] timersArray = TimersArray[i];
-                TimerKill(i);   //, (Task)timersArray[1]);     // searchTaskByID((int)timersArray[0]));
+
+                TimerKill(i);
+
+                System.Timers.Timer timer = (System.Timers.Timer)timersArray[2];
+                TimerDispose(timer);
+
             }
 
+            TimersArray.Clear();
             TimersArray = null;
             TimersArray = new List<object[]>();
 
@@ -1570,7 +1598,7 @@ namespace ProjTaskReminder
                 //titleSpannableString.SetSpan(styleSpan, 0, titleSpannableString.Length(), SpanTypes.ExclusiveExclusive); // .SPAN_EXCLUSIVE_EXCLUSIVE);
             }
 
-            string description = currentTask.getDescriptionWithHtml(); 
+            string description = currentTask.getDescriptionWithHtml();
             //SpannedString description = currentTask.getDescription();
 
             SpannableStringBuilder builder = new SpannableStringBuilder();
@@ -1734,7 +1762,12 @@ namespace ProjTaskReminder
             fullPathTarget = Path.Combine(targetPath, Utils.Utils.LOG_FILE_NAME);
 
             result = Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
-            
+
+            fullPathSource = Path.Combine(Utils.Utils.LOG_FILE_PATH, "MH_Tasks.txt");
+            fullPathTarget = Path.Combine(targetPath, "MH_Tasks.txt");
+
+            result = Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
+
             if (result)
             {
                 string message = "Database was copied OK";
@@ -1746,7 +1779,7 @@ namespace ProjTaskReminder
         private void RestoreDataBaseFile()
         {
             string backupFolderName = Android.OS.Environment.DirectoryMusic;    // "ProjTaskReminder"
-            string sourcePath = Android.OS.Environment.GetExternalStoragePublicDirectory(backupFolderName).AbsolutePath;  
+            string sourcePath = Android.OS.Environment.GetExternalStoragePublicDirectory(backupFolderName).AbsolutePath;
             string targetPath = DBTaskReminder.DB_PATH;
 
             string fullPathTarget = Path.Combine(targetPath, DBTaskReminder.DB_NAME);
@@ -1755,7 +1788,7 @@ namespace ProjTaskReminder
             DBTaskReminder.DB.Close();
 
             bool result = Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
-            
+
             ConnectToDB();
 
             if (result)
@@ -1775,9 +1808,9 @@ namespace ProjTaskReminder
         {
             int result = -1;
 
-            for (int i=0; i<TasksList.Count; i++)
+            for (int i = 0; i < TasksList.Count; i++)
             {
-                if (TasksList[i].getTaskID()==taskID)
+                if (TasksList[i].getTaskID() == taskID)
                 {
                     result = i;
                     break;
@@ -1801,7 +1834,7 @@ namespace ProjTaskReminder
             for (int i = 0; i < tasksList.Count; i++)
             {
                 DateTime? taskDate = tasksList[i].getDate();
-                
+
                 if (taskDate.HasValue)
                 {
                     if (taskDate.Value.CompareTo(date) == 0)
@@ -1821,7 +1854,193 @@ namespace ProjTaskReminder
             return result;
         }
 
+        private bool readDBFromTextFile()
+        {
+            bool result = true;
+            List<string> data;
+            int pos;
+            int posLine;
+            int start;
+            string line;
+            string tmpStr = "";
+            Task task = null;
+
+
+
+            string fileName = Path.Combine(Utils.Utils.LOG_FILE_PATH, "MH_Tasks.txt");
+
+            data = Utils.Utils.TextFileRead(fileName, false);
+
+            if (data == null || data.Count == 0)
+            {
+                Toast.MakeText(MainContext, "לא נמצא קובץ לייבוא מקובץ", ToastLength.Long).Show();
+                return false;
+            }
+
+
+            for (int i = 0; i < TasksList.Count; i++)
+            {
+                task = TasksList[i];
+                DBTaskReminder.DeleteRecord(MainActivity.DB_TABLE_NAME, task.getTaskID());
+            }
+
+
+            TasksList.Clear();
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                line = data[i];
+
+                task = new Task();
+
+                pos = line.IndexOf(CARD_SEPERATOR);     // + LINE_SEPARATOR);
+
+                if (pos > -1)
+                {
+                    try
+                    {
+                        i++;
+                        line = data[i];
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_ID) + WRITE_DB_PREFIX_ID.Length;
+                        tmpStr = tmpStr.Substring(posLine);
+                        task.setTaskID(int.Parse(line));
+
+                        i++;
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_TITLE) + WRITE_DB_PREFIX_TITLE.Length;
+                        tmpStr = tmpStr.Substring(posLine);
+                        task.setTitle(line);
+
+                        i++;
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_DESC) + WRITE_DB_PREFIX_DESC.Length;
+                        tmpStr = tmpStr.Substring(posLine);
+                        task.setDescription(line);
+
+                        i++;
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_DATE) + WRITE_DB_PREFIX_DATE.Length;
+                        tmpStr = tmpStr.Substring(posLine);
+                        task.setDate_due(line);
+
+                        i++;
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_TIME) + WRITE_DB_PREFIX_TIME.Length;
+                        tmpStr = tmpStr.Substring(posLine);
+                        task.setTime_due(line);
+
+                        i++;
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_REPEAT) + WRITE_DB_PREFIX_REPEAT.Length;
+                        tmpStr = tmpStr.Substring(posLine);
+                        task.setRepeat(line);
+
+                        i++;
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_LAST_UPDATE) + WRITE_DB_PREFIX_LAST_UPDATE.Length;
+                        tmpStr = tmpStr.Substring(posLine);
+                        task.setDate_last_update(line);
+
+                        i++;
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_BACKGROUND_COLOR) + WRITE_DB_PREFIX_BACKGROUND_COLOR.Length;
+                        tmpStr = tmpStr.Substring(posLine);
+                        task.setBackgroundColor(line);
+
+
+                        TasksList.Add(task);
+
+                        long recorsWasEffected = DBTaskReminder.RecordInser(task, MainActivity.DB_TABLE_NAME);
+                    }
+                    catch (Exception ex)
+                    {
+                        result = false;
+                        Utils.Utils.WriteToLog("Error in readDBFromTextFile: " + ex.Message + "\n" + ex.StackTrace);
+                        result = false;
+                        return result;
+                    }
+                }
+            }
+
+            CurrentTask = null;
+
+            if (result)
+            {
+                FillList();
+                Toast.MakeText(this, "פעולת ייבוא מקובץ עברה בהצלחה", ToastLength.Long).Show();
+            }
+            else
+            {
+                Toast.MakeText(this, "פעולת ייבוא מקובץ נכשלה", ToastLength.Long).Show();
+            }
+
+            return result;
+        }
+
+        private bool writeDBToTextFile()
+        {
+            string data = "";
+            bool result = true;
+            StringBuilder stringBuilder = new StringBuilder();
+            string line;
+
+
+
+            if (TasksList == null || TasksList.Count == 0)
+            {
+                Toast.MakeText(this, "פעולת ייצוא לקובץ טקסט נכשלה", ToastLength.Long).Show();
+                return false;
+            }
+
+            line = "";
+
+            for (int i = 0; i < TasksList.Count; i++)
+            {
+                try
+                {
+                    Task task = TasksList[i];
+
+                    line = Utils.Utils.LINE_SEPERATOR + CARD_SEPERATOR + Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_ID + task.getTaskID() + Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_TITLE + task.getTitle() + Utils.Utils.LINE_SEPERATOR;
+                    //line += WRITE_DB_PREFIX_DESC + task.getDescriptionWithHtml() + Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_DESC + task.getDescriptionPure() + Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_DATE + task.getDate_due() + Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_TIME + task.getTime_due() + Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_REPEAT + task.getRepeat() + Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_LAST_UPDATE + task.getDate_last_update() + Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_BACKGROUND_COLOR + task.getBackgroundColor() + Utils.Utils.LINE_SEPERATOR;
+
+                    stringBuilder.Append(line);
+                }
+                catch (Exception ex)
+                {
+                    Toast.MakeText(this, "Error in - Export list to text file: " + ex.Message + Utils.Utils.LINE_SEPERATOR + ex.StackTrace, ToastLength.Long).Show();
+                    result = false;
+                    continue;
+                    //break;
+                }
+            }
+
+
+            if (result)
+            {
+                //data = line;
+                data = stringBuilder.ToString();
+
+                string fileName = Path.Combine(Utils.Utils.LOG_FILE_PATH, "MH_Tasks.txt");
+
+                result = Utils.Utils.TextFileSave(fileName, data, false, false);
+
+                if (result)
+                {
+                    Toast.MakeText(this, "פעולת ייצוא לקובץ עברה בהצלחה", ToastLength.Long).Show();
+                }
+            }
+            else
+            {
+                Toast.MakeText(this, "פעולת ייצוא לקובץ נכשלה", ToastLength.Long).Show();
+            }
+        
+
+            return result;
+        }
     }
+
+
 
     public class TaskTimerElapsed
     {
@@ -1956,6 +2175,8 @@ namespace ProjTaskReminder
             timer = null;
 
         }
+
+
     }
 
 }

@@ -29,6 +29,7 @@
         android:layout_height="50dp"
         android:scaleType="fitCenter"
         android:layout_gravity="bottom|end"
+        android:layout_marginTop="5dp"
         android:backgroundTint="@android:color/white"
         android:layout_margin="@dimen/fab_margin"
         android:src="@mipmap/plus2"/>

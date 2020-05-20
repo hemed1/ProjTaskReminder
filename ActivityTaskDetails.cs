@@ -233,6 +233,7 @@ namespace ProjTaskReminder
             //    OnDateChange(sender, null);
             //};
             datePicker1.DateChanged += OnDateChanged; //(sender, e) =>           //new EventHandler(SaveRecord); 
+            //datePicker1.SetOnDateChangedListener()
             //{
             //    sender = CurrentTask;
             //    OnDateChange(sender, null);

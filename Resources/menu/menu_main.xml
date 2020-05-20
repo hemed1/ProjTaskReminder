@@ -18,7 +18,18 @@
       android:id="@+id/menu_db_backup"
       android:orderInCategory="100"
       android:title="גיבוי מסד-נתונים"
-      app:showAsAction="never" />  
-  
-  
+      app:showAsAction="never" />
+
+  <item
+      android:id="@+id/menu_textfile_write"
+      android:orderInCategory="100"
+      android:title="כתיבה לקובץ טקסט"
+      app:showAsAction="never" />
+
+  <item
+      android:id="@+id/menu_textfile_read"
+      android:orderInCategory="100"
+      android:title="קריאה מקובץ טקסט"
+      app:showAsAction="never" />
+
 </menu>

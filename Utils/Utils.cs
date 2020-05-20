@@ -25,15 +25,15 @@ namespace ProjTaskReminder.Utils
 
     public static class Utils
     {
-        public const string             LINE_SEPERATOR = "\n";
-        public static string            LOG_FILE_PATH;
-        public static string            LOG_FILE_NAME;
+        public const string LINE_SEPERATOR = "\n";
+        public static string LOG_FILE_PATH;
+        public static string LOG_FILE_NAME;
 
-        public static string            NEWS_RSS_ADDRESS1 = " http://www.ynet.co.il/Integration/StoryRss1854.xml";
-        public static string            NEWS_RSS_ADDRESS2 = " https://www.kan.org.il/rss/allnews.ashx";
-        public static string            NEWS_RSS_ADDRESS3 = " http://rss.walla.co.il/feed/22";
+        public static string NEWS_RSS_ADDRESS1 = " http://www.ynet.co.il/Integration/StoryRss1854.xml";
+        public static string NEWS_RSS_ADDRESS2 = " https://www.kan.org.il/rss/allnews.ashx";
+        public static string NEWS_RSS_ADDRESS3 = " http://rss.walla.co.il/feed/22";
 
-        private const int               PERMISSIONS_REQUEST_READ_STORAGE = 111;
+        private const int PERMISSIONS_REQUEST_READ_STORAGE = 111;
 
         public static List<KeyValuePair<string, List<string>>> FilesExtra;
 
@@ -46,7 +46,7 @@ namespace ProjTaskReminder.Utils
             string fileName = string.Empty;
             byte[] bytesData;
             FileStream file;
-            StreamWriter fileWriter=null;
+            StreamWriter fileWriter = null;
             string folderBackup = "";
 
 
@@ -54,8 +54,11 @@ namespace ProjTaskReminder.Utils
 
             data = LINE_SEPERATOR + DateTime.Now.ToString("dd/MM/yyyy HH:mm") + LINE_SEPERATOR + data + LINE_SEPERATOR;
             Context context = Android.App.Application.Context;
-            UTF8Encoding encoding = new UTF8Encoding();
 
+            //UTF8Encoding encoding = new UTF8Encoding();
+            //Encoding encoding = new UTF8Encoding(false);
+            Encoding encoding = Encoding.GetEncoding("Windows-1255");
+            //byte[] pass = Encoding.ASCII.GetBytes("šarže");
 
             try
             {
@@ -72,10 +75,10 @@ namespace ProjTaskReminder.Utils
                     fileWriter = new StreamWriter(fileName, appendLines, encoding);
 
                     fileWriter.Write(data);
-                    
+
                     //file = new FileStream(fileName, ((appendLines)?FileMode.Append: FileMode.Create), FileAccess.Write);
                 }
-                catch 
+                catch
                 {
                     folderBackup = Android.OS.Environment.DirectoryMusic;        // "ProjTaskReminder"
                     LOG_FILE_PATH = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
@@ -126,12 +129,12 @@ namespace ProjTaskReminder.Utils
 
 
         /// Get all files - Recorsive
-        public static List<string> GetFolderFiles(string path, string fileExtentionToSearch, bool searchInFolders, string fileExtentionToSearch2="")
+        public static List<string> GetFolderFiles(string path, string fileExtentionToSearch, bool searchInFolders, string fileExtentionToSearch2 = "")
         {
             string file;
             List<string> files = new List<string>();
-            List<KeyValuePair<string, List<string>>> filesResult = new List<KeyValuePair<string, List<string>>>();
-            List<string> directories = new List<string>(); ; 
+            //List<KeyValuePair<string, List<string>>> filesResult = new List<KeyValuePair<string, List<string>>>();
+            List<string> directories = new List<string>(); ;
 
 
 
@@ -140,14 +143,14 @@ namespace ProjTaskReminder.Utils
 
             try
             {
-                directories = Directory.GetDirectories(path).ToList();    
+                directories = Directory.GetDirectories(path).ToList();
             }
             catch (Exception ex)
             {
 
             }
 
-            if (directories == null || directories.Count()==0)
+            if (directories == null || directories.Count() == 0)
             {
                 return files;
             }
@@ -225,7 +228,7 @@ namespace ProjTaskReminder.Utils
 
             try
             {
-                if (dateString.Trim().Equals(""))
+                if (dateString==null ||dateString.Trim().Equals(""))
                 {
                     return result;
                 }
@@ -242,7 +245,7 @@ namespace ProjTaskReminder.Utils
                     minute = int.Parse(dateString.Substring(14, 2));
                 }
 
-                
+
                 dateString = month.ToString().PadLeft(2, '0') + "/" + day.ToString().PadLeft(2, '0') + "/" + year.ToString().PadLeft(4, '0') + " " +
                             hour.ToString().PadLeft(2, '0') + ":" + minute.ToString().PadLeft(2, '0');
 
@@ -251,7 +254,7 @@ namespace ProjTaskReminder.Utils
                 // TODO:: Just to show the real Input Month value in 'Log.D()'
                 //month = month -1;
                 // TODO:: Why
-                
+
                 //// TODO: Meir //result = getDateFixed(year, month - 1, day, hour, minute);
 
                 //Log.d("Util - getDateFromString()", dateString + "  **"+String.valueOf(day)+"**"+String.valueOf(month)+"**"+String.valueOf(year)+"***  Final:" + String.valueOf(result));
@@ -276,8 +279,8 @@ namespace ProjTaskReminder.Utils
             //long timezoneAlteredTime = getDateTimeDiff();
 
 
-          // Make the Hebrew Calendar the current calendar and
-          // Hebrew (Israel) the current thread culture.
+            // Make the Hebrew Calendar the current calendar and
+            // Hebrew (Israel) the current thread culture.
             //HebrewCalendar hc = new HebrewCalendar();
             //CultureInfo culture = CultureInfo.CreateSpecificCulture("he-IL");
             //culture.DateTimeFormat.Calendar = hc;
@@ -522,9 +525,9 @@ namespace ProjTaskReminder.Utils
                 string letter = songName.Substring(i, 1);
 
                 // After Space char - Uppercas letter
-                if (i < songName.Length-1 && letter == " " && songName.Substring(i + 1, 1)!=" " && songName.Substring(i + 1, 1) != "-")
+                if (i < songName.Length - 1 && letter == " " && songName.Substring(i + 1, 1) != " " && songName.Substring(i + 1, 1) != "-")
                 {
-                    result += letter + songName.Substring(i+1, 1).ToUpper();
+                    result += letter + songName.Substring(i + 1, 1).ToUpper();
                     i++;
                 }
                 else if (i > 0 && letter != "-" && (songName.Substring(i - 1, 1) == " " || songName.Substring(i - 1, 1) == "-"))
@@ -534,7 +537,7 @@ namespace ProjTaskReminder.Utils
                 // When '-', make space before and after him
                 else if (letter == "-")
                 {
-                    if (i>0 && songName.Substring(i - 1, 1) != " ")
+                    if (i > 0 && songName.Substring(i - 1, 1) != " ")
                     {
                         result += " " + letter;
                     }
@@ -705,10 +708,10 @@ namespace ProjTaskReminder.Utils
             {
                 //StreamReader streamReader = GetHttpRequest(urlAddress);
                 //string responseObj = streamReader.ReadToEnd();
-                string responseData= GetHttpRequest(urlAddress);
+                string responseData = GetHttpRequest(urlAddress);
                 //xmlReader = XmlReader.Create(streamReader);
                 string name = "NewXmlRss.Xml";
-                string fileFullName= Path.Combine(LOG_FILE_PATH, name);
+                string fileFullName = Path.Combine(LOG_FILE_PATH, name);
 
                 FileStream file = new FileStream(fileFullName, FileMode.Create, FileAccess.Write);
                 byte[] bytesData = Encoding.UTF8.GetBytes(responseData);        // Encoding.UTF8..ASCII.GetBytes(data);  // encoding="ISO-8859-1
@@ -788,7 +791,7 @@ namespace ProjTaskReminder.Utils
 
                     try
                     {
-                        if (node.ChildNodes.Count>1)
+                        if (node.ChildNodes.Count > 1)
                         {
                             if (node.SelectSingleNode("title") != null)
                             {
@@ -807,7 +810,7 @@ namespace ProjTaskReminder.Utils
                                     dateString = dateString.Replace("Z", " ");
                                     xmlItem.PublishDateString = dateString;
                                     string[] dateParts = dateString.Split("-");
-                                    if (dateParts!=null && dateParts.Length>1)
+                                    if (dateParts != null && dateParts.Length > 1)
                                     {
                                         try
                                         {
@@ -870,21 +873,124 @@ namespace ProjTaskReminder.Utils
 
             return result;
         }
-        public class XmlItem
+
+        public static List<string> TextFileRead(string fileName, bool showMessage = true)
         {
-            public string Title { get; set; }
-            public string Description { get; set; }
-            public string PublishDateString { get; set; }
-            public DateTime PublishDate { get; set; }
-            public string Link { get; set; }
-            public string Image { get; set; }
+            string line = null;
+            string file = "";
+            List<string> resultList = new List<string>();
 
 
-            public XmlItem()
+
+            try
             {
+                List<string> files = Directory.GetFiles(fileName).ToList();       //, fileExtentionToSearch).ToList();
 
+                //file = new File(fileName);
+                if (files.Count > 0)
+                {
+                    file = files[0];
+                }
+
+                if (file.Equals(""))
+                {
+                    string message = "קובץ טקסט לא נמצא בדיסק" + " - " + fileName;
+                    Toast.MakeText(context, message, ToastLength.Long).Show();
+                    return null;
+                }
+
+                //UTF8Encoding encoding = new UTF8Encoding();
+                Encoding encoding = new UTF8Encoding(false);
+                //Encoding encoding = Encoding.GetEncoding("Windows-1255");
+
+                StreamReader fileInputStream = new StreamReader(fileName, encoding);
+                StringBuilder stringBuilder = new StringBuilder();
+                //FileInputStream fileInputStream = new FileInputStream(fileName);
+                //InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+                //BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                resultList = new List<string>();
+
+                while (!fileInputStream.EndOfStream)
+                {
+                    line = fileInputStream.ReadLine();
+                    byte[] bytes = Encoding.ASCII.GetBytes(line + LINE_SEPERATOR);       // "šarže");
+                    char[] chars = Encoding.ASCII.GetChars(bytes);
+                    line = Encoding.ASCII.GetString(bytes);
+                    
+                    stringBuilder.Append(chars);
+                    //stringBuilder.Append(line + LINE_SEPERATOR);
+                    resultList.Add(line);
+                }
+
+                fileInputStream.Close();
+                //bufferedReader.Close();
+                //TODO: inputStreamReader.close();
+
+                //lines = (String[])resultList.toArray();
+                //line = stringBuilder.toString();
+
+                if (showMessage)
+                {
+                    Toast.MakeText(context, "קריאה מקובץ טקסט עבר בהצלחה", ToastLength.Long).Show();
+                }
             }
+            catch (Exception ex)     //  FileNotFoundException ex)
+            {
+                Toast.MakeText(context, "קריאה מקובץ טקסט נכשל" + " - " + ex.Message, ToastLength.Long).Show();
+                resultList = null;
+            }
+
+            return resultList;
         }
+
+        public static bool TextFileSave(string fileName, string data, bool appendLines, bool showMessage)
+        {
+            bool result = false;
+
+
+
+
+            try
+            {
+                if (!Directory.GetParent(fileName).Exists)
+                {
+                    Toast.MakeText(context, "saveToFile - Directory not exist. Create Directory", ToastLength.Short).Show();
+                    Directory.CreateDirectory(Directory.GetParent(fileName).Name);
+                }
+
+                //UTF8Encoding encoding = new UTF8Encoding();
+                Encoding encoding = new UTF8Encoding(false);
+                //Encoding encoding = Encoding.GetEncoding("Windows-1255");
+                byte[] bytes = Encoding.ASCII.GetBytes(data);       // + LINE_SEPERATOR);       // "šarže");
+                char[] chars = Encoding.ASCII.GetChars(bytes);
+
+                StreamWriter fileOutputStream = new StreamWriter(fileName, appendLines, encoding);
+                fileOutputStream.Write(chars);
+                //fileOutputStream.Write(data + LINE_SEPERATOR);
+
+                if (showMessage)
+                {
+                    Toast.MakeText(context, "שמירה לקובץ" + " '" + fileName + "' " + "עברה בהצלחה", ToastLength.Long).Show();
+                }
+
+                fileOutputStream.Close();
+
+                result = true;
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(context, "Error in saveToFile" + ex.Message, ToastLength.Long).Show();
+                WriteToLog("Error in saveToFile(): " + fileName + "\n" + ex.Message);
+            }
+
+            return result;
+        }
+
+
+
+
+
 
         //private void RequestPermissions()
         //{
@@ -934,7 +1040,7 @@ namespace ProjTaskReminder.Utils
 
         //    activity.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         //}
-        
+
         //public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
         //{
         //    switch (requestCode)
@@ -972,4 +1078,21 @@ namespace ProjTaskReminder.Utils
         //}
 
     }
+
+    public class XmlItem
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string PublishDateString { get; set; }
+        public DateTime PublishDate { get; set; }
+        public string Link { get; set; }
+        public string Image { get; set; }
+
+
+        public XmlItem()
+        {
+
+        }
+    }
+
 }

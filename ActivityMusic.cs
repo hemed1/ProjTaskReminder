@@ -115,7 +115,7 @@ namespace ProjTaskReminder
         {
             float textSize = lblSongName.TextSize;
 
-            return (int)((22*32)/textSize); 
+            return (int)((61*32)/textSize); 
         }
 
         private void LoadSongsFilesFromPhone()
@@ -217,7 +217,6 @@ namespace ProjTaskReminder
 
             //ListPositionIndex = 0;
             //ListItemsRecycler = new List<KeyValuePair<string, ListItemSong>>();
-            //ListItemsPath = new List<KeyValuePair<string, List<string>>>();
 
 
             //string folderNameMusic = Android.OS.Environment.DirectoryMusic;
@@ -347,10 +346,10 @@ namespace ProjTaskReminder
             IsFolderButtonPressed = true;
             lblSongsListCaption.Text = "רשימת תיקיות";
 
-            if (SongFoldersList == null || SongFoldersList.Count == 0)
-            {
+            //if (SongFoldersList == null || SongFoldersList.Count == 0)
+            //{
                 SongFoldersList = FillSongsFolders();
-            }
+            //}
 
             ShowSongsListView(SongFoldersList);
         }
@@ -604,7 +603,6 @@ namespace ProjTaskReminder
                 Android.Net.Uri uri = Android.Net.Uri.Parse(songPath);
 
 
-                //mediaPlayer = new MediaPlayer();
                 mediaPlayer = MediaPlayer.Create(this, uri);
                 //mediaPlayer = MediaPlayer.Create(this, resourceID); 
 
@@ -640,6 +638,10 @@ namespace ProjTaskReminder
 
         public void MusicPlay()
         {
+
+            ScrollSongName.Stop();
+            ScrollPictures.Stop();
+
             if (mediaPlayer == null)
             {
                 return;
@@ -647,9 +649,6 @@ namespace ProjTaskReminder
 
             try
             {
-                ScrollSongName.Stop();
-                ScrollPictures.Stop();
-
                 mediaPlayer.Start();
 
                 isPlayingNow = true;
@@ -711,6 +710,27 @@ namespace ProjTaskReminder
                     result = false;
                     mediaPlayer = null;
                 }
+            }
+
+            if (ListItemsPath != null)
+            {
+                ListItemsPath.Clear();
+                ListItemsPath = null;
+            }
+            if (ListItemsRecycler != null)
+            {
+                ListItemsRecycler.Clear();
+                ListItemsRecycler = null;
+            }
+            if (ListItemsRecyclerBackup != null)
+            {
+                ListItemsRecyclerBackup.Clear();
+                ListItemsRecyclerBackup = null;
+            }
+            if (Utils.Utils.FilesExtra != null)
+            {
+                Utils.Utils.FilesExtra.Clear();
+                Utils.Utils.FilesExtra = null;
             }
 
             result = (mediaPlayer == null);
