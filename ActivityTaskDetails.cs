@@ -36,7 +36,50 @@ namespace ProjTaskReminder
         private DatePicker datePicker1;
         private TimePicker timePicker1;
 
+        private string bkuTitle;
+        private string bkuDescription;
+        private string bkuDateDue;
+        
 
+        public static bool isNewMode;
+        private Intent inputIntent;
+        private int taskID;
+        private bool IsUpdateDialogDate;
+        private bool IsSaveNeededBeforeExit = true;
+
+
+        public static Context context;
+        public static event EventHandler OnSaveButton;
+        public static event Action<int, Result, Intent> OnExitResult;
+        
+
+
+        ///public static DatabaseHandler dbHandler;
+        //public DBTaskReminder dbHandler;
+        //private bool isShowSaveDialog;
+        //public static MainActivity mainActivity;
+        //private static Menu CurrentMenu;
+        //private const int RESULT_EXIT_UPDATED = 0;  // RESULT_OK;
+        //private const int RESULT_EXIT_DELETE = 0;   // RESULT_OK;
+        //private const int RESULT_EXIT = 1;          // RESULT_CANCELED;
+        //private const int RESULT_HTML_EDIT = 996;
+        //private int returnResult;
+        //private Intent returnedIntent;
+        //private bool isSaved;
+        //private bool isChangesMade = false;
+        //private string oldTitle;
+        //private string oldDescription;
+        //private string oldDate;
+        //private string oldTime;
+        //private string oldColor;
+        //private bool oldIsArchive;
+        //private static int RichTextForeColor = 0;
+        //private static int RichTextBackColor = 0;
+        //private static SpannableString      currentSpannableString;
+        //private static ParcelableSpan[] currentParcelableSpan;
+        //private ArrayMap<Object, ParcelableSpan> currentSpannableMap;
+        //private MainActivityServices mainActivityServices;
+        //private RichTextHandle richTextHandle;
         //private TextView txtDetailsDateDay;
         //private TextView txtDetailsRepeat;
         //private TextView lblDetailsLastUpdateValue;
@@ -66,53 +109,6 @@ namespace ProjTaskReminder
         //private ConstraintLayout layoutMain;
 
         //public static Drawable ExternalDrawable;
-        public static bool isNewMode;
-        ////public static DatabaseHandler dbHandler;
-        //public DBTaskReminder dbHandler;
-        //private bool isShowSaveDialog;
-        public static Context context;
-        //public static MainActivity mainActivity;
-        //private static Menu CurrentMenu;
-
-        //private const int RESULT_EXIT_UPDATED = 0;  // RESULT_OK;
-        //private const int RESULT_EXIT_DELETE = 0;   // RESULT_OK;
-        //private const int RESULT_EXIT = 1;          // RESULT_CANCELED;
-        //private const int RESULT_HTML_EDIT = 996;
-        //private int returnResult;
-        //private Intent returnedIntent;
-        //private bool isSaved;
-        //private bool isChangesMade = false;
-        //private string oldTitle;
-        //private string oldDescription;
-        //private string oldDate;
-        //private string oldTime;
-        //private string oldColor;
-        //private bool oldIsArchive;
-
-
-        //private static PersonalEvents.OnSaveButton listenerSaveButton;
-        //private static PersonalEvents.OnDeleteButton listenerDeleteButton;
-
-
-        //private static int RichTextForeColor = 0;
-        //private static int RichTextBackColor = 0;
-
-        //private static SpannableString      currentSpannableString;
-        //private static ParcelableSpan[] currentParcelableSpan;
-        //private ArrayMap<Object, ParcelableSpan> currentSpannableMap;
-        //private MainActivityServices mainActivityServices;
-        //private RichTextHandle richTextHandle;
-
-        //public event btnSave_Click2(object sender, EventArgs eventArgs);
-        //private static OnSaveButtonInterface listenerSaveButton;
-
-        public static event EventHandler OnSaveButton;
-        public static event Action<int, Result, Intent> OnExitResult;
-        private Intent inputIntent;
-        private int taskID;
-        private bool IsUpdateDialogDate;
-        private bool IsSaveNeededBeforeExit = true;
-
 
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -156,6 +152,7 @@ namespace ProjTaskReminder
             else
             {
                 //txtDetailsDescription.RequestFocus();
+                txtDetailsDescription.RequestFocusFromTouch();
                 //Utils.Utils.closeKeyboard();
             }
 
@@ -217,7 +214,7 @@ namespace ProjTaskReminder
                 SaveRecord(CurrentTask);
             };
 
-            btnDelete.Click += (sender, e) =>           //new EventHandler(SaveRecord); 
+            btnDelete.Click += (sender, e) =>           //new EventHandler(DeleteRecord); 
             {
                 DeleteRecord(CurrentTask);
             };
@@ -227,12 +224,18 @@ namespace ProjTaskReminder
                 OpenDatePicker();
             };
 
-            //datePicker1.SetOnDateChangedListener+=OnDateChanged;           //new EventHandler(SaveRecord); 
+            //datePicker1.SetOnDateChangedListener+=OnDateChanged; 
             //{
             //    sender = CurrentTask;
             //    OnDateChange(sender, null);
             //};
+
             datePicker1.DateChanged += OnDateChanged; //(sender, e) =>           //new EventHandler(SaveRecord); 
+
+            //datePicker1.DateChanged += (sender, e) =>
+            //{
+            //    OnDateChanged(sender, e);
+            //};
             //datePicker1.SetOnDateChangedListener()
             //{
             //    sender = CurrentTask;
@@ -329,7 +332,7 @@ namespace ProjTaskReminder
 
             if (OnExitResult != null)
             {
-                OnExitResult(999, Result.Ok, inputIntent);
+                OnExitResult(MainActivity.SCREEN_TASK_DETAILS_DELETE, Result.Ok, inputIntent);
             }
 
             Finish();
@@ -339,17 +342,20 @@ namespace ProjTaskReminder
         {
             bool result = true;
             long recorsWasEffected = 0;
+            TBL_Tasks item = null;
 
 
 
             IsSaveNeededBeforeExit = false;
 
+            if (!IsDataWasChanged())
+            {
+                return result;
+            }
+
             SetObjectByControls();
 
-            //TODO: if changes was made
-            //IsSaveNeededBeforeExit = true;
-
-            TBL_Tasks item;
+            
 
             // only insert the data if it doesn't already exist
             if (isNewMode)
@@ -413,7 +419,7 @@ namespace ProjTaskReminder
                     // Second option to - Raise the event to the Caller
                     if (OnExitResult != null)
                     {
-                        OnExitResult(MainActivity.SHOW_SCREEN_TASK_DETAILS, Result.Ok, inputIntent);
+                        OnExitResult(MainActivity.SCREEN_TASK_DETAILS_SAVED, Result.Ok, inputIntent);
                     }
                 }
                 else
@@ -431,6 +437,19 @@ namespace ProjTaskReminder
             }
 
             return result;
+        }
+
+        private bool IsDataWasChanged()
+        {
+            if ((string.IsNullOrEmpty(txtDetailsTitle.Text.Trim()) && string.IsNullOrEmpty(txtDetailsDescription.Text.Trim())) || 
+                (txtDetailsTitle.Text==bkuTitle &&
+                 txtDetailsDescription.Text==bkuDescription &&
+                 lblDateTime.Text == bkuDateDue))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         //private void OnActivityResult(int requestCode, Result resultCode, Intent data)
@@ -467,9 +486,9 @@ namespace ProjTaskReminder
 
         private void SetControlsByObject()
         {
-            txtDetailsTitle.Text = CurrentTask.getTitle();
-            txtDetailsDescription.Text = CurrentTask.getDescriptionWithHtml();
-            lblDateTime.Text = CurrentTask.getDate_due() + " " + CurrentTask.getTime_due();
+            txtDetailsTitle.Text = bkuTitle = CurrentTask.getTitle();
+            txtDetailsDescription.Text = bkuDescription = CurrentTask.getDescriptionWithHtml();
+            lblDateTime.Text = bkuDateDue = CurrentTask.getDate_due() + " " + CurrentTask.getTime_due();
             txtDetailsDate.Text = CurrentTask.getDate_due();
             txtDetailsTime.Text = CurrentTask.getTime_due();
         }
@@ -486,12 +505,6 @@ namespace ProjTaskReminder
             base.OnDestroy();
         }
 
-
-        // Assign the listener implementing events interface that will receive the events
-        //public static void OnSaveButton(OnSaveButtonInterface listener)
-        //{
-        //    listenerSaveButton = listener;
-        //}
 
     }
 

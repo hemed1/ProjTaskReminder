@@ -54,7 +54,7 @@ namespace ProjTaskReminder
         private int PICS_TIMER_INTERVAL = 200;
         private int PICS_TIMER_SCROLL_DELTA = 5;
         private int PICS_TIMER_SCROLL_END_POINT;
-        private int SONG_NAME_LIMIT_TO_SCROLL = 32;
+        private int SONG_NAME_CHARS_LENGTH_TO_SCROLL = 32;
         private HorizontalScrollView scrHorizonPics;
         private HorizontalScrollView scrHorizonSongName;
         private event Action ActionOnPicsScrolling;
@@ -85,7 +85,7 @@ namespace ProjTaskReminder
 
             SetControlsIO();
 
-            SONG_NAME_LIMIT_TO_SCROLL = GetCharsCountPerFontSize(lblSongName);
+            SONG_NAME_CHARS_LENGTH_TO_SCROLL = GetCharsCountPerFontSize(lblSongName);
 
             if (mediaPlayer == null)
             {
@@ -165,7 +165,7 @@ namespace ProjTaskReminder
                 fileName = fileName.Substring(0, fileName.Length - 4);
                 
                 int pos = fileName.IndexOf("-");
-                if (pos>-1 && pos>3)
+                if (pos>-1 && pos>5)
                 {
                     artist = fileName.Substring(0, pos - 1);
                 }
@@ -656,7 +656,7 @@ namespace ProjTaskReminder
                 btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPause);
 
                 ScrollPictures.Start();
-                if (lblSongName.Text.Length > SONG_NAME_LIMIT_TO_SCROLL)
+                if (lblSongName.Text.Length > SONG_NAME_CHARS_LENGTH_TO_SCROLL)
                 {
                     ScrollSongName.Start();
                 }
@@ -786,11 +786,16 @@ namespace ProjTaskReminder
             lblAlbum.Text = GetFolderNameFromPath(item.getSongPath());
 
             //ScrollSongName.StartPosstion();
-            scrHorizonSongName.FullScroll(FocusSearchDirection.Forward);
+            
 
-            if (lblSongName.Text.Length > SONG_NAME_LIMIT_TO_SCROLL)
+            if (lblSongName.Text.Length > SONG_NAME_CHARS_LENGTH_TO_SCROLL)
             {
+                scrHorizonSongName.FullScroll(FocusSearchDirection.Right);
                 ScrollSongName.Start();
+            }
+            else
+            {
+                scrHorizonSongName.FullScroll(FocusSearchDirection.Right);
             }
 
             UpdateProgressControls();

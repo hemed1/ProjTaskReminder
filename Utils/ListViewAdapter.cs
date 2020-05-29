@@ -1,4 +1,4 @@
-﻿//package ;
+﻿
 
 using System;
 using System.Collections.Generic;
@@ -18,26 +18,19 @@ using ProjTaskReminder.Utils;
 using ProjTaskReminder.Model;
 using Android.Support.V7.Widget;
 using ProjTaskReminder;
-//using Android.App.Activity;
-//using Android.Content;
-//using Android.
+
+
 
 namespace ProjTaskRemindet.Utils
 {
     public class ListViewAdapter : BaseAdapter      //RecyclerView.Adapter    
     {
         private readonly Context context;
-        //private MainActivity mainActivity;
-        //private List<Task> TaskList;
-        public List<Task> TaskList;
-
-        //private Resources resources;
-        //private int selectMode = 0;
-        //private int selectedItemsCount;
-
+        private readonly Object ItemsList;
+        //private List<Task> ItemsList;
         private LayoutInflater layoutInflater;
 
-        //public override int Count => 21;
+        
 
         public event EventHandler SetOnClickListener;
         public event EventHandler SetOnItemClick;
@@ -50,12 +43,21 @@ namespace ProjTaskRemindet.Utils
         /// </summary>
         public int MethodNumberToSetViewControls { get; set; }
 
+
+        //private Resources resources;
+        //private int selectMode = 0;
+        //private int selectedItemsCount;
+        //private MainActivity mainActivity;
+        
+        //public override int Count => 21;
         //public abstract bool SetControlsInView(int position, View convertView, ViewGroup parent);
 
-        public ListViewAdapter(Context applicationContext, List<Task> itemsList)
+
+
+        public ListViewAdapter(Context applicationContext, Object itemsList)
         {
             this.context = applicationContext;
-            TaskList = itemsList;
+            ItemsList = itemsList;
 
             layoutInflater = LayoutInflater.From(this.context);
 
@@ -63,10 +65,10 @@ namespace ProjTaskRemindet.Utils
             MethodNumberToSetViewControls = 1;
         }
 
-        public ListViewAdapter(Context applicationContext, List<Task> itemsList, int methodNumberToSetViewControls)
+        public ListViewAdapter(Context applicationContext, Object itemsList, int methodNumberToSetViewControls)
         {
             this.context = applicationContext;
-            TaskList = itemsList;
+            ItemsList = itemsList;
 
             layoutInflater = LayoutInflater.From(this.context);
 
@@ -78,7 +80,7 @@ namespace ProjTaskRemindet.Utils
         {
             get
             {
-                return this.TaskList.Count;
+                return GetListObject().Count();
             }
         }
 
@@ -86,60 +88,55 @@ namespace ProjTaskRemindet.Utils
         //{
         //    get
         //    {
-        //        return TaskList.Count;
+        //        return GetListObject().Count();
         //    }
         //}
 
         //public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         //{
         //    ListViewHolder listViewHolder = (ListViewHolder)holder;
+              //if (listViewHolder!=null && position >= 0 && position<GetListObject().Count())
+              //{
+              //      // Set controls in CradView with Object props Outsiderly (In Client source code)
+              //      SetControlsInView(listViewHolder, position);
+              //}
 
-        //    if (position < TaskList.Count)
-        //    {
-        //        Task task = TaskList[position];
-        //        listViewHolder.title.SetText(task.getTitle(), TextView.BufferType.Normal);
-        //        listViewHolder.description.SetText(task.getDescription(), TextView.BufferType.Normal);
-        //        listViewHolder.date_due.SetText(task.getDate_due(), TextView.BufferType.Normal);
-        //    }
-        //}
+    //    if (position < GetListObject().Count)
+    //    {
+    //        Task task = GetListObject()[position];
+    //        listViewHolder.title.SetText(task.getTitle(), TextView.BufferType.Normal);
+    //        listViewHolder.description.SetText(task.getDescription(), TextView.BufferType.Normal);
+    //        listViewHolder.date_due.SetText(task.getDate_due(), TextView.BufferType.Normal);
+    //    }
+    //}
 
-        //public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
-        //{
-        //    View convertView = layoutInflater.Inflate(ProjTaskReminder.Resource.Layout.list_item, parent, false);
+    //public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
+    //{
+    //    View convertView = layoutInflater.Inflate(ProjTaskReminder.Resource.Layout.list_item, parent, false);
+    //    ListViewHolder viewHolder = new ListViewAdapter.ListViewHolder(convertView);        //, context);
+    //    return viewHolder;
+    //}
 
-
-        //    ListViewHolder viewHolder = new ListViewAdapter.ListViewHolder(convertView);        //, context);
-
-        //    return viewHolder;
-        //}
-
-        public override Java.Lang.Object GetItem(int position)
+    public override Java.Lang.Object GetItem(int position)
         {
+            View view = (View)this.GetItem(position);
+
+            //View view = layoutInflater.Inflate(ProjTaskReminder.Resource.Layout.list_item, null);
             //View convertView = layoutInflater.Inflate(ProjTaskReminder.Resource.Layout.list_item, parent, false);
 
-            //ListViewHolder viewHolder = new ListViewAdapter.ListViewHolder(convertView);        //, context);
-
-            //    return viewHolder;
-
-            View view = (View)this.GetItem(position);
-            
-            //View view = layoutInflater.Inflate(ProjTaskReminder.Resource.Layout.list_item, null);
-
-            //view.FindViewById(R.id.gv_players);
-
-            return view;    // view;    // TaskList[position];  // null;
+            return view;       // GetListObject()[position];  // null;
         }
 
         public override long GetItemId(int position)
         {
             long res = 0;
 
-            if (position > -1 && position < TaskList.Count)
+            if (position > -1 && position < GetListObject().Count())
             {
-                //res = TaskList[position].getTaskID();
+                //res = ItemsList[position].getTaskID();
             }
 
-            return 0;   // res;
+            return res;
         }
 
         public override View GetView(int position, View convertView, ViewGroup parent)
@@ -154,9 +151,9 @@ namespace ProjTaskRemindet.Utils
                     convertView = layoutInflater.Inflate(ViewResourcesID, parent, false);
                 }
 
-                if (position >= 0 && position < TaskList.Count)
+                if (position >= 0 && position < GetListObject().Count())
                 {
-                    listViewHolder = new ListViewAdapter.ListViewHolder(convertView, position, TaskList);        //, context);
+                    listViewHolder = new ListViewAdapter.ListViewHolder(convertView, position, ItemsList);        //, context);
                 }
             }
             catch (Exception ex)
@@ -165,9 +162,9 @@ namespace ProjTaskRemindet.Utils
             }
 
             
-
-            if (listViewHolder!=null && position >= 0 && position < TaskList.Count)
+            if (listViewHolder!=null && position >= 0 && position < GetListObject().Count())
             {
+                // Set controls in CradView with Object props Outsiderly (In Client source code)
                 SetControlsInView(listViewHolder, position);
             }
 
@@ -176,21 +173,26 @@ namespace ProjTaskRemindet.Utils
             return convertView;
         }
 
-        public void SetControlsInView(ListViewHolder listViewHolder, int position)        // override 
+        private IEnumerable<Object> GetListObject()
+        {
+            return ((IEnumerable<Object>)ItemsList);
+
+        }
+
+        /// <summary>
+        /// Set controls in CradView with Object props Outsiderly (In Client source code)
+        /// </summary>
+        /// <param name="listViewHolder"></param>
+        /// <param name="position"></param>
+        public void SetControlsInView(ListViewHolder listViewHolder, int position)  
         {
 
             if (OnListItemControlsView != null)
             {
+                // Rase evnt in client source code
                 OnListItemControlsView(listViewHolder, position);
             }
 
-            //Task task = TaskList[position];
-            //listViewHolder.title.SetText(task.getTitle(), TextView.BufferType.Normal);
-            //listViewHolder.description.SetText(task.getDescriptionWithHtml(), TextView.BufferType.Normal);
-            //if (!task.getDate_due().Equals(""))
-            //{
-            //    listViewHolder.date_due.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
-            //}
         }
 
         public class ListViewHolder // : RecyclerView.ViewHolder
@@ -204,12 +206,12 @@ namespace ProjTaskRemindet.Utils
             private int ItemPosition { get; set; }
 
 
-            public ListViewHolder(View convertView, int position, List<Task> tasks)     //: base(convertView) //, Context containerContext) 
+            public ListViewHolder(View convertView, int position, Object itemsList)     // List<Task> : base(convertView) //, Context containerContext) 
             {
                 //int position = 2;   // this.ItemPosition;   // this.Position
                 ItemPosition = position;
                 
-                if (convertView != null && position >= 0 && position < tasks.Count)
+                if (convertView != null && position >= 0 && position < ((IEnumerable<Object>)itemsList).Count())
                 {
                     try
                     {
@@ -289,7 +291,7 @@ namespace ProjTaskRemindet.Utils
 
         //public  int Count2()  // override
         //{
-        //    return TaskList.Count;
+        //    return ItemsList.Count;
         //}
 
        

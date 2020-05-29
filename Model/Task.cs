@@ -59,11 +59,10 @@ namespace ProjTaskReminder.Model
         //    return timer;
         //}
 
-        public void setTimer(System.Threading.Thread timer)  //Java.Util.Timer timer)
-        //public void setTimer(System.Timers.Timer timer)  //Java.Util.Timer timer)
-        {
-            //this.timer = (timer;
-        }
+        //public void setTimer(System.Threading.Thread timer)  //Java.Util.Timer timer)
+        //{
+        //    this.timer = timer;
+        //}
 
         public System.Timers.Timer getTimer()  // | Java.Util.Timer
         {
