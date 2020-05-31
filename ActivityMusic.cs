@@ -21,6 +21,8 @@ using System.Timers;
 using System.IO;
 using ProjTaskRemindet.Utils;
 
+
+
 namespace ProjTaskReminder
 {
     [Activity(Label = "ActivityMusic", Theme = "@style/AppTheme.NoActionBar")]
@@ -67,8 +69,8 @@ namespace ProjTaskReminder
         private static List<KeyValuePair<string, List<string>>> ListItemsPath;
         private static List<KeyValuePair<string, ListItemSong>> ListItemsRecycler;
         private static List<KeyValuePair<string, ListItemSong>> ListItemsRecyclerBackup;
-        private static List<Task> SongFoldersList;
-        private static List<Task> SongNamesList;
+        private  List<ListItemSong> SongFoldersList;
+        private  List<ListItemSong> SongNamesList;
         private static int ListPositionIndex = 0;
         private static int CurrentSongPosition;
         private bool isPlayingNow;
@@ -115,7 +117,7 @@ namespace ProjTaskReminder
         {
             float textSize = lblSongName.TextSize;
 
-            return (int)((61*32)/textSize); 
+            return (int)((62*32)/textSize); 
         }
 
         private void LoadSongsFilesFromPhone()
@@ -165,7 +167,7 @@ namespace ProjTaskReminder
                 fileName = fileName.Substring(0, fileName.Length - 4);
                 
                 int pos = fileName.IndexOf("-");
-                if (pos>-1 && pos>5)
+                if (pos>-1 && pos<2)
                 {
                     artist = fileName.Substring(0, pos - 1);
                 }
@@ -213,7 +215,7 @@ namespace ProjTaskReminder
             cardFilesList = (Android.Support.V7.Widget.CardView)FindViewById(Resource.Id.cardFilesList);
             cardFilesList.Visibility = ViewStates.Invisible;
             lstFiles = (ListView)FindViewById(Resource.Id.lstFiles);
-            lstFiles.ItemClick += OnFolderItemClick;
+            //lstFiles.ItemClick += ListSongOrFolder_ItemClick;
 
             //ListPositionIndex = 0;
             //ListItemsRecycler = new List<KeyValuePair<string, ListItemSong>>();
@@ -273,20 +275,29 @@ namespace ProjTaskReminder
             ListItemsRecyclerBackup = new List<KeyValuePair<string, ListItemSong>>();
         }
 
-        private void OnFolderItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        private void ListSongOrFolder_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
+            ChooseFileItem(e.Position);
+        }
 
+        private void ListSongOrFolder_ItemClick(ListViewAdapter.ListViewHolder listViewHolder, int position)
+        {
+            ChooseFileItem(position);
+        }
+
+        private void ChooseFileItem(int position)
+        { 
             RestoreSongsList();
 
             if (IsFolderButtonPressed)
             {
-                string path = SongFoldersList[e.Position].getDate_due();
+                string path = SongFoldersList[position].getSongPath();
                 ListItemsRecycler = ListItemsRecycler.Where(a => a.Value.getSongPath() == path).ToList();
                 ListPositionIndex = 0;
             }
             else
             {
-                string fullSongPath = SongNamesList[e.Position].getDate_due()+"/" + SongNamesList[e.Position].getTitle();
+                string fullSongPath = System.IO.Path.Combine(SongNamesList[position].getSongPath(), SongNamesList[position].getSongName());
                 ListPositionIndex = GetSongIndexInList(fullSongPath);
                 if (ListPositionIndex==-1)
                 {
@@ -304,27 +315,27 @@ namespace ProjTaskReminder
         private void OnListViewSetControls(ListViewAdapter.ListViewHolder listViewHolder, int position)
         {
 
-            Task item = null;
+            ListItemSong item = null;
 
             if (IsFolderButtonPressed)
             {
                 item = SongFoldersList[position];
-                string path = item.getDescriptionPure();
-                string fileName = item.getTitle();
+                string path = GetFolderNameFromPath(item.getSongPath());
+                string fileName = item.getSongName();
 
-                listViewHolder.title.SetText(fileName, TextView.BufferType.Normal);
-                listViewHolder.description.SetText(path, TextView.BufferType.Normal);
-                listViewHolder.date_due.SetText(item.getDate_due(), TextView.BufferType.Normal);
+                listViewHolder.title.SetText(path, TextView.BufferType.Normal);
+                listViewHolder.description.SetText(item.getArtist(), TextView.BufferType.Normal);
+                listViewHolder.date_due.SetText(item.getSongPath(), TextView.BufferType.Normal);
             }
             else
             {
                 item = SongNamesList[position];
-                string songLenght = item.getDescriptionPure();
-                string songName = item.getTitle();
+                string songLenght = (item.getDuration()=="") ? item.getArtist() : item.getDuration();
+                string songName = item.getSongName();
 
                 listViewHolder.title.SetText(songName, TextView.BufferType.Normal);
                 listViewHolder.description.SetText(songLenght, TextView.BufferType.Normal);
-                listViewHolder.date_due.SetText(item.getDate_due(), TextView.BufferType.Normal);
+                listViewHolder.date_due.SetText(item.getSongPath(), TextView.BufferType.Normal);
             }
         }
 
@@ -333,10 +344,11 @@ namespace ProjTaskReminder
             IsFolderButtonPressed = false;
             lblSongsListCaption.Text = "רשימת כל השירים";
 
-            if (SongNamesList == null || SongNamesList.Count == 0)
-            {
-                SongNamesList = FillSongsNames();
-            }
+            //if (SongNamesList == null || SongNamesList.Count == 0)
+            //{
+            SongNamesList = ListItemsRecycler.Select(a => a.Value).ToList();
+            //List<ListItemSong> SongNamesList = FillSongsNames();
+            //}
 
             ShowSongsListView(SongNamesList);
         }
@@ -348,14 +360,14 @@ namespace ProjTaskReminder
 
             //if (SongFoldersList == null || SongFoldersList.Count == 0)
             //{
-                SongFoldersList = FillSongsFolders();
+             SongFoldersList = FillSongsFolders();
             //}
 
             ShowSongsListView(SongFoldersList);
         }
 
         [Obsolete]
-        private void ShowSongsListView(List<Task> list)
+        private void ShowSongsListView(List<ListItemSong> list)
         { 
             if (cardFilesList.Visibility == ViewStates.Visible)
             {
@@ -368,16 +380,18 @@ namespace ProjTaskReminder
             lstFiles.BringToFront();
             lstFiles.FocusedByDefault = true;
 
-            ListViewAdapter listViewAdapter = new ListViewAdapter(context, list, 2);
+            ListViewAdapter listViewAdapter = new ListViewAdapter(context, list);
 
-            listViewAdapter.OnListItemControlsView += OnListViewSetControls;
+            listViewAdapter.OnListItemSetControlsInView += OnListViewSetControls;
+            listViewAdapter.OnItemClick += ListSongOrFolder_ItemClick;
+
             lstFiles.SetAdapter(listViewAdapter);
             listViewAdapter.NotifyDataSetChanged();
         }
 
-        private List<Task> FillSongsFolders()
+        private List<ListItemSong> FillSongsFolders()
         {
-            List<Task> list = new List<Task>();
+            List<ListItemSong> list = new List<ListItemSong>();
 
 
             RestoreSongsList();
@@ -389,18 +403,25 @@ namespace ProjTaskReminder
             for (int i = 0; i < paths.Count; i++)
             {
                 string path = paths[i];
-                string parentPath = GetFolderNameFromPath(path);
+                string parentPathName = GetFolderNameFromPath(path);
 
                 try
                 {
                     string songsCount = ListItemsRecycler.Count(a => a.Value.getSongPath() == path).ToString() + " " + "שירים";
 
-                    Task task = new Task();
-                    task.setTitle(parentPath);
-                    task.setDescriptionPure(songsCount);
-                    task.setDate_due(path);
+                    ListItemSong listItemSong = new ListItemSong();
 
-                    list.Add(task);
+                    listItemSong.setSongName(parentPathName);       // First line
+                    listItemSong.setArtist(songsCount.ToString());  // Second line - Song count
+                    listItemSong.setSongPath(path);                 // Third line
+                    
+
+                    //Task task = new Task();
+                    //task.setTitle(parentPathName);
+                    //task.setDescriptionPure(songsCount);
+                    //task.setDate_due(path);
+
+                    list.Add(listItemSong);
                 }
                 catch (Exception ex)
                 {
@@ -411,9 +432,13 @@ namespace ProjTaskReminder
             return list;
         }
 
-        private List<Task> FillSongsNames()
+        /// <summary>
+        /// Not in Use
+        /// </summary>
+        /// <returns></returns>
+        private List<ListItemSong> FillSongsNames()
         {
-            List<Task> list = new List<Task>();
+            List<ListItemSong> list = new List<ListItemSong>();
 
 
             RestoreSongsList();
@@ -424,17 +449,23 @@ namespace ProjTaskReminder
                 {
                     ListItemSong listItemSong = ((ListItemSong)ListItemsRecycler[i].Value);
 
-                    Task task = new Task();
-                    task.setTitle(listItemSong.getSongName());
-                    string seconfLine = listItemSong.getDuration();
-                    if (seconfLine=="")
-                    {
-                        seconfLine = listItemSong.getArtist();
-                    }
-                    task.setDescriptionPure(seconfLine);
-                    task.setDate_due(listItemSong.getSongPath());
+                    //ListItemSong listItemSong = new ListItemSong();
 
-                    list.Add(task);
+                    //listItemSong.setSongName(parentPathName);       // First line
+                    //listItemSong.setArtist(songsCount.ToString());  // Second line
+                    //listItemSong.setSongPath(path);                 // Third line
+
+                    //Task task = new Task();
+                    //task.setTitle(listItemSong.getSongName());
+                    //string seconfLine = listItemSong.getDuration();
+                    //if (seconfLine=="")
+                    //{
+                    //    seconfLine = listItemSong.getArtist();
+                    //}
+                    //task.setDescriptionPure(seconfLine);
+                    //task.setDate_due(listItemSong.getSongPath());
+
+                    list.Add(listItemSong);
                 }
                 catch (Exception ex)
                 {
@@ -442,7 +473,7 @@ namespace ProjTaskReminder
                 }
             }
 
-            list = list.OrderBy(a => a.getTitle()).ToList();
+            list = list.OrderBy(a => a.getSongName()).ToList();
 
             return list;
         }
@@ -655,7 +686,8 @@ namespace ProjTaskReminder
 
                 btnPlay.SetBackgroundResource(Android.Resource.Drawable.IcMediaPause);
 
-                ScrollPictures.Start();
+                //ScrollPictures.Start();
+
                 if (lblSongName.Text.Length > SONG_NAME_CHARS_LENGTH_TO_SCROLL)
                 {
                     ScrollSongName.Start();
@@ -939,10 +971,8 @@ namespace ProjTaskReminder
 
         private void BackupSongList()
         {
-            if (ListItemsRecyclerBackup != null && ListItemsRecyclerBackup.Count > 0)
-            {
-                return;
-            }
+
+            ListItemsRecyclerBackup = new List<KeyValuePair<string, ListItemSong>>();
 
             for (int i = 0; i < ListItemsRecycler.Count; i++)
             {
@@ -952,11 +982,6 @@ namespace ProjTaskReminder
 
         private void RestoreSongsList()
         {
-            if (ListItemsRecyclerBackup == null || ListItemsRecyclerBackup.Count == 0)
-            {
-                return;
-            }
-
             ListItemsRecycler.Clear();
 
             for (int i = 0; i < ListItemsRecyclerBackup.Count; i++)

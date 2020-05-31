@@ -27,28 +27,21 @@ namespace ProjTaskRemindet.Utils
     {
         private readonly Context context;
         private readonly Object ItemsList;
-        //private List<Task> ItemsList;
         private LayoutInflater layoutInflater;
-
+        public int ViewResourcesID = ProjTaskReminder.Resource.Layout.list_item;
         
 
-        public event EventHandler SetOnClickListener;
-        public event EventHandler SetOnItemClick;
-        public static event Action<View.IOnClickListener> OnActivityResult;
-        public event Action<ListViewHolder, int> OnListItemControlsView;
-
-        public int ViewResourcesID = ProjTaskReminder.Resource.Layout.list_item;
-        /// <summary>
-        /// Not Used - To Execute some external method
-        /// </summary>
-        public int MethodNumberToSetViewControls { get; set; }
-
+        //public event EventHandler SetOnClickListener;
+        //public event EventHandler SetOnItemClick;
+        //public static event Action<View.IOnClickListener> OnActivityResult;
+        public event Action<ListViewHolder, int> OnListItemSetControlsInView;
+        public event Action<ListViewHolder, int> OnItemClick;
 
         //private Resources resources;
         //private int selectMode = 0;
         //private int selectedItemsCount;
         //private MainActivity mainActivity;
-        
+
         //public override int Count => 21;
         //public abstract bool SetControlsInView(int position, View convertView, ViewGroup parent);
 
@@ -62,25 +55,13 @@ namespace ProjTaskRemindet.Utils
             layoutInflater = LayoutInflater.From(this.context);
 
             ViewResourcesID = ProjTaskReminder.Resource.Layout.list_item;
-            MethodNumberToSetViewControls = 1;
-        }
-
-        public ListViewAdapter(Context applicationContext, Object itemsList, int methodNumberToSetViewControls)
-        {
-            this.context = applicationContext;
-            ItemsList = itemsList;
-
-            layoutInflater = LayoutInflater.From(this.context);
-
-            ViewResourcesID = ProjTaskReminder.Resource.Layout.list_item;
-            MethodNumberToSetViewControls = methodNumberToSetViewControls;
         }
 
         public override int Count
         {
             get
             {
-                return GetListObject().Count();
+                return GetListObject.Count();
             }
         }
 
@@ -88,22 +69,22 @@ namespace ProjTaskRemindet.Utils
         //{
         //    get
         //    {
-        //        return GetListObject().Count();
+        //        return GetListObject.Count();
         //    }
         //}
 
         //public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         //{
         //    ListViewHolder listViewHolder = (ListViewHolder)holder;
-              //if (listViewHolder!=null && position >= 0 && position<GetListObject().Count())
+              //if (listViewHolder!=null && position >= 0 && position<GetListObject.Count())
               //{
               //      // Set controls in CradView with Object props Outsiderly (In Client source code)
               //      SetControlsInView(listViewHolder, position);
               //}
 
-    //    if (position < GetListObject().Count)
+    //    if (position < GetListObject.Count)
     //    {
-    //        Task task = GetListObject()[position];
+    //        Task task = GetListObject[position];
     //        listViewHolder.title.SetText(task.getTitle(), TextView.BufferType.Normal);
     //        listViewHolder.description.SetText(task.getDescription(), TextView.BufferType.Normal);
     //        listViewHolder.date_due.SetText(task.getDate_due(), TextView.BufferType.Normal);
@@ -124,14 +105,14 @@ namespace ProjTaskRemindet.Utils
             //View view = layoutInflater.Inflate(ProjTaskReminder.Resource.Layout.list_item, null);
             //View convertView = layoutInflater.Inflate(ProjTaskReminder.Resource.Layout.list_item, parent, false);
 
-            return view;       // GetListObject()[position];  // null;
+            return view;       // GetListObject[position];  // null;
         }
 
         public override long GetItemId(int position)
         {
             long res = 0;
 
-            if (position > -1 && position < GetListObject().Count())
+            if (position > -1 && position < GetListObject.Count())
             {
                 //res = ItemsList[position].getTaskID();
             }
@@ -151,9 +132,9 @@ namespace ProjTaskRemindet.Utils
                     convertView = layoutInflater.Inflate(ViewResourcesID, parent, false);
                 }
 
-                if (position >= 0 && position < GetListObject().Count())
+                if (position >= 0 && position < GetListObject.Count())
                 {
-                    listViewHolder = new ListViewAdapter.ListViewHolder(convertView, position, ItemsList);        //, context);
+                    listViewHolder = new ListViewAdapter.ListViewHolder(convertView, position, ItemsList, this);
                 }
             }
             catch (Exception ex)
@@ -162,7 +143,7 @@ namespace ProjTaskRemindet.Utils
             }
 
             
-            if (listViewHolder!=null && position >= 0 && position < GetListObject().Count())
+            if (listViewHolder!=null && position >= 0 && position < GetListObject.Count())
             {
                 // Set controls in CradView with Object props Outsiderly (In Client source code)
                 SetControlsInView(listViewHolder, position);
@@ -173,10 +154,12 @@ namespace ProjTaskRemindet.Utils
             return convertView;
         }
 
-        private IEnumerable<Object> GetListObject()
+        private IEnumerable<Object> GetListObject
         {
-            return ((IEnumerable<Object>)ItemsList);
-
+            get
+            {
+                return ((IEnumerable<Object>)ItemsList);
+            }
         }
 
         /// <summary>
@@ -187,10 +170,10 @@ namespace ProjTaskRemindet.Utils
         public void SetControlsInView(ListViewHolder listViewHolder, int position)  
         {
 
-            if (OnListItemControlsView != null)
+            if (OnListItemSetControlsInView != null)
             {
                 // Rase evnt in client source code
-                OnListItemControlsView(listViewHolder, position);
+                OnListItemSetControlsInView(listViewHolder, position);
             }
 
         }
@@ -201,16 +184,20 @@ namespace ProjTaskRemindet.Utils
             public TextView description;
             public TextView date_due;
             public CardView cardView;
-
-            public event EventHandler SetOnItemClick;
+            public View ViewObject { get; set; }
             private int ItemPosition { get; set; }
+            private ListViewAdapter ParentListViewAdapter { get; set; }
+
+            //public event EventHandler SetOnItemClick;
 
 
-            public ListViewHolder(View convertView, int position, Object itemsList)     // List<Task> : base(convertView) //, Context containerContext) 
+
+            public ListViewHolder(View convertView, int position, Object itemsList, ListViewAdapter parentListViewAdapter)     // List<Task> 
             {
-                //int position = 2;   // this.ItemPosition;   // this.Position
-                ItemPosition = position;
-                
+                this.ItemPosition = position;
+                this.ParentListViewAdapter = parentListViewAdapter;
+                this.ViewObject = convertView;
+
                 if (convertView != null && position >= 0 && position < ((IEnumerable<Object>)itemsList).Count())
                 {
                     try
@@ -219,6 +206,9 @@ namespace ProjTaskRemindet.Utils
                         description = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtDescription);
                         date_due = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtDateDue);
                         cardView = (CardView)convertView.FindViewById(ProjTaskReminder.Resource.Id.cardTask);
+
+                        cardView.Click += OnViewClick;
+                        convertView.Click += OnViewClick;
                     }
                     catch (Exception ex)
                     {
@@ -246,20 +236,23 @@ namespace ProjTaskRemindet.Utils
                 //}
             }
 
-
-            private View.IOnClickListener InitOnItemClick(int position)
+            private void OnViewClick(object sender, EventArgs e)
             {
-                this.ItemPosition = position;
-
-                SetOnItemClick += new EventHandler(OnItemClick);
-
-                return null;
+                if (ParentListViewAdapter.OnItemClick != null)
+                {
+                    ParentListViewAdapter.OnItemClick(this, this.ItemPosition);
+                }
             }
 
-            private void OnItemClick(object sender, EventArgs e)    //, int y)
-            {
-                SetOnItemClick(this.ItemPosition, e);
-            }
+            //private View.IOnClickListener InitOnItemClick(int position)
+            //{
+            //    this.ItemPosition = position;
+
+            //    SetOnItemClick += new EventHandler(OnItemClick);
+
+            //    return null;
+            //}
+
 
         }
 
@@ -271,17 +264,17 @@ namespace ProjTaskRemindet.Utils
         //    }
         //}
 
-        public View.IOnClickListener InitOnItemClick(int position)
-        {
-            SetOnItemClick += new EventHandler(OnItemClick);
+        //public View.IOnClickListener InitOnItemClick(int position)
+        //{
+        //    SetOnItemClick += new EventHandler(OnItemClick);
 
-            return null;
-        }
+        //    return null;
+        //}
 
-        public void OnItemClick(object sender, EventArgs e)
-        {
-            SetOnItemClick(sender, e);
-        }
+        //public void OnItemClick(object sender, EventArgs e)
+        //{
+        //    SetOnItemClick(sender, e);
+        //}
 
         //public void DeleteTask(object sender, EventArgs e)
         //{
@@ -294,7 +287,7 @@ namespace ProjTaskRemindet.Utils
         //    return ItemsList.Count;
         //}
 
-       
+
     }
 
         

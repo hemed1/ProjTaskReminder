@@ -29,6 +29,11 @@ namespace ProjTaskReminder.Model
 
 
 
+        public ListItemSong()
+        {
+
+        }
+
         public ListItemSong(string songName, string artist, string album)
         {
             this.SongName = songName;

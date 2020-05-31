@@ -156,6 +156,10 @@ namespace ProjTaskReminder
                 //Utils.Utils.closeKeyboard();
             }
 
+            if (txtDetailsDescription.Text.Length > 200)
+            {
+                txtDetailsDescription.SetSelection(0);
+            }
         }
 
         private void newTaskDetails()

@@ -87,15 +87,14 @@ namespace ProjTaskReminder
         public static string MainMessageText;
         public static int DefaultCardBackgroundColor;
         public static bool isShowTimerReminder;
-        private event Action ActionOnTaskDateDue;
         private int TimerInterval;
         private MH_Notification mh_Notification;
         private Intent IntentMusic = null;
 
 
         private Android.Support.V4.App.NotificationCompat.Builder notificationBuilder;
-        private TaskTimerElapsed ActionOnTaskTimerTick;     // , ElapsedEventHandler
-        public delegate ElapsedEventHandler delegateMethod(object timer, ElapsedEventArgs args, Task TaskObject);
+        private TimerService TaskTimerService;     // , ElapsedEventHandler
+        //public delegate ElapsedEventHandler delegateMethod(object timer, ElapsedEventArgs args, Task TaskObject);
 
 
 
@@ -256,7 +255,8 @@ namespace ProjTaskReminder
             txtRssNews = (TextView)FindViewById(Resource.Id.txtRssNews);
             imageTimerPointWeater = (ImageView)FindViewById(Resource.Id.imageTimerPointWeater);
 
-            lstTasks.ItemClick += OnItemClick;
+            //lstTasks.ItemClick += OnTaskItemClick;
+
             //lstTasks.SetOnClickListener(simpleListItem_DoubleClick);
             //lstTasks.OnItemClickListener += OnItemClick
             //lstTasks.SetLayoutManager(mLayoutManager);
@@ -642,8 +642,9 @@ namespace ProjTaskReminder
         {
             listViewAdapter = new ListViewAdapter(MainContext, TasksList);
 
-            listViewAdapter.OnListItemControlsView += SetListViewControls;
-            
+            listViewAdapter.OnListItemSetControlsInView += SetListViewControls;
+            listViewAdapter.OnItemClick += OnTaskItemClick;
+
             lstTasks.SetAdapter(listViewAdapter);
         }
 
@@ -652,7 +653,7 @@ namespace ProjTaskReminder
         {
             //listViewAdapter = new ListViewAdapter(MainContext, TasksList);
 
-            //listViewAdapter.OnListItemControlsView += SetListViewControls;
+            //listViewAdapter.OnListItemSetControlsInView += SetListViewControls;
 
             //lstTasks.SetAdapter(listViewAdapter);
 
@@ -911,7 +912,20 @@ namespace ProjTaskReminder
 
         }
 
-        private void OnItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        /// <summary>
+        /// On ListViewAdapter item click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnTaskItemClick(ListViewAdapter.ListViewHolder listViewHolder, int position)
+        {
+            CurrentTask = TasksList[position];
+
+            OpenTaskDetailsPage(CurrentTask, false, Application.Context);
+        }
+
+        // Old - On ListView control Item click
+        private void OnTaskItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             CurrentTask = TasksList[e.Position];
 
@@ -996,8 +1010,9 @@ namespace ProjTaskReminder
                             {
                                 TimerRun(CurrentTask);
                                 TasksList.Add(CurrentTask);
-                                SetListAdapter();
-                                SortList();
+                                FillList();
+                                //SetListAdapter();
+                                //SortList();
                             }
                             else
                             {
@@ -1111,7 +1126,7 @@ namespace ProjTaskReminder
             }
 
 
-            DateTime today = Utils.Utils.GetDateNow();       //Util.GetDateNow.getTime();
+            DateTime today = Utils.Utils.GetDateNow();
 
             if (timerDate.Value.CompareTo(today) <= 0)
             {
@@ -1123,10 +1138,7 @@ namespace ProjTaskReminder
 
             //Toast.MakeText(this, "Task date: " + Utils.Utils.getDateFormattedString(timerDate.Value) + "     Now: " + Utils.Utils.getDateFormattedString(Utils.Utils.GetDateNow()), ToastLength.Long).Show();
 
-            CurrentTask = currentTask;
-            ActionOnTaskDateDue += TimerNextTime;
-
-            TimerInterval = 30000;  // 30 seconds
+            //CurrentTask = currentTask;
 
 
             TimerExecute(currentTask);
@@ -1138,17 +1150,12 @@ namespace ProjTaskReminder
 
             if (isShowTimerReminder && !MainMessageText.Trim().Equals(""))
             {
-                string text = "יצר תזכורת ביום " + Utils.Utils.getDateDayName(timerDate.Value) + "  " + dateStr;        // + "  (Now: " + Utils.Utils.getDateFormattedString(Utils.Utils.GetDateNow()) + ")";
+                string text = "יצר תזכורת ביום " + Utils.Utils.getDateDayName(timerDate.Value) + "  " + dateStr;
                 MainMessageText = MainMessageText + " - " + text;
                 showGlobalMessageOnToast();
             }
 
             isShowTimerReminder = false;
-
-
-            //MyTask timerTask = new MyTask(timer, currentTask);
-            //timerTask.IntervalTime = 36000;
-            //timerTask.ActionOnPlayingMusic += picsTimer_onTick;     // (currentTask, null);  //timerTask.picsTimer_onTick;
 
         }
 
@@ -1157,66 +1164,30 @@ namespace ProjTaskReminder
 
         private void TimerExecute(Task currentTask)
         {
-            Timer timer = new Timer();
+            //Timer timer = new Timer();
 
-            currentTask.setTimer(timer);
+            TimerInterval = 30000;  // 30 seconds
 
-            addTimerToKillArray(currentTask.getTaskID(), currentTask, timer);
+            TaskTimerService = new TimerService(currentTask, TimerService.enumTimerType.Timer);
+            //TaskTimerService = new TimerService(currentTask, timer);
+            TaskTimerService.TimerInterval = TimerInterval;
+            TaskTimerService.OnTimerTick += OnTaskTimer_OK;
+            TaskTimerService.DateDue = currentTask.getDate();
 
-            ActionOnTaskTimerTick = new TaskTimerElapsed(currentTask, timer);
-            ActionOnTaskTimerTick.TimerInterval = TimerInterval;
-            ActionOnTaskTimerTick.OnTimerTick += Timer_Elapsed;
+            currentTask.setTimer(TaskTimerService.TimerObject);
 
-            //timer.BeginInit();   
-            timer.AutoReset = true;         // Continue repeatly fire events
-            timer.Elapsed += ActionOnTaskTimerTick.Timer_Elapsed;
-            timer.Interval = TimerInterval; // 30 seconds
-            timer.Enabled = true;
-            //timer.Start();
+            addTimerToKillArray(currentTask.getTaskID(), currentTask, TaskTimerService);   // , TaskTimerService.TimerObject
 
+            TaskTimerService.Start();
         }
 
-        //ActionOnTaskTimerTick += MainActivity_ActionOnTaskTimerTick;
-        //ActionOnTaskTimerTick += delegateMethod2;  
-        //ActionOnTaskTimerTick.Invoke(timer, null);  //, currentTask);
-        //timer.Elapsed += ActionOnTaskTimerTick;
-        //timer.Elapsed += MainActivity_ActionOnTaskTimerTick;
-        //timer.ScheduleAtFixedRate(customTimerTask, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute), 5000);
-        //private void MainActivity_ActionOnTaskTimerTick(object sender, ElapsedEventArgs e)
-        //{
-        //    ActionOnTaskTimerTick(sender, e, CurrentTask);
-        //}
-        //private void delegateMethod2(object timer, ElapsedEventArgs args, Task currentTask)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        private void Timer_Elapsed(Task currentTask, Timer timerObject)     // ElapsedEventHandler object sender, ElapsedEventArgs e, 
+        private void OnTaskTimer_OK(Object currentTask, Timer timerObject)   // Task
         {
-            // Cant in Threading proccess
-            //Toast.MakeText(this, "Timer Ticking...", ToastLength.Short).Show();
-
-            //Task currentTask = CurrentTask;
-
-            // TODO: Done  'TaskTimerElapsed.Timer_Elapsed()'
-            //            DateTime dateNow = Utils.Utils.GetDateNow();
-            //            string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
-            //            string strDateTask = Utils.Utils.getDateFormattedString(currentTask.getDate().Value);
-
-            //            if (strDateNow.CompareTo(strDateTask) >= 0)
-            //            {
-            //                Timer timer = timerObject;
-            //Timer timer = ((Timer)sender);
-            //                timer.Stop();
-            //                timer.Close();
-            //                timer.Dispose();
-            //                timer = null;
-
-            // No need. allready killed. just for shure.
-            TimerStop(currentTask);
+            // just kill other objects in timers array
+            TimerStop((Task)currentTask);
 
             // Do the Job - Notification
-            TaskTimer_onTick(currentTask);
+            TimerTask_onTick((Task)currentTask);
             
         }
 
@@ -1226,35 +1197,33 @@ namespace ProjTaskReminder
 
         private void TimerExecute2(Task currentTask)
         {
+            // Just to init object. will ReInit next lines
             System.Threading.Thread timer = System.Threading.Thread.CurrentThread;
 
-            TaskTimerElapsed ActionOnTaskTimerTick = new TaskTimerElapsed(currentTask, timer);
-            ActionOnTaskTimerTick.TimerInterval = TimerInterval;
-            ActionOnTaskTimerTick.activity = this;
-            ActionOnTaskTimerTick.OnThreadTick += Thread_Elapsed;
+            TimerService TaskTimerService = new TimerService(currentTask, TimerService.enumTimerType.Thread);
+            //TimerService TaskTimerService = new TimerService(currentTask, timer);
+            TaskTimerService.TimerInterval = TimerInterval;
+            TaskTimerService.activity = this;
+            TaskTimerService.OnThreadTick += OnTaskThread_OK;
+            TaskTimerService.DateDue = currentTask.getDate();
 
-            timer = new System.Threading.Thread(new System.Threading.ThreadStart(ActionOnTaskTimerTick.Thread_Elapsed));        //TimerThreadExecute));
+            //timer = new System.Threading.Thread(new System.Threading.ThreadStart(TaskTimerService.Thread_Elapsed));
 
             // Before, just for declare
-            ActionOnTaskTimerTick.ThreadObject = timer;
-
-            //Thread second = new Thread(new ThreadStart(secondThread));
-
+            //TaskTimerService.ThreadObject = timer;
 
             //currentTask.setTimer(timer);
+            addTimerToKillArray(currentTask.getTaskID(), currentTask, TaskTimerService);
 
-            //addTimerToKillArray(currentTask.getTaskID(), currentTask, timer);
-
-
-            timer.Start();
+            TaskTimerService.Start();
         }
 
-        private void Thread_Elapsed(Task currentTask, System.Threading.Thread timerObject)     // ElapsedEventHandler object sender, ElapsedEventArgs e, 
+        private void OnTaskThread_OK(Object currentTask, System.Threading.Thread timerObject)    // Task
         {
-            TimerStop(currentTask);
+            TimerStop((Task)currentTask);
 
             // Do the Job - Notification
-            TaskTimer_onTick(currentTask);
+            TimerTask_onTick((Task)currentTask);
 
         }
 
@@ -1314,7 +1283,7 @@ namespace ProjTaskReminder
         //    TimerStop(currentTask);
 
         //    // Do the Job - Notification
-        //    TaskTimer_onTick(currentTask);
+        //    TimerTask_onTick(currentTask);
 
 
         //    return null;    // new ElapsedEventHandler(null, new ElapsedEventArgs());
@@ -1331,10 +1300,10 @@ namespace ProjTaskReminder
                 return;
             }
 
-            TimerKill(index);       //, currentTask);
+            TimerKill(index);
         }
 
-        private void TimerKill(int timerArrayIndex)     //, Task currentTask)
+        private void TimerKill(int timerArrayIndex)
         {
             try
             {
@@ -1343,45 +1312,30 @@ namespace ProjTaskReminder
                     return;
                 }
 
-                object[] taskTimerArray = TimersArray[timerArrayIndex];
+                //timersArray[0] = taskID;
+                //timersArray[1] = currentTask;
+                // Cancel - timersArray[2] = timer;
+                //timersArray[2] = taskTimerElapsed;
 
-                if (taskTimerArray[1] == null)
-                {
-                    return;
-                }
+                object[] taskTimerArray = TimersArray[timerArrayIndex];
 
                 Task currentTask = (Task)taskTimerArray[1];
                 Timer timer = currentTask.getTimer();
-
-                //Timer timer = (Timer)taskTimerArray[1];
-                //System.Threading.Thread timer = (Thread)timersArray[1];
-                //Java.Util.Timer timer = (Java.Util.Timer)timersArray[1];
-                //TimerTask timerTask = (TimerTask)timersArray[2];
-
-                if (timer != null)  // && timer.Enabled)
-                //if (timer != null && timer.IsAlive)
-                {
-                    TimerDispose(timer);
-                    //timer.Stop();
-                    //timer.Close();
-                    //timer.Dispose();
-                    //timer = null;
-
-                    //timer.Abort();
-                    //timer = null;
-
-                    //timer.purge();
-                    //timer.c.Cancel();
-                    //timerTask.cancel();
-                    //timer = null;
-                    //timerTask = null;
-                }
-
-                timer = (Timer)taskTimerArray[2];
-                if (timer != null)  // && timer.Enabled)
+                TimerService taskTimerElapsed = (TimerService)taskTimerArray[2];
+                
+                if (timer != null)
                 {
                     TimerDispose(timer);
                 }
+
+                //timer = (Timer)taskTimerArray[2];
+                //if (timer != null)
+                //{
+                //    TimerDispose(timer);
+                //}
+
+                taskTimerElapsed.Destroy();
+                taskTimerElapsed = null;
 
                 timer = null;
 
@@ -1402,6 +1356,18 @@ namespace ProjTaskReminder
             timer.Close();
             timer.Dispose();
 
+            //timer.Stop();
+            //timer.Close();
+            //timer.Dispose();
+            //timer = null;
+            //timer.Abort();
+            //timer = null;
+            //timer.purge();
+            //timer.c.Cancel();
+            //timerTask.cancel();
+            //timer = null;
+            //timerTask = null;
+
             timer = null;
 
         }
@@ -1410,7 +1376,7 @@ namespace ProjTaskReminder
 
         private void TimerExecute3(Task currentTask, Java.Util.Date timerDate)
         {
-            Java.Util.TimerTask timerTask = null;  // = new Java.Util.TimerTask(TaskTimer_onTick);
+            Java.Util.TimerTask timerTask = null;  // = new Java.Util.TimerTask(TimerTask_onTick);
             long ticks = timerTask.ScheduledExecutionTime();
             timerTask.Run();
 
@@ -1427,7 +1393,7 @@ namespace ProjTaskReminder
             //    @Override
             //    public void run()
             //{
-            //    TaskTimer_onTick(currentTask);
+            //    TimerTask_onTick(currentTask);
             //}
             //
             //            timer.Schedule(timerTask, 4, 3000);  //, timerDate);
@@ -1438,16 +1404,25 @@ namespace ProjTaskReminder
         #endregion
 
 
-        private void TaskTimer_onTick(Task task)
+        private void TimerTask_onTick(Task task)
         {
             // Play Notification sound
-            int resourceID = Resource.Raw.deduction;
-            Android.Media.MediaPlayer mediaPlayer = Android.Media.MediaPlayer.Create(this, resourceID);   // uri);
-            mediaPlayer.Start();
+            //int resourceID = Resource.Raw.deduction;
+            //Android.Media.MediaPlayer mediaPlayer = Android.Media.MediaPlayer.Create(this, resourceID);   // uri);
+            //mediaPlayer.Start();
 
             //Toast.MakeText(this, "Timer is tiking: "+task.getDescription(), ToastLength.Long).Show();
 
-            showNotifications(task);
+            this.SetTurnScreenOn(true);
+            //Util.turnOnScreen(this);
+
+            // Show android notification
+            showNotificationToScreen(task);
+
+            //showAlarmScreen(task);
+
+            //showReminderDialog(task);
+
         }
 
         private void TimerNextTime()    // string ss)
@@ -1458,18 +1433,19 @@ namespace ProjTaskReminder
             //return strDateNow;
         }
 
-        private void addTimerToKillArray(int taskID, Task currentTask, Timer timer)
+        private void addTimerToKillArray(int taskID, Task currentTask, TimerService taskTimerElapsed)   // , Timer timer
         {
             object[] timersArray = new object[3];
 
             timersArray[0] = taskID;
             timersArray[1] = currentTask;
-            timersArray[2] = timer;
+            //timersArray[2] = timer;
+            timersArray[2] = taskTimerElapsed;
 
             TimersArray.Add(timersArray);
         }
 
-        private static int searchIDInTimersList(int id)
+        private static int searchIDInTimersList(int taskID)
         {
             int result = -1;
 
@@ -1477,7 +1453,7 @@ namespace ProjTaskReminder
             {
                 object[] timersArray = TimersArray[i];
 
-                if ((int)timersArray[0] == id)
+                if ((int)timersArray[0] == taskID)
                 {
                     result = i;
                     break;
@@ -1523,14 +1499,6 @@ namespace ProjTaskReminder
 
         protected void showNotifications(Task currentTask)
         {
-            //Util.turnOnScreen(this);
-
-            // Show android notification
-            showNotificationToScreen(currentTask);
-
-            //showAlarmScreen(currentTask);
-
-            //showReminderDialog(currentTask);
         }
 
         private void showNotificationToScreen(Task currentTask)
@@ -1579,112 +1547,6 @@ namespace ProjTaskReminder
             CurrentTask.setRepeat("פעם אחת");
 
             return CurrentTask;
-        }
-
-        public class MyTask : Java.Util.TimerTask      // timerTask = new Java.Util.TimerTask();
-        {
-            private Java.Util.Timer ParentTimer { get; set; }
-            private Task ParentTask { get; set; }
-            //public event Java.Lang.Runnable ActionOnPlayingMusic;
-            public event Action<Task> ActionOnPlayingMusic;
-            //public event Action ActionOnPlayingMusic;
-            //public event Action<object, ElapsedEventArgs> ActionOnPlayingMusic;
-            //public event ElapsedEventHandler ActionOnPlayingMusic;
-            private bool IsRunning;
-            public int IntervalTime { get; set; }
-
-
-            public MyTask(Java.Util.Timer parentTimer, Task parentTask)
-            {
-                this.ParentTimer = parentTimer;
-                this.ParentTask = parentTask;
-                IntervalTime = 3000;
-            }
-
-            public override void Run()
-            {
-                //ActionOnPlayingMusic += picsTimer_onTick;
-                //ActionOnPlayingMusic);
-                //RunOnUiThread(() =>     
-                //{
-                //    picsTimer_onTick(); // ParentTask);
-                //});
-
-                DateTime dateNow = Utils.Utils.GetDateNow();       // args.SignalTime;
-                Task currentTask = ParentTask;
-
-
-                if (currentTask != null && currentTask.getDate() == null)
-                {
-                    return;
-                }
-
-                string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
-                string strDateTask = Utils.Utils.getDateFormattedString(currentTask.getDate().Value);
-
-                IsRunning = true;
-
-                while (IsRunning && strDateNow != strDateTask)
-                {
-                    System.Threading.Thread.Sleep(IntervalTime);
-
-                    picsTimer_onTick(); // ParentTask);
-
-                    dateNow = Utils.Utils.GetDateNow();
-                    strDateNow = Utils.Utils.getDateFormattedString(dateNow);
-
-                    //RunOnUiThread(ActionOnPlayingMusic);    // =>
-                    //{
-                    //    picsTimer_onTick(); // ParentTask);
-                    //});
-
-                    //UpdateProgressControls();
-
-                }
-
-                ParentTimer.Cancel();
-                ParentTimer.Dispose();
-
-                //picsTimer_onTick(); // ParentTask);
-            }
-
-            protected void picsTimer_onTick() //Task sender)
-            {
-                Task sender = ParentTask;
-
-                if (sender == null)     // || args==null)
-                {
-                    return;
-                }
-
-                DateTime dateNow = Utils.Utils.GetDateNow();       // args.SignalTime;
-                Task currentTask = (Task)sender;       // CurrentTask;
-
-                if (currentTask.getDate() == null)
-                {
-                    return;
-                }
-
-
-                string strNow = Utils.Utils.getDateFormattedString(dateNow);
-                string strDateTask = Utils.Utils.getDateFormattedString(currentTask.getDate().Value);
-
-                if (strNow != strDateTask)
-                {
-                    return;
-                }
-
-
-                //IsRunning = false;
-                //// TODO: imerStop(currentTask);
-
-                //Log.d("timer Tik ", currentTask.getTitle() + " - " + currentTask.getDate_due() + currentTask.getTime_due());
-
-                //showNotifications(currentTask);
-
-                return;    // new ElapsedEventHandler(null, new ElapsedEventArgs());
-            }
-
         }
 
         protected override void OnDestroy()
@@ -2000,143 +1862,6 @@ namespace ProjTaskReminder
     }
 
 
-
-    public class TaskTimerElapsed
-    {
-        private Task TaskObject { get; set; }
-        public event Action<Task, System.Timers.Timer> OnTimerTick;        //object, ElapsedEventArgs, 
-        public event Action<Task, System.Threading.Thread> OnThreadTick;        //object, ElapsedEventArgs, 
-        public int TimerInterval { get; set; }
-        public System.Timers.Timer TimerObject { get; set; }
-        public System.Threading.Thread ThreadObject { get; set; }
-        public Activity activity { get; set; }
-
-
-        public TaskTimerElapsed(Task task, System.Timers.Timer timerObject)
-        {
-            this.TaskObject = task;
-            this.TimerObject = timerObject;
-            this.TimerInterval = 30000;
-        }
-
-        public TaskTimerElapsed(Task task, System.Threading.Thread timerObject)
-        {
-            this.TaskObject = task;
-            this.ThreadObject = timerObject;
-            this.TimerInterval = 30000;
-        }
-
-        public void Timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-
-            DateTime dateNow = Utils.Utils.GetDateNow();
-            DateTime? dateTask = TaskObject.getDate();
-
-            if (!dateTask.HasValue)
-            {
-                TimerDispose(TimerObject);
-
-                // Raise event Timer Tick
-                if (OnTimerTick != null)
-                {
-                    OnTimerTick(TaskObject, TimerObject);
-                }
-                return;
-            }
-
-            //string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
-            //string strDateTask = Utils.Utils.getDateFormattedString(dateTask.Value);
-
-            if (dateNow.CompareTo(dateTask) >= 0)
-            //if (strDateNow.CompareTo(strDateTask) >= 0)
-                {
-                System.Timers.Timer timer = this.TimerObject;
-                //System.Timers.Timer timer = ((System.Timers.Timer)sender);
-
-                TimerDispose(timer);
-
-                // Raise event Timer Tick
-                if (OnTimerTick != null)
-                {
-                    OnTimerTick(TaskObject, TimerObject);
-                }
-
-                //TimerStop(TaskObject);
-
-                // Do the Job - Notification
-                //TaskTimer_onTick(TaskObject);
-
-            }
-        }
-
-        public void Thread_Elapsed()      //object sender, ElapsedEventArgs args) ElapsedEventHandler
-        {
-            long counter = 0;
-            long limitSeconds = 1000 * 60 * 60 * 24 * 3;        // Limited for 3 Days
-
-
-
-
-            Task TaskObject = this.TaskObject;      // (Task)sender;
-            DateTime? dateTask = this.TaskObject.getDate();
-
-            if (!dateTask.HasValue)
-            {
-                return;
-            }
-
-            DateTime dateNow = Utils.Utils.GetDateNow();
-            //string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
-            //string strDateTask = Utils.Utils.getDateFormattedString(dateTask.Value);
-
-
-            while (counter <= limitSeconds && dateNow.CompareTo(dateTask) < 0)
-            {
-                System.Threading.Thread.Sleep(TimerInterval);
-
-                activity.RunOnUiThread(() =>
-                {
-                    dateNow = Utils.Utils.GetDateNow();
-                    //strDateNow = Utils.Utils.getDateFormattedString(dateNow);
-                });
-
-                counter += TimerInterval;
-
-                //RunOnUiThread(ActionOnTaskDateDue); // (strDateNow));    // =>
-                //{
-                //int newPosition = mediaPlayer.CurrentPosition;
-                //barSeek.Progress = newPosition;
-                //};
-            }
-
-
-            // Raise event Timer Tick
-            if (OnThreadTick != null)
-            {
-                OnThreadTick(TaskObject, ThreadObject);
-            }
-
-            //TimerStop(TaskObject);
-
-            // Do the Job - Notification
-            //TaskTimer_onTick(TaskObject);
-
-
-            return;
-        }
-
-        private void TimerDispose(System.Timers.Timer timer)
-        {
-            timer.Stop();
-            timer.Close();
-            timer.Dispose();
-
-            timer = null;
-
-        }
-
-
-    }
 
 }
 

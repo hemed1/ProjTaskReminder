@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/layMainButtons">
 
 
@@ -327,15 +327,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:orientation="horizontal"
         android:layout_marginTop="3dp"
         android:id="@+id/layRssNews">
 
         <ImageView
             android:id="@+id/imageTimerPointWeater"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             android:layout_gravity="top"
             android:layout_marginTop="1dp"
             android:layout_marginStart="10dp"
@@ -366,7 +366,7 @@
                 android:textSize="19sp"
                 android:textDirection="rtl"
                 android:text=""
-                android:inputType="textMultiLine"
+                android:inputType="text"
                 android:scrollbars="none"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="0dp"
@@ -379,9 +379,8 @@
     <LinearLayout
         android:id="@+id/layList"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
         android:orientation="vertical"
-        android:layout_alignParentBottom="true"
         android:layout_marginBottom="35dp"
         android:layout_marginTop="15dp">
 
@@ -405,7 +404,7 @@
             android:layout_height="match_parent"
             android:scrollbars="vertical"
             android:layout_marginTop="1dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="2dp"
             android:layout_marginStart="6.5dp"
             android:layout_marginEnd="6.5dp"
             android:listSelector="@android:color/holo_purple"

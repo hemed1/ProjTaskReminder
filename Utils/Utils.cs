@@ -454,14 +454,15 @@ namespace ProjTaskReminder.Utils
 
         public static void closeKeyboard()
         {
-            //InputMethodManager inputMethodManager = (InputMethodManager)context.getSystemService(Context.INPUT_METHOD_SERVICE);
-            //if (inputMethodManager != null)
-            //{
-            //    //Log.d("keyboard close", "Close Keyboard");
-            //    inputMethodManager.toggleSoftInput(InputMethodManager.RESULT_HIDDEN, 0);   //InputMethodManager., , RESULT_HIDDEN , HIDE_IMPLICIT_ONLY
-            //}
+            InputMethodManager inputMethodManager = (InputMethodManager)context.GetSystemService(Context.InputMethodService);       //.INPUT_METHOD_SERVICE);
 
-            //activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);      //.SOFT_INPUT_STATE_ALWAYS_HIDDEN);        //);  // WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE,
+            if (inputMethodManager != null)
+            {
+                //Log.d("keyboard close", "Close Keyboard");
+                inputMethodManager.ToggleSoftInput(ShowFlags.Implicit, HideSoftInputFlags.ImplicitOnly);   //InputMethodManager., , RESULT_HIDDEN , HIDE_IMPLICIT_ONLY
+            }
+
+            activity.Window.SetSoftInputMode(SoftInput.StateHidden);    // WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);      //.SOFT_INPUT_STATE_ALWAYS_HIDDEN);        //);  // WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE,
 
         }
 
