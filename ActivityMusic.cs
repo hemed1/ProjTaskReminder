@@ -117,7 +117,7 @@ namespace ProjTaskReminder
         {
             float textSize = lblSongName.TextSize;
 
-            return (int)((62*32)/textSize); 
+            return (int)((63*32)/textSize); 
         }
 
         private void LoadSongsFilesFromPhone()
@@ -167,9 +167,9 @@ namespace ProjTaskReminder
                 fileName = fileName.Substring(0, fileName.Length - 4);
                 
                 int pos = fileName.IndexOf("-");
-                if (pos>-1 && pos<2)
+                if (pos>-1 && pos<4)
                 {
-                    artist = fileName.Substring(0, pos - 1);
+                    artist = album;
                 }
 
                 ListItemSong listItemSong = new ListItemSong(fileName, artist, album);
@@ -293,6 +293,13 @@ namespace ProjTaskReminder
             {
                 string path = SongFoldersList[position].getSongPath();
                 ListItemsRecycler = ListItemsRecycler.Where(a => a.Value.getSongPath() == path).ToList();
+
+                cardFilesList.Visibility = ViewStates.Invisible;
+
+                SongNamesList = ListItemsRecycler.Select(a => a.Value).ToList();
+                ShowSongsListView(SongNamesList);
+
+                IsFolderButtonPressed = false;
                 ListPositionIndex = 0;
             }
             else
@@ -346,7 +353,7 @@ namespace ProjTaskReminder
 
             //if (SongNamesList == null || SongNamesList.Count == 0)
             //{
-            SongNamesList = ListItemsRecycler.Select(a => a.Value).ToList();
+            SongNamesList = FillSongsNames();
             //List<ListItemSong> SongNamesList = FillSongsNames();
             //}
 
@@ -389,6 +396,11 @@ namespace ProjTaskReminder
             listViewAdapter.NotifyDataSetChanged();
         }
 
+        private List<KeyValuePair<string, ListItemSong>> FillSongsForFolder(string path)
+        {
+            return ListItemsRecycler.Where(a => a.Value.getSongPath() == path).ToList();
+        }
+
         private List<ListItemSong> FillSongsFolders()
         {
             List<ListItemSong> list = new List<ListItemSong>();
@@ -415,12 +427,6 @@ namespace ProjTaskReminder
                     listItemSong.setArtist(songsCount.ToString());  // Second line - Song count
                     listItemSong.setSongPath(path);                 // Third line
                     
-
-                    //Task task = new Task();
-                    //task.setTitle(parentPathName);
-                    //task.setDescriptionPure(songsCount);
-                    //task.setDate_due(path);
-
                     list.Add(listItemSong);
                 }
                 catch (Exception ex)
@@ -443,35 +449,7 @@ namespace ProjTaskReminder
 
             RestoreSongsList();
 
-            for (int i = 0; i < ListItemsRecycler.Count; i++)
-            {
-                try
-                {
-                    ListItemSong listItemSong = ((ListItemSong)ListItemsRecycler[i].Value);
-
-                    //ListItemSong listItemSong = new ListItemSong();
-
-                    //listItemSong.setSongName(parentPathName);       // First line
-                    //listItemSong.setArtist(songsCount.ToString());  // Second line
-                    //listItemSong.setSongPath(path);                 // Third line
-
-                    //Task task = new Task();
-                    //task.setTitle(listItemSong.getSongName());
-                    //string seconfLine = listItemSong.getDuration();
-                    //if (seconfLine=="")
-                    //{
-                    //    seconfLine = listItemSong.getArtist();
-                    //}
-                    //task.setDescriptionPure(seconfLine);
-                    //task.setDate_due(listItemSong.getSongPath());
-
-                    list.Add(listItemSong);
-                }
-                catch (Exception ex)
-                {
-                    string msg = ex.Message;
-                }
-            }
+            list = ListItemsRecycler.Select(a => a.Value).ToList();
 
             list = list.OrderBy(a => a.getSongName()).ToList();
 
@@ -996,8 +974,9 @@ namespace ProjTaskReminder
 
             for (int i = 0; i < ListItemsRecycler.Count; i++)
             {
-                string songPath = ListItemsRecycler[i].Key;
-                if (songPath.Length>=fullSongPath.Length && songPath.Substring(0, fullSongPath.Length)== fullSongPath)
+                if (ListItemsRecycler[i].Key == fullSongPath)
+                //string songPath = ListItemsRecycler[i].Key;
+                //if (songPath.Length >= fullSongPath.Length && songPath.Substring(0, fullSongPath.Length) == fullSongPath)
                 {
                     result = i;
                     break;

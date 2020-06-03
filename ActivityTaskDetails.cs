@@ -49,7 +49,6 @@ namespace ProjTaskReminder
 
 
         public static Context context;
-        public static event EventHandler OnSaveButton;
         public static event Action<int, Result, Intent> OnExitResult;
         
 
@@ -114,19 +113,13 @@ namespace ProjTaskReminder
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            //Utils.Utils.LoggerWrite("Enter 5", true);
-
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_task_details);
 
-            //Utils.Utils.LoggerWrite("Enter 6", true);
-
             inputIntent = this.Intent;
-
-            if (!string.IsNullOrEmpty(inputIntent.GetStringExtra("TaskID")))
+            if (inputIntent!=null && inputIntent.GetIntExtra("TaskID", 0)==0)
             {
-                taskID = int.Parse(inputIntent.GetStringExtra("TaskID"));
+                taskID = inputIntent.GetIntExtra("TaskID", 0);
             }
 
 
@@ -151,8 +144,9 @@ namespace ProjTaskReminder
             }
             else
             {
-                //txtDetailsDescription.RequestFocus();
-                txtDetailsDescription.RequestFocusFromTouch();
+                txtDetailsDescription.Focusable = true;
+                txtDetailsDescription.RequestFocus();
+                //txtDetailsDescription.RequestFocusFromTouch();
                 //Utils.Utils.closeKeyboard();
             }
 
@@ -322,17 +316,25 @@ namespace ProjTaskReminder
 
         private void DeleteRecord(Task currentTask)
         {
-            MainActivity.DBTaskReminder.DB.Delete<TBL_Tasks>(currentTask.getTaskID());  // "ID==" +currentTask.getTaskID().ToString(), null);
 
             MainActivity.isShowTimerReminder = true;
-            MainActivity.MainMessageText = "נמחק";
+
+            if (MainActivity.DBTaskReminder.DeleteRecord(currentTask.getTaskID()))
+            {
+                MainActivity.MainMessageText = "נמחק";
+            }
+            else
+            {
+                MainActivity.MainMessageText = "חלה תקלה במחיקה";
+            }
+
             MainActivity.showGlobalMessageOnToast();
 
             IsSaveNeededBeforeExit = false;
             
             inputIntent.PutExtra("Delete", "true");
 
-            SetResult(Result.Ok, inputIntent);
+            ////SetResult(Result.Ok, inputIntent);
 
             if (OnExitResult != null)
             {
@@ -368,9 +370,7 @@ namespace ProjTaskReminder
             }
             else
             {
-                item = MainActivity.DBTaskReminder.DB.Get<TBL_Tasks>(task.getTaskID());
-                //item = (TBL_Tasks)MainActivity.DBTaskReminder.GetRecordByID(item.ID, MainActivity.DB_TABLE_NAME);
-                //item = (TBL_Tasks)CurrentTask.TableRecord;
+                item = (TBL_Tasks)MainActivity.DBTaskReminder.GetRecordByID(task.getTaskID(), MainActivity.DB_TABLE_NAME);
             }
 
 
@@ -388,16 +388,11 @@ namespace ProjTaskReminder
                 else
                 {
                     recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(item);
-                    item = MainActivity.DBTaskReminder.DB.Get<TBL_Tasks>(task.getTaskID());
+                    item = (TBL_Tasks)MainActivity.DBTaskReminder.GetRecordByID(task.getTaskID(), MainActivity.DB_TABLE_NAME);
                     task.TableRecord = item;
-                    // Set Task object in array
-                    //List<KeyValuePair<String, String>> values = MainActivity.SetTaskValuesForDB(CurrentTask);
-                    //recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(MainActivity.DB_TABLE_NAME, values, new object[] { CurrentTask.getTaskID() });
                 }
 
 
-
-                // Raise the event to the Caller
                 if (recorsWasEffected>0)
                 {
                     if (isNewMode)
@@ -410,16 +405,10 @@ namespace ProjTaskReminder
                     MainActivity.isShowTimerReminder = true;
                     MainActivity.MainMessageText = "נשמר";
 
-                    //Toast.MakeText(this, "נשמר", ToastLength.Long).Show();
-
                     inputIntent.PutExtra("Result", "true");
 
-                    SetResult(Result.Ok, inputIntent);
+                    ////SetResult(Result.Ok, inputIntent);
 
-                    //if (OnSaveButton != null)
-                    //{
-                    //    OnSaveButton(null, EventArgs.Empty);
-                    //}
                     // Second option to - Raise the event to the Caller
                     if (OnExitResult != null)
                     {
@@ -504,8 +493,6 @@ namespace ProjTaskReminder
                 SaveRecord(CurrentTask);
             }
 
-            //Toast.MakeText(this, "Close Note", ToastLength.Long).Show();
-
             base.OnDestroy();
         }
 
@@ -516,79 +503,8 @@ namespace ProjTaskReminder
 
 
 
-                ////if (MainActivity.ThemColorSet == 1)
-                ////{
-                ////    txtDetailsTitle.setTextColor(context.getResources().getColor(R.color.CardFieldsTextForegroundColor));
-                ////    txtDetailsDescription.setTextColor(context.getResources().getColor(R.color.CardFieldsTextForegroundColor));
-                ////    lblDateTime.setTextColor(context.getResources().getColor(R.color.CardFieldsTextForegroundColor));
-                ////}
-                ////else
-                ////{
-                ////    txtDetailsTitle.setTextColor(context.getResources().getColor(R.color.CardFieldsTextForegroundColor2));
-                ////    txtDetailsDescription.setTextColor(context.getResources().getColor(R.color.CardFieldsTextForegroundColor2));
-                ////    lblDateTime.setTextColor(context.getResources().getColor(R.color.CardFieldsTextForegroundColor2));
-                ////}
-
-////cardDetailsTiming.setOnClickListener(new View.OnClickListener()
-////{
-////    @Override
-////    public void onClick(View v)
-////    {
-////        cardDetailsTiming.setVisibility(View.INVISIBLE);
-////    }
-////}
-////        cardRichText = FindViewById(Resource.Id.cardRichText);
-////        cardRichText.setOnClickListener(new View.OnClickListener()
-////                                            {
-////                                                @Override
-////                                                public void onClick(View v)
-////        {
-////            cardRichText.setVisibility(View.INVISIBLE);
-////        }
-////    }
-////        );
 
 
-
-////        View.OnFocusChangeListener focus = txtDetailsDescription.getOnFocusChangeListener();
-////    //focus.onFocusChange(View);
-
-////    txtDetailsDescription.addTextChangedListener(new TextWatcher()
-////    {
-////        @Override
-////            public void beforeTextChanged(CharSequence s, int start, int count, int after)
-////        {
-
-////        }
-
-////        @Override
-////            public void onTextChanged(CharSequence s, int start, int before, int count)
-////        {
-
-////        }
-
-////        @Override
-////            public void afterTextChanged(Editable s)
-////        {
-
-////        }
-////    });
-
-////        btnSave.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v)
-////    {
-////        saveTaskDetails();
-////    }
-////});
-
-////        btnDelete.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v)
-////{
-////    deleteTask();
-////}
-////        });
 
 
 ////        btnFontBold.setOnClickListener(new View.OnClickListener() {

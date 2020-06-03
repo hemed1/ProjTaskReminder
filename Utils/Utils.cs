@@ -41,11 +41,15 @@ namespace ProjTaskReminder.Utils
         public static Activity activity;
 
 
+        public static void WriteToLog(Exception exception)
+        {
+            WriteToLog("Error:" + exception.Message + LINE_SEPERATOR + exception.StackTrace, true);
+        }
+
         public static void WriteToLog(string data, bool appendLines = true)
         {
             string fileName = string.Empty;
             byte[] bytesData;
-            FileStream file;
             StreamWriter fileWriter = null;
             string folderBackup = "";
 
@@ -92,7 +96,7 @@ namespace ProjTaskReminder.Utils
 
                     fileWriter.Write(data);
 
-                    //file = new FileStream(fileName, ((appendLines) ? FileMode.Append : FileMode.Create), FileAccess.Write);
+                    //FileStream file = new FileStream(fileName, ((appendLines) ? FileMode.Append : FileMode.Create), FileAccess.Write);
                 }
 
                 fileWriter.Close();
@@ -961,8 +965,8 @@ namespace ProjTaskReminder.Utils
                 }
 
                 //UTF8Encoding encoding = new UTF8Encoding();
-                Encoding encoding = new UTF8Encoding(false);
-                //Encoding encoding = Encoding.GetEncoding("Windows-1255");
+                //Encoding encoding = new UTF8Encoding(false);
+                Encoding encoding = Encoding.GetEncoding("Windows-1255");
                 byte[] bytes = Encoding.ASCII.GetBytes(data);       // + LINE_SEPERATOR);       // "šarže");
                 char[] chars = Encoding.ASCII.GetChars(bytes);
 

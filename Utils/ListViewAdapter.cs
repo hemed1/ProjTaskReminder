@@ -31,19 +31,17 @@ namespace ProjTaskRemindet.Utils
         public int ViewResourcesID = ProjTaskReminder.Resource.Layout.list_item;
         
 
-        //public event EventHandler SetOnClickListener;
-        //public event EventHandler SetOnItemClick;
-        //public static event Action<View.IOnClickListener> OnActivityResult;
+
+
         public event Action<ListViewHolder, int> OnListItemSetControlsInView;
-        public event Action<ListViewHolder, int> OnItemClick;
+        public event Action<ListViewHolder, int> OnItemClick;       // Not in Use
+        public View.IOnClickListener OnItemClick2;
 
         //private Resources resources;
         //private int selectMode = 0;
         //private int selectedItemsCount;
         //private MainActivity mainActivity;
 
-        //public override int Count => 21;
-        //public abstract bool SetControlsInView(int position, View convertView, ViewGroup parent);
 
 
 
@@ -98,7 +96,7 @@ namespace ProjTaskRemindet.Utils
     //    return viewHolder;
     //}
 
-    public override Java.Lang.Object GetItem(int position)
+        public override Java.Lang.Object GetItem(int position)
         {
             View view = (View)this.GetItem(position);
 
@@ -184,6 +182,8 @@ namespace ProjTaskRemindet.Utils
             public TextView description;
             public TextView date_due;
             public CardView cardView;
+            
+
             public View ViewObject { get; set; }
             private int ItemPosition { get; set; }
             private ListViewAdapter ParentListViewAdapter { get; set; }
@@ -208,7 +208,8 @@ namespace ProjTaskRemindet.Utils
                         cardView = (CardView)convertView.FindViewById(ProjTaskReminder.Resource.Id.cardTask);
 
                         cardView.Click += OnViewClick;
-                        convertView.Click += OnViewClick;
+                        //convertView.Click += OnViewClick;
+                        //convertView.SetOnClickListener(this.ParentListViewAdapter.OnItemClick2);
                     }
                     catch (Exception ex)
                     {
@@ -229,7 +230,7 @@ namespace ProjTaskRemindet.Utils
                 //{
                 //    convertView.SetOnClickListener(InitOnItemClick(position));     // OnActivityResult
                 //    //cardView.SetOnClickListener(InitOnItemClick(position));     // OnActivityResult
-
+                //    // Old - Fill controls in card by EVENT 'SetControlsInView(listViewHolder, position)'
                 //    title.SetText(tasks[position].getTitle(), TextView.BufferType.Normal);
                 //    description.SetText(tasks[position].getDescription(), TextView.BufferType.Normal);
                 //    date_due.SetText(tasks[position].getDate_due(), TextView.BufferType.Normal);
@@ -244,49 +245,9 @@ namespace ProjTaskRemindet.Utils
                 }
             }
 
-            //private View.IOnClickListener InitOnItemClick(int position)
-            //{
-            //    this.ItemPosition = position;
-
-            //    SetOnItemClick += new EventHandler(OnItemClick);
-
-            //    return null;
-            //}
 
 
         }
-
-        //private void OnItemClick2(int position)
-        //{
-        //    if (SetOnClickListener!=null)
-        //    {
-        //        SetOnClickListener(position, EventArgs.Empty);
-        //    }
-        //}
-
-        //public View.IOnClickListener InitOnItemClick(int position)
-        //{
-        //    SetOnItemClick += new EventHandler(OnItemClick);
-
-        //    return null;
-        //}
-
-        //public void OnItemClick(object sender, EventArgs e)
-        //{
-        //    SetOnItemClick(sender, e);
-        //}
-
-        //public void DeleteTask(object sender, EventArgs e)
-        //{
-
-        //    //return null;    // (View.IOnClickListener);
-        //}
-
-        //public  int Count2()  // override
-        //{
-        //    return ItemsList.Count;
-        //}
-
 
     }
 

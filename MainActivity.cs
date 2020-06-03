@@ -94,6 +94,13 @@ namespace ProjTaskReminder
 
         private Android.Support.V4.App.NotificationCompat.Builder notificationBuilder;
         private TimerService TaskTimerService;     // , ElapsedEventHandler
+        
+
+
+
+
+
+
         //public delegate ElapsedEventHandler delegateMethod(object timer, ElapsedEventArgs args, Task TaskObject);
 
 
@@ -104,29 +111,35 @@ namespace ProjTaskReminder
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
 
-            //Utils.Utils.WriteToLog("Enter 1", true);
 
-            MainContext = this.ApplicationContext;
+            try
+            {
+                MainContext = this.ApplicationContext;
 
-            Initialize();
+                Initialize();
 
-            ConnectToDB();
+                ConnectToDB();
 
-            //BackupDataBaseFile();
+                //BackupDataBaseFile();
 
-            FillListFromDB();
+                FillListFromDB();
 
-            focusListOnToday(Utils.Utils.GetDateNow());
+                focusListOnToday(Utils.Utils.GetDateNow());
 
-            //StartRssNewsScroll();
+                //StartRssNewsScroll();
 
-            // First city
-            //Weather weather;
-            //weather = mH_Weather.GetWather("Ashdod");
-            //WeatherList.Add(weather);
-            //OnWeatherChangingPlace(weather, 0);
+                // First city
+                //Weather weather;
+                //weather = mH_Weather.GetWather("Ashdod");
+                //WeatherList.Add(weather);
+                //OnWeatherChangingPlace(weather, 0);
 
-            //WeatherScroll.StartPosstion();
+                //WeatherScroll.StartPosstion();
+            }
+            catch (Exception ex)
+            {
+                Utils.Utils.WriteToLog(ex);
+            }
         }
 
         public void StartRssNewsScroll(object sender, EventArgs e)
@@ -208,7 +221,12 @@ namespace ProjTaskReminder
             NewsScroll.Start();
         }
 
-        private void SetListViewControls(ListViewAdapter.ListViewHolder listViewHolder, int position)
+        /// <summary>
+        /// Fill controls in the task card - From the adapter
+        /// </summary>
+        /// <param name="listViewHolder"></param>
+        /// <param name="position"></param>
+        private void SetTaskItemControlsInView(ListViewAdapter.ListViewHolder listViewHolder, int position)
         {
             if (position >= TasksList.Count || position<0)
             {
@@ -245,7 +263,6 @@ namespace ProjTaskReminder
             //btnMainDelete.SetBackgroundResource(Android.Resource.Drawable.IcDelete);
 
             
-            lstTasks = (ListView)FindViewById(Resource.Id.lstTasks);
             ImageButton btnMainMusic = (ImageButton)FindViewById(Resource.Id.bntMainMusic);
             //btnMainWeather = (ImageView)FindViewById(Resource.Id.btnMainWeather);
             ImageButton btnMainEmail = (ImageButton)FindViewById(Resource.Id.btnMainEmail);
@@ -255,7 +272,19 @@ namespace ProjTaskReminder
             txtRssNews = (TextView)FindViewById(Resource.Id.txtRssNews);
             imageTimerPointWeater = (ImageView)FindViewById(Resource.Id.imageTimerPointWeater);
 
-            //lstTasks.ItemClick += OnTaskItemClick;
+            
+            lstTasks = (ListView)FindViewById(Resource.Id.lstTasks);
+            lstTasks.ContextClickable = true;
+            lstTasks.Clickable = true;
+
+            //AdapterView.IOnItemClickListener lstTasks_OnItemClick3;
+            ///lstTasks.OnItemClickListener = lstTasks_OnItemClick3;
+            //View.IOnClickListener lstTasks_OnItemClick3;
+            //lstTasks.SetOnClickListener(lstTasks_OnItemClick3);
+
+            lstTasks.ItemClick += lstTasks_OnItemClick;
+            lstTasks.ContextClick += lstTasks_OnItemClick2;
+            //lstTasks.PerformContextClick();
 
             //lstTasks.SetOnClickListener(simpleListItem_DoubleClick);
             //lstTasks.OnItemClickListener += OnItemClick
@@ -267,7 +296,6 @@ namespace ProjTaskReminder
             btnMainMusic.Click += btnMainMusic_Click;
             //btnMainWeather.Click += btnMainWeather_Click;
             btnMainEmail.Click += StartRssNewsScroll;
-            //cardWeather.Click += btnMainWeather_Click;
             txtRssNews.Click += txtRssNews_Click;
 
 
@@ -283,57 +311,6 @@ namespace ProjTaskReminder
             btnMainWeather2.Click += btnMainWeather_Click;
             btnMainWeather3.Click += btnMainWeather_Click;
             btnMainWeather4.Click += btnMainWeather_Click;
-
-           
-
-
-
-            //public event EventHandler YourEvent;
-            //        or
-            //public event EventHandler YourEventWithParameters;
-            //        Fire the eventhandler like this:
-            //        if (YourEvent!= null)
-            //        {
-            //              YourEvent(this, EventArgs.Empty);
-            //        }
-            //            then If you have a second class Class2 , and the event handler is present in Class1
-            //            So inside Class2
-            //            you create an object of class1.
-            //            Class1 obj = new Class1();
-            //            Class1.YourEvent+=OnEventHandlingInClass2;
-            //          The signature of OnEventHandlingInClass2 will be:
-            //          void OnEventHandlingInClass2(object sender, EventArgs e)
-            //        {
-            //        }
-            //        or in second scenario.
-            //        Class1.YourEventWithParameters+=OnEventHandlingInClass2;
-            //        The signature of OnEventHandlingInClass2 will be:
-            //void OnEventHandlingInClass2(object sender, parameer T)
-            //        {
-            //        }
-
-            //ActivityTaskDetails.OnSaveButton(new ActivityTaskDetails.OnSaveButtonInterface()
-            //{
-            //    public void SetSaveButton(long recordsEffected)
-            //    {
-            //        //updateTaskInlist();
-            //    }
-            //});
-            //new System.Windows.RoutedEventHandler(btnOkClick);
-            //ActivityTaskDetails.btnSave_Click += (object sender, EventArgs eventArgs) =>     //new btnSave_Click<object, EventArgs>()
-            //ActivityTaskDetails.btnSave_Click(null, null);     //new btnSave_Click<object, EventArgs>()
-            //ActivityTaskDetails.btnSave_Click += ActivityTaskDetails.OnSaveButtonInterface;     // (null, null);           //(new ActivityTaskDetails.OnSaveButton()
-            //ActivityTaskDetails.btnSave_Click += (object sender, EventArgs eventArgs) =>
-            //{
-            //public override void SetSaveButton(long recordsEffected)
-            //{
-
-            //}
-            //});
-            //{
-            //    FillList();
-            //};
-
 
 
         }
@@ -547,7 +524,6 @@ namespace ProjTaskReminder
             {
                 IntentMusic = new Intent(this, typeof(ActivityMusic));
                 IntentMusic.SetFlags(ActivityFlags.NewTask);
-                //IntentMusic.PutExtra("TaskID", "Meir");
             }
             else
             {
@@ -635,6 +611,7 @@ namespace ProjTaskReminder
                 // Scroll to handled task
                 focusListByID(id);
             }
+
         }
 
         [Obsolete]
@@ -642,8 +619,10 @@ namespace ProjTaskReminder
         {
             listViewAdapter = new ListViewAdapter(MainContext, TasksList);
 
-            listViewAdapter.OnListItemSetControlsInView += SetListViewControls;
-            listViewAdapter.OnItemClick += OnTaskItemClick;
+            // Fill controls in the task card - From the adapter
+            listViewAdapter.OnListItemSetControlsInView += SetTaskItemControlsInView;
+            //listViewAdapter.OnItemClick += OnTaskItemClick;
+            //listViewAdapter.OnItemClick2 += OnTaskItemClick2;
 
             lstTasks.SetAdapter(listViewAdapter);
         }
@@ -652,9 +631,7 @@ namespace ProjTaskReminder
         private void RefreshListAdapter()
         {
             //listViewAdapter = new ListViewAdapter(MainContext, TasksList);
-
-            //listViewAdapter.OnListItemSetControlsInView += SetListViewControls;
-
+            //listViewAdapter.OnListItemSetControlsInView += SetTaskItemControlsInView;
             //lstTasks.SetAdapter(listViewAdapter);
 
             listViewAdapter.NotifyDataSetChanged();
@@ -792,46 +769,10 @@ namespace ProjTaskReminder
             return TasksList;
         }
 
-        public static List<KeyValuePair<String, String>> SetTaskValuesForDB(Task currentTask)
-        {
-            List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>();
-            //List<KeyValuePair<string,CharSequence>> values2 = new ArrayList<>();
-            string strDateTime = "";
-
-
-            if ((!currentTask.getDate_due().Equals("")) && (!currentTask.getTime_due().Equals("")))
-            {
-                strDateTime = currentTask.getDate_due() + " " + currentTask.getTime_due();
-            }
-
-            /// TODO: Primary key - no needvalues.Add(new KeyValuePair<string, string>(DB_FIELDNAME_ID, currentTask.getTaskID().ToString()));
-            ///
-            values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_TITLE, currentTask.getTitle()));
-            //values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_DESC, currentTask.getDescription);     // Html.toHtml(currentTask.getDescription())
-            values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_DESC, currentTask.getDescriptionWithHtml()));
-            values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_DATE, strDateTime));
-            //values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_COLOR, currentTask.getBackgroundColor()));
-            //values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_REPEAT, currentTask.getRepeat()));
-            //values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_LAST_UPDATE, currentTask.getDate_last_update()));
-            //values.Add(new KeyValuePair<string, string>(DB_FIELDNAME_IS_ARCHIVE, ((currentTask.getIsArchive()) ? "1" : "0")));
-            //Log.d("Set asArchive", "getTaskValues(): "+string.valueOf(CurrentTask.getIsArchive()));
-
-            return values;
-        }
-
         private void OpenTaskDetailsPage(Task task, bool isNewMode, Context context)
         {
 
-            if (!isNewMode)
-            {
-                //Log.d("Open Update task screen - TaskID: ", String.valueOf(taskID));    //, "Is MainActivity finished: "+ this.isFinishing());
-                //task = getTaskInListByID(tasksList, taskID);
-                //if (task == null)
-                //{
-                //    return null;
-                //}
-            }
-            else
+            if (isNewMode)
             {
                 task = newTaskDetails();
             }
@@ -840,17 +781,14 @@ namespace ProjTaskReminder
             intent.SetFlags(ActivityFlags.NewTask);
 
             intent.PutExtra("TaskID", task.getTaskID());
-            //intent.putExtra("task", task);  //TODO: Seriize
 
             CurrentTask = task;
 
             ActivityTaskDetails.isNewMode = isNewMode;
             ActivityTaskDetails.CurrentTask = task;
-            ////ActivityTaskDetails.dbHandler = MainActivity.dbHandler;
             ActivityTaskDetails.context = MainContext;      //Application.Context;
-            ////ActivityTaskDetails.mainActivity = mainActivity;
 
-            //StartActivityForResult(intent, SCREEN_TASK_DETAILS_SAVED);
+            //this.StartActivityForResult(intent, SCREEN_TASK_DETAILS_SAVED);
             MainContext.StartActivity(intent);
 
         }
@@ -901,14 +839,10 @@ namespace ProjTaskReminder
             intent.PutExtra("WeatherUrl", MH_Weather.URL_LEFT_WEATHER);    // "http://api.weatherstack.com/current?access_key=f2896ef52242c1e367e2170ce40352ba&query=");
 
 
-            //ActivityTaskDetails.isNewMode = isNewMode;
-            //ActivityTaskDetails.CurrentTask = task;
-            ////ActivityTaskDetails.dbHandler = MainActivity.dbHandler;
-            ActivitySettings.context = MainContext;      //Application.Context;
-            ////ActivityTaskDetails.mainActivity = mainActivity;
+            ActivitySettings.context = MainContext;
 
             StartActivityForResult(intent, SHOW_SCREEN_SETTING);
-            //MainContext.StartActivity(intent);
+            //StartActivity.StartActivity(intent);
 
         }
 
@@ -924,70 +858,47 @@ namespace ProjTaskReminder
             OpenTaskDetailsPage(CurrentTask, false, Application.Context);
         }
 
-        // Old - On ListView control Item click
-        private void OnTaskItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        /// <summary>
+        /// On ListView control Item click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lstTasks_OnItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             CurrentTask = TasksList[e.Position];
 
             OpenTaskDetailsPage(CurrentTask, false, Application.Context);
 
-            //View.IOnClickListener ii = simpleListItem_DoubleClick(sender, e);
-
-            //OnItemClickFromAdapter(sender, e);
         }
 
-        public View.IOnClickListener simpleListItem_DoubleClick(View.IOnClickListener vvv)
+        private void lstTasks_OnItemClick2(object sender, View.ContextClickEventArgs e)
+        {
+            if (lstTasks.SelectedItemPosition<0 || lstTasks.SelectedItemPosition>=TasksList.Count)
+            {
+                return;
+            }
+
+            CurrentTask = TasksList[lstTasks.SelectedItemPosition];
+
+            OpenTaskDetailsPage(CurrentTask, false, Application.Context);
+        }
+
+        public View.IOnClickListener lstTasks_DoubleClick(View.IOnClickListener vvv)
         {
             OpenTaskDetailsPage(CurrentTask, false, Application.Context);
 
             return null;    // View.IOnClickListener;
         }
 
-        private void OnItemClickFromAdapter(object sender, EventArgs e)
-        {
-            CurrentTask = TasksList[lstTasks.SelectedItemPosition];
-
-            ActivityTaskDetails.CurrentTask = CurrentTask;
-
-            //Toast.MakeText(MainContext, "Click", ToastLength.Long).Show();
-        }
-
         private void btnMainNew_OnClick(object sender, EventArgs eventArgs)
         {
             View view = (View)sender;
-
-            //Toast.MakeText(view.Context, "Click", ToastLength.Long).Show();
-
-            //Task task = new Task();
 
             OpenTaskDetailsPage(CurrentTask, true, Application.Context);
 
             //Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
             //              .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
         }
-
-        //private void btnMainDelete_OnClick(object sender, EventArgs eventArgs)
-        //{
-        //    View view = (View)sender;
-
-        //lstTasks.Selected;
-        //lstTasks.SelectedItem;
-        //lstTasks.SelectedView;
-
-        //if (lstTasks.SelectedItemPosition > 0 && lstTasks.SelectedItemPosition < TasksList.Count)
-        //{
-        //    Task task = TasksList[lstTasks.SelectedItemPosition];
-
-        //    DBTaskReminder.DB.Delete<TBL_Tasks>(task.getTaskID());  // "ID==" +currentTask.getTaskID().ToString(), null);
-
-        //    Toast.MakeText(view.Context, "Deletet", ToastLength.Long).Show();
-
-        //    FillList();
-        //}
-
-        //Snackbar.Make(view, "Replace with your own action", Snackbar.LengthLong)
-        //              .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
-        //}
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -1023,13 +934,13 @@ namespace ProjTaskReminder
                             }
                             break;
                         }
-                    // Delete
-                    case SCREEN_TASK_DETAILS_DELETE:
+
+                    case SCREEN_TASK_DETAILS_DELETE:        // Delete
                         {
                             TimerStop(CurrentTask);
                             TasksList.Remove(CurrentTask);
-                            SortList();
-                            //FillList();
+                            FillList();
+                            //SortList();
                             break;
                         }
                 }
@@ -1041,7 +952,11 @@ namespace ProjTaskReminder
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent inputIntent)
         {
-            //base.OnActivityReenter(requestCode,resultCode, data);
+
+            if (inputIntent != null)
+            {
+                int taskID = inputIntent.GetIntExtra("TaskID", 0);
+            }
 
             if (resultCode == Result.Ok)
             {
@@ -1050,9 +965,11 @@ namespace ProjTaskReminder
                     case SHOW_SCREEN_SETTING:
                         {
                             SaveSettingsValues(inputIntent);
-                            break;
                         }
+                        break;
                 }
+
+                OnExitResult(requestCode, resultCode, inputIntent);
 
             }
 
@@ -1587,7 +1504,7 @@ namespace ProjTaskReminder
             fullPathSource = Path.Combine(Utils.Utils.LOG_FILE_PATH, "MH_Tasks.txt");
             fullPathTarget = Path.Combine(targetPath, "MH_Tasks.txt");
 
-            result = Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
+            bool resultTextFile = Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
 
             if (result)
             {

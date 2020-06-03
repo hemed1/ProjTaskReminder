@@ -260,6 +260,25 @@ namespace ProjTaskReminder.Data
             return recordsEffected;
         }
 
+        public bool DeleteRecord(int id)
+        {
+            bool result = true;
+
+            try
+            {
+                DB.Delete<TBL_Tasks>(id);
+                //DB.Close();
+            }
+            catch (Exception ex)
+            {
+                result = false;
+                Utils.Utils.WriteToLog(ex);
+                //throw ex;
+            }
+
+            return result;
+        }
+
         public bool DeleteRecord(string tableName, int id)
         {
             bool result = true;
@@ -269,7 +288,6 @@ namespace ProjTaskReminder.Data
 
             try
             {
-                //this.DB = this.getWritableDatabase();
                 DB.Execute(sqlScript);
                 //DB.Close();
             }
