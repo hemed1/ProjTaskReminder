@@ -22,6 +22,7 @@ namespace ProjTaskReminder.Model
         private string Duration;
         private int ResourceID;
         private string SongPath;
+        private string SongPathFull;
         private List<Integer> picsToSongResourcesIDs;
         private List<string> picsToSongPathsArray;
 
@@ -75,6 +76,16 @@ namespace ProjTaskReminder.Model
         public void setSongPath(string songPath)
         {
             SongPath = songPath;
+        }
+
+        public string getSongPathFull()
+        {
+            return SongPathFull;
+        }
+
+        public void setSongPathFull(string songPathFull)
+        {
+            SongPathFull = songPathFull;
         }
 
         public int getResourceID()

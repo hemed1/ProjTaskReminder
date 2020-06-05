@@ -3725,13 +3725,13 @@ namespace ProjTaskReminder
 			public const int layDetails = 2131230855;
 			
 			// aapt resource value: 0x7F080088
-			public const int layDetails4 = 2131230856;
+			public const int layDetailsPos = 2131230856;
 			
 			// aapt resource value: 0x7F080089
-			public const int layDetailsPos = 2131230857;
+			public const int layExtra = 2131230857;
 			
 			// aapt resource value: 0x7F08008A
-			public const int layExtra = 2131230858;
+			public const int layFoldersButtons = 2131230858;
 			
 			// aapt resource value: 0x7F08008B
 			public const int layList = 2131230859;

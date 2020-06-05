@@ -283,7 +283,7 @@ namespace ProjTaskReminder
             //lstTasks.SetOnClickListener(lstTasks_OnItemClick3);
 
             lstTasks.ItemClick += lstTasks_OnItemClick;
-            lstTasks.ContextClick += lstTasks_OnItemClick2;
+            //lstTasks.ContextClick += lstTasks_OnItemClick2;
             //lstTasks.PerformContextClick();
 
             //lstTasks.SetOnClickListener(simpleListItem_DoubleClick);

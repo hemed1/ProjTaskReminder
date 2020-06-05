@@ -207,8 +207,8 @@ namespace ProjTaskRemindet.Utils
                         date_due = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtDateDue);
                         cardView = (CardView)convertView.FindViewById(ProjTaskReminder.Resource.Id.cardTask);
 
-                        cardView.Click += OnViewClick;
-                        //convertView.Click += OnViewClick;
+                        //cardView.Click += OnViewClick;
+                        convertView.Click += OnViewClick;
                         //convertView.SetOnClickListener(this.ParentListViewAdapter.OnItemClick2);
                     }
                     catch (Exception ex)

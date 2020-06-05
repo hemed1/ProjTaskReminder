@@ -16,37 +16,38 @@
     <RelativeLayout
         android:id="@+id/layArtist"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
+        android:layout_height="500dp"
+        android:layout_marginBottom="0dp"
         android:layout_marginTop="3dp">
 
         <android.support.v7.widget.CardView
             android:id="@+id/cardFilesList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="700dp"
+            android:layout_alignParentTop="true"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layoutDirection="ltr"
             android:textDirection="rtl"
-            android:visibility="invisible"
-            android:layout_alignParentTop="true"
+            android:visibility="visible"
             app:cardBackgroundColor="#d18a8a"
             app:cardCornerRadius="10dp"
             app:cardElevation="3dp"
             app:cardMaxElevation="10dp">
 
-        <TextView
-            android:id="@+id/lblSongsListCaption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="רשימת תיקיות"
-            android:layout_alignParentTop="true"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:textSize="17sp"/>
+            <TextView
+                android:id="@+id/lblSongsListCaption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="רשימת תיקיות"
+                android:layout_alignParentTop="true"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
 
             <ListView
                 android:id="@+id/lstFiles"
@@ -55,9 +56,9 @@
                 android:scrollbars="vertical"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="32dp"
-                android:layout_marginBottom="0dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="0.8dp"
+                android:layout_marginEnd="0.8dp"
                 android:paddingTop="4dp"
                 android:paddingBottom="0dp"
                 android:paddingStart="4dp"
@@ -88,15 +89,12 @@
        <HorizontalScrollView
             android:id="@+id/scrHorizonPics"
             android:layout_width="match_parent"
-            android:layout_height="470dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="40dp"
-            android:layout_marginEnd="18dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginStart="18dp"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true">
-
-            <!--android:background="@android:color/holo_red_dark"-->
-
 
             <LinearLayout
                 android:id="@+id/layMusicPicts"
@@ -108,19 +106,20 @@
 
                 <ImageView
                     android:id="@+id/imgSongArtist1"
-                    android:layout_width="480dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@mipmap/default1"                    
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="0dp"
                     android:layout_marginEnd="2dp"
                     android:layout_marginStart="2dp"
-                    android:layout_centerHorizontal="true"
                     android:scaleType="fitXY" />
+
+                                    <!--android:layout_centerHorizontal="true"-->
 
                 <ImageView
                     android:id="@+id/imgSongArtist2"
-                    android:layout_width="480dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@mipmap/default2"                    
                     android:layout_marginTop="2dp"
@@ -129,11 +128,9 @@
                     android:layout_marginStart="2dp"
                     android:scaleType="fitXY" />
 
-                    <!--android:layout_centerHorizontal="true"-->
-
                 <ImageView
                     android:id="@+id/imgSongArtist3"
-                    android:layout_width="480dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@mipmap/default3"
                     android:layout_marginTop="2dp"
@@ -145,18 +142,6 @@
 
     </HorizontalScrollView>
 
-<!--        <ImageView
-            android:id="@+id/imageMusic1"
-            android:layout_width="410dp"
-            android:layout_height="310dp"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/music1"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentTop="true"/>
--->
     </RelativeLayout>
 
 
@@ -165,9 +150,9 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:orientation="vertical"
-        android:layout_marginTop="30dp"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp">
+        android:layout_marginTop="20dp"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp">
 
        <HorizontalScrollView
             android:id="@+id/scrHorizonSongName"
@@ -184,13 +169,11 @@
             android:layout_alignTop="@id/layDetailsPos">
 
             
-
             <LinearLayout
                 android:id="@+id/layMusicSongName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:padding="0dp">
+                android:orientation="horizontal">
                 
 
                 <TextView
@@ -206,8 +189,6 @@
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
-                <!--android:inputType="textMultiLine"
-                    android:scrollbars="none"-->
             </LinearLayout>
 
         </HorizontalScrollView>>
@@ -233,9 +214,9 @@
         android:id="@+id/layDetailsPos"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="3dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginTop="2dp"
         android:paddingStart="5dp"
         android:paddingEnd="5dp">
 
@@ -274,6 +255,7 @@
             android:textStyle="bold" />
 
     </RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/layPlayButtons"
@@ -339,12 +321,12 @@
 
 
     <RelativeLayout
-        android:id="@+id/layDetails4"
+        android:id="@+id/layFoldersButtons"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal"
         android:layout_gravity="bottom"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="30dp"
         android:paddingStart="1dp"
         android:paddingEnd="1dp">
@@ -355,9 +337,9 @@
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginEnd="80dp"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="0dp"
             android:layout_marginStart="0dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="0dp"
             android:layout_alignParentEnd="true"
             android:text="תיקיות" />
 
@@ -367,9 +349,9 @@
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginEnd="0dp"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="0dp"
             android:layout_marginStart="80dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="0dp"
             android:layout_alignParentStart="true"
             android:text="כל השירים" />
 
