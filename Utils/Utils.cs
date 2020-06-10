@@ -138,7 +138,7 @@ namespace ProjTaskReminder.Utils
             string file;
             List<string> files = new List<string>();
             //List<KeyValuePair<string, List<string>>> filesResult = new List<KeyValuePair<string, List<string>>>();
-            List<string> directories = new List<string>(); ;
+            List<string> directories = new List<string>(); 
 
 
 
@@ -151,12 +151,13 @@ namespace ProjTaskReminder.Utils
             }
             catch (Exception ex)
             {
-
+                WriteToLog(ex);
             }
 
             if (directories == null || directories.Count() == 0)
             {
-                return files;
+                directories.Add(path);
+                //return files;
             }
 
 
@@ -164,6 +165,13 @@ namespace ProjTaskReminder.Utils
             {
                 path = directories[j];
                 files = Directory.GetFiles(path, fileExtentionToSearch).ToList();
+
+                List<string> subDirectories = Directory.GetDirectories(path).ToList();
+                if (subDirectories.Count > 0)
+                {
+                    // Read Sub Directories
+                    directories.AddRange(subDirectories);
+                }
 
                 for (int i = 0; i < files.Count; i++)
                 {
@@ -195,7 +203,7 @@ namespace ProjTaskReminder.Utils
                 }
             }
 
-
+            
             return files;
         }
 
@@ -908,11 +916,24 @@ namespace ProjTaskReminder.Utils
                 Encoding encoding = new UTF8Encoding(false);
                 //Encoding encoding = Encoding.GetEncoding("Windows-1255");
 
-                StreamReader fileInputStream = new StreamReader(fileName, encoding);
                 StringBuilder stringBuilder = new StringBuilder();
-                //FileInputStream fileInputStream = new FileInputStream(fileName);
-                //InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-                //BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StreamReader fileInputStream = new StreamReader(fileName, encoding);
+                //Java.IO.FileInputStream fileInputStream = new Java.IO.FileInputStream(fileName);
+                //Java.IO.InputStreamReader inputStreamReader = new Java.IO.InputStreamReader(fileInputStream);
+                //Java.IO.BufferedReader bufferedReader = new Java.IO.BufferedReader(inputStreamReader);
+                
+
+                //while ((line = bufferedReader.ReadLine()) != null)
+                //{
+                //    stringBuilder.Append(line + LINE_SEPARATOR);
+                //    resultList.Add(line);
+                //}
+
+                //fileInputStream.close();
+                //bufferedReader.close();
+
+
 
                 resultList = new List<string>();
 
@@ -967,12 +988,14 @@ namespace ProjTaskReminder.Utils
                 //UTF8Encoding encoding = new UTF8Encoding();
                 //Encoding encoding = new UTF8Encoding(false);
                 Encoding encoding = Encoding.GetEncoding("Windows-1255");
-                byte[] bytes = Encoding.ASCII.GetBytes(data);       // + LINE_SEPERATOR);       // "šarže");
+                byte[] bytes = Encoding.ASCII.GetBytes(data + LINE_SEPERATOR);       // "šarže");
                 char[] chars = Encoding.ASCII.GetChars(bytes);
 
-                StreamWriter fileOutputStream = new StreamWriter(fileName, appendLines, encoding);
-                fileOutputStream.Write(chars);
-                //fileOutputStream.Write(data + LINE_SEPERATOR);
+                Java.IO.FileOutputStream fileOutputStream = new Java.IO.FileOutputStream(fileName, appendLines);
+                fileOutputStream.Write(bytes);
+                //StreamWriter fileOutputStream = new StreamWriter(fileName, appendLines, encoding);
+                //fileOutputStream.Write(chars);
+
 
                 if (showMessage)
                 {

@@ -94,7 +94,7 @@ namespace ProjTaskReminder
 
         private Android.Support.V4.App.NotificationCompat.Builder notificationBuilder;
         private TimerService TaskTimerService;     // , ElapsedEventHandler
-        
+        private delegate AdapterView.IOnItemClickListener lstTasks_OnItemClick3();
 
 
 
@@ -235,16 +235,16 @@ namespace ProjTaskReminder
 
             Task task = TasksList[position];
 
-            listViewHolder.title.SetText(task.getTitle(), TextView.BufferType.Normal);
-            listViewHolder.description.SetText(task.getDescriptionWithHtml(), TextView.BufferType.Normal);
+            listViewHolder.FirstLine.SetText(task.getTitle(), TextView.BufferType.Normal);
+            listViewHolder.SecondLine.SetText(task.getDescriptionWithHtml(), TextView.BufferType.Normal);
 
             if (!task.getDate_due().Equals(""))
             {
-                listViewHolder.date_due.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
+                listViewHolder.ThirdLine.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
             }
             else
             {
-                listViewHolder.date_due.SetText(task.getDate_last_update() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(Utils.Utils.getDateFromString(task.getDate_last_update())), TextView.BufferType.Normal);
+                listViewHolder.ThirdLine.SetText(task.getDate_last_update() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(Utils.Utils.getDateFromString(task.getDate_last_update())), TextView.BufferType.Normal);
             }
 
         }
@@ -274,23 +274,7 @@ namespace ProjTaskReminder
 
             
             lstTasks = (ListView)FindViewById(Resource.Id.lstTasks);
-            lstTasks.ContextClickable = true;
-            lstTasks.Clickable = true;
 
-            //AdapterView.IOnItemClickListener lstTasks_OnItemClick3;
-            ///lstTasks.OnItemClickListener = lstTasks_OnItemClick3;
-            //View.IOnClickListener lstTasks_OnItemClick3;
-            //lstTasks.SetOnClickListener(lstTasks_OnItemClick3);
-
-            lstTasks.ItemClick += lstTasks_OnItemClick;
-            //lstTasks.ContextClick += lstTasks_OnItemClick2;
-            //lstTasks.PerformContextClick();
-
-            //lstTasks.SetOnClickListener(simpleListItem_DoubleClick);
-            //lstTasks.OnItemClickListener += OnItemClick
-            //lstTasks.SetLayoutManager(mLayoutManager);
-            //lstTasks.setHasFixedSize(true);
-            //lstTasks.SetLayerType(new LinearLayout(this), new Android.Graphics.Paint());
 
             ActivityTaskDetails.OnExitResult += OnExitResult;   
             btnMainMusic.Click += btnMainMusic_Click;
@@ -621,13 +605,32 @@ namespace ProjTaskReminder
 
             // Fill controls in the task card - From the adapter
             listViewAdapter.OnListItemSetControlsInView += SetTaskItemControlsInView;
-            //listViewAdapter.OnItemClick += OnTaskItemClick;
-            //listViewAdapter.OnItemClick2 += OnTaskItemClick2;
+            listViewAdapter.OnItemClick += listViewAdapter_OnItemClick;
 
             lstTasks.SetAdapter(listViewAdapter);
+            //lstTasks.ItemClick += lstTasks_OnItemClick;
+
+            listViewAdapter.ParentListView = lstTasks;
+          
+
+            //lstTasks.OnItemClickListener = lstTasks_OnItemClick3;
+            //lstTasks.ContextClickable = true;
+            //lstTasks.Clickable = true;
+            //AdapterView.IOnItemClickListener lstTasks_OnItemClick3;
+            ///lstTasks.OnItemClickListener = lstTasks_OnItemClick3;
+            //View.IOnClickListener lstTasks_OnItemClick3;
+            //lstTasks.SetOnClickListener(lstTasks_OnItemClick3);
+            //lstTasks.ContextClick += lstTasks_OnItemClick2;
+            //lstTasks.PerformContextClick();
+            //lstTasks.SetOnClickListener(simpleListItem_DoubleClick);
+            //lstTasks.OnItemClickListener += OnItemClick
+            //lstTasks.SetLayoutManager(mLayoutManager);
+            //lstTasks.setHasFixedSize(true);
+            //lstTasks.SetLayerType(new LinearLayout(this), new Android.Graphics.Paint());
+
         }
 
-        
+
         private void RefreshListAdapter()
         {
             //listViewAdapter = new ListViewAdapter(MainContext, TasksList);
@@ -851,11 +854,11 @@ namespace ProjTaskReminder
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OnTaskItemClick(ListViewAdapter.ListViewHolder listViewHolder, int position)
+        private void listViewAdapter_OnItemClick(ListViewAdapter.ListViewHolder listViewHolder, int position)
         {
             CurrentTask = TasksList[position];
 
-            OpenTaskDetailsPage(CurrentTask, false, Application.Context);
+            OpenTaskDetailsPage(CurrentTask, false, MainContext);
         }
 
         /// <summary>
@@ -867,9 +870,16 @@ namespace ProjTaskReminder
         {
             CurrentTask = TasksList[e.Position];
 
-            OpenTaskDetailsPage(CurrentTask, false, Application.Context);
+            OpenTaskDetailsPage(CurrentTask, false, MainContext);
 
         }
+
+        //private void OnTaskItemClick3(object sender, EventArgs e)
+        //{
+        //    int position = (int)sender;
+        //    CurrentTask = TasksList[position];
+        //    OpenTaskDetailsPage(CurrentTask, false, MainContext);
+        //}
 
         private void lstTasks_OnItemClick2(object sender, View.ContextClickEventArgs e)
         {
@@ -880,12 +890,12 @@ namespace ProjTaskReminder
 
             CurrentTask = TasksList[lstTasks.SelectedItemPosition];
 
-            OpenTaskDetailsPage(CurrentTask, false, Application.Context);
+            OpenTaskDetailsPage(CurrentTask, false, MainContext);
         }
 
         public View.IOnClickListener lstTasks_DoubleClick(View.IOnClickListener vvv)
         {
-            OpenTaskDetailsPage(CurrentTask, false, Application.Context);
+            OpenTaskDetailsPage(CurrentTask, false, MainContext);
 
             return null;    // View.IOnClickListener;
         }

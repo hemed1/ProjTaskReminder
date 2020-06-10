@@ -18,8 +18,7 @@ using ProjTaskReminder.Utils;
 using ProjTaskReminder.Model;
 using Android.Support.V7.Widget;
 using ProjTaskReminder;
-
-
+using System.Timers;
 
 namespace ProjTaskRemindet.Utils
 {
@@ -29,20 +28,23 @@ namespace ProjTaskRemindet.Utils
         private readonly Object ItemsList;
         private LayoutInflater layoutInflater;
         public int ViewResourcesID = ProjTaskReminder.Resource.Layout.list_item;
-        
 
 
+        private int SelectedPosition;
+        private int SelectedItemPosition { get; set; }
+        public System.Timers.Timer TimerObject { get; set; }
 
         public event Action<ListViewHolder, int> OnListItemSetControlsInView;
-        public event Action<ListViewHolder, int> OnItemClick;       // Not in Use
-        public View.IOnClickListener OnItemClick2;
+        public event Action<ListViewHolder, int> OnItemClick;
+        public event EventHandler SetOnItemClick;
+        //public View.IOnClickListener OnItemClick2;                  // Not in use
 
         //private Resources resources;
         //private int selectMode = 0;
         //private int selectedItemsCount;
         //private MainActivity mainActivity;
 
-
+        public ListView ParentListView;
 
 
         public ListViewAdapter(Context applicationContext, Object itemsList)
@@ -83,9 +85,9 @@ namespace ProjTaskRemindet.Utils
     //    if (position < GetListObject.Count)
     //    {
     //        Task task = GetListObject[position];
-    //        listViewHolder.title.SetText(task.getTitle(), TextView.BufferType.Normal);
-    //        listViewHolder.description.SetText(task.getDescription(), TextView.BufferType.Normal);
-    //        listViewHolder.date_due.SetText(task.getDate_due(), TextView.BufferType.Normal);
+    //        listViewHolder.FirstLine.SetText(task.getTitle(), TextView.BufferType.Normal);
+    //        listViewHolder.SecondLine.SetText(task.getDescription(), TextView.BufferType.Normal);
+    //        listViewHolder.ThirdLine.SetText(task.getDate_due(), TextView.BufferType.Normal);
     //    }
     //}
 
@@ -106,12 +108,16 @@ namespace ProjTaskRemindet.Utils
             return view;       // GetListObject[position];  // null;
         }
 
+        
         public override long GetItemId(int position)
         {
             long res = 0;
 
+            this.SelectedItemPosition = position;
+
             if (position > -1 && position < GetListObject.Count())
             {
+                //OnItemClick(null, position);
                 //res = ItemsList[position].getTaskID();
             }
 
@@ -145,9 +151,10 @@ namespace ProjTaskRemindet.Utils
             {
                 // Set controls in CradView with Object props Outsiderly (In Client source code)
                 SetControlsInView(listViewHolder, position);
+
+                //convertView.SetOnClickListener(InitOnItemClick(position));
             }
 
-            //convertView.SetOnClickListener(InitOnItemClick(position));
 
             return convertView;
         }
@@ -176,20 +183,76 @@ namespace ProjTaskRemindet.Utils
 
         }
 
+        public void TimerStart()
+        {
+            TimerObject = new System.Timers.Timer();
+
+            //TimerObject.BeginInit();   
+            TimerObject.AutoReset = true;           // Continue repeatly fire events
+            TimerObject.Elapsed += Timer_Tick;
+            TimerObject.Interval = 500;
+            TimerObject.Enabled = true;
+            //TimerObject.Start();
+        }
+
+        private void Timer_Tick(object sender, ElapsedEventArgs e)
+        {
+            TimerStop();
+
+            if (this.OnItemClick != null)
+            {
+                this.OnItemClick(null, this.SelectedItemPosition);
+            }
+        }
+
+        private void TimerStop()
+        {
+            if (TimerObject != null)
+            {
+                TimerObject.Stop();
+                TimerObject.Close();
+                TimerObject.Dispose();
+            }
+
+            TimerObject = null;
+        }
+
+        public View.IOnClickListener InitOnItemClick(int position)
+        {
+            this.SelectedItemPosition = position;
+            SetOnItemClick += new EventHandler(OnItemClick2);
+
+            return null;
+        }
+
+        public void OnItemClick2(object sender, EventArgs e)
+        {
+            //if (OnItemClick != null)
+            //{
+            //    OnItemClick(null, SelectedPosition);
+            //}
+
+            SetOnItemClick(SelectedPosition, e);
+        }
+
+
+
+        // *** -------------------------------------------------------------***
+
+
         public class ListViewHolder // : RecyclerView.ViewHolder
         {
-            public TextView title;
-            public TextView description;
-            public TextView date_due;
-            public CardView cardView;
+            public TextView FirstLine;
+            public TextView SecondLine;
+            public TextView ThirdLine;
+            private CardView cardView;
             
 
             public View ViewObject { get; set; }
             private int ItemPosition { get; set; }
             private ListViewAdapter ParentListViewAdapter { get; set; }
 
-            //public event EventHandler SetOnItemClick;
-
+            public event EventHandler SetOnItemClick;
 
 
             public ListViewHolder(View convertView, int position, Object itemsList, ListViewAdapter parentListViewAdapter)     // List<Task> 
@@ -202,14 +265,17 @@ namespace ProjTaskRemindet.Utils
                 {
                     try
                     {
-                        title = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtTitle);
-                        description = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtDescription);
-                        date_due = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtDateDue);
+                        FirstLine = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtTitle);
+                        SecondLine = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtDescription);
+                        ThirdLine = (TextView)convertView.FindViewById(ProjTaskReminder.Resource.Id.txtDateDue);
                         cardView = (CardView)convertView.FindViewById(ProjTaskReminder.Resource.Id.cardTask);
 
                         //cardView.Click += OnViewClick;
                         convertView.Click += OnViewClick;
-                        //convertView.SetOnClickListener(this.ParentListViewAdapter.OnItemClick2);
+                        //cardView.SetOnClickListener(InitOnItemClick(position));
+                        //convertView.SetOnClickListener(InitOnItemClick(position));
+                        //cardView.OnTouchEvent(Touch_Click);
+                        //convertView.SetOnClickListener(this.ParentListViewAdapter.InitOnItemClick(position));
                     }
                     catch (Exception ex)
                     {
@@ -219,21 +285,18 @@ namespace ProjTaskRemindet.Utils
 
 
                 // Remove the 'Selected' methods of the original ListView
-                //if (position < tasks.Count)
+                //if (position >= 0 && position < ((IEnumerable<Object>)itemsList).Count())
                 //{
-                //    convertView.SetOnClickListener(InitOnItemClick(position));     // OnActivityResult
+                    //convertView.SetOnClickListener(InitOnItemClick(position));   
+                    //cardView.SetOnClickListener(InitOnItemClick(position)); 
                 //}
-
-                //cardView.SetOnClickListener(InitOnItemClick(position));     // OnActivityResult
-
+                // Old - Fill controls in card by EVENT 'SetControlsInView(listViewHolder, position)'
                 //if (position < tasks.Count)
                 //{
-                //    convertView.SetOnClickListener(InitOnItemClick(position));     // OnActivityResult
-                //    //cardView.SetOnClickListener(InitOnItemClick(position));     // OnActivityResult
-                //    // Old - Fill controls in card by EVENT 'SetControlsInView(listViewHolder, position)'
-                //    title.SetText(tasks[position].getTitle(), TextView.BufferType.Normal);
-                //    description.SetText(tasks[position].getDescription(), TextView.BufferType.Normal);
-                //    date_due.SetText(tasks[position].getDate_due(), TextView.BufferType.Normal);
+                //    
+                //    FirstLine.SetText(tasks[position].getTitle(), TextView.BufferType.Normal);
+                //    SecondLine.SetText(tasks[position].getDescription(), TextView.BufferType.Normal);
+                //    ThirdLine.SetText(tasks[position].getDate_due(), TextView.BufferType.Normal);
                 //}
             }
 
@@ -241,10 +304,29 @@ namespace ProjTaskRemindet.Utils
             {
                 if (ParentListViewAdapter.OnItemClick != null)
                 {
-                    ParentListViewAdapter.OnItemClick(this, this.ItemPosition);
+                    ParentListViewAdapter.TimerStop();
+
+                    ParentListViewAdapter.SelectedItemPosition = this.ItemPosition;
+
+                    ParentListViewAdapter.TimerStart();
+
+                    //ParentListViewAdapter.OnItemClick(this, this.ItemPosition);
                 }
             }
 
+            private View.IOnClickListener InitOnItemClick(int position)
+            {
+                this.ItemPosition = position;
+
+                SetOnItemClick += new EventHandler(OnItemClick);
+
+                return null;
+            }
+
+            private void OnItemClick(object sender, EventArgs e)    //, int y)
+            {
+                SetOnItemClick(this.ItemPosition, e);
+            }
 
 
         }
