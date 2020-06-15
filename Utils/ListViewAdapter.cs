@@ -37,7 +37,7 @@ namespace ProjTaskRemindet.Utils
         public event Action<ListViewHolder, int> OnListItemSetControlsInView;
         public event Action<ListViewHolder, int> OnItemClick;
         public event EventHandler SetOnItemClick;
-        //public View.IOnClickListener OnItemClick2;                  // Not in use
+        
 
         //private Resources resources;
         //private int selectMode = 0;
@@ -227,11 +227,7 @@ namespace ProjTaskRemindet.Utils
 
         public void OnItemClick2(object sender, EventArgs e)
         {
-            //if (OnItemClick != null)
-            //{
-            //    OnItemClick(null, SelectedPosition);
-            //}
-
+        
             SetOnItemClick(SelectedPosition, e);
         }
 
