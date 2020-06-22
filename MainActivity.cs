@@ -160,14 +160,20 @@ namespace ProjTaskReminder
             }
 
 
-            Android.Net.Uri uri = Android.Net.Uri.Parse("com.meirhemed.mhServiceKeepAlive.mhServiceStayAlive");     // callerName
-            //ServiceKeppAliveIntent = new Intent(Intent.ActionCall, uri);
-
-            ServiceKeppAliveIntent = new Intent(this, typeof(mhServiceKeepAlive.mhServiceStayAlive));
+            ServiceKeppAliveIntent = new Intent(this, typeof(MHServiceKeepAlive.ServiceStayAlive));
             ServiceKeppAliveIntent.SetFlags(ActivityFlags.NewTask);
-            ServiceKeppAliveIntent.PutExtra("CallerName", this.PackageName);
+            Bundle bundle = new Bundle();
+            bundle.PutString("callerPackageName", this.PackageName);
+            bundle.PutString("callerComponentObjectName", this.ComponentName.ClassName);  // .ClassName
+            //ServiceKeppAliveIntent.PutExtra("callerPackageName", new string[] { "com.meirhemed.executeanotheractivity" });
+            //ServiceKeppAliveIntent.PutExtra("callerComponentObjectName", new string[] { "com.meirhemed.executeanotheractivity.mainactivity" });
+            ServiceKeppAliveIntent.PutExtra("CallerName", bundle);
 
             StartService(ServiceKeppAliveIntent);
+
+            //intent = new Intent(Intent.ActionMain);     // Intent.ActionMain - "android.intent.action.MAIN"
+            //intent.SetComponent(new ComponentName("com.meirhemed.intentedactivity", "com.meirhemed.intentedactivity.mainactivity"));
+            //StartActivity(intent);
 
             //var intent = new Intent(ApplicationContext, typeof(PostService));
             //var source = PendingIntent.GetBroadcast(ApplicationContext, 0, intent, 0);
@@ -176,6 +182,10 @@ namespace ProjTaskReminder
             //ComponentName cn = new ComponentName(REMOTE_SERVICE_PACKAGE_NAME, REMOTE_SERVICE_COMPONENT_NAME);
             //Intent serviceToStart = new Intent();
             //serviceToStart.SetComponent(cn);
+
+            //Android.Net.Uri uri = Android.Net.Uri.Parse("com.meirhemed.mhServiceKeepAlive.mhServiceStayAlive");     // callerName
+            //ServiceKeppAliveIntent = new Intent(Intent.ActionCall, uri);
+
 
         }
 

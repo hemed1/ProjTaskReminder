@@ -287,6 +287,12 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MHServiceKeepAlive\MHServiceKeepAlive.csproj">
+      <Project>{afd15e0d-1240-4a5c-aae5-3d0a8f176f4d}</Project>
+      <Name>MHServiceKeepAlive</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.
