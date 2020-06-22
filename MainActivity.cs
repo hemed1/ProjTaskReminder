@@ -31,7 +31,7 @@ using System.Text;
 
 namespace ProjTaskReminder
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true, Name = "com.meirhemed.projtaskreminder.mainactivity")]
     public class MainActivity : AppCompatActivity   //, ListView.IOnItemClickListener
     {
 
@@ -61,6 +61,10 @@ namespace ProjTaskReminder
         private const string WRITE_DB_PREFIX_REPEAT = "repeat: ";
         private const string WRITE_DB_PREFIX_LAST_UPDATE = "last_update: ";
         private const string WRITE_DB_PREFIX_BACKGROUND_COLOR = "backcolor: ";
+
+        static readonly string TAG = typeof(MainActivity).FullName;
+        static readonly string SERVICE_STARTED_KEY = "has_service_been_started";
+
 
 
         private ListView lstTasks;    //RecyclerView
@@ -95,8 +99,8 @@ namespace ProjTaskReminder
         private Android.Support.V4.App.NotificationCompat.Builder notificationBuilder;
         private TimerService TaskTimerService;     // , ElapsedEventHandler
         private delegate AdapterView.IOnItemClickListener lstTasks_OnItemClick3();
-
-
+        private Intent ServiceKeppAliveIntent;
+        private bool isServiceStarted;
 
 
 
@@ -126,6 +130,10 @@ namespace ProjTaskReminder
 
                 focusListOnToday(Utils.Utils.GetDateNow());
 
+
+                ServiceKeepAliveHandle(savedInstanceState);
+
+
                 //StartRssNewsScroll();
 
                 // First city
@@ -140,6 +148,35 @@ namespace ProjTaskReminder
             {
                 Utils.Utils.WriteToLog(ex);
             }
+        }
+
+        private void ServiceKeepAliveHandle(Bundle savedInstanceState)
+        {
+
+            // When the app will die, the service will ReStart this activity again, Get the indication thT SERVICE START IT AGAIN
+            if (savedInstanceState != null)
+            {
+                isServiceStarted = savedInstanceState.GetBoolean(SERVICE_STARTED_KEY, false);
+            }
+
+
+            Android.Net.Uri uri = Android.Net.Uri.Parse("com.meirhemed.mhServiceKeepAlive.mhServiceStayAlive");     // callerName
+            //ServiceKeppAliveIntent = new Intent(Intent.ActionCall, uri);
+
+            ServiceKeppAliveIntent = new Intent(this, typeof(mhServiceKeepAlive.mhServiceStayAlive));
+            ServiceKeppAliveIntent.SetFlags(ActivityFlags.NewTask);
+            ServiceKeppAliveIntent.PutExtra("CallerName", this.PackageName);
+
+            StartService(ServiceKeppAliveIntent);
+
+            //var intent = new Intent(ApplicationContext, typeof(PostService));
+            //var source = PendingIntent.GetBroadcast(ApplicationContext, 0, intent, 0);
+
+            // Put in the client taht call that servic - Provide the package name and the name of the service with a ComponentName object.
+            //ComponentName cn = new ComponentName(REMOTE_SERVICE_PACKAGE_NAME, REMOTE_SERVICE_COMPONENT_NAME);
+            //Intent serviceToStart = new Intent();
+            //serviceToStart.SetComponent(cn);
+
         }
 
         public void StartRssNewsScroll(object sender, EventArgs e)
@@ -796,42 +833,6 @@ namespace ProjTaskReminder
 
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.menu_main, menu);
-            return true;
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            int id = item.ItemId;
-
-            switch (id)
-            {
-                case Resource.Id.menu_settings:
-                    ShowSetting();
-                    break;
-
-                case Resource.Id.menu_db_backup:
-                    BackupDataBaseFile();
-                    break;
-
-                case Resource.Id.menu_db_restore:
-                    RestoreDataBaseFile();
-                    break;
-
-                case Resource.Id.menu_textfile_write:
-                    writeDBToTextFile();
-                    break;
-
-                case Resource.Id.menu_textfile_read:
-                    readDBFromTextFile();
-                    break;
-            }
-
-            return base.OnOptionsItemSelected(item);
-        }
-
         private void ShowSetting()
         {
             Intent intent = new Intent(this, typeof(ActivitySettings));
@@ -910,13 +911,6 @@ namespace ProjTaskReminder
             //              .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
-        {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-
         protected void OnExitResult(int requestCode, Result resultCode, Intent inputIntent)
         {
             //base.OnActivityReenter(requestCode,resultCode, data);
@@ -957,31 +951,6 @@ namespace ProjTaskReminder
 
             }
 
-
-        }
-
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent inputIntent)
-        {
-
-            if (inputIntent != null)
-            {
-                int taskID = inputIntent.GetIntExtra("TaskID", 0);
-            }
-
-            if (resultCode == Result.Ok)
-            {
-                switch (requestCode)
-                {
-                    case SHOW_SCREEN_SETTING:
-                        {
-                            SaveSettingsValues(inputIntent);
-                        }
-                        break;
-                }
-
-                OnExitResult(requestCode, resultCode, inputIntent);
-
-            }
 
         }
 
@@ -1476,23 +1445,6 @@ namespace ProjTaskReminder
             return CurrentTask;
         }
 
-        protected override void OnDestroy()
-        {
-            DBTaskReminder.DB.Close();
-
-            BackupDataBaseFile();
-
-            bool isMedyaPlayerClosed = ActivityMusic.MusicStopFinal();
-
-            if (isMedyaPlayerClosed)
-            {
-                Toast.MakeText(this, "Destroy Medya Player", ToastLength.Long).Show();
-            }
-            Toast.MakeText(this, "Close Application", ToastLength.Long).Show();
-
-            base.OnDestroy();
-        }
-
         private void BackupDataBaseFile()
         {
             string backupFolderName = Android.OS.Environment.DirectoryMusic;    // "ProjTaskReminder"
@@ -1786,9 +1738,123 @@ namespace ProjTaskReminder
 
             return result;
         }
+
+
+
+        #region Self override events
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_main, menu);
+            return true;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            int id = item.ItemId;
+
+            switch (id)
+            {
+                case Resource.Id.menu_settings:
+                    ShowSetting();
+                    break;
+
+                case Resource.Id.menu_db_backup:
+                    BackupDataBaseFile();
+                    break;
+
+                case Resource.Id.menu_db_restore:
+                    RestoreDataBaseFile();
+                    break;
+
+                case Resource.Id.menu_textfile_write:
+                    writeDBToTextFile();
+                    break;
+
+                case Resource.Id.menu_textfile_read:
+                    readDBFromTextFile();
+                    break;
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
+
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent inputIntent)
+        {
+
+            if (inputIntent != null)
+            {
+                int taskID = inputIntent.GetIntExtra("TaskID", 0);
+            }
+
+            if (resultCode == Result.Ok)
+            {
+                switch (requestCode)
+                {
+                    case SHOW_SCREEN_SETTING:
+                        {
+                            SaveSettingsValues(inputIntent);
+                        }
+                        break;
+                }
+
+                OnExitResult(requestCode, resultCode, inputIntent);
+
+            }
+
+        }
+
+        protected override void OnDestroy()
+        {
+            DBTaskReminder.DB.Close();
+
+            BackupDataBaseFile();
+
+            bool isMedyaPlayerClosed = ActivityMusic.MusicStopFinal();
+
+            if (isMedyaPlayerClosed)
+            {
+                Toast.MakeText(this, "Destroy Medya Player", ToastLength.Long).Show();
+            }
+            
+            Toast.MakeText(this, "Close Application", ToastLength.Long).Show();
+
+            // The latter may seem rather peculiar: why do we want to stop exactly the service that we want to keep alive? 
+            // Because if we do not stop it, the service will die with our app.Instead, by stopping the service, 
+            // we will force the service to call its own onDestroy which will force it to recreate itself after the app is dead.
+
+            //	Why can't I simply send a message to the broadcast receiver directly from the Activity's onDestroy
+            // You can but in that case the service will not be restarted if your app is in the background and Android decides to kill your service because it needs resources.I.e.your service would not be guaranteed to work indefinitely
+
+            // What is I do not want the counter to restart when the process is killed ?
+            // Yes this is the usual case. Well you cannot directly. The only way is to save the status of the service and to reload it when the service is started.You will do this by using the following code:
+            StopService(ServiceKeppAliveIntent);
+
+            base.OnDestroy();
+        }
+
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            outState.PutBoolean(SERVICE_STARTED_KEY, isServiceStarted);
+            base.OnSaveInstanceState(outState);
+        }
+
+        protected override void OnRestoreInstanceState(Bundle savedInstanceState)
+        {
+            base.OnRestoreInstanceState(savedInstanceState);
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+
+        #endregion Self override events
     }
-
-
 
 }
 
