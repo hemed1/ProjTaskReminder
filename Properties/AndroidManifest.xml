@@ -22,7 +22,7 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <service android:exported="true" android:isolatedProcess="false" android:name="com.meirhemed.mhServiceKeepAlive.mhServiceStayAlive" />
+    <service android:exported="true" android:isolatedProcess="false" android:name="com.meirhemed.mhservicekeepalive.servicestayalive" />
     <provider android:authorities="com.meirhemed.projtaskreminder.fileProvider" android:exported="false" android:grantUriPermissions="true" android:name="xamarin.essentials.fileProvider">
       <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/xamarin_essentials_fileprovider_file_paths" />
     </provider>

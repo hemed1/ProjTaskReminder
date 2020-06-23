@@ -301,7 +301,7 @@ namespace ProjTaskReminder
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
-            FloatingActionButton btnMainNew = FindViewById<FloatingActionButton>(Resource.Id.btnMainNew);
+            Android.Support.Design.Widget.FloatingActionButton  btnMainNew = (Android.Support.Design.Widget.FloatingActionButton)FindViewById(Resource.Id.btnMainNew);
             btnMainNew.Click += btnMainNew_OnClick;
             //btnMainNew.SetBackgroundResource(Android.Resource.Drawable.IcMediaNext);
 
@@ -1481,7 +1481,7 @@ namespace ProjTaskReminder
             if (result)
             {
                 string message = "Database was copied OK";
-                Toast.MakeText(this, message, ToastLength.Long).Show();
+                //Toast.MakeText(this, message, ToastLength.Long).Show();
                 //Utils.Utils.WriteToLog(message, true);
             }
         }
@@ -1825,7 +1825,7 @@ namespace ProjTaskReminder
 
             if (isMedyaPlayerClosed)
             {
-                Toast.MakeText(this, "Destroy Medya Player", ToastLength.Long).Show();
+                //Toast.MakeText(this, "Destroy Medya Player", ToastLength.Long).Show();
             }
             
             Toast.MakeText(this, "Close Application", ToastLength.Long).Show();

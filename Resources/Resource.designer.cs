@@ -26,1613 +26,1612 @@ namespace ProjTaskReminder
 		
 		public static void UpdateIdValues()
 		{
-			global::mhServiceKeepAlive.Resource.Animation.abc_fade_in = global::ProjTaskReminder.Resource.Animation.abc_fade_in;
-			global::mhServiceKeepAlive.Resource.Animation.abc_fade_out = global::ProjTaskReminder.Resource.Animation.abc_fade_out;
-			global::mhServiceKeepAlive.Resource.Animation.abc_grow_fade_in_from_bottom = global::ProjTaskReminder.Resource.Animation.abc_grow_fade_in_from_bottom;
-			global::mhServiceKeepAlive.Resource.Animation.abc_popup_enter = global::ProjTaskReminder.Resource.Animation.abc_popup_enter;
-			global::mhServiceKeepAlive.Resource.Animation.abc_popup_exit = global::ProjTaskReminder.Resource.Animation.abc_popup_exit;
-			global::mhServiceKeepAlive.Resource.Animation.abc_shrink_fade_out_from_bottom = global::ProjTaskReminder.Resource.Animation.abc_shrink_fade_out_from_bottom;
-			global::mhServiceKeepAlive.Resource.Animation.abc_slide_in_bottom = global::ProjTaskReminder.Resource.Animation.abc_slide_in_bottom;
-			global::mhServiceKeepAlive.Resource.Animation.abc_slide_in_top = global::ProjTaskReminder.Resource.Animation.abc_slide_in_top;
-			global::mhServiceKeepAlive.Resource.Animation.abc_slide_out_bottom = global::ProjTaskReminder.Resource.Animation.abc_slide_out_bottom;
-			global::mhServiceKeepAlive.Resource.Animation.abc_slide_out_top = global::ProjTaskReminder.Resource.Animation.abc_slide_out_top;
-			global::mhServiceKeepAlive.Resource.Animation.abc_tooltip_enter = global::ProjTaskReminder.Resource.Animation.abc_tooltip_enter;
-			global::mhServiceKeepAlive.Resource.Animation.abc_tooltip_exit = global::ProjTaskReminder.Resource.Animation.abc_tooltip_exit;
-			global::mhServiceKeepAlive.Resource.Attribute.actionBarDivider = global::ProjTaskReminder.Resource.Attribute.actionBarDivider;
-			global::mhServiceKeepAlive.Resource.Attribute.actionBarItemBackground = global::ProjTaskReminder.Resource.Attribute.actionBarItemBackground;
-			global::mhServiceKeepAlive.Resource.Attribute.actionBarPopupTheme = global::ProjTaskReminder.Resource.Attribute.actionBarPopupTheme;
-			global::mhServiceKeepAlive.Resource.Attribute.actionBarSize = global::ProjTaskReminder.Resource.Attribute.actionBarSize;
-			global::mhServiceKeepAlive.Resource.Attribute.actionBarSplitStyle = global::ProjTaskReminder.Resource.Attribute.actionBarSplitStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.actionBarStyle = global::ProjTaskReminder.Resource.Attribute.actionBarStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.actionBarTabBarStyle = global::ProjTaskReminder.Resource.Attribute.actionBarTabBarStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.actionBarTabStyle = global::ProjTaskReminder.Resource.Attribute.actionBarTabStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.actionBarTabTextStyle = global::ProjTaskReminder.Resource.Attribute.actionBarTabTextStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.actionBarTheme = global::ProjTaskReminder.Resource.Attribute.actionBarTheme;
-			global::mhServiceKeepAlive.Resource.Attribute.actionBarWidgetTheme = global::ProjTaskReminder.Resource.Attribute.actionBarWidgetTheme;
-			global::mhServiceKeepAlive.Resource.Attribute.actionButtonStyle = global::ProjTaskReminder.Resource.Attribute.actionButtonStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.actionDropDownStyle = global::ProjTaskReminder.Resource.Attribute.actionDropDownStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.actionLayout = global::ProjTaskReminder.Resource.Attribute.actionLayout;
-			global::mhServiceKeepAlive.Resource.Attribute.actionMenuTextAppearance = global::ProjTaskReminder.Resource.Attribute.actionMenuTextAppearance;
-			global::mhServiceKeepAlive.Resource.Attribute.actionMenuTextColor = global::ProjTaskReminder.Resource.Attribute.actionMenuTextColor;
-			global::mhServiceKeepAlive.Resource.Attribute.actionModeBackground = global::ProjTaskReminder.Resource.Attribute.actionModeBackground;
-			global::mhServiceKeepAlive.Resource.Attribute.actionModeCloseButtonStyle = global::ProjTaskReminder.Resource.Attribute.actionModeCloseButtonStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.actionModeCloseDrawable = global::ProjTaskReminder.Resource.Attribute.actionModeCloseDrawable;
-			global::mhServiceKeepAlive.Resource.Attribute.actionModeCopyDrawable = global::ProjTaskReminder.Resource.Attribute.actionModeCopyDrawable;
-			global::mhServiceKeepAlive.Resource.Attribute.actionModeCutDrawable = global::ProjTaskReminder.Resource.Attribute.actionModeCutDrawable;
-			global::mhServiceKeepAlive.Resource.Attribute.actionModeFindDrawable = global::ProjTaskReminder.Resource.Attribute.actionModeFindDrawable;
-			global::mhServiceKeepAlive.Resource.Attribute.actionModePasteDrawable = global::ProjTaskReminder.Resource.Attribute.actionModePasteDrawable;
-			global::mhServiceKeepAlive.Resource.Attribute.actionModePopupWindowStyle = global::ProjTaskReminder.Resource.Attribute.actionModePopupWindowStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.actionModeSelectAllDrawable = global::ProjTaskReminder.Resource.Attribute.actionModeSelectAllDrawable;
-			global::mhServiceKeepAlive.Resource.Attribute.actionModeShareDrawable = global::ProjTaskReminder.Resource.Attribute.actionModeShareDrawable;
-			global::mhServiceKeepAlive.Resource.Attribute.actionModeSplitBackground = global::ProjTaskReminder.Resource.Attribute.actionModeSplitBackground;
-			global::mhServiceKeepAlive.Resource.Attribute.actionModeStyle = global::ProjTaskReminder.Resource.Attribute.actionModeStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.actionModeWebSearchDrawable = global::ProjTaskReminder.Resource.Attribute.actionModeWebSearchDrawable;
-			global::mhServiceKeepAlive.Resource.Attribute.actionOverflowButtonStyle = global::ProjTaskReminder.Resource.Attribute.actionOverflowButtonStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.actionOverflowMenuStyle = global::ProjTaskReminder.Resource.Attribute.actionOverflowMenuStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.actionProviderClass = global::ProjTaskReminder.Resource.Attribute.actionProviderClass;
-			global::mhServiceKeepAlive.Resource.Attribute.actionViewClass = global::ProjTaskReminder.Resource.Attribute.actionViewClass;
-			global::mhServiceKeepAlive.Resource.Attribute.activityChooserViewStyle = global::ProjTaskReminder.Resource.Attribute.activityChooserViewStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.alertDialogButtonGroupStyle = global::ProjTaskReminder.Resource.Attribute.alertDialogButtonGroupStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.alertDialogCenterButtons = global::ProjTaskReminder.Resource.Attribute.alertDialogCenterButtons;
-			global::mhServiceKeepAlive.Resource.Attribute.alertDialogStyle = global::ProjTaskReminder.Resource.Attribute.alertDialogStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.alertDialogTheme = global::ProjTaskReminder.Resource.Attribute.alertDialogTheme;
-			global::mhServiceKeepAlive.Resource.Attribute.allowStacking = global::ProjTaskReminder.Resource.Attribute.allowStacking;
-			global::mhServiceKeepAlive.Resource.Attribute.alpha = global::ProjTaskReminder.Resource.Attribute.alpha;
-			global::mhServiceKeepAlive.Resource.Attribute.alphabeticModifiers = global::ProjTaskReminder.Resource.Attribute.alphabeticModifiers;
-			global::mhServiceKeepAlive.Resource.Attribute.arrowHeadLength = global::ProjTaskReminder.Resource.Attribute.arrowHeadLength;
-			global::mhServiceKeepAlive.Resource.Attribute.arrowShaftLength = global::ProjTaskReminder.Resource.Attribute.arrowShaftLength;
-			global::mhServiceKeepAlive.Resource.Attribute.autoCompleteTextViewStyle = global::ProjTaskReminder.Resource.Attribute.autoCompleteTextViewStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.autoSizeMaxTextSize = global::ProjTaskReminder.Resource.Attribute.autoSizeMaxTextSize;
-			global::mhServiceKeepAlive.Resource.Attribute.autoSizeMinTextSize = global::ProjTaskReminder.Resource.Attribute.autoSizeMinTextSize;
-			global::mhServiceKeepAlive.Resource.Attribute.autoSizePresetSizes = global::ProjTaskReminder.Resource.Attribute.autoSizePresetSizes;
-			global::mhServiceKeepAlive.Resource.Attribute.autoSizeStepGranularity = global::ProjTaskReminder.Resource.Attribute.autoSizeStepGranularity;
-			global::mhServiceKeepAlive.Resource.Attribute.autoSizeTextType = global::ProjTaskReminder.Resource.Attribute.autoSizeTextType;
-			global::mhServiceKeepAlive.Resource.Attribute.background = global::ProjTaskReminder.Resource.Attribute.background;
-			global::mhServiceKeepAlive.Resource.Attribute.backgroundSplit = global::ProjTaskReminder.Resource.Attribute.backgroundSplit;
-			global::mhServiceKeepAlive.Resource.Attribute.backgroundStacked = global::ProjTaskReminder.Resource.Attribute.backgroundStacked;
-			global::mhServiceKeepAlive.Resource.Attribute.backgroundTint = global::ProjTaskReminder.Resource.Attribute.backgroundTint;
-			global::mhServiceKeepAlive.Resource.Attribute.backgroundTintMode = global::ProjTaskReminder.Resource.Attribute.backgroundTintMode;
-			global::mhServiceKeepAlive.Resource.Attribute.barLength = global::ProjTaskReminder.Resource.Attribute.barLength;
-			global::mhServiceKeepAlive.Resource.Attribute.borderlessButtonStyle = global::ProjTaskReminder.Resource.Attribute.borderlessButtonStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.buttonBarButtonStyle = global::ProjTaskReminder.Resource.Attribute.buttonBarButtonStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.buttonBarNegativeButtonStyle = global::ProjTaskReminder.Resource.Attribute.buttonBarNegativeButtonStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.buttonBarNeutralButtonStyle = global::ProjTaskReminder.Resource.Attribute.buttonBarNeutralButtonStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.buttonBarPositiveButtonStyle = global::ProjTaskReminder.Resource.Attribute.buttonBarPositiveButtonStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.buttonBarStyle = global::ProjTaskReminder.Resource.Attribute.buttonBarStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.buttonGravity = global::ProjTaskReminder.Resource.Attribute.buttonGravity;
-			global::mhServiceKeepAlive.Resource.Attribute.buttonIconDimen = global::ProjTaskReminder.Resource.Attribute.buttonIconDimen;
-			global::mhServiceKeepAlive.Resource.Attribute.buttonPanelSideLayout = global::ProjTaskReminder.Resource.Attribute.buttonPanelSideLayout;
-			global::mhServiceKeepAlive.Resource.Attribute.buttonStyle = global::ProjTaskReminder.Resource.Attribute.buttonStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.buttonStyleSmall = global::ProjTaskReminder.Resource.Attribute.buttonStyleSmall;
-			global::mhServiceKeepAlive.Resource.Attribute.buttonTint = global::ProjTaskReminder.Resource.Attribute.buttonTint;
-			global::mhServiceKeepAlive.Resource.Attribute.buttonTintMode = global::ProjTaskReminder.Resource.Attribute.buttonTintMode;
-			global::mhServiceKeepAlive.Resource.Attribute.checkboxStyle = global::ProjTaskReminder.Resource.Attribute.checkboxStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.checkedTextViewStyle = global::ProjTaskReminder.Resource.Attribute.checkedTextViewStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.closeIcon = global::ProjTaskReminder.Resource.Attribute.closeIcon;
-			global::mhServiceKeepAlive.Resource.Attribute.closeItemLayout = global::ProjTaskReminder.Resource.Attribute.closeItemLayout;
-			global::mhServiceKeepAlive.Resource.Attribute.collapseContentDescription = global::ProjTaskReminder.Resource.Attribute.collapseContentDescription;
-			global::mhServiceKeepAlive.Resource.Attribute.collapseIcon = global::ProjTaskReminder.Resource.Attribute.collapseIcon;
-			global::mhServiceKeepAlive.Resource.Attribute.color = global::ProjTaskReminder.Resource.Attribute.color;
-			global::mhServiceKeepAlive.Resource.Attribute.colorAccent = global::ProjTaskReminder.Resource.Attribute.colorAccent;
-			global::mhServiceKeepAlive.Resource.Attribute.colorBackgroundFloating = global::ProjTaskReminder.Resource.Attribute.colorBackgroundFloating;
-			global::mhServiceKeepAlive.Resource.Attribute.colorButtonNormal = global::ProjTaskReminder.Resource.Attribute.colorButtonNormal;
-			global::mhServiceKeepAlive.Resource.Attribute.colorControlActivated = global::ProjTaskReminder.Resource.Attribute.colorControlActivated;
-			global::mhServiceKeepAlive.Resource.Attribute.colorControlHighlight = global::ProjTaskReminder.Resource.Attribute.colorControlHighlight;
-			global::mhServiceKeepAlive.Resource.Attribute.colorControlNormal = global::ProjTaskReminder.Resource.Attribute.colorControlNormal;
-			global::mhServiceKeepAlive.Resource.Attribute.colorError = global::ProjTaskReminder.Resource.Attribute.colorError;
-			global::mhServiceKeepAlive.Resource.Attribute.colorPrimary = global::ProjTaskReminder.Resource.Attribute.colorPrimary;
-			global::mhServiceKeepAlive.Resource.Attribute.colorPrimaryDark = global::ProjTaskReminder.Resource.Attribute.colorPrimaryDark;
-			global::mhServiceKeepAlive.Resource.Attribute.colorSwitchThumbNormal = global::ProjTaskReminder.Resource.Attribute.colorSwitchThumbNormal;
-			global::mhServiceKeepAlive.Resource.Attribute.commitIcon = global::ProjTaskReminder.Resource.Attribute.commitIcon;
-			global::mhServiceKeepAlive.Resource.Attribute.contentDescription = global::ProjTaskReminder.Resource.Attribute.contentDescription;
-			global::mhServiceKeepAlive.Resource.Attribute.contentInsetEnd = global::ProjTaskReminder.Resource.Attribute.contentInsetEnd;
-			global::mhServiceKeepAlive.Resource.Attribute.contentInsetEndWithActions = global::ProjTaskReminder.Resource.Attribute.contentInsetEndWithActions;
-			global::mhServiceKeepAlive.Resource.Attribute.contentInsetLeft = global::ProjTaskReminder.Resource.Attribute.contentInsetLeft;
-			global::mhServiceKeepAlive.Resource.Attribute.contentInsetRight = global::ProjTaskReminder.Resource.Attribute.contentInsetRight;
-			global::mhServiceKeepAlive.Resource.Attribute.contentInsetStart = global::ProjTaskReminder.Resource.Attribute.contentInsetStart;
-			global::mhServiceKeepAlive.Resource.Attribute.contentInsetStartWithNavigation = global::ProjTaskReminder.Resource.Attribute.contentInsetStartWithNavigation;
-			global::mhServiceKeepAlive.Resource.Attribute.controlBackground = global::ProjTaskReminder.Resource.Attribute.controlBackground;
-			global::mhServiceKeepAlive.Resource.Attribute.coordinatorLayoutStyle = global::ProjTaskReminder.Resource.Attribute.coordinatorLayoutStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.customNavigationLayout = global::ProjTaskReminder.Resource.Attribute.customNavigationLayout;
-			global::mhServiceKeepAlive.Resource.Attribute.defaultQueryHint = global::ProjTaskReminder.Resource.Attribute.defaultQueryHint;
-			global::mhServiceKeepAlive.Resource.Attribute.dialogCornerRadius = global::ProjTaskReminder.Resource.Attribute.dialogCornerRadius;
-			global::mhServiceKeepAlive.Resource.Attribute.dialogPreferredPadding = global::ProjTaskReminder.Resource.Attribute.dialogPreferredPadding;
-			global::mhServiceKeepAlive.Resource.Attribute.dialogTheme = global::ProjTaskReminder.Resource.Attribute.dialogTheme;
-			global::mhServiceKeepAlive.Resource.Attribute.displayOptions = global::ProjTaskReminder.Resource.Attribute.displayOptions;
-			global::mhServiceKeepAlive.Resource.Attribute.divider = global::ProjTaskReminder.Resource.Attribute.divider;
-			global::mhServiceKeepAlive.Resource.Attribute.dividerHorizontal = global::ProjTaskReminder.Resource.Attribute.dividerHorizontal;
-			global::mhServiceKeepAlive.Resource.Attribute.dividerPadding = global::ProjTaskReminder.Resource.Attribute.dividerPadding;
-			global::mhServiceKeepAlive.Resource.Attribute.dividerVertical = global::ProjTaskReminder.Resource.Attribute.dividerVertical;
-			global::mhServiceKeepAlive.Resource.Attribute.drawableSize = global::ProjTaskReminder.Resource.Attribute.drawableSize;
-			global::mhServiceKeepAlive.Resource.Attribute.drawerArrowStyle = global::ProjTaskReminder.Resource.Attribute.drawerArrowStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.dropdownListPreferredItemHeight = global::ProjTaskReminder.Resource.Attribute.dropdownListPreferredItemHeight;
-			global::mhServiceKeepAlive.Resource.Attribute.dropDownListViewStyle = global::ProjTaskReminder.Resource.Attribute.dropDownListViewStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.editTextBackground = global::ProjTaskReminder.Resource.Attribute.editTextBackground;
-			global::mhServiceKeepAlive.Resource.Attribute.editTextColor = global::ProjTaskReminder.Resource.Attribute.editTextColor;
-			global::mhServiceKeepAlive.Resource.Attribute.editTextStyle = global::ProjTaskReminder.Resource.Attribute.editTextStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.elevation = global::ProjTaskReminder.Resource.Attribute.elevation;
-			global::mhServiceKeepAlive.Resource.Attribute.expandActivityOverflowButtonDrawable = global::ProjTaskReminder.Resource.Attribute.expandActivityOverflowButtonDrawable;
-			global::mhServiceKeepAlive.Resource.Attribute.firstBaselineToTopHeight = global::ProjTaskReminder.Resource.Attribute.firstBaselineToTopHeight;
-			global::mhServiceKeepAlive.Resource.Attribute.font = global::ProjTaskReminder.Resource.Attribute.font;
-			global::mhServiceKeepAlive.Resource.Attribute.fontFamily = global::ProjTaskReminder.Resource.Attribute.fontFamily;
-			global::mhServiceKeepAlive.Resource.Attribute.fontProviderAuthority = global::ProjTaskReminder.Resource.Attribute.fontProviderAuthority;
-			global::mhServiceKeepAlive.Resource.Attribute.fontProviderCerts = global::ProjTaskReminder.Resource.Attribute.fontProviderCerts;
-			global::mhServiceKeepAlive.Resource.Attribute.fontProviderFetchStrategy = global::ProjTaskReminder.Resource.Attribute.fontProviderFetchStrategy;
-			global::mhServiceKeepAlive.Resource.Attribute.fontProviderFetchTimeout = global::ProjTaskReminder.Resource.Attribute.fontProviderFetchTimeout;
-			global::mhServiceKeepAlive.Resource.Attribute.fontProviderPackage = global::ProjTaskReminder.Resource.Attribute.fontProviderPackage;
-			global::mhServiceKeepAlive.Resource.Attribute.fontProviderQuery = global::ProjTaskReminder.Resource.Attribute.fontProviderQuery;
-			global::mhServiceKeepAlive.Resource.Attribute.fontStyle = global::ProjTaskReminder.Resource.Attribute.fontStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.fontVariationSettings = global::ProjTaskReminder.Resource.Attribute.fontVariationSettings;
-			global::mhServiceKeepAlive.Resource.Attribute.fontWeight = global::ProjTaskReminder.Resource.Attribute.fontWeight;
-			global::mhServiceKeepAlive.Resource.Attribute.gapBetweenBars = global::ProjTaskReminder.Resource.Attribute.gapBetweenBars;
-			global::mhServiceKeepAlive.Resource.Attribute.goIcon = global::ProjTaskReminder.Resource.Attribute.goIcon;
-			global::mhServiceKeepAlive.Resource.Attribute.height = global::ProjTaskReminder.Resource.Attribute.height;
-			global::mhServiceKeepAlive.Resource.Attribute.hideOnContentScroll = global::ProjTaskReminder.Resource.Attribute.hideOnContentScroll;
-			global::mhServiceKeepAlive.Resource.Attribute.homeAsUpIndicator = global::ProjTaskReminder.Resource.Attribute.homeAsUpIndicator;
-			global::mhServiceKeepAlive.Resource.Attribute.homeLayout = global::ProjTaskReminder.Resource.Attribute.homeLayout;
-			global::mhServiceKeepAlive.Resource.Attribute.icon = global::ProjTaskReminder.Resource.Attribute.icon;
-			global::mhServiceKeepAlive.Resource.Attribute.iconifiedByDefault = global::ProjTaskReminder.Resource.Attribute.iconifiedByDefault;
-			global::mhServiceKeepAlive.Resource.Attribute.iconTint = global::ProjTaskReminder.Resource.Attribute.iconTint;
-			global::mhServiceKeepAlive.Resource.Attribute.iconTintMode = global::ProjTaskReminder.Resource.Attribute.iconTintMode;
-			global::mhServiceKeepAlive.Resource.Attribute.imageButtonStyle = global::ProjTaskReminder.Resource.Attribute.imageButtonStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.indeterminateProgressStyle = global::ProjTaskReminder.Resource.Attribute.indeterminateProgressStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.initialActivityCount = global::ProjTaskReminder.Resource.Attribute.initialActivityCount;
-			global::mhServiceKeepAlive.Resource.Attribute.isLightTheme = global::ProjTaskReminder.Resource.Attribute.isLightTheme;
-			global::mhServiceKeepAlive.Resource.Attribute.itemPadding = global::ProjTaskReminder.Resource.Attribute.itemPadding;
-			global::mhServiceKeepAlive.Resource.Attribute.keylines = global::ProjTaskReminder.Resource.Attribute.keylines;
-			global::mhServiceKeepAlive.Resource.Attribute.lastBaselineToBottomHeight = global::ProjTaskReminder.Resource.Attribute.lastBaselineToBottomHeight;
-			global::mhServiceKeepAlive.Resource.Attribute.layout = global::ProjTaskReminder.Resource.Attribute.layout;
-			global::mhServiceKeepAlive.Resource.Attribute.layout_anchor = global::ProjTaskReminder.Resource.Attribute.layout_anchor;
-			global::mhServiceKeepAlive.Resource.Attribute.layout_anchorGravity = global::ProjTaskReminder.Resource.Attribute.layout_anchorGravity;
-			global::mhServiceKeepAlive.Resource.Attribute.layout_behavior = global::ProjTaskReminder.Resource.Attribute.layout_behavior;
-			global::mhServiceKeepAlive.Resource.Attribute.layout_dodgeInsetEdges = global::ProjTaskReminder.Resource.Attribute.layout_dodgeInsetEdges;
-			global::mhServiceKeepAlive.Resource.Attribute.layout_insetEdge = global::ProjTaskReminder.Resource.Attribute.layout_insetEdge;
-			global::mhServiceKeepAlive.Resource.Attribute.layout_keyline = global::ProjTaskReminder.Resource.Attribute.layout_keyline;
-			global::mhServiceKeepAlive.Resource.Attribute.lineHeight = global::ProjTaskReminder.Resource.Attribute.lineHeight;
-			global::mhServiceKeepAlive.Resource.Attribute.listChoiceBackgroundIndicator = global::ProjTaskReminder.Resource.Attribute.listChoiceBackgroundIndicator;
-			global::mhServiceKeepAlive.Resource.Attribute.listDividerAlertDialog = global::ProjTaskReminder.Resource.Attribute.listDividerAlertDialog;
-			global::mhServiceKeepAlive.Resource.Attribute.listItemLayout = global::ProjTaskReminder.Resource.Attribute.listItemLayout;
-			global::mhServiceKeepAlive.Resource.Attribute.listLayout = global::ProjTaskReminder.Resource.Attribute.listLayout;
-			global::mhServiceKeepAlive.Resource.Attribute.listMenuViewStyle = global::ProjTaskReminder.Resource.Attribute.listMenuViewStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.listPopupWindowStyle = global::ProjTaskReminder.Resource.Attribute.listPopupWindowStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.listPreferredItemHeight = global::ProjTaskReminder.Resource.Attribute.listPreferredItemHeight;
-			global::mhServiceKeepAlive.Resource.Attribute.listPreferredItemHeightLarge = global::ProjTaskReminder.Resource.Attribute.listPreferredItemHeightLarge;
-			global::mhServiceKeepAlive.Resource.Attribute.listPreferredItemHeightSmall = global::ProjTaskReminder.Resource.Attribute.listPreferredItemHeightSmall;
-			global::mhServiceKeepAlive.Resource.Attribute.listPreferredItemPaddingLeft = global::ProjTaskReminder.Resource.Attribute.listPreferredItemPaddingLeft;
-			global::mhServiceKeepAlive.Resource.Attribute.listPreferredItemPaddingRight = global::ProjTaskReminder.Resource.Attribute.listPreferredItemPaddingRight;
-			global::mhServiceKeepAlive.Resource.Attribute.logo = global::ProjTaskReminder.Resource.Attribute.logo;
-			global::mhServiceKeepAlive.Resource.Attribute.logoDescription = global::ProjTaskReminder.Resource.Attribute.logoDescription;
-			global::mhServiceKeepAlive.Resource.Attribute.maxButtonHeight = global::ProjTaskReminder.Resource.Attribute.maxButtonHeight;
-			global::mhServiceKeepAlive.Resource.Attribute.measureWithLargestChild = global::ProjTaskReminder.Resource.Attribute.measureWithLargestChild;
-			global::mhServiceKeepAlive.Resource.Attribute.multiChoiceItemLayout = global::ProjTaskReminder.Resource.Attribute.multiChoiceItemLayout;
-			global::mhServiceKeepAlive.Resource.Attribute.navigationContentDescription = global::ProjTaskReminder.Resource.Attribute.navigationContentDescription;
-			global::mhServiceKeepAlive.Resource.Attribute.navigationIcon = global::ProjTaskReminder.Resource.Attribute.navigationIcon;
-			global::mhServiceKeepAlive.Resource.Attribute.navigationMode = global::ProjTaskReminder.Resource.Attribute.navigationMode;
-			global::mhServiceKeepAlive.Resource.Attribute.numericModifiers = global::ProjTaskReminder.Resource.Attribute.numericModifiers;
-			global::mhServiceKeepAlive.Resource.Attribute.overlapAnchor = global::ProjTaskReminder.Resource.Attribute.overlapAnchor;
-			global::mhServiceKeepAlive.Resource.Attribute.paddingBottomNoButtons = global::ProjTaskReminder.Resource.Attribute.paddingBottomNoButtons;
-			global::mhServiceKeepAlive.Resource.Attribute.paddingEnd = global::ProjTaskReminder.Resource.Attribute.paddingEnd;
-			global::mhServiceKeepAlive.Resource.Attribute.paddingStart = global::ProjTaskReminder.Resource.Attribute.paddingStart;
-			global::mhServiceKeepAlive.Resource.Attribute.paddingTopNoTitle = global::ProjTaskReminder.Resource.Attribute.paddingTopNoTitle;
-			global::mhServiceKeepAlive.Resource.Attribute.panelBackground = global::ProjTaskReminder.Resource.Attribute.panelBackground;
-			global::mhServiceKeepAlive.Resource.Attribute.panelMenuListTheme = global::ProjTaskReminder.Resource.Attribute.panelMenuListTheme;
-			global::mhServiceKeepAlive.Resource.Attribute.panelMenuListWidth = global::ProjTaskReminder.Resource.Attribute.panelMenuListWidth;
-			global::mhServiceKeepAlive.Resource.Attribute.popupMenuStyle = global::ProjTaskReminder.Resource.Attribute.popupMenuStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.popupTheme = global::ProjTaskReminder.Resource.Attribute.popupTheme;
-			global::mhServiceKeepAlive.Resource.Attribute.popupWindowStyle = global::ProjTaskReminder.Resource.Attribute.popupWindowStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.preserveIconSpacing = global::ProjTaskReminder.Resource.Attribute.preserveIconSpacing;
-			global::mhServiceKeepAlive.Resource.Attribute.progressBarPadding = global::ProjTaskReminder.Resource.Attribute.progressBarPadding;
-			global::mhServiceKeepAlive.Resource.Attribute.progressBarStyle = global::ProjTaskReminder.Resource.Attribute.progressBarStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.queryBackground = global::ProjTaskReminder.Resource.Attribute.queryBackground;
-			global::mhServiceKeepAlive.Resource.Attribute.queryHint = global::ProjTaskReminder.Resource.Attribute.queryHint;
-			global::mhServiceKeepAlive.Resource.Attribute.radioButtonStyle = global::ProjTaskReminder.Resource.Attribute.radioButtonStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.ratingBarStyle = global::ProjTaskReminder.Resource.Attribute.ratingBarStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.ratingBarStyleIndicator = global::ProjTaskReminder.Resource.Attribute.ratingBarStyleIndicator;
-			global::mhServiceKeepAlive.Resource.Attribute.ratingBarStyleSmall = global::ProjTaskReminder.Resource.Attribute.ratingBarStyleSmall;
-			global::mhServiceKeepAlive.Resource.Attribute.searchHintIcon = global::ProjTaskReminder.Resource.Attribute.searchHintIcon;
-			global::mhServiceKeepAlive.Resource.Attribute.searchIcon = global::ProjTaskReminder.Resource.Attribute.searchIcon;
-			global::mhServiceKeepAlive.Resource.Attribute.searchViewStyle = global::ProjTaskReminder.Resource.Attribute.searchViewStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.seekBarStyle = global::ProjTaskReminder.Resource.Attribute.seekBarStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.selectableItemBackground = global::ProjTaskReminder.Resource.Attribute.selectableItemBackground;
-			global::mhServiceKeepAlive.Resource.Attribute.selectableItemBackgroundBorderless = global::ProjTaskReminder.Resource.Attribute.selectableItemBackgroundBorderless;
-			global::mhServiceKeepAlive.Resource.Attribute.showAsAction = global::ProjTaskReminder.Resource.Attribute.showAsAction;
-			global::mhServiceKeepAlive.Resource.Attribute.showDividers = global::ProjTaskReminder.Resource.Attribute.showDividers;
-			global::mhServiceKeepAlive.Resource.Attribute.showText = global::ProjTaskReminder.Resource.Attribute.showText;
-			global::mhServiceKeepAlive.Resource.Attribute.showTitle = global::ProjTaskReminder.Resource.Attribute.showTitle;
-			global::mhServiceKeepAlive.Resource.Attribute.singleChoiceItemLayout = global::ProjTaskReminder.Resource.Attribute.singleChoiceItemLayout;
-			global::mhServiceKeepAlive.Resource.Attribute.spinBars = global::ProjTaskReminder.Resource.Attribute.spinBars;
-			global::mhServiceKeepAlive.Resource.Attribute.spinnerDropDownItemStyle = global::ProjTaskReminder.Resource.Attribute.spinnerDropDownItemStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.spinnerStyle = global::ProjTaskReminder.Resource.Attribute.spinnerStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.splitTrack = global::ProjTaskReminder.Resource.Attribute.splitTrack;
-			global::mhServiceKeepAlive.Resource.Attribute.srcCompat = global::ProjTaskReminder.Resource.Attribute.srcCompat;
-			global::mhServiceKeepAlive.Resource.Attribute.state_above_anchor = global::ProjTaskReminder.Resource.Attribute.state_above_anchor;
-			global::mhServiceKeepAlive.Resource.Attribute.statusBarBackground = global::ProjTaskReminder.Resource.Attribute.statusBarBackground;
-			global::mhServiceKeepAlive.Resource.Attribute.subMenuArrow = global::ProjTaskReminder.Resource.Attribute.subMenuArrow;
-			global::mhServiceKeepAlive.Resource.Attribute.submitBackground = global::ProjTaskReminder.Resource.Attribute.submitBackground;
-			global::mhServiceKeepAlive.Resource.Attribute.subtitle = global::ProjTaskReminder.Resource.Attribute.subtitle;
-			global::mhServiceKeepAlive.Resource.Attribute.subtitleTextAppearance = global::ProjTaskReminder.Resource.Attribute.subtitleTextAppearance;
-			global::mhServiceKeepAlive.Resource.Attribute.subtitleTextColor = global::ProjTaskReminder.Resource.Attribute.subtitleTextColor;
-			global::mhServiceKeepAlive.Resource.Attribute.subtitleTextStyle = global::ProjTaskReminder.Resource.Attribute.subtitleTextStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.suggestionRowLayout = global::ProjTaskReminder.Resource.Attribute.suggestionRowLayout;
-			global::mhServiceKeepAlive.Resource.Attribute.switchMinWidth = global::ProjTaskReminder.Resource.Attribute.switchMinWidth;
-			global::mhServiceKeepAlive.Resource.Attribute.switchPadding = global::ProjTaskReminder.Resource.Attribute.switchPadding;
-			global::mhServiceKeepAlive.Resource.Attribute.switchStyle = global::ProjTaskReminder.Resource.Attribute.switchStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.switchTextAppearance = global::ProjTaskReminder.Resource.Attribute.switchTextAppearance;
-			global::mhServiceKeepAlive.Resource.Attribute.textAllCaps = global::ProjTaskReminder.Resource.Attribute.textAllCaps;
-			global::mhServiceKeepAlive.Resource.Attribute.textAppearanceLargePopupMenu = global::ProjTaskReminder.Resource.Attribute.textAppearanceLargePopupMenu;
-			global::mhServiceKeepAlive.Resource.Attribute.textAppearanceListItem = global::ProjTaskReminder.Resource.Attribute.textAppearanceListItem;
-			global::mhServiceKeepAlive.Resource.Attribute.textAppearanceListItemSecondary = global::ProjTaskReminder.Resource.Attribute.textAppearanceListItemSecondary;
-			global::mhServiceKeepAlive.Resource.Attribute.textAppearanceListItemSmall = global::ProjTaskReminder.Resource.Attribute.textAppearanceListItemSmall;
-			global::mhServiceKeepAlive.Resource.Attribute.textAppearancePopupMenuHeader = global::ProjTaskReminder.Resource.Attribute.textAppearancePopupMenuHeader;
-			global::mhServiceKeepAlive.Resource.Attribute.textAppearanceSearchResultSubtitle = global::ProjTaskReminder.Resource.Attribute.textAppearanceSearchResultSubtitle;
-			global::mhServiceKeepAlive.Resource.Attribute.textAppearanceSearchResultTitle = global::ProjTaskReminder.Resource.Attribute.textAppearanceSearchResultTitle;
-			global::mhServiceKeepAlive.Resource.Attribute.textAppearanceSmallPopupMenu = global::ProjTaskReminder.Resource.Attribute.textAppearanceSmallPopupMenu;
-			global::mhServiceKeepAlive.Resource.Attribute.textColorAlertDialogListItem = global::ProjTaskReminder.Resource.Attribute.textColorAlertDialogListItem;
-			global::mhServiceKeepAlive.Resource.Attribute.textColorSearchUrl = global::ProjTaskReminder.Resource.Attribute.textColorSearchUrl;
-			global::mhServiceKeepAlive.Resource.Attribute.theme = global::ProjTaskReminder.Resource.Attribute.theme;
-			global::mhServiceKeepAlive.Resource.Attribute.thickness = global::ProjTaskReminder.Resource.Attribute.thickness;
-			global::mhServiceKeepAlive.Resource.Attribute.thumbTextPadding = global::ProjTaskReminder.Resource.Attribute.thumbTextPadding;
-			global::mhServiceKeepAlive.Resource.Attribute.thumbTint = global::ProjTaskReminder.Resource.Attribute.thumbTint;
-			global::mhServiceKeepAlive.Resource.Attribute.thumbTintMode = global::ProjTaskReminder.Resource.Attribute.thumbTintMode;
-			global::mhServiceKeepAlive.Resource.Attribute.tickMark = global::ProjTaskReminder.Resource.Attribute.tickMark;
-			global::mhServiceKeepAlive.Resource.Attribute.tickMarkTint = global::ProjTaskReminder.Resource.Attribute.tickMarkTint;
-			global::mhServiceKeepAlive.Resource.Attribute.tickMarkTintMode = global::ProjTaskReminder.Resource.Attribute.tickMarkTintMode;
-			global::mhServiceKeepAlive.Resource.Attribute.tint = global::ProjTaskReminder.Resource.Attribute.tint;
-			global::mhServiceKeepAlive.Resource.Attribute.tintMode = global::ProjTaskReminder.Resource.Attribute.tintMode;
-			global::mhServiceKeepAlive.Resource.Attribute.title = global::ProjTaskReminder.Resource.Attribute.title;
-			global::mhServiceKeepAlive.Resource.Attribute.titleMargin = global::ProjTaskReminder.Resource.Attribute.titleMargin;
-			global::mhServiceKeepAlive.Resource.Attribute.titleMarginBottom = global::ProjTaskReminder.Resource.Attribute.titleMarginBottom;
-			global::mhServiceKeepAlive.Resource.Attribute.titleMarginEnd = global::ProjTaskReminder.Resource.Attribute.titleMarginEnd;
-			global::mhServiceKeepAlive.Resource.Attribute.titleMargins = global::ProjTaskReminder.Resource.Attribute.titleMargins;
-			global::mhServiceKeepAlive.Resource.Attribute.titleMarginStart = global::ProjTaskReminder.Resource.Attribute.titleMarginStart;
-			global::mhServiceKeepAlive.Resource.Attribute.titleMarginTop = global::ProjTaskReminder.Resource.Attribute.titleMarginTop;
-			global::mhServiceKeepAlive.Resource.Attribute.titleTextAppearance = global::ProjTaskReminder.Resource.Attribute.titleTextAppearance;
-			global::mhServiceKeepAlive.Resource.Attribute.titleTextColor = global::ProjTaskReminder.Resource.Attribute.titleTextColor;
-			global::mhServiceKeepAlive.Resource.Attribute.titleTextStyle = global::ProjTaskReminder.Resource.Attribute.titleTextStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.toolbarNavigationButtonStyle = global::ProjTaskReminder.Resource.Attribute.toolbarNavigationButtonStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.toolbarStyle = global::ProjTaskReminder.Resource.Attribute.toolbarStyle;
-			global::mhServiceKeepAlive.Resource.Attribute.tooltipForegroundColor = global::ProjTaskReminder.Resource.Attribute.tooltipForegroundColor;
-			global::mhServiceKeepAlive.Resource.Attribute.tooltipFrameBackground = global::ProjTaskReminder.Resource.Attribute.tooltipFrameBackground;
-			global::mhServiceKeepAlive.Resource.Attribute.tooltipText = global::ProjTaskReminder.Resource.Attribute.tooltipText;
-			global::mhServiceKeepAlive.Resource.Attribute.track = global::ProjTaskReminder.Resource.Attribute.track;
-			global::mhServiceKeepAlive.Resource.Attribute.trackTint = global::ProjTaskReminder.Resource.Attribute.trackTint;
-			global::mhServiceKeepAlive.Resource.Attribute.trackTintMode = global::ProjTaskReminder.Resource.Attribute.trackTintMode;
-			global::mhServiceKeepAlive.Resource.Attribute.ttcIndex = global::ProjTaskReminder.Resource.Attribute.ttcIndex;
-			global::mhServiceKeepAlive.Resource.Attribute.viewInflaterClass = global::ProjTaskReminder.Resource.Attribute.viewInflaterClass;
-			global::mhServiceKeepAlive.Resource.Attribute.voiceIcon = global::ProjTaskReminder.Resource.Attribute.voiceIcon;
-			global::mhServiceKeepAlive.Resource.Attribute.windowActionBar = global::ProjTaskReminder.Resource.Attribute.windowActionBar;
-			global::mhServiceKeepAlive.Resource.Attribute.windowActionBarOverlay = global::ProjTaskReminder.Resource.Attribute.windowActionBarOverlay;
-			global::mhServiceKeepAlive.Resource.Attribute.windowActionModeOverlay = global::ProjTaskReminder.Resource.Attribute.windowActionModeOverlay;
-			global::mhServiceKeepAlive.Resource.Attribute.windowFixedHeightMajor = global::ProjTaskReminder.Resource.Attribute.windowFixedHeightMajor;
-			global::mhServiceKeepAlive.Resource.Attribute.windowFixedHeightMinor = global::ProjTaskReminder.Resource.Attribute.windowFixedHeightMinor;
-			global::mhServiceKeepAlive.Resource.Attribute.windowFixedWidthMajor = global::ProjTaskReminder.Resource.Attribute.windowFixedWidthMajor;
-			global::mhServiceKeepAlive.Resource.Attribute.windowFixedWidthMinor = global::ProjTaskReminder.Resource.Attribute.windowFixedWidthMinor;
-			global::mhServiceKeepAlive.Resource.Attribute.windowMinWidthMajor = global::ProjTaskReminder.Resource.Attribute.windowMinWidthMajor;
-			global::mhServiceKeepAlive.Resource.Attribute.windowMinWidthMinor = global::ProjTaskReminder.Resource.Attribute.windowMinWidthMinor;
-			global::mhServiceKeepAlive.Resource.Attribute.windowNoTitle = global::ProjTaskReminder.Resource.Attribute.windowNoTitle;
-			global::mhServiceKeepAlive.Resource.Boolean.abc_action_bar_embed_tabs = global::ProjTaskReminder.Resource.Boolean.abc_action_bar_embed_tabs;
-			global::mhServiceKeepAlive.Resource.Boolean.abc_allow_stacked_button_bar = global::ProjTaskReminder.Resource.Boolean.abc_allow_stacked_button_bar;
-			global::mhServiceKeepAlive.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::ProjTaskReminder.Resource.Boolean.abc_config_actionMenuItemAllCaps;
-			global::mhServiceKeepAlive.Resource.Color.abc_background_cache_hint_selector_material_dark = global::ProjTaskReminder.Resource.Color.abc_background_cache_hint_selector_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.abc_background_cache_hint_selector_material_light = global::ProjTaskReminder.Resource.Color.abc_background_cache_hint_selector_material_light;
-			global::mhServiceKeepAlive.Resource.Color.abc_btn_colored_borderless_text_material = global::ProjTaskReminder.Resource.Color.abc_btn_colored_borderless_text_material;
-			global::mhServiceKeepAlive.Resource.Color.abc_btn_colored_text_material = global::ProjTaskReminder.Resource.Color.abc_btn_colored_text_material;
-			global::mhServiceKeepAlive.Resource.Color.abc_color_highlight_material = global::ProjTaskReminder.Resource.Color.abc_color_highlight_material;
-			global::mhServiceKeepAlive.Resource.Color.abc_hint_foreground_material_dark = global::ProjTaskReminder.Resource.Color.abc_hint_foreground_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.abc_hint_foreground_material_light = global::ProjTaskReminder.Resource.Color.abc_hint_foreground_material_light;
-			global::mhServiceKeepAlive.Resource.Color.abc_input_method_navigation_guard = global::ProjTaskReminder.Resource.Color.abc_input_method_navigation_guard;
-			global::mhServiceKeepAlive.Resource.Color.abc_primary_text_disable_only_material_dark = global::ProjTaskReminder.Resource.Color.abc_primary_text_disable_only_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.abc_primary_text_disable_only_material_light = global::ProjTaskReminder.Resource.Color.abc_primary_text_disable_only_material_light;
-			global::mhServiceKeepAlive.Resource.Color.abc_primary_text_material_dark = global::ProjTaskReminder.Resource.Color.abc_primary_text_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.abc_primary_text_material_light = global::ProjTaskReminder.Resource.Color.abc_primary_text_material_light;
-			global::mhServiceKeepAlive.Resource.Color.abc_search_url_text = global::ProjTaskReminder.Resource.Color.abc_search_url_text;
-			global::mhServiceKeepAlive.Resource.Color.abc_search_url_text_normal = global::ProjTaskReminder.Resource.Color.abc_search_url_text_normal;
-			global::mhServiceKeepAlive.Resource.Color.abc_search_url_text_pressed = global::ProjTaskReminder.Resource.Color.abc_search_url_text_pressed;
-			global::mhServiceKeepAlive.Resource.Color.abc_search_url_text_selected = global::ProjTaskReminder.Resource.Color.abc_search_url_text_selected;
-			global::mhServiceKeepAlive.Resource.Color.abc_secondary_text_material_dark = global::ProjTaskReminder.Resource.Color.abc_secondary_text_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.abc_secondary_text_material_light = global::ProjTaskReminder.Resource.Color.abc_secondary_text_material_light;
-			global::mhServiceKeepAlive.Resource.Color.abc_tint_btn_checkable = global::ProjTaskReminder.Resource.Color.abc_tint_btn_checkable;
-			global::mhServiceKeepAlive.Resource.Color.abc_tint_default = global::ProjTaskReminder.Resource.Color.abc_tint_default;
-			global::mhServiceKeepAlive.Resource.Color.abc_tint_edittext = global::ProjTaskReminder.Resource.Color.abc_tint_edittext;
-			global::mhServiceKeepAlive.Resource.Color.abc_tint_seek_thumb = global::ProjTaskReminder.Resource.Color.abc_tint_seek_thumb;
-			global::mhServiceKeepAlive.Resource.Color.abc_tint_spinner = global::ProjTaskReminder.Resource.Color.abc_tint_spinner;
-			global::mhServiceKeepAlive.Resource.Color.abc_tint_switch_track = global::ProjTaskReminder.Resource.Color.abc_tint_switch_track;
-			global::mhServiceKeepAlive.Resource.Color.accent_material_dark = global::ProjTaskReminder.Resource.Color.accent_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.accent_material_light = global::ProjTaskReminder.Resource.Color.accent_material_light;
-			global::mhServiceKeepAlive.Resource.Color.background_floating_material_dark = global::ProjTaskReminder.Resource.Color.background_floating_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.background_floating_material_light = global::ProjTaskReminder.Resource.Color.background_floating_material_light;
-			global::mhServiceKeepAlive.Resource.Color.background_material_dark = global::ProjTaskReminder.Resource.Color.background_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.background_material_light = global::ProjTaskReminder.Resource.Color.background_material_light;
-			global::mhServiceKeepAlive.Resource.Color.bright_foreground_disabled_material_dark = global::ProjTaskReminder.Resource.Color.bright_foreground_disabled_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.bright_foreground_disabled_material_light = global::ProjTaskReminder.Resource.Color.bright_foreground_disabled_material_light;
-			global::mhServiceKeepAlive.Resource.Color.bright_foreground_inverse_material_dark = global::ProjTaskReminder.Resource.Color.bright_foreground_inverse_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.bright_foreground_inverse_material_light = global::ProjTaskReminder.Resource.Color.bright_foreground_inverse_material_light;
-			global::mhServiceKeepAlive.Resource.Color.bright_foreground_material_dark = global::ProjTaskReminder.Resource.Color.bright_foreground_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.bright_foreground_material_light = global::ProjTaskReminder.Resource.Color.bright_foreground_material_light;
-			global::mhServiceKeepAlive.Resource.Color.button_material_dark = global::ProjTaskReminder.Resource.Color.button_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.button_material_light = global::ProjTaskReminder.Resource.Color.button_material_light;
-			global::mhServiceKeepAlive.Resource.Color.dim_foreground_disabled_material_dark = global::ProjTaskReminder.Resource.Color.dim_foreground_disabled_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.dim_foreground_disabled_material_light = global::ProjTaskReminder.Resource.Color.dim_foreground_disabled_material_light;
-			global::mhServiceKeepAlive.Resource.Color.dim_foreground_material_dark = global::ProjTaskReminder.Resource.Color.dim_foreground_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.dim_foreground_material_light = global::ProjTaskReminder.Resource.Color.dim_foreground_material_light;
-			global::mhServiceKeepAlive.Resource.Color.error_color_material_dark = global::ProjTaskReminder.Resource.Color.error_color_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.error_color_material_light = global::ProjTaskReminder.Resource.Color.error_color_material_light;
-			global::mhServiceKeepAlive.Resource.Color.foreground_material_dark = global::ProjTaskReminder.Resource.Color.foreground_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.foreground_material_light = global::ProjTaskReminder.Resource.Color.foreground_material_light;
-			global::mhServiceKeepAlive.Resource.Color.highlighted_text_material_dark = global::ProjTaskReminder.Resource.Color.highlighted_text_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.highlighted_text_material_light = global::ProjTaskReminder.Resource.Color.highlighted_text_material_light;
-			global::mhServiceKeepAlive.Resource.Color.material_blue_grey_800 = global::ProjTaskReminder.Resource.Color.material_blue_grey_800;
-			global::mhServiceKeepAlive.Resource.Color.material_blue_grey_900 = global::ProjTaskReminder.Resource.Color.material_blue_grey_900;
-			global::mhServiceKeepAlive.Resource.Color.material_blue_grey_950 = global::ProjTaskReminder.Resource.Color.material_blue_grey_950;
-			global::mhServiceKeepAlive.Resource.Color.material_deep_teal_200 = global::ProjTaskReminder.Resource.Color.material_deep_teal_200;
-			global::mhServiceKeepAlive.Resource.Color.material_deep_teal_500 = global::ProjTaskReminder.Resource.Color.material_deep_teal_500;
-			global::mhServiceKeepAlive.Resource.Color.material_grey_100 = global::ProjTaskReminder.Resource.Color.material_grey_100;
-			global::mhServiceKeepAlive.Resource.Color.material_grey_300 = global::ProjTaskReminder.Resource.Color.material_grey_300;
-			global::mhServiceKeepAlive.Resource.Color.material_grey_50 = global::ProjTaskReminder.Resource.Color.material_grey_50;
-			global::mhServiceKeepAlive.Resource.Color.material_grey_600 = global::ProjTaskReminder.Resource.Color.material_grey_600;
-			global::mhServiceKeepAlive.Resource.Color.material_grey_800 = global::ProjTaskReminder.Resource.Color.material_grey_800;
-			global::mhServiceKeepAlive.Resource.Color.material_grey_850 = global::ProjTaskReminder.Resource.Color.material_grey_850;
-			global::mhServiceKeepAlive.Resource.Color.material_grey_900 = global::ProjTaskReminder.Resource.Color.material_grey_900;
-			global::mhServiceKeepAlive.Resource.Color.notification_action_color_filter = global::ProjTaskReminder.Resource.Color.notification_action_color_filter;
-			global::mhServiceKeepAlive.Resource.Color.notification_icon_bg_color = global::ProjTaskReminder.Resource.Color.notification_icon_bg_color;
-			global::mhServiceKeepAlive.Resource.Color.primary_dark_material_dark = global::ProjTaskReminder.Resource.Color.primary_dark_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.primary_dark_material_light = global::ProjTaskReminder.Resource.Color.primary_dark_material_light;
-			global::mhServiceKeepAlive.Resource.Color.primary_material_dark = global::ProjTaskReminder.Resource.Color.primary_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.primary_material_light = global::ProjTaskReminder.Resource.Color.primary_material_light;
-			global::mhServiceKeepAlive.Resource.Color.primary_text_default_material_dark = global::ProjTaskReminder.Resource.Color.primary_text_default_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.primary_text_default_material_light = global::ProjTaskReminder.Resource.Color.primary_text_default_material_light;
-			global::mhServiceKeepAlive.Resource.Color.primary_text_disabled_material_dark = global::ProjTaskReminder.Resource.Color.primary_text_disabled_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.primary_text_disabled_material_light = global::ProjTaskReminder.Resource.Color.primary_text_disabled_material_light;
-			global::mhServiceKeepAlive.Resource.Color.ripple_material_dark = global::ProjTaskReminder.Resource.Color.ripple_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.ripple_material_light = global::ProjTaskReminder.Resource.Color.ripple_material_light;
-			global::mhServiceKeepAlive.Resource.Color.secondary_text_default_material_dark = global::ProjTaskReminder.Resource.Color.secondary_text_default_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.secondary_text_default_material_light = global::ProjTaskReminder.Resource.Color.secondary_text_default_material_light;
-			global::mhServiceKeepAlive.Resource.Color.secondary_text_disabled_material_dark = global::ProjTaskReminder.Resource.Color.secondary_text_disabled_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.secondary_text_disabled_material_light = global::ProjTaskReminder.Resource.Color.secondary_text_disabled_material_light;
-			global::mhServiceKeepAlive.Resource.Color.switch_thumb_disabled_material_dark = global::ProjTaskReminder.Resource.Color.switch_thumb_disabled_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.switch_thumb_disabled_material_light = global::ProjTaskReminder.Resource.Color.switch_thumb_disabled_material_light;
-			global::mhServiceKeepAlive.Resource.Color.switch_thumb_material_dark = global::ProjTaskReminder.Resource.Color.switch_thumb_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.switch_thumb_material_light = global::ProjTaskReminder.Resource.Color.switch_thumb_material_light;
-			global::mhServiceKeepAlive.Resource.Color.switch_thumb_normal_material_dark = global::ProjTaskReminder.Resource.Color.switch_thumb_normal_material_dark;
-			global::mhServiceKeepAlive.Resource.Color.switch_thumb_normal_material_light = global::ProjTaskReminder.Resource.Color.switch_thumb_normal_material_light;
-			global::mhServiceKeepAlive.Resource.Color.tooltip_background_dark = global::ProjTaskReminder.Resource.Color.tooltip_background_dark;
-			global::mhServiceKeepAlive.Resource.Color.tooltip_background_light = global::ProjTaskReminder.Resource.Color.tooltip_background_light;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_bar_content_inset_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_content_inset_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_bar_content_inset_with_nav = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_content_inset_with_nav;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_bar_default_height_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_default_height_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_bar_default_padding_end_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_default_padding_end_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_bar_default_padding_start_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_default_padding_start_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_bar_elevation_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_elevation_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_bar_stacked_max_height = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_stacked_max_height;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_button_min_height_material = global::ProjTaskReminder.Resource.Dimension.abc_action_button_min_height_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_button_min_width_material = global::ProjTaskReminder.Resource.Dimension.abc_action_button_min_width_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_action_button_min_width_overflow_material = global::ProjTaskReminder.Resource.Dimension.abc_action_button_min_width_overflow_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_alert_dialog_button_bar_height = global::ProjTaskReminder.Resource.Dimension.abc_alert_dialog_button_bar_height;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_alert_dialog_button_dimen = global::ProjTaskReminder.Resource.Dimension.abc_alert_dialog_button_dimen;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_button_inset_horizontal_material = global::ProjTaskReminder.Resource.Dimension.abc_button_inset_horizontal_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_button_inset_vertical_material = global::ProjTaskReminder.Resource.Dimension.abc_button_inset_vertical_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_button_padding_horizontal_material = global::ProjTaskReminder.Resource.Dimension.abc_button_padding_horizontal_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_button_padding_vertical_material = global::ProjTaskReminder.Resource.Dimension.abc_button_padding_vertical_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_cascading_menus_min_smallest_width = global::ProjTaskReminder.Resource.Dimension.abc_cascading_menus_min_smallest_width;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_config_prefDialogWidth = global::ProjTaskReminder.Resource.Dimension.abc_config_prefDialogWidth;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_control_corner_material = global::ProjTaskReminder.Resource.Dimension.abc_control_corner_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_control_inset_material = global::ProjTaskReminder.Resource.Dimension.abc_control_inset_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_control_padding_material = global::ProjTaskReminder.Resource.Dimension.abc_control_padding_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dialog_corner_radius_material = global::ProjTaskReminder.Resource.Dimension.abc_dialog_corner_radius_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dialog_fixed_height_major = global::ProjTaskReminder.Resource.Dimension.abc_dialog_fixed_height_major;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dialog_fixed_height_minor = global::ProjTaskReminder.Resource.Dimension.abc_dialog_fixed_height_minor;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dialog_fixed_width_major = global::ProjTaskReminder.Resource.Dimension.abc_dialog_fixed_width_major;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dialog_fixed_width_minor = global::ProjTaskReminder.Resource.Dimension.abc_dialog_fixed_width_minor;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons = global::ProjTaskReminder.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dialog_list_padding_top_no_title = global::ProjTaskReminder.Resource.Dimension.abc_dialog_list_padding_top_no_title;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dialog_min_width_major = global::ProjTaskReminder.Resource.Dimension.abc_dialog_min_width_major;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dialog_min_width_minor = global::ProjTaskReminder.Resource.Dimension.abc_dialog_min_width_minor;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dialog_padding_material = global::ProjTaskReminder.Resource.Dimension.abc_dialog_padding_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dialog_padding_top_material = global::ProjTaskReminder.Resource.Dimension.abc_dialog_padding_top_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dialog_title_divider_material = global::ProjTaskReminder.Resource.Dimension.abc_dialog_title_divider_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_disabled_alpha_material_dark = global::ProjTaskReminder.Resource.Dimension.abc_disabled_alpha_material_dark;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_disabled_alpha_material_light = global::ProjTaskReminder.Resource.Dimension.abc_disabled_alpha_material_light;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dropdownitem_icon_width = global::ProjTaskReminder.Resource.Dimension.abc_dropdownitem_icon_width;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dropdownitem_text_padding_left = global::ProjTaskReminder.Resource.Dimension.abc_dropdownitem_text_padding_left;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_dropdownitem_text_padding_right = global::ProjTaskReminder.Resource.Dimension.abc_dropdownitem_text_padding_right;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_edit_text_inset_bottom_material = global::ProjTaskReminder.Resource.Dimension.abc_edit_text_inset_bottom_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::ProjTaskReminder.Resource.Dimension.abc_edit_text_inset_horizontal_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_edit_text_inset_top_material = global::ProjTaskReminder.Resource.Dimension.abc_edit_text_inset_top_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_floating_window_z = global::ProjTaskReminder.Resource.Dimension.abc_floating_window_z;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_list_item_padding_horizontal_material = global::ProjTaskReminder.Resource.Dimension.abc_list_item_padding_horizontal_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_panel_menu_list_width = global::ProjTaskReminder.Resource.Dimension.abc_panel_menu_list_width;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_progress_bar_height_material = global::ProjTaskReminder.Resource.Dimension.abc_progress_bar_height_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_search_view_preferred_height = global::ProjTaskReminder.Resource.Dimension.abc_search_view_preferred_height;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_search_view_preferred_width = global::ProjTaskReminder.Resource.Dimension.abc_search_view_preferred_width;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_seekbar_track_background_height_material = global::ProjTaskReminder.Resource.Dimension.abc_seekbar_track_background_height_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_seekbar_track_progress_height_material = global::ProjTaskReminder.Resource.Dimension.abc_seekbar_track_progress_height_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_select_dialog_padding_start_material = global::ProjTaskReminder.Resource.Dimension.abc_select_dialog_padding_start_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_switch_padding = global::ProjTaskReminder.Resource.Dimension.abc_switch_padding;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_body_1_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_body_1_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_body_2_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_body_2_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_button_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_button_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_caption_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_caption_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_display_1_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_display_1_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_display_2_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_display_2_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_display_3_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_display_3_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_display_4_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_display_4_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_headline_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_headline_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_large_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_large_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_medium_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_medium_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_menu_header_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_menu_header_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_menu_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_menu_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_small_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_small_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_subhead_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_subhead_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::ProjTaskReminder.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_title_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_title_material;
-			global::mhServiceKeepAlive.Resource.Dimension.abc_text_size_title_material_toolbar = global::ProjTaskReminder.Resource.Dimension.abc_text_size_title_material_toolbar;
-			global::mhServiceKeepAlive.Resource.Dimension.compat_button_inset_horizontal_material = global::ProjTaskReminder.Resource.Dimension.compat_button_inset_horizontal_material;
-			global::mhServiceKeepAlive.Resource.Dimension.compat_button_inset_vertical_material = global::ProjTaskReminder.Resource.Dimension.compat_button_inset_vertical_material;
-			global::mhServiceKeepAlive.Resource.Dimension.compat_button_padding_horizontal_material = global::ProjTaskReminder.Resource.Dimension.compat_button_padding_horizontal_material;
-			global::mhServiceKeepAlive.Resource.Dimension.compat_button_padding_vertical_material = global::ProjTaskReminder.Resource.Dimension.compat_button_padding_vertical_material;
-			global::mhServiceKeepAlive.Resource.Dimension.compat_control_corner_material = global::ProjTaskReminder.Resource.Dimension.compat_control_corner_material;
-			global::mhServiceKeepAlive.Resource.Dimension.compat_notification_large_icon_max_height = global::ProjTaskReminder.Resource.Dimension.compat_notification_large_icon_max_height;
-			global::mhServiceKeepAlive.Resource.Dimension.compat_notification_large_icon_max_width = global::ProjTaskReminder.Resource.Dimension.compat_notification_large_icon_max_width;
-			global::mhServiceKeepAlive.Resource.Dimension.disabled_alpha_material_dark = global::ProjTaskReminder.Resource.Dimension.disabled_alpha_material_dark;
-			global::mhServiceKeepAlive.Resource.Dimension.disabled_alpha_material_light = global::ProjTaskReminder.Resource.Dimension.disabled_alpha_material_light;
-			global::mhServiceKeepAlive.Resource.Dimension.highlight_alpha_material_colored = global::ProjTaskReminder.Resource.Dimension.highlight_alpha_material_colored;
-			global::mhServiceKeepAlive.Resource.Dimension.highlight_alpha_material_dark = global::ProjTaskReminder.Resource.Dimension.highlight_alpha_material_dark;
-			global::mhServiceKeepAlive.Resource.Dimension.highlight_alpha_material_light = global::ProjTaskReminder.Resource.Dimension.highlight_alpha_material_light;
-			global::mhServiceKeepAlive.Resource.Dimension.hint_alpha_material_dark = global::ProjTaskReminder.Resource.Dimension.hint_alpha_material_dark;
-			global::mhServiceKeepAlive.Resource.Dimension.hint_alpha_material_light = global::ProjTaskReminder.Resource.Dimension.hint_alpha_material_light;
-			global::mhServiceKeepAlive.Resource.Dimension.hint_pressed_alpha_material_dark = global::ProjTaskReminder.Resource.Dimension.hint_pressed_alpha_material_dark;
-			global::mhServiceKeepAlive.Resource.Dimension.hint_pressed_alpha_material_light = global::ProjTaskReminder.Resource.Dimension.hint_pressed_alpha_material_light;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_action_icon_size = global::ProjTaskReminder.Resource.Dimension.notification_action_icon_size;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_action_text_size = global::ProjTaskReminder.Resource.Dimension.notification_action_text_size;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_big_circle_margin = global::ProjTaskReminder.Resource.Dimension.notification_big_circle_margin;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_content_margin_start = global::ProjTaskReminder.Resource.Dimension.notification_content_margin_start;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_large_icon_height = global::ProjTaskReminder.Resource.Dimension.notification_large_icon_height;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_large_icon_width = global::ProjTaskReminder.Resource.Dimension.notification_large_icon_width;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_main_column_padding_top = global::ProjTaskReminder.Resource.Dimension.notification_main_column_padding_top;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_media_narrow_margin = global::ProjTaskReminder.Resource.Dimension.notification_media_narrow_margin;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_right_icon_size = global::ProjTaskReminder.Resource.Dimension.notification_right_icon_size;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_right_side_padding_top = global::ProjTaskReminder.Resource.Dimension.notification_right_side_padding_top;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_small_icon_background_padding = global::ProjTaskReminder.Resource.Dimension.notification_small_icon_background_padding;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_small_icon_size_as_large = global::ProjTaskReminder.Resource.Dimension.notification_small_icon_size_as_large;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_subtext_size = global::ProjTaskReminder.Resource.Dimension.notification_subtext_size;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_top_pad = global::ProjTaskReminder.Resource.Dimension.notification_top_pad;
-			global::mhServiceKeepAlive.Resource.Dimension.notification_top_pad_large_text = global::ProjTaskReminder.Resource.Dimension.notification_top_pad_large_text;
-			global::mhServiceKeepAlive.Resource.Dimension.tooltip_corner_radius = global::ProjTaskReminder.Resource.Dimension.tooltip_corner_radius;
-			global::mhServiceKeepAlive.Resource.Dimension.tooltip_horizontal_padding = global::ProjTaskReminder.Resource.Dimension.tooltip_horizontal_padding;
-			global::mhServiceKeepAlive.Resource.Dimension.tooltip_margin = global::ProjTaskReminder.Resource.Dimension.tooltip_margin;
-			global::mhServiceKeepAlive.Resource.Dimension.tooltip_precise_anchor_extra_offset = global::ProjTaskReminder.Resource.Dimension.tooltip_precise_anchor_extra_offset;
-			global::mhServiceKeepAlive.Resource.Dimension.tooltip_precise_anchor_threshold = global::ProjTaskReminder.Resource.Dimension.tooltip_precise_anchor_threshold;
-			global::mhServiceKeepAlive.Resource.Dimension.tooltip_vertical_padding = global::ProjTaskReminder.Resource.Dimension.tooltip_vertical_padding;
-			global::mhServiceKeepAlive.Resource.Dimension.tooltip_y_offset_non_touch = global::ProjTaskReminder.Resource.Dimension.tooltip_y_offset_non_touch;
-			global::mhServiceKeepAlive.Resource.Dimension.tooltip_y_offset_touch = global::ProjTaskReminder.Resource.Dimension.tooltip_y_offset_touch;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_action_bar_item_background_material = global::ProjTaskReminder.Resource.Drawable.abc_action_bar_item_background_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_btn_borderless_material = global::ProjTaskReminder.Resource.Drawable.abc_btn_borderless_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_btn_check_material = global::ProjTaskReminder.Resource.Drawable.abc_btn_check_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::ProjTaskReminder.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::ProjTaskReminder.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_btn_colored_material = global::ProjTaskReminder.Resource.Drawable.abc_btn_colored_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_btn_default_mtrl_shape = global::ProjTaskReminder.Resource.Drawable.abc_btn_default_mtrl_shape;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_btn_radio_material = global::ProjTaskReminder.Resource.Drawable.abc_btn_radio_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::ProjTaskReminder.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::ProjTaskReminder.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::ProjTaskReminder.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::ProjTaskReminder.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_cab_background_internal_bg = global::ProjTaskReminder.Resource.Drawable.abc_cab_background_internal_bg;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_cab_background_top_material = global::ProjTaskReminder.Resource.Drawable.abc_cab_background_top_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_control_background_material = global::ProjTaskReminder.Resource.Drawable.abc_control_background_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_dialog_material_background = global::ProjTaskReminder.Resource.Drawable.abc_dialog_material_background;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_edit_text_material = global::ProjTaskReminder.Resource.Drawable.abc_edit_text_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_ab_back_material = global::ProjTaskReminder.Resource.Drawable.abc_ic_ab_back_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp = global::ProjTaskReminder.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_clear_material = global::ProjTaskReminder.Resource.Drawable.abc_ic_clear_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_go_search_api_material = global::ProjTaskReminder.Resource.Drawable.abc_ic_go_search_api_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::ProjTaskReminder.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_menu_overflow_material = global::ProjTaskReminder.Resource.Drawable.abc_ic_menu_overflow_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::ProjTaskReminder.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_search_api_material = global::ProjTaskReminder.Resource.Drawable.abc_ic_search_api_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_star_black_16dp = global::ProjTaskReminder.Resource.Drawable.abc_ic_star_black_16dp;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_star_black_36dp = global::ProjTaskReminder.Resource.Drawable.abc_ic_star_black_36dp;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_star_black_48dp = global::ProjTaskReminder.Resource.Drawable.abc_ic_star_black_48dp;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_star_half_black_16dp = global::ProjTaskReminder.Resource.Drawable.abc_ic_star_half_black_16dp;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_star_half_black_36dp = global::ProjTaskReminder.Resource.Drawable.abc_ic_star_half_black_36dp;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_star_half_black_48dp = global::ProjTaskReminder.Resource.Drawable.abc_ic_star_half_black_48dp;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ic_voice_search_api_material = global::ProjTaskReminder.Resource.Drawable.abc_ic_voice_search_api_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_item_background_holo_dark = global::ProjTaskReminder.Resource.Drawable.abc_item_background_holo_dark;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_item_background_holo_light = global::ProjTaskReminder.Resource.Drawable.abc_item_background_holo_light;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_list_divider_material = global::ProjTaskReminder.Resource.Drawable.abc_list_divider_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_list_divider_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_list_divider_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_list_focused_holo = global::ProjTaskReminder.Resource.Drawable.abc_list_focused_holo;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_list_longpressed_holo = global::ProjTaskReminder.Resource.Drawable.abc_list_longpressed_holo;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_list_pressed_holo_dark = global::ProjTaskReminder.Resource.Drawable.abc_list_pressed_holo_dark;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_list_pressed_holo_light = global::ProjTaskReminder.Resource.Drawable.abc_list_pressed_holo_light;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::ProjTaskReminder.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::ProjTaskReminder.Resource.Drawable.abc_list_selector_background_transition_holo_light;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::ProjTaskReminder.Resource.Drawable.abc_list_selector_disabled_holo_dark;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_list_selector_disabled_holo_light = global::ProjTaskReminder.Resource.Drawable.abc_list_selector_disabled_holo_light;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_list_selector_holo_dark = global::ProjTaskReminder.Resource.Drawable.abc_list_selector_holo_dark;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_list_selector_holo_light = global::ProjTaskReminder.Resource.Drawable.abc_list_selector_holo_light;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::ProjTaskReminder.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_popup_background_mtrl_mult = global::ProjTaskReminder.Resource.Drawable.abc_popup_background_mtrl_mult;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ratingbar_indicator_material = global::ProjTaskReminder.Resource.Drawable.abc_ratingbar_indicator_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ratingbar_material = global::ProjTaskReminder.Resource.Drawable.abc_ratingbar_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_ratingbar_small_material = global::ProjTaskReminder.Resource.Drawable.abc_ratingbar_small_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::ProjTaskReminder.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::ProjTaskReminder.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_seekbar_thumb_material = global::ProjTaskReminder.Resource.Drawable.abc_seekbar_thumb_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_seekbar_tick_mark_material = global::ProjTaskReminder.Resource.Drawable.abc_seekbar_tick_mark_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_seekbar_track_material = global::ProjTaskReminder.Resource.Drawable.abc_seekbar_track_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::ProjTaskReminder.Resource.Drawable.abc_spinner_mtrl_am_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_spinner_textfield_background_material = global::ProjTaskReminder.Resource.Drawable.abc_spinner_textfield_background_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_switch_thumb_material = global::ProjTaskReminder.Resource.Drawable.abc_switch_thumb_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_switch_track_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_switch_track_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_tab_indicator_material = global::ProjTaskReminder.Resource.Drawable.abc_tab_indicator_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_textfield_default_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_textfield_search_material = global::ProjTaskReminder.Resource.Drawable.abc_textfield_search_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_text_cursor_material = global::ProjTaskReminder.Resource.Drawable.abc_text_cursor_material;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_text_select_handle_left_mtrl_dark = global::ProjTaskReminder.Resource.Drawable.abc_text_select_handle_left_mtrl_dark;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_text_select_handle_left_mtrl_light = global::ProjTaskReminder.Resource.Drawable.abc_text_select_handle_left_mtrl_light;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark = global::ProjTaskReminder.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_text_select_handle_middle_mtrl_light = global::ProjTaskReminder.Resource.Drawable.abc_text_select_handle_middle_mtrl_light;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_text_select_handle_right_mtrl_dark = global::ProjTaskReminder.Resource.Drawable.abc_text_select_handle_right_mtrl_dark;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_text_select_handle_right_mtrl_light = global::ProjTaskReminder.Resource.Drawable.abc_text_select_handle_right_mtrl_light;
-			global::mhServiceKeepAlive.Resource.Drawable.abc_vector_test = global::ProjTaskReminder.Resource.Drawable.abc_vector_test;
-			global::mhServiceKeepAlive.Resource.Drawable.notification_action_background = global::ProjTaskReminder.Resource.Drawable.notification_action_background;
-			global::mhServiceKeepAlive.Resource.Drawable.notification_bg = global::ProjTaskReminder.Resource.Drawable.notification_bg;
-			global::mhServiceKeepAlive.Resource.Drawable.notification_bg_low = global::ProjTaskReminder.Resource.Drawable.notification_bg_low;
-			global::mhServiceKeepAlive.Resource.Drawable.notification_bg_low_normal = global::ProjTaskReminder.Resource.Drawable.notification_bg_low_normal;
-			global::mhServiceKeepAlive.Resource.Drawable.notification_bg_low_pressed = global::ProjTaskReminder.Resource.Drawable.notification_bg_low_pressed;
-			global::mhServiceKeepAlive.Resource.Drawable.notification_bg_normal = global::ProjTaskReminder.Resource.Drawable.notification_bg_normal;
-			global::mhServiceKeepAlive.Resource.Drawable.notification_bg_normal_pressed = global::ProjTaskReminder.Resource.Drawable.notification_bg_normal_pressed;
-			global::mhServiceKeepAlive.Resource.Drawable.notification_icon_background = global::ProjTaskReminder.Resource.Drawable.notification_icon_background;
-			global::mhServiceKeepAlive.Resource.Drawable.notification_template_icon_bg = global::ProjTaskReminder.Resource.Drawable.notification_template_icon_bg;
-			global::mhServiceKeepAlive.Resource.Drawable.notification_template_icon_low_bg = global::ProjTaskReminder.Resource.Drawable.notification_template_icon_low_bg;
-			global::mhServiceKeepAlive.Resource.Drawable.notification_tile_bg = global::ProjTaskReminder.Resource.Drawable.notification_tile_bg;
-			global::mhServiceKeepAlive.Resource.Drawable.notify_panel_notification_icon_bg = global::ProjTaskReminder.Resource.Drawable.notify_panel_notification_icon_bg;
-			global::mhServiceKeepAlive.Resource.Drawable.tooltip_frame_dark = global::ProjTaskReminder.Resource.Drawable.tooltip_frame_dark;
-			global::mhServiceKeepAlive.Resource.Drawable.tooltip_frame_light = global::ProjTaskReminder.Resource.Drawable.tooltip_frame_light;
-			global::mhServiceKeepAlive.Resource.Id.actions = global::ProjTaskReminder.Resource.Id.actions;
-			global::mhServiceKeepAlive.Resource.Id.action_bar = global::ProjTaskReminder.Resource.Id.action_bar;
-			global::mhServiceKeepAlive.Resource.Id.action_bar_activity_content = global::ProjTaskReminder.Resource.Id.action_bar_activity_content;
-			global::mhServiceKeepAlive.Resource.Id.action_bar_container = global::ProjTaskReminder.Resource.Id.action_bar_container;
-			global::mhServiceKeepAlive.Resource.Id.action_bar_root = global::ProjTaskReminder.Resource.Id.action_bar_root;
-			global::mhServiceKeepAlive.Resource.Id.action_bar_spinner = global::ProjTaskReminder.Resource.Id.action_bar_spinner;
-			global::mhServiceKeepAlive.Resource.Id.action_bar_subtitle = global::ProjTaskReminder.Resource.Id.action_bar_subtitle;
-			global::mhServiceKeepAlive.Resource.Id.action_bar_title = global::ProjTaskReminder.Resource.Id.action_bar_title;
-			global::mhServiceKeepAlive.Resource.Id.action_container = global::ProjTaskReminder.Resource.Id.action_container;
-			global::mhServiceKeepAlive.Resource.Id.action_context_bar = global::ProjTaskReminder.Resource.Id.action_context_bar;
-			global::mhServiceKeepAlive.Resource.Id.action_divider = global::ProjTaskReminder.Resource.Id.action_divider;
-			global::mhServiceKeepAlive.Resource.Id.action_image = global::ProjTaskReminder.Resource.Id.action_image;
-			global::mhServiceKeepAlive.Resource.Id.action_menu_divider = global::ProjTaskReminder.Resource.Id.action_menu_divider;
-			global::mhServiceKeepAlive.Resource.Id.action_menu_presenter = global::ProjTaskReminder.Resource.Id.action_menu_presenter;
-			global::mhServiceKeepAlive.Resource.Id.action_mode_bar = global::ProjTaskReminder.Resource.Id.action_mode_bar;
-			global::mhServiceKeepAlive.Resource.Id.action_mode_bar_stub = global::ProjTaskReminder.Resource.Id.action_mode_bar_stub;
-			global::mhServiceKeepAlive.Resource.Id.action_mode_close_button = global::ProjTaskReminder.Resource.Id.action_mode_close_button;
-			global::mhServiceKeepAlive.Resource.Id.action_text = global::ProjTaskReminder.Resource.Id.action_text;
-			global::mhServiceKeepAlive.Resource.Id.activity_chooser_view_content = global::ProjTaskReminder.Resource.Id.activity_chooser_view_content;
-			global::mhServiceKeepAlive.Resource.Id.add = global::ProjTaskReminder.Resource.Id.add;
-			global::mhServiceKeepAlive.Resource.Id.alertTitle = global::ProjTaskReminder.Resource.Id.alertTitle;
-			global::mhServiceKeepAlive.Resource.Id.all = global::ProjTaskReminder.Resource.Id.all;
-			global::mhServiceKeepAlive.Resource.Id.ALT = global::ProjTaskReminder.Resource.Id.ALT;
-			global::mhServiceKeepAlive.Resource.Id.always = global::ProjTaskReminder.Resource.Id.always;
-			global::mhServiceKeepAlive.Resource.Id.async = global::ProjTaskReminder.Resource.Id.async;
-			global::mhServiceKeepAlive.Resource.Id.beginning = global::ProjTaskReminder.Resource.Id.beginning;
-			global::mhServiceKeepAlive.Resource.Id.blocking = global::ProjTaskReminder.Resource.Id.blocking;
-			global::mhServiceKeepAlive.Resource.Id.bottom = global::ProjTaskReminder.Resource.Id.bottom;
-			global::mhServiceKeepAlive.Resource.Id.buttonPanel = global::ProjTaskReminder.Resource.Id.buttonPanel;
-			global::mhServiceKeepAlive.Resource.Id.center = global::ProjTaskReminder.Resource.Id.center;
-			global::mhServiceKeepAlive.Resource.Id.center_horizontal = global::ProjTaskReminder.Resource.Id.center_horizontal;
-			global::mhServiceKeepAlive.Resource.Id.center_vertical = global::ProjTaskReminder.Resource.Id.center_vertical;
-			global::mhServiceKeepAlive.Resource.Id.checkbox = global::ProjTaskReminder.Resource.Id.checkbox;
-			global::mhServiceKeepAlive.Resource.Id.chronometer = global::ProjTaskReminder.Resource.Id.chronometer;
-			global::mhServiceKeepAlive.Resource.Id.clip_horizontal = global::ProjTaskReminder.Resource.Id.clip_horizontal;
-			global::mhServiceKeepAlive.Resource.Id.clip_vertical = global::ProjTaskReminder.Resource.Id.clip_vertical;
-			global::mhServiceKeepAlive.Resource.Id.collapseActionView = global::ProjTaskReminder.Resource.Id.collapseActionView;
-			global::mhServiceKeepAlive.Resource.Id.content = global::ProjTaskReminder.Resource.Id.content;
-			global::mhServiceKeepAlive.Resource.Id.contentPanel = global::ProjTaskReminder.Resource.Id.contentPanel;
-			global::mhServiceKeepAlive.Resource.Id.CTRL = global::ProjTaskReminder.Resource.Id.CTRL;
-			global::mhServiceKeepAlive.Resource.Id.custom = global::ProjTaskReminder.Resource.Id.custom;
-			global::mhServiceKeepAlive.Resource.Id.customPanel = global::ProjTaskReminder.Resource.Id.customPanel;
-			global::mhServiceKeepAlive.Resource.Id.decor_content_parent = global::ProjTaskReminder.Resource.Id.decor_content_parent;
-			global::mhServiceKeepAlive.Resource.Id.default_activity_button = global::ProjTaskReminder.Resource.Id.default_activity_button;
-			global::mhServiceKeepAlive.Resource.Id.disableHome = global::ProjTaskReminder.Resource.Id.disableHome;
-			global::mhServiceKeepAlive.Resource.Id.edit_query = global::ProjTaskReminder.Resource.Id.edit_query;
-			global::mhServiceKeepAlive.Resource.Id.end = global::ProjTaskReminder.Resource.Id.end;
-			global::mhServiceKeepAlive.Resource.Id.expanded_menu = global::ProjTaskReminder.Resource.Id.expanded_menu;
-			global::mhServiceKeepAlive.Resource.Id.expand_activities_button = global::ProjTaskReminder.Resource.Id.expand_activities_button;
-			global::mhServiceKeepAlive.Resource.Id.fill = global::ProjTaskReminder.Resource.Id.fill;
-			global::mhServiceKeepAlive.Resource.Id.fill_horizontal = global::ProjTaskReminder.Resource.Id.fill_horizontal;
-			global::mhServiceKeepAlive.Resource.Id.fill_vertical = global::ProjTaskReminder.Resource.Id.fill_vertical;
-			global::mhServiceKeepAlive.Resource.Id.forever = global::ProjTaskReminder.Resource.Id.forever;
-			global::mhServiceKeepAlive.Resource.Id.FUNCTION = global::ProjTaskReminder.Resource.Id.FUNCTION;
-			global::mhServiceKeepAlive.Resource.Id.group_divider = global::ProjTaskReminder.Resource.Id.group_divider;
-			global::mhServiceKeepAlive.Resource.Id.home = global::ProjTaskReminder.Resource.Id.home;
-			global::mhServiceKeepAlive.Resource.Id.homeAsUp = global::ProjTaskReminder.Resource.Id.homeAsUp;
-			global::mhServiceKeepAlive.Resource.Id.icon = global::ProjTaskReminder.Resource.Id.icon;
-			global::mhServiceKeepAlive.Resource.Id.icon_group = global::ProjTaskReminder.Resource.Id.icon_group;
-			global::mhServiceKeepAlive.Resource.Id.ifRoom = global::ProjTaskReminder.Resource.Id.ifRoom;
-			global::mhServiceKeepAlive.Resource.Id.image = global::ProjTaskReminder.Resource.Id.image;
-			global::mhServiceKeepAlive.Resource.Id.info = global::ProjTaskReminder.Resource.Id.info;
-			global::mhServiceKeepAlive.Resource.Id.italic = global::ProjTaskReminder.Resource.Id.italic;
-			global::mhServiceKeepAlive.Resource.Id.left = global::ProjTaskReminder.Resource.Id.left;
-			global::mhServiceKeepAlive.Resource.Id.line1 = global::ProjTaskReminder.Resource.Id.line1;
-			global::mhServiceKeepAlive.Resource.Id.line3 = global::ProjTaskReminder.Resource.Id.line3;
-			global::mhServiceKeepAlive.Resource.Id.listMode = global::ProjTaskReminder.Resource.Id.listMode;
-			global::mhServiceKeepAlive.Resource.Id.list_item = global::ProjTaskReminder.Resource.Id.list_item;
-			global::mhServiceKeepAlive.Resource.Id.message = global::ProjTaskReminder.Resource.Id.message;
-			global::mhServiceKeepAlive.Resource.Id.META = global::ProjTaskReminder.Resource.Id.META;
-			global::mhServiceKeepAlive.Resource.Id.middle = global::ProjTaskReminder.Resource.Id.middle;
-			global::mhServiceKeepAlive.Resource.Id.multiply = global::ProjTaskReminder.Resource.Id.multiply;
-			global::mhServiceKeepAlive.Resource.Id.never = global::ProjTaskReminder.Resource.Id.never;
-			global::mhServiceKeepAlive.Resource.Id.none = global::ProjTaskReminder.Resource.Id.none;
-			global::mhServiceKeepAlive.Resource.Id.normal = global::ProjTaskReminder.Resource.Id.normal;
-			global::mhServiceKeepAlive.Resource.Id.notification_background = global::ProjTaskReminder.Resource.Id.notification_background;
-			global::mhServiceKeepAlive.Resource.Id.notification_main_column = global::ProjTaskReminder.Resource.Id.notification_main_column;
-			global::mhServiceKeepAlive.Resource.Id.notification_main_column_container = global::ProjTaskReminder.Resource.Id.notification_main_column_container;
-			global::mhServiceKeepAlive.Resource.Id.parentPanel = global::ProjTaskReminder.Resource.Id.parentPanel;
-			global::mhServiceKeepAlive.Resource.Id.progress_circular = global::ProjTaskReminder.Resource.Id.progress_circular;
-			global::mhServiceKeepAlive.Resource.Id.progress_horizontal = global::ProjTaskReminder.Resource.Id.progress_horizontal;
-			global::mhServiceKeepAlive.Resource.Id.radio = global::ProjTaskReminder.Resource.Id.radio;
-			global::mhServiceKeepAlive.Resource.Id.right = global::ProjTaskReminder.Resource.Id.right;
-			global::mhServiceKeepAlive.Resource.Id.right_icon = global::ProjTaskReminder.Resource.Id.right_icon;
-			global::mhServiceKeepAlive.Resource.Id.right_side = global::ProjTaskReminder.Resource.Id.right_side;
-			global::mhServiceKeepAlive.Resource.Id.screen = global::ProjTaskReminder.Resource.Id.screen;
-			global::mhServiceKeepAlive.Resource.Id.scrollIndicatorDown = global::ProjTaskReminder.Resource.Id.scrollIndicatorDown;
-			global::mhServiceKeepAlive.Resource.Id.scrollIndicatorUp = global::ProjTaskReminder.Resource.Id.scrollIndicatorUp;
-			global::mhServiceKeepAlive.Resource.Id.scrollView = global::ProjTaskReminder.Resource.Id.scrollView;
-			global::mhServiceKeepAlive.Resource.Id.search_badge = global::ProjTaskReminder.Resource.Id.search_badge;
-			global::mhServiceKeepAlive.Resource.Id.search_bar = global::ProjTaskReminder.Resource.Id.search_bar;
-			global::mhServiceKeepAlive.Resource.Id.search_button = global::ProjTaskReminder.Resource.Id.search_button;
-			global::mhServiceKeepAlive.Resource.Id.search_close_btn = global::ProjTaskReminder.Resource.Id.search_close_btn;
-			global::mhServiceKeepAlive.Resource.Id.search_edit_frame = global::ProjTaskReminder.Resource.Id.search_edit_frame;
-			global::mhServiceKeepAlive.Resource.Id.search_go_btn = global::ProjTaskReminder.Resource.Id.search_go_btn;
-			global::mhServiceKeepAlive.Resource.Id.search_mag_icon = global::ProjTaskReminder.Resource.Id.search_mag_icon;
-			global::mhServiceKeepAlive.Resource.Id.search_plate = global::ProjTaskReminder.Resource.Id.search_plate;
-			global::mhServiceKeepAlive.Resource.Id.search_src_text = global::ProjTaskReminder.Resource.Id.search_src_text;
-			global::mhServiceKeepAlive.Resource.Id.search_voice_btn = global::ProjTaskReminder.Resource.Id.search_voice_btn;
-			global::mhServiceKeepAlive.Resource.Id.select_dialog_listview = global::ProjTaskReminder.Resource.Id.select_dialog_listview;
-			global::mhServiceKeepAlive.Resource.Id.SHIFT = global::ProjTaskReminder.Resource.Id.SHIFT;
-			global::mhServiceKeepAlive.Resource.Id.shortcut = global::ProjTaskReminder.Resource.Id.shortcut;
-			global::mhServiceKeepAlive.Resource.Id.showCustom = global::ProjTaskReminder.Resource.Id.showCustom;
-			global::mhServiceKeepAlive.Resource.Id.showHome = global::ProjTaskReminder.Resource.Id.showHome;
-			global::mhServiceKeepAlive.Resource.Id.showTitle = global::ProjTaskReminder.Resource.Id.showTitle;
-			global::mhServiceKeepAlive.Resource.Id.spacer = global::ProjTaskReminder.Resource.Id.spacer;
-			global::mhServiceKeepAlive.Resource.Id.split_action_bar = global::ProjTaskReminder.Resource.Id.split_action_bar;
-			global::mhServiceKeepAlive.Resource.Id.src_atop = global::ProjTaskReminder.Resource.Id.src_atop;
-			global::mhServiceKeepAlive.Resource.Id.src_in = global::ProjTaskReminder.Resource.Id.src_in;
-			global::mhServiceKeepAlive.Resource.Id.src_over = global::ProjTaskReminder.Resource.Id.src_over;
-			global::mhServiceKeepAlive.Resource.Id.start = global::ProjTaskReminder.Resource.Id.start;
-			global::mhServiceKeepAlive.Resource.Id.submenuarrow = global::ProjTaskReminder.Resource.Id.submenuarrow;
-			global::mhServiceKeepAlive.Resource.Id.submit_area = global::ProjTaskReminder.Resource.Id.submit_area;
-			global::mhServiceKeepAlive.Resource.Id.SYM = global::ProjTaskReminder.Resource.Id.SYM;
-			global::mhServiceKeepAlive.Resource.Id.tabMode = global::ProjTaskReminder.Resource.Id.tabMode;
-			global::mhServiceKeepAlive.Resource.Id.tag_transition_group = global::ProjTaskReminder.Resource.Id.tag_transition_group;
-			global::mhServiceKeepAlive.Resource.Id.tag_unhandled_key_event_manager = global::ProjTaskReminder.Resource.Id.tag_unhandled_key_event_manager;
-			global::mhServiceKeepAlive.Resource.Id.tag_unhandled_key_listeners = global::ProjTaskReminder.Resource.Id.tag_unhandled_key_listeners;
-			global::mhServiceKeepAlive.Resource.Id.text = global::ProjTaskReminder.Resource.Id.text;
-			global::mhServiceKeepAlive.Resource.Id.text2 = global::ProjTaskReminder.Resource.Id.text2;
-			global::mhServiceKeepAlive.Resource.Id.textSpacerNoButtons = global::ProjTaskReminder.Resource.Id.textSpacerNoButtons;
-			global::mhServiceKeepAlive.Resource.Id.textSpacerNoTitle = global::ProjTaskReminder.Resource.Id.textSpacerNoTitle;
-			global::mhServiceKeepAlive.Resource.Id.time = global::ProjTaskReminder.Resource.Id.time;
-			global::mhServiceKeepAlive.Resource.Id.title = global::ProjTaskReminder.Resource.Id.title;
-			global::mhServiceKeepAlive.Resource.Id.titleDividerNoCustom = global::ProjTaskReminder.Resource.Id.titleDividerNoCustom;
-			global::mhServiceKeepAlive.Resource.Id.title_template = global::ProjTaskReminder.Resource.Id.title_template;
-			global::mhServiceKeepAlive.Resource.Id.top = global::ProjTaskReminder.Resource.Id.top;
-			global::mhServiceKeepAlive.Resource.Id.topPanel = global::ProjTaskReminder.Resource.Id.topPanel;
-			global::mhServiceKeepAlive.Resource.Id.uniform = global::ProjTaskReminder.Resource.Id.uniform;
-			global::mhServiceKeepAlive.Resource.Id.up = global::ProjTaskReminder.Resource.Id.up;
-			global::mhServiceKeepAlive.Resource.Id.useLogo = global::ProjTaskReminder.Resource.Id.useLogo;
-			global::mhServiceKeepAlive.Resource.Id.withText = global::ProjTaskReminder.Resource.Id.withText;
-			global::mhServiceKeepAlive.Resource.Id.wrap_content = global::ProjTaskReminder.Resource.Id.wrap_content;
-			global::mhServiceKeepAlive.Resource.Integer.abc_config_activityDefaultDur = global::ProjTaskReminder.Resource.Integer.abc_config_activityDefaultDur;
-			global::mhServiceKeepAlive.Resource.Integer.abc_config_activityShortDur = global::ProjTaskReminder.Resource.Integer.abc_config_activityShortDur;
-			global::mhServiceKeepAlive.Resource.Integer.cancel_button_image_alpha = global::ProjTaskReminder.Resource.Integer.cancel_button_image_alpha;
-			global::mhServiceKeepAlive.Resource.Integer.config_tooltipAnimTime = global::ProjTaskReminder.Resource.Integer.config_tooltipAnimTime;
-			global::mhServiceKeepAlive.Resource.Integer.status_bar_notification_info_maxnum = global::ProjTaskReminder.Resource.Integer.status_bar_notification_info_maxnum;
-			global::mhServiceKeepAlive.Resource.Layout.abc_action_bar_title_item = global::ProjTaskReminder.Resource.Layout.abc_action_bar_title_item;
-			global::mhServiceKeepAlive.Resource.Layout.abc_action_bar_up_container = global::ProjTaskReminder.Resource.Layout.abc_action_bar_up_container;
-			global::mhServiceKeepAlive.Resource.Layout.abc_action_menu_item_layout = global::ProjTaskReminder.Resource.Layout.abc_action_menu_item_layout;
-			global::mhServiceKeepAlive.Resource.Layout.abc_action_menu_layout = global::ProjTaskReminder.Resource.Layout.abc_action_menu_layout;
-			global::mhServiceKeepAlive.Resource.Layout.abc_action_mode_bar = global::ProjTaskReminder.Resource.Layout.abc_action_mode_bar;
-			global::mhServiceKeepAlive.Resource.Layout.abc_action_mode_close_item_material = global::ProjTaskReminder.Resource.Layout.abc_action_mode_close_item_material;
-			global::mhServiceKeepAlive.Resource.Layout.abc_activity_chooser_view = global::ProjTaskReminder.Resource.Layout.abc_activity_chooser_view;
-			global::mhServiceKeepAlive.Resource.Layout.abc_activity_chooser_view_list_item = global::ProjTaskReminder.Resource.Layout.abc_activity_chooser_view_list_item;
-			global::mhServiceKeepAlive.Resource.Layout.abc_alert_dialog_button_bar_material = global::ProjTaskReminder.Resource.Layout.abc_alert_dialog_button_bar_material;
-			global::mhServiceKeepAlive.Resource.Layout.abc_alert_dialog_material = global::ProjTaskReminder.Resource.Layout.abc_alert_dialog_material;
-			global::mhServiceKeepAlive.Resource.Layout.abc_alert_dialog_title_material = global::ProjTaskReminder.Resource.Layout.abc_alert_dialog_title_material;
-			global::mhServiceKeepAlive.Resource.Layout.abc_cascading_menu_item_layout = global::ProjTaskReminder.Resource.Layout.abc_cascading_menu_item_layout;
-			global::mhServiceKeepAlive.Resource.Layout.abc_dialog_title_material = global::ProjTaskReminder.Resource.Layout.abc_dialog_title_material;
-			global::mhServiceKeepAlive.Resource.Layout.abc_expanded_menu_layout = global::ProjTaskReminder.Resource.Layout.abc_expanded_menu_layout;
-			global::mhServiceKeepAlive.Resource.Layout.abc_list_menu_item_checkbox = global::ProjTaskReminder.Resource.Layout.abc_list_menu_item_checkbox;
-			global::mhServiceKeepAlive.Resource.Layout.abc_list_menu_item_icon = global::ProjTaskReminder.Resource.Layout.abc_list_menu_item_icon;
-			global::mhServiceKeepAlive.Resource.Layout.abc_list_menu_item_layout = global::ProjTaskReminder.Resource.Layout.abc_list_menu_item_layout;
-			global::mhServiceKeepAlive.Resource.Layout.abc_list_menu_item_radio = global::ProjTaskReminder.Resource.Layout.abc_list_menu_item_radio;
-			global::mhServiceKeepAlive.Resource.Layout.abc_popup_menu_header_item_layout = global::ProjTaskReminder.Resource.Layout.abc_popup_menu_header_item_layout;
-			global::mhServiceKeepAlive.Resource.Layout.abc_popup_menu_item_layout = global::ProjTaskReminder.Resource.Layout.abc_popup_menu_item_layout;
-			global::mhServiceKeepAlive.Resource.Layout.abc_screen_content_include = global::ProjTaskReminder.Resource.Layout.abc_screen_content_include;
-			global::mhServiceKeepAlive.Resource.Layout.abc_screen_simple = global::ProjTaskReminder.Resource.Layout.abc_screen_simple;
-			global::mhServiceKeepAlive.Resource.Layout.abc_screen_simple_overlay_action_mode = global::ProjTaskReminder.Resource.Layout.abc_screen_simple_overlay_action_mode;
-			global::mhServiceKeepAlive.Resource.Layout.abc_screen_toolbar = global::ProjTaskReminder.Resource.Layout.abc_screen_toolbar;
-			global::mhServiceKeepAlive.Resource.Layout.abc_search_dropdown_item_icons_2line = global::ProjTaskReminder.Resource.Layout.abc_search_dropdown_item_icons_2line;
-			global::mhServiceKeepAlive.Resource.Layout.abc_search_view = global::ProjTaskReminder.Resource.Layout.abc_search_view;
-			global::mhServiceKeepAlive.Resource.Layout.abc_select_dialog_material = global::ProjTaskReminder.Resource.Layout.abc_select_dialog_material;
-			global::mhServiceKeepAlive.Resource.Layout.abc_tooltip = global::ProjTaskReminder.Resource.Layout.abc_tooltip;
-			global::mhServiceKeepAlive.Resource.Layout.notification_action = global::ProjTaskReminder.Resource.Layout.notification_action;
-			global::mhServiceKeepAlive.Resource.Layout.notification_action_tombstone = global::ProjTaskReminder.Resource.Layout.notification_action_tombstone;
-			global::mhServiceKeepAlive.Resource.Layout.notification_template_custom_big = global::ProjTaskReminder.Resource.Layout.notification_template_custom_big;
-			global::mhServiceKeepAlive.Resource.Layout.notification_template_icon_group = global::ProjTaskReminder.Resource.Layout.notification_template_icon_group;
-			global::mhServiceKeepAlive.Resource.Layout.notification_template_part_chronometer = global::ProjTaskReminder.Resource.Layout.notification_template_part_chronometer;
-			global::mhServiceKeepAlive.Resource.Layout.notification_template_part_time = global::ProjTaskReminder.Resource.Layout.notification_template_part_time;
-			global::mhServiceKeepAlive.Resource.Layout.select_dialog_item_material = global::ProjTaskReminder.Resource.Layout.select_dialog_item_material;
-			global::mhServiceKeepAlive.Resource.Layout.select_dialog_multichoice_material = global::ProjTaskReminder.Resource.Layout.select_dialog_multichoice_material;
-			global::mhServiceKeepAlive.Resource.Layout.select_dialog_singlechoice_material = global::ProjTaskReminder.Resource.Layout.select_dialog_singlechoice_material;
-			global::mhServiceKeepAlive.Resource.Layout.support_simple_spinner_dropdown_item = global::ProjTaskReminder.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::mhServiceKeepAlive.Resource.String.abc_action_bar_home_description = global::ProjTaskReminder.Resource.String.abc_action_bar_home_description;
-			global::mhServiceKeepAlive.Resource.String.abc_action_bar_up_description = global::ProjTaskReminder.Resource.String.abc_action_bar_up_description;
-			global::mhServiceKeepAlive.Resource.String.abc_action_menu_overflow_description = global::ProjTaskReminder.Resource.String.abc_action_menu_overflow_description;
-			global::mhServiceKeepAlive.Resource.String.abc_action_mode_done = global::ProjTaskReminder.Resource.String.abc_action_mode_done;
-			global::mhServiceKeepAlive.Resource.String.abc_activitychooserview_choose_application = global::ProjTaskReminder.Resource.String.abc_activitychooserview_choose_application;
-			global::mhServiceKeepAlive.Resource.String.abc_activity_chooser_view_see_all = global::ProjTaskReminder.Resource.String.abc_activity_chooser_view_see_all;
-			global::mhServiceKeepAlive.Resource.String.abc_capital_off = global::ProjTaskReminder.Resource.String.abc_capital_off;
-			global::mhServiceKeepAlive.Resource.String.abc_capital_on = global::ProjTaskReminder.Resource.String.abc_capital_on;
-			global::mhServiceKeepAlive.Resource.String.abc_font_family_body_1_material = global::ProjTaskReminder.Resource.String.abc_font_family_body_1_material;
-			global::mhServiceKeepAlive.Resource.String.abc_font_family_body_2_material = global::ProjTaskReminder.Resource.String.abc_font_family_body_2_material;
-			global::mhServiceKeepAlive.Resource.String.abc_font_family_button_material = global::ProjTaskReminder.Resource.String.abc_font_family_button_material;
-			global::mhServiceKeepAlive.Resource.String.abc_font_family_caption_material = global::ProjTaskReminder.Resource.String.abc_font_family_caption_material;
-			global::mhServiceKeepAlive.Resource.String.abc_font_family_display_1_material = global::ProjTaskReminder.Resource.String.abc_font_family_display_1_material;
-			global::mhServiceKeepAlive.Resource.String.abc_font_family_display_2_material = global::ProjTaskReminder.Resource.String.abc_font_family_display_2_material;
-			global::mhServiceKeepAlive.Resource.String.abc_font_family_display_3_material = global::ProjTaskReminder.Resource.String.abc_font_family_display_3_material;
-			global::mhServiceKeepAlive.Resource.String.abc_font_family_display_4_material = global::ProjTaskReminder.Resource.String.abc_font_family_display_4_material;
-			global::mhServiceKeepAlive.Resource.String.abc_font_family_headline_material = global::ProjTaskReminder.Resource.String.abc_font_family_headline_material;
-			global::mhServiceKeepAlive.Resource.String.abc_font_family_menu_material = global::ProjTaskReminder.Resource.String.abc_font_family_menu_material;
-			global::mhServiceKeepAlive.Resource.String.abc_font_family_subhead_material = global::ProjTaskReminder.Resource.String.abc_font_family_subhead_material;
-			global::mhServiceKeepAlive.Resource.String.abc_font_family_title_material = global::ProjTaskReminder.Resource.String.abc_font_family_title_material;
-			global::mhServiceKeepAlive.Resource.String.abc_menu_alt_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_alt_shortcut_label;
-			global::mhServiceKeepAlive.Resource.String.abc_menu_ctrl_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_ctrl_shortcut_label;
-			global::mhServiceKeepAlive.Resource.String.abc_menu_delete_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_delete_shortcut_label;
-			global::mhServiceKeepAlive.Resource.String.abc_menu_enter_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_enter_shortcut_label;
-			global::mhServiceKeepAlive.Resource.String.abc_menu_function_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_function_shortcut_label;
-			global::mhServiceKeepAlive.Resource.String.abc_menu_meta_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_meta_shortcut_label;
-			global::mhServiceKeepAlive.Resource.String.abc_menu_shift_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_shift_shortcut_label;
-			global::mhServiceKeepAlive.Resource.String.abc_menu_space_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_space_shortcut_label;
-			global::mhServiceKeepAlive.Resource.String.abc_menu_sym_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_sym_shortcut_label;
-			global::mhServiceKeepAlive.Resource.String.abc_prepend_shortcut_label = global::ProjTaskReminder.Resource.String.abc_prepend_shortcut_label;
-			global::mhServiceKeepAlive.Resource.String.abc_searchview_description_clear = global::ProjTaskReminder.Resource.String.abc_searchview_description_clear;
-			global::mhServiceKeepAlive.Resource.String.abc_searchview_description_query = global::ProjTaskReminder.Resource.String.abc_searchview_description_query;
-			global::mhServiceKeepAlive.Resource.String.abc_searchview_description_search = global::ProjTaskReminder.Resource.String.abc_searchview_description_search;
-			global::mhServiceKeepAlive.Resource.String.abc_searchview_description_submit = global::ProjTaskReminder.Resource.String.abc_searchview_description_submit;
-			global::mhServiceKeepAlive.Resource.String.abc_searchview_description_voice = global::ProjTaskReminder.Resource.String.abc_searchview_description_voice;
-			global::mhServiceKeepAlive.Resource.String.abc_search_hint = global::ProjTaskReminder.Resource.String.abc_search_hint;
-			global::mhServiceKeepAlive.Resource.String.abc_shareactionprovider_share_with = global::ProjTaskReminder.Resource.String.abc_shareactionprovider_share_with;
-			global::mhServiceKeepAlive.Resource.String.abc_shareactionprovider_share_with_application = global::ProjTaskReminder.Resource.String.abc_shareactionprovider_share_with_application;
-			global::mhServiceKeepAlive.Resource.String.abc_toolbar_collapse_description = global::ProjTaskReminder.Resource.String.abc_toolbar_collapse_description;
-			global::mhServiceKeepAlive.Resource.String.app_name = global::ProjTaskReminder.Resource.String.app_name;
-			global::mhServiceKeepAlive.Resource.String.hello = global::ProjTaskReminder.Resource.String.hello;
-			global::mhServiceKeepAlive.Resource.String.search_menu_title = global::ProjTaskReminder.Resource.String.search_menu_title;
-			global::mhServiceKeepAlive.Resource.String.status_bar_notification_info_overflow = global::ProjTaskReminder.Resource.String.status_bar_notification_info_overflow;
-			global::mhServiceKeepAlive.Resource.Style.AlertDialog_AppCompat = global::ProjTaskReminder.Resource.Style.AlertDialog_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.AlertDialog_AppCompat_Light = global::ProjTaskReminder.Resource.Style.AlertDialog_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Animation_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Animation_AppCompat_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.Animation_AppCompat_DropDownUp = global::ProjTaskReminder.Resource.Style.Animation_AppCompat_DropDownUp;
-			global::mhServiceKeepAlive.Resource.Style.Animation_AppCompat_Tooltip = global::ProjTaskReminder.Resource.Style.Animation_AppCompat_Tooltip;
-			global::mhServiceKeepAlive.Resource.Style.Base_AlertDialog_AppCompat = global::ProjTaskReminder.Resource.Style.Base_AlertDialog_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Base_AlertDialog_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_AlertDialog_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Base_Animation_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Base_Animation_AppCompat_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::ProjTaskReminder.Resource.Style.Base_Animation_AppCompat_DropDownUp;
-			global::mhServiceKeepAlive.Resource.Style.Base_Animation_AppCompat_Tooltip = global::ProjTaskReminder.Resource.Style.Base_Animation_AppCompat_Tooltip;
-			global::mhServiceKeepAlive.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::ProjTaskReminder.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Base_DialogWindowTitle_AppCompat = global::ProjTaskReminder.Resource.Style.Base_DialogWindowTitle_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Body1;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Body2;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Button = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Button;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Caption;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Display1;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Display2;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Display3;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Display4;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Headline;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Large = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Large;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Medium;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Menu;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Small = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Small;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Title = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Title;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Tooltip = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Tooltip;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::mhServiceKeepAlive.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::mhServiceKeepAlive.Resource.Style.Base_ThemeOverlay_AppCompat = global::ProjTaskReminder.Resource.Style.Base_ThemeOverlay_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::ProjTaskReminder.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::ProjTaskReminder.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
-			global::mhServiceKeepAlive.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::ProjTaskReminder.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert = global::ProjTaskReminder.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert;
-			global::mhServiceKeepAlive.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Base_Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_CompactMenu;
-			global::mhServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
-			global::mhServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
-			global::mhServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
-			global::mhServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
-			global::mhServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
-			global::mhServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
-			global::mhServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
-			global::mhServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
-			global::mhServiceKeepAlive.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.Base_V21_Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Base_V21_Theme_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.Base_V21_Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_V21_Theme_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::ProjTaskReminder.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.Base_V22_Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Base_V22_Theme_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Base_V22_Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_V22_Theme_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Base_V23_Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Base_V23_Theme_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Base_V23_Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_V23_Theme_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Base_V26_Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Base_V26_Theme_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Base_V26_Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_V26_Theme_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Base_V26_Widget_AppCompat_Toolbar = global::ProjTaskReminder.Resource.Style.Base_V26_Widget_AppCompat_Toolbar;
-			global::mhServiceKeepAlive.Resource.Style.Base_V28_Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Base_V28_Theme_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Base_V28_Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_V28_Theme_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.Base_V7_Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Base_V7_Theme_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.Base_V7_Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_V7_Theme_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::ProjTaskReminder.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::ProjTaskReminder.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
-			global::mhServiceKeepAlive.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::ProjTaskReminder.Resource.Style.Base_V7_Widget_AppCompat_EditText;
-			global::mhServiceKeepAlive.Resource.Style.Base_V7_Widget_AppCompat_Toolbar = global::ProjTaskReminder.Resource.Style.Base_V7_Widget_AppCompat_Toolbar;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionButton = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionButton;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionMode = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionMode;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Button = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Button;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ButtonBar;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Button_Colored;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Button_Small = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Button_Small;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_EditText = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_EditText;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ImageButton = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ImageButton;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ListMenuView = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ListMenuView;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ListView = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ListView;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_PopupMenu;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_PopupWindow;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ProgressBar;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_RatingBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_RatingBar;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_SearchView = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_SearchView;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_SeekBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_SeekBar;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Spinner = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Spinner;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Toolbar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Toolbar;
-			global::mhServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
-			global::mhServiceKeepAlive.Resource.Style.Platform_AppCompat = global::ProjTaskReminder.Resource.Style.Platform_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Platform_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Platform_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Platform_ThemeOverlay_AppCompat = global::ProjTaskReminder.Resource.Style.Platform_ThemeOverlay_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::ProjTaskReminder.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
-			global::mhServiceKeepAlive.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Platform_V21_AppCompat = global::ProjTaskReminder.Resource.Style.Platform_V21_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Platform_V21_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Platform_V21_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Platform_V25_AppCompat = global::ProjTaskReminder.Resource.Style.Platform_V25_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Platform_V25_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Platform_V25_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Platform_Widget_AppCompat_Spinner = global::ProjTaskReminder.Resource.Style.Platform_Widget_AppCompat_Spinner;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::ProjTaskReminder.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
-			global::mhServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
-			global::mhServiceKeepAlive.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::ProjTaskReminder.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
-			global::mhServiceKeepAlive.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::ProjTaskReminder.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Body1 = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Body1;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Body2 = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Body2;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Button = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Button;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Caption = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Caption;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Display1 = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Display1;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Display2 = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Display2;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Display3 = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Display3;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Display4 = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Display4;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Headline = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Headline;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Large = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Large;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Medium = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Medium;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Menu = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Menu;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Small = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Small;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Subhead = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Subhead;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Title = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Title;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Tooltip = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Tooltip;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_Button;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_Compat_Notification = global::ProjTaskReminder.Resource.Style.TextAppearance_Compat_Notification;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_Compat_Notification_Info = global::ProjTaskReminder.Resource.Style.TextAppearance_Compat_Notification_Info;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::ProjTaskReminder.Resource.Style.TextAppearance_Compat_Notification_Line2;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_Compat_Notification_Time = global::ProjTaskReminder.Resource.Style.TextAppearance_Compat_Notification_Time;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_Compat_Notification_Title = global::ProjTaskReminder.Resource.Style.TextAppearance_Compat_Notification_Title;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::ProjTaskReminder.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::ProjTaskReminder.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::mhServiceKeepAlive.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::ProjTaskReminder.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::mhServiceKeepAlive.Resource.Style.ThemeOverlay_AppCompat = global::ProjTaskReminder.Resource.Style.ThemeOverlay_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::ProjTaskReminder.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
-			global::mhServiceKeepAlive.Resource.Style.ThemeOverlay_AppCompat_Dark = global::ProjTaskReminder.Resource.Style.ThemeOverlay_AppCompat_Dark;
-			global::mhServiceKeepAlive.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::ProjTaskReminder.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::mhServiceKeepAlive.Resource.Style.ThemeOverlay_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.ThemeOverlay_AppCompat_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert = global::ProjTaskReminder.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert;
-			global::mhServiceKeepAlive.Resource.Style.ThemeOverlay_AppCompat_Light = global::ProjTaskReminder.Resource.Style.ThemeOverlay_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Theme_AppCompat;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_CompactMenu = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_CompactMenu;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_DayNight = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DayNight;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DayNight_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DialogWhenLarge;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_Dialog_Alert = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Dialog_Alert;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Light;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_Light_Dialog = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Light_Dialog;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Light_NoActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Theme_AppCompat_NoActionBar = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_NoActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionBar_Solid;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionBar_TabText;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionBar_TabView;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionButton = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionButton;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionMode = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionMode;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ActivityChooserView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActivityChooserView;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Button = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Button;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ButtonBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ButtonBar;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Button_Borderless = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Button_Borderless;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Button_Colored = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Button_Colored;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Button_Small = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Button_Small;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_EditText = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_EditText;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ImageButton = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ImageButton;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionButton = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionButton;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_PopupMenu;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_SearchView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_SearchView;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ListMenuView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ListMenuView;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ListPopupWindow = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ListPopupWindow;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ListView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ListView;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ListView_DropDown = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ListView_DropDown;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ListView_Menu = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ListView_Menu;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_PopupMenu = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_PopupMenu;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_PopupWindow = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_PopupWindow;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ProgressBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ProgressBar;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_RatingBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_RatingBar;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_RatingBar_Small = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_RatingBar_Small;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_SearchView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_SearchView;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_SeekBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_SeekBar;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_SeekBar_Discrete = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_SeekBar_Discrete;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Spinner = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Spinner;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Spinner_DropDown;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Spinner_Underlined;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Toolbar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Toolbar;
-			global::mhServiceKeepAlive.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
-			global::mhServiceKeepAlive.Resource.Style.Widget_Compat_NotificationActionContainer = global::ProjTaskReminder.Resource.Style.Widget_Compat_NotificationActionContainer;
-			global::mhServiceKeepAlive.Resource.Style.Widget_Compat_NotificationActionText = global::ProjTaskReminder.Resource.Style.Widget_Compat_NotificationActionText;
-			global::mhServiceKeepAlive.Resource.Style.Widget_Support_CoordinatorLayout = global::ProjTaskReminder.Resource.Style.Widget_Support_CoordinatorLayout;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar = global::ProjTaskReminder.Resource.Styleable.ActionBar;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBarLayout = global::ProjTaskReminder.Resource.Styleable.ActionBarLayout;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::ProjTaskReminder.Resource.Styleable.ActionBarLayout_android_layout_gravity;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_background = global::ProjTaskReminder.Resource.Styleable.ActionBar_background;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_backgroundSplit = global::ProjTaskReminder.Resource.Styleable.ActionBar_backgroundSplit;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_backgroundStacked = global::ProjTaskReminder.Resource.Styleable.ActionBar_backgroundStacked;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_contentInsetEnd = global::ProjTaskReminder.Resource.Styleable.ActionBar_contentInsetEnd;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_contentInsetEndWithActions = global::ProjTaskReminder.Resource.Styleable.ActionBar_contentInsetEndWithActions;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_contentInsetLeft = global::ProjTaskReminder.Resource.Styleable.ActionBar_contentInsetLeft;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_contentInsetRight = global::ProjTaskReminder.Resource.Styleable.ActionBar_contentInsetRight;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_contentInsetStart = global::ProjTaskReminder.Resource.Styleable.ActionBar_contentInsetStart;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_contentInsetStartWithNavigation = global::ProjTaskReminder.Resource.Styleable.ActionBar_contentInsetStartWithNavigation;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_customNavigationLayout = global::ProjTaskReminder.Resource.Styleable.ActionBar_customNavigationLayout;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_displayOptions = global::ProjTaskReminder.Resource.Styleable.ActionBar_displayOptions;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_divider = global::ProjTaskReminder.Resource.Styleable.ActionBar_divider;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_elevation = global::ProjTaskReminder.Resource.Styleable.ActionBar_elevation;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_height = global::ProjTaskReminder.Resource.Styleable.ActionBar_height;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_hideOnContentScroll = global::ProjTaskReminder.Resource.Styleable.ActionBar_hideOnContentScroll;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_homeAsUpIndicator = global::ProjTaskReminder.Resource.Styleable.ActionBar_homeAsUpIndicator;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_homeLayout = global::ProjTaskReminder.Resource.Styleable.ActionBar_homeLayout;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_icon = global::ProjTaskReminder.Resource.Styleable.ActionBar_icon;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::ProjTaskReminder.Resource.Styleable.ActionBar_indeterminateProgressStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_itemPadding = global::ProjTaskReminder.Resource.Styleable.ActionBar_itemPadding;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_logo = global::ProjTaskReminder.Resource.Styleable.ActionBar_logo;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_navigationMode = global::ProjTaskReminder.Resource.Styleable.ActionBar_navigationMode;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_popupTheme = global::ProjTaskReminder.Resource.Styleable.ActionBar_popupTheme;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_progressBarPadding = global::ProjTaskReminder.Resource.Styleable.ActionBar_progressBarPadding;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_progressBarStyle = global::ProjTaskReminder.Resource.Styleable.ActionBar_progressBarStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_subtitle = global::ProjTaskReminder.Resource.Styleable.ActionBar_subtitle;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_subtitleTextStyle = global::ProjTaskReminder.Resource.Styleable.ActionBar_subtitleTextStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_title = global::ProjTaskReminder.Resource.Styleable.ActionBar_title;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionBar_titleTextStyle = global::ProjTaskReminder.Resource.Styleable.ActionBar_titleTextStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionMenuItemView = global::ProjTaskReminder.Resource.Styleable.ActionMenuItemView;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionMenuItemView_android_minWidth = global::ProjTaskReminder.Resource.Styleable.ActionMenuItemView_android_minWidth;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionMenuView = global::ProjTaskReminder.Resource.Styleable.ActionMenuView;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionMode = global::ProjTaskReminder.Resource.Styleable.ActionMode;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionMode_background = global::ProjTaskReminder.Resource.Styleable.ActionMode_background;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionMode_backgroundSplit = global::ProjTaskReminder.Resource.Styleable.ActionMode_backgroundSplit;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionMode_closeItemLayout = global::ProjTaskReminder.Resource.Styleable.ActionMode_closeItemLayout;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionMode_height = global::ProjTaskReminder.Resource.Styleable.ActionMode_height;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionMode_subtitleTextStyle = global::ProjTaskReminder.Resource.Styleable.ActionMode_subtitleTextStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.ActionMode_titleTextStyle = global::ProjTaskReminder.Resource.Styleable.ActionMode_titleTextStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.ActivityChooserView = global::ProjTaskReminder.Resource.Styleable.ActivityChooserView;
-			global::mhServiceKeepAlive.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::ProjTaskReminder.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
-			global::mhServiceKeepAlive.Resource.Styleable.ActivityChooserView_initialActivityCount = global::ProjTaskReminder.Resource.Styleable.ActivityChooserView_initialActivityCount;
-			global::mhServiceKeepAlive.Resource.Styleable.AlertDialog = global::ProjTaskReminder.Resource.Styleable.AlertDialog;
-			global::mhServiceKeepAlive.Resource.Styleable.AlertDialog_android_layout = global::ProjTaskReminder.Resource.Styleable.AlertDialog_android_layout;
-			global::mhServiceKeepAlive.Resource.Styleable.AlertDialog_buttonIconDimen = global::ProjTaskReminder.Resource.Styleable.AlertDialog_buttonIconDimen;
-			global::mhServiceKeepAlive.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::ProjTaskReminder.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
-			global::mhServiceKeepAlive.Resource.Styleable.AlertDialog_listItemLayout = global::ProjTaskReminder.Resource.Styleable.AlertDialog_listItemLayout;
-			global::mhServiceKeepAlive.Resource.Styleable.AlertDialog_listLayout = global::ProjTaskReminder.Resource.Styleable.AlertDialog_listLayout;
-			global::mhServiceKeepAlive.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::ProjTaskReminder.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
-			global::mhServiceKeepAlive.Resource.Styleable.AlertDialog_showTitle = global::ProjTaskReminder.Resource.Styleable.AlertDialog_showTitle;
-			global::mhServiceKeepAlive.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::ProjTaskReminder.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableCompat = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableCompat;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableCompat_android_constantSize = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableCompat_android_constantSize;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableCompat_android_dither = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableCompat_android_dither;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableCompat_android_variablePadding = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableCompat_android_variablePadding;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableCompat_android_visible = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableCompat_android_visible;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableItem = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableItem;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableItem_android_drawable = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableItem_android_drawable;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableItem_android_id = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableItem_android_id;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableTransition = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableTransition;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableTransition_android_drawable = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableTransition_android_drawable;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableTransition_android_fromId = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableTransition_android_fromId;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible;
-			global::mhServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatImageView = global::ProjTaskReminder.Resource.Styleable.AppCompatImageView;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatImageView_android_src = global::ProjTaskReminder.Resource.Styleable.AppCompatImageView_android_src;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatImageView_srcCompat = global::ProjTaskReminder.Resource.Styleable.AppCompatImageView_srcCompat;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatImageView_tint = global::ProjTaskReminder.Resource.Styleable.AppCompatImageView_tint;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatImageView_tintMode = global::ProjTaskReminder.Resource.Styleable.AppCompatImageView_tintMode;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatSeekBar = global::ProjTaskReminder.Resource.Styleable.AppCompatSeekBar;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatSeekBar_android_thumb = global::ProjTaskReminder.Resource.Styleable.AppCompatSeekBar_android_thumb;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatSeekBar_tickMark = global::ProjTaskReminder.Resource.Styleable.AppCompatSeekBar_tickMark;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatSeekBar_tickMarkTint = global::ProjTaskReminder.Resource.Styleable.AppCompatSeekBar_tickMarkTint;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode = global::ProjTaskReminder.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextHelper = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextHelper_android_drawableBottom = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper_android_drawableBottom;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextHelper_android_drawableEnd = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper_android_drawableEnd;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextHelper_android_drawableLeft = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper_android_drawableLeft;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextHelper_android_drawableRight = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper_android_drawableRight;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextHelper_android_drawableStart = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper_android_drawableStart;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextHelper_android_drawableTop = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper_android_drawableTop;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextHelper_android_textAppearance = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper_android_textAppearance;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextView = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextView_android_textAppearance = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_android_textAppearance;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextView_autoSizePresetSizes = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_autoSizePresetSizes;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextView_autoSizeTextType = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_autoSizeTextType;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextView_fontFamily = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_fontFamily;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextView_lineHeight = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_lineHeight;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTextView_textAllCaps = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_textAllCaps;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarDivider = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarDivider;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarSize = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarSize;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarTheme = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarTheme;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionButtonStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_alertDialogStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_alertDialogTheme;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_buttonBarStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_buttonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_buttonStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_checkboxStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_checkboxStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorAccent = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorAccent;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorBackgroundFloating = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorBackgroundFloating;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorButtonNormal;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorControlActivated = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorControlActivated;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorControlHighlight;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorControlNormal = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorControlNormal;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorError = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorError;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorPrimary = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorPrimary;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_controlBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_controlBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_dialogCornerRadius = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_dialogCornerRadius;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_dialogTheme = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_dialogTheme;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_dividerHorizontal;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_dividerVertical = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_dividerVertical;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_editTextBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_editTextBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_editTextColor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_editTextColor;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_editTextStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_editTextStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_imageButtonStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_listMenuViewStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listMenuViewStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_panelBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_panelBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_popupMenuStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_popupWindowStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_radioButtonStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_ratingBarStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_searchViewStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_searchViewStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_seekBarStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_seekBarStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_selectableItemBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_spinnerStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_spinnerStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_switchStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_switchStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_toolbarStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_toolbarStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_tooltipForegroundColor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_tooltipForegroundColor;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_tooltipFrameBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_tooltipFrameBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_viewInflaterClass = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_viewInflaterClass;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowActionBar = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowActionBar;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
-			global::mhServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowNoTitle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowNoTitle;
-			global::mhServiceKeepAlive.Resource.Styleable.ButtonBarLayout = global::ProjTaskReminder.Resource.Styleable.ButtonBarLayout;
-			global::mhServiceKeepAlive.Resource.Styleable.ButtonBarLayout_allowStacking = global::ProjTaskReminder.Resource.Styleable.ButtonBarLayout_allowStacking;
-			global::mhServiceKeepAlive.Resource.Styleable.ColorStateListItem = global::ProjTaskReminder.Resource.Styleable.ColorStateListItem;
-			global::mhServiceKeepAlive.Resource.Styleable.ColorStateListItem_alpha = global::ProjTaskReminder.Resource.Styleable.ColorStateListItem_alpha;
-			global::mhServiceKeepAlive.Resource.Styleable.ColorStateListItem_android_alpha = global::ProjTaskReminder.Resource.Styleable.ColorStateListItem_android_alpha;
-			global::mhServiceKeepAlive.Resource.Styleable.ColorStateListItem_android_color = global::ProjTaskReminder.Resource.Styleable.ColorStateListItem_android_color;
-			global::mhServiceKeepAlive.Resource.Styleable.CompoundButton = global::ProjTaskReminder.Resource.Styleable.CompoundButton;
-			global::mhServiceKeepAlive.Resource.Styleable.CompoundButton_android_button = global::ProjTaskReminder.Resource.Styleable.CompoundButton_android_button;
-			global::mhServiceKeepAlive.Resource.Styleable.CompoundButton_buttonTint = global::ProjTaskReminder.Resource.Styleable.CompoundButton_buttonTint;
-			global::mhServiceKeepAlive.Resource.Styleable.CompoundButton_buttonTintMode = global::ProjTaskReminder.Resource.Styleable.CompoundButton_buttonTintMode;
-			global::mhServiceKeepAlive.Resource.Styleable.CoordinatorLayout = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout;
-			global::mhServiceKeepAlive.Resource.Styleable.CoordinatorLayout_keylines = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_keylines;
-			global::mhServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout;
-			global::mhServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
-			global::mhServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
-			global::mhServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity;
-			global::mhServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior;
-			global::mhServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
-			global::mhServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
-			global::mhServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
-			global::mhServiceKeepAlive.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_statusBarBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.DrawerArrowToggle = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle;
-			global::mhServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
-			global::mhServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
-			global::mhServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_barLength = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_barLength;
-			global::mhServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_color = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_color;
-			global::mhServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_drawableSize = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_drawableSize;
-			global::mhServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
-			global::mhServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_spinBars = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_spinBars;
-			global::mhServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_thickness = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_thickness;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamily = global::ProjTaskReminder.Resource.Styleable.FontFamily;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamilyFont = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamilyFont_android_font = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_android_font;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamilyFont_android_fontStyle = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_android_fontStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamilyFont_android_fontWeight = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_android_fontWeight;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_android_ttcIndex;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamilyFont_font = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_font;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamilyFont_fontStyle = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_fontStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_fontVariationSettings;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamilyFont_fontWeight = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_fontWeight;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamilyFont_ttcIndex = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_ttcIndex;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamily_fontProviderAuthority = global::ProjTaskReminder.Resource.Styleable.FontFamily_fontProviderAuthority;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamily_fontProviderCerts = global::ProjTaskReminder.Resource.Styleable.FontFamily_fontProviderCerts;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::ProjTaskReminder.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::ProjTaskReminder.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamily_fontProviderPackage = global::ProjTaskReminder.Resource.Styleable.FontFamily_fontProviderPackage;
-			global::mhServiceKeepAlive.Resource.Styleable.FontFamily_fontProviderQuery = global::ProjTaskReminder.Resource.Styleable.FontFamily_fontProviderQuery;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColor = global::ProjTaskReminder.Resource.Styleable.GradientColor;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColorItem = global::ProjTaskReminder.Resource.Styleable.GradientColorItem;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColorItem_android_color = global::ProjTaskReminder.Resource.Styleable.GradientColorItem_android_color;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColorItem_android_offset = global::ProjTaskReminder.Resource.Styleable.GradientColorItem_android_offset;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColor_android_centerColor = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_centerColor;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColor_android_centerX = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_centerX;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColor_android_centerY = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_centerY;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColor_android_endColor = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_endColor;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColor_android_endX = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_endX;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColor_android_endY = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_endY;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColor_android_gradientRadius = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_gradientRadius;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColor_android_startColor = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_startColor;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColor_android_startX = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_startX;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColor_android_startY = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_startY;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColor_android_tileMode = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_tileMode;
-			global::mhServiceKeepAlive.Resource.Styleable.GradientColor_android_type = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_type;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_android_gravity = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_android_gravity;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_android_orientation = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_android_orientation;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_android_weightSum;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_divider = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_divider;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_dividerPadding;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_Layout = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_Layout;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
-			global::mhServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_showDividers = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_showDividers;
-			global::mhServiceKeepAlive.Resource.Styleable.ListPopupWindow = global::ProjTaskReminder.Resource.Styleable.ListPopupWindow;
-			global::mhServiceKeepAlive.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::ProjTaskReminder.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
-			global::mhServiceKeepAlive.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::ProjTaskReminder.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuGroup = global::ProjTaskReminder.Resource.Styleable.MenuGroup;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuGroup_android_checkableBehavior = global::ProjTaskReminder.Resource.Styleable.MenuGroup_android_checkableBehavior;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuGroup_android_enabled = global::ProjTaskReminder.Resource.Styleable.MenuGroup_android_enabled;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuGroup_android_id = global::ProjTaskReminder.Resource.Styleable.MenuGroup_android_id;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuGroup_android_menuCategory = global::ProjTaskReminder.Resource.Styleable.MenuGroup_android_menuCategory;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuGroup_android_orderInCategory = global::ProjTaskReminder.Resource.Styleable.MenuGroup_android_orderInCategory;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuGroup_android_visible = global::ProjTaskReminder.Resource.Styleable.MenuGroup_android_visible;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem = global::ProjTaskReminder.Resource.Styleable.MenuItem;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_actionLayout = global::ProjTaskReminder.Resource.Styleable.MenuItem_actionLayout;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_actionProviderClass = global::ProjTaskReminder.Resource.Styleable.MenuItem_actionProviderClass;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_actionViewClass = global::ProjTaskReminder.Resource.Styleable.MenuItem_actionViewClass;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_alphabeticModifiers = global::ProjTaskReminder.Resource.Styleable.MenuItem_alphabeticModifiers;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_alphabeticShortcut;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_android_checkable = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_checkable;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_android_checked = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_checked;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_android_enabled = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_enabled;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_android_icon = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_icon;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_android_id = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_id;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_android_menuCategory = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_menuCategory;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_android_numericShortcut = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_numericShortcut;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_android_onClick = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_onClick;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_android_orderInCategory = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_orderInCategory;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_android_title = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_title;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_android_titleCondensed = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_titleCondensed;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_android_visible = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_visible;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_contentDescription = global::ProjTaskReminder.Resource.Styleable.MenuItem_contentDescription;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_iconTint = global::ProjTaskReminder.Resource.Styleable.MenuItem_iconTint;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_iconTintMode = global::ProjTaskReminder.Resource.Styleable.MenuItem_iconTintMode;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_numericModifiers = global::ProjTaskReminder.Resource.Styleable.MenuItem_numericModifiers;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_showAsAction = global::ProjTaskReminder.Resource.Styleable.MenuItem_showAsAction;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuItem_tooltipText = global::ProjTaskReminder.Resource.Styleable.MenuItem_tooltipText;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuView = global::ProjTaskReminder.Resource.Styleable.MenuView;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuView_android_headerBackground = global::ProjTaskReminder.Resource.Styleable.MenuView_android_headerBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuView_android_horizontalDivider = global::ProjTaskReminder.Resource.Styleable.MenuView_android_horizontalDivider;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuView_android_itemBackground = global::ProjTaskReminder.Resource.Styleable.MenuView_android_itemBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::ProjTaskReminder.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuView_android_itemTextAppearance = global::ProjTaskReminder.Resource.Styleable.MenuView_android_itemTextAppearance;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuView_android_verticalDivider = global::ProjTaskReminder.Resource.Styleable.MenuView_android_verticalDivider;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuView_android_windowAnimationStyle = global::ProjTaskReminder.Resource.Styleable.MenuView_android_windowAnimationStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuView_preserveIconSpacing = global::ProjTaskReminder.Resource.Styleable.MenuView_preserveIconSpacing;
-			global::mhServiceKeepAlive.Resource.Styleable.MenuView_subMenuArrow = global::ProjTaskReminder.Resource.Styleable.MenuView_subMenuArrow;
-			global::mhServiceKeepAlive.Resource.Styleable.PopupWindow = global::ProjTaskReminder.Resource.Styleable.PopupWindow;
-			global::mhServiceKeepAlive.Resource.Styleable.PopupWindowBackgroundState = global::ProjTaskReminder.Resource.Styleable.PopupWindowBackgroundState;
-			global::mhServiceKeepAlive.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::ProjTaskReminder.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
-			global::mhServiceKeepAlive.Resource.Styleable.PopupWindow_android_popupAnimationStyle = global::ProjTaskReminder.Resource.Styleable.PopupWindow_android_popupAnimationStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.PopupWindow_android_popupBackground = global::ProjTaskReminder.Resource.Styleable.PopupWindow_android_popupBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.PopupWindow_overlapAnchor = global::ProjTaskReminder.Resource.Styleable.PopupWindow_overlapAnchor;
-			global::mhServiceKeepAlive.Resource.Styleable.RecycleListView = global::ProjTaskReminder.Resource.Styleable.RecycleListView;
-			global::mhServiceKeepAlive.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::ProjTaskReminder.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
-			global::mhServiceKeepAlive.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::ProjTaskReminder.Resource.Styleable.RecycleListView_paddingTopNoTitle;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView = global::ProjTaskReminder.Resource.Styleable.SearchView;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_android_focusable = global::ProjTaskReminder.Resource.Styleable.SearchView_android_focusable;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_android_imeOptions = global::ProjTaskReminder.Resource.Styleable.SearchView_android_imeOptions;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_android_inputType = global::ProjTaskReminder.Resource.Styleable.SearchView_android_inputType;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_android_maxWidth = global::ProjTaskReminder.Resource.Styleable.SearchView_android_maxWidth;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_closeIcon = global::ProjTaskReminder.Resource.Styleable.SearchView_closeIcon;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_commitIcon = global::ProjTaskReminder.Resource.Styleable.SearchView_commitIcon;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_defaultQueryHint = global::ProjTaskReminder.Resource.Styleable.SearchView_defaultQueryHint;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_goIcon = global::ProjTaskReminder.Resource.Styleable.SearchView_goIcon;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_iconifiedByDefault = global::ProjTaskReminder.Resource.Styleable.SearchView_iconifiedByDefault;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_layout = global::ProjTaskReminder.Resource.Styleable.SearchView_layout;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_queryBackground = global::ProjTaskReminder.Resource.Styleable.SearchView_queryBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_queryHint = global::ProjTaskReminder.Resource.Styleable.SearchView_queryHint;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_searchHintIcon = global::ProjTaskReminder.Resource.Styleable.SearchView_searchHintIcon;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_searchIcon = global::ProjTaskReminder.Resource.Styleable.SearchView_searchIcon;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_submitBackground = global::ProjTaskReminder.Resource.Styleable.SearchView_submitBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_suggestionRowLayout = global::ProjTaskReminder.Resource.Styleable.SearchView_suggestionRowLayout;
-			global::mhServiceKeepAlive.Resource.Styleable.SearchView_voiceIcon = global::ProjTaskReminder.Resource.Styleable.SearchView_voiceIcon;
-			global::mhServiceKeepAlive.Resource.Styleable.Spinner = global::ProjTaskReminder.Resource.Styleable.Spinner;
-			global::mhServiceKeepAlive.Resource.Styleable.Spinner_android_dropDownWidth = global::ProjTaskReminder.Resource.Styleable.Spinner_android_dropDownWidth;
-			global::mhServiceKeepAlive.Resource.Styleable.Spinner_android_entries = global::ProjTaskReminder.Resource.Styleable.Spinner_android_entries;
-			global::mhServiceKeepAlive.Resource.Styleable.Spinner_android_popupBackground = global::ProjTaskReminder.Resource.Styleable.Spinner_android_popupBackground;
-			global::mhServiceKeepAlive.Resource.Styleable.Spinner_android_prompt = global::ProjTaskReminder.Resource.Styleable.Spinner_android_prompt;
-			global::mhServiceKeepAlive.Resource.Styleable.Spinner_popupTheme = global::ProjTaskReminder.Resource.Styleable.Spinner_popupTheme;
-			global::mhServiceKeepAlive.Resource.Styleable.StateListDrawable = global::ProjTaskReminder.Resource.Styleable.StateListDrawable;
-			global::mhServiceKeepAlive.Resource.Styleable.StateListDrawableItem = global::ProjTaskReminder.Resource.Styleable.StateListDrawableItem;
-			global::mhServiceKeepAlive.Resource.Styleable.StateListDrawableItem_android_drawable = global::ProjTaskReminder.Resource.Styleable.StateListDrawableItem_android_drawable;
-			global::mhServiceKeepAlive.Resource.Styleable.StateListDrawable_android_constantSize = global::ProjTaskReminder.Resource.Styleable.StateListDrawable_android_constantSize;
-			global::mhServiceKeepAlive.Resource.Styleable.StateListDrawable_android_dither = global::ProjTaskReminder.Resource.Styleable.StateListDrawable_android_dither;
-			global::mhServiceKeepAlive.Resource.Styleable.StateListDrawable_android_enterFadeDuration = global::ProjTaskReminder.Resource.Styleable.StateListDrawable_android_enterFadeDuration;
-			global::mhServiceKeepAlive.Resource.Styleable.StateListDrawable_android_exitFadeDuration = global::ProjTaskReminder.Resource.Styleable.StateListDrawable_android_exitFadeDuration;
-			global::mhServiceKeepAlive.Resource.Styleable.StateListDrawable_android_variablePadding = global::ProjTaskReminder.Resource.Styleable.StateListDrawable_android_variablePadding;
-			global::mhServiceKeepAlive.Resource.Styleable.StateListDrawable_android_visible = global::ProjTaskReminder.Resource.Styleable.StateListDrawable_android_visible;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat = global::ProjTaskReminder.Resource.Styleable.SwitchCompat;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat_android_textOff = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_android_textOff;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat_android_textOn = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_android_textOn;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat_android_thumb = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_android_thumb;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat_showText = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_showText;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat_splitTrack = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_splitTrack;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat_switchMinWidth = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_switchMinWidth;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat_switchPadding = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_switchPadding;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat_switchTextAppearance = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_switchTextAppearance;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat_thumbTextPadding = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_thumbTextPadding;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat_thumbTint = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_thumbTint;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat_thumbTintMode = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_thumbTintMode;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat_track = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_track;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat_trackTint = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_trackTint;
-			global::mhServiceKeepAlive.Resource.Styleable.SwitchCompat_trackTintMode = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_trackTintMode;
-			global::mhServiceKeepAlive.Resource.Styleable.TextAppearance = global::ProjTaskReminder.Resource.Styleable.TextAppearance;
-			global::mhServiceKeepAlive.Resource.Styleable.TextAppearance_android_fontFamily = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_fontFamily;
-			global::mhServiceKeepAlive.Resource.Styleable.TextAppearance_android_shadowColor = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_shadowColor;
-			global::mhServiceKeepAlive.Resource.Styleable.TextAppearance_android_shadowDx = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_shadowDx;
-			global::mhServiceKeepAlive.Resource.Styleable.TextAppearance_android_shadowDy = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_shadowDy;
-			global::mhServiceKeepAlive.Resource.Styleable.TextAppearance_android_shadowRadius = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_shadowRadius;
-			global::mhServiceKeepAlive.Resource.Styleable.TextAppearance_android_textColor = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_textColor;
-			global::mhServiceKeepAlive.Resource.Styleable.TextAppearance_android_textColorHint = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_textColorHint;
-			global::mhServiceKeepAlive.Resource.Styleable.TextAppearance_android_textColorLink = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_textColorLink;
-			global::mhServiceKeepAlive.Resource.Styleable.TextAppearance_android_textSize = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_textSize;
-			global::mhServiceKeepAlive.Resource.Styleable.TextAppearance_android_textStyle = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_textStyle;
-			global::mhServiceKeepAlive.Resource.Styleable.TextAppearance_android_typeface = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_typeface;
-			global::mhServiceKeepAlive.Resource.Styleable.TextAppearance_fontFamily = global::ProjTaskReminder.Resource.Styleable.TextAppearance_fontFamily;
-			global::mhServiceKeepAlive.Resource.Styleable.TextAppearance_textAllCaps = global::ProjTaskReminder.Resource.Styleable.TextAppearance_textAllCaps;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar = global::ProjTaskReminder.Resource.Styleable.Toolbar;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_android_gravity = global::ProjTaskReminder.Resource.Styleable.Toolbar_android_gravity;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_android_minHeight = global::ProjTaskReminder.Resource.Styleable.Toolbar_android_minHeight;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_buttonGravity = global::ProjTaskReminder.Resource.Styleable.Toolbar_buttonGravity;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_collapseContentDescription = global::ProjTaskReminder.Resource.Styleable.Toolbar_collapseContentDescription;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_collapseIcon = global::ProjTaskReminder.Resource.Styleable.Toolbar_collapseIcon;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_contentInsetEnd = global::ProjTaskReminder.Resource.Styleable.Toolbar_contentInsetEnd;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_contentInsetEndWithActions = global::ProjTaskReminder.Resource.Styleable.Toolbar_contentInsetEndWithActions;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_contentInsetLeft = global::ProjTaskReminder.Resource.Styleable.Toolbar_contentInsetLeft;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_contentInsetRight = global::ProjTaskReminder.Resource.Styleable.Toolbar_contentInsetRight;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_contentInsetStart = global::ProjTaskReminder.Resource.Styleable.Toolbar_contentInsetStart;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_contentInsetStartWithNavigation = global::ProjTaskReminder.Resource.Styleable.Toolbar_contentInsetStartWithNavigation;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_logo = global::ProjTaskReminder.Resource.Styleable.Toolbar_logo;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_logoDescription = global::ProjTaskReminder.Resource.Styleable.Toolbar_logoDescription;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_maxButtonHeight = global::ProjTaskReminder.Resource.Styleable.Toolbar_maxButtonHeight;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_navigationContentDescription = global::ProjTaskReminder.Resource.Styleable.Toolbar_navigationContentDescription;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_navigationIcon = global::ProjTaskReminder.Resource.Styleable.Toolbar_navigationIcon;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_popupTheme = global::ProjTaskReminder.Resource.Styleable.Toolbar_popupTheme;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_subtitle = global::ProjTaskReminder.Resource.Styleable.Toolbar_subtitle;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_subtitleTextAppearance = global::ProjTaskReminder.Resource.Styleable.Toolbar_subtitleTextAppearance;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_subtitleTextColor = global::ProjTaskReminder.Resource.Styleable.Toolbar_subtitleTextColor;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_title = global::ProjTaskReminder.Resource.Styleable.Toolbar_title;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_titleMargin = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleMargin;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_titleMarginBottom = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleMarginBottom;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_titleMarginEnd = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleMarginEnd;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_titleMargins = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleMargins;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_titleMarginStart = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleMarginStart;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_titleMarginTop = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleMarginTop;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_titleTextAppearance = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleTextAppearance;
-			global::mhServiceKeepAlive.Resource.Styleable.Toolbar_titleTextColor = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleTextColor;
-			global::mhServiceKeepAlive.Resource.Styleable.View = global::ProjTaskReminder.Resource.Styleable.View;
-			global::mhServiceKeepAlive.Resource.Styleable.ViewBackgroundHelper = global::ProjTaskReminder.Resource.Styleable.ViewBackgroundHelper;
-			global::mhServiceKeepAlive.Resource.Styleable.ViewBackgroundHelper_android_background = global::ProjTaskReminder.Resource.Styleable.ViewBackgroundHelper_android_background;
-			global::mhServiceKeepAlive.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::ProjTaskReminder.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
-			global::mhServiceKeepAlive.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::ProjTaskReminder.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
-			global::mhServiceKeepAlive.Resource.Styleable.ViewStubCompat = global::ProjTaskReminder.Resource.Styleable.ViewStubCompat;
-			global::mhServiceKeepAlive.Resource.Styleable.ViewStubCompat_android_id = global::ProjTaskReminder.Resource.Styleable.ViewStubCompat_android_id;
-			global::mhServiceKeepAlive.Resource.Styleable.ViewStubCompat_android_inflatedId = global::ProjTaskReminder.Resource.Styleable.ViewStubCompat_android_inflatedId;
-			global::mhServiceKeepAlive.Resource.Styleable.ViewStubCompat_android_layout = global::ProjTaskReminder.Resource.Styleable.ViewStubCompat_android_layout;
-			global::mhServiceKeepAlive.Resource.Styleable.View_android_focusable = global::ProjTaskReminder.Resource.Styleable.View_android_focusable;
-			global::mhServiceKeepAlive.Resource.Styleable.View_android_theme = global::ProjTaskReminder.Resource.Styleable.View_android_theme;
-			global::mhServiceKeepAlive.Resource.Styleable.View_paddingEnd = global::ProjTaskReminder.Resource.Styleable.View_paddingEnd;
-			global::mhServiceKeepAlive.Resource.Styleable.View_paddingStart = global::ProjTaskReminder.Resource.Styleable.View_paddingStart;
-			global::mhServiceKeepAlive.Resource.Styleable.View_theme = global::ProjTaskReminder.Resource.Styleable.View_theme;
+			global::MHServiceKeepAlive.Resource.Animation.abc_fade_in = global::ProjTaskReminder.Resource.Animation.abc_fade_in;
+			global::MHServiceKeepAlive.Resource.Animation.abc_fade_out = global::ProjTaskReminder.Resource.Animation.abc_fade_out;
+			global::MHServiceKeepAlive.Resource.Animation.abc_grow_fade_in_from_bottom = global::ProjTaskReminder.Resource.Animation.abc_grow_fade_in_from_bottom;
+			global::MHServiceKeepAlive.Resource.Animation.abc_popup_enter = global::ProjTaskReminder.Resource.Animation.abc_popup_enter;
+			global::MHServiceKeepAlive.Resource.Animation.abc_popup_exit = global::ProjTaskReminder.Resource.Animation.abc_popup_exit;
+			global::MHServiceKeepAlive.Resource.Animation.abc_shrink_fade_out_from_bottom = global::ProjTaskReminder.Resource.Animation.abc_shrink_fade_out_from_bottom;
+			global::MHServiceKeepAlive.Resource.Animation.abc_slide_in_bottom = global::ProjTaskReminder.Resource.Animation.abc_slide_in_bottom;
+			global::MHServiceKeepAlive.Resource.Animation.abc_slide_in_top = global::ProjTaskReminder.Resource.Animation.abc_slide_in_top;
+			global::MHServiceKeepAlive.Resource.Animation.abc_slide_out_bottom = global::ProjTaskReminder.Resource.Animation.abc_slide_out_bottom;
+			global::MHServiceKeepAlive.Resource.Animation.abc_slide_out_top = global::ProjTaskReminder.Resource.Animation.abc_slide_out_top;
+			global::MHServiceKeepAlive.Resource.Animation.abc_tooltip_enter = global::ProjTaskReminder.Resource.Animation.abc_tooltip_enter;
+			global::MHServiceKeepAlive.Resource.Animation.abc_tooltip_exit = global::ProjTaskReminder.Resource.Animation.abc_tooltip_exit;
+			global::MHServiceKeepAlive.Resource.Attribute.actionBarDivider = global::ProjTaskReminder.Resource.Attribute.actionBarDivider;
+			global::MHServiceKeepAlive.Resource.Attribute.actionBarItemBackground = global::ProjTaskReminder.Resource.Attribute.actionBarItemBackground;
+			global::MHServiceKeepAlive.Resource.Attribute.actionBarPopupTheme = global::ProjTaskReminder.Resource.Attribute.actionBarPopupTheme;
+			global::MHServiceKeepAlive.Resource.Attribute.actionBarSize = global::ProjTaskReminder.Resource.Attribute.actionBarSize;
+			global::MHServiceKeepAlive.Resource.Attribute.actionBarSplitStyle = global::ProjTaskReminder.Resource.Attribute.actionBarSplitStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.actionBarStyle = global::ProjTaskReminder.Resource.Attribute.actionBarStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.actionBarTabBarStyle = global::ProjTaskReminder.Resource.Attribute.actionBarTabBarStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.actionBarTabStyle = global::ProjTaskReminder.Resource.Attribute.actionBarTabStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.actionBarTabTextStyle = global::ProjTaskReminder.Resource.Attribute.actionBarTabTextStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.actionBarTheme = global::ProjTaskReminder.Resource.Attribute.actionBarTheme;
+			global::MHServiceKeepAlive.Resource.Attribute.actionBarWidgetTheme = global::ProjTaskReminder.Resource.Attribute.actionBarWidgetTheme;
+			global::MHServiceKeepAlive.Resource.Attribute.actionButtonStyle = global::ProjTaskReminder.Resource.Attribute.actionButtonStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.actionDropDownStyle = global::ProjTaskReminder.Resource.Attribute.actionDropDownStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.actionLayout = global::ProjTaskReminder.Resource.Attribute.actionLayout;
+			global::MHServiceKeepAlive.Resource.Attribute.actionMenuTextAppearance = global::ProjTaskReminder.Resource.Attribute.actionMenuTextAppearance;
+			global::MHServiceKeepAlive.Resource.Attribute.actionMenuTextColor = global::ProjTaskReminder.Resource.Attribute.actionMenuTextColor;
+			global::MHServiceKeepAlive.Resource.Attribute.actionModeBackground = global::ProjTaskReminder.Resource.Attribute.actionModeBackground;
+			global::MHServiceKeepAlive.Resource.Attribute.actionModeCloseButtonStyle = global::ProjTaskReminder.Resource.Attribute.actionModeCloseButtonStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.actionModeCloseDrawable = global::ProjTaskReminder.Resource.Attribute.actionModeCloseDrawable;
+			global::MHServiceKeepAlive.Resource.Attribute.actionModeCopyDrawable = global::ProjTaskReminder.Resource.Attribute.actionModeCopyDrawable;
+			global::MHServiceKeepAlive.Resource.Attribute.actionModeCutDrawable = global::ProjTaskReminder.Resource.Attribute.actionModeCutDrawable;
+			global::MHServiceKeepAlive.Resource.Attribute.actionModeFindDrawable = global::ProjTaskReminder.Resource.Attribute.actionModeFindDrawable;
+			global::MHServiceKeepAlive.Resource.Attribute.actionModePasteDrawable = global::ProjTaskReminder.Resource.Attribute.actionModePasteDrawable;
+			global::MHServiceKeepAlive.Resource.Attribute.actionModePopupWindowStyle = global::ProjTaskReminder.Resource.Attribute.actionModePopupWindowStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.actionModeSelectAllDrawable = global::ProjTaskReminder.Resource.Attribute.actionModeSelectAllDrawable;
+			global::MHServiceKeepAlive.Resource.Attribute.actionModeShareDrawable = global::ProjTaskReminder.Resource.Attribute.actionModeShareDrawable;
+			global::MHServiceKeepAlive.Resource.Attribute.actionModeSplitBackground = global::ProjTaskReminder.Resource.Attribute.actionModeSplitBackground;
+			global::MHServiceKeepAlive.Resource.Attribute.actionModeStyle = global::ProjTaskReminder.Resource.Attribute.actionModeStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.actionModeWebSearchDrawable = global::ProjTaskReminder.Resource.Attribute.actionModeWebSearchDrawable;
+			global::MHServiceKeepAlive.Resource.Attribute.actionOverflowButtonStyle = global::ProjTaskReminder.Resource.Attribute.actionOverflowButtonStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.actionOverflowMenuStyle = global::ProjTaskReminder.Resource.Attribute.actionOverflowMenuStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.actionProviderClass = global::ProjTaskReminder.Resource.Attribute.actionProviderClass;
+			global::MHServiceKeepAlive.Resource.Attribute.actionViewClass = global::ProjTaskReminder.Resource.Attribute.actionViewClass;
+			global::MHServiceKeepAlive.Resource.Attribute.activityChooserViewStyle = global::ProjTaskReminder.Resource.Attribute.activityChooserViewStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.alertDialogButtonGroupStyle = global::ProjTaskReminder.Resource.Attribute.alertDialogButtonGroupStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.alertDialogCenterButtons = global::ProjTaskReminder.Resource.Attribute.alertDialogCenterButtons;
+			global::MHServiceKeepAlive.Resource.Attribute.alertDialogStyle = global::ProjTaskReminder.Resource.Attribute.alertDialogStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.alertDialogTheme = global::ProjTaskReminder.Resource.Attribute.alertDialogTheme;
+			global::MHServiceKeepAlive.Resource.Attribute.allowStacking = global::ProjTaskReminder.Resource.Attribute.allowStacking;
+			global::MHServiceKeepAlive.Resource.Attribute.alpha = global::ProjTaskReminder.Resource.Attribute.alpha;
+			global::MHServiceKeepAlive.Resource.Attribute.alphabeticModifiers = global::ProjTaskReminder.Resource.Attribute.alphabeticModifiers;
+			global::MHServiceKeepAlive.Resource.Attribute.arrowHeadLength = global::ProjTaskReminder.Resource.Attribute.arrowHeadLength;
+			global::MHServiceKeepAlive.Resource.Attribute.arrowShaftLength = global::ProjTaskReminder.Resource.Attribute.arrowShaftLength;
+			global::MHServiceKeepAlive.Resource.Attribute.autoCompleteTextViewStyle = global::ProjTaskReminder.Resource.Attribute.autoCompleteTextViewStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.autoSizeMaxTextSize = global::ProjTaskReminder.Resource.Attribute.autoSizeMaxTextSize;
+			global::MHServiceKeepAlive.Resource.Attribute.autoSizeMinTextSize = global::ProjTaskReminder.Resource.Attribute.autoSizeMinTextSize;
+			global::MHServiceKeepAlive.Resource.Attribute.autoSizePresetSizes = global::ProjTaskReminder.Resource.Attribute.autoSizePresetSizes;
+			global::MHServiceKeepAlive.Resource.Attribute.autoSizeStepGranularity = global::ProjTaskReminder.Resource.Attribute.autoSizeStepGranularity;
+			global::MHServiceKeepAlive.Resource.Attribute.autoSizeTextType = global::ProjTaskReminder.Resource.Attribute.autoSizeTextType;
+			global::MHServiceKeepAlive.Resource.Attribute.background = global::ProjTaskReminder.Resource.Attribute.background;
+			global::MHServiceKeepAlive.Resource.Attribute.backgroundSplit = global::ProjTaskReminder.Resource.Attribute.backgroundSplit;
+			global::MHServiceKeepAlive.Resource.Attribute.backgroundStacked = global::ProjTaskReminder.Resource.Attribute.backgroundStacked;
+			global::MHServiceKeepAlive.Resource.Attribute.backgroundTint = global::ProjTaskReminder.Resource.Attribute.backgroundTint;
+			global::MHServiceKeepAlive.Resource.Attribute.backgroundTintMode = global::ProjTaskReminder.Resource.Attribute.backgroundTintMode;
+			global::MHServiceKeepAlive.Resource.Attribute.barLength = global::ProjTaskReminder.Resource.Attribute.barLength;
+			global::MHServiceKeepAlive.Resource.Attribute.borderlessButtonStyle = global::ProjTaskReminder.Resource.Attribute.borderlessButtonStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.buttonBarButtonStyle = global::ProjTaskReminder.Resource.Attribute.buttonBarButtonStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.buttonBarNegativeButtonStyle = global::ProjTaskReminder.Resource.Attribute.buttonBarNegativeButtonStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.buttonBarNeutralButtonStyle = global::ProjTaskReminder.Resource.Attribute.buttonBarNeutralButtonStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.buttonBarPositiveButtonStyle = global::ProjTaskReminder.Resource.Attribute.buttonBarPositiveButtonStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.buttonBarStyle = global::ProjTaskReminder.Resource.Attribute.buttonBarStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.buttonGravity = global::ProjTaskReminder.Resource.Attribute.buttonGravity;
+			global::MHServiceKeepAlive.Resource.Attribute.buttonIconDimen = global::ProjTaskReminder.Resource.Attribute.buttonIconDimen;
+			global::MHServiceKeepAlive.Resource.Attribute.buttonPanelSideLayout = global::ProjTaskReminder.Resource.Attribute.buttonPanelSideLayout;
+			global::MHServiceKeepAlive.Resource.Attribute.buttonStyle = global::ProjTaskReminder.Resource.Attribute.buttonStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.buttonStyleSmall = global::ProjTaskReminder.Resource.Attribute.buttonStyleSmall;
+			global::MHServiceKeepAlive.Resource.Attribute.buttonTint = global::ProjTaskReminder.Resource.Attribute.buttonTint;
+			global::MHServiceKeepAlive.Resource.Attribute.buttonTintMode = global::ProjTaskReminder.Resource.Attribute.buttonTintMode;
+			global::MHServiceKeepAlive.Resource.Attribute.checkboxStyle = global::ProjTaskReminder.Resource.Attribute.checkboxStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.checkedTextViewStyle = global::ProjTaskReminder.Resource.Attribute.checkedTextViewStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.closeIcon = global::ProjTaskReminder.Resource.Attribute.closeIcon;
+			global::MHServiceKeepAlive.Resource.Attribute.closeItemLayout = global::ProjTaskReminder.Resource.Attribute.closeItemLayout;
+			global::MHServiceKeepAlive.Resource.Attribute.collapseContentDescription = global::ProjTaskReminder.Resource.Attribute.collapseContentDescription;
+			global::MHServiceKeepAlive.Resource.Attribute.collapseIcon = global::ProjTaskReminder.Resource.Attribute.collapseIcon;
+			global::MHServiceKeepAlive.Resource.Attribute.color = global::ProjTaskReminder.Resource.Attribute.color;
+			global::MHServiceKeepAlive.Resource.Attribute.colorAccent = global::ProjTaskReminder.Resource.Attribute.colorAccent;
+			global::MHServiceKeepAlive.Resource.Attribute.colorBackgroundFloating = global::ProjTaskReminder.Resource.Attribute.colorBackgroundFloating;
+			global::MHServiceKeepAlive.Resource.Attribute.colorButtonNormal = global::ProjTaskReminder.Resource.Attribute.colorButtonNormal;
+			global::MHServiceKeepAlive.Resource.Attribute.colorControlActivated = global::ProjTaskReminder.Resource.Attribute.colorControlActivated;
+			global::MHServiceKeepAlive.Resource.Attribute.colorControlHighlight = global::ProjTaskReminder.Resource.Attribute.colorControlHighlight;
+			global::MHServiceKeepAlive.Resource.Attribute.colorControlNormal = global::ProjTaskReminder.Resource.Attribute.colorControlNormal;
+			global::MHServiceKeepAlive.Resource.Attribute.colorError = global::ProjTaskReminder.Resource.Attribute.colorError;
+			global::MHServiceKeepAlive.Resource.Attribute.colorPrimary = global::ProjTaskReminder.Resource.Attribute.colorPrimary;
+			global::MHServiceKeepAlive.Resource.Attribute.colorPrimaryDark = global::ProjTaskReminder.Resource.Attribute.colorPrimaryDark;
+			global::MHServiceKeepAlive.Resource.Attribute.colorSwitchThumbNormal = global::ProjTaskReminder.Resource.Attribute.colorSwitchThumbNormal;
+			global::MHServiceKeepAlive.Resource.Attribute.commitIcon = global::ProjTaskReminder.Resource.Attribute.commitIcon;
+			global::MHServiceKeepAlive.Resource.Attribute.contentDescription = global::ProjTaskReminder.Resource.Attribute.contentDescription;
+			global::MHServiceKeepAlive.Resource.Attribute.contentInsetEnd = global::ProjTaskReminder.Resource.Attribute.contentInsetEnd;
+			global::MHServiceKeepAlive.Resource.Attribute.contentInsetEndWithActions = global::ProjTaskReminder.Resource.Attribute.contentInsetEndWithActions;
+			global::MHServiceKeepAlive.Resource.Attribute.contentInsetLeft = global::ProjTaskReminder.Resource.Attribute.contentInsetLeft;
+			global::MHServiceKeepAlive.Resource.Attribute.contentInsetRight = global::ProjTaskReminder.Resource.Attribute.contentInsetRight;
+			global::MHServiceKeepAlive.Resource.Attribute.contentInsetStart = global::ProjTaskReminder.Resource.Attribute.contentInsetStart;
+			global::MHServiceKeepAlive.Resource.Attribute.contentInsetStartWithNavigation = global::ProjTaskReminder.Resource.Attribute.contentInsetStartWithNavigation;
+			global::MHServiceKeepAlive.Resource.Attribute.controlBackground = global::ProjTaskReminder.Resource.Attribute.controlBackground;
+			global::MHServiceKeepAlive.Resource.Attribute.coordinatorLayoutStyle = global::ProjTaskReminder.Resource.Attribute.coordinatorLayoutStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.customNavigationLayout = global::ProjTaskReminder.Resource.Attribute.customNavigationLayout;
+			global::MHServiceKeepAlive.Resource.Attribute.defaultQueryHint = global::ProjTaskReminder.Resource.Attribute.defaultQueryHint;
+			global::MHServiceKeepAlive.Resource.Attribute.dialogCornerRadius = global::ProjTaskReminder.Resource.Attribute.dialogCornerRadius;
+			global::MHServiceKeepAlive.Resource.Attribute.dialogPreferredPadding = global::ProjTaskReminder.Resource.Attribute.dialogPreferredPadding;
+			global::MHServiceKeepAlive.Resource.Attribute.dialogTheme = global::ProjTaskReminder.Resource.Attribute.dialogTheme;
+			global::MHServiceKeepAlive.Resource.Attribute.displayOptions = global::ProjTaskReminder.Resource.Attribute.displayOptions;
+			global::MHServiceKeepAlive.Resource.Attribute.divider = global::ProjTaskReminder.Resource.Attribute.divider;
+			global::MHServiceKeepAlive.Resource.Attribute.dividerHorizontal = global::ProjTaskReminder.Resource.Attribute.dividerHorizontal;
+			global::MHServiceKeepAlive.Resource.Attribute.dividerPadding = global::ProjTaskReminder.Resource.Attribute.dividerPadding;
+			global::MHServiceKeepAlive.Resource.Attribute.dividerVertical = global::ProjTaskReminder.Resource.Attribute.dividerVertical;
+			global::MHServiceKeepAlive.Resource.Attribute.drawableSize = global::ProjTaskReminder.Resource.Attribute.drawableSize;
+			global::MHServiceKeepAlive.Resource.Attribute.drawerArrowStyle = global::ProjTaskReminder.Resource.Attribute.drawerArrowStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.dropdownListPreferredItemHeight = global::ProjTaskReminder.Resource.Attribute.dropdownListPreferredItemHeight;
+			global::MHServiceKeepAlive.Resource.Attribute.dropDownListViewStyle = global::ProjTaskReminder.Resource.Attribute.dropDownListViewStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.editTextBackground = global::ProjTaskReminder.Resource.Attribute.editTextBackground;
+			global::MHServiceKeepAlive.Resource.Attribute.editTextColor = global::ProjTaskReminder.Resource.Attribute.editTextColor;
+			global::MHServiceKeepAlive.Resource.Attribute.editTextStyle = global::ProjTaskReminder.Resource.Attribute.editTextStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.elevation = global::ProjTaskReminder.Resource.Attribute.elevation;
+			global::MHServiceKeepAlive.Resource.Attribute.expandActivityOverflowButtonDrawable = global::ProjTaskReminder.Resource.Attribute.expandActivityOverflowButtonDrawable;
+			global::MHServiceKeepAlive.Resource.Attribute.firstBaselineToTopHeight = global::ProjTaskReminder.Resource.Attribute.firstBaselineToTopHeight;
+			global::MHServiceKeepAlive.Resource.Attribute.font = global::ProjTaskReminder.Resource.Attribute.font;
+			global::MHServiceKeepAlive.Resource.Attribute.fontFamily = global::ProjTaskReminder.Resource.Attribute.fontFamily;
+			global::MHServiceKeepAlive.Resource.Attribute.fontProviderAuthority = global::ProjTaskReminder.Resource.Attribute.fontProviderAuthority;
+			global::MHServiceKeepAlive.Resource.Attribute.fontProviderCerts = global::ProjTaskReminder.Resource.Attribute.fontProviderCerts;
+			global::MHServiceKeepAlive.Resource.Attribute.fontProviderFetchStrategy = global::ProjTaskReminder.Resource.Attribute.fontProviderFetchStrategy;
+			global::MHServiceKeepAlive.Resource.Attribute.fontProviderFetchTimeout = global::ProjTaskReminder.Resource.Attribute.fontProviderFetchTimeout;
+			global::MHServiceKeepAlive.Resource.Attribute.fontProviderPackage = global::ProjTaskReminder.Resource.Attribute.fontProviderPackage;
+			global::MHServiceKeepAlive.Resource.Attribute.fontProviderQuery = global::ProjTaskReminder.Resource.Attribute.fontProviderQuery;
+			global::MHServiceKeepAlive.Resource.Attribute.fontStyle = global::ProjTaskReminder.Resource.Attribute.fontStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.fontVariationSettings = global::ProjTaskReminder.Resource.Attribute.fontVariationSettings;
+			global::MHServiceKeepAlive.Resource.Attribute.fontWeight = global::ProjTaskReminder.Resource.Attribute.fontWeight;
+			global::MHServiceKeepAlive.Resource.Attribute.gapBetweenBars = global::ProjTaskReminder.Resource.Attribute.gapBetweenBars;
+			global::MHServiceKeepAlive.Resource.Attribute.goIcon = global::ProjTaskReminder.Resource.Attribute.goIcon;
+			global::MHServiceKeepAlive.Resource.Attribute.height = global::ProjTaskReminder.Resource.Attribute.height;
+			global::MHServiceKeepAlive.Resource.Attribute.hideOnContentScroll = global::ProjTaskReminder.Resource.Attribute.hideOnContentScroll;
+			global::MHServiceKeepAlive.Resource.Attribute.homeAsUpIndicator = global::ProjTaskReminder.Resource.Attribute.homeAsUpIndicator;
+			global::MHServiceKeepAlive.Resource.Attribute.homeLayout = global::ProjTaskReminder.Resource.Attribute.homeLayout;
+			global::MHServiceKeepAlive.Resource.Attribute.icon = global::ProjTaskReminder.Resource.Attribute.icon;
+			global::MHServiceKeepAlive.Resource.Attribute.iconifiedByDefault = global::ProjTaskReminder.Resource.Attribute.iconifiedByDefault;
+			global::MHServiceKeepAlive.Resource.Attribute.iconTint = global::ProjTaskReminder.Resource.Attribute.iconTint;
+			global::MHServiceKeepAlive.Resource.Attribute.iconTintMode = global::ProjTaskReminder.Resource.Attribute.iconTintMode;
+			global::MHServiceKeepAlive.Resource.Attribute.imageButtonStyle = global::ProjTaskReminder.Resource.Attribute.imageButtonStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.indeterminateProgressStyle = global::ProjTaskReminder.Resource.Attribute.indeterminateProgressStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.initialActivityCount = global::ProjTaskReminder.Resource.Attribute.initialActivityCount;
+			global::MHServiceKeepAlive.Resource.Attribute.isLightTheme = global::ProjTaskReminder.Resource.Attribute.isLightTheme;
+			global::MHServiceKeepAlive.Resource.Attribute.itemPadding = global::ProjTaskReminder.Resource.Attribute.itemPadding;
+			global::MHServiceKeepAlive.Resource.Attribute.keylines = global::ProjTaskReminder.Resource.Attribute.keylines;
+			global::MHServiceKeepAlive.Resource.Attribute.lastBaselineToBottomHeight = global::ProjTaskReminder.Resource.Attribute.lastBaselineToBottomHeight;
+			global::MHServiceKeepAlive.Resource.Attribute.layout = global::ProjTaskReminder.Resource.Attribute.layout;
+			global::MHServiceKeepAlive.Resource.Attribute.layout_anchor = global::ProjTaskReminder.Resource.Attribute.layout_anchor;
+			global::MHServiceKeepAlive.Resource.Attribute.layout_anchorGravity = global::ProjTaskReminder.Resource.Attribute.layout_anchorGravity;
+			global::MHServiceKeepAlive.Resource.Attribute.layout_behavior = global::ProjTaskReminder.Resource.Attribute.layout_behavior;
+			global::MHServiceKeepAlive.Resource.Attribute.layout_dodgeInsetEdges = global::ProjTaskReminder.Resource.Attribute.layout_dodgeInsetEdges;
+			global::MHServiceKeepAlive.Resource.Attribute.layout_insetEdge = global::ProjTaskReminder.Resource.Attribute.layout_insetEdge;
+			global::MHServiceKeepAlive.Resource.Attribute.layout_keyline = global::ProjTaskReminder.Resource.Attribute.layout_keyline;
+			global::MHServiceKeepAlive.Resource.Attribute.lineHeight = global::ProjTaskReminder.Resource.Attribute.lineHeight;
+			global::MHServiceKeepAlive.Resource.Attribute.listChoiceBackgroundIndicator = global::ProjTaskReminder.Resource.Attribute.listChoiceBackgroundIndicator;
+			global::MHServiceKeepAlive.Resource.Attribute.listDividerAlertDialog = global::ProjTaskReminder.Resource.Attribute.listDividerAlertDialog;
+			global::MHServiceKeepAlive.Resource.Attribute.listItemLayout = global::ProjTaskReminder.Resource.Attribute.listItemLayout;
+			global::MHServiceKeepAlive.Resource.Attribute.listLayout = global::ProjTaskReminder.Resource.Attribute.listLayout;
+			global::MHServiceKeepAlive.Resource.Attribute.listMenuViewStyle = global::ProjTaskReminder.Resource.Attribute.listMenuViewStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.listPopupWindowStyle = global::ProjTaskReminder.Resource.Attribute.listPopupWindowStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.listPreferredItemHeight = global::ProjTaskReminder.Resource.Attribute.listPreferredItemHeight;
+			global::MHServiceKeepAlive.Resource.Attribute.listPreferredItemHeightLarge = global::ProjTaskReminder.Resource.Attribute.listPreferredItemHeightLarge;
+			global::MHServiceKeepAlive.Resource.Attribute.listPreferredItemHeightSmall = global::ProjTaskReminder.Resource.Attribute.listPreferredItemHeightSmall;
+			global::MHServiceKeepAlive.Resource.Attribute.listPreferredItemPaddingLeft = global::ProjTaskReminder.Resource.Attribute.listPreferredItemPaddingLeft;
+			global::MHServiceKeepAlive.Resource.Attribute.listPreferredItemPaddingRight = global::ProjTaskReminder.Resource.Attribute.listPreferredItemPaddingRight;
+			global::MHServiceKeepAlive.Resource.Attribute.logo = global::ProjTaskReminder.Resource.Attribute.logo;
+			global::MHServiceKeepAlive.Resource.Attribute.logoDescription = global::ProjTaskReminder.Resource.Attribute.logoDescription;
+			global::MHServiceKeepAlive.Resource.Attribute.maxButtonHeight = global::ProjTaskReminder.Resource.Attribute.maxButtonHeight;
+			global::MHServiceKeepAlive.Resource.Attribute.measureWithLargestChild = global::ProjTaskReminder.Resource.Attribute.measureWithLargestChild;
+			global::MHServiceKeepAlive.Resource.Attribute.multiChoiceItemLayout = global::ProjTaskReminder.Resource.Attribute.multiChoiceItemLayout;
+			global::MHServiceKeepAlive.Resource.Attribute.navigationContentDescription = global::ProjTaskReminder.Resource.Attribute.navigationContentDescription;
+			global::MHServiceKeepAlive.Resource.Attribute.navigationIcon = global::ProjTaskReminder.Resource.Attribute.navigationIcon;
+			global::MHServiceKeepAlive.Resource.Attribute.navigationMode = global::ProjTaskReminder.Resource.Attribute.navigationMode;
+			global::MHServiceKeepAlive.Resource.Attribute.numericModifiers = global::ProjTaskReminder.Resource.Attribute.numericModifiers;
+			global::MHServiceKeepAlive.Resource.Attribute.overlapAnchor = global::ProjTaskReminder.Resource.Attribute.overlapAnchor;
+			global::MHServiceKeepAlive.Resource.Attribute.paddingBottomNoButtons = global::ProjTaskReminder.Resource.Attribute.paddingBottomNoButtons;
+			global::MHServiceKeepAlive.Resource.Attribute.paddingEnd = global::ProjTaskReminder.Resource.Attribute.paddingEnd;
+			global::MHServiceKeepAlive.Resource.Attribute.paddingStart = global::ProjTaskReminder.Resource.Attribute.paddingStart;
+			global::MHServiceKeepAlive.Resource.Attribute.paddingTopNoTitle = global::ProjTaskReminder.Resource.Attribute.paddingTopNoTitle;
+			global::MHServiceKeepAlive.Resource.Attribute.panelBackground = global::ProjTaskReminder.Resource.Attribute.panelBackground;
+			global::MHServiceKeepAlive.Resource.Attribute.panelMenuListTheme = global::ProjTaskReminder.Resource.Attribute.panelMenuListTheme;
+			global::MHServiceKeepAlive.Resource.Attribute.panelMenuListWidth = global::ProjTaskReminder.Resource.Attribute.panelMenuListWidth;
+			global::MHServiceKeepAlive.Resource.Attribute.popupMenuStyle = global::ProjTaskReminder.Resource.Attribute.popupMenuStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.popupTheme = global::ProjTaskReminder.Resource.Attribute.popupTheme;
+			global::MHServiceKeepAlive.Resource.Attribute.popupWindowStyle = global::ProjTaskReminder.Resource.Attribute.popupWindowStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.preserveIconSpacing = global::ProjTaskReminder.Resource.Attribute.preserveIconSpacing;
+			global::MHServiceKeepAlive.Resource.Attribute.progressBarPadding = global::ProjTaskReminder.Resource.Attribute.progressBarPadding;
+			global::MHServiceKeepAlive.Resource.Attribute.progressBarStyle = global::ProjTaskReminder.Resource.Attribute.progressBarStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.queryBackground = global::ProjTaskReminder.Resource.Attribute.queryBackground;
+			global::MHServiceKeepAlive.Resource.Attribute.queryHint = global::ProjTaskReminder.Resource.Attribute.queryHint;
+			global::MHServiceKeepAlive.Resource.Attribute.radioButtonStyle = global::ProjTaskReminder.Resource.Attribute.radioButtonStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.ratingBarStyle = global::ProjTaskReminder.Resource.Attribute.ratingBarStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.ratingBarStyleIndicator = global::ProjTaskReminder.Resource.Attribute.ratingBarStyleIndicator;
+			global::MHServiceKeepAlive.Resource.Attribute.ratingBarStyleSmall = global::ProjTaskReminder.Resource.Attribute.ratingBarStyleSmall;
+			global::MHServiceKeepAlive.Resource.Attribute.searchHintIcon = global::ProjTaskReminder.Resource.Attribute.searchHintIcon;
+			global::MHServiceKeepAlive.Resource.Attribute.searchIcon = global::ProjTaskReminder.Resource.Attribute.searchIcon;
+			global::MHServiceKeepAlive.Resource.Attribute.searchViewStyle = global::ProjTaskReminder.Resource.Attribute.searchViewStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.seekBarStyle = global::ProjTaskReminder.Resource.Attribute.seekBarStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.selectableItemBackground = global::ProjTaskReminder.Resource.Attribute.selectableItemBackground;
+			global::MHServiceKeepAlive.Resource.Attribute.selectableItemBackgroundBorderless = global::ProjTaskReminder.Resource.Attribute.selectableItemBackgroundBorderless;
+			global::MHServiceKeepAlive.Resource.Attribute.showAsAction = global::ProjTaskReminder.Resource.Attribute.showAsAction;
+			global::MHServiceKeepAlive.Resource.Attribute.showDividers = global::ProjTaskReminder.Resource.Attribute.showDividers;
+			global::MHServiceKeepAlive.Resource.Attribute.showText = global::ProjTaskReminder.Resource.Attribute.showText;
+			global::MHServiceKeepAlive.Resource.Attribute.showTitle = global::ProjTaskReminder.Resource.Attribute.showTitle;
+			global::MHServiceKeepAlive.Resource.Attribute.singleChoiceItemLayout = global::ProjTaskReminder.Resource.Attribute.singleChoiceItemLayout;
+			global::MHServiceKeepAlive.Resource.Attribute.spinBars = global::ProjTaskReminder.Resource.Attribute.spinBars;
+			global::MHServiceKeepAlive.Resource.Attribute.spinnerDropDownItemStyle = global::ProjTaskReminder.Resource.Attribute.spinnerDropDownItemStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.spinnerStyle = global::ProjTaskReminder.Resource.Attribute.spinnerStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.splitTrack = global::ProjTaskReminder.Resource.Attribute.splitTrack;
+			global::MHServiceKeepAlive.Resource.Attribute.srcCompat = global::ProjTaskReminder.Resource.Attribute.srcCompat;
+			global::MHServiceKeepAlive.Resource.Attribute.state_above_anchor = global::ProjTaskReminder.Resource.Attribute.state_above_anchor;
+			global::MHServiceKeepAlive.Resource.Attribute.statusBarBackground = global::ProjTaskReminder.Resource.Attribute.statusBarBackground;
+			global::MHServiceKeepAlive.Resource.Attribute.subMenuArrow = global::ProjTaskReminder.Resource.Attribute.subMenuArrow;
+			global::MHServiceKeepAlive.Resource.Attribute.submitBackground = global::ProjTaskReminder.Resource.Attribute.submitBackground;
+			global::MHServiceKeepAlive.Resource.Attribute.subtitle = global::ProjTaskReminder.Resource.Attribute.subtitle;
+			global::MHServiceKeepAlive.Resource.Attribute.subtitleTextAppearance = global::ProjTaskReminder.Resource.Attribute.subtitleTextAppearance;
+			global::MHServiceKeepAlive.Resource.Attribute.subtitleTextColor = global::ProjTaskReminder.Resource.Attribute.subtitleTextColor;
+			global::MHServiceKeepAlive.Resource.Attribute.subtitleTextStyle = global::ProjTaskReminder.Resource.Attribute.subtitleTextStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.suggestionRowLayout = global::ProjTaskReminder.Resource.Attribute.suggestionRowLayout;
+			global::MHServiceKeepAlive.Resource.Attribute.switchMinWidth = global::ProjTaskReminder.Resource.Attribute.switchMinWidth;
+			global::MHServiceKeepAlive.Resource.Attribute.switchPadding = global::ProjTaskReminder.Resource.Attribute.switchPadding;
+			global::MHServiceKeepAlive.Resource.Attribute.switchStyle = global::ProjTaskReminder.Resource.Attribute.switchStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.switchTextAppearance = global::ProjTaskReminder.Resource.Attribute.switchTextAppearance;
+			global::MHServiceKeepAlive.Resource.Attribute.textAllCaps = global::ProjTaskReminder.Resource.Attribute.textAllCaps;
+			global::MHServiceKeepAlive.Resource.Attribute.textAppearanceLargePopupMenu = global::ProjTaskReminder.Resource.Attribute.textAppearanceLargePopupMenu;
+			global::MHServiceKeepAlive.Resource.Attribute.textAppearanceListItem = global::ProjTaskReminder.Resource.Attribute.textAppearanceListItem;
+			global::MHServiceKeepAlive.Resource.Attribute.textAppearanceListItemSecondary = global::ProjTaskReminder.Resource.Attribute.textAppearanceListItemSecondary;
+			global::MHServiceKeepAlive.Resource.Attribute.textAppearanceListItemSmall = global::ProjTaskReminder.Resource.Attribute.textAppearanceListItemSmall;
+			global::MHServiceKeepAlive.Resource.Attribute.textAppearancePopupMenuHeader = global::ProjTaskReminder.Resource.Attribute.textAppearancePopupMenuHeader;
+			global::MHServiceKeepAlive.Resource.Attribute.textAppearanceSearchResultSubtitle = global::ProjTaskReminder.Resource.Attribute.textAppearanceSearchResultSubtitle;
+			global::MHServiceKeepAlive.Resource.Attribute.textAppearanceSearchResultTitle = global::ProjTaskReminder.Resource.Attribute.textAppearanceSearchResultTitle;
+			global::MHServiceKeepAlive.Resource.Attribute.textAppearanceSmallPopupMenu = global::ProjTaskReminder.Resource.Attribute.textAppearanceSmallPopupMenu;
+			global::MHServiceKeepAlive.Resource.Attribute.textColorAlertDialogListItem = global::ProjTaskReminder.Resource.Attribute.textColorAlertDialogListItem;
+			global::MHServiceKeepAlive.Resource.Attribute.textColorSearchUrl = global::ProjTaskReminder.Resource.Attribute.textColorSearchUrl;
+			global::MHServiceKeepAlive.Resource.Attribute.theme = global::ProjTaskReminder.Resource.Attribute.theme;
+			global::MHServiceKeepAlive.Resource.Attribute.thickness = global::ProjTaskReminder.Resource.Attribute.thickness;
+			global::MHServiceKeepAlive.Resource.Attribute.thumbTextPadding = global::ProjTaskReminder.Resource.Attribute.thumbTextPadding;
+			global::MHServiceKeepAlive.Resource.Attribute.thumbTint = global::ProjTaskReminder.Resource.Attribute.thumbTint;
+			global::MHServiceKeepAlive.Resource.Attribute.thumbTintMode = global::ProjTaskReminder.Resource.Attribute.thumbTintMode;
+			global::MHServiceKeepAlive.Resource.Attribute.tickMark = global::ProjTaskReminder.Resource.Attribute.tickMark;
+			global::MHServiceKeepAlive.Resource.Attribute.tickMarkTint = global::ProjTaskReminder.Resource.Attribute.tickMarkTint;
+			global::MHServiceKeepAlive.Resource.Attribute.tickMarkTintMode = global::ProjTaskReminder.Resource.Attribute.tickMarkTintMode;
+			global::MHServiceKeepAlive.Resource.Attribute.tint = global::ProjTaskReminder.Resource.Attribute.tint;
+			global::MHServiceKeepAlive.Resource.Attribute.tintMode = global::ProjTaskReminder.Resource.Attribute.tintMode;
+			global::MHServiceKeepAlive.Resource.Attribute.title = global::ProjTaskReminder.Resource.Attribute.title;
+			global::MHServiceKeepAlive.Resource.Attribute.titleMargin = global::ProjTaskReminder.Resource.Attribute.titleMargin;
+			global::MHServiceKeepAlive.Resource.Attribute.titleMarginBottom = global::ProjTaskReminder.Resource.Attribute.titleMarginBottom;
+			global::MHServiceKeepAlive.Resource.Attribute.titleMarginEnd = global::ProjTaskReminder.Resource.Attribute.titleMarginEnd;
+			global::MHServiceKeepAlive.Resource.Attribute.titleMargins = global::ProjTaskReminder.Resource.Attribute.titleMargins;
+			global::MHServiceKeepAlive.Resource.Attribute.titleMarginStart = global::ProjTaskReminder.Resource.Attribute.titleMarginStart;
+			global::MHServiceKeepAlive.Resource.Attribute.titleMarginTop = global::ProjTaskReminder.Resource.Attribute.titleMarginTop;
+			global::MHServiceKeepAlive.Resource.Attribute.titleTextAppearance = global::ProjTaskReminder.Resource.Attribute.titleTextAppearance;
+			global::MHServiceKeepAlive.Resource.Attribute.titleTextColor = global::ProjTaskReminder.Resource.Attribute.titleTextColor;
+			global::MHServiceKeepAlive.Resource.Attribute.titleTextStyle = global::ProjTaskReminder.Resource.Attribute.titleTextStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.toolbarNavigationButtonStyle = global::ProjTaskReminder.Resource.Attribute.toolbarNavigationButtonStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.toolbarStyle = global::ProjTaskReminder.Resource.Attribute.toolbarStyle;
+			global::MHServiceKeepAlive.Resource.Attribute.tooltipForegroundColor = global::ProjTaskReminder.Resource.Attribute.tooltipForegroundColor;
+			global::MHServiceKeepAlive.Resource.Attribute.tooltipFrameBackground = global::ProjTaskReminder.Resource.Attribute.tooltipFrameBackground;
+			global::MHServiceKeepAlive.Resource.Attribute.tooltipText = global::ProjTaskReminder.Resource.Attribute.tooltipText;
+			global::MHServiceKeepAlive.Resource.Attribute.track = global::ProjTaskReminder.Resource.Attribute.track;
+			global::MHServiceKeepAlive.Resource.Attribute.trackTint = global::ProjTaskReminder.Resource.Attribute.trackTint;
+			global::MHServiceKeepAlive.Resource.Attribute.trackTintMode = global::ProjTaskReminder.Resource.Attribute.trackTintMode;
+			global::MHServiceKeepAlive.Resource.Attribute.ttcIndex = global::ProjTaskReminder.Resource.Attribute.ttcIndex;
+			global::MHServiceKeepAlive.Resource.Attribute.viewInflaterClass = global::ProjTaskReminder.Resource.Attribute.viewInflaterClass;
+			global::MHServiceKeepAlive.Resource.Attribute.voiceIcon = global::ProjTaskReminder.Resource.Attribute.voiceIcon;
+			global::MHServiceKeepAlive.Resource.Attribute.windowActionBar = global::ProjTaskReminder.Resource.Attribute.windowActionBar;
+			global::MHServiceKeepAlive.Resource.Attribute.windowActionBarOverlay = global::ProjTaskReminder.Resource.Attribute.windowActionBarOverlay;
+			global::MHServiceKeepAlive.Resource.Attribute.windowActionModeOverlay = global::ProjTaskReminder.Resource.Attribute.windowActionModeOverlay;
+			global::MHServiceKeepAlive.Resource.Attribute.windowFixedHeightMajor = global::ProjTaskReminder.Resource.Attribute.windowFixedHeightMajor;
+			global::MHServiceKeepAlive.Resource.Attribute.windowFixedHeightMinor = global::ProjTaskReminder.Resource.Attribute.windowFixedHeightMinor;
+			global::MHServiceKeepAlive.Resource.Attribute.windowFixedWidthMajor = global::ProjTaskReminder.Resource.Attribute.windowFixedWidthMajor;
+			global::MHServiceKeepAlive.Resource.Attribute.windowFixedWidthMinor = global::ProjTaskReminder.Resource.Attribute.windowFixedWidthMinor;
+			global::MHServiceKeepAlive.Resource.Attribute.windowMinWidthMajor = global::ProjTaskReminder.Resource.Attribute.windowMinWidthMajor;
+			global::MHServiceKeepAlive.Resource.Attribute.windowMinWidthMinor = global::ProjTaskReminder.Resource.Attribute.windowMinWidthMinor;
+			global::MHServiceKeepAlive.Resource.Attribute.windowNoTitle = global::ProjTaskReminder.Resource.Attribute.windowNoTitle;
+			global::MHServiceKeepAlive.Resource.Boolean.abc_action_bar_embed_tabs = global::ProjTaskReminder.Resource.Boolean.abc_action_bar_embed_tabs;
+			global::MHServiceKeepAlive.Resource.Boolean.abc_allow_stacked_button_bar = global::ProjTaskReminder.Resource.Boolean.abc_allow_stacked_button_bar;
+			global::MHServiceKeepAlive.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::ProjTaskReminder.Resource.Boolean.abc_config_actionMenuItemAllCaps;
+			global::MHServiceKeepAlive.Resource.Color.abc_background_cache_hint_selector_material_dark = global::ProjTaskReminder.Resource.Color.abc_background_cache_hint_selector_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.abc_background_cache_hint_selector_material_light = global::ProjTaskReminder.Resource.Color.abc_background_cache_hint_selector_material_light;
+			global::MHServiceKeepAlive.Resource.Color.abc_btn_colored_borderless_text_material = global::ProjTaskReminder.Resource.Color.abc_btn_colored_borderless_text_material;
+			global::MHServiceKeepAlive.Resource.Color.abc_btn_colored_text_material = global::ProjTaskReminder.Resource.Color.abc_btn_colored_text_material;
+			global::MHServiceKeepAlive.Resource.Color.abc_color_highlight_material = global::ProjTaskReminder.Resource.Color.abc_color_highlight_material;
+			global::MHServiceKeepAlive.Resource.Color.abc_hint_foreground_material_dark = global::ProjTaskReminder.Resource.Color.abc_hint_foreground_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.abc_hint_foreground_material_light = global::ProjTaskReminder.Resource.Color.abc_hint_foreground_material_light;
+			global::MHServiceKeepAlive.Resource.Color.abc_input_method_navigation_guard = global::ProjTaskReminder.Resource.Color.abc_input_method_navigation_guard;
+			global::MHServiceKeepAlive.Resource.Color.abc_primary_text_disable_only_material_dark = global::ProjTaskReminder.Resource.Color.abc_primary_text_disable_only_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.abc_primary_text_disable_only_material_light = global::ProjTaskReminder.Resource.Color.abc_primary_text_disable_only_material_light;
+			global::MHServiceKeepAlive.Resource.Color.abc_primary_text_material_dark = global::ProjTaskReminder.Resource.Color.abc_primary_text_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.abc_primary_text_material_light = global::ProjTaskReminder.Resource.Color.abc_primary_text_material_light;
+			global::MHServiceKeepAlive.Resource.Color.abc_search_url_text = global::ProjTaskReminder.Resource.Color.abc_search_url_text;
+			global::MHServiceKeepAlive.Resource.Color.abc_search_url_text_normal = global::ProjTaskReminder.Resource.Color.abc_search_url_text_normal;
+			global::MHServiceKeepAlive.Resource.Color.abc_search_url_text_pressed = global::ProjTaskReminder.Resource.Color.abc_search_url_text_pressed;
+			global::MHServiceKeepAlive.Resource.Color.abc_search_url_text_selected = global::ProjTaskReminder.Resource.Color.abc_search_url_text_selected;
+			global::MHServiceKeepAlive.Resource.Color.abc_secondary_text_material_dark = global::ProjTaskReminder.Resource.Color.abc_secondary_text_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.abc_secondary_text_material_light = global::ProjTaskReminder.Resource.Color.abc_secondary_text_material_light;
+			global::MHServiceKeepAlive.Resource.Color.abc_tint_btn_checkable = global::ProjTaskReminder.Resource.Color.abc_tint_btn_checkable;
+			global::MHServiceKeepAlive.Resource.Color.abc_tint_default = global::ProjTaskReminder.Resource.Color.abc_tint_default;
+			global::MHServiceKeepAlive.Resource.Color.abc_tint_edittext = global::ProjTaskReminder.Resource.Color.abc_tint_edittext;
+			global::MHServiceKeepAlive.Resource.Color.abc_tint_seek_thumb = global::ProjTaskReminder.Resource.Color.abc_tint_seek_thumb;
+			global::MHServiceKeepAlive.Resource.Color.abc_tint_spinner = global::ProjTaskReminder.Resource.Color.abc_tint_spinner;
+			global::MHServiceKeepAlive.Resource.Color.abc_tint_switch_track = global::ProjTaskReminder.Resource.Color.abc_tint_switch_track;
+			global::MHServiceKeepAlive.Resource.Color.accent_material_dark = global::ProjTaskReminder.Resource.Color.accent_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.accent_material_light = global::ProjTaskReminder.Resource.Color.accent_material_light;
+			global::MHServiceKeepAlive.Resource.Color.background_floating_material_dark = global::ProjTaskReminder.Resource.Color.background_floating_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.background_floating_material_light = global::ProjTaskReminder.Resource.Color.background_floating_material_light;
+			global::MHServiceKeepAlive.Resource.Color.background_material_dark = global::ProjTaskReminder.Resource.Color.background_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.background_material_light = global::ProjTaskReminder.Resource.Color.background_material_light;
+			global::MHServiceKeepAlive.Resource.Color.bright_foreground_disabled_material_dark = global::ProjTaskReminder.Resource.Color.bright_foreground_disabled_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.bright_foreground_disabled_material_light = global::ProjTaskReminder.Resource.Color.bright_foreground_disabled_material_light;
+			global::MHServiceKeepAlive.Resource.Color.bright_foreground_inverse_material_dark = global::ProjTaskReminder.Resource.Color.bright_foreground_inverse_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.bright_foreground_inverse_material_light = global::ProjTaskReminder.Resource.Color.bright_foreground_inverse_material_light;
+			global::MHServiceKeepAlive.Resource.Color.bright_foreground_material_dark = global::ProjTaskReminder.Resource.Color.bright_foreground_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.bright_foreground_material_light = global::ProjTaskReminder.Resource.Color.bright_foreground_material_light;
+			global::MHServiceKeepAlive.Resource.Color.button_material_dark = global::ProjTaskReminder.Resource.Color.button_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.button_material_light = global::ProjTaskReminder.Resource.Color.button_material_light;
+			global::MHServiceKeepAlive.Resource.Color.dim_foreground_disabled_material_dark = global::ProjTaskReminder.Resource.Color.dim_foreground_disabled_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.dim_foreground_disabled_material_light = global::ProjTaskReminder.Resource.Color.dim_foreground_disabled_material_light;
+			global::MHServiceKeepAlive.Resource.Color.dim_foreground_material_dark = global::ProjTaskReminder.Resource.Color.dim_foreground_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.dim_foreground_material_light = global::ProjTaskReminder.Resource.Color.dim_foreground_material_light;
+			global::MHServiceKeepAlive.Resource.Color.error_color_material_dark = global::ProjTaskReminder.Resource.Color.error_color_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.error_color_material_light = global::ProjTaskReminder.Resource.Color.error_color_material_light;
+			global::MHServiceKeepAlive.Resource.Color.foreground_material_dark = global::ProjTaskReminder.Resource.Color.foreground_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.foreground_material_light = global::ProjTaskReminder.Resource.Color.foreground_material_light;
+			global::MHServiceKeepAlive.Resource.Color.highlighted_text_material_dark = global::ProjTaskReminder.Resource.Color.highlighted_text_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.highlighted_text_material_light = global::ProjTaskReminder.Resource.Color.highlighted_text_material_light;
+			global::MHServiceKeepAlive.Resource.Color.material_blue_grey_800 = global::ProjTaskReminder.Resource.Color.material_blue_grey_800;
+			global::MHServiceKeepAlive.Resource.Color.material_blue_grey_900 = global::ProjTaskReminder.Resource.Color.material_blue_grey_900;
+			global::MHServiceKeepAlive.Resource.Color.material_blue_grey_950 = global::ProjTaskReminder.Resource.Color.material_blue_grey_950;
+			global::MHServiceKeepAlive.Resource.Color.material_deep_teal_200 = global::ProjTaskReminder.Resource.Color.material_deep_teal_200;
+			global::MHServiceKeepAlive.Resource.Color.material_deep_teal_500 = global::ProjTaskReminder.Resource.Color.material_deep_teal_500;
+			global::MHServiceKeepAlive.Resource.Color.material_grey_100 = global::ProjTaskReminder.Resource.Color.material_grey_100;
+			global::MHServiceKeepAlive.Resource.Color.material_grey_300 = global::ProjTaskReminder.Resource.Color.material_grey_300;
+			global::MHServiceKeepAlive.Resource.Color.material_grey_50 = global::ProjTaskReminder.Resource.Color.material_grey_50;
+			global::MHServiceKeepAlive.Resource.Color.material_grey_600 = global::ProjTaskReminder.Resource.Color.material_grey_600;
+			global::MHServiceKeepAlive.Resource.Color.material_grey_800 = global::ProjTaskReminder.Resource.Color.material_grey_800;
+			global::MHServiceKeepAlive.Resource.Color.material_grey_850 = global::ProjTaskReminder.Resource.Color.material_grey_850;
+			global::MHServiceKeepAlive.Resource.Color.material_grey_900 = global::ProjTaskReminder.Resource.Color.material_grey_900;
+			global::MHServiceKeepAlive.Resource.Color.notification_action_color_filter = global::ProjTaskReminder.Resource.Color.notification_action_color_filter;
+			global::MHServiceKeepAlive.Resource.Color.notification_icon_bg_color = global::ProjTaskReminder.Resource.Color.notification_icon_bg_color;
+			global::MHServiceKeepAlive.Resource.Color.primary_dark_material_dark = global::ProjTaskReminder.Resource.Color.primary_dark_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.primary_dark_material_light = global::ProjTaskReminder.Resource.Color.primary_dark_material_light;
+			global::MHServiceKeepAlive.Resource.Color.primary_material_dark = global::ProjTaskReminder.Resource.Color.primary_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.primary_material_light = global::ProjTaskReminder.Resource.Color.primary_material_light;
+			global::MHServiceKeepAlive.Resource.Color.primary_text_default_material_dark = global::ProjTaskReminder.Resource.Color.primary_text_default_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.primary_text_default_material_light = global::ProjTaskReminder.Resource.Color.primary_text_default_material_light;
+			global::MHServiceKeepAlive.Resource.Color.primary_text_disabled_material_dark = global::ProjTaskReminder.Resource.Color.primary_text_disabled_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.primary_text_disabled_material_light = global::ProjTaskReminder.Resource.Color.primary_text_disabled_material_light;
+			global::MHServiceKeepAlive.Resource.Color.ripple_material_dark = global::ProjTaskReminder.Resource.Color.ripple_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.ripple_material_light = global::ProjTaskReminder.Resource.Color.ripple_material_light;
+			global::MHServiceKeepAlive.Resource.Color.secondary_text_default_material_dark = global::ProjTaskReminder.Resource.Color.secondary_text_default_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.secondary_text_default_material_light = global::ProjTaskReminder.Resource.Color.secondary_text_default_material_light;
+			global::MHServiceKeepAlive.Resource.Color.secondary_text_disabled_material_dark = global::ProjTaskReminder.Resource.Color.secondary_text_disabled_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.secondary_text_disabled_material_light = global::ProjTaskReminder.Resource.Color.secondary_text_disabled_material_light;
+			global::MHServiceKeepAlive.Resource.Color.switch_thumb_disabled_material_dark = global::ProjTaskReminder.Resource.Color.switch_thumb_disabled_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.switch_thumb_disabled_material_light = global::ProjTaskReminder.Resource.Color.switch_thumb_disabled_material_light;
+			global::MHServiceKeepAlive.Resource.Color.switch_thumb_material_dark = global::ProjTaskReminder.Resource.Color.switch_thumb_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.switch_thumb_material_light = global::ProjTaskReminder.Resource.Color.switch_thumb_material_light;
+			global::MHServiceKeepAlive.Resource.Color.switch_thumb_normal_material_dark = global::ProjTaskReminder.Resource.Color.switch_thumb_normal_material_dark;
+			global::MHServiceKeepAlive.Resource.Color.switch_thumb_normal_material_light = global::ProjTaskReminder.Resource.Color.switch_thumb_normal_material_light;
+			global::MHServiceKeepAlive.Resource.Color.tooltip_background_dark = global::ProjTaskReminder.Resource.Color.tooltip_background_dark;
+			global::MHServiceKeepAlive.Resource.Color.tooltip_background_light = global::ProjTaskReminder.Resource.Color.tooltip_background_light;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_bar_content_inset_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_content_inset_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_bar_content_inset_with_nav = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_content_inset_with_nav;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_bar_default_height_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_default_height_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_bar_default_padding_end_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_default_padding_end_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_bar_default_padding_start_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_default_padding_start_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_bar_elevation_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_elevation_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_bar_stacked_max_height = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_stacked_max_height;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::ProjTaskReminder.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_button_min_height_material = global::ProjTaskReminder.Resource.Dimension.abc_action_button_min_height_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_button_min_width_material = global::ProjTaskReminder.Resource.Dimension.abc_action_button_min_width_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_action_button_min_width_overflow_material = global::ProjTaskReminder.Resource.Dimension.abc_action_button_min_width_overflow_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_alert_dialog_button_bar_height = global::ProjTaskReminder.Resource.Dimension.abc_alert_dialog_button_bar_height;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_alert_dialog_button_dimen = global::ProjTaskReminder.Resource.Dimension.abc_alert_dialog_button_dimen;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_button_inset_horizontal_material = global::ProjTaskReminder.Resource.Dimension.abc_button_inset_horizontal_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_button_inset_vertical_material = global::ProjTaskReminder.Resource.Dimension.abc_button_inset_vertical_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_button_padding_horizontal_material = global::ProjTaskReminder.Resource.Dimension.abc_button_padding_horizontal_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_button_padding_vertical_material = global::ProjTaskReminder.Resource.Dimension.abc_button_padding_vertical_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_cascading_menus_min_smallest_width = global::ProjTaskReminder.Resource.Dimension.abc_cascading_menus_min_smallest_width;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_config_prefDialogWidth = global::ProjTaskReminder.Resource.Dimension.abc_config_prefDialogWidth;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_control_corner_material = global::ProjTaskReminder.Resource.Dimension.abc_control_corner_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_control_inset_material = global::ProjTaskReminder.Resource.Dimension.abc_control_inset_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_control_padding_material = global::ProjTaskReminder.Resource.Dimension.abc_control_padding_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dialog_corner_radius_material = global::ProjTaskReminder.Resource.Dimension.abc_dialog_corner_radius_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dialog_fixed_height_major = global::ProjTaskReminder.Resource.Dimension.abc_dialog_fixed_height_major;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dialog_fixed_height_minor = global::ProjTaskReminder.Resource.Dimension.abc_dialog_fixed_height_minor;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dialog_fixed_width_major = global::ProjTaskReminder.Resource.Dimension.abc_dialog_fixed_width_major;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dialog_fixed_width_minor = global::ProjTaskReminder.Resource.Dimension.abc_dialog_fixed_width_minor;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons = global::ProjTaskReminder.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dialog_list_padding_top_no_title = global::ProjTaskReminder.Resource.Dimension.abc_dialog_list_padding_top_no_title;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dialog_min_width_major = global::ProjTaskReminder.Resource.Dimension.abc_dialog_min_width_major;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dialog_min_width_minor = global::ProjTaskReminder.Resource.Dimension.abc_dialog_min_width_minor;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dialog_padding_material = global::ProjTaskReminder.Resource.Dimension.abc_dialog_padding_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dialog_padding_top_material = global::ProjTaskReminder.Resource.Dimension.abc_dialog_padding_top_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dialog_title_divider_material = global::ProjTaskReminder.Resource.Dimension.abc_dialog_title_divider_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_disabled_alpha_material_dark = global::ProjTaskReminder.Resource.Dimension.abc_disabled_alpha_material_dark;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_disabled_alpha_material_light = global::ProjTaskReminder.Resource.Dimension.abc_disabled_alpha_material_light;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dropdownitem_icon_width = global::ProjTaskReminder.Resource.Dimension.abc_dropdownitem_icon_width;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dropdownitem_text_padding_left = global::ProjTaskReminder.Resource.Dimension.abc_dropdownitem_text_padding_left;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_dropdownitem_text_padding_right = global::ProjTaskReminder.Resource.Dimension.abc_dropdownitem_text_padding_right;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_edit_text_inset_bottom_material = global::ProjTaskReminder.Resource.Dimension.abc_edit_text_inset_bottom_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::ProjTaskReminder.Resource.Dimension.abc_edit_text_inset_horizontal_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_edit_text_inset_top_material = global::ProjTaskReminder.Resource.Dimension.abc_edit_text_inset_top_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_floating_window_z = global::ProjTaskReminder.Resource.Dimension.abc_floating_window_z;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_list_item_padding_horizontal_material = global::ProjTaskReminder.Resource.Dimension.abc_list_item_padding_horizontal_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_panel_menu_list_width = global::ProjTaskReminder.Resource.Dimension.abc_panel_menu_list_width;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_progress_bar_height_material = global::ProjTaskReminder.Resource.Dimension.abc_progress_bar_height_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_search_view_preferred_height = global::ProjTaskReminder.Resource.Dimension.abc_search_view_preferred_height;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_search_view_preferred_width = global::ProjTaskReminder.Resource.Dimension.abc_search_view_preferred_width;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_seekbar_track_background_height_material = global::ProjTaskReminder.Resource.Dimension.abc_seekbar_track_background_height_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_seekbar_track_progress_height_material = global::ProjTaskReminder.Resource.Dimension.abc_seekbar_track_progress_height_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_select_dialog_padding_start_material = global::ProjTaskReminder.Resource.Dimension.abc_select_dialog_padding_start_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_switch_padding = global::ProjTaskReminder.Resource.Dimension.abc_switch_padding;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_body_1_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_body_1_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_body_2_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_body_2_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_button_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_button_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_caption_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_caption_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_display_1_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_display_1_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_display_2_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_display_2_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_display_3_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_display_3_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_display_4_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_display_4_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_headline_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_headline_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_large_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_large_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_medium_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_medium_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_menu_header_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_menu_header_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_menu_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_menu_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_small_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_small_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_subhead_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_subhead_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::ProjTaskReminder.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_title_material = global::ProjTaskReminder.Resource.Dimension.abc_text_size_title_material;
+			global::MHServiceKeepAlive.Resource.Dimension.abc_text_size_title_material_toolbar = global::ProjTaskReminder.Resource.Dimension.abc_text_size_title_material_toolbar;
+			global::MHServiceKeepAlive.Resource.Dimension.compat_button_inset_horizontal_material = global::ProjTaskReminder.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::MHServiceKeepAlive.Resource.Dimension.compat_button_inset_vertical_material = global::ProjTaskReminder.Resource.Dimension.compat_button_inset_vertical_material;
+			global::MHServiceKeepAlive.Resource.Dimension.compat_button_padding_horizontal_material = global::ProjTaskReminder.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::MHServiceKeepAlive.Resource.Dimension.compat_button_padding_vertical_material = global::ProjTaskReminder.Resource.Dimension.compat_button_padding_vertical_material;
+			global::MHServiceKeepAlive.Resource.Dimension.compat_control_corner_material = global::ProjTaskReminder.Resource.Dimension.compat_control_corner_material;
+			global::MHServiceKeepAlive.Resource.Dimension.compat_notification_large_icon_max_height = global::ProjTaskReminder.Resource.Dimension.compat_notification_large_icon_max_height;
+			global::MHServiceKeepAlive.Resource.Dimension.compat_notification_large_icon_max_width = global::ProjTaskReminder.Resource.Dimension.compat_notification_large_icon_max_width;
+			global::MHServiceKeepAlive.Resource.Dimension.disabled_alpha_material_dark = global::ProjTaskReminder.Resource.Dimension.disabled_alpha_material_dark;
+			global::MHServiceKeepAlive.Resource.Dimension.disabled_alpha_material_light = global::ProjTaskReminder.Resource.Dimension.disabled_alpha_material_light;
+			global::MHServiceKeepAlive.Resource.Dimension.highlight_alpha_material_colored = global::ProjTaskReminder.Resource.Dimension.highlight_alpha_material_colored;
+			global::MHServiceKeepAlive.Resource.Dimension.highlight_alpha_material_dark = global::ProjTaskReminder.Resource.Dimension.highlight_alpha_material_dark;
+			global::MHServiceKeepAlive.Resource.Dimension.highlight_alpha_material_light = global::ProjTaskReminder.Resource.Dimension.highlight_alpha_material_light;
+			global::MHServiceKeepAlive.Resource.Dimension.hint_alpha_material_dark = global::ProjTaskReminder.Resource.Dimension.hint_alpha_material_dark;
+			global::MHServiceKeepAlive.Resource.Dimension.hint_alpha_material_light = global::ProjTaskReminder.Resource.Dimension.hint_alpha_material_light;
+			global::MHServiceKeepAlive.Resource.Dimension.hint_pressed_alpha_material_dark = global::ProjTaskReminder.Resource.Dimension.hint_pressed_alpha_material_dark;
+			global::MHServiceKeepAlive.Resource.Dimension.hint_pressed_alpha_material_light = global::ProjTaskReminder.Resource.Dimension.hint_pressed_alpha_material_light;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_action_icon_size = global::ProjTaskReminder.Resource.Dimension.notification_action_icon_size;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_action_text_size = global::ProjTaskReminder.Resource.Dimension.notification_action_text_size;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_big_circle_margin = global::ProjTaskReminder.Resource.Dimension.notification_big_circle_margin;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_content_margin_start = global::ProjTaskReminder.Resource.Dimension.notification_content_margin_start;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_large_icon_height = global::ProjTaskReminder.Resource.Dimension.notification_large_icon_height;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_large_icon_width = global::ProjTaskReminder.Resource.Dimension.notification_large_icon_width;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_main_column_padding_top = global::ProjTaskReminder.Resource.Dimension.notification_main_column_padding_top;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_media_narrow_margin = global::ProjTaskReminder.Resource.Dimension.notification_media_narrow_margin;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_right_icon_size = global::ProjTaskReminder.Resource.Dimension.notification_right_icon_size;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_right_side_padding_top = global::ProjTaskReminder.Resource.Dimension.notification_right_side_padding_top;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_small_icon_background_padding = global::ProjTaskReminder.Resource.Dimension.notification_small_icon_background_padding;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_small_icon_size_as_large = global::ProjTaskReminder.Resource.Dimension.notification_small_icon_size_as_large;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_subtext_size = global::ProjTaskReminder.Resource.Dimension.notification_subtext_size;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_top_pad = global::ProjTaskReminder.Resource.Dimension.notification_top_pad;
+			global::MHServiceKeepAlive.Resource.Dimension.notification_top_pad_large_text = global::ProjTaskReminder.Resource.Dimension.notification_top_pad_large_text;
+			global::MHServiceKeepAlive.Resource.Dimension.tooltip_corner_radius = global::ProjTaskReminder.Resource.Dimension.tooltip_corner_radius;
+			global::MHServiceKeepAlive.Resource.Dimension.tooltip_horizontal_padding = global::ProjTaskReminder.Resource.Dimension.tooltip_horizontal_padding;
+			global::MHServiceKeepAlive.Resource.Dimension.tooltip_margin = global::ProjTaskReminder.Resource.Dimension.tooltip_margin;
+			global::MHServiceKeepAlive.Resource.Dimension.tooltip_precise_anchor_extra_offset = global::ProjTaskReminder.Resource.Dimension.tooltip_precise_anchor_extra_offset;
+			global::MHServiceKeepAlive.Resource.Dimension.tooltip_precise_anchor_threshold = global::ProjTaskReminder.Resource.Dimension.tooltip_precise_anchor_threshold;
+			global::MHServiceKeepAlive.Resource.Dimension.tooltip_vertical_padding = global::ProjTaskReminder.Resource.Dimension.tooltip_vertical_padding;
+			global::MHServiceKeepAlive.Resource.Dimension.tooltip_y_offset_non_touch = global::ProjTaskReminder.Resource.Dimension.tooltip_y_offset_non_touch;
+			global::MHServiceKeepAlive.Resource.Dimension.tooltip_y_offset_touch = global::ProjTaskReminder.Resource.Dimension.tooltip_y_offset_touch;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_action_bar_item_background_material = global::ProjTaskReminder.Resource.Drawable.abc_action_bar_item_background_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_btn_borderless_material = global::ProjTaskReminder.Resource.Drawable.abc_btn_borderless_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_btn_check_material = global::ProjTaskReminder.Resource.Drawable.abc_btn_check_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::ProjTaskReminder.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::ProjTaskReminder.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_btn_colored_material = global::ProjTaskReminder.Resource.Drawable.abc_btn_colored_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_btn_default_mtrl_shape = global::ProjTaskReminder.Resource.Drawable.abc_btn_default_mtrl_shape;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_btn_radio_material = global::ProjTaskReminder.Resource.Drawable.abc_btn_radio_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::ProjTaskReminder.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::ProjTaskReminder.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::ProjTaskReminder.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::ProjTaskReminder.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_cab_background_internal_bg = global::ProjTaskReminder.Resource.Drawable.abc_cab_background_internal_bg;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_cab_background_top_material = global::ProjTaskReminder.Resource.Drawable.abc_cab_background_top_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_control_background_material = global::ProjTaskReminder.Resource.Drawable.abc_control_background_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_dialog_material_background = global::ProjTaskReminder.Resource.Drawable.abc_dialog_material_background;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_edit_text_material = global::ProjTaskReminder.Resource.Drawable.abc_edit_text_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_ab_back_material = global::ProjTaskReminder.Resource.Drawable.abc_ic_ab_back_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp = global::ProjTaskReminder.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_clear_material = global::ProjTaskReminder.Resource.Drawable.abc_ic_clear_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_go_search_api_material = global::ProjTaskReminder.Resource.Drawable.abc_ic_go_search_api_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::ProjTaskReminder.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_menu_overflow_material = global::ProjTaskReminder.Resource.Drawable.abc_ic_menu_overflow_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::ProjTaskReminder.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_search_api_material = global::ProjTaskReminder.Resource.Drawable.abc_ic_search_api_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_star_black_16dp = global::ProjTaskReminder.Resource.Drawable.abc_ic_star_black_16dp;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_star_black_36dp = global::ProjTaskReminder.Resource.Drawable.abc_ic_star_black_36dp;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_star_black_48dp = global::ProjTaskReminder.Resource.Drawable.abc_ic_star_black_48dp;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_star_half_black_16dp = global::ProjTaskReminder.Resource.Drawable.abc_ic_star_half_black_16dp;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_star_half_black_36dp = global::ProjTaskReminder.Resource.Drawable.abc_ic_star_half_black_36dp;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_star_half_black_48dp = global::ProjTaskReminder.Resource.Drawable.abc_ic_star_half_black_48dp;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ic_voice_search_api_material = global::ProjTaskReminder.Resource.Drawable.abc_ic_voice_search_api_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_item_background_holo_dark = global::ProjTaskReminder.Resource.Drawable.abc_item_background_holo_dark;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_item_background_holo_light = global::ProjTaskReminder.Resource.Drawable.abc_item_background_holo_light;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_list_divider_material = global::ProjTaskReminder.Resource.Drawable.abc_list_divider_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_list_divider_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_list_divider_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_list_focused_holo = global::ProjTaskReminder.Resource.Drawable.abc_list_focused_holo;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_list_longpressed_holo = global::ProjTaskReminder.Resource.Drawable.abc_list_longpressed_holo;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_list_pressed_holo_dark = global::ProjTaskReminder.Resource.Drawable.abc_list_pressed_holo_dark;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_list_pressed_holo_light = global::ProjTaskReminder.Resource.Drawable.abc_list_pressed_holo_light;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::ProjTaskReminder.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::ProjTaskReminder.Resource.Drawable.abc_list_selector_background_transition_holo_light;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::ProjTaskReminder.Resource.Drawable.abc_list_selector_disabled_holo_dark;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_list_selector_disabled_holo_light = global::ProjTaskReminder.Resource.Drawable.abc_list_selector_disabled_holo_light;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_list_selector_holo_dark = global::ProjTaskReminder.Resource.Drawable.abc_list_selector_holo_dark;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_list_selector_holo_light = global::ProjTaskReminder.Resource.Drawable.abc_list_selector_holo_light;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::ProjTaskReminder.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_popup_background_mtrl_mult = global::ProjTaskReminder.Resource.Drawable.abc_popup_background_mtrl_mult;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ratingbar_indicator_material = global::ProjTaskReminder.Resource.Drawable.abc_ratingbar_indicator_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ratingbar_material = global::ProjTaskReminder.Resource.Drawable.abc_ratingbar_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_ratingbar_small_material = global::ProjTaskReminder.Resource.Drawable.abc_ratingbar_small_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::ProjTaskReminder.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::ProjTaskReminder.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_seekbar_thumb_material = global::ProjTaskReminder.Resource.Drawable.abc_seekbar_thumb_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_seekbar_tick_mark_material = global::ProjTaskReminder.Resource.Drawable.abc_seekbar_tick_mark_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_seekbar_track_material = global::ProjTaskReminder.Resource.Drawable.abc_seekbar_track_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::ProjTaskReminder.Resource.Drawable.abc_spinner_mtrl_am_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_spinner_textfield_background_material = global::ProjTaskReminder.Resource.Drawable.abc_spinner_textfield_background_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_switch_thumb_material = global::ProjTaskReminder.Resource.Drawable.abc_switch_thumb_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_switch_track_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_switch_track_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_tab_indicator_material = global::ProjTaskReminder.Resource.Drawable.abc_tab_indicator_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::ProjTaskReminder.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_textfield_search_material = global::ProjTaskReminder.Resource.Drawable.abc_textfield_search_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_text_cursor_material = global::ProjTaskReminder.Resource.Drawable.abc_text_cursor_material;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_text_select_handle_left_mtrl_dark = global::ProjTaskReminder.Resource.Drawable.abc_text_select_handle_left_mtrl_dark;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_text_select_handle_left_mtrl_light = global::ProjTaskReminder.Resource.Drawable.abc_text_select_handle_left_mtrl_light;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark = global::ProjTaskReminder.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_text_select_handle_middle_mtrl_light = global::ProjTaskReminder.Resource.Drawable.abc_text_select_handle_middle_mtrl_light;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_text_select_handle_right_mtrl_dark = global::ProjTaskReminder.Resource.Drawable.abc_text_select_handle_right_mtrl_dark;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_text_select_handle_right_mtrl_light = global::ProjTaskReminder.Resource.Drawable.abc_text_select_handle_right_mtrl_light;
+			global::MHServiceKeepAlive.Resource.Drawable.abc_vector_test = global::ProjTaskReminder.Resource.Drawable.abc_vector_test;
+			global::MHServiceKeepAlive.Resource.Drawable.notification_action_background = global::ProjTaskReminder.Resource.Drawable.notification_action_background;
+			global::MHServiceKeepAlive.Resource.Drawable.notification_bg = global::ProjTaskReminder.Resource.Drawable.notification_bg;
+			global::MHServiceKeepAlive.Resource.Drawable.notification_bg_low = global::ProjTaskReminder.Resource.Drawable.notification_bg_low;
+			global::MHServiceKeepAlive.Resource.Drawable.notification_bg_low_normal = global::ProjTaskReminder.Resource.Drawable.notification_bg_low_normal;
+			global::MHServiceKeepAlive.Resource.Drawable.notification_bg_low_pressed = global::ProjTaskReminder.Resource.Drawable.notification_bg_low_pressed;
+			global::MHServiceKeepAlive.Resource.Drawable.notification_bg_normal = global::ProjTaskReminder.Resource.Drawable.notification_bg_normal;
+			global::MHServiceKeepAlive.Resource.Drawable.notification_bg_normal_pressed = global::ProjTaskReminder.Resource.Drawable.notification_bg_normal_pressed;
+			global::MHServiceKeepAlive.Resource.Drawable.notification_icon_background = global::ProjTaskReminder.Resource.Drawable.notification_icon_background;
+			global::MHServiceKeepAlive.Resource.Drawable.notification_template_icon_bg = global::ProjTaskReminder.Resource.Drawable.notification_template_icon_bg;
+			global::MHServiceKeepAlive.Resource.Drawable.notification_template_icon_low_bg = global::ProjTaskReminder.Resource.Drawable.notification_template_icon_low_bg;
+			global::MHServiceKeepAlive.Resource.Drawable.notification_tile_bg = global::ProjTaskReminder.Resource.Drawable.notification_tile_bg;
+			global::MHServiceKeepAlive.Resource.Drawable.notify_panel_notification_icon_bg = global::ProjTaskReminder.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::MHServiceKeepAlive.Resource.Drawable.tooltip_frame_dark = global::ProjTaskReminder.Resource.Drawable.tooltip_frame_dark;
+			global::MHServiceKeepAlive.Resource.Drawable.tooltip_frame_light = global::ProjTaskReminder.Resource.Drawable.tooltip_frame_light;
+			global::MHServiceKeepAlive.Resource.Id.actions = global::ProjTaskReminder.Resource.Id.actions;
+			global::MHServiceKeepAlive.Resource.Id.action_bar = global::ProjTaskReminder.Resource.Id.action_bar;
+			global::MHServiceKeepAlive.Resource.Id.action_bar_activity_content = global::ProjTaskReminder.Resource.Id.action_bar_activity_content;
+			global::MHServiceKeepAlive.Resource.Id.action_bar_container = global::ProjTaskReminder.Resource.Id.action_bar_container;
+			global::MHServiceKeepAlive.Resource.Id.action_bar_root = global::ProjTaskReminder.Resource.Id.action_bar_root;
+			global::MHServiceKeepAlive.Resource.Id.action_bar_spinner = global::ProjTaskReminder.Resource.Id.action_bar_spinner;
+			global::MHServiceKeepAlive.Resource.Id.action_bar_subtitle = global::ProjTaskReminder.Resource.Id.action_bar_subtitle;
+			global::MHServiceKeepAlive.Resource.Id.action_bar_title = global::ProjTaskReminder.Resource.Id.action_bar_title;
+			global::MHServiceKeepAlive.Resource.Id.action_container = global::ProjTaskReminder.Resource.Id.action_container;
+			global::MHServiceKeepAlive.Resource.Id.action_context_bar = global::ProjTaskReminder.Resource.Id.action_context_bar;
+			global::MHServiceKeepAlive.Resource.Id.action_divider = global::ProjTaskReminder.Resource.Id.action_divider;
+			global::MHServiceKeepAlive.Resource.Id.action_image = global::ProjTaskReminder.Resource.Id.action_image;
+			global::MHServiceKeepAlive.Resource.Id.action_menu_divider = global::ProjTaskReminder.Resource.Id.action_menu_divider;
+			global::MHServiceKeepAlive.Resource.Id.action_menu_presenter = global::ProjTaskReminder.Resource.Id.action_menu_presenter;
+			global::MHServiceKeepAlive.Resource.Id.action_mode_bar = global::ProjTaskReminder.Resource.Id.action_mode_bar;
+			global::MHServiceKeepAlive.Resource.Id.action_mode_bar_stub = global::ProjTaskReminder.Resource.Id.action_mode_bar_stub;
+			global::MHServiceKeepAlive.Resource.Id.action_mode_close_button = global::ProjTaskReminder.Resource.Id.action_mode_close_button;
+			global::MHServiceKeepAlive.Resource.Id.action_text = global::ProjTaskReminder.Resource.Id.action_text;
+			global::MHServiceKeepAlive.Resource.Id.activity_chooser_view_content = global::ProjTaskReminder.Resource.Id.activity_chooser_view_content;
+			global::MHServiceKeepAlive.Resource.Id.add = global::ProjTaskReminder.Resource.Id.add;
+			global::MHServiceKeepAlive.Resource.Id.alertTitle = global::ProjTaskReminder.Resource.Id.alertTitle;
+			global::MHServiceKeepAlive.Resource.Id.all = global::ProjTaskReminder.Resource.Id.all;
+			global::MHServiceKeepAlive.Resource.Id.ALT = global::ProjTaskReminder.Resource.Id.ALT;
+			global::MHServiceKeepAlive.Resource.Id.always = global::ProjTaskReminder.Resource.Id.always;
+			global::MHServiceKeepAlive.Resource.Id.async = global::ProjTaskReminder.Resource.Id.async;
+			global::MHServiceKeepAlive.Resource.Id.beginning = global::ProjTaskReminder.Resource.Id.beginning;
+			global::MHServiceKeepAlive.Resource.Id.blocking = global::ProjTaskReminder.Resource.Id.blocking;
+			global::MHServiceKeepAlive.Resource.Id.bottom = global::ProjTaskReminder.Resource.Id.bottom;
+			global::MHServiceKeepAlive.Resource.Id.buttonPanel = global::ProjTaskReminder.Resource.Id.buttonPanel;
+			global::MHServiceKeepAlive.Resource.Id.center = global::ProjTaskReminder.Resource.Id.center;
+			global::MHServiceKeepAlive.Resource.Id.center_horizontal = global::ProjTaskReminder.Resource.Id.center_horizontal;
+			global::MHServiceKeepAlive.Resource.Id.center_vertical = global::ProjTaskReminder.Resource.Id.center_vertical;
+			global::MHServiceKeepAlive.Resource.Id.checkbox = global::ProjTaskReminder.Resource.Id.checkbox;
+			global::MHServiceKeepAlive.Resource.Id.chronometer = global::ProjTaskReminder.Resource.Id.chronometer;
+			global::MHServiceKeepAlive.Resource.Id.clip_horizontal = global::ProjTaskReminder.Resource.Id.clip_horizontal;
+			global::MHServiceKeepAlive.Resource.Id.clip_vertical = global::ProjTaskReminder.Resource.Id.clip_vertical;
+			global::MHServiceKeepAlive.Resource.Id.collapseActionView = global::ProjTaskReminder.Resource.Id.collapseActionView;
+			global::MHServiceKeepAlive.Resource.Id.content = global::ProjTaskReminder.Resource.Id.content;
+			global::MHServiceKeepAlive.Resource.Id.contentPanel = global::ProjTaskReminder.Resource.Id.contentPanel;
+			global::MHServiceKeepAlive.Resource.Id.CTRL = global::ProjTaskReminder.Resource.Id.CTRL;
+			global::MHServiceKeepAlive.Resource.Id.custom = global::ProjTaskReminder.Resource.Id.custom;
+			global::MHServiceKeepAlive.Resource.Id.customPanel = global::ProjTaskReminder.Resource.Id.customPanel;
+			global::MHServiceKeepAlive.Resource.Id.decor_content_parent = global::ProjTaskReminder.Resource.Id.decor_content_parent;
+			global::MHServiceKeepAlive.Resource.Id.default_activity_button = global::ProjTaskReminder.Resource.Id.default_activity_button;
+			global::MHServiceKeepAlive.Resource.Id.disableHome = global::ProjTaskReminder.Resource.Id.disableHome;
+			global::MHServiceKeepAlive.Resource.Id.edit_query = global::ProjTaskReminder.Resource.Id.edit_query;
+			global::MHServiceKeepAlive.Resource.Id.end = global::ProjTaskReminder.Resource.Id.end;
+			global::MHServiceKeepAlive.Resource.Id.expanded_menu = global::ProjTaskReminder.Resource.Id.expanded_menu;
+			global::MHServiceKeepAlive.Resource.Id.expand_activities_button = global::ProjTaskReminder.Resource.Id.expand_activities_button;
+			global::MHServiceKeepAlive.Resource.Id.fill = global::ProjTaskReminder.Resource.Id.fill;
+			global::MHServiceKeepAlive.Resource.Id.fill_horizontal = global::ProjTaskReminder.Resource.Id.fill_horizontal;
+			global::MHServiceKeepAlive.Resource.Id.fill_vertical = global::ProjTaskReminder.Resource.Id.fill_vertical;
+			global::MHServiceKeepAlive.Resource.Id.forever = global::ProjTaskReminder.Resource.Id.forever;
+			global::MHServiceKeepAlive.Resource.Id.FUNCTION = global::ProjTaskReminder.Resource.Id.FUNCTION;
+			global::MHServiceKeepAlive.Resource.Id.group_divider = global::ProjTaskReminder.Resource.Id.group_divider;
+			global::MHServiceKeepAlive.Resource.Id.home = global::ProjTaskReminder.Resource.Id.home;
+			global::MHServiceKeepAlive.Resource.Id.homeAsUp = global::ProjTaskReminder.Resource.Id.homeAsUp;
+			global::MHServiceKeepAlive.Resource.Id.icon = global::ProjTaskReminder.Resource.Id.icon;
+			global::MHServiceKeepAlive.Resource.Id.icon_group = global::ProjTaskReminder.Resource.Id.icon_group;
+			global::MHServiceKeepAlive.Resource.Id.ifRoom = global::ProjTaskReminder.Resource.Id.ifRoom;
+			global::MHServiceKeepAlive.Resource.Id.image = global::ProjTaskReminder.Resource.Id.image;
+			global::MHServiceKeepAlive.Resource.Id.info = global::ProjTaskReminder.Resource.Id.info;
+			global::MHServiceKeepAlive.Resource.Id.italic = global::ProjTaskReminder.Resource.Id.italic;
+			global::MHServiceKeepAlive.Resource.Id.left = global::ProjTaskReminder.Resource.Id.left;
+			global::MHServiceKeepAlive.Resource.Id.line1 = global::ProjTaskReminder.Resource.Id.line1;
+			global::MHServiceKeepAlive.Resource.Id.line3 = global::ProjTaskReminder.Resource.Id.line3;
+			global::MHServiceKeepAlive.Resource.Id.listMode = global::ProjTaskReminder.Resource.Id.listMode;
+			global::MHServiceKeepAlive.Resource.Id.list_item = global::ProjTaskReminder.Resource.Id.list_item;
+			global::MHServiceKeepAlive.Resource.Id.message = global::ProjTaskReminder.Resource.Id.message;
+			global::MHServiceKeepAlive.Resource.Id.META = global::ProjTaskReminder.Resource.Id.META;
+			global::MHServiceKeepAlive.Resource.Id.middle = global::ProjTaskReminder.Resource.Id.middle;
+			global::MHServiceKeepAlive.Resource.Id.multiply = global::ProjTaskReminder.Resource.Id.multiply;
+			global::MHServiceKeepAlive.Resource.Id.never = global::ProjTaskReminder.Resource.Id.never;
+			global::MHServiceKeepAlive.Resource.Id.none = global::ProjTaskReminder.Resource.Id.none;
+			global::MHServiceKeepAlive.Resource.Id.normal = global::ProjTaskReminder.Resource.Id.normal;
+			global::MHServiceKeepAlive.Resource.Id.notification_background = global::ProjTaskReminder.Resource.Id.notification_background;
+			global::MHServiceKeepAlive.Resource.Id.notification_main_column = global::ProjTaskReminder.Resource.Id.notification_main_column;
+			global::MHServiceKeepAlive.Resource.Id.notification_main_column_container = global::ProjTaskReminder.Resource.Id.notification_main_column_container;
+			global::MHServiceKeepAlive.Resource.Id.parentPanel = global::ProjTaskReminder.Resource.Id.parentPanel;
+			global::MHServiceKeepAlive.Resource.Id.progress_circular = global::ProjTaskReminder.Resource.Id.progress_circular;
+			global::MHServiceKeepAlive.Resource.Id.progress_horizontal = global::ProjTaskReminder.Resource.Id.progress_horizontal;
+			global::MHServiceKeepAlive.Resource.Id.radio = global::ProjTaskReminder.Resource.Id.radio;
+			global::MHServiceKeepAlive.Resource.Id.right = global::ProjTaskReminder.Resource.Id.right;
+			global::MHServiceKeepAlive.Resource.Id.right_icon = global::ProjTaskReminder.Resource.Id.right_icon;
+			global::MHServiceKeepAlive.Resource.Id.right_side = global::ProjTaskReminder.Resource.Id.right_side;
+			global::MHServiceKeepAlive.Resource.Id.screen = global::ProjTaskReminder.Resource.Id.screen;
+			global::MHServiceKeepAlive.Resource.Id.scrollIndicatorDown = global::ProjTaskReminder.Resource.Id.scrollIndicatorDown;
+			global::MHServiceKeepAlive.Resource.Id.scrollIndicatorUp = global::ProjTaskReminder.Resource.Id.scrollIndicatorUp;
+			global::MHServiceKeepAlive.Resource.Id.scrollView = global::ProjTaskReminder.Resource.Id.scrollView;
+			global::MHServiceKeepAlive.Resource.Id.search_badge = global::ProjTaskReminder.Resource.Id.search_badge;
+			global::MHServiceKeepAlive.Resource.Id.search_bar = global::ProjTaskReminder.Resource.Id.search_bar;
+			global::MHServiceKeepAlive.Resource.Id.search_button = global::ProjTaskReminder.Resource.Id.search_button;
+			global::MHServiceKeepAlive.Resource.Id.search_close_btn = global::ProjTaskReminder.Resource.Id.search_close_btn;
+			global::MHServiceKeepAlive.Resource.Id.search_edit_frame = global::ProjTaskReminder.Resource.Id.search_edit_frame;
+			global::MHServiceKeepAlive.Resource.Id.search_go_btn = global::ProjTaskReminder.Resource.Id.search_go_btn;
+			global::MHServiceKeepAlive.Resource.Id.search_mag_icon = global::ProjTaskReminder.Resource.Id.search_mag_icon;
+			global::MHServiceKeepAlive.Resource.Id.search_plate = global::ProjTaskReminder.Resource.Id.search_plate;
+			global::MHServiceKeepAlive.Resource.Id.search_src_text = global::ProjTaskReminder.Resource.Id.search_src_text;
+			global::MHServiceKeepAlive.Resource.Id.search_voice_btn = global::ProjTaskReminder.Resource.Id.search_voice_btn;
+			global::MHServiceKeepAlive.Resource.Id.select_dialog_listview = global::ProjTaskReminder.Resource.Id.select_dialog_listview;
+			global::MHServiceKeepAlive.Resource.Id.SHIFT = global::ProjTaskReminder.Resource.Id.SHIFT;
+			global::MHServiceKeepAlive.Resource.Id.shortcut = global::ProjTaskReminder.Resource.Id.shortcut;
+			global::MHServiceKeepAlive.Resource.Id.showCustom = global::ProjTaskReminder.Resource.Id.showCustom;
+			global::MHServiceKeepAlive.Resource.Id.showHome = global::ProjTaskReminder.Resource.Id.showHome;
+			global::MHServiceKeepAlive.Resource.Id.showTitle = global::ProjTaskReminder.Resource.Id.showTitle;
+			global::MHServiceKeepAlive.Resource.Id.spacer = global::ProjTaskReminder.Resource.Id.spacer;
+			global::MHServiceKeepAlive.Resource.Id.split_action_bar = global::ProjTaskReminder.Resource.Id.split_action_bar;
+			global::MHServiceKeepAlive.Resource.Id.src_atop = global::ProjTaskReminder.Resource.Id.src_atop;
+			global::MHServiceKeepAlive.Resource.Id.src_in = global::ProjTaskReminder.Resource.Id.src_in;
+			global::MHServiceKeepAlive.Resource.Id.src_over = global::ProjTaskReminder.Resource.Id.src_over;
+			global::MHServiceKeepAlive.Resource.Id.start = global::ProjTaskReminder.Resource.Id.start;
+			global::MHServiceKeepAlive.Resource.Id.submenuarrow = global::ProjTaskReminder.Resource.Id.submenuarrow;
+			global::MHServiceKeepAlive.Resource.Id.submit_area = global::ProjTaskReminder.Resource.Id.submit_area;
+			global::MHServiceKeepAlive.Resource.Id.SYM = global::ProjTaskReminder.Resource.Id.SYM;
+			global::MHServiceKeepAlive.Resource.Id.tabMode = global::ProjTaskReminder.Resource.Id.tabMode;
+			global::MHServiceKeepAlive.Resource.Id.tag_transition_group = global::ProjTaskReminder.Resource.Id.tag_transition_group;
+			global::MHServiceKeepAlive.Resource.Id.tag_unhandled_key_event_manager = global::ProjTaskReminder.Resource.Id.tag_unhandled_key_event_manager;
+			global::MHServiceKeepAlive.Resource.Id.tag_unhandled_key_listeners = global::ProjTaskReminder.Resource.Id.tag_unhandled_key_listeners;
+			global::MHServiceKeepAlive.Resource.Id.text = global::ProjTaskReminder.Resource.Id.text;
+			global::MHServiceKeepAlive.Resource.Id.text2 = global::ProjTaskReminder.Resource.Id.text2;
+			global::MHServiceKeepAlive.Resource.Id.textSpacerNoButtons = global::ProjTaskReminder.Resource.Id.textSpacerNoButtons;
+			global::MHServiceKeepAlive.Resource.Id.textSpacerNoTitle = global::ProjTaskReminder.Resource.Id.textSpacerNoTitle;
+			global::MHServiceKeepAlive.Resource.Id.time = global::ProjTaskReminder.Resource.Id.time;
+			global::MHServiceKeepAlive.Resource.Id.title = global::ProjTaskReminder.Resource.Id.title;
+			global::MHServiceKeepAlive.Resource.Id.titleDividerNoCustom = global::ProjTaskReminder.Resource.Id.titleDividerNoCustom;
+			global::MHServiceKeepAlive.Resource.Id.title_template = global::ProjTaskReminder.Resource.Id.title_template;
+			global::MHServiceKeepAlive.Resource.Id.top = global::ProjTaskReminder.Resource.Id.top;
+			global::MHServiceKeepAlive.Resource.Id.topPanel = global::ProjTaskReminder.Resource.Id.topPanel;
+			global::MHServiceKeepAlive.Resource.Id.uniform = global::ProjTaskReminder.Resource.Id.uniform;
+			global::MHServiceKeepAlive.Resource.Id.up = global::ProjTaskReminder.Resource.Id.up;
+			global::MHServiceKeepAlive.Resource.Id.useLogo = global::ProjTaskReminder.Resource.Id.useLogo;
+			global::MHServiceKeepAlive.Resource.Id.withText = global::ProjTaskReminder.Resource.Id.withText;
+			global::MHServiceKeepAlive.Resource.Id.wrap_content = global::ProjTaskReminder.Resource.Id.wrap_content;
+			global::MHServiceKeepAlive.Resource.Integer.abc_config_activityDefaultDur = global::ProjTaskReminder.Resource.Integer.abc_config_activityDefaultDur;
+			global::MHServiceKeepAlive.Resource.Integer.abc_config_activityShortDur = global::ProjTaskReminder.Resource.Integer.abc_config_activityShortDur;
+			global::MHServiceKeepAlive.Resource.Integer.cancel_button_image_alpha = global::ProjTaskReminder.Resource.Integer.cancel_button_image_alpha;
+			global::MHServiceKeepAlive.Resource.Integer.config_tooltipAnimTime = global::ProjTaskReminder.Resource.Integer.config_tooltipAnimTime;
+			global::MHServiceKeepAlive.Resource.Integer.status_bar_notification_info_maxnum = global::ProjTaskReminder.Resource.Integer.status_bar_notification_info_maxnum;
+			global::MHServiceKeepAlive.Resource.Layout.abc_action_bar_title_item = global::ProjTaskReminder.Resource.Layout.abc_action_bar_title_item;
+			global::MHServiceKeepAlive.Resource.Layout.abc_action_bar_up_container = global::ProjTaskReminder.Resource.Layout.abc_action_bar_up_container;
+			global::MHServiceKeepAlive.Resource.Layout.abc_action_menu_item_layout = global::ProjTaskReminder.Resource.Layout.abc_action_menu_item_layout;
+			global::MHServiceKeepAlive.Resource.Layout.abc_action_menu_layout = global::ProjTaskReminder.Resource.Layout.abc_action_menu_layout;
+			global::MHServiceKeepAlive.Resource.Layout.abc_action_mode_bar = global::ProjTaskReminder.Resource.Layout.abc_action_mode_bar;
+			global::MHServiceKeepAlive.Resource.Layout.abc_action_mode_close_item_material = global::ProjTaskReminder.Resource.Layout.abc_action_mode_close_item_material;
+			global::MHServiceKeepAlive.Resource.Layout.abc_activity_chooser_view = global::ProjTaskReminder.Resource.Layout.abc_activity_chooser_view;
+			global::MHServiceKeepAlive.Resource.Layout.abc_activity_chooser_view_list_item = global::ProjTaskReminder.Resource.Layout.abc_activity_chooser_view_list_item;
+			global::MHServiceKeepAlive.Resource.Layout.abc_alert_dialog_button_bar_material = global::ProjTaskReminder.Resource.Layout.abc_alert_dialog_button_bar_material;
+			global::MHServiceKeepAlive.Resource.Layout.abc_alert_dialog_material = global::ProjTaskReminder.Resource.Layout.abc_alert_dialog_material;
+			global::MHServiceKeepAlive.Resource.Layout.abc_alert_dialog_title_material = global::ProjTaskReminder.Resource.Layout.abc_alert_dialog_title_material;
+			global::MHServiceKeepAlive.Resource.Layout.abc_cascading_menu_item_layout = global::ProjTaskReminder.Resource.Layout.abc_cascading_menu_item_layout;
+			global::MHServiceKeepAlive.Resource.Layout.abc_dialog_title_material = global::ProjTaskReminder.Resource.Layout.abc_dialog_title_material;
+			global::MHServiceKeepAlive.Resource.Layout.abc_expanded_menu_layout = global::ProjTaskReminder.Resource.Layout.abc_expanded_menu_layout;
+			global::MHServiceKeepAlive.Resource.Layout.abc_list_menu_item_checkbox = global::ProjTaskReminder.Resource.Layout.abc_list_menu_item_checkbox;
+			global::MHServiceKeepAlive.Resource.Layout.abc_list_menu_item_icon = global::ProjTaskReminder.Resource.Layout.abc_list_menu_item_icon;
+			global::MHServiceKeepAlive.Resource.Layout.abc_list_menu_item_layout = global::ProjTaskReminder.Resource.Layout.abc_list_menu_item_layout;
+			global::MHServiceKeepAlive.Resource.Layout.abc_list_menu_item_radio = global::ProjTaskReminder.Resource.Layout.abc_list_menu_item_radio;
+			global::MHServiceKeepAlive.Resource.Layout.abc_popup_menu_header_item_layout = global::ProjTaskReminder.Resource.Layout.abc_popup_menu_header_item_layout;
+			global::MHServiceKeepAlive.Resource.Layout.abc_popup_menu_item_layout = global::ProjTaskReminder.Resource.Layout.abc_popup_menu_item_layout;
+			global::MHServiceKeepAlive.Resource.Layout.abc_screen_content_include = global::ProjTaskReminder.Resource.Layout.abc_screen_content_include;
+			global::MHServiceKeepAlive.Resource.Layout.abc_screen_simple = global::ProjTaskReminder.Resource.Layout.abc_screen_simple;
+			global::MHServiceKeepAlive.Resource.Layout.abc_screen_simple_overlay_action_mode = global::ProjTaskReminder.Resource.Layout.abc_screen_simple_overlay_action_mode;
+			global::MHServiceKeepAlive.Resource.Layout.abc_screen_toolbar = global::ProjTaskReminder.Resource.Layout.abc_screen_toolbar;
+			global::MHServiceKeepAlive.Resource.Layout.abc_search_dropdown_item_icons_2line = global::ProjTaskReminder.Resource.Layout.abc_search_dropdown_item_icons_2line;
+			global::MHServiceKeepAlive.Resource.Layout.abc_search_view = global::ProjTaskReminder.Resource.Layout.abc_search_view;
+			global::MHServiceKeepAlive.Resource.Layout.abc_select_dialog_material = global::ProjTaskReminder.Resource.Layout.abc_select_dialog_material;
+			global::MHServiceKeepAlive.Resource.Layout.abc_tooltip = global::ProjTaskReminder.Resource.Layout.abc_tooltip;
+			global::MHServiceKeepAlive.Resource.Layout.notification_action = global::ProjTaskReminder.Resource.Layout.notification_action;
+			global::MHServiceKeepAlive.Resource.Layout.notification_action_tombstone = global::ProjTaskReminder.Resource.Layout.notification_action_tombstone;
+			global::MHServiceKeepAlive.Resource.Layout.notification_template_custom_big = global::ProjTaskReminder.Resource.Layout.notification_template_custom_big;
+			global::MHServiceKeepAlive.Resource.Layout.notification_template_icon_group = global::ProjTaskReminder.Resource.Layout.notification_template_icon_group;
+			global::MHServiceKeepAlive.Resource.Layout.notification_template_part_chronometer = global::ProjTaskReminder.Resource.Layout.notification_template_part_chronometer;
+			global::MHServiceKeepAlive.Resource.Layout.notification_template_part_time = global::ProjTaskReminder.Resource.Layout.notification_template_part_time;
+			global::MHServiceKeepAlive.Resource.Layout.select_dialog_item_material = global::ProjTaskReminder.Resource.Layout.select_dialog_item_material;
+			global::MHServiceKeepAlive.Resource.Layout.select_dialog_multichoice_material = global::ProjTaskReminder.Resource.Layout.select_dialog_multichoice_material;
+			global::MHServiceKeepAlive.Resource.Layout.select_dialog_singlechoice_material = global::ProjTaskReminder.Resource.Layout.select_dialog_singlechoice_material;
+			global::MHServiceKeepAlive.Resource.Layout.support_simple_spinner_dropdown_item = global::ProjTaskReminder.Resource.Layout.support_simple_spinner_dropdown_item;
+			global::MHServiceKeepAlive.Resource.String.abc_action_bar_home_description = global::ProjTaskReminder.Resource.String.abc_action_bar_home_description;
+			global::MHServiceKeepAlive.Resource.String.abc_action_bar_up_description = global::ProjTaskReminder.Resource.String.abc_action_bar_up_description;
+			global::MHServiceKeepAlive.Resource.String.abc_action_menu_overflow_description = global::ProjTaskReminder.Resource.String.abc_action_menu_overflow_description;
+			global::MHServiceKeepAlive.Resource.String.abc_action_mode_done = global::ProjTaskReminder.Resource.String.abc_action_mode_done;
+			global::MHServiceKeepAlive.Resource.String.abc_activitychooserview_choose_application = global::ProjTaskReminder.Resource.String.abc_activitychooserview_choose_application;
+			global::MHServiceKeepAlive.Resource.String.abc_activity_chooser_view_see_all = global::ProjTaskReminder.Resource.String.abc_activity_chooser_view_see_all;
+			global::MHServiceKeepAlive.Resource.String.abc_capital_off = global::ProjTaskReminder.Resource.String.abc_capital_off;
+			global::MHServiceKeepAlive.Resource.String.abc_capital_on = global::ProjTaskReminder.Resource.String.abc_capital_on;
+			global::MHServiceKeepAlive.Resource.String.abc_font_family_body_1_material = global::ProjTaskReminder.Resource.String.abc_font_family_body_1_material;
+			global::MHServiceKeepAlive.Resource.String.abc_font_family_body_2_material = global::ProjTaskReminder.Resource.String.abc_font_family_body_2_material;
+			global::MHServiceKeepAlive.Resource.String.abc_font_family_button_material = global::ProjTaskReminder.Resource.String.abc_font_family_button_material;
+			global::MHServiceKeepAlive.Resource.String.abc_font_family_caption_material = global::ProjTaskReminder.Resource.String.abc_font_family_caption_material;
+			global::MHServiceKeepAlive.Resource.String.abc_font_family_display_1_material = global::ProjTaskReminder.Resource.String.abc_font_family_display_1_material;
+			global::MHServiceKeepAlive.Resource.String.abc_font_family_display_2_material = global::ProjTaskReminder.Resource.String.abc_font_family_display_2_material;
+			global::MHServiceKeepAlive.Resource.String.abc_font_family_display_3_material = global::ProjTaskReminder.Resource.String.abc_font_family_display_3_material;
+			global::MHServiceKeepAlive.Resource.String.abc_font_family_display_4_material = global::ProjTaskReminder.Resource.String.abc_font_family_display_4_material;
+			global::MHServiceKeepAlive.Resource.String.abc_font_family_headline_material = global::ProjTaskReminder.Resource.String.abc_font_family_headline_material;
+			global::MHServiceKeepAlive.Resource.String.abc_font_family_menu_material = global::ProjTaskReminder.Resource.String.abc_font_family_menu_material;
+			global::MHServiceKeepAlive.Resource.String.abc_font_family_subhead_material = global::ProjTaskReminder.Resource.String.abc_font_family_subhead_material;
+			global::MHServiceKeepAlive.Resource.String.abc_font_family_title_material = global::ProjTaskReminder.Resource.String.abc_font_family_title_material;
+			global::MHServiceKeepAlive.Resource.String.abc_menu_alt_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_alt_shortcut_label;
+			global::MHServiceKeepAlive.Resource.String.abc_menu_ctrl_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_ctrl_shortcut_label;
+			global::MHServiceKeepAlive.Resource.String.abc_menu_delete_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_delete_shortcut_label;
+			global::MHServiceKeepAlive.Resource.String.abc_menu_enter_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_enter_shortcut_label;
+			global::MHServiceKeepAlive.Resource.String.abc_menu_function_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_function_shortcut_label;
+			global::MHServiceKeepAlive.Resource.String.abc_menu_meta_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_meta_shortcut_label;
+			global::MHServiceKeepAlive.Resource.String.abc_menu_shift_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_shift_shortcut_label;
+			global::MHServiceKeepAlive.Resource.String.abc_menu_space_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_space_shortcut_label;
+			global::MHServiceKeepAlive.Resource.String.abc_menu_sym_shortcut_label = global::ProjTaskReminder.Resource.String.abc_menu_sym_shortcut_label;
+			global::MHServiceKeepAlive.Resource.String.abc_prepend_shortcut_label = global::ProjTaskReminder.Resource.String.abc_prepend_shortcut_label;
+			global::MHServiceKeepAlive.Resource.String.abc_searchview_description_clear = global::ProjTaskReminder.Resource.String.abc_searchview_description_clear;
+			global::MHServiceKeepAlive.Resource.String.abc_searchview_description_query = global::ProjTaskReminder.Resource.String.abc_searchview_description_query;
+			global::MHServiceKeepAlive.Resource.String.abc_searchview_description_search = global::ProjTaskReminder.Resource.String.abc_searchview_description_search;
+			global::MHServiceKeepAlive.Resource.String.abc_searchview_description_submit = global::ProjTaskReminder.Resource.String.abc_searchview_description_submit;
+			global::MHServiceKeepAlive.Resource.String.abc_searchview_description_voice = global::ProjTaskReminder.Resource.String.abc_searchview_description_voice;
+			global::MHServiceKeepAlive.Resource.String.abc_search_hint = global::ProjTaskReminder.Resource.String.abc_search_hint;
+			global::MHServiceKeepAlive.Resource.String.abc_shareactionprovider_share_with = global::ProjTaskReminder.Resource.String.abc_shareactionprovider_share_with;
+			global::MHServiceKeepAlive.Resource.String.abc_shareactionprovider_share_with_application = global::ProjTaskReminder.Resource.String.abc_shareactionprovider_share_with_application;
+			global::MHServiceKeepAlive.Resource.String.abc_toolbar_collapse_description = global::ProjTaskReminder.Resource.String.abc_toolbar_collapse_description;
+			global::MHServiceKeepAlive.Resource.String.app_name = global::ProjTaskReminder.Resource.String.app_name;
+			global::MHServiceKeepAlive.Resource.String.search_menu_title = global::ProjTaskReminder.Resource.String.search_menu_title;
+			global::MHServiceKeepAlive.Resource.String.status_bar_notification_info_overflow = global::ProjTaskReminder.Resource.String.status_bar_notification_info_overflow;
+			global::MHServiceKeepAlive.Resource.Style.AlertDialog_AppCompat = global::ProjTaskReminder.Resource.Style.AlertDialog_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.AlertDialog_AppCompat_Light = global::ProjTaskReminder.Resource.Style.AlertDialog_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Animation_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Animation_AppCompat_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.Animation_AppCompat_DropDownUp = global::ProjTaskReminder.Resource.Style.Animation_AppCompat_DropDownUp;
+			global::MHServiceKeepAlive.Resource.Style.Animation_AppCompat_Tooltip = global::ProjTaskReminder.Resource.Style.Animation_AppCompat_Tooltip;
+			global::MHServiceKeepAlive.Resource.Style.Base_AlertDialog_AppCompat = global::ProjTaskReminder.Resource.Style.Base_AlertDialog_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Base_AlertDialog_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_AlertDialog_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Base_Animation_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Base_Animation_AppCompat_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::ProjTaskReminder.Resource.Style.Base_Animation_AppCompat_DropDownUp;
+			global::MHServiceKeepAlive.Resource.Style.Base_Animation_AppCompat_Tooltip = global::ProjTaskReminder.Resource.Style.Base_Animation_AppCompat_Tooltip;
+			global::MHServiceKeepAlive.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::ProjTaskReminder.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Base_DialogWindowTitle_AppCompat = global::ProjTaskReminder.Resource.Style.Base_DialogWindowTitle_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Body1;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Body2;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Button = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Button;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Caption;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Display1;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Display2;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Display3;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Display4;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Headline;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Large = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Large;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Medium;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Menu;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Small = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Small;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Title = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Title;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Tooltip = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Tooltip;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::MHServiceKeepAlive.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::ProjTaskReminder.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::MHServiceKeepAlive.Resource.Style.Base_ThemeOverlay_AppCompat = global::ProjTaskReminder.Resource.Style.Base_ThemeOverlay_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::ProjTaskReminder.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::ProjTaskReminder.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
+			global::MHServiceKeepAlive.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::ProjTaskReminder.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert = global::ProjTaskReminder.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert;
+			global::MHServiceKeepAlive.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Base_Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::MHServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::MHServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::MHServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::MHServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::MHServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::MHServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::MHServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::MHServiceKeepAlive.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::ProjTaskReminder.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::MHServiceKeepAlive.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.Base_V21_Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Base_V21_Theme_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.Base_V21_Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_V21_Theme_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::ProjTaskReminder.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.Base_V22_Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Base_V22_Theme_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Base_V22_Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_V22_Theme_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Base_V23_Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Base_V23_Theme_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Base_V23_Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_V23_Theme_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Base_V26_Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Base_V26_Theme_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Base_V26_Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_V26_Theme_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Base_V26_Widget_AppCompat_Toolbar = global::ProjTaskReminder.Resource.Style.Base_V26_Widget_AppCompat_Toolbar;
+			global::MHServiceKeepAlive.Resource.Style.Base_V28_Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Base_V28_Theme_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Base_V28_Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_V28_Theme_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.Base_V7_Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Base_V7_Theme_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.Base_V7_Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Base_V7_Theme_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::ProjTaskReminder.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::ProjTaskReminder.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
+			global::MHServiceKeepAlive.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::ProjTaskReminder.Resource.Style.Base_V7_Widget_AppCompat_EditText;
+			global::MHServiceKeepAlive.Resource.Style.Base_V7_Widget_AppCompat_Toolbar = global::ProjTaskReminder.Resource.Style.Base_V7_Widget_AppCompat_Toolbar;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionButton = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionButton;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActionMode = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActionMode;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Button = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Button;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Button_Colored;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Button_Small = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Button_Small;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_EditText = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_EditText;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ImageButton = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ImageButton;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ListMenuView = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ListMenuView;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ListView = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ListView;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_PopupMenu;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_PopupWindow;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ProgressBar;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_RatingBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_RatingBar;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_SearchView = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_SearchView;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_SeekBar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_SeekBar;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Spinner = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Spinner;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Toolbar = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Toolbar;
+			global::MHServiceKeepAlive.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::ProjTaskReminder.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
+			global::MHServiceKeepAlive.Resource.Style.Platform_AppCompat = global::ProjTaskReminder.Resource.Style.Platform_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Platform_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Platform_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Platform_ThemeOverlay_AppCompat = global::ProjTaskReminder.Resource.Style.Platform_ThemeOverlay_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::ProjTaskReminder.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
+			global::MHServiceKeepAlive.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Platform_V21_AppCompat = global::ProjTaskReminder.Resource.Style.Platform_V21_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Platform_V21_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Platform_V21_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Platform_V25_AppCompat = global::ProjTaskReminder.Resource.Style.Platform_V25_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Platform_V25_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Platform_V25_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Platform_Widget_AppCompat_Spinner = global::ProjTaskReminder.Resource.Style.Platform_Widget_AppCompat_Spinner;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::ProjTaskReminder.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
+			global::MHServiceKeepAlive.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::ProjTaskReminder.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+			global::MHServiceKeepAlive.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::ProjTaskReminder.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
+			global::MHServiceKeepAlive.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::ProjTaskReminder.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Body1 = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Body1;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Body2 = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Body2;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Button = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Button;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Caption = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Caption;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Display1 = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Display1;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Display2 = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Display2;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Display3 = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Display3;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Display4 = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Display4;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Headline = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Headline;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Large = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Large;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Medium = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Medium;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Menu = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Menu;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Small = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Small;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Subhead = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Subhead;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Title = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Title;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Tooltip = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Tooltip;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_Button;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::ProjTaskReminder.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_Compat_Notification = global::ProjTaskReminder.Resource.Style.TextAppearance_Compat_Notification;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_Compat_Notification_Info = global::ProjTaskReminder.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::ProjTaskReminder.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_Compat_Notification_Time = global::ProjTaskReminder.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_Compat_Notification_Title = global::ProjTaskReminder.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::ProjTaskReminder.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::ProjTaskReminder.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::MHServiceKeepAlive.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::ProjTaskReminder.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::MHServiceKeepAlive.Resource.Style.ThemeOverlay_AppCompat = global::ProjTaskReminder.Resource.Style.ThemeOverlay_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::ProjTaskReminder.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
+			global::MHServiceKeepAlive.Resource.Style.ThemeOverlay_AppCompat_Dark = global::ProjTaskReminder.Resource.Style.ThemeOverlay_AppCompat_Dark;
+			global::MHServiceKeepAlive.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::ProjTaskReminder.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::MHServiceKeepAlive.Resource.Style.ThemeOverlay_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.ThemeOverlay_AppCompat_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert = global::ProjTaskReminder.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert;
+			global::MHServiceKeepAlive.Resource.Style.ThemeOverlay_AppCompat_Light = global::ProjTaskReminder.Resource.Style.ThemeOverlay_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat = global::ProjTaskReminder.Resource.Style.Theme_AppCompat;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_CompactMenu = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_CompactMenu;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_DayNight = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DayNight;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DayNight_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_Dialog = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_DialogWhenLarge;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_Dialog_Alert = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Dialog_Alert;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_Light = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Light;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_Light_Dialog = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_Light_NoActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Theme_AppCompat_NoActionBar = global::ProjTaskReminder.Resource.Style.Theme_AppCompat_NoActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionBar_Solid;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionBar_TabText;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionBar_TabView;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionButton = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionButton;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ActionMode = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActionMode;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ActivityChooserView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ActivityChooserView;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Button = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Button;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ButtonBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Button_Borderless = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Button_Borderless;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Button_Colored = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Button_Colored;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Button_Small = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Button_Small;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_EditText = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_EditText;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ImageButton = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ImageButton;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionButton = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionButton;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_PopupMenu;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_SearchView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_SearchView;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ListMenuView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ListMenuView;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ListPopupWindow = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ListPopupWindow;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ListView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ListView;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ListView_DropDown = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ListView_DropDown;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ListView_Menu = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ListView_Menu;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_PopupMenu = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_PopupMenu;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_PopupWindow = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_PopupWindow;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ProgressBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ProgressBar;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_RatingBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_RatingBar;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_RatingBar_Small = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_RatingBar_Small;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_SearchView = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_SearchView;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_SeekBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_SeekBar;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_SeekBar_Discrete = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_SeekBar_Discrete;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Spinner = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Spinner;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Spinner_DropDown;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Spinner_Underlined;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Toolbar = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Toolbar;
+			global::MHServiceKeepAlive.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::ProjTaskReminder.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
+			global::MHServiceKeepAlive.Resource.Style.Widget_Compat_NotificationActionContainer = global::ProjTaskReminder.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::MHServiceKeepAlive.Resource.Style.Widget_Compat_NotificationActionText = global::ProjTaskReminder.Resource.Style.Widget_Compat_NotificationActionText;
+			global::MHServiceKeepAlive.Resource.Style.Widget_Support_CoordinatorLayout = global::ProjTaskReminder.Resource.Style.Widget_Support_CoordinatorLayout;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar = global::ProjTaskReminder.Resource.Styleable.ActionBar;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBarLayout = global::ProjTaskReminder.Resource.Styleable.ActionBarLayout;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::ProjTaskReminder.Resource.Styleable.ActionBarLayout_android_layout_gravity;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_background = global::ProjTaskReminder.Resource.Styleable.ActionBar_background;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_backgroundSplit = global::ProjTaskReminder.Resource.Styleable.ActionBar_backgroundSplit;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_backgroundStacked = global::ProjTaskReminder.Resource.Styleable.ActionBar_backgroundStacked;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_contentInsetEnd = global::ProjTaskReminder.Resource.Styleable.ActionBar_contentInsetEnd;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_contentInsetEndWithActions = global::ProjTaskReminder.Resource.Styleable.ActionBar_contentInsetEndWithActions;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_contentInsetLeft = global::ProjTaskReminder.Resource.Styleable.ActionBar_contentInsetLeft;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_contentInsetRight = global::ProjTaskReminder.Resource.Styleable.ActionBar_contentInsetRight;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_contentInsetStart = global::ProjTaskReminder.Resource.Styleable.ActionBar_contentInsetStart;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_contentInsetStartWithNavigation = global::ProjTaskReminder.Resource.Styleable.ActionBar_contentInsetStartWithNavigation;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_customNavigationLayout = global::ProjTaskReminder.Resource.Styleable.ActionBar_customNavigationLayout;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_displayOptions = global::ProjTaskReminder.Resource.Styleable.ActionBar_displayOptions;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_divider = global::ProjTaskReminder.Resource.Styleable.ActionBar_divider;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_elevation = global::ProjTaskReminder.Resource.Styleable.ActionBar_elevation;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_height = global::ProjTaskReminder.Resource.Styleable.ActionBar_height;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_hideOnContentScroll = global::ProjTaskReminder.Resource.Styleable.ActionBar_hideOnContentScroll;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_homeAsUpIndicator = global::ProjTaskReminder.Resource.Styleable.ActionBar_homeAsUpIndicator;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_homeLayout = global::ProjTaskReminder.Resource.Styleable.ActionBar_homeLayout;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_icon = global::ProjTaskReminder.Resource.Styleable.ActionBar_icon;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::ProjTaskReminder.Resource.Styleable.ActionBar_indeterminateProgressStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_itemPadding = global::ProjTaskReminder.Resource.Styleable.ActionBar_itemPadding;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_logo = global::ProjTaskReminder.Resource.Styleable.ActionBar_logo;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_navigationMode = global::ProjTaskReminder.Resource.Styleable.ActionBar_navigationMode;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_popupTheme = global::ProjTaskReminder.Resource.Styleable.ActionBar_popupTheme;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_progressBarPadding = global::ProjTaskReminder.Resource.Styleable.ActionBar_progressBarPadding;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_progressBarStyle = global::ProjTaskReminder.Resource.Styleable.ActionBar_progressBarStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_subtitle = global::ProjTaskReminder.Resource.Styleable.ActionBar_subtitle;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_subtitleTextStyle = global::ProjTaskReminder.Resource.Styleable.ActionBar_subtitleTextStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_title = global::ProjTaskReminder.Resource.Styleable.ActionBar_title;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionBar_titleTextStyle = global::ProjTaskReminder.Resource.Styleable.ActionBar_titleTextStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionMenuItemView = global::ProjTaskReminder.Resource.Styleable.ActionMenuItemView;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionMenuItemView_android_minWidth = global::ProjTaskReminder.Resource.Styleable.ActionMenuItemView_android_minWidth;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionMenuView = global::ProjTaskReminder.Resource.Styleable.ActionMenuView;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionMode = global::ProjTaskReminder.Resource.Styleable.ActionMode;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionMode_background = global::ProjTaskReminder.Resource.Styleable.ActionMode_background;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionMode_backgroundSplit = global::ProjTaskReminder.Resource.Styleable.ActionMode_backgroundSplit;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionMode_closeItemLayout = global::ProjTaskReminder.Resource.Styleable.ActionMode_closeItemLayout;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionMode_height = global::ProjTaskReminder.Resource.Styleable.ActionMode_height;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionMode_subtitleTextStyle = global::ProjTaskReminder.Resource.Styleable.ActionMode_subtitleTextStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.ActionMode_titleTextStyle = global::ProjTaskReminder.Resource.Styleable.ActionMode_titleTextStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.ActivityChooserView = global::ProjTaskReminder.Resource.Styleable.ActivityChooserView;
+			global::MHServiceKeepAlive.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::ProjTaskReminder.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
+			global::MHServiceKeepAlive.Resource.Styleable.ActivityChooserView_initialActivityCount = global::ProjTaskReminder.Resource.Styleable.ActivityChooserView_initialActivityCount;
+			global::MHServiceKeepAlive.Resource.Styleable.AlertDialog = global::ProjTaskReminder.Resource.Styleable.AlertDialog;
+			global::MHServiceKeepAlive.Resource.Styleable.AlertDialog_android_layout = global::ProjTaskReminder.Resource.Styleable.AlertDialog_android_layout;
+			global::MHServiceKeepAlive.Resource.Styleable.AlertDialog_buttonIconDimen = global::ProjTaskReminder.Resource.Styleable.AlertDialog_buttonIconDimen;
+			global::MHServiceKeepAlive.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::ProjTaskReminder.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
+			global::MHServiceKeepAlive.Resource.Styleable.AlertDialog_listItemLayout = global::ProjTaskReminder.Resource.Styleable.AlertDialog_listItemLayout;
+			global::MHServiceKeepAlive.Resource.Styleable.AlertDialog_listLayout = global::ProjTaskReminder.Resource.Styleable.AlertDialog_listLayout;
+			global::MHServiceKeepAlive.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::ProjTaskReminder.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
+			global::MHServiceKeepAlive.Resource.Styleable.AlertDialog_showTitle = global::ProjTaskReminder.Resource.Styleable.AlertDialog_showTitle;
+			global::MHServiceKeepAlive.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::ProjTaskReminder.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableCompat = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableCompat;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableCompat_android_constantSize = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableCompat_android_constantSize;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableCompat_android_dither = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableCompat_android_dither;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableCompat_android_variablePadding = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableCompat_android_variablePadding;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableCompat_android_visible = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableCompat_android_visible;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableItem = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableItem;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableItem_android_drawable = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableItem_android_drawable;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableItem_android_id = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableItem_android_id;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableTransition = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableTransition;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableTransition_android_drawable = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableTransition_android_drawable;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableTransition_android_fromId = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableTransition_android_fromId;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible;
+			global::MHServiceKeepAlive.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId = global::ProjTaskReminder.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatImageView = global::ProjTaskReminder.Resource.Styleable.AppCompatImageView;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatImageView_android_src = global::ProjTaskReminder.Resource.Styleable.AppCompatImageView_android_src;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatImageView_srcCompat = global::ProjTaskReminder.Resource.Styleable.AppCompatImageView_srcCompat;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatImageView_tint = global::ProjTaskReminder.Resource.Styleable.AppCompatImageView_tint;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatImageView_tintMode = global::ProjTaskReminder.Resource.Styleable.AppCompatImageView_tintMode;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatSeekBar = global::ProjTaskReminder.Resource.Styleable.AppCompatSeekBar;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatSeekBar_android_thumb = global::ProjTaskReminder.Resource.Styleable.AppCompatSeekBar_android_thumb;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatSeekBar_tickMark = global::ProjTaskReminder.Resource.Styleable.AppCompatSeekBar_tickMark;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatSeekBar_tickMarkTint = global::ProjTaskReminder.Resource.Styleable.AppCompatSeekBar_tickMarkTint;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode = global::ProjTaskReminder.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextHelper = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextHelper_android_drawableBottom = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper_android_drawableBottom;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextHelper_android_drawableEnd = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper_android_drawableEnd;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextHelper_android_drawableLeft = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper_android_drawableLeft;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextHelper_android_drawableRight = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper_android_drawableRight;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextHelper_android_drawableStart = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper_android_drawableStart;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextHelper_android_drawableTop = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper_android_drawableTop;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextHelper_android_textAppearance = global::ProjTaskReminder.Resource.Styleable.AppCompatTextHelper_android_textAppearance;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextView = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextView_android_textAppearance = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_android_textAppearance;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextView_autoSizePresetSizes = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_autoSizePresetSizes;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextView_autoSizeTextType = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_autoSizeTextType;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextView_fontFamily = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_fontFamily;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextView_lineHeight = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_lineHeight;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTextView_textAllCaps = global::ProjTaskReminder.Resource.Styleable.AppCompatTextView_textAllCaps;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarDivider = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarDivider;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarSize = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarSize;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarTheme = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarTheme;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionButtonStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_alertDialogStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_alertDialogTheme;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_buttonBarStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_buttonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_buttonStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_checkboxStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_checkboxStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorAccent = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorAccent;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorBackgroundFloating = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorBackgroundFloating;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorButtonNormal;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorControlActivated = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorControlActivated;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorControlHighlight;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorControlNormal = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorControlNormal;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorError = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorError;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorPrimary = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorPrimary;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_controlBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_controlBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_dialogCornerRadius = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_dialogCornerRadius;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_dialogTheme = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_dialogTheme;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_dividerHorizontal;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_dividerVertical = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_dividerVertical;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_editTextBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_editTextBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_editTextColor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_editTextColor;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_editTextStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_editTextStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_imageButtonStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_listMenuViewStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listMenuViewStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_panelBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_panelBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_popupMenuStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_popupWindowStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_radioButtonStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_ratingBarStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_searchViewStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_searchViewStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_seekBarStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_seekBarStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_selectableItemBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_spinnerStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_spinnerStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_switchStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_switchStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_toolbarStyle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_toolbarStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_tooltipForegroundColor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_tooltipForegroundColor;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_tooltipFrameBackground = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_tooltipFrameBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_viewInflaterClass = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_viewInflaterClass;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowActionBar = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowActionBar;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
+			global::MHServiceKeepAlive.Resource.Styleable.AppCompatTheme_windowNoTitle = global::ProjTaskReminder.Resource.Styleable.AppCompatTheme_windowNoTitle;
+			global::MHServiceKeepAlive.Resource.Styleable.ButtonBarLayout = global::ProjTaskReminder.Resource.Styleable.ButtonBarLayout;
+			global::MHServiceKeepAlive.Resource.Styleable.ButtonBarLayout_allowStacking = global::ProjTaskReminder.Resource.Styleable.ButtonBarLayout_allowStacking;
+			global::MHServiceKeepAlive.Resource.Styleable.ColorStateListItem = global::ProjTaskReminder.Resource.Styleable.ColorStateListItem;
+			global::MHServiceKeepAlive.Resource.Styleable.ColorStateListItem_alpha = global::ProjTaskReminder.Resource.Styleable.ColorStateListItem_alpha;
+			global::MHServiceKeepAlive.Resource.Styleable.ColorStateListItem_android_alpha = global::ProjTaskReminder.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::MHServiceKeepAlive.Resource.Styleable.ColorStateListItem_android_color = global::ProjTaskReminder.Resource.Styleable.ColorStateListItem_android_color;
+			global::MHServiceKeepAlive.Resource.Styleable.CompoundButton = global::ProjTaskReminder.Resource.Styleable.CompoundButton;
+			global::MHServiceKeepAlive.Resource.Styleable.CompoundButton_android_button = global::ProjTaskReminder.Resource.Styleable.CompoundButton_android_button;
+			global::MHServiceKeepAlive.Resource.Styleable.CompoundButton_buttonTint = global::ProjTaskReminder.Resource.Styleable.CompoundButton_buttonTint;
+			global::MHServiceKeepAlive.Resource.Styleable.CompoundButton_buttonTintMode = global::ProjTaskReminder.Resource.Styleable.CompoundButton_buttonTintMode;
+			global::MHServiceKeepAlive.Resource.Styleable.CoordinatorLayout = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout;
+			global::MHServiceKeepAlive.Resource.Styleable.CoordinatorLayout_keylines = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_keylines;
+			global::MHServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout;
+			global::MHServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
+			global::MHServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
+			global::MHServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity;
+			global::MHServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior;
+			global::MHServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
+			global::MHServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
+			global::MHServiceKeepAlive.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
+			global::MHServiceKeepAlive.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::ProjTaskReminder.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.DrawerArrowToggle = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle;
+			global::MHServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
+			global::MHServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
+			global::MHServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_barLength = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_barLength;
+			global::MHServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_color = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_color;
+			global::MHServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_drawableSize = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_drawableSize;
+			global::MHServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
+			global::MHServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_spinBars = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_spinBars;
+			global::MHServiceKeepAlive.Resource.Styleable.DrawerArrowToggle_thickness = global::ProjTaskReminder.Resource.Styleable.DrawerArrowToggle_thickness;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamily = global::ProjTaskReminder.Resource.Styleable.FontFamily;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamilyFont = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamilyFont_android_font = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_android_font;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamilyFont_android_fontStyle = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamilyFont_android_fontWeight = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_android_ttcIndex;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamilyFont_font = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_font;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamilyFont_fontStyle = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_fontVariationSettings;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamilyFont_fontWeight = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamilyFont_ttcIndex = global::ProjTaskReminder.Resource.Styleable.FontFamilyFont_ttcIndex;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamily_fontProviderAuthority = global::ProjTaskReminder.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamily_fontProviderCerts = global::ProjTaskReminder.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::ProjTaskReminder.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::ProjTaskReminder.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamily_fontProviderPackage = global::ProjTaskReminder.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::MHServiceKeepAlive.Resource.Styleable.FontFamily_fontProviderQuery = global::ProjTaskReminder.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColor = global::ProjTaskReminder.Resource.Styleable.GradientColor;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColorItem = global::ProjTaskReminder.Resource.Styleable.GradientColorItem;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColorItem_android_color = global::ProjTaskReminder.Resource.Styleable.GradientColorItem_android_color;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColorItem_android_offset = global::ProjTaskReminder.Resource.Styleable.GradientColorItem_android_offset;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColor_android_centerColor = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_centerColor;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColor_android_centerX = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_centerX;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColor_android_centerY = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_centerY;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColor_android_endColor = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_endColor;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColor_android_endX = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_endX;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColor_android_endY = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_endY;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColor_android_gradientRadius = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_gradientRadius;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColor_android_startColor = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_startColor;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColor_android_startX = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_startX;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColor_android_startY = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_startY;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColor_android_tileMode = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_tileMode;
+			global::MHServiceKeepAlive.Resource.Styleable.GradientColor_android_type = global::ProjTaskReminder.Resource.Styleable.GradientColor_android_type;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_android_gravity = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_android_gravity;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_android_orientation = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_android_orientation;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_android_weightSum;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_divider = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_divider;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_dividerPadding;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_Layout = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_Layout;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::MHServiceKeepAlive.Resource.Styleable.LinearLayoutCompat_showDividers = global::ProjTaskReminder.Resource.Styleable.LinearLayoutCompat_showDividers;
+			global::MHServiceKeepAlive.Resource.Styleable.ListPopupWindow = global::ProjTaskReminder.Resource.Styleable.ListPopupWindow;
+			global::MHServiceKeepAlive.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::ProjTaskReminder.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
+			global::MHServiceKeepAlive.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::ProjTaskReminder.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuGroup = global::ProjTaskReminder.Resource.Styleable.MenuGroup;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuGroup_android_checkableBehavior = global::ProjTaskReminder.Resource.Styleable.MenuGroup_android_checkableBehavior;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuGroup_android_enabled = global::ProjTaskReminder.Resource.Styleable.MenuGroup_android_enabled;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuGroup_android_id = global::ProjTaskReminder.Resource.Styleable.MenuGroup_android_id;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuGroup_android_menuCategory = global::ProjTaskReminder.Resource.Styleable.MenuGroup_android_menuCategory;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuGroup_android_orderInCategory = global::ProjTaskReminder.Resource.Styleable.MenuGroup_android_orderInCategory;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuGroup_android_visible = global::ProjTaskReminder.Resource.Styleable.MenuGroup_android_visible;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem = global::ProjTaskReminder.Resource.Styleable.MenuItem;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_actionLayout = global::ProjTaskReminder.Resource.Styleable.MenuItem_actionLayout;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_actionProviderClass = global::ProjTaskReminder.Resource.Styleable.MenuItem_actionProviderClass;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_actionViewClass = global::ProjTaskReminder.Resource.Styleable.MenuItem_actionViewClass;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_alphabeticModifiers = global::ProjTaskReminder.Resource.Styleable.MenuItem_alphabeticModifiers;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_alphabeticShortcut;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_android_checkable = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_checkable;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_android_checked = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_checked;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_android_enabled = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_enabled;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_android_icon = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_icon;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_android_id = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_id;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_android_menuCategory = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_menuCategory;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_android_numericShortcut = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_numericShortcut;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_android_onClick = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_onClick;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_android_orderInCategory = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_orderInCategory;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_android_title = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_title;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_android_titleCondensed = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_titleCondensed;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_android_visible = global::ProjTaskReminder.Resource.Styleable.MenuItem_android_visible;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_contentDescription = global::ProjTaskReminder.Resource.Styleable.MenuItem_contentDescription;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_iconTint = global::ProjTaskReminder.Resource.Styleable.MenuItem_iconTint;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_iconTintMode = global::ProjTaskReminder.Resource.Styleable.MenuItem_iconTintMode;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_numericModifiers = global::ProjTaskReminder.Resource.Styleable.MenuItem_numericModifiers;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_showAsAction = global::ProjTaskReminder.Resource.Styleable.MenuItem_showAsAction;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuItem_tooltipText = global::ProjTaskReminder.Resource.Styleable.MenuItem_tooltipText;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuView = global::ProjTaskReminder.Resource.Styleable.MenuView;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuView_android_headerBackground = global::ProjTaskReminder.Resource.Styleable.MenuView_android_headerBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuView_android_horizontalDivider = global::ProjTaskReminder.Resource.Styleable.MenuView_android_horizontalDivider;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuView_android_itemBackground = global::ProjTaskReminder.Resource.Styleable.MenuView_android_itemBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::ProjTaskReminder.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuView_android_itemTextAppearance = global::ProjTaskReminder.Resource.Styleable.MenuView_android_itemTextAppearance;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuView_android_verticalDivider = global::ProjTaskReminder.Resource.Styleable.MenuView_android_verticalDivider;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuView_android_windowAnimationStyle = global::ProjTaskReminder.Resource.Styleable.MenuView_android_windowAnimationStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuView_preserveIconSpacing = global::ProjTaskReminder.Resource.Styleable.MenuView_preserveIconSpacing;
+			global::MHServiceKeepAlive.Resource.Styleable.MenuView_subMenuArrow = global::ProjTaskReminder.Resource.Styleable.MenuView_subMenuArrow;
+			global::MHServiceKeepAlive.Resource.Styleable.PopupWindow = global::ProjTaskReminder.Resource.Styleable.PopupWindow;
+			global::MHServiceKeepAlive.Resource.Styleable.PopupWindowBackgroundState = global::ProjTaskReminder.Resource.Styleable.PopupWindowBackgroundState;
+			global::MHServiceKeepAlive.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::ProjTaskReminder.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
+			global::MHServiceKeepAlive.Resource.Styleable.PopupWindow_android_popupAnimationStyle = global::ProjTaskReminder.Resource.Styleable.PopupWindow_android_popupAnimationStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.PopupWindow_android_popupBackground = global::ProjTaskReminder.Resource.Styleable.PopupWindow_android_popupBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.PopupWindow_overlapAnchor = global::ProjTaskReminder.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::MHServiceKeepAlive.Resource.Styleable.RecycleListView = global::ProjTaskReminder.Resource.Styleable.RecycleListView;
+			global::MHServiceKeepAlive.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::ProjTaskReminder.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
+			global::MHServiceKeepAlive.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::ProjTaskReminder.Resource.Styleable.RecycleListView_paddingTopNoTitle;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView = global::ProjTaskReminder.Resource.Styleable.SearchView;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_android_focusable = global::ProjTaskReminder.Resource.Styleable.SearchView_android_focusable;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_android_imeOptions = global::ProjTaskReminder.Resource.Styleable.SearchView_android_imeOptions;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_android_inputType = global::ProjTaskReminder.Resource.Styleable.SearchView_android_inputType;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_android_maxWidth = global::ProjTaskReminder.Resource.Styleable.SearchView_android_maxWidth;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_closeIcon = global::ProjTaskReminder.Resource.Styleable.SearchView_closeIcon;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_commitIcon = global::ProjTaskReminder.Resource.Styleable.SearchView_commitIcon;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_defaultQueryHint = global::ProjTaskReminder.Resource.Styleable.SearchView_defaultQueryHint;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_goIcon = global::ProjTaskReminder.Resource.Styleable.SearchView_goIcon;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_iconifiedByDefault = global::ProjTaskReminder.Resource.Styleable.SearchView_iconifiedByDefault;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_layout = global::ProjTaskReminder.Resource.Styleable.SearchView_layout;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_queryBackground = global::ProjTaskReminder.Resource.Styleable.SearchView_queryBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_queryHint = global::ProjTaskReminder.Resource.Styleable.SearchView_queryHint;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_searchHintIcon = global::ProjTaskReminder.Resource.Styleable.SearchView_searchHintIcon;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_searchIcon = global::ProjTaskReminder.Resource.Styleable.SearchView_searchIcon;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_submitBackground = global::ProjTaskReminder.Resource.Styleable.SearchView_submitBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_suggestionRowLayout = global::ProjTaskReminder.Resource.Styleable.SearchView_suggestionRowLayout;
+			global::MHServiceKeepAlive.Resource.Styleable.SearchView_voiceIcon = global::ProjTaskReminder.Resource.Styleable.SearchView_voiceIcon;
+			global::MHServiceKeepAlive.Resource.Styleable.Spinner = global::ProjTaskReminder.Resource.Styleable.Spinner;
+			global::MHServiceKeepAlive.Resource.Styleable.Spinner_android_dropDownWidth = global::ProjTaskReminder.Resource.Styleable.Spinner_android_dropDownWidth;
+			global::MHServiceKeepAlive.Resource.Styleable.Spinner_android_entries = global::ProjTaskReminder.Resource.Styleable.Spinner_android_entries;
+			global::MHServiceKeepAlive.Resource.Styleable.Spinner_android_popupBackground = global::ProjTaskReminder.Resource.Styleable.Spinner_android_popupBackground;
+			global::MHServiceKeepAlive.Resource.Styleable.Spinner_android_prompt = global::ProjTaskReminder.Resource.Styleable.Spinner_android_prompt;
+			global::MHServiceKeepAlive.Resource.Styleable.Spinner_popupTheme = global::ProjTaskReminder.Resource.Styleable.Spinner_popupTheme;
+			global::MHServiceKeepAlive.Resource.Styleable.StateListDrawable = global::ProjTaskReminder.Resource.Styleable.StateListDrawable;
+			global::MHServiceKeepAlive.Resource.Styleable.StateListDrawableItem = global::ProjTaskReminder.Resource.Styleable.StateListDrawableItem;
+			global::MHServiceKeepAlive.Resource.Styleable.StateListDrawableItem_android_drawable = global::ProjTaskReminder.Resource.Styleable.StateListDrawableItem_android_drawable;
+			global::MHServiceKeepAlive.Resource.Styleable.StateListDrawable_android_constantSize = global::ProjTaskReminder.Resource.Styleable.StateListDrawable_android_constantSize;
+			global::MHServiceKeepAlive.Resource.Styleable.StateListDrawable_android_dither = global::ProjTaskReminder.Resource.Styleable.StateListDrawable_android_dither;
+			global::MHServiceKeepAlive.Resource.Styleable.StateListDrawable_android_enterFadeDuration = global::ProjTaskReminder.Resource.Styleable.StateListDrawable_android_enterFadeDuration;
+			global::MHServiceKeepAlive.Resource.Styleable.StateListDrawable_android_exitFadeDuration = global::ProjTaskReminder.Resource.Styleable.StateListDrawable_android_exitFadeDuration;
+			global::MHServiceKeepAlive.Resource.Styleable.StateListDrawable_android_variablePadding = global::ProjTaskReminder.Resource.Styleable.StateListDrawable_android_variablePadding;
+			global::MHServiceKeepAlive.Resource.Styleable.StateListDrawable_android_visible = global::ProjTaskReminder.Resource.Styleable.StateListDrawable_android_visible;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat = global::ProjTaskReminder.Resource.Styleable.SwitchCompat;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat_android_textOff = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_android_textOff;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat_android_textOn = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_android_textOn;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat_android_thumb = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_android_thumb;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat_showText = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_showText;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat_splitTrack = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_splitTrack;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat_switchMinWidth = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_switchMinWidth;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat_switchPadding = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_switchPadding;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat_switchTextAppearance = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_switchTextAppearance;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat_thumbTextPadding = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_thumbTextPadding;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat_thumbTint = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_thumbTint;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat_thumbTintMode = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_thumbTintMode;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat_track = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_track;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat_trackTint = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_trackTint;
+			global::MHServiceKeepAlive.Resource.Styleable.SwitchCompat_trackTintMode = global::ProjTaskReminder.Resource.Styleable.SwitchCompat_trackTintMode;
+			global::MHServiceKeepAlive.Resource.Styleable.TextAppearance = global::ProjTaskReminder.Resource.Styleable.TextAppearance;
+			global::MHServiceKeepAlive.Resource.Styleable.TextAppearance_android_fontFamily = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_fontFamily;
+			global::MHServiceKeepAlive.Resource.Styleable.TextAppearance_android_shadowColor = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_shadowColor;
+			global::MHServiceKeepAlive.Resource.Styleable.TextAppearance_android_shadowDx = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_shadowDx;
+			global::MHServiceKeepAlive.Resource.Styleable.TextAppearance_android_shadowDy = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_shadowDy;
+			global::MHServiceKeepAlive.Resource.Styleable.TextAppearance_android_shadowRadius = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_shadowRadius;
+			global::MHServiceKeepAlive.Resource.Styleable.TextAppearance_android_textColor = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_textColor;
+			global::MHServiceKeepAlive.Resource.Styleable.TextAppearance_android_textColorHint = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_textColorHint;
+			global::MHServiceKeepAlive.Resource.Styleable.TextAppearance_android_textColorLink = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_textColorLink;
+			global::MHServiceKeepAlive.Resource.Styleable.TextAppearance_android_textSize = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_textSize;
+			global::MHServiceKeepAlive.Resource.Styleable.TextAppearance_android_textStyle = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_textStyle;
+			global::MHServiceKeepAlive.Resource.Styleable.TextAppearance_android_typeface = global::ProjTaskReminder.Resource.Styleable.TextAppearance_android_typeface;
+			global::MHServiceKeepAlive.Resource.Styleable.TextAppearance_fontFamily = global::ProjTaskReminder.Resource.Styleable.TextAppearance_fontFamily;
+			global::MHServiceKeepAlive.Resource.Styleable.TextAppearance_textAllCaps = global::ProjTaskReminder.Resource.Styleable.TextAppearance_textAllCaps;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar = global::ProjTaskReminder.Resource.Styleable.Toolbar;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_android_gravity = global::ProjTaskReminder.Resource.Styleable.Toolbar_android_gravity;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_android_minHeight = global::ProjTaskReminder.Resource.Styleable.Toolbar_android_minHeight;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_buttonGravity = global::ProjTaskReminder.Resource.Styleable.Toolbar_buttonGravity;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_collapseContentDescription = global::ProjTaskReminder.Resource.Styleable.Toolbar_collapseContentDescription;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_collapseIcon = global::ProjTaskReminder.Resource.Styleable.Toolbar_collapseIcon;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_contentInsetEnd = global::ProjTaskReminder.Resource.Styleable.Toolbar_contentInsetEnd;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_contentInsetEndWithActions = global::ProjTaskReminder.Resource.Styleable.Toolbar_contentInsetEndWithActions;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_contentInsetLeft = global::ProjTaskReminder.Resource.Styleable.Toolbar_contentInsetLeft;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_contentInsetRight = global::ProjTaskReminder.Resource.Styleable.Toolbar_contentInsetRight;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_contentInsetStart = global::ProjTaskReminder.Resource.Styleable.Toolbar_contentInsetStart;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_contentInsetStartWithNavigation = global::ProjTaskReminder.Resource.Styleable.Toolbar_contentInsetStartWithNavigation;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_logo = global::ProjTaskReminder.Resource.Styleable.Toolbar_logo;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_logoDescription = global::ProjTaskReminder.Resource.Styleable.Toolbar_logoDescription;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_maxButtonHeight = global::ProjTaskReminder.Resource.Styleable.Toolbar_maxButtonHeight;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_navigationContentDescription = global::ProjTaskReminder.Resource.Styleable.Toolbar_navigationContentDescription;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_navigationIcon = global::ProjTaskReminder.Resource.Styleable.Toolbar_navigationIcon;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_popupTheme = global::ProjTaskReminder.Resource.Styleable.Toolbar_popupTheme;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_subtitle = global::ProjTaskReminder.Resource.Styleable.Toolbar_subtitle;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_subtitleTextAppearance = global::ProjTaskReminder.Resource.Styleable.Toolbar_subtitleTextAppearance;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_subtitleTextColor = global::ProjTaskReminder.Resource.Styleable.Toolbar_subtitleTextColor;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_title = global::ProjTaskReminder.Resource.Styleable.Toolbar_title;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_titleMargin = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleMargin;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_titleMarginBottom = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleMarginBottom;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_titleMarginEnd = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleMarginEnd;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_titleMargins = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleMargins;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_titleMarginStart = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleMarginStart;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_titleMarginTop = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleMarginTop;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_titleTextAppearance = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleTextAppearance;
+			global::MHServiceKeepAlive.Resource.Styleable.Toolbar_titleTextColor = global::ProjTaskReminder.Resource.Styleable.Toolbar_titleTextColor;
+			global::MHServiceKeepAlive.Resource.Styleable.View = global::ProjTaskReminder.Resource.Styleable.View;
+			global::MHServiceKeepAlive.Resource.Styleable.ViewBackgroundHelper = global::ProjTaskReminder.Resource.Styleable.ViewBackgroundHelper;
+			global::MHServiceKeepAlive.Resource.Styleable.ViewBackgroundHelper_android_background = global::ProjTaskReminder.Resource.Styleable.ViewBackgroundHelper_android_background;
+			global::MHServiceKeepAlive.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::ProjTaskReminder.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
+			global::MHServiceKeepAlive.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::ProjTaskReminder.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
+			global::MHServiceKeepAlive.Resource.Styleable.ViewStubCompat = global::ProjTaskReminder.Resource.Styleable.ViewStubCompat;
+			global::MHServiceKeepAlive.Resource.Styleable.ViewStubCompat_android_id = global::ProjTaskReminder.Resource.Styleable.ViewStubCompat_android_id;
+			global::MHServiceKeepAlive.Resource.Styleable.ViewStubCompat_android_inflatedId = global::ProjTaskReminder.Resource.Styleable.ViewStubCompat_android_inflatedId;
+			global::MHServiceKeepAlive.Resource.Styleable.ViewStubCompat_android_layout = global::ProjTaskReminder.Resource.Styleable.ViewStubCompat_android_layout;
+			global::MHServiceKeepAlive.Resource.Styleable.View_android_focusable = global::ProjTaskReminder.Resource.Styleable.View_android_focusable;
+			global::MHServiceKeepAlive.Resource.Styleable.View_android_theme = global::ProjTaskReminder.Resource.Styleable.View_android_theme;
+			global::MHServiceKeepAlive.Resource.Styleable.View_paddingEnd = global::ProjTaskReminder.Resource.Styleable.View_paddingEnd;
+			global::MHServiceKeepAlive.Resource.Styleable.View_paddingStart = global::ProjTaskReminder.Resource.Styleable.View_paddingStart;
+			global::MHServiceKeepAlive.Resource.Styleable.View_theme = global::ProjTaskReminder.Resource.Styleable.View_theme;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::ProjTaskReminder.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.coordinatorLayoutStyle = global::ProjTaskReminder.Resource.Attribute.coordinatorLayoutStyle;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::ProjTaskReminder.Resource.Attribute.font;
@@ -5365,19 +5364,22 @@ namespace ProjTaskReminder
 			public const int layoutMainCardTask = 2131230871;
 			
 			// aapt resource value: 0x7F080098
-			public const int layoutWeather = 2131230872;
+			public const int layoutPicSeekerZone = 2131230872;
 			
 			// aapt resource value: 0x7F080099
-			public const int layoutWeather1 = 2131230873;
+			public const int layoutWeather = 2131230873;
 			
 			// aapt resource value: 0x7F08009A
-			public const int layoutWeather2 = 2131230874;
+			public const int layoutWeather1 = 2131230874;
 			
 			// aapt resource value: 0x7F08009B
-			public const int layoutWeather3 = 2131230875;
+			public const int layoutWeather2 = 2131230875;
 			
 			// aapt resource value: 0x7F08009C
-			public const int layoutWeather4 = 2131230876;
+			public const int layoutWeather3 = 2131230876;
+			
+			// aapt resource value: 0x7F08009D
+			public const int layoutWeather4 = 2131230877;
 			
 			// aapt resource value: 0x7F080090
 			public const int layPlayButtons = 2131230864;
@@ -5394,482 +5396,485 @@ namespace ProjTaskReminder
 			// aapt resource value: 0x7F080094
 			public const int laySongName = 2131230868;
 			
-			// aapt resource value: 0x7F08009D
-			public const int lblAlbum = 2131230877;
-			
 			// aapt resource value: 0x7F08009E
-			public const int lblBackColor = 2131230878;
+			public const int lblAlbum = 2131230878;
 			
 			// aapt resource value: 0x7F08009F
-			public const int lblDateTime = 2131230879;
+			public const int lblBackColor = 2131230879;
 			
 			// aapt resource value: 0x7F0800A0
-			public const int lblDetailsDate = 2131230880;
+			public const int lblDateTime = 2131230880;
 			
 			// aapt resource value: 0x7F0800A1
-			public const int lblDetailsLastUpdate = 2131230881;
+			public const int lblDetailsDate = 2131230881;
 			
 			// aapt resource value: 0x7F0800A2
-			public const int lblDetailsLastUpdateValue = 2131230882;
+			public const int lblDetailsLastUpdate = 2131230882;
 			
 			// aapt resource value: 0x7F0800A3
-			public const int lblDetailsRepeat = 2131230883;
+			public const int lblDetailsLastUpdateValue = 2131230883;
 			
 			// aapt resource value: 0x7F0800A4
-			public const int lblDetailsTime = 2131230884;
+			public const int lblDetailsRepeat = 2131230884;
 			
 			// aapt resource value: 0x7F0800A5
-			public const int lblMainCaption = 2131230885;
+			public const int lblDetailsTime = 2131230885;
 			
 			// aapt resource value: 0x7F0800A6
-			public const int lblPosEnd = 2131230886;
+			public const int lblMainCaption = 2131230886;
 			
 			// aapt resource value: 0x7F0800A7
-			public const int lblPosNow = 2131230887;
+			public const int lblPosEnd = 2131230887;
 			
 			// aapt resource value: 0x7F0800A8
-			public const int lblSongArtist = 2131230888;
+			public const int lblPosNow = 2131230888;
 			
 			// aapt resource value: 0x7F0800A9
-			public const int lblSongName = 2131230889;
+			public const int lblSongArtist = 2131230889;
 			
 			// aapt resource value: 0x7F0800AA
-			public const int lblSongsListCaption = 2131230890;
+			public const int lblSongName = 2131230890;
 			
 			// aapt resource value: 0x7F0800AB
-			public const int left = 2131230891;
+			public const int lblSongsListCaption = 2131230891;
 			
 			// aapt resource value: 0x7F0800AC
-			public const int line1 = 2131230892;
+			public const int lblVolumePos = 2131230892;
 			
 			// aapt resource value: 0x7F0800AD
-			public const int line3 = 2131230893;
+			public const int left = 2131230893;
 			
 			// aapt resource value: 0x7F0800AE
-			public const int listMode = 2131230894;
+			public const int line1 = 2131230894;
 			
 			// aapt resource value: 0x7F0800AF
-			public const int list_item = 2131230895;
+			public const int line3 = 2131230895;
 			
 			// aapt resource value: 0x7F0800B0
-			public const int lstFiles = 2131230896;
+			public const int listMode = 2131230896;
 			
 			// aapt resource value: 0x7F0800B1
-			public const int lstTasks = 2131230897;
+			public const int list_item = 2131230897;
 			
 			// aapt resource value: 0x7F0800B2
-			public const int masked = 2131230898;
+			public const int lstFiles = 2131230898;
 			
 			// aapt resource value: 0x7F0800B3
-			public const int menu_db_backup = 2131230899;
+			public const int lstTasks = 2131230899;
 			
 			// aapt resource value: 0x7F0800B4
-			public const int menu_db_restore = 2131230900;
+			public const int masked = 2131230900;
 			
 			// aapt resource value: 0x7F0800B5
-			public const int menu_settings = 2131230901;
+			public const int menu_db_backup = 2131230901;
 			
 			// aapt resource value: 0x7F0800B6
-			public const int menu_textfile_read = 2131230902;
+			public const int menu_db_restore = 2131230902;
 			
 			// aapt resource value: 0x7F0800B7
-			public const int menu_textfile_write = 2131230903;
+			public const int menu_settings = 2131230903;
 			
 			// aapt resource value: 0x7F0800B8
-			public const int message = 2131230904;
+			public const int menu_textfile_read = 2131230904;
+			
+			// aapt resource value: 0x7F0800B9
+			public const int menu_textfile_write = 2131230905;
+			
+			// aapt resource value: 0x7F0800BA
+			public const int message = 2131230906;
 			
 			// aapt resource value: 0x7F080003
 			public const int META = 2131230723;
 			
-			// aapt resource value: 0x7F0800B9
-			public const int middle = 2131230905;
-			
-			// aapt resource value: 0x7F0800BA
-			public const int mini = 2131230906;
-			
 			// aapt resource value: 0x7F0800BB
-			public const int mtrl_child_content_container = 2131230907;
+			public const int middle = 2131230907;
 			
 			// aapt resource value: 0x7F0800BC
-			public const int mtrl_internal_children_alpha_tag = 2131230908;
+			public const int mini = 2131230908;
 			
 			// aapt resource value: 0x7F0800BD
-			public const int multiply = 2131230909;
+			public const int mtrl_child_content_container = 2131230909;
 			
 			// aapt resource value: 0x7F0800BE
-			public const int navigation_header_container = 2131230910;
+			public const int mtrl_internal_children_alpha_tag = 2131230910;
 			
 			// aapt resource value: 0x7F0800BF
-			public const int never = 2131230911;
+			public const int multiply = 2131230911;
 			
 			// aapt resource value: 0x7F0800C0
-			public const int none = 2131230912;
+			public const int navigation_header_container = 2131230912;
 			
 			// aapt resource value: 0x7F0800C1
-			public const int normal = 2131230913;
+			public const int never = 2131230913;
 			
 			// aapt resource value: 0x7F0800C2
-			public const int notification_background = 2131230914;
+			public const int none = 2131230914;
 			
 			// aapt resource value: 0x7F0800C3
-			public const int notification_main_column = 2131230915;
+			public const int normal = 2131230915;
 			
 			// aapt resource value: 0x7F0800C4
-			public const int notification_main_column_container = 2131230916;
+			public const int notification_background = 2131230916;
 			
 			// aapt resource value: 0x7F0800C5
-			public const int outline = 2131230917;
+			public const int notification_main_column = 2131230917;
 			
 			// aapt resource value: 0x7F0800C6
-			public const int parallax = 2131230918;
+			public const int notification_main_column_container = 2131230918;
 			
 			// aapt resource value: 0x7F0800C7
-			public const int parentPanel = 2131230919;
+			public const int outline = 2131230919;
 			
 			// aapt resource value: 0x7F0800C8
-			public const int parent_matrix = 2131230920;
+			public const int parallax = 2131230920;
 			
 			// aapt resource value: 0x7F0800C9
-			public const int pin = 2131230921;
+			public const int parentPanel = 2131230921;
 			
 			// aapt resource value: 0x7F0800CA
-			public const int progress_circular = 2131230922;
+			public const int parent_matrix = 2131230922;
 			
 			// aapt resource value: 0x7F0800CB
-			public const int progress_horizontal = 2131230923;
+			public const int pin = 2131230923;
 			
 			// aapt resource value: 0x7F0800CC
-			public const int radio = 2131230924;
+			public const int progress_circular = 2131230924;
 			
 			// aapt resource value: 0x7F0800CD
-			public const int right = 2131230925;
+			public const int progress_horizontal = 2131230925;
 			
 			// aapt resource value: 0x7F0800CE
-			public const int right_icon = 2131230926;
+			public const int radio = 2131230926;
 			
 			// aapt resource value: 0x7F0800CF
-			public const int right_side = 2131230927;
+			public const int right = 2131230927;
 			
 			// aapt resource value: 0x7F0800D0
-			public const int save_image_matrix = 2131230928;
+			public const int right_icon = 2131230928;
 			
 			// aapt resource value: 0x7F0800D1
-			public const int save_non_transition_alpha = 2131230929;
+			public const int right_side = 2131230929;
 			
 			// aapt resource value: 0x7F0800D2
-			public const int save_scale_type = 2131230930;
-			
-			// aapt resource value: 0x7F0800D5
-			public const int screen = 2131230933;
+			public const int save_image_matrix = 2131230930;
 			
 			// aapt resource value: 0x7F0800D3
-			public const int scrHorizonPics = 2131230931;
+			public const int save_non_transition_alpha = 2131230931;
 			
 			// aapt resource value: 0x7F0800D4
-			public const int scrHorizonSongName = 2131230932;
-			
-			// aapt resource value: 0x7F0800D6
-			public const int scroll = 2131230934;
-			
-			// aapt resource value: 0x7F0800DC
-			public const int scrollable = 2131230940;
+			public const int save_scale_type = 2131230932;
 			
 			// aapt resource value: 0x7F0800D7
-			public const int scrollIndicatorDown = 2131230935;
+			public const int screen = 2131230935;
+			
+			// aapt resource value: 0x7F0800D5
+			public const int scrHorizonPics = 2131230933;
+			
+			// aapt resource value: 0x7F0800D6
+			public const int scrHorizonSongName = 2131230934;
 			
 			// aapt resource value: 0x7F0800D8
-			public const int scrollIndicatorUp = 2131230936;
-			
-			// aapt resource value: 0x7F0800D9
-			public const int scrollNews = 2131230937;
-			
-			// aapt resource value: 0x7F0800DA
-			public const int scrollView = 2131230938;
-			
-			// aapt resource value: 0x7F0800DB
-			public const int scrollWeather = 2131230939;
-			
-			// aapt resource value: 0x7F0800DD
-			public const int search_badge = 2131230941;
+			public const int scroll = 2131230936;
 			
 			// aapt resource value: 0x7F0800DE
-			public const int search_bar = 2131230942;
+			public const int scrollable = 2131230942;
+			
+			// aapt resource value: 0x7F0800D9
+			public const int scrollIndicatorDown = 2131230937;
+			
+			// aapt resource value: 0x7F0800DA
+			public const int scrollIndicatorUp = 2131230938;
+			
+			// aapt resource value: 0x7F0800DB
+			public const int scrollNews = 2131230939;
+			
+			// aapt resource value: 0x7F0800DC
+			public const int scrollView = 2131230940;
+			
+			// aapt resource value: 0x7F0800DD
+			public const int scrollWeather = 2131230941;
 			
 			// aapt resource value: 0x7F0800DF
-			public const int search_button = 2131230943;
+			public const int search_badge = 2131230943;
 			
 			// aapt resource value: 0x7F0800E0
-			public const int search_close_btn = 2131230944;
+			public const int search_bar = 2131230944;
 			
 			// aapt resource value: 0x7F0800E1
-			public const int search_edit_frame = 2131230945;
+			public const int search_button = 2131230945;
 			
 			// aapt resource value: 0x7F0800E2
-			public const int search_go_btn = 2131230946;
+			public const int search_close_btn = 2131230946;
 			
 			// aapt resource value: 0x7F0800E3
-			public const int search_mag_icon = 2131230947;
+			public const int search_edit_frame = 2131230947;
 			
 			// aapt resource value: 0x7F0800E4
-			public const int search_plate = 2131230948;
+			public const int search_go_btn = 2131230948;
 			
 			// aapt resource value: 0x7F0800E5
-			public const int search_src_text = 2131230949;
+			public const int search_mag_icon = 2131230949;
 			
 			// aapt resource value: 0x7F0800E6
-			public const int search_voice_btn = 2131230950;
-			
-			// aapt resource value: 0x7F0800E8
-			public const int selected = 2131230952;
+			public const int search_plate = 2131230950;
 			
 			// aapt resource value: 0x7F0800E7
-			public const int select_dialog_listview = 2131230951;
+			public const int search_src_text = 2131230951;
+			
+			// aapt resource value: 0x7F0800E8
+			public const int search_voice_btn = 2131230952;
+			
+			// aapt resource value: 0x7F0800EA
+			public const int selected = 2131230954;
+			
+			// aapt resource value: 0x7F0800E9
+			public const int select_dialog_listview = 2131230953;
 			
 			// aapt resource value: 0x7F080004
 			public const int SHIFT = 2131230724;
 			
-			// aapt resource value: 0x7F0800E9
-			public const int shortcut = 2131230953;
-			
-			// aapt resource value: 0x7F0800EA
-			public const int showCustom = 2131230954;
-			
 			// aapt resource value: 0x7F0800EB
-			public const int showHome = 2131230955;
+			public const int shortcut = 2131230955;
 			
 			// aapt resource value: 0x7F0800EC
-			public const int showTitle = 2131230956;
+			public const int showCustom = 2131230956;
 			
 			// aapt resource value: 0x7F0800ED
-			public const int smallLabel = 2131230957;
+			public const int showHome = 2131230957;
 			
 			// aapt resource value: 0x7F0800EE
-			public const int snackbar_action = 2131230958;
+			public const int showTitle = 2131230958;
 			
 			// aapt resource value: 0x7F0800EF
-			public const int snackbar_text = 2131230959;
+			public const int smallLabel = 2131230959;
 			
 			// aapt resource value: 0x7F0800F0
-			public const int snap = 2131230960;
+			public const int snackbar_action = 2131230960;
 			
 			// aapt resource value: 0x7F0800F1
-			public const int snapMargins = 2131230961;
+			public const int snackbar_text = 2131230961;
 			
 			// aapt resource value: 0x7F0800F2
-			public const int spacer = 2131230962;
+			public const int snap = 2131230962;
 			
 			// aapt resource value: 0x7F0800F3
-			public const int split_action_bar = 2131230963;
+			public const int snapMargins = 2131230963;
 			
 			// aapt resource value: 0x7F0800F4
-			public const int src_atop = 2131230964;
+			public const int spacer = 2131230964;
 			
 			// aapt resource value: 0x7F0800F5
-			public const int src_in = 2131230965;
+			public const int split_action_bar = 2131230965;
 			
 			// aapt resource value: 0x7F0800F6
-			public const int src_over = 2131230966;
+			public const int src_atop = 2131230966;
 			
 			// aapt resource value: 0x7F0800F7
-			public const int start = 2131230967;
+			public const int src_in = 2131230967;
 			
 			// aapt resource value: 0x7F0800F8
-			public const int stretch = 2131230968;
+			public const int src_over = 2131230968;
 			
 			// aapt resource value: 0x7F0800F9
-			public const int submenuarrow = 2131230969;
+			public const int start = 2131230969;
 			
 			// aapt resource value: 0x7F0800FA
-			public const int submit_area = 2131230970;
+			public const int stretch = 2131230970;
+			
+			// aapt resource value: 0x7F0800FB
+			public const int submenuarrow = 2131230971;
+			
+			// aapt resource value: 0x7F0800FC
+			public const int submit_area = 2131230972;
 			
 			// aapt resource value: 0x7F080005
 			public const int SYM = 2131230725;
 			
-			// aapt resource value: 0x7F0800FB
-			public const int tabMode = 2131230971;
-			
-			// aapt resource value: 0x7F0800FC
-			public const int tag_transition_group = 2131230972;
-			
 			// aapt resource value: 0x7F0800FD
-			public const int tag_unhandled_key_event_manager = 2131230973;
+			public const int tabMode = 2131230973;
 			
 			// aapt resource value: 0x7F0800FE
-			public const int tag_unhandled_key_listeners = 2131230974;
+			public const int tag_transition_group = 2131230974;
 			
 			// aapt resource value: 0x7F0800FF
-			public const int text = 2131230975;
+			public const int tag_unhandled_key_event_manager = 2131230975;
 			
 			// aapt resource value: 0x7F080100
-			public const int text2 = 2131230976;
-			
-			// aapt resource value: 0x7F080105
-			public const int textinput_counter = 2131230981;
-			
-			// aapt resource value: 0x7F080106
-			public const int textinput_error = 2131230982;
-			
-			// aapt resource value: 0x7F080107
-			public const int textinput_helper_text = 2131230983;
+			public const int tag_unhandled_key_listeners = 2131230976;
 			
 			// aapt resource value: 0x7F080101
-			public const int textSpacerNoButtons = 2131230977;
+			public const int text = 2131230977;
 			
 			// aapt resource value: 0x7F080102
-			public const int textSpacerNoTitle = 2131230978;
+			public const int text2 = 2131230978;
 			
-			// aapt resource value: 0x7F080103
-			public const int textStart = 2131230979;
-			
-			// aapt resource value: 0x7F080104
-			public const int text_input_password_toggle = 2131230980;
+			// aapt resource value: 0x7F080107
+			public const int textinput_counter = 2131230983;
 			
 			// aapt resource value: 0x7F080108
-			public const int time = 2131230984;
+			public const int textinput_error = 2131230984;
 			
 			// aapt resource value: 0x7F080109
-			public const int timePicker1 = 2131230985;
+			public const int textinput_helper_text = 2131230985;
+			
+			// aapt resource value: 0x7F080103
+			public const int textSpacerNoButtons = 2131230979;
+			
+			// aapt resource value: 0x7F080104
+			public const int textSpacerNoTitle = 2131230980;
+			
+			// aapt resource value: 0x7F080105
+			public const int textStart = 2131230981;
+			
+			// aapt resource value: 0x7F080106
+			public const int text_input_password_toggle = 2131230982;
 			
 			// aapt resource value: 0x7F08010A
-			public const int title = 2131230986;
+			public const int time = 2131230986;
 			
 			// aapt resource value: 0x7F08010B
-			public const int titleDividerNoCustom = 2131230987;
+			public const int timePicker1 = 2131230987;
 			
 			// aapt resource value: 0x7F08010C
-			public const int title_template = 2131230988;
+			public const int title = 2131230988;
 			
 			// aapt resource value: 0x7F08010D
-			public const int toolbar = 2131230989;
+			public const int titleDividerNoCustom = 2131230989;
 			
 			// aapt resource value: 0x7F08010E
-			public const int top = 2131230990;
+			public const int title_template = 2131230990;
 			
 			// aapt resource value: 0x7F08010F
-			public const int topPanel = 2131230991;
+			public const int toolbar = 2131230991;
 			
 			// aapt resource value: 0x7F080110
-			public const int touch_outside = 2131230992;
+			public const int top = 2131230992;
 			
 			// aapt resource value: 0x7F080111
-			public const int transition_current_scene = 2131230993;
+			public const int topPanel = 2131230993;
 			
 			// aapt resource value: 0x7F080112
-			public const int transition_layout_save = 2131230994;
+			public const int touch_outside = 2131230994;
 			
 			// aapt resource value: 0x7F080113
-			public const int transition_position = 2131230995;
+			public const int transition_current_scene = 2131230995;
 			
 			// aapt resource value: 0x7F080114
-			public const int transition_scene_layoutid_cache = 2131230996;
+			public const int transition_layout_save = 2131230996;
 			
 			// aapt resource value: 0x7F080115
-			public const int transition_transform = 2131230997;
+			public const int transition_position = 2131230997;
 			
 			// aapt resource value: 0x7F080116
-			public const int txtDateDue = 2131230998;
+			public const int transition_scene_layoutid_cache = 2131230998;
 			
 			// aapt resource value: 0x7F080117
-			public const int txtDescription = 2131230999;
+			public const int transition_transform = 2131230999;
 			
 			// aapt resource value: 0x7F080118
-			public const int txtDetailsColor = 2131231000;
+			public const int txtDateDue = 2131231000;
 			
 			// aapt resource value: 0x7F080119
-			public const int txtDetailsDate = 2131231001;
+			public const int txtDescription = 2131231001;
 			
 			// aapt resource value: 0x7F08011A
-			public const int txtDetailsDateDay = 2131231002;
+			public const int txtDetailsColor = 2131231002;
 			
 			// aapt resource value: 0x7F08011B
-			public const int txtDetailsDescription = 2131231003;
+			public const int txtDetailsDate = 2131231003;
 			
 			// aapt resource value: 0x7F08011C
-			public const int txtDetailsRepeat = 2131231004;
+			public const int txtDetailsDateDay = 2131231004;
 			
 			// aapt resource value: 0x7F08011D
-			public const int txtDetailsTime = 2131231005;
+			public const int txtDetailsDescription = 2131231005;
 			
 			// aapt resource value: 0x7F08011E
-			public const int txtDetailsTitle = 2131231006;
+			public const int txtDetailsRepeat = 2131231006;
 			
 			// aapt resource value: 0x7F08011F
-			public const int txtRssNews = 2131231007;
+			public const int txtDetailsTime = 2131231007;
 			
 			// aapt resource value: 0x7F080120
-			public const int txtSettingMusicPath = 2131231008;
+			public const int txtDetailsTitle = 2131231008;
 			
 			// aapt resource value: 0x7F080121
-			public const int txtSettingNewsUrl = 2131231009;
+			public const int txtRssNews = 2131231009;
 			
 			// aapt resource value: 0x7F080122
-			public const int txtSettingWeatherUrl = 2131231010;
+			public const int txtSettingMusicPath = 2131231010;
 			
 			// aapt resource value: 0x7F080123
-			public const int txtTakeFocus = 2131231011;
+			public const int txtSettingNewsUrl = 2131231011;
 			
 			// aapt resource value: 0x7F080124
-			public const int txtTitle = 2131231012;
+			public const int txtSettingWeatherUrl = 2131231012;
 			
 			// aapt resource value: 0x7F080125
-			public const int txtWeatherDescription1 = 2131231013;
+			public const int txtTakeFocus = 2131231013;
 			
 			// aapt resource value: 0x7F080126
-			public const int txtWeatherDescription2 = 2131231014;
+			public const int txtTitle = 2131231014;
 			
 			// aapt resource value: 0x7F080127
-			public const int txtWeatherDescription3 = 2131231015;
+			public const int txtWeatherDescription1 = 2131231015;
 			
 			// aapt resource value: 0x7F080128
-			public const int txtWeatherDescription4 = 2131231016;
+			public const int txtWeatherDescription2 = 2131231016;
 			
 			// aapt resource value: 0x7F080129
-			public const int txtWeatherPlace1 = 2131231017;
+			public const int txtWeatherDescription3 = 2131231017;
 			
 			// aapt resource value: 0x7F08012A
-			public const int txtWeatherPlace2 = 2131231018;
+			public const int txtWeatherDescription4 = 2131231018;
 			
 			// aapt resource value: 0x7F08012B
-			public const int txtWeatherPlace3 = 2131231019;
+			public const int txtWeatherPlace1 = 2131231019;
 			
 			// aapt resource value: 0x7F08012C
-			public const int txtWeatherPlace4 = 2131231020;
+			public const int txtWeatherPlace2 = 2131231020;
 			
 			// aapt resource value: 0x7F08012D
-			public const int txtWeatherTemperture1 = 2131231021;
+			public const int txtWeatherPlace3 = 2131231021;
 			
 			// aapt resource value: 0x7F08012E
-			public const int txtWeatherTemperture2 = 2131231022;
+			public const int txtWeatherPlace4 = 2131231022;
 			
 			// aapt resource value: 0x7F08012F
-			public const int txtWeatherTemperture3 = 2131231023;
+			public const int txtWeatherTemperture1 = 2131231023;
 			
 			// aapt resource value: 0x7F080130
-			public const int txtWeatherTemperture4 = 2131231024;
+			public const int txtWeatherTemperture2 = 2131231024;
 			
 			// aapt resource value: 0x7F080131
-			public const int uniform = 2131231025;
+			public const int txtWeatherTemperture3 = 2131231025;
 			
 			// aapt resource value: 0x7F080132
-			public const int unlabeled = 2131231026;
+			public const int txtWeatherTemperture4 = 2131231026;
 			
 			// aapt resource value: 0x7F080133
-			public const int up = 2131231027;
+			public const int uniform = 2131231027;
 			
 			// aapt resource value: 0x7F080134
-			public const int useLogo = 2131231028;
+			public const int unlabeled = 2131231028;
 			
 			// aapt resource value: 0x7F080135
-			public const int view_offset_helper = 2131231029;
+			public const int up = 2131231029;
 			
 			// aapt resource value: 0x7F080136
-			public const int visible = 2131231030;
+			public const int useLogo = 2131231030;
 			
 			// aapt resource value: 0x7F080137
-			public const int withText = 2131231031;
+			public const int view_offset_helper = 2131231031;
 			
 			// aapt resource value: 0x7F080138
-			public const int wrap_content = 2131231032;
+			public const int visible = 2131231032;
+			
+			// aapt resource value: 0x7F080139
+			public const int withText = 2131231033;
+			
+			// aapt resource value: 0x7F08013A
+			public const int wrap_content = 2131231034;
 			
 			static Id()
 			{
@@ -6506,64 +6511,61 @@ namespace ProjTaskReminder
 			public const int fab_transformation_sheet_behavior = 2131689522;
 			
 			// aapt resource value: 0x7F0F0033
-			public const int hello = 2131689523;
+			public const int hide_bottom_view_on_scroll_behavior = 2131689523;
 			
 			// aapt resource value: 0x7F0F0034
-			public const int hide_bottom_view_on_scroll_behavior = 2131689524;
+			public const int int_pick_Date = 2131689524;
 			
 			// aapt resource value: 0x7F0F0035
-			public const int int_pick_Date = 2131689525;
+			public const int int_pick_Time = 2131689525;
 			
 			// aapt resource value: 0x7F0F0036
-			public const int int_pick_Time = 2131689526;
+			public const int list_title = 2131689526;
 			
 			// aapt resource value: 0x7F0F0037
-			public const int list_title = 2131689527;
+			public const int menu_settings = 2131689527;
 			
 			// aapt resource value: 0x7F0F0038
-			public const int menu_settings = 2131689528;
+			public const int mtrl_chip_close_icon_content_description = 2131689528;
 			
 			// aapt resource value: 0x7F0F0039
-			public const int mtrl_chip_close_icon_content_description = 2131689529;
+			public const int notification_channel_description = 2131689529;
 			
 			// aapt resource value: 0x7F0F003A
-			public const int notification_channel_description = 2131689530;
+			public const int notification_channel_id = 2131689530;
 			
 			// aapt resource value: 0x7F0F003B
-			public const int notification_channel_id = 2131689531;
+			public const int notification_snooze_message = 2131689531;
 			
 			// aapt resource value: 0x7F0F003C
-			public const int notification_snooze_message = 2131689532;
+			public const int password_toggle_content_description = 2131689532;
 			
 			// aapt resource value: 0x7F0F003D
-			public const int password_toggle_content_description = 2131689533;
+			public const int path_password_eye = 2131689533;
 			
 			// aapt resource value: 0x7F0F003E
-			public const int path_password_eye = 2131689534;
+			public const int path_password_eye_mask_strike_through = 2131689534;
 			
 			// aapt resource value: 0x7F0F003F
-			public const int path_password_eye_mask_strike_through = 2131689535;
+			public const int path_password_eye_mask_visible = 2131689535;
 			
 			// aapt resource value: 0x7F0F0040
-			public const int path_password_eye_mask_visible = 2131689536;
+			public const int path_password_strike_through = 2131689536;
 			
 			// aapt resource value: 0x7F0F0041
-			public const int path_password_strike_through = 2131689537;
+			public const int repeat_once_word = 2131689537;
 			
 			// aapt resource value: 0x7F0F0042
-			public const int repeat_once_word = 2131689538;
+			public const int search_menu_title = 2131689538;
 			
 			// aapt resource value: 0x7F0F0043
-			public const int search_menu_title = 2131689539;
+			public const int status_bar_notification_info_overflow = 2131689539;
 			
 			// aapt resource value: 0x7F0F0044
-			public const int status_bar_notification_info_overflow = 2131689540;
+			public const int title_activity_alarm = 2131689540;
 			
 			// aapt resource value: 0x7F0F0045
-			public const int title_activity_alarm = 2131689541;
-			
-			// aapt resource value: 0x7F0F0046
-			public const int title_activity_setting = 2131689542;
+			public const int title_activity_setting = 2131689541;
 			
 			static String()
 			{

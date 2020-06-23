@@ -46,6 +46,9 @@ namespace ProjTaskReminder
         private Android.Support.V7.Widget.CardView cardFilesList;
         private RelativeLayout layFolderList;
         private TextView lblSongsListCaption;
+        private TextView lblVolumePos;
+
+
         private TimerTask TimerTaskSongProgress;
         private System.Timers.Timer TimerSongProgress;
         private TimerTask picsTimerTask;
@@ -230,9 +233,10 @@ namespace ProjTaskReminder
             scrHorizonSongName = (HorizontalScrollView)FindViewById(Resource.Id.scrHorizonSongName);
             lblSongArtist = (TextView)FindViewById(Resource.Id.lblSongArtist);
             lblAlbum = (TextView)FindViewById(Resource.Id.lblAlbum);
-            lblPosNow = (TextView)FindViewById(Resource.Id.lblPosNow);lblPosNow = (TextView)FindViewById(Resource.Id.lblPosNow);
+            lblPosNow = (TextView)FindViewById(Resource.Id.lblPosNow);
             lblPosEnd = (TextView)FindViewById(Resource.Id.lblPosEnd);
             lblSongsListCaption = (TextView)FindViewById(Resource.Id.lblSongsListCaption);
+            lblVolumePos = (TextView)FindViewById(Resource.Id.lblVolumePos);
 
             imgSongArtist1 = (ImageView)FindViewById(Resource.Id.imgSongArtist1);
             imgSongArtist2 = (ImageView)FindViewById(Resource.Id.imgSongArtist2);
@@ -625,6 +629,8 @@ namespace ProjTaskReminder
                 //int actualVolume = audioManager.GetStreamVolume(Android.Media.Stream.Music);
                 //mediaPlayer.SetVolume(0.09f, 0.09f);  // (float)e.Progress, (float)e.Progress) ; 
             }
+
+            lblVolumePos.Text = e.Progress.ToString();
 
         }
 
