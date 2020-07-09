@@ -133,7 +133,7 @@ namespace ProjTaskReminder.Model
             }
             else
             {
-                spanned = Utils.Utils.trimSpannedText(spanned);
+                spanned = MH_Utils.Utils.trimSpannedText(spanned);
             }
 
             if (spanned != null)
@@ -384,7 +384,7 @@ namespace ProjTaskReminder.Model
 
             //Log.d("Task - getDate - Date: ", "*"+strDate+" "+strTime+"*");
 
-            return Utils.Utils.getDateFromString(strDate + " " + strTime);
+            return MH_Utils.Utils.getDateFromString(strDate + " " + strTime);
         }
 
         private string trimSpannedText()

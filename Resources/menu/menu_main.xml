@@ -32,4 +32,10 @@
       android:title="קריאה מקובץ טקסט"
       app:showAsAction="never" />
 
+  <item
+      android:id="@+id/menu_show_log_file"
+      android:orderInCategory="100"
+      android:title="הצג קובץ לוג"
+      app:showAsAction="never" />
+
 </menu>

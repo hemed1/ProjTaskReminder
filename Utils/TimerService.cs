@@ -65,7 +65,7 @@ namespace ProjTaskReminder.Utils
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
 
-            DateTime dateNow = Utils.GetDateNow();
+            DateTime dateNow = MH_Utils.Utils.GetDateNow();
             DateTime? dateDue = this.DateDue;     // this.EntityObject.getDate();
 
 
@@ -104,7 +104,7 @@ namespace ProjTaskReminder.Utils
             }
 
 
-            DateTime dateNow = Utils.GetDateNow();
+            DateTime dateNow = MH_Utils.Utils.GetDateNow();
 
             while (counter <= limitSeconds && dateNow.CompareTo(dateDue) < 0)
             {
@@ -112,7 +112,7 @@ namespace ProjTaskReminder.Utils
 
                 activity.RunOnUiThread(() =>
                 {
-                    dateNow = Utils.GetDateNow();
+                    dateNow = MH_Utils.Utils.GetDateNow();
                 });
 
                 counter += TimerInterval;

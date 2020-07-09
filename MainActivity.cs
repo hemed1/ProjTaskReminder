@@ -23,9 +23,9 @@ using ProjTaskRemindet.Utils;
 using ProjTaskReminder.Data;
 using ProjTaskReminder.Utils;
 using Android.Graphics.Drawables;
-using static ProjTaskReminder.Utils.Utils;
+using static MH_Utils.Utils;
 using System.Text;
-
+using Android;
 
 
 
@@ -49,6 +49,7 @@ namespace ProjTaskReminder
         private static string DB_FIELDNAME_IS_ARCHIVE = "IsArchive";
 
         // The code for get result from TasDetails screen
+        public const string WRITE_LIST_FILE_NAME = "MH_Tasks.txt";
         public const int SCREEN_TASK_DETAILS_SAVED = 1234;
         public const int SCREEN_TASK_DETAILS_DELETE = 9999;
         public const int SHOW_SCREEN_SETTING = 9998;
@@ -65,6 +66,8 @@ namespace ProjTaskReminder
         static readonly string TAG = typeof(MainActivity).FullName;
         static readonly string SERVICE_STARTED_KEY = "has_service_been_started";
 
+        private const int PERMISSIONS_REQUEST_READ_STORAGE = 111;
+        private const int PERMISSIONS_REQUEST_WRITE_STORAGE = 222;
 
 
         private ListView lstTasks;    //RecyclerView
@@ -99,9 +102,10 @@ namespace ProjTaskReminder
         private Android.Support.V4.App.NotificationCompat.Builder notificationBuilder;
         private TimerService TaskTimerService;     // , ElapsedEventHandler
         private delegate AdapterView.IOnItemClickListener lstTasks_OnItemClick3();
-        private Intent ServiceKeppAliveIntent;
-        private bool isServiceStarted;
 
+        private bool isServiceStarted;
+        private static Intent ServiceKeppAliveIntent;
+        private Bundle InputSavedInstanceState { get; set; }
 
 
 
@@ -118,6 +122,8 @@ namespace ProjTaskReminder
 
             try
             {
+                InputSavedInstanceState = savedInstanceState;
+
                 MainContext = this.ApplicationContext;
 
                 Initialize();
@@ -128,10 +134,10 @@ namespace ProjTaskReminder
 
                 FillListFromDB();
 
-                focusListOnToday(Utils.Utils.GetDateNow());
+                focusListOnToday(MH_Utils.Utils.GetDateNow());
 
 
-                ServiceKeepAliveHandle(savedInstanceState);
+                ServiceKeepAliveHandle(InputSavedInstanceState);
 
 
                 //StartRssNewsScroll();
@@ -146,7 +152,7 @@ namespace ProjTaskReminder
             }
             catch (Exception ex)
             {
-                Utils.Utils.WriteToLog(ex);
+                MH_Utils.Utils.WriteToLog(ex);
             }
         }
 
@@ -162,14 +168,22 @@ namespace ProjTaskReminder
 
             ServiceKeppAliveIntent = new Intent(this, typeof(MHServiceKeepAlive.ServiceStayAlive));
             ServiceKeppAliveIntent.SetFlags(ActivityFlags.NewTask);
+
+            // Just tto use same constants values
+            MHServiceKeepAlive.ServiceStayAlive serviceStayAlive = new MHServiceKeepAlive.ServiceStayAlive();
+
             Bundle bundle = new Bundle();
-            bundle.PutString("callerPackageName", this.PackageName);
-            bundle.PutString("callerComponentObjectName", this.ComponentName.ClassName);  // .ClassName
-            //ServiceKeppAliveIntent.PutExtra("callerPackageName", new string[] { "com.meirhemed.executeanotheractivity" });
-            //ServiceKeppAliveIntent.PutExtra("callerComponentObjectName", new string[] { "com.meirhemed.executeanotheractivity.mainactivity" });
-            ServiceKeppAliveIntent.PutExtra("CallerName", bundle);
+            bundle.PutString(serviceStayAlive.INTENT_KEY_CALLER_PACKAGE_NAME, this.PackageName);
+            bundle.PutString(serviceStayAlive.INTENT_KEY_CALLER_COMPONENT_ACTIVITY_NAME, this.ComponentName.ClassName);     // "com.meirhemed.executeanotheractivity.mainactivity"
+            bundle.PutBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_START_AT_BEGINING, false);
+            bundle.PutBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_AUTOMATIC, true);
+
+            ServiceKeppAliveIntent.PutExtra(serviceStayAlive.INTENT_KEY_CALLER_BUNDLE, bundle);
 
             StartService(ServiceKeppAliveIntent);
+
+            //ServiceKeppAliveIntent.PutExtra("callerPackageName", new string[] { "com.meirhemed.executeanotheractivity" });
+            //ServiceKeppAliveIntent.PutExtra("callerComponentObjectName", new string[] { "com.meirhemed.executeanotheractivity.mainactivity" });
 
             //intent = new Intent(Intent.ActionMain);     // Intent.ActionMain - "android.intent.action.MAIN"
             //intent.SetComponent(new ComponentName("com.meirhemed.intentedactivity", "com.meirhemed.intentedactivity.mainactivity"));
@@ -205,21 +219,21 @@ namespace ProjTaskReminder
         private void StartGetNews()
         {
 
-            activity.RunOnUiThread(GetRssNewsScroll);
+            this.RunOnUiThread(GetRssNewsScroll);
 
         }
 
         [Obsolete]
         private void GetRssNewsScroll()
         {
-            List<XmlItem> items;
+            List<MH_Utils.XmlItem> items;
             DateTime nowDate;
 
 
 
-            items = Utils.Utils.OpenXmlData(Utils.Utils.NEWS_RSS_ADDRESS2);
+            items = MH_Utils.Utils.OpenXmlData(MH_Utils.Utils.NEWS_RSS_ADDRESS2);
 
-            nowDate = Utils.Utils.GetDateNow().Date;
+            nowDate = MH_Utils.Utils.GetDateNow().Date;
 
             if (items.Count > 0)
             {
@@ -236,7 +250,7 @@ namespace ProjTaskReminder
 
             for (int i = items.Count - 1; i >= 0; i--)
             {
-                XmlItem newsItem = items[i];
+                MH_Utils.XmlItem newsItem = items[i];
 
                 if (newsItem.PublishDate.Date.CompareTo(nowDate) == 0)
                 {
@@ -275,7 +289,7 @@ namespace ProjTaskReminder
         /// <param name="position"></param>
         private void SetTaskItemControlsInView(ListViewAdapter.ListViewHolder listViewHolder, int position)
         {
-            if (position >= TasksList.Count || position<0)
+            if (position >= TasksList.Count || position < 0)
             {
                 return;
             }
@@ -287,11 +301,11 @@ namespace ProjTaskReminder
 
             if (!task.getDate_due().Equals(""))
             {
-                listViewHolder.ThirdLine.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
+                listViewHolder.ThirdLine.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + MH_Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
             }
             else
             {
-                listViewHolder.ThirdLine.SetText(task.getDate_last_update() + " יום " + ProjTaskReminder.Utils.Utils.getDateDayName(Utils.Utils.getDateFromString(task.getDate_last_update())), TextView.BufferType.Normal);
+                listViewHolder.ThirdLine.SetText(task.getDate_last_update() + " יום " + MH_Utils.Utils.getDateDayName(MH_Utils.Utils.getDateFromString(task.getDate_last_update())), TextView.BufferType.Normal);
             }
 
         }
@@ -301,7 +315,7 @@ namespace ProjTaskReminder
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
-            Android.Support.Design.Widget.FloatingActionButton  btnMainNew = (Android.Support.Design.Widget.FloatingActionButton)FindViewById(Resource.Id.btnMainNew);
+            Android.Support.Design.Widget.FloatingActionButton btnMainNew = (Android.Support.Design.Widget.FloatingActionButton)FindViewById(Resource.Id.btnMainNew);
             btnMainNew.Click += btnMainNew_OnClick;
             //btnMainNew.SetBackgroundResource(Android.Resource.Drawable.IcMediaNext);
 
@@ -309,7 +323,7 @@ namespace ProjTaskReminder
             //btnMainDelete.Click += btnMainDelete_OnClick;
             //btnMainDelete.SetBackgroundResource(Android.Resource.Drawable.IcDelete);
 
-            
+
             ImageButton btnMainMusic = (ImageButton)FindViewById(Resource.Id.bntMainMusic);
             //btnMainWeather = (ImageView)FindViewById(Resource.Id.btnMainWeather);
             ImageButton btnMainEmail = (ImageButton)FindViewById(Resource.Id.btnMainEmail);
@@ -319,11 +333,11 @@ namespace ProjTaskReminder
             txtRssNews = (TextView)FindViewById(Resource.Id.txtRssNews);
             imageTimerPointWeater = (ImageView)FindViewById(Resource.Id.imageTimerPointWeater);
 
-            
+
             lstTasks = (ListView)FindViewById(Resource.Id.lstTasks);
 
 
-            ActivityTaskDetails.OnExitResult += OnExitResult;   
+            ActivityTaskDetails.OnExitResult += OnExitResult;
             btnMainMusic.Click += btnMainMusic_Click;
             //btnMainWeather.Click += btnMainWeather_Click;
             btnMainEmail.Click += StartRssNewsScroll;
@@ -445,7 +459,7 @@ namespace ProjTaskReminder
                 }
                 catch (Exception ex)
                 {
-                    Utils.Utils.WriteToLog("Error when try to set Weater icon: " + weather.getPoster() + Utils.Utils.LINE_SEPERATOR + ex.Message);
+                    MH_Utils.Utils.WriteToLog("Error when try to set Weater icon: " + weather.getPoster() + MH_Utils.Utils.LINE_SEPERATOR + ex.Message);
                 }
             }
 
@@ -506,10 +520,10 @@ namespace ProjTaskReminder
             //IsManualHtml = false;
             //setControlsColors();
 
-            Utils.Utils.activity = this;
-            Utils.Utils.context = MainContext;
-            Utils.Utils.LOG_FILE_NAME = "LogTaskReminder.txt";
-            Utils.Utils.LOG_FILE_PATH = MainContext.GetExternalFilesDir("").AbsolutePath;
+            MH_Utils.Utils.ClientActivity = this;
+            MH_Utils.Utils.context = MainContext;
+            MH_Utils.Utils.LOG_FILE_NAME = "LogTaskReminder.txt";
+            MH_Utils.Utils.LOG_FILE_PATH = MainContext.GetExternalFilesDir("").AbsolutePath;
             //string folderBackup = Android.OS.Environment.DirectoryMusic;        // "ProjTaskReminder"
             //LOG_FILE_PATH = Android.OS.Environment.GetExternalStoragePublicDirectory(folderBackup).AbsolutePath;
             //LOG_FILE_PATH = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
@@ -541,6 +555,12 @@ namespace ProjTaskReminder
             NewsScroll.ScrollControl = scrollNews;
             NewsScroll.IsScrollRightToLeft = true;
             //WeatherScroll.OnScrolling += OnWeatherScroll;
+
+            KeyValuePair<string, int>[] perm = new KeyValuePair<string, int>[] {
+                                                                                new KeyValuePair<string, int>(Manifest.Permission.WriteExternalStorage, PERMISSIONS_REQUEST_WRITE_STORAGE),
+                                                                                new KeyValuePair<string, int>(Manifest.Permission.ReadExternalStorage, PERMISSIONS_REQUEST_READ_STORAGE)
+                                                                               };
+            MH_Utils.Utils.PermissionAsk(perm);
 
         }
 
@@ -578,7 +598,7 @@ namespace ProjTaskReminder
         private void FillList()
         {
 
-            Toast.MakeText(this, "Fill list with items...", ToastLength.Short).Show();
+            //Toast.MakeText(this, "Fill list with items...", ToastLength.Short).Show();
 
 
 
@@ -658,7 +678,7 @@ namespace ProjTaskReminder
             //lstTasks.ItemClick += lstTasks_OnItemClick;
 
             listViewAdapter.ParentListView = lstTasks;
-          
+
 
             //lstTasks.OnItemClickListener = lstTasks_OnItemClick3;
             //lstTasks.ContextClickable = true;
@@ -724,6 +744,14 @@ namespace ProjTaskReminder
 
             try
             {
+                // Its Internal
+                //KeyValuePair<string, int>[] perm = new KeyValuePair<string, int>[] {
+                //                                                                      new KeyValuePair<string, int>(Manifest.Permission.WriteExternalStorage, PERMISSIONS_REQUEST_WRITE_STORAGE),
+                //                                                                      new KeyValuePair<string, int>(Manifest.Permission.ReadExternalStorage, PERMISSIONS_REQUEST_READ_STORAGE)
+                //                                                                   };
+                //MH_Utils.Utils.PermissionAsk(perm);
+
+
                 DB_TASK_DB_PATH = MainContext.GetExternalFilesDir("").AbsolutePath;
 
                 DBTaskReminder = new DBTaskReminder(DB_TASK_DB_NAME, DB_TASK_DB_PATH, DB_TABLE_NAME);
@@ -768,14 +796,14 @@ namespace ProjTaskReminder
                     if (tBL_Settings != null)
                     {
                         ActivityMusic.MUSIC_PATH = tBL_Settings.MusicPath;
-                        Utils.Utils.NEWS_RSS_ADDRESS2 = tBL_Settings.NewsUrl;
+                        MH_Utils.Utils.NEWS_RSS_ADDRESS2 = tBL_Settings.NewsUrl;
                         MH_Weather.URL_LEFT_WEATHER = tBL_Settings.WeatherUrl;
                     }
                 }
             }
             catch (Exception ex)
             {
-                Utils.Utils.WriteToLog(ex.Message, true);
+                MH_Utils.Utils.WriteToLog(ex.Message, true);
             }
 
             // /storage/emulated/0/Music/
@@ -788,7 +816,7 @@ namespace ProjTaskReminder
 
         private List<Task> GetTasksFromDB()
         {
-            Toast.MakeText(this, "Load items from Database", ToastLength.Short).Show();
+            //Toast.MakeText(this, "Load items from Database", ToastLength.Short).Show();
 
 
             TasksList.Clear();
@@ -849,7 +877,7 @@ namespace ProjTaskReminder
             //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             intent.PutExtra("MusicPath", ActivityMusic.MUSIC_PATH); // "/storage/emulated/0/Music");
-            intent.PutExtra("NewsUrl", Utils.Utils.NEWS_RSS_ADDRESS2);
+            intent.PutExtra("NewsUrl", MH_Utils.Utils.NEWS_RSS_ADDRESS2);
             intent.PutExtra("WeatherUrl", MH_Weather.URL_LEFT_WEATHER);    // "http://api.weatherstack.com/current?access_key=f2896ef52242c1e367e2170ce40352ba&query=");
 
 
@@ -894,7 +922,7 @@ namespace ProjTaskReminder
 
         private void lstTasks_OnItemClick2(object sender, View.ContextClickEventArgs e)
         {
-            if (lstTasks.SelectedItemPosition<0 || lstTasks.SelectedItemPosition>=TasksList.Count)
+            if (lstTasks.SelectedItemPosition < 0 || lstTasks.SelectedItemPosition >= TasksList.Count)
             {
                 return;
             }
@@ -972,7 +1000,7 @@ namespace ProjTaskReminder
             }
             if (!string.IsNullOrEmpty(inputIntent.GetStringExtra("NewsUrl")))
             {
-                Utils.Utils.NEWS_RSS_ADDRESS2 = inputIntent.GetStringExtra("NewsUrl");
+                MH_Utils.Utils.NEWS_RSS_ADDRESS2 = inputIntent.GetStringExtra("NewsUrl");
             }
             if (!string.IsNullOrEmpty(inputIntent.GetStringExtra("WeatherUrl")))
             {
@@ -994,7 +1022,7 @@ namespace ProjTaskReminder
             }
 
             tBL_Settings.MusicPath = ActivityMusic.MUSIC_PATH;
-            tBL_Settings.NewsUrl = Utils.Utils.NEWS_RSS_ADDRESS2;
+            tBL_Settings.NewsUrl = MH_Utils.Utils.NEWS_RSS_ADDRESS2;
             tBL_Settings.WeatherUrl = MH_Weather.URL_LEFT_WEATHER;
 
             if (isNewMode)
@@ -1005,7 +1033,7 @@ namespace ProjTaskReminder
             {
                 List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>();
                 list.Add(new KeyValuePair<string, string>("MusicPath", ActivityMusic.MUSIC_PATH));
-                list.Add(new KeyValuePair<string, string>("NewsUrl", Utils.Utils.NEWS_RSS_ADDRESS2));
+                list.Add(new KeyValuePair<string, string>("NewsUrl", MH_Utils.Utils.NEWS_RSS_ADDRESS2));
                 list.Add(new KeyValuePair<string, string>("WeatherUrl", MH_Weather.URL_LEFT_WEATHER));
 
                 recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(DB_TABLE_SETTING, list, null);
@@ -1032,7 +1060,7 @@ namespace ProjTaskReminder
             }
 
 
-            DateTime today = Utils.Utils.GetDateNow();
+            DateTime today = MH_Utils.Utils.GetDateNow();
 
             if (timerDate.Value.CompareTo(today) <= 0)
             {
@@ -1042,7 +1070,7 @@ namespace ProjTaskReminder
             }
 
 
-            //Toast.MakeText(this, "Task date: " + Utils.Utils.getDateFormattedString(timerDate.Value) + "     Now: " + Utils.Utils.getDateFormattedString(Utils.Utils.GetDateNow()), ToastLength.Long).Show();
+            //Toast.MakeText(this, "Task date: " + MH_Utils.Utils.getDateFormattedString(timerDate.Value) + "     Now: " + MH_Utils.Utils.getDateFormattedString(MH_Utils.Utils.GetDateNow()), ToastLength.Long).Show();
 
             //CurrentTask = currentTask;
 
@@ -1052,11 +1080,11 @@ namespace ProjTaskReminder
             //TimerExecute3(currentTask, timerDate);
 
 
-            dateStr = Utils.Utils.getDateFormattedString(timerDate.Value);
+            dateStr = MH_Utils.Utils.getDateFormattedString(timerDate.Value);
 
             if (isShowTimerReminder && !MainMessageText.Trim().Equals(""))
             {
-                string text = "יצר תזכורת ביום " + Utils.Utils.getDateDayName(timerDate.Value) + "  " + dateStr;
+                string text = "יצר תזכורת ביום " + MH_Utils.Utils.getDateDayName(timerDate.Value) + "  " + dateStr;
                 MainMessageText = MainMessageText + " - " + text;
                 showGlobalMessageOnToast();
             }
@@ -1094,7 +1122,7 @@ namespace ProjTaskReminder
 
             // Do the Job - Notification
             TimerTask_onTick((Task)currentTask);
-            
+
         }
 
         #endregion
@@ -1161,9 +1189,9 @@ namespace ProjTaskReminder
         //    }
 
 
-        //    DateTime dateNow = Utils.Utils.GetDateNow();
-        //    string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
-        //    string strDateTask = Utils.Utils.getDateFormattedString(currentTask.getDate().Value);
+        //    DateTime dateNow = MH_Utils.Utils.GetDateNow();
+        //    string strDateNow = MH_Utils.Utils.getDateFormattedString(dateNow);
+        //    string strDateTask = MH_Utils.Utils.getDateFormattedString(currentTask.getDate().Value);
 
 
         //    while (counter <= limitSeconds && strDateNow.CompareTo(strDateTask) < 0)
@@ -1172,8 +1200,8 @@ namespace ProjTaskReminder
 
         //        RunOnUiThread(() =>
         //        {
-        //            dateNow = Utils.Utils.GetDateNow();
-        //            strDateNow = Utils.Utils.getDateFormattedString(dateNow);
+        //            dateNow = MH_Utils.Utils.GetDateNow();
+        //            strDateNow = MH_Utils.Utils.getDateFormattedString(dateNow);
         //        });
 
         //        counter += TimerInterval;
@@ -1228,7 +1256,7 @@ namespace ProjTaskReminder
                 Task currentTask = (Task)taskTimerArray[1];
                 Timer timer = currentTask.getTimer();
                 TimerService taskTimerElapsed = (TimerService)taskTimerArray[2];
-                
+
                 if (timer != null)
                 {
                     TimerDispose(timer);
@@ -1252,7 +1280,7 @@ namespace ProjTaskReminder
             }
             catch (Exception ex)
             {
-                Utils.Utils.WriteToLog("TimerKill: " + Utils.Utils.LINE_SEPERATOR + ex.Message);
+                MH_Utils.Utils.WriteToLog("TimerKill: " + MH_Utils.Utils.LINE_SEPERATOR + ex.Message);
             }
         }
 
@@ -1333,8 +1361,8 @@ namespace ProjTaskReminder
 
         private void TimerNextTime()    // string ss)
         {
-            DateTime dateNow = Utils.Utils.GetDateNow();
-            string strDateNow = Utils.Utils.getDateFormattedString(dateNow);
+            DateTime dateNow = MH_Utils.Utils.GetDateNow();
+            string strDateNow = MH_Utils.Utils.getDateFormattedString(dateNow);
 
             //return strDateNow;
         }
@@ -1449,7 +1477,7 @@ namespace ProjTaskReminder
 
             CurrentTask.setDate_due("");
             CurrentTask.setBackgroundColor(DefaultCardBackgroundColor.ToString());
-            CurrentTask.setDate_last_update(Utils.Utils.getDateFormattedString(Utils.Utils.GetDateNow()));
+            CurrentTask.setDate_last_update(MH_Utils.Utils.getDateFormattedString(MH_Utils.Utils.GetDateNow()));
             CurrentTask.setRepeat("פעם אחת");
 
             return CurrentTask;
@@ -1457,6 +1485,13 @@ namespace ProjTaskReminder
 
         private void BackupDataBaseFile()
         {
+            //KeyValuePair<string, int>[] perm = new KeyValuePair<string, int>[] {
+            //                                                                          new KeyValuePair<string, int>(Manifest.Permission.WriteExternalStorage, PERMISSIONS_REQUEST_WRITE_STORAGE),
+            //                                                                          new KeyValuePair<string, int>(Manifest.Permission.ReadExternalStorage, PERMISSIONS_REQUEST_READ_STORAGE)
+            //                                                                       };
+            //MH_Utils.Utils.PermissionAsk(perm);
+
+
             string backupFolderName = Android.OS.Environment.DirectoryMusic;    // "ProjTaskReminder"
             string targetPath = Android.OS.Environment.GetExternalStoragePublicDirectory(backupFolderName).AbsolutePath;
             //targetPath = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
@@ -1466,28 +1501,35 @@ namespace ProjTaskReminder
             string fullPathSource = Path.Combine(DBTaskReminder.DB_PATH, DBTaskReminder.DB_NAME);
             string fullPathTarget = Path.Combine(targetPath, DBTaskReminder.DB_NAME);
 
-            bool result = Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
+            bool result = MH_Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
 
-            fullPathSource = Path.Combine(Utils.Utils.LOG_FILE_PATH, Utils.Utils.LOG_FILE_NAME);
-            fullPathTarget = Path.Combine(targetPath, Utils.Utils.LOG_FILE_NAME);
+            fullPathSource = Path.Combine(MH_Utils.Utils.LOG_FILE_PATH, MH_Utils.Utils.LOG_FILE_NAME);
+            fullPathTarget = Path.Combine(targetPath, MH_Utils.Utils.LOG_FILE_NAME);
 
-            result = Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
+            result = MH_Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
 
-            fullPathSource = Path.Combine(Utils.Utils.LOG_FILE_PATH, "MH_Tasks.txt");
-            fullPathTarget = Path.Combine(targetPath, "MH_Tasks.txt");
+            fullPathSource = Path.Combine(MH_Utils.Utils.LOG_FILE_PATH, WRITE_LIST_FILE_NAME);
+            fullPathTarget = Path.Combine(targetPath, WRITE_LIST_FILE_NAME);
 
-            bool resultTextFile = Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
+            bool resultTextFile = MH_Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
 
             if (result)
             {
-                string message = "Database was copied OK";
+                //string message = "Database was copied OK";
                 //Toast.MakeText(this, message, ToastLength.Long).Show();
-                //Utils.Utils.WriteToLog(message, true);
+                //MH_Utils.Utils.WriteToLog(message, true);
             }
         }
 
         private void RestoreDataBaseFile()
         {
+
+            //KeyValuePair<string, int>[] perm = new KeyValuePair<string, int>[] {
+            //                                                                          new KeyValuePair<string, int>(Manifest.Permission.WriteExternalStorage, PERMISSIONS_REQUEST_WRITE_STORAGE),
+            //                                                                          new KeyValuePair<string, int>(Manifest.Permission.ReadExternalStorage, PERMISSIONS_REQUEST_READ_STORAGE)
+            //                                                                       };
+            //MH_Utils.Utils.PermissionAsk(perm);
+
             string backupFolderName = Android.OS.Environment.DirectoryMusic;    // "ProjTaskReminder"
             string sourcePath = Android.OS.Environment.GetExternalStoragePublicDirectory(backupFolderName).AbsolutePath;
             string targetPath = DBTaskReminder.DB_PATH;
@@ -1497,7 +1539,7 @@ namespace ProjTaskReminder
 
             DBTaskReminder.DB.Close();
 
-            bool result = Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
+            bool result = MH_Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
 
             ConnectToDB();
 
@@ -1539,7 +1581,7 @@ namespace ProjTaskReminder
 
 
 
-            //dateStrToFind = Utils.Utils.getDateFormattedString(date);    //simpleDateFormat.format(date);
+            //dateStrToFind = MH_Utils.Utils.getDateFormattedString(date);    //simpleDateFormat.format(date);
 
             for (int i = 0; i < tasksList.Count; i++)
             {
@@ -1577,9 +1619,9 @@ namespace ProjTaskReminder
 
 
 
-            string fileName = Path.Combine(Utils.Utils.LOG_FILE_PATH, "MH_Tasks.txt");
+            string fileName = Path.Combine(MH_Utils.Utils.LOG_FILE_PATH, WRITE_LIST_FILE_NAME);
 
-            data = Utils.Utils.TextFileRead(fileName, false);
+            data = MH_Utils.Utils.TextFileRead(fileName, false);
 
             if (data == null || data.Count == 0)
             {
@@ -1658,7 +1700,7 @@ namespace ProjTaskReminder
                     catch (Exception ex)
                     {
                         result = false;
-                        Utils.Utils.WriteToLog("Error in readDBFromTextFile: " + ex.Message + "\n" + ex.StackTrace);
+                        MH_Utils.Utils.WriteToLog("Error in readDBFromTextFile: " + ex.Message + "\n" + ex.StackTrace);
                         result = false;
                         return result;
                     }
@@ -1689,6 +1731,9 @@ namespace ProjTaskReminder
 
 
 
+            //KeyValuePair<string, int>[] perm = new KeyValuePair<string, int>[] { new KeyValuePair<string, int>(Manifest.Permission.WriteExternalStorage, PERMISSIONS_REQUEST_WRITE_STORAGE) };
+            //MH_Utils.Utils.PermissionAsk(perm);
+
             if (TasksList == null || TasksList.Count == 0)
             {
                 Toast.MakeText(this, "פעולת ייצוא לקובץ טקסט נכשלה", ToastLength.Long).Show();
@@ -1703,22 +1748,22 @@ namespace ProjTaskReminder
                 {
                     Task task = TasksList[i];
 
-                    line = Utils.Utils.LINE_SEPERATOR + CARD_SEPERATOR + Utils.Utils.LINE_SEPERATOR;
-                    line += WRITE_DB_PREFIX_ID + task.getTaskID() + Utils.Utils.LINE_SEPERATOR;
-                    line += WRITE_DB_PREFIX_TITLE + task.getTitle() + Utils.Utils.LINE_SEPERATOR;
-                    //line += WRITE_DB_PREFIX_DESC + task.getDescriptionWithHtml() + Utils.Utils.LINE_SEPERATOR;
-                    line += WRITE_DB_PREFIX_DESC + task.getDescriptionPure() + Utils.Utils.LINE_SEPERATOR;
-                    line += WRITE_DB_PREFIX_DATE + task.getDate_due() + Utils.Utils.LINE_SEPERATOR;
-                    line += WRITE_DB_PREFIX_TIME + task.getTime_due() + Utils.Utils.LINE_SEPERATOR;
-                    line += WRITE_DB_PREFIX_REPEAT + task.getRepeat() + Utils.Utils.LINE_SEPERATOR;
-                    line += WRITE_DB_PREFIX_LAST_UPDATE + task.getDate_last_update() + Utils.Utils.LINE_SEPERATOR;
-                    line += WRITE_DB_PREFIX_BACKGROUND_COLOR + task.getBackgroundColor() + Utils.Utils.LINE_SEPERATOR;
+                    line = MH_Utils.Utils.LINE_SEPERATOR + CARD_SEPERATOR + MH_Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_ID + task.getTaskID() + MH_Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_TITLE + task.getTitle() + MH_Utils.Utils.LINE_SEPERATOR;
+                    //line += WRITE_DB_PREFIX_DESC + task.getDescriptionWithHtml() + MH_Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_DESC + task.getDescriptionPure() + MH_Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_DATE + task.getDate_due() + MH_Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_TIME + task.getTime_due() + MH_Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_REPEAT + task.getRepeat() + MH_Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_LAST_UPDATE + task.getDate_last_update() + MH_Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_BACKGROUND_COLOR + task.getBackgroundColor() + MH_Utils.Utils.LINE_SEPERATOR;
 
                     stringBuilder.Append(line);
                 }
                 catch (Exception ex)
                 {
-                    Toast.MakeText(this, "Error in - Export list to text file: " + ex.Message + Utils.Utils.LINE_SEPERATOR + ex.StackTrace, ToastLength.Long).Show();
+                    Toast.MakeText(this, "Error in - Export list to text file: " + ex.Message + MH_Utils.Utils.LINE_SEPERATOR + ex.StackTrace, ToastLength.Long).Show();
                     result = false;
                     continue;
                     //break;
@@ -1731,9 +1776,9 @@ namespace ProjTaskReminder
                 //data = line;
                 data = stringBuilder.ToString();
 
-                string fileName = Path.Combine(Utils.Utils.LOG_FILE_PATH, "MH_Tasks.txt");
+                string fileName = Path.Combine(MH_Utils.Utils.LOG_FILE_PATH, WRITE_LIST_FILE_NAME);
 
-                result = Utils.Utils.TextFileSave(fileName, data, false, false);
+                result = MH_Utils.Utils.TextFileSave(fileName, data, false, false);
 
                 if (result)
                 {
@@ -1744,7 +1789,7 @@ namespace ProjTaskReminder
             {
                 Toast.MakeText(this, "פעולת ייצוא לקובץ נכשלה", ToastLength.Long).Show();
             }
-        
+
 
             return result;
         }
@@ -1783,6 +1828,26 @@ namespace ProjTaskReminder
 
                 case Resource.Id.menu_textfile_read:
                     readDBFromTextFile();
+                    break;
+
+                case Resource.Id.menu_show_log_file:
+                    Task task = newTaskDetails();
+                    task.setTitle("קובץ Log");
+                    string fileName = Path.Combine(MH_Utils.Utils.LOG_FILE_PATH, MH_Utils.Utils.LOG_FILE_NAME);
+
+                    List<string> descs = MH_Utils.Utils.TextFileRead(fileName, false);
+
+                    if (descs != null && descs.Count > 0)
+                    {
+                        string desc = "";
+                        foreach (string line in descs)
+                        {
+                            desc += line + MH_Utils.Utils.LINE_SEPERATOR;
+                        }
+                        task.setDescription(desc);
+                        OpenTaskDetailsPage(task, false, MainContext);
+                        ActivityTaskDetails.isNewMode = true;
+                    }
                     break;
             }
 
@@ -1827,8 +1892,10 @@ namespace ProjTaskReminder
             {
                 //Toast.MakeText(this, "Destroy Medya Player", ToastLength.Long).Show();
             }
-            
+
             Toast.MakeText(this, "Close Application", ToastLength.Long).Show();
+
+            MH_Utils.Utils.WriteToLog("System close Task Reminder application");
 
             // The latter may seem rather peculiar: why do we want to stop exactly the service that we want to keep alive? 
             // Because if we do not stop it, the service will die with our app.Instead, by stopping the service, 
@@ -1839,7 +1906,18 @@ namespace ProjTaskReminder
 
             // What is I do not want the counter to restart when the process is killed ?
             // Yes this is the usual case. Well you cannot directly. The only way is to save the status of the service and to reload it when the service is started.You will do this by using the following code:
-            StopService(ServiceKeppAliveIntent);
+            if (ServiceKeppAliveIntent != null)
+            {
+                // Just tto use same constants values
+                MHServiceKeepAlive.ServiceStayAlive serviceStayAlive = new MHServiceKeepAlive.ServiceStayAlive();
+                // Just to prevent execute ReStart again in 'Service.OnDestroy()'
+                Bundle bundle = ServiceKeppAliveIntent.GetBundleExtra(serviceStayAlive.INTENT_KEY_CALLER_BUNDLE);
+                bundle.PutBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_AUTOMATIC, false);
+                StopService(ServiceKeppAliveIntent);
+            }
+
+            //ServiceKeepAliveHandle(InputSavedInstanceState);
+
 
             base.OnDestroy();
         }
@@ -1859,12 +1937,62 @@ namespace ProjTaskReminder
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            string message = string.Empty;
+
+
+
+            // Received permission result for permission.
+            switch (requestCode)
+            {
+                case PERMISSIONS_REQUEST_READ_STORAGE:
+                    {
+                        // Check if the only required permission has been granted
+                        if (grantResults.Length > 0 && grantResults[0] == Android.Content.PM.Permission.Granted)
+                        {
+                            // Location permission has been granted, okay to retrieve the location of the device.
+                            message = "Read permission has now been Granted.";
+                        }
+                        else
+                        {
+                            message = "Read permission was NOT Granted.";
+                        }
+                    }
+                    break;
+
+                case PERMISSIONS_REQUEST_WRITE_STORAGE:
+                    {
+                        // Check if the only required permission has been granted
+                        if (grantResults.Length > 0 && grantResults[0] == Android.Content.PM.Permission.Granted)
+                        {
+                            // Location permission has been granted, okay to retrieve the location of the device.
+                            message = "Write permission has now been Granted.";
+                        }
+                        else
+                        {
+                            message = "Write permission was NOT Granted.";
+                        }
+                    }
+                    break;
+
+                default:
+                    base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                    break;
+            }
+
+
+            if (message != string.Empty)
+            {
+                Toast.MakeText(MainContext, message, ToastLength.Long).Show();
+
+                //Toast.MakeText(this, (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(this, Android.Manifest.Permission.ReadExternalStorage) == (int)Android.Content.PM.Permission.Granted).ToString(), ToastLength.Long);
+                //View view = LayoutInflater.From(this).Inflate(Android.Resource.Layout.ActivityListItem, null, false);
+                //Snackbar.Make(view, "granted", Snackbar.LengthLong).Show();            }
+            }
         }
 
-
-        #endregion Self override events
     }
+    
+    #endregion Self override events
 
 }
 

@@ -150,11 +150,11 @@ namespace ProjTaskReminder
 
             lblSongName.Text = "טוען שירים ...";
 
-            Utils.Utils.GetFolderFiles(MUSIC_PATH, "*.mp3", true, "*.jpg");
+            MH_Utils.Utils.GetFolderFiles(MUSIC_PATH, "*.mp3", true, "*.jpg");
 
             lblSongName.Text = "";
 
-            ListItemsPath = Utils.Utils.FilesExtra;
+            ListItemsPath = MH_Utils.Utils.FilesExtra;
 
             if (ListItemsPath==null)
             {
@@ -173,7 +173,7 @@ namespace ProjTaskReminder
                 string album = Directory.GetParent(fileFullName).Name;     // GetFolderNameFromPath(path);
 
 
-                fileName = Utils.Utils.FixSongName(fileName);
+                fileName = MH_Utils.Utils.FixSongName(fileName);
                 fileName = fileName.Substring(0, fileName.Length - 4);
                 
                 int pos = fileName.IndexOf("-");
@@ -772,7 +772,7 @@ namespace ProjTaskReminder
             }
             catch (Exception ex)
             {
-                Utils.Utils.WriteToLog("Error while load a song into Media player.. \n" + ex.Message);
+                MH_Utils.Utils.WriteToLog("Error while load a song into Media player.. \n" + ex.Message);
             }
 
 
@@ -811,7 +811,7 @@ namespace ProjTaskReminder
             }
             catch (Exception ex)
             {
-                Utils.Utils.WriteToLog(ex.StackTrace + "\n" + ex.Message);
+                MH_Utils.Utils.WriteToLog(ex.StackTrace + "\n" + ex.Message);
             }
             
         }
@@ -871,10 +871,10 @@ namespace ProjTaskReminder
                 //ListItemsRecyclerBackup.Clear();
                 //ListItemsRecyclerBackup = null;
             }
-            if (Utils.Utils.FilesExtra != null)
+            if (MH_Utils.Utils.FilesExtra != null)
             {
-                Utils.Utils.FilesExtra.Clear();
-                Utils.Utils.FilesExtra = null;
+                MH_Utils.Utils.FilesExtra.Clear();
+                MH_Utils.Utils.FilesExtra = null;
             }
 
             result = (mediaPlayer == null);
@@ -1053,7 +1053,7 @@ namespace ProjTaskReminder
             }
             catch (Exception ex)
             {
-                Utils.Utils.WriteToLog(ex.Message);
+                MH_Utils.Utils.WriteToLog(ex.Message);
             }
         }
 

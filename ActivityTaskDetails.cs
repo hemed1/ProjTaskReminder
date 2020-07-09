@@ -147,7 +147,7 @@ namespace ProjTaskReminder
                 txtDetailsDescription.Focusable = true;
                 txtDetailsDescription.RequestFocus();
                 //txtDetailsDescription.RequestFocusFromTouch();
-                //Utils.Utils.closeKeyboard();
+                //MH_Utils.Utils.closeKeyboard();
             }
 
             if (txtDetailsDescription.Text.Length > 200)
@@ -228,7 +228,14 @@ namespace ProjTaskReminder
             //    OnDateChange(sender, null);
             //};
 
-            datePicker1.DateChanged += OnDateChanged; //(sender, e) =>           //new EventHandler(SaveRecord); 
+            try
+            {
+                datePicker1.DateChanged += OnDateChanged; //(sender, e) =>           //new EventHandler(SaveRecord); 
+            }
+            catch (Exception ex)
+            {
+
+            }
 
             //datePicker1.DateChanged += (sender, e) =>
             //{
@@ -287,7 +294,7 @@ namespace ProjTaskReminder
             if (!txtDetailsDate.Text.Trim().Equals(""))
             {
                 IsUpdateDialogDate = false;
-                DateTime currentDate= Utils.Utils.getDateFormatUSA(txtDetailsDate.Text.Trim()).AddMonths(-1);
+                DateTime currentDate= MH_Utils.Utils.getDateFormatUSA(txtDetailsDate.Text.Trim()).AddMonths(-1);
                 datePicker1.UpdateDate(currentDate.Year, currentDate.Month, currentDate.Day);
             }
             datePicker1.Visibility = ViewStates.Visible;
@@ -298,7 +305,7 @@ namespace ProjTaskReminder
         {
             if (!txtDetailsDate.Text.Trim().Equals("") && !txtDetailsTime.Text.Trim().Equals(""))
             {
-                //DateTime currentDate = Utils.Utils.getDateFormatUSA(txtDetailsDate.Text.Trim()+" " + txtDetailsTime.Text.Trim());
+                //DateTime currentDate = MH_Utils.Utils.getDateFormatUSA(txtDetailsDate.Text.Trim()+" " + txtDetailsTime.Text.Trim());
                 //timePicker1.UpdateDate(currentDate.Year, currentDate.Month, currentDate.Day);
             }
             timePicker1.Visibility = ViewStates.Visible;    //(timePicker1.Visibility == ViewStates.Invisible) ? ViewStates.Visible : ViewStates.Invisible;
@@ -474,7 +481,7 @@ namespace ProjTaskReminder
                 CurrentTask.setTime_due("");
             }
 
-            CurrentTask.setDate_last_update(Utils.Utils.getDateFormattedString(Utils.Utils.GetDateNow()));
+            CurrentTask.setDate_last_update(MH_Utils.Utils.getDateFormattedString(MH_Utils.Utils.GetDateNow()));
         }
 
         private void SetControlsByObject()

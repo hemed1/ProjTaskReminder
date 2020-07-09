@@ -13,7 +13,7 @@ using Android.Text;
 using Android.Views;
 using Android.Widget;
 
-using ProjTaskReminder.Utils;
+using MH_Utils;
 
 
 namespace ProjTaskReminder.Utils
@@ -153,7 +153,7 @@ namespace ProjTaskReminder.Utils
         }
         catch (Exception ex)
         {
-            Utils.WriteToLog("Error in Util createNotificationChannel()" + "\n"+ex.Message);
+            MH_Utils.Utils.WriteToLog("Error in Util createNotificationChannel()" + "\n"+ex.Message);
         }
 
     }
@@ -239,7 +239,7 @@ namespace ProjTaskReminder.Utils
         }
         catch (Exception ex)
         {
-            Utils.WriteToLog("createNotificationBuilderl() - Error: " + "\n" + ex.Message);
+            MH_Utils.Utils.WriteToLog("createNotificationBuilderl() - Error: " + "\n" + ex.Message);
         }
 
 

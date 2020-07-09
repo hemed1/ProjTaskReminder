@@ -134,7 +134,7 @@ namespace ProjTaskReminder.Data
             catch (Exception ex)
             {
                 string msg = "DataSet - Error in 'RecordInser()'" + "\n" + ex.Message;
-                Utils.Utils.WriteToLog(msg, true);
+                MH_Utils.Utils.WriteToLog(msg, true);
             }
 
             return recordsEffected;
@@ -192,7 +192,7 @@ namespace ProjTaskReminder.Data
             catch (Exception ex)
             {
                 string msg = "DataSet - Error in 'addRecord()'" + "\n" + ex.Message;
-                Utils.Utils.WriteToLog(msg, true);
+                MH_Utils.Utils.WriteToLog(msg, true);
                 recordsEffected = -1;
             }
 
@@ -211,7 +211,7 @@ namespace ProjTaskReminder.Data
             catch (Exception ex)
             {
                 string msg = "DataSet - Error in 'RecordUpdate()'" + "\n" + ex.Message;
-                Utils.Utils.WriteToLog(ex.StackTrace + " - " + msg, true);
+                MH_Utils.Utils.WriteToLog(ex.StackTrace + " - " + msg, true);
             }
 
             return recordsEffected;
@@ -251,7 +251,7 @@ namespace ProjTaskReminder.Data
             {
                 string msg = "DataSet - Error in 'RecordUpdate()'";
                 //Log.d(msg, ex.getMessage());
-                Utils.Utils.WriteToLog(msg + "\n" + ex.Message, true);
+                MH_Utils.Utils.WriteToLog(msg + "\n" + ex.Message, true);
                 //throw ex;
             }
 
@@ -272,7 +272,7 @@ namespace ProjTaskReminder.Data
             catch (Exception ex)
             {
                 result = false;
-                Utils.Utils.WriteToLog(ex);
+                MH_Utils.Utils.WriteToLog(ex);
                 //throw ex;
             }
 
@@ -295,7 +295,7 @@ namespace ProjTaskReminder.Data
             {
                 result = false;
                 //Log.d("DataBase", "Error in 'deleteRecord()': " + ex.getMessage());
-                Utils.Utils.WriteToLog("DataBase - Error in 'deleteRecord()': \n" + ex.Message, true);
+                MH_Utils.Utils.WriteToLog("DataBase - Error in 'deleteRecord()': \n" + ex.Message, true);
                 //throw ex;
             }
 
@@ -377,7 +377,7 @@ namespace ProjTaskReminder.Data
 
             //string commanScript = "ALTER TABLE TBL_Tasks ADD COLUMN DateLastUpdate VARCHAR(11);";
             //commanScript = "CREATE TABLE IF NOT EXISTS tags (ISBN VARCHAR(15), Tag VARCHAR(15));";
-            //Utils.Utils.WriteToLog("DataBase - 'addFieldToTable()': " + tableName + "'" + fieldName);
+            //MH_Utils.Utils.WriteToLog("DataBase - 'addFieldToTable()': " + tableName + "'" + fieldName);
 
             try
             {
@@ -388,7 +388,7 @@ namespace ProjTaskReminder.Data
             catch (Exception ex)
             {
                 //Log.d("DataBase", "Error in 'addFieldToTable()': " + ex.getMessage());
-                Utils.Utils.WriteToLog("DataBase - Error in 'addFieldToTable()': " + tableName + "' \n" + ex.Message);
+                MH_Utils.Utils.WriteToLog("DataBase - Error in 'addFieldToTable()': " + tableName + "' \n" + ex.Message);
                 //throw ex;
             }
 

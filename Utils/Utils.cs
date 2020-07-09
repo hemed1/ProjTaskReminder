@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Xml;
+using Android;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -14,13 +15,14 @@ using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
 using Android.Text;
+using Android.Util;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
 using Java.IO;
 //using Java.Net;
 
-namespace ProjTaskReminder.Utils
+namespace MH_Utils
 {
 
     public static class Utils
@@ -34,11 +36,13 @@ namespace ProjTaskReminder.Utils
         public static string NEWS_RSS_ADDRESS3 = " http://rss.walla.co.il/feed/22";
 
         private const int PERMISSIONS_REQUEST_READ_STORAGE = 111;
+        private const int PERMISSIONS_REQUEST_WRITE_STORAGE = 222;
+
 
         public static List<KeyValuePair<string, List<string>>> FilesExtra;
 
         public static Context context;
-        public static Activity activity;
+        public static Activity ClientActivity;
 
 
         public static void WriteToLog(Exception exception)
@@ -60,12 +64,15 @@ namespace ProjTaskReminder.Utils
             Context context = Android.App.Application.Context;
 
             //UTF8Encoding encoding = new UTF8Encoding();
-            //Encoding encoding = new UTF8Encoding(false);
-            Encoding encoding = Encoding.GetEncoding("Windows-1255");
+            Encoding encoding = new UTF8Encoding(false);
+            //Encoding encoding = Encoding.GetEncoding("Windows-1255");
             //byte[] pass = Encoding.ASCII.GetBytes("šarže");
 
             try
             {
+                KeyValuePair<string, int>[] perm = new KeyValuePair<string, int>[] { new KeyValuePair<string, int>(Manifest.Permission.WriteExternalStorage, PERMISSIONS_REQUEST_WRITE_STORAGE) };
+                PermissionAsk(perm);
+
                 // Dne in ;Client; source that use these utils services
                 //LOG_FILE_NAME = "LogTaskReminder.txt";
                 //LOG_FILE_PATH = context.GetExternalFilesDir("").AbsolutePath;
@@ -77,8 +84,6 @@ namespace ProjTaskReminder.Utils
                 try
                 {
                     fileWriter = new StreamWriter(fileName, appendLines, encoding);
-
-                    fileWriter.Write(data);
 
                     //file = new FileStream(fileName, ((appendLines)?FileMode.Append: FileMode.Create), FileAccess.Write);
                 }
@@ -99,12 +104,12 @@ namespace ProjTaskReminder.Utils
                     //FileStream file = new FileStream(fileName, ((appendLines) ? FileMode.Append : FileMode.Create), FileAccess.Write);
                 }
 
+                fileWriter.Write(data);
+
                 fileWriter.Close();
 
                 //bytesData = Encoding.UTF8.GetBytes(data);        // Encoding.UTF8..ASCII.GetBytes(data);  // encoding="ISO-8859-1
-
                 //file.Write(bytesData);
-
                 //file.Close();
             }
             catch (Exception ex)
@@ -138,9 +143,15 @@ namespace ProjTaskReminder.Utils
             string file;
             List<string> files = new List<string>();
             //List<KeyValuePair<string, List<string>>> filesResult = new List<KeyValuePair<string, List<string>>>();
-            List<string> directories = new List<string>(); 
+            List<string> directories = new List<string>();
 
 
+
+            KeyValuePair<string, int>[] perm = new KeyValuePair<string, int>[] {
+                                                                                      new KeyValuePair<string, int>(Manifest.Permission.WriteExternalStorage, PERMISSIONS_REQUEST_WRITE_STORAGE),
+                                                                                      new KeyValuePair<string, int>(Manifest.Permission.ReadExternalStorage, PERMISSIONS_REQUEST_READ_STORAGE)
+                                                                                   };
+            PermissionAsk(perm);
 
 
             fileExtentionToSearch = fileExtentionToSearch.ToLower();
@@ -203,7 +214,7 @@ namespace ProjTaskReminder.Utils
                 }
             }
 
-            
+
             return files;
         }
 
@@ -240,7 +251,7 @@ namespace ProjTaskReminder.Utils
 
             try
             {
-                if (dateString==null ||dateString.Trim().Equals(""))
+                if (dateString == null || dateString.Trim().Equals(""))
                 {
                     return result;
                 }
@@ -460,7 +471,7 @@ namespace ProjTaskReminder.Utils
             //    inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);   //InputMethodManager.SHOW_FORCED
             //}
 
-            //activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+            //ClientActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
         }
 
@@ -474,18 +485,152 @@ namespace ProjTaskReminder.Utils
                 inputMethodManager.ToggleSoftInput(ShowFlags.Implicit, HideSoftInputFlags.ImplicitOnly);   //InputMethodManager., , RESULT_HIDDEN , HIDE_IMPLICIT_ONLY
             }
 
-            activity.Window.SetSoftInputMode(SoftInput.StateHidden);    // WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);      //.SOFT_INPUT_STATE_ALWAYS_HIDDEN);        //);  // WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE,
+            ClientActivity.Window.SetSoftInputMode(SoftInput.StateHidden);    // WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);      //.SOFT_INPUT_STATE_ALWAYS_HIDDEN);        //);  // WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE,
 
         }
 
-        //public static void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
+        /// <summary>
+        /// Check permission
+        /// Example Input: Manifest.Permission.ReadExternalStorage
+        /// Example Output: (int)Android.Content.PM.Permission.Granted
+        /// </summary>
+        public static string PermissionAsk(KeyValuePair<string, int>[] permissionNames)   //Manifest.Permission.ReadExternalStorage
+        {
+            string result = string.Empty;
+            string[] requiredPermissions = permissionNames.Select(a => a.Key).ToArray();         //new string[]  { Manifest.Permission.ReadExternalStorage, Manifest.Permission.WriteExternalStorage };
+
+
+
+            for (int i = 0; i < permissionNames.Length; i++)
+            {
+                if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(ClientActivity, permissionNames[i].Key) == (int)Android.Content.PM.Permission.Granted)
+                {
+                    // We have permission, go ahead and use the camera.
+                    result += permissionNames[i].Key + " - " + "Is Granted" + LINE_SEPERATOR;
+                }
+                else
+                {
+                    // Camera permission is not granted. If necessary display rationale & request.
+                    result += permissionNames[i].Key + " - " + "Is Not Granted" + LINE_SEPERATOR;
+                }
+
+                // Manifest.Permission.Camera
+                // Manifest.Permission.ReadExternalStorage
+
+                if (Android.Support.V4.App.ActivityCompat.ShouldShowRequestPermissionRationale(ClientActivity, permissionNames[i].Key))
+                {
+                    // Provide an additional rationale to the user if the permission was not granted
+                    // and the user would benefit from additional context for the use of the permission.
+                    // For example if the user has previously denied the permission.
+                    Log.Info("Check Per", "Displaying " + permissionNames[i].Key + " permission rationale to provide additional context.");
+
+                    Android.Support.V4.App.ActivityCompat.RequestPermissions(ClientActivity, new string[] { permissionNames[i].Key }, permissionNames[i].Value);     // PERMISSIONS_REQUEST_WRITE_STORAGE);
+                }
+                else
+                {
+                    Android.Support.V4.App.ActivityCompat.RequestPermissions(ClientActivity, new string[] { permissionNames[i].Key }, permissionNames[i].Value);     // PERMISSIONS_REQUEST_WRITE_STORAGE);
+                }
+
+
+            }
+
+
+            return result;
+        }
+
+        // Will be in Caller Activity
+        //public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        //{
+        //    Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        //    if (requestCode == REQUEST_LOCATION)
+        //    {
+        //        // Received permission result for camera permission.
+        //        lblResult.Text = "Received response for Read permission request.";
+
+
+        //        View view = LayoutInflater.From(this).Inflate(Android.Resource.Layout.ActivityListItem, null, false);
+
+        //        // Check if the only required permission has been granted
+        //        if (grantResults.Length > 0 && grantResults[0] == Android.Content.PM.Permission.Granted)
+        //        {
+        //            // Location permission has been granted, okay to retrieve the location of the device.
+        //            lblResult.Text = "Read permission has now been granted.";
+        //            Toast.MakeText(this, (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Android.Content.PM.Permission.Granted).ToString(), ToastLength.Long);
+        //            //Snackbar.Make(view, "granted", Snackbar.LengthLong).Show();
+        //            //.SetAction("Action", (Android.Views.View.IOnClickListener)null)
+        //        }
+        //        else
+        //        {
+        //            lblResult.Text = "Read permission was NOT granted.";
+        //            //Snackbar.Make(view, "not granted", Snackbar.LengthLong).Show();
+        //            Toast.MakeText(this, (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) == (int)Android.Content.PM.Permission.Granted).ToString(), ToastLength.Long);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        //    }
+        //}
+
+
+        //private void RequestPermissions()
+        //{
+
+
+        //    if (context.CheckSelfPermission(this, Android.Manifest.Permission.ReadExternalStorage) != PackageManager.PERMISSION_GRANTED)
+        //    {
+        //        Toast.MakeText(this, "Permission READ_EXTERNAL_STORAGE is Not OK", ToastLength.Long).show();
+        //        //return;
+        //    }
+        //    else
+        //    {
+        //        // Have to ask permmissions
+        //    }
+
+        //    // Here, thisActivity is the current activity
+        //    if (context.CheckSelfPermission(this, Android.Manifest.Permission.ReadExternalStorage) != PackageManager..PERMISSION_GRANTED)
+        //    {
+        //        //Toast.makeText(this, "Permission WRITE_CALENDAR not granted", Toast.LENGTH_SHORT).show();
+        //        // Permission is not granted
+        //        // Should we show an explanation?
+        //        if (ClientActivity.ShouldShowRequestPermissionRationale(Android.Manifest.Permission.ReadExternalStorage))
+        //        {
+        //            // Show an explanation to the user *asynchronously* -- don't block
+        //            // this thread waiting for the user's response! After the user
+        //            // sees the explanation, try again to request the permission.
+        //        }
+        //        else
+        //        {
+        //            // No explanation needed; request the permission
+        //            ClientActivity.RequestPermissions(this, new String[] { Android.Manifest.Permission.ReadExternalStorage }, PERMISSIONS_REQUEST_READ_STORAGE);
+
+        //            // PERMISSIONS_REQUEST_READ_STORAGE is an app-defined int constant. The callback method gets the
+        //            // result of the request.
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // Permission has already been granted
+        //    }
+
+        //}
+
+        //public static void OnRequestPermissionsResult2(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        //{
+        //    Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        //    ClientActivity.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        //}
+
+        //public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
         //{
         //    switch (requestCode)
         //    {
         //        case PERMISSIONS_REQUEST_READ_STORAGE:
         //            {
         //                // If request is cancelled, the result arrays are empty.
-        //                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+        //                if (grantResults.Length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
         //                {
         //                    // permission was granted, yay! Do the
         //                    // contacts-related task you need to do.
@@ -502,6 +647,45 @@ namespace ProjTaskReminder.Utils
         //            // permissions this app might request.
         //    }
         //}
+
+        /* Checks if external storage is available for read and write */
+        //public boolean isExternalStorageAvailable()
+        //{
+        //    String state = Android.OS.Environment.GetExternalStorageState();
+        //    if (Environment.MEDIA_MOUNTED.equals(state))
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
+
+    
+
+
+    //public static void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
+    //{
+    //    switch (requestCode)
+    //    {
+    //        case PERMISSIONS_REQUEST_READ_STORAGE:
+    //            {
+    //                // If request is cancelled, the result arrays are empty.
+    //                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+    //                {
+    //                    // permission was granted, yay! Do the
+    //                    // contacts-related task you need to do.
+    //                }
+    //                else
+    //                {
+    //                    // permission denied, boo! Disable the
+    //                    // functionality that depends on this permission.
+    //                }
+    //                return;
+    //            }
+
+    //            // other 'case' lines to check for other
+    //            // permissions this app might request.
+    //    }
+    //}
 
         public static bool CopyFile(string sourcePath, string targetPath)
         {
@@ -897,7 +1081,10 @@ namespace ProjTaskReminder.Utils
 
             try
             {
-                List<string> files = Directory.GetFiles(fileName).ToList();       //, fileExtentionToSearch).ToList();
+                KeyValuePair<string, int>[] perm = new KeyValuePair<string, int>[] { new KeyValuePair<string, int>(Manifest.Permission.ReadExternalStorage, PERMISSIONS_REQUEST_READ_STORAGE) };
+                PermissionAsk(perm);
+
+                List<string> files = Directory.GetFiles(Directory.GetParent(fileName).FullName).ToList();       //, fileExtentionToSearch).ToList();
 
                 //file = new File(fileName);
                 if (files.Count > 0)
@@ -905,7 +1092,7 @@ namespace ProjTaskReminder.Utils
                     file = files[0];
                 }
 
-                if (file.Equals(""))
+                if (files.IndexOf(fileName) == -1)
                 {
                     string message = "קובץ טקסט לא נמצא בדיסק" + " - " + fileName;
                     Toast.MakeText(context, message, ToastLength.Long).Show();
@@ -922,7 +1109,7 @@ namespace ProjTaskReminder.Utils
                 //Java.IO.FileInputStream fileInputStream = new Java.IO.FileInputStream(fileName);
                 //Java.IO.InputStreamReader inputStreamReader = new Java.IO.InputStreamReader(fileInputStream);
                 //Java.IO.BufferedReader bufferedReader = new Java.IO.BufferedReader(inputStreamReader);
-                
+
 
                 //while ((line = bufferedReader.ReadLine()) != null)
                 //{
@@ -940,12 +1127,13 @@ namespace ProjTaskReminder.Utils
                 while (!fileInputStream.EndOfStream)
                 {
                     line = fileInputStream.ReadLine();
-                    byte[] bytes = Encoding.ASCII.GetBytes(line + LINE_SEPERATOR);       // "šarže");
-                    char[] chars = Encoding.ASCII.GetChars(bytes);
-                    line = Encoding.ASCII.GetString(bytes);
-                    
-                    stringBuilder.Append(chars);
-                    //stringBuilder.Append(line + LINE_SEPERATOR);
+
+                    //byte[] bytes = Encoding.ASCII.GetBytes(line + LINE_SEPERATOR);       // "šarže");
+                    //char[] chars = Encoding.ASCII.GetChars(bytes);
+                    //line = Encoding.ASCII.GetString(bytes);
+
+                    //stringBuilder.Append(chars);
+                    stringBuilder.Append(line + LINE_SEPERATOR);
                     resultList.Add(line);
                 }
 
@@ -964,6 +1152,7 @@ namespace ProjTaskReminder.Utils
             catch (Exception ex)     //  FileNotFoundException ex)
             {
                 Toast.MakeText(context, "קריאה מקובץ טקסט נכשל" + " - " + ex.Message, ToastLength.Long).Show();
+                WriteToLog("קריאה מקובץ טקסט נכשל" + " - " + ex.Message);
                 resultList = null;
             }
 
@@ -979,23 +1168,32 @@ namespace ProjTaskReminder.Utils
 
             try
             {
+                KeyValuePair<string, int>[] perm = new KeyValuePair<string, int>[] { 
+                                                                                      new KeyValuePair<string, int>(Manifest.Permission.WriteExternalStorage, PERMISSIONS_REQUEST_WRITE_STORAGE),
+                                                                                      new KeyValuePair<string, int>(Manifest.Permission.ReadExternalStorage, PERMISSIONS_REQUEST_READ_STORAGE)
+                                                                                   };
+                PermissionAsk(perm);
+
                 if (!Directory.GetParent(fileName).Exists)
                 {
                     Toast.MakeText(context, "saveToFile - Directory not exist. Create Directory", ToastLength.Short).Show();
                     Directory.CreateDirectory(Directory.GetParent(fileName).Name);
                 }
 
+                data = data + LINE_SEPERATOR;
+
                 //UTF8Encoding encoding = new UTF8Encoding();
-                //Encoding encoding = new UTF8Encoding(false);
-                Encoding encoding = Encoding.GetEncoding("Windows-1255");
-                byte[] bytes = Encoding.ASCII.GetBytes(data + LINE_SEPERATOR);       // "šarže");
+                Encoding encoding = new UTF8Encoding(false);
+                //Encoding encoding = Encoding.GetEncoding("Windows-1255");
+                byte[] bytes = Encoding.ASCII.GetBytes(data);       // "šarže");
                 char[] chars = Encoding.ASCII.GetChars(bytes);
 
-                Java.IO.FileOutputStream fileOutputStream = new Java.IO.FileOutputStream(fileName, appendLines);
-                fileOutputStream.Write(bytes);
-                //StreamWriter fileOutputStream = new StreamWriter(fileName, appendLines, encoding);
-                //fileOutputStream.Write(chars);
+                //Java.IO.FileOutputStream fileOutputStream = new Java.IO.FileOutputStream(fileName, appendLines);
+                //fileOutputStream.Write(bytes);
 
+                StreamWriter fileOutputStream = new StreamWriter(fileName, appendLines, encoding);
+                fileOutputStream.Write(data);
+                //fileOutputStream.Write(chars);
 
                 if (showMessage)
                 {
@@ -1015,97 +1213,11 @@ namespace ProjTaskReminder.Utils
             return result;
         }
 
-
-
-
-
-
-        //private void RequestPermissions()
-        //{
-
-
-        //    if (context.CheckSelfPermission(this, Android.Manifest.Permission.ReadExternalStorage) != PackageManager.PERMISSION_GRANTED)
-        //    {
-        //        Toast.MakeText(this, "Permission READ_EXTERNAL_STORAGE is Not OK", ToastLength.Long).show();
-        //        //return;
-        //    }
-        //    else
-        //    {
-        //        // Have to ask permmissions
-        //    }
-
-        //    // Here, thisActivity is the current activity
-        //    if (context.CheckSelfPermission(this, Android.Manifest.Permission.ReadExternalStorage) != PackageManager..PERMISSION_GRANTED)
-        //    {
-        //        //Toast.makeText(this, "Permission WRITE_CALENDAR not granted", Toast.LENGTH_SHORT).show();
-        //        // Permission is not granted
-        //        // Should we show an explanation?
-        //        if (activity.ShouldShowRequestPermissionRationale(Android.Manifest.Permission.ReadExternalStorage))
-        //        {
-        //            // Show an explanation to the user *asynchronously* -- don't block
-        //            // this thread waiting for the user's response! After the user
-        //            // sees the explanation, try again to request the permission.
-        //        }
-        //        else
-        //        {
-        //            // No explanation needed; request the permission
-        //            activity.RequestPermissions(this, new String[] { Android.Manifest.Permission.ReadExternalStorage }, PERMISSIONS_REQUEST_READ_STORAGE);
-
-        //            // PERMISSIONS_REQUEST_READ_STORAGE is an app-defined int constant. The callback method gets the
-        //            // result of the request.
-        //        }
-        //    }
-        //    else
-        //    {
-        //        // Permission has already been granted
-        //    }
-
-        //}
-
-        //public static void OnRequestPermissionsResult2(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
-        //{
-        //    Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        //    activity.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-        //}
-
-        //public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
-        //{
-        //    switch (requestCode)
-        //    {
-        //        case PERMISSIONS_REQUEST_READ_STORAGE:
-        //            {
-        //                // If request is cancelled, the result arrays are empty.
-        //                if (grantResults.Length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-        //                {
-        //                    // permission was granted, yay! Do the
-        //                    // contacts-related task you need to do.
-        //                }
-        //                else
-        //                {
-        //                    // permission denied, boo! Disable the
-        //                    // functionality that depends on this permission.
-        //                }
-        //                return;
-        //            }
-
-        //            // other 'case' lines to check for other
-        //            // permissions this app might request.
-        //    }
-        //}
-
-        /* Checks if external storage is available for read and write */
-        //public boolean isExternalStorageAvailable()
-        //{
-        //    String state = Android.OS.Environment.GetExternalStorageState();
-        //    if (Environment.MEDIA_MOUNTED.equals(state))
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
-
     }
+
+
+
+
 
     public class XmlItem
     {

@@ -17,6 +17,7 @@ using System.Net;
 using System.IO;
 using System.Timers;
 using System.Threading;
+using MH_Utils;
 //using Newtonsoft
 
 namespace ProjTaskReminder.Utils
@@ -243,7 +244,7 @@ namespace ProjTaskReminder.Utils
             }
             catch (Exception ex)
             {
-                Utils.WriteToLog("Can't reach site: " + url.AbsoluteUri + "\n" + "Error: " + ex.Message);
+                MH_Utils.Utils.WriteToLog("Can't reach site: " + url.AbsoluteUri + "\n" + "Error: " + ex.Message);
             }
 
 
@@ -350,7 +351,7 @@ namespace ProjTaskReminder.Utils
                 }
                 catch (JSONException ex)
                 {
-                    Utils.WriteToLog(ex.Message);
+                    MH_Utils.Utils.WriteToLog(ex.Message);
                     //Log.d("Error: ", ex.getMessage());
                     //ex.printStackTrace();
                 }
