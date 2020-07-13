@@ -47,6 +47,7 @@ namespace ProjTaskReminder.Utils
             {
                 ThreadObject = new System.Threading.Thread(new System.Threading.ThreadStart(Thread_Elapsed));
                 ThreadObject.IsBackground = true;
+                ThreadObject.Start();
             }
         }
 

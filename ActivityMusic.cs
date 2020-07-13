@@ -325,6 +325,8 @@ namespace ProjTaskReminder
                 lblSongsListCaption.Text = "השירים לתיקייה '" + GetFolderNameFromPath(ListItemsRecycler[0].Value.getSongPath()) + "'";
             }
 
+
+            // Extract the Songs objects from main list 'ListItemsRecycler'
             List<ListItemSong> SongNamesList = GetSongsObjects();
             
             //layFolderList.Visibility = ViewStates.Visible;
@@ -362,6 +364,10 @@ namespace ProjTaskReminder
             ChooseFileItem(position);
         }
 
+        /// <summary>
+        /// When press in list item
+        /// </summary>
+        /// <param name="position"></param>
         private void ChooseFileItem(int position)
         {
 
@@ -372,6 +378,11 @@ namespace ProjTaskReminder
             {
                 ListPositionIndex = position; 
 
+                // Pressed on first 'All Songs'
+                if (position==0)
+                {
+                    //btnSongsList_OnListItem(null, null);
+                }
                 if (listViewAdapter==null)
                 {
                     ShowSongsForFoldersList();
@@ -380,12 +391,15 @@ namespace ProjTaskReminder
                 {
                     ThreadSongsListView = new Thread(new ThreadStart(StartShowSongsForFoldersList));
                     ThreadSongsListView.Start();
-                    //RunOnUiThread(ShowSongsForFoldersList);
                 }
             }
             else
             {
+                // When there is songs list to folder
+
+                // Extract the Songs objects from main list 'ListItemsRecycler'
                 SongNamesList = GetSongsObjects();
+
                 if (position < SongNamesList.Count)
                 {
                     string fullSongPath = SongNamesList[position].getSongPathFull();
@@ -408,7 +422,7 @@ namespace ProjTaskReminder
 
         private void StartShowSongsForFoldersList()
         {
-            RunOnUiThread(ShowSongsForFoldersList);
+            this.RunOnUiThread(ShowSongsForFoldersList);
         }
 
         private void ShowSongsForFoldersList()
@@ -420,12 +434,22 @@ namespace ProjTaskReminder
 
             // 'ListPositionIndex' get value before in func 'ChooseFileItem()'
 
-            string path = SongFoldersList[ListPositionIndex].getSongPath();
-            ListItemsRecycler = ListItemsRecycler.Where(a => a.Value.getSongPath() == path).ToList();
+            if (ListPositionIndex == 0)
+            {
+                // All Songs, from all folders
+                lblSongsListCaption.Text = "רשימת כל השירים";
+            }
+            else
+            {
+                string path = SongFoldersList[ListPositionIndex].getSongPath();
+                ListItemsRecycler = ListItemsRecycler.Where(a => a.Value.getSongPath() == path).ToList();
+                lblSongsListCaption.Text = "השירים לתיקייה '" + GetFolderNameFromPath(path) + "'";
+            }
 
+
+            // Extract the Song objects from main list
             SongNamesList = GetSongsObjects();
 
-            lblSongsListCaption.Text = "השירים לתיקייה '" + GetFolderNameFromPath(path) + "'";
 
             //layFolderList.Visibility = ViewStates.Invisible;
             cardFilesList.Visibility = ViewStates.Invisible;        // to force show later
@@ -487,6 +511,7 @@ namespace ProjTaskReminder
         private List<ListItemSong> FillSongsFolders()
         {
             List<ListItemSong> list = new List<ListItemSong>();
+            ListItemSong listItemSong = null;
 
 
             RestoreSongsList();
@@ -504,7 +529,7 @@ namespace ProjTaskReminder
                 {
                     string songsCount = ListItemsRecycler.Count(a => a.Value.getSongPath() == path).ToString() + " " + "שירים";
 
-                    ListItemSong listItemSong = new ListItemSong();
+                    listItemSong = new ListItemSong();
 
                     listItemSong.setSongName(parentPathName);       // First line
                     listItemSong.setArtist(songsCount.ToString());  // Second line - Song count
@@ -518,11 +543,18 @@ namespace ProjTaskReminder
                 }
             }
 
+            listItemSong = new ListItemSong();
+            listItemSong.setSongName("כל השירים");                                      // First line
+            listItemSong.setArtist(ListItemsRecycler.Count.ToString() + " " + "שירים"); // Second line - Song count
+            listItemSong.setSongPath(MUSIC_PATH);                                       // Third line
+
+            list.Insert(0, listItemSong);
+
             return list;
         }
 
         /// <summary>
-        /// Extract the Song objects from main list
+        /// Extract the Songs objects from main list 'ListItemsRecycler'
         /// </summary>
         /// <returns></returns>
         private List<ListItemSong> GetSongsObjects()

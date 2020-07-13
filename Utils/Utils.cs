@@ -20,6 +20,7 @@ using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
 using Java.IO;
+using static Android.App.ActivityManager;
 //using Java.Net;
 
 namespace MH_Utils
@@ -29,7 +30,7 @@ namespace MH_Utils
     {
         public const string LINE_SEPERATOR = "\n";
         public static string LOG_FILE_PATH;
-        public static string LOG_FILE_NAME;
+        public static string LOG_FILE_NAME = "LogTaskReminder.txt";
 
         public static string NEWS_RSS_ADDRESS1 = " http://www.ynet.co.il/Integration/StoryRss1854.xml";
         public static string NEWS_RSS_ADDRESS2 = " https://www.kan.org.il/rss/allnews.ashx";
@@ -41,7 +42,7 @@ namespace MH_Utils
 
         public static List<KeyValuePair<string, List<string>>> FilesExtra;
 
-        public static Context context;
+        public static Context ClientContext;
         public static Activity ClientActivity;
 
 
@@ -147,12 +148,14 @@ namespace MH_Utils
 
 
 
-            KeyValuePair<string, int>[] perm = new KeyValuePair<string, int>[] {
-                                                                                      new KeyValuePair<string, int>(Manifest.Permission.WriteExternalStorage, PERMISSIONS_REQUEST_WRITE_STORAGE),
+            if (FilesExtra == null)
+            {
+                KeyValuePair<string, int>[] perm = new KeyValuePair<string, int>[] {
+                                                                                      //new KeyValuePair<string, int>(Manifest.Permission.WriteExternalStorage, PERMISSIONS_REQUEST_WRITE_STORAGE),
                                                                                       new KeyValuePair<string, int>(Manifest.Permission.ReadExternalStorage, PERMISSIONS_REQUEST_READ_STORAGE)
                                                                                    };
-            PermissionAsk(perm);
-
+                PermissionAsk(perm);
+            }
 
             fileExtentionToSearch = fileExtentionToSearch.ToLower();
 
@@ -477,7 +480,7 @@ namespace MH_Utils
 
         public static void closeKeyboard()
         {
-            InputMethodManager inputMethodManager = (InputMethodManager)context.GetSystemService(Context.InputMethodService);       //.INPUT_METHOD_SERVICE);
+            InputMethodManager inputMethodManager = (InputMethodManager)ClientContext.GetSystemService(Context.InputMethodService);       //.INPUT_METHOD_SERVICE);
 
             if (inputMethodManager != null)
             {
@@ -500,40 +503,50 @@ namespace MH_Utils
             string[] requiredPermissions = permissionNames.Select(a => a.Key).ToArray();         //new string[]  { Manifest.Permission.ReadExternalStorage, Manifest.Permission.WriteExternalStorage };
 
 
-
-            for (int i = 0; i < permissionNames.Length; i++)
+            if (ClientActivity==null)
             {
-                if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(ClientActivity, permissionNames[i].Key) == (int)Android.Content.PM.Permission.Granted)
-                {
-                    // We have permission, go ahead and use the camera.
-                    result += permissionNames[i].Key + " - " + "Is Granted" + LINE_SEPERATOR;
-                }
-                else
-                {
-                    // Camera permission is not granted. If necessary display rationale & request.
-                    result += permissionNames[i].Key + " - " + "Is Not Granted" + LINE_SEPERATOR;
-                }
-
-                // Manifest.Permission.Camera
-                // Manifest.Permission.ReadExternalStorage
-
-                if (Android.Support.V4.App.ActivityCompat.ShouldShowRequestPermissionRationale(ClientActivity, permissionNames[i].Key))
-                {
-                    // Provide an additional rationale to the user if the permission was not granted
-                    // and the user would benefit from additional context for the use of the permission.
-                    // For example if the user has previously denied the permission.
-                    Log.Info("Check Per", "Displaying " + permissionNames[i].Key + " permission rationale to provide additional context.");
-
-                    Android.Support.V4.App.ActivityCompat.RequestPermissions(ClientActivity, new string[] { permissionNames[i].Key }, permissionNames[i].Value);     // PERMISSIONS_REQUEST_WRITE_STORAGE);
-                }
-                else
-                {
-                    Android.Support.V4.App.ActivityCompat.RequestPermissions(ClientActivity, new string[] { permissionNames[i].Key }, permissionNames[i].Value);     // PERMISSIONS_REQUEST_WRITE_STORAGE);
-                }
-
-
+                return result;
             }
 
+            try
+            {
+                for (int i = 0; i < permissionNames.Length; i++)
+                {
+                    if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(ClientActivity, permissionNames[i].Key) == (int)Android.Content.PM.Permission.Granted)
+                    {
+                        // We have permission, go ahead and use the camera.
+                        result += permissionNames[i].Key + " - " + "Is Granted" + LINE_SEPERATOR;
+                    }
+                    else
+                    {
+                        // Camera permission is not granted. If necessary display rationale & request.
+                        result += permissionNames[i].Key + " - " + "Is Not Granted" + LINE_SEPERATOR;
+
+                        // Manifest.Permission.Camera
+                        // Manifest.Permission.ReadExternalStorage
+
+                        if (Android.Support.V4.App.ActivityCompat.ShouldShowRequestPermissionRationale(ClientActivity, permissionNames[i].Key))
+                        {
+                            // Provide an additional rationale to the user if the permission was not granted
+                            // and the user would benefit from additional context for the use of the permission.
+                            // For example if the user has previously denied the permission.
+                            Log.Info("Check Per", "Have to Displaying '" + permissionNames[i].Key + "' permission dialog screen");
+
+                        }
+                        else
+                        {
+                            Log.Info("Check Per", "Not Have to Displaying '" + permissionNames[i].Key + "' permission dialog screen");
+                        }
+
+                        Android.Support.V4.App.ActivityCompat.RequestPermissions(ClientActivity, new string[] { permissionNames[i].Key }, permissionNames[i].Value);     // PERMISSIONS_REQUEST_WRITE_STORAGE);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
 
             return result;
         }
@@ -780,7 +793,7 @@ namespace MH_Utils
 
             try
             {
-                imageView = new ImageView(context);
+                imageView = new ImageView(ClientContext);
                 Android.Net.Uri uri = Android.Net.Uri.Parse(urlAddress);
                 imageView.SetImageURI(uri);
             }
@@ -1095,7 +1108,7 @@ namespace MH_Utils
                 if (files.IndexOf(fileName) == -1)
                 {
                     string message = "קובץ טקסט לא נמצא בדיסק" + " - " + fileName;
-                    Toast.MakeText(context, message, ToastLength.Long).Show();
+                    Toast.MakeText(ClientContext, message, ToastLength.Long).Show();
                     return null;
                 }
 
@@ -1146,12 +1159,12 @@ namespace MH_Utils
 
                 if (showMessage)
                 {
-                    Toast.MakeText(context, "קריאה מקובץ טקסט עבר בהצלחה", ToastLength.Long).Show();
+                    Toast.MakeText(ClientContext, "קריאה מקובץ טקסט עבר בהצלחה", ToastLength.Long).Show();
                 }
             }
             catch (Exception ex)     //  FileNotFoundException ex)
             {
-                Toast.MakeText(context, "קריאה מקובץ טקסט נכשל" + " - " + ex.Message, ToastLength.Long).Show();
+                Toast.MakeText(ClientContext, "קריאה מקובץ טקסט נכשל" + " - " + ex.Message, ToastLength.Long).Show();
                 WriteToLog("קריאה מקובץ טקסט נכשל" + " - " + ex.Message);
                 resultList = null;
             }
@@ -1176,7 +1189,7 @@ namespace MH_Utils
 
                 if (!Directory.GetParent(fileName).Exists)
                 {
-                    Toast.MakeText(context, "saveToFile - Directory not exist. Create Directory", ToastLength.Short).Show();
+                    Toast.MakeText(ClientContext, "saveToFile - Directory not exist. Create Directory", ToastLength.Short).Show();
                     Directory.CreateDirectory(Directory.GetParent(fileName).Name);
                 }
 
@@ -1197,7 +1210,7 @@ namespace MH_Utils
 
                 if (showMessage)
                 {
-                    Toast.MakeText(context, "שמירה לקובץ" + " '" + fileName + "' " + "עברה בהצלחה", ToastLength.Long).Show();
+                    Toast.MakeText(ClientContext, "שמירה לקובץ" + " '" + fileName + "' " + "עברה בהצלחה", ToastLength.Long).Show();
                 }
 
                 fileOutputStream.Close();
@@ -1206,12 +1219,130 @@ namespace MH_Utils
             }
             catch (Exception ex)
             {
-                Toast.MakeText(context, "Error in saveToFile" + ex.Message, ToastLength.Long).Show();
+                Toast.MakeText(ClientContext, "Error in saveToFile" + ex.Message, ToastLength.Long).Show();
                 WriteToLog("Error in saveToFile(): " + fileName + "\n" + ex.Message);
             }
 
             return result;
         }
+
+        public static bool IsActivityRunning(Intent intent)
+        {
+            ComponentName componentName = intent.Component;
+            Context context = ClientContext;  // ApplicationContext;
+            // (Context)InputIntent.ResolveActivity(ApplicationContext.PackageManager);
+            string clsName = componentName.ClassName;
+            //Java.Lang.Class @class = InputIntent.Class;
+
+
+            return IsActivityRunning(context);
+        }
+
+        [Obsolete]
+        public static bool IsActivityRunning(Context context)
+        {
+            bool result = false;
+            ActivityManager activityManager = (ActivityManager)context.GetSystemService(Context.ActivityService);
+            IList<ActivityManager.RunningTaskInfo> tasks = activityManager.GetRunningTasks(int.MaxValue);
+
+
+            foreach (ActivityManager.RunningTaskInfo task in tasks)
+            {
+                // ApplicationContext.ApplicationInfo.ProcessName  "com.meirhemed.projtaskreminder"
+                // ApplicationContext.ApplicationInfo.TaskAffinity	"com.meirhemed.projtaskreminder"	
+                // ApplicationContext.ApplicationInfo.DataDir	"/data/user/0/com.meirhemed.projtaskreminder"	
+                // ApplicationContext.ApplicationInfo.PackageName  "com.meirhemed.projtaskreminder"
+                // ApplicationContext.ApplicationInfo	{ApplicationInfo{7db657c com.meirhemed.projtaskreminder}}	Android.Content.PM.ApplicationInfo
+
+                if (context.PackageName.Equals(task.BaseActivity.PackageName))
+                // if (componentName.PackageName.Equals(task.BaseActivity.PackageName))
+                {
+                    result = true;
+                    break;
+                }
+            }
+
+
+            Activity activity = new Activity();
+            // Activity is at least partially visible
+            //getLifecycle().getCurrentState().isAtLeast(STARTED)
+            //Activity is in the foreground
+            //getLifecycle().getCurrentState().isAtLeast(RESUMED)
+
+            if (activity.Window.DecorView.RootView.IsShown)
+            {
+
+            }
+
+            // if(!activity.isFinishing() && !activity.isDestroyed())
+            // if (MainActivity.mainActivityIsOpen() == true)
+
+
+            //foreach (RunningTaskInfo task in tasks)
+            //{
+            //    if (ctx.PackageManager.Equals(task.BaseActivity.PackageName))
+            //    //if (ctx.PackageManager.EqualsIgnoreCase(task.BaseActivity.PackageName()))
+            //    {
+            //        return true;
+            //    }
+            //}
+
+
+            //for (int i = 0; i < tasks.Count; i++)
+            //{
+
+            //    if (Constants.PACKAGE.equals(tasks[i].PackageName))
+            //    {
+
+            //        if (Constants.BACKGROUND_SERVICE_CLASS.equals(services.get(i).service.getClassName()))
+            //        {
+            //            isServiceFound = true;
+            //        }
+            //    }
+            //}
+
+            return result;
+        }
+
+        [Obsolete]
+        public static bool isActivityRunning2(Java.Lang.Class activityClass)
+        {
+            ActivityManager activityManager = (ActivityManager)ClientContext.GetSystemService(Context.ActivityService);
+            List<ActivityManager.RunningTaskInfo> tasks = (List<RunningTaskInfo>)activityManager.GetRunningTasks(int.MaxValue);
+
+            foreach (RunningTaskInfo task in tasks)
+            {
+                if (activityClass.CanonicalName.Equals(task.BaseActivity.ClassName))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+
+        [Obsolete]
+        public static bool IsServiceRunning(Context ctx)
+        {
+            ActivityManager activityManager = (ActivityManager)ctx.GetSystemService(Context.BluetoothService);
+            List<RunningServiceInfo> tasks = (List<RunningServiceInfo>)activityManager.GetRunningServices(int.MaxValue);
+
+            foreach (RunningServiceInfo task in tasks)
+            {
+                if (ctx.PackageManager.Equals(task.ClientPackage))
+                //if (ctx.PackageManager.Equals(task.PackageName))
+                //if (ctx.PackageManager.Equals(task.Process))
+                //if (ctx.PackageManager.Equals(task.Service))
+                //if (ctx.PackageManager.EqualsIgnoreCase(task.BaseActivity.PackageName()))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
 
     }
 

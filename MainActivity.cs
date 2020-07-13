@@ -167,6 +167,7 @@ namespace ProjTaskReminder
 
 
             ServiceKeppAliveIntent = new Intent(this, typeof(MHServiceKeepAlive.ServiceStayAlive));
+            //ServiceKeppAliveIntent = new Intent(MainContext, typeof(MHServiceKeepAlive.ServiceStayAlive));
             ServiceKeppAliveIntent.SetFlags(ActivityFlags.NewTask);
 
             // Just tto use same constants values
@@ -175,27 +176,25 @@ namespace ProjTaskReminder
             Bundle bundle = new Bundle();
             bundle.PutString(serviceStayAlive.INTENT_KEY_CALLER_PACKAGE_NAME, this.PackageName);
             bundle.PutString(serviceStayAlive.INTENT_KEY_CALLER_COMPONENT_ACTIVITY_NAME, this.ComponentName.ClassName);     // "com.meirhemed.executeanotheractivity.mainactivity"
-            bundle.PutBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_START_AT_BEGINING, false);
-            bundle.PutBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_AUTOMATIC, true);
+            bundle.PutBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_ON_START, true);
+            bundle.PutBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_ON_DESTROY, false);
+            bundle.PutString(serviceStayAlive.INTENT_KEY_CALLER_LOG_FILE_PATH, MainContext.GetExternalFilesDir("").AbsolutePath);
 
             ServiceKeppAliveIntent.PutExtra(serviceStayAlive.INTENT_KEY_CALLER_BUNDLE, bundle);
 
             StartService(ServiceKeppAliveIntent);
 
-            //ServiceKeppAliveIntent.PutExtra("callerPackageName", new string[] { "com.meirhemed.executeanotheractivity" });
-            //ServiceKeppAliveIntent.PutExtra("callerComponentObjectName", new string[] { "com.meirhemed.executeanotheractivity.mainactivity" });
-
             //intent = new Intent(Intent.ActionMain);     // Intent.ActionMain - "android.intent.action.MAIN"
             //intent.SetComponent(new ComponentName("com.meirhemed.intentedactivity", "com.meirhemed.intentedactivity.mainactivity"));
             //StartActivity(intent);
 
-            //var intent = new Intent(ApplicationContext, typeof(PostService));
-            //var source = PendingIntent.GetBroadcast(ApplicationContext, 0, intent, 0);
-
             // Put in the client taht call that servic - Provide the package name and the name of the service with a ComponentName object.
-            //ComponentName cn = new ComponentName(REMOTE_SERVICE_PACKAGE_NAME, REMOTE_SERVICE_COMPONENT_NAME);
+            //ComponentName cn = new ComponentName("com.meirhemed.intentedactivity", "com.meirhemed.intentedactivity.mainactivity");
             //Intent serviceToStart = new Intent();
             //serviceToStart.SetComponent(cn);
+
+            //var intent = new Intent(ApplicationContext, typeof(PostService));
+            //var source = PendingIntent.GetBroadcast(ApplicationContext, 0, intent, 0);
 
             //Android.Net.Uri uri = Android.Net.Uri.Parse("com.meirhemed.mhServiceKeepAlive.mhServiceStayAlive");     // callerName
             //ServiceKeppAliveIntent = new Intent(Intent.ActionCall, uri);
@@ -1847,6 +1846,8 @@ namespace ProjTaskReminder
                         task.setDescription(desc);
                         OpenTaskDetailsPage(task, false, MainContext);
                         ActivityTaskDetails.isNewMode = true;
+                        //EditText txtDetailsDescription = FindViewById<EditText>(Resource.Id.txtDetailsDescription);
+                        //txtDetailsDescription.TextDirection = TextDirection.Ltr;
                     }
                     break;
             }
@@ -1895,7 +1896,11 @@ namespace ProjTaskReminder
 
             Toast.MakeText(this, "Close Application", ToastLength.Long).Show();
 
-            MH_Utils.Utils.WriteToLog("System close Task Reminder application");
+            MH_Utils.Utils.WriteToLog("Task Reminder app 'OnDestroy' - System close Task Reminder application");
+
+
+            // Just tto use same constants values
+            MHServiceKeepAlive.ServiceStayAlive serviceStayAlive = new MHServiceKeepAlive.ServiceStayAlive();
 
             // The latter may seem rather peculiar: why do we want to stop exactly the service that we want to keep alive? 
             // Because if we do not stop it, the service will die with our app.Instead, by stopping the service, 
@@ -1904,19 +1909,41 @@ namespace ProjTaskReminder
             //	Why can't I simply send a message to the broadcast receiver directly from the Activity's onDestroy
             // You can but in that case the service will not be restarted if your app is in the background and Android decides to kill your service because it needs resources.I.e.your service would not be guaranteed to work indefinitely
 
+            // 
             // What is I do not want the counter to restart when the process is killed ?
             // Yes this is the usual case. Well you cannot directly. The only way is to save the status of the service and to reload it when the service is started.You will do this by using the following code:
             if (ServiceKeppAliveIntent != null)
             {
-                // Just tto use same constants values
-                MHServiceKeepAlive.ServiceStayAlive serviceStayAlive = new MHServiceKeepAlive.ServiceStayAlive();
                 // Just to prevent execute ReStart again in 'Service.OnDestroy()'
                 Bundle bundle = ServiceKeppAliveIntent.GetBundleExtra(serviceStayAlive.INTENT_KEY_CALLER_BUNDLE);
-                bundle.PutBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_AUTOMATIC, false);
-                StopService(ServiceKeppAliveIntent);
-            }
+                // Prevent ReStart again this activity on 'Service:OnDestroy()'
+                bool isServiceRestartOnServiceDestroy = bundle.GetBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_ON_DESTROY, true);
 
-            //ServiceKeepAliveHandle(InputSavedInstanceState);
+                if (isServiceRestartOnServiceDestroy)
+                {
+                    MH_Utils.Utils.WriteToLog("Task Reminder app 'OnDestroy' - Going to Stop Service");
+
+                    StopService(ServiceKeppAliveIntent);
+
+                    ServiceKeppAliveIntent = null;
+                }
+                else
+                {
+                    bool isReStartAtBeginingOfService = bundle.GetBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_ON_START);
+                    if (isReStartAtBeginingOfService)
+                    {
+                        MH_Utils.Utils.WriteToLog("Task Reminder app 'OnDestroy' - Going to Start Service");
+                        ServiceKeepAliveHandle(InputSavedInstanceState);
+                    }
+                }
+            }
+            else
+            {
+                string message = "Task Reminder app 'OnDestroy' - Going to Start Service";
+                Toast.MakeText(this, message, ToastLength.Long).Show();
+                MH_Utils.Utils.WriteToLog(message);
+                ServiceKeepAliveHandle(InputSavedInstanceState);
+            }
 
 
             base.OnDestroy();
@@ -1940,21 +1967,25 @@ namespace ProjTaskReminder
             string message = string.Empty;
 
 
+            if (grantResults.Length == 0)
+            {
+                return;
+            }
 
-            // Received permission result for permission.
+                // Received permission result for permission.
             switch (requestCode)
             {
                 case PERMISSIONS_REQUEST_READ_STORAGE:
                     {
                         // Check if the only required permission has been granted
-                        if (grantResults.Length > 0 && grantResults[0] == Android.Content.PM.Permission.Granted)
+                        if (grantResults[0] == Android.Content.PM.Permission.Granted)
                         {
                             // Location permission has been granted, okay to retrieve the location of the device.
-                            message = "Read permission has now been Granted.";
+                            message = "Read permission - Granted.";
                         }
                         else
                         {
-                            message = "Read permission was NOT Granted.";
+                            message = "Read permission - NOT Granted.";
                         }
                     }
                     break;
@@ -1962,14 +1993,14 @@ namespace ProjTaskReminder
                 case PERMISSIONS_REQUEST_WRITE_STORAGE:
                     {
                         // Check if the only required permission has been granted
-                        if (grantResults.Length > 0 && grantResults[0] == Android.Content.PM.Permission.Granted)
+                        if (grantResults[0] == Android.Content.PM.Permission.Granted)
                         {
                             // Location permission has been granted, okay to retrieve the location of the device.
-                            message = "Write permission has now been Granted.";
+                            message = "Write permission - Granted.";
                         }
                         else
                         {
-                            message = "Write permission was NOT Granted.";
+                            message = "Write permission - NOT Granted.";
                         }
                     }
                     break;
@@ -1982,7 +2013,7 @@ namespace ProjTaskReminder
 
             if (message != string.Empty)
             {
-                Toast.MakeText(MainContext, message, ToastLength.Long).Show();
+                //Toast.MakeText(MainContext, message, ToastLength.Long).Show();
 
                 //Toast.MakeText(this, (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(this, Android.Manifest.Permission.ReadExternalStorage) == (int)Android.Content.PM.Permission.Granted).ToString(), ToastLength.Long);
                 //View view = LayoutInflater.From(this).Inflate(Android.Resource.Layout.ActivityListItem, null, false);
