@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MHServiceKeepAlive", "..\MHServiceKeepAlive\MHServiceKeepAlive.csproj", "{AFD15E0D-1240-4A5C-AAE5-3D0A8F176F4D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MH_Utils", "..\MH_Utils\MH_Utils.csproj", "{A98E0273-D5B1-487C-8103-8AD4D7E73CBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{AFD15E0D-1240-4A5C-AAE5-3D0A8F176F4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFD15E0D-1240-4A5C-AAE5-3D0A8F176F4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFD15E0D-1240-4A5C-AAE5-3D0A8F176F4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98E0273-D5B1-487C-8103-8AD4D7E73CBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98E0273-D5B1-487C-8103-8AD4D7E73CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98E0273-D5B1-487C-8103-8AD4D7E73CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98E0273-D5B1-487C-8103-8AD4D7E73CBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -26,8 +26,7 @@ using Android.Graphics.Drawables;
 using static MH_Utils.Utils;
 using System.Text;
 using Android;
-
-
+using MH_Utils;
 
 namespace ProjTaskReminder
 {
@@ -520,7 +519,7 @@ namespace ProjTaskReminder
             //setControlsColors();
 
             MH_Utils.Utils.ClientActivity = this;
-            MH_Utils.Utils.context = MainContext;
+            MH_Utils.Utils.ClientContext = MainContext;
             MH_Utils.Utils.LOG_FILE_NAME = "LogTaskReminder.txt";
             MH_Utils.Utils.LOG_FILE_PATH = MainContext.GetExternalFilesDir("").AbsolutePath;
             //string folderBackup = Android.OS.Environment.DirectoryMusic;        // "ProjTaskReminder"
@@ -1101,7 +1100,7 @@ namespace ProjTaskReminder
 
             TimerInterval = 30000;  // 30 seconds
 
-            TaskTimerService = new TimerService(currentTask, TimerService.enumTimerType.Timer);
+            TaskTimerService = new MH_Utils.TimerService(currentTask, MH_Utils.TimerService.enumTimerType.Timer);
             //TaskTimerService = new TimerService(currentTask, timer);
             TaskTimerService.TimerInterval = TimerInterval;
             TaskTimerService.OnTimerTick += OnTaskTimer_OK;
@@ -1133,7 +1132,7 @@ namespace ProjTaskReminder
             // Just to init object. will ReInit next lines
             System.Threading.Thread timer = System.Threading.Thread.CurrentThread;
 
-            TimerService TaskTimerService = new TimerService(currentTask, TimerService.enumTimerType.Thread);
+            MH_Utils.TimerService TaskTimerService = new MH_Utils.TimerService(currentTask, MH_Utils.TimerService.enumTimerType.Thread);
             //TimerService TaskTimerService = new TimerService(currentTask, timer);
             TaskTimerService.TimerInterval = TimerInterval;
             TaskTimerService.activity = this;
@@ -1366,7 +1365,7 @@ namespace ProjTaskReminder
             //return strDateNow;
         }
 
-        private void addTimerToKillArray(int taskID, Task currentTask, TimerService taskTimerElapsed)   // , Timer timer
+        private void addTimerToKillArray(int taskID, Task currentTask, MH_Utils.TimerService taskTimerElapsed)   // , Timer timer
         {
             object[] timersArray = new object[3];
 

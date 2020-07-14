@@ -73,12 +73,7 @@
     <Compile Include="Model\Weather.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\ListViewAdapter.cs" />
-    <Compile Include="Utils\MH_Notification.cs" />
-    <Compile Include="Utils\MH_Scroll.cs" />
     <Compile Include="Utils\MH_Weather.cs" />
-    <Compile Include="Utils\TimerService.cs" />
-    <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
@@ -291,6 +286,10 @@
     <ProjectReference Include="..\MHServiceKeepAlive\MHServiceKeepAlive.csproj">
       <Project>{afd15e0d-1240-4a5c-aae5-3d0a8f176f4d}</Project>
       <Name>MHServiceKeepAlive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MH_Utils\MH_Utils.csproj">
+      <Project>{a98e0273-d5b1-487c-8103-8ad4d7e73cbc}</Project>
+      <Name>MH_Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
