@@ -28,6 +28,7 @@ using System.Text;
 using Android;
 using MH_Utils;
 
+
 namespace ProjTaskReminder
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true, Name = "com.meirhemed.projtaskreminder.mainactivity")]
@@ -1528,16 +1529,28 @@ namespace ProjTaskReminder
             //                                                                       };
             //MH_Utils.Utils.PermissionAsk(perm);
 
+
+            // Must first close DB
+            DBTaskReminder.DB.Close();
+
+
             string backupFolderName = Android.OS.Environment.DirectoryMusic;    // "ProjTaskReminder"
             string sourcePath = Android.OS.Environment.GetExternalStoragePublicDirectory(backupFolderName).AbsolutePath;
             string targetPath = DBTaskReminder.DB_PATH;
 
+
+            // Database file
             string fullPathTarget = Path.Combine(targetPath, DBTaskReminder.DB_NAME);
             string fullPathSource = Path.Combine(sourcePath, DBTaskReminder.DB_NAME);
 
-            DBTaskReminder.DB.Close();
-
             bool result = MH_Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
+
+            // Log file
+            fullPathSource = Path.Combine(MH_Utils.Utils.LOG_FILE_PATH, MH_Utils.Utils.LOG_FILE_NAME);
+            fullPathTarget = Path.Combine(targetPath, MH_Utils.Utils.LOG_FILE_NAME);
+
+            bool result2 = MH_Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
+
 
             ConnectToDB();
 
@@ -1750,7 +1763,8 @@ namespace ProjTaskReminder
                     line += WRITE_DB_PREFIX_ID + task.getTaskID() + MH_Utils.Utils.LINE_SEPERATOR;
                     line += WRITE_DB_PREFIX_TITLE + task.getTitle() + MH_Utils.Utils.LINE_SEPERATOR;
                     //line += WRITE_DB_PREFIX_DESC + task.getDescriptionWithHtml() + MH_Utils.Utils.LINE_SEPERATOR;
-                    line += WRITE_DB_PREFIX_DESC + task.getDescriptionPure() + MH_Utils.Utils.LINE_SEPERATOR;
+                    line += WRITE_DB_PREFIX_DESC + task.getDescriptionWithHtml() + MH_Utils.Utils.LINE_SEPERATOR;
+                    //line += WRITE_DB_PREFIX_DESC + task.getDescriptionPure() + MH_Utils.Utils.LINE_SEPERATOR;
                     line += WRITE_DB_PREFIX_DATE + task.getDate_due() + MH_Utils.Utils.LINE_SEPERATOR;
                     line += WRITE_DB_PREFIX_TIME + task.getTime_due() + MH_Utils.Utils.LINE_SEPERATOR;
                     line += WRITE_DB_PREFIX_REPEAT + task.getRepeat() + MH_Utils.Utils.LINE_SEPERATOR;
@@ -1882,6 +1896,9 @@ namespace ProjTaskReminder
 
         protected override void OnDestroy()
         {
+            string message="";
+                
+                
             DBTaskReminder.DB.Close();
 
             BackupDataBaseFile();
@@ -1906,9 +1923,10 @@ namespace ProjTaskReminder
             // we will force the service to call its own onDestroy which will force it to recreate itself after the app is dead.
 
             //	Why can't I simply send a message to the broadcast receiver directly from the Activity's onDestroy
-            // You can but in that case the service will not be restarted if your app is in the background and Android decides to kill your service because it needs resources.I.e.your service would not be guaranteed to work indefinitely
+            // You can but in that case the service will not
+            //be restarted if your app is in the background and Android decides to kill your service because it needs resources.I.e.your service would not be guaranteed to work indefinitely
 
-            // 
+            // Its mean, this start the Service in Beginning
             // What is I do not want the counter to restart when the process is killed ?
             // Yes this is the usual case. Well you cannot directly. The only way is to save the status of the service and to reload it when the service is started.You will do this by using the following code:
             if (ServiceKeppAliveIntent != null)
@@ -1918,29 +1936,38 @@ namespace ProjTaskReminder
                 // Prevent ReStart again this activity on 'Service:OnDestroy()'
                 bool isServiceRestartOnServiceDestroy = bundle.GetBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_ON_DESTROY, true);
 
-                if (isServiceRestartOnServiceDestroy)
-                {
-                    MH_Utils.Utils.WriteToLog("Task Reminder app 'OnDestroy' - Going to Stop Service");
+                // If not null, mea Service was start in begining - Must stop him
+                //if (isServiceRestartOnServiceDestroy)
+                //{
+                    message = "Task Reminder:OnDestroy - Going to Stop Service";
+                    MH_Utils.Utils.WriteToLog(message);
+                    Toast.MakeText(this, message, ToastLength.Long).Show();
 
                     StopService(ServiceKeppAliveIntent);
 
                     ServiceKeppAliveIntent = null;
-                }
-                else
-                {
-                    bool isReStartAtBeginingOfService = bundle.GetBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_ON_START);
-                    if (isReStartAtBeginingOfService)
-                    {
-                        MH_Utils.Utils.WriteToLog("Task Reminder app 'OnDestroy' - Going to Start Service");
-                        ServiceKeepAliveHandle(InputSavedInstanceState);
-                    }
-                }
+                //}
+                // Not Relevant - Servie was start in Begining
+                //else
+                //{
+                //    bool isReStartAtBeginingOfService = bundle.GetBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_ON_DESTROY);
+                //    //bool isReStartAtBeginingOfService = bundle.GetBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_ON_START);
+                //    if (isReStartAtBeginingOfService)
+                //    {
+                //        message = "Task Reminder:OnDestroy - Going to Start Service";
+                //        MH_Utils.Utils.WriteToLog(message);
+                //        Toast.MakeText(this, message, ToastLength.Long).Show();
+
+                //        ServiceKeepAliveHandle(InputSavedInstanceState);
+                //    }
+                //}
             }
             else
             {
-                string message = "Task Reminder app 'OnDestroy' - Going to Start Service";
-                Toast.MakeText(this, message, ToastLength.Long).Show();
+                message = "Task Reminder:OnDestroy - Going to Start Service  (first time on OnDestroy event)";
                 MH_Utils.Utils.WriteToLog(message);
+                Toast.MakeText(this, message, ToastLength.Long).Show();
+
                 ServiceKeepAliveHandle(InputSavedInstanceState);
             }
 

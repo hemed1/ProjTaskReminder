@@ -144,6 +144,13 @@ namespace ProjTaskReminder.Model
             return spanned;
         }
 
+        public string getDescriptionPure()
+        {
+            //Log.d("Task object: getDescriptionPure", "*"+descriptionPure+"*");
+            return this.descriptionPure;
+        }
+
+
         //private Spanned richTextReInsertFontSize(string originalDescription, Spanned originalSpanned)
         //{
         //    Spanned spanned = null;
@@ -231,12 +238,6 @@ namespace ProjTaskReminder.Model
 
         //    return spanned;
         //}
-
-        public string getDescriptionPure()
-        {
-            //Log.d("Task object: getDescriptionPure", "*"+descriptionPure+"*");
-            return this.descriptionPure;
-        }
 
         public void setDescriptionAsIs(string descriptionWitHtmlTags)
         {
@@ -392,6 +393,11 @@ namespace ProjTaskReminder.Model
             return trimSpannedText();
         }
 
+        /// <summary>
+        /// Remove lat </p> in HTML string
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         private string trimSpannedText(string text)
         {
             this.text = text;
