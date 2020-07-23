@@ -23,11 +23,10 @@ using ProjTaskRemindet.Utils;
 using ProjTaskReminder.Data;
 using ProjTaskReminder.Utils;
 using Android.Graphics.Drawables;
-using static MH_Utils.Utils;
 using System.Text;
 using Android;
 using MH_Utils;
-
+using static MH_Utils.Utils;
 
 namespace ProjTaskReminder
 {
@@ -104,10 +103,11 @@ namespace ProjTaskReminder
         private delegate AdapterView.IOnItemClickListener lstTasks_OnItemClick3();
 
         private bool isServiceStarted;
-        private static Intent ServiceKeppAliveIntent;
+        private  Intent ServiceKeppAliveIntent;
         private Bundle InputSavedInstanceState { get; set; }
 
 
+        private MH_SearchDialog             mh_SearchDialog { get; set; }
 
         //public delegate ElapsedEventHandler delegateMethod(object timer, ElapsedEventArgs args, Task TaskObject);
 
@@ -356,8 +356,84 @@ namespace ProjTaskReminder
             btnMainWeather3.Click += btnMainWeather_Click;
             btnMainWeather4.Click += btnMainWeather_Click;
 
+            Button btnSearch = (Button)FindViewById(Resource.Id.btnSearch);
+            btnSearch.Click += btnSearch_Click;
 
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            SearchDialogInit();
+
+            mh_SearchDialog.SearchDialogShow();
+        }
+
+        private void SearchDialogInit()
+        { 
+            try
+            {
+                //LayoutInflater layoutInflater = LayoutInflater.From(MainContext);
+                //View ClientView = layoutInflater.Inflate(Resource.Layout.search_dialog, null);
+
+                View ClientView = this.LayoutInflater.Inflate(Resource.Layout.search_dialog, null, true);
+
+                //Activity activity = MainContext as Activity;
+                //View ClientView = activity.LayoutInflater.Inflate(Resource.Layout.search_dialog, null, true);
+                //textureView = view.FindViewById<TextureView>(Resource.Id.textureView);
+                //textureView.SurfaceTextureListener = this;
+
+                CardView cardView = (CardView)ClientView.FindViewById(Resource.Id.cardSearchDialog);
+
+
+                mh_SearchDialog = new MH_SearchDialog(MH_SearchDialog.SearchDialogModeEN.ActivityPersonalCard, MainContext, this, ClientView, cardView);
+
+                // No need
+                //mh_SearchDialog.ViewResourcesID = Resource.Layout.search_dialog;
+                //mh_SearchDialog.SearchDialogMode = SearchDialogModeEN.ActivityPersonalCard;
+                //mh_SearchDialog.ClientCard = cardView;
+
+                mh_SearchDialog.OnSearchTextChanged += Utils_OnSearchTextChanged;
+                mh_SearchDialog.OnSearchFind += Utils_OnSearchFind;
+                mh_SearchDialog.OnSearchCancel += Utils_OnSearchCancel;
+
+                // Needed Just when use SearchDialogMode = ActivityPersonalCard
+                mh_SearchDialog.txtSearchTextToFind = (EditText)ClientView.FindViewById(Resource.Id.txtSearchTextToFind);
+                mh_SearchDialog.imgSearchFindIcon = (ImageView)ClientView.FindViewById(Resource.Id.imgSearchFindIcon);
+                mh_SearchDialog.imgSearchCancelIcon = (ImageView)ClientView.FindViewById(Resource.Id.imgSearchCancelIcon);
+                mh_SearchDialog.layoutMainSearchDialog = (LinearLayout)ClientView.FindViewById(Resource.Id.layoutMainSearchDialog);
+
+                //mh_SearchDialog.txtSearchTextToFind.SurfaceTextureListener = this;
+
+                mh_SearchDialog.SetSearchDialogInit();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        private void SearchDialog_TestTextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+        private void Utils_OnSearchCancel(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Utils_OnSearchFind(string finalText)
+        {
+
+        }
+
+        private void Utils_OnSearchTextChanged(string changedText)
+        {
+
+        }
+
 
         private void txtRssNews_Click(object sender, EventArgs e)
         {
@@ -561,6 +637,8 @@ namespace ProjTaskReminder
                                                                                };
             MH_Utils.Utils.PermissionAsk(perm);
 
+
+            //SearchDialogInit();
         }
 
         private void OnWeatherScroll(int obj)
