@@ -359,6 +359,13 @@ namespace ProjTaskReminder
             Button btnSearch = (Button)FindViewById(Resource.Id.btnSearch);
             btnSearch.Click += btnSearch_Click;
 
+            Button btnRefreshList = (Button)FindViewById(Resource.Id.btnRefreshList);
+            btnRefreshList.Click += btnRefreshList_Click;
+        }
+
+        private void btnRefreshList_Click(object sender, EventArgs e)
+        {
+            FillListFromDB();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -372,39 +379,48 @@ namespace ProjTaskReminder
         { 
             try
             {
+                mh_SearchDialog = new MH_SearchDialog(MH_SearchDialog.SearchDialogModeEN.UtilsGlobalCard, MainContext, this, null, null);       // ClientView, cardView);      
+
+
+                mh_SearchDialog.OnSearchTextChanged += SearchDialogs_OnTextChanged;
+                mh_SearchDialog.OnSearchFind += SearchDialogs_OnFindButton;
+                mh_SearchDialog.OnSearchCancel += SearchDialogs_OnCancelButton;
+
+                mh_SearchDialog.SetSearchDialogInit();
+
+
+
+                // No need
                 //LayoutInflater layoutInflater = LayoutInflater.From(MainContext);
                 //View ClientView = layoutInflater.Inflate(Resource.Layout.search_dialog, null);
-
-                View ClientView = this.LayoutInflater.Inflate(Resource.Layout.search_dialog, null, true);
-
+                //View ClientView = this.LayoutInflater.Inflate(Resource.Layout.search_dialog, null, true);
+                //CardView cardView = (CardView)ClientView.FindViewById(Resource.Id.cardSearchDialog);
+                //mh_SearchDialog.ViewResourcesID = Resource.Layout.search_dialog;
+                //mh_SearchDialog.SearchDialogMode = SearchDialogModeEN.ActivityPersonalCard;
+                //mh_SearchDialog.ClientCard = cardView;
                 //Activity activity = MainContext as Activity;
                 //View ClientView = activity.LayoutInflater.Inflate(Resource.Layout.search_dialog, null, true);
                 //textureView = view.FindViewById<TextureView>(Resource.Id.textureView);
                 //textureView.SurfaceTextureListener = this;
-
-                CardView cardView = (CardView)ClientView.FindViewById(Resource.Id.cardSearchDialog);
-
-
-                mh_SearchDialog = new MH_SearchDialog(MH_SearchDialog.SearchDialogModeEN.ActivityPersonalCard, MainContext, this, ClientView, cardView);
-
-                // No need
-                //mh_SearchDialog.ViewResourcesID = Resource.Layout.search_dialog;
-                //mh_SearchDialog.SearchDialogMode = SearchDialogModeEN.ActivityPersonalCard;
-                //mh_SearchDialog.ClientCard = cardView;
-
-                mh_SearchDialog.OnSearchTextChanged += Utils_OnSearchTextChanged;
-                mh_SearchDialog.OnSearchFind += Utils_OnSearchFind;
-                mh_SearchDialog.OnSearchCancel += Utils_OnSearchCancel;
-
+                //EditText editText = (EditText)ClientView.FindViewById(Resource.Id.txtSearchTextToFind);
+                //editText.TextChanged += SearchDialog_TestTextChanged;       // new EventHandler<TextChangedEventArgs>(SearchDialog_TestTextChanged);
+                //editText.AfterTextChanged += SearchDialog_AfterTextChanged;
+                //editText.AfterTextChanged += (sender, args) =>
+                //{
+                //    //do your stuff in here
+                //    //args.Editable is the equivalent of the `s` argument from Java
+                //    //afterTextChanged(Editable s)
+                //};           
+                //editText.AddTextChangedListener(new MyTextWatcher());
+                //editText.Focusable = true;
+                //editText.RequestFocus();
                 // Needed Just when use SearchDialogMode = ActivityPersonalCard
-                mh_SearchDialog.txtSearchTextToFind = (EditText)ClientView.FindViewById(Resource.Id.txtSearchTextToFind);
-                mh_SearchDialog.imgSearchFindIcon = (ImageView)ClientView.FindViewById(Resource.Id.imgSearchFindIcon);
-                mh_SearchDialog.imgSearchCancelIcon = (ImageView)ClientView.FindViewById(Resource.Id.imgSearchCancelIcon);
-                mh_SearchDialog.layoutMainSearchDialog = (LinearLayout)ClientView.FindViewById(Resource.Id.layoutMainSearchDialog);
+                //mh_SearchDialog.txtSearchTextToFind = (EditText)ClientView.FindViewById(Resource.Id.txtSearchTextToFind);
+                //mh_SearchDialog.imgSearchFindIcon = (ImageView)ClientView.FindViewById(Resource.Id.imgSearchFindIcon);
+                //mh_SearchDialog.imgSearchCancelIcon = (ImageView)ClientView.FindViewById(Resource.Id.imgSearchCancelIcon);
+                //mh_SearchDialog.layoutMainSearchDialog = (RelativeLayout)ClientView.FindViewById(Resource.Id.layoutMainSearchDialog);
 
                 //mh_SearchDialog.txtSearchTextToFind.SurfaceTextureListener = this;
-
-                mh_SearchDialog.SetSearchDialogInit();
 
             }
             catch (Exception ex)
@@ -414,23 +430,56 @@ namespace ProjTaskReminder
 
         }
 
-        private void SearchDialog_TestTextChanged(object sender, TextChangedEventArgs e)
-        {
+        //public class MyTextWatcher : Java.Lang.Object, ITextWatcher
+        //{
+        //    public void AfterTextChanged(IEditable s) 
+        //    {
+                
+        //    }
+
+        //    public void BeforeTextChanged(Java.Lang.ICharSequence arg0, int start, int count, int after) 
+        //    {
+
+        //    }
+
+        //    public void OnTextChanged(Java.Lang.ICharSequence arg0, int start, int before, int count) 
+        //    {
+
+        //    }
+        //}
+
+        //private void SearchDialog_AfterTextChanged(object sender, AfterTextChangedEventArgs e)
+        //{
             
+        //}
+
+        //private void SearchDialog_TestTextChanged(object sender, TextChangedEventArgs e)
+        //{
+            
+        //}
+
+        private void SearchDialogs_OnCancelButton(object sender, EventArgs e)
+        {
+            FillListFromDB();
         }
 
-        private void Utils_OnSearchCancel(object sender, EventArgs e)
+        private void SearchDialogs_OnFindButton(string finalTextToFind)
         {
-
+            SearchDialogs_OnTextChanged(finalTextToFind);
         }
 
-        private void Utils_OnSearchFind(string finalText)
+        private void SearchDialogs_OnTextChanged(string changedText)
         {
-
-        }
-
-        private void Utils_OnSearchTextChanged(string changedText)
-        {
+            if (!string.IsNullOrEmpty(changedText))
+            {
+                TasksList = GetTasksFromDB();
+                searchInListByText(changedText);
+                FillList();
+            }
+            else
+            {
+                FillListFromDB();
+            }
 
         }
 
@@ -1645,6 +1694,28 @@ namespace ProjTaskReminder
         {
             return TasksList.FirstOrDefault(a => a.getTaskID() == taskID);
         }
+
+        private List<Task> searchInListByText(string textToSearch)
+        {
+            List<Task> result = new List<Task>();
+
+
+            TasksList = TasksList.Where(a => a.getTitle().IndexOf(textToSearch) > -1 || a.getDescriptionWithHtml().IndexOf(textToSearch) > -1).ToList();
+
+            result = TasksList;
+
+            //for (int i = 0; i < TasksList.Count; i++)
+            //{
+            //    Task task = TasksList[i];
+            //    if (task.getTitle().IndexOf(textToSearch) > -1 || task.getDescriptionWithHtml().IndexOf(textToSearch) > -1)
+            //    {
+            //        result.Add(task);
+            //    }
+            //}
+
+            return result;
+        }
+
         private int searchIndexListByID(int taskID)
         {
             int result = -1;

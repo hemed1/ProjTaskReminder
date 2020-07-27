@@ -400,6 +400,20 @@
         android:paddingEnd="1dp">
 
         <Button
+            android:id="@+id/btnSongsSearch"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="0dp"
+            android:src="@android:drawable/ic_menu_search"                    
+            android:scaleType="fitXY"            
+            android:layout_alignParentStart="true"/>
+
+            <!--android:layout_toEndOf="@+id/imgSearchCancelIcon"-->
+
+        <Button
             android:id="@+id/btnFoldersList"
             style="@android:style/Widget.Button"
             android:layout_width="wrap_content"
