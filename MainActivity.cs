@@ -480,7 +480,6 @@ namespace ProjTaskReminder
             {
                 FillListFromDB();
             }
-
         }
 
 

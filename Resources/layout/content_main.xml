@@ -385,16 +385,17 @@
         android:layout_marginBottom="35dp"
         android:layout_marginTop="15dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnRefreshList"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="5dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
                 android:background="@android:drawable/star_on"/>
 
             <Button
@@ -402,8 +403,9 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_toEndOf="@+id/btnRefreshList"
+                android:layout_alignParentTop="true"
                 android:layout_marginStart="2dp"
-                android:background="@android:drawable/ic_search_category_default"/>
+                android:background="@android:drawable/ic_menu_search"/>
 
             <TextView
                 android:id="@+id/lblMainCaption"
@@ -411,16 +413,15 @@
                 android:layout_height="30dp"
                 android:textSize="17sp"
                 android:textAlignment="center"
-                android:layout_toEndOf="@+id/btnSearch"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginEnd="9dp"
                 android:paddingTop="3dp"
                 android:layout_alignParentTop="true"
                 android:background="#0d6ac7"
                 android:textColor="@android:color/white"
                 android:text="@string/list_title"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
         <ListView

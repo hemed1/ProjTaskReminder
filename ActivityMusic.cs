@@ -227,6 +227,8 @@ namespace ProjTaskReminder
 
         private void SearchDialogs_OnCancelButton(object sender, EventArgs e)
         {
+            cardFilesList.Visibility = ViewStates.Invisible;        // to force show later
+
             btnFoldersList_OnListItem(sender, e);
 
         }
@@ -243,6 +245,7 @@ namespace ProjTaskReminder
 
             cardFilesList.Visibility = ViewStates.Invisible;        // to force show later
 
+
             if (!string.IsNullOrEmpty(textToFind))
             {
                 RestoreSongsList();
@@ -250,13 +253,11 @@ namespace ProjTaskReminder
                 textToFind = textToFind.ToLower();
 
                 ListItemsRecycler = ListItemsRecycler.Where(a => a.Value.getSongName().ToLower().IndexOf(textToFind) > -1 ||
-                                                             a.Value.getSongPath().ToLower().IndexOf(textToFind) > -1 ||
-                                                             a.Value.getArtist().ToLower().IndexOf(textToFind) > -1 ||
-                                                             a.Value.getAlbum().ToLower().IndexOf(textToFind) > -1).ToList();
+                                                                 a.Value.getSongPath().ToLower().IndexOf(textToFind) > -1 ||
+                                                                 a.Value.getArtist().ToLower().IndexOf(textToFind) > -1 ||
+                                                                 a.Value.getAlbum().ToLower().IndexOf(textToFind) > -1).ToList();
 
                 List<ListItemSong> SongNamesList = GetSongsObjects();
-
-                cardFilesList.Visibility = ViewStates.Invisible;
 
                 ShowSongsListView(SongNamesList);
             }
@@ -353,7 +354,7 @@ namespace ProjTaskReminder
             btnPlay.Click += OnPlayButton;
             btnFoldersList.Click += btnFoldersList_OnListItem;
             btnSongsList.Click += btnSongsList_OnListItem;
-            btnSongsSearch.Click += BtnSongsSearch_Click;
+            btnSongsSearch.Click += btnSongsSearch_Click;
 
             ScrollPictures = new MH_Scroll(scrHorizonPics);
             ScrollPictures.SCROLL_INTERVAL = 200;
@@ -378,7 +379,7 @@ namespace ProjTaskReminder
             barVolume.Progress = actualVolume;
         }
 
-        private void BtnSongsSearch_Click(object sender, EventArgs e)
+        private void btnSongsSearch_Click(object sender, EventArgs e)
         {
             SearchDialogInit();
 
@@ -417,7 +418,7 @@ namespace ProjTaskReminder
 
             SongFoldersList = FillSongsFolders();
 
-            cardFilesList.Visibility = ViewStates.Invisible;        // to force show later
+            //cardFilesList.Visibility = ViewStates.Invisible;        // to force show later
 
             ShowSongsListView(SongFoldersList);
         }

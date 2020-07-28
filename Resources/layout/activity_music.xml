@@ -108,7 +108,7 @@
                 <TextView
                     android:id="@+id/lblVolumePos"
                     android:text="0"
-                    android:textSize="19sp"
+                    android:textSize="18sp"
                     android:textColor="@android:color/white"
                     android:layout_alignParentTop="true"
                     android:layout_marginEnd="80dp"
@@ -349,8 +349,8 @@
 -->
         <Button
             android:id="@+id/btnPlay"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginBottom="5dp"
             android:layout_marginEnd="0dp"
             android:layout_marginStart="0dp"
@@ -363,8 +363,8 @@
 
         <Button
             android:id="@+id/btnPrev"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginBottom="0dp"
             android:layout_marginEnd="60dp"
             android:layout_marginTop="0dp"
@@ -375,8 +375,8 @@
 
         <Button
             android:id="@+id/btnNext"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginBottom="0dp"
             android:layout_marginStart="60dp"
             android:layout_marginTop="0dp"
@@ -393,49 +393,41 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal"
+        android:layoutDirection="ltr"
         android:layout_gravity="bottom"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="25dp"
         android:paddingStart="1dp"
         android:paddingEnd="1dp">
 
         <Button
             android:id="@+id/btnSongsSearch"
-            android:layout_width="45dp"
+            style="@android:style/Widget.Button"
+            android:layout_width="100dp"
             android:layout_height="45dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginBottom="0dp"
-            android:src="@android:drawable/ic_menu_search"                    
-            android:scaleType="fitXY"            
+            android:layout_marginStart="15dp"
+            android:text="חיפוש"
             android:layout_alignParentStart="true"/>
 
-            <!--android:layout_toEndOf="@+id/imgSearchCancelIcon"-->
+        <Button
+            android:id="@+id/btnSongsList"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            style="@android:style/Widget.Button"
+            android:layout_centerHorizontal="true"
+            android:text="כל השירים" />
+
+            <!--android:layout_toEndOf="@+id/btnSongsSearch"-->
 
         <Button
             android:id="@+id/btnFoldersList"
             style="@android:style/Widget.Button"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="45dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginStart="0dp"
-            android:layout_marginBottom="0dp"
             android:layout_alignParentEnd="true"
             android:text="תיקיות" />
-
-        <Button
-            android:id="@+id/btnSongsList"
-            style="@android:style/Widget.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginStart="80dp"
-            android:layout_marginBottom="0dp"
-            android:layout_alignParentStart="true"
-            android:text="כל השירים" />
 
     </RelativeLayout>
 
