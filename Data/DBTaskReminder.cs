@@ -101,6 +101,21 @@ namespace ProjTaskReminder.Data
             return (tableExist);    // && columns.Count == 0);
         }
 
+        public bool IsFieldExists(string tableName, string FieldName)
+        {
+            bool result = true;
+
+            List<SQLiteConnection.ColumnInfo> columns = DB.GetTableInfo(tableName);
+
+            if (DB.GetTableInfo(tableName).Count != 0)
+            {
+                List<SQLiteConnection.ColumnInfo> fieldsInfo = DB.GetTableInfo(tableName);
+                result = fieldsInfo.Exists(a => a.Name.Equals(FieldName));
+            }
+
+            return result;
+        }
+
         private void CreateTableTasks(string tableName)
         {
             try
@@ -382,7 +397,8 @@ namespace ProjTaskReminder.Data
             try
             {
                 //this.DB = this.getWritableDatabase();
-                this.DB.Execute(sqlScript, null);
+                this.DB.Execute(sqlScript); //, null);
+                //Connect(DB_TABLE_NAME);
                 //DB.Close();
             }
             catch (Exception ex)

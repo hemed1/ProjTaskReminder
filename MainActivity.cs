@@ -43,8 +43,8 @@ namespace ProjTaskReminder
         private static string DB_FIELDNAME_DESC = "Description";
         private static string DB_FIELDNAME_DATE = "DateDue";
         private static string DB_FIELDNAME_REPEAT = "Repeat";
-        private static string DB_FIELDNAME_COLOR = "Color";
-        private static string DB_FIELDNAME_LAST_UPDATE = "LastUpdate";
+        private static string DB_FIELDNAME_COLOR = "CardBackColor";
+        private static string DB_FIELDNAME_LAST_UPDATE = "LastUpdateDate";
         private static string DB_FIELDNAME_IS_ARCHIVE = "IsArchive";
 
         // The code for get result from TasDetails screen
@@ -130,7 +130,7 @@ namespace ProjTaskReminder
 
                 ConnectToDB();
 
-                //BackupDataBaseFile();
+                //BackupDataBaseFile(false);
 
                 FillListFromDB();
 
@@ -886,7 +886,7 @@ namespace ProjTaskReminder
                 {
                     try
                     {
-                        var t = DBTaskReminder.DB.CreateTable<TBL_Tasks>();
+                        CreateTableResult tableWasCreated = DBTaskReminder.DB.CreateTable<TBL_Tasks>();
                         //string commanScript = "ALTER TABLE TBL_Tasks ADD COLUMN DateLastUpdate VARCHAR(11);";
                         //commanScript = "CREATE TABLE IF NOT EXISTS tags (ISBN VARCHAR(15), Tag VARCHAR(15));";
                         //DB.Execute(commanScript, null);    
@@ -898,6 +898,19 @@ namespace ProjTaskReminder
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.StackTrace + "  -  " + ex.Message);
+                    }
+                }
+                else
+                {
+                    if (!DBTaskReminder.IsFieldExists(DB_TABLE_NAME, DB_FIELDNAME_LAST_UPDATE))
+                    {
+                        DBTaskReminder.addFieldToTable(DB_TABLE_NAME, DB_FIELDNAME_LAST_UPDATE, "VARCHAR(16)");
+                        //DBTaskReminder = new DBTaskReminder(DB_TASK_DB_NAME, DB_TASK_DB_PATH, DB_TABLE_NAME);
+                    }
+                    if (!DBTaskReminder.IsFieldExists(DB_TABLE_NAME, DB_FIELDNAME_COLOR))
+                    {
+                        DBTaskReminder.addFieldToTable(DB_TABLE_NAME, DB_FIELDNAME_COLOR, "VARCHAR(10)");
+                        //DBTaskReminder = new DBTaskReminder(DB_TASK_DB_NAME, DB_TASK_DB_PATH, DB_TABLE_NAME);
                     }
                 }
 
@@ -1608,7 +1621,7 @@ namespace ProjTaskReminder
             return CurrentTask;
         }
 
-        private void BackupDataBaseFile()
+        private void BackupDataBaseFile(bool showMessage = true)
         {
             //KeyValuePair<string, int>[] perm = new KeyValuePair<string, int>[] {
             //                                                                          new KeyValuePair<string, int>(Manifest.Permission.WriteExternalStorage, PERMISSIONS_REQUEST_WRITE_STORAGE),
@@ -1640,8 +1653,11 @@ namespace ProjTaskReminder
 
             if (result)
             {
-                //string message = "Database was copied OK";
-                //Toast.MakeText(this, message, ToastLength.Long).Show();
+                string message = "Database was copied OK";
+                if (showMessage)
+                {
+                    Toast.MakeText(this, message, ToastLength.Long).Show();
+                }
                 //MH_Utils.Utils.WriteToLog(message, true);
             }
         }
@@ -2049,7 +2065,7 @@ namespace ProjTaskReminder
                 
             DBTaskReminder.DB.Close();
 
-            BackupDataBaseFile();
+            BackupDataBaseFile(false);
 
             bool isMedyaPlayerClosed = ActivityMusic.MusicStopFinal();
 

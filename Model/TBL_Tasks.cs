@@ -22,7 +22,8 @@ namespace ProjTaskReminder.Model
         public string Title { get; set; }
         public string Description { get; set; }
         public string DateDue { get; set; }
-        //public string DateLastUpdate { get; set; }
+        public string LastUpdateDate { get; set; }
+        public string CardBackColor { get; set; }
     }
 
 }
