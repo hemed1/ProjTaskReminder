@@ -307,6 +307,13 @@ namespace ProjTaskReminder
                 listViewHolder.ThirdLine.SetText(task.getDate_last_update() + " יום " + MH_Utils.Utils.getDateDayName(MH_Utils.Utils.getDateFromString(task.getDate_last_update())), TextView.BufferType.Normal);
             }
 
+            if (task.getBackgroundColor() != null && !task.getBackgroundColor().Trim().Equals(""))
+            {
+                int colorInt = int.Parse(task.getBackgroundColor().Trim());
+                Android.Graphics.Color color = new Android.Graphics.Color(colorInt);
+                listViewHolder.cardView.SetBackgroundColor(color);
+            }
+
         }
 
         private void SetControlsIO()

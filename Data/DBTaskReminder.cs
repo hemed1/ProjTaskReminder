@@ -388,14 +388,10 @@ namespace ProjTaskReminder.Data
             bool result = false;
 
 
-            sqlScript = "ALTER TABLE " + tableName + " ADD COLUMN " + fieldName + " " + fieldType;
-
-            //string commanScript = "ALTER TABLE TBL_Tasks ADD COLUMN DateLastUpdate VARCHAR(11);";
-            //commanScript = "CREATE TABLE IF NOT EXISTS tags (ISBN VARCHAR(15), Tag VARCHAR(15));";
-            //MH_Utils.Utils.WriteToLog("DataBase - 'addFieldToTable()': " + tableName + "'" + fieldName);
-
             try
             {
+                sqlScript = "ALTER TABLE " + tableName + " ADD COLUMN " + fieldName + " " + fieldType;
+                //string commanScript = "ALTER TABLE TBL_Tasks ADD COLUMN DateLastUpdate VARCHAR(11);";
                 //this.DB = this.getWritableDatabase();
                 this.DB.Execute(sqlScript); //, null);
                 //Connect(DB_TABLE_NAME);

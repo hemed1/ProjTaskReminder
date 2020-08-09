@@ -205,9 +205,6 @@
     <AndroidResource Include="Resources\mipmap-hdpi\font_name3.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\raw\love_the_one.mp3" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\raw\deduction.mp3" />
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +288,12 @@
       <Project>{a98e0273-d5b1-487c-8103-8ad4d7e73cbc}</Project>
       <Name>MH_Utils</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\colors_picker_card.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\round_ring.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -1,0 +1,105 @@
+
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="270dp"
+        android:layout_height="140dp"
+        android:layoutDirection="ltr"
+        android:visibility="visible"
+        app:cardBackgroundColor="#f1efef"
+        app:cardCornerRadius="9dp"
+        app:cardElevation="5dp"
+        app:cardMaxElevation="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/imgPickerColor1"
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="#ffbf2616"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"/>
+
+                <!--android:background="@drawable/round_ring"-->
+
+            <Button
+                android:id="@+id/imgPickerColor2"
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="#ff1565c0"
+                android:layout_toEndOf="@+id/imgPickerColor1"
+                android:layout_alignTop="@+id/imgPickerColor1"
+                android:layout_marginStart="15dp"/>
+
+            <Button
+                android:id="@+id/imgPickerColor3"
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/holo_purple"
+                android:layout_toEndOf="@+id/imgPickerColor2"
+                android:layout_alignTop="@+id/imgPickerColor1"
+                android:layout_marginStart="15dp"/>
+
+            <Button
+                android:id="@+id/imgPickerColor4"
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="#ffab4829"
+                android:layout_toEndOf="@+id/imgPickerColor3"
+                android:layout_alignTop="@+id/imgPickerColor1"
+                android:layout_marginStart="15dp"/>
+
+            <Button
+                android:id="@+id/imgPickerColor5"
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/holo_red_dark"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="15dp"
+                android:layout_alignTop="@+id/imgPickerColor1"
+                android:layout_marginTop="65dp"/>
+
+                <!--android:background="@drawable/round_ring"-->
+
+            <Button
+                android:id="@+id/imgPickerColor6"
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="#ff1565c0"
+                android:layout_toEndOf="@+id/imgPickerColor5"
+                android:layout_alignTop="@+id/imgPickerColor5"
+                android:layout_marginStart="15dp"/>
+
+            <Button
+                android:id="@+id/imgPickerColor7"
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="@android:color/holo_purple"
+                android:layout_toEndOf="@+id/imgPickerColor6"
+                android:layout_alignTop="@+id/imgPickerColor5"
+                android:layout_marginStart="15dp"/>
+
+            <Button
+                android:id="@+id/imgPickerColor8"
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:background="#ffab4829"
+                android:layout_toEndOf="@+id/imgPickerColor7"
+                android:layout_alignTop="@+id/imgPickerColor5"
+                android:layout_marginStart="15dp"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

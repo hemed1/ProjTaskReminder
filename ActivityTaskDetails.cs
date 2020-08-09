@@ -33,13 +33,15 @@ namespace ProjTaskReminder
         private Button btnSave;
         private Button btnDelete;
         private Button btnSetDate;
+        private Button btnSetColor;
         private DatePicker datePicker1;
         private TimePicker timePicker1;
 
         private string bkuTitle;
         private string bkuDescription;
         private string bkuDateDue;
-        
+        private string bkuBackColor;
+
 
         public static bool isNewMode;
         private Intent inputIntent;
@@ -166,6 +168,9 @@ namespace ProjTaskReminder
 
         private void SetControlsIO()
         {
+            MH_Utils.Utils.ClientContext = this.ApplicationContext;
+            MH_Utils.Utils.ClientActivity = this;
+
             txtDetailsTitle = FindViewById<EditText>(Resource.Id.txtDetailsTitle);
             txtDetailsDescription = FindViewById<EditText>(Resource.Id.txtDetailsDescription);
             txtDetailsDate = FindViewById<TextView>(Resource.Id.txtDetailsDate);
@@ -173,6 +178,7 @@ namespace ProjTaskReminder
             lblDateTime = FindViewById<EditText>(Resource.Id.lblDateTime);
             btnSave = FindViewById<Button>(Resource.Id.btnSave);
             btnSetDate = FindViewById<Button>(Resource.Id.btnSetDate);
+            btnSetColor = FindViewById<Button>(Resource.Id.btnSetColor);
             btnDelete = FindViewById<Button>(Resource.Id.btnDelete);
             datePicker1 = FindViewById<DatePicker>(Resource.Id.datePicker1);
             timePicker1 = FindViewById<TimePicker>(Resource.Id.timePicker1);
@@ -222,6 +228,15 @@ namespace ProjTaskReminder
                 OpenDatePicker();
             };
 
+            btnSetColor.Click += (sender, e) =>           //new EventHandler(SaveRecord); 
+            {
+                SetBackColor();
+            };
+
+            //btnSetColor.Click += SetBackColor();
+
+            MH_Utils.Utils.OnColorPickerChanged += Utils_OnColorPickerChanged;
+
             //datePicker1.SetOnDateChangedListener+=OnDateChanged; 
             //{
             //    sender = CurrentTask;
@@ -256,6 +271,22 @@ namespace ProjTaskReminder
 
             IsUpdateDialogDate = true;
             IsSaveNeededBeforeExit = true;
+        }
+
+        private void Utils_OnColorPickerChanged(Android.Graphics.Color colorPicked)   //int
+        {
+            string colorStr = colorPicked.ToArgb().ToString();               //.ToString();
+            
+
+            txtDetailsDescription.SetBackgroundColor(colorPicked);
+            CurrentTask.setBackgroundColor(colorStr);        
+        }
+
+        private void SetBackColor()
+        {
+            MH_Utils.Utils.ShowColorDialog(this);
+
+            //return null;
         }
 
         private void OnDateChanged(object sender, DatePicker.DateChangedEventArgs e)
@@ -386,6 +417,8 @@ namespace ProjTaskReminder
                 item.Title = task.getTitle();
                 item.Description = task.getDescriptionWithHtml();
                 item.DateDue = task.getDate_due() + " " + task.getTime_due();
+                item.CardBackColor = task.getBackgroundColor();
+                item.LastUpdateDate = task.getDate_last_update();
 
                 if (isNewMode)
                 {
@@ -446,8 +479,13 @@ namespace ProjTaskReminder
                  txtDetailsDescription.Text==bkuDescription &&
                  lblDateTime.Text == bkuDateDue))
             {
+                if (CurrentTask.getBackgroundColor() != null && bkuBackColor != null && CurrentTask.getBackgroundColor() != bkuBackColor)
+                {
+                    return true;
+                }
                 return false;
             }
+
 
             return true;
         }
@@ -491,6 +529,15 @@ namespace ProjTaskReminder
             lblDateTime.Text = bkuDateDue = CurrentTask.getDate_due() + " " + CurrentTask.getTime_due();
             txtDetailsDate.Text = CurrentTask.getDate_due();
             txtDetailsTime.Text = CurrentTask.getTime_due();
+            bkuBackColor = "";
+
+            if (CurrentTask.getBackgroundColor()!=null && !CurrentTask.getBackgroundColor().Trim().Equals(""))
+            {
+                int colorInt = int.Parse(CurrentTask.getBackgroundColor().Trim());
+                Android.Graphics.Color color = new Android.Graphics.Color(colorInt);
+                txtDetailsDescription.SetBackgroundColor(color);
+                bkuBackColor = colorInt.ToString();
+            }
         }
 
         protected override void OnDestroy()
