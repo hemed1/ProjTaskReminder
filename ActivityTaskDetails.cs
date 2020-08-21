@@ -474,14 +474,17 @@ namespace ProjTaskReminder
             return result;
         }
 
+        [Obsolete]
         private bool IsDataWasChanged()
         {
+            string descControlColorNow = txtDetailsDescription.DrawingCacheBackgroundColor.ToArgb().ToString();
+
             if ((string.IsNullOrEmpty(txtDetailsTitle.Text.Trim()) && string.IsNullOrEmpty(txtDetailsDescription.Text.Trim())) || 
                 (txtDetailsTitle.Text==bkuTitle &&
                  txtDetailsDescription.Text==bkuDescription &&
                  lblDateTime.Text == bkuDateDue))
             {
-                if (!string.IsNullOrEmpty(CurrentTask.getBackgroundColor()) && !string.IsNullOrEmpty(bkuBackColor) && CurrentTask.getBackgroundColor() != bkuBackColor)
+                if (!string.IsNullOrEmpty(bkuBackColor) && descControlColorNow != bkuBackColor)
                 {
                     return true;
                 }
@@ -526,8 +529,8 @@ namespace ProjTaskReminder
 
 
             Android.Graphics.Color colorDefault = new Android.Graphics.Color(ApplicationContext.GetColor(Resource.Color.DetailsBackgroundOtherFields));
-            Android.Graphics.Color color = txtDetailsDescription.DrawingCacheBackgroundColor;
-            string colorStr = color.ToArgb().ToString();
+            Android.Graphics.Color colorNow = txtDetailsDescription.DrawingCacheBackgroundColor;
+            string colorStr = colorNow.ToArgb().ToString();
 
             if (color!=colorDefault)
             {
