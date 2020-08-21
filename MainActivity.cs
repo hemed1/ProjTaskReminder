@@ -307,11 +307,24 @@ namespace ProjTaskReminder
                 listViewHolder.ThirdLine.SetText(task.getDate_last_update() + " יום " + MH_Utils.Utils.getDateDayName(MH_Utils.Utils.getDateFromString(task.getDate_last_update())), TextView.BufferType.Normal);
             }
 
-            if (task.getBackgroundColor() != null && !task.getBackgroundColor().Trim().Equals(""))
+            Android.Graphics.Color colorDefault = new Android.Graphics.Color(MainContext.GetColor(Resource.Color.CardBackgroundColor));
+
+            if (!string.IsNullOrEmpty(task.getBackgroundColor()))
             {
                 int colorInt = int.Parse(task.getBackgroundColor().Trim());
                 Android.Graphics.Color color = new Android.Graphics.Color(colorInt);
-                listViewHolder.cardView.SetBackgroundColor(color);
+                if (colorDefault != color)
+                {
+                    listViewHolder.cardView.SetBackgroundColor(color);
+                }
+                else
+                {
+                    listViewHolder.cardView.SetBackgroundColor(colorDefault);
+                }
+            }
+            else
+            {
+                listViewHolder.cardView.SetBackgroundColor(colorDefault);
             }
 
         }
@@ -1621,7 +1634,7 @@ namespace ProjTaskReminder
             CurrentTask = new Task();
 
             CurrentTask.setDate_due("");
-            CurrentTask.setBackgroundColor(DefaultCardBackgroundColor.ToString());
+            //CurrentTask.setBackgroundColor(DefaultCardBackgroundColor.ToString());
             CurrentTask.setDate_last_update(MH_Utils.Utils.getDateFormattedString(MH_Utils.Utils.GetDateNow()));
             CurrentTask.setRepeat("פעם אחת");
 

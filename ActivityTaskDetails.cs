@@ -273,13 +273,15 @@ namespace ProjTaskReminder
             IsSaveNeededBeforeExit = true;
         }
 
-        private void Utils_OnColorPickerChanged(Android.Graphics.Color colorPicked)   //int
+        [Obsolete]
+        private void Utils_OnColorPickerChanged(Android.Graphics.Color colorPicked)  
         {
-            string colorStr = colorPicked.ToArgb().ToString();               //.ToString();
+            string colorStr = colorPicked.ToArgb().ToString();            
             
 
             txtDetailsDescription.SetBackgroundColor(colorPicked);
-            CurrentTask.setBackgroundColor(colorStr);        
+            txtDetailsDescription.DrawingCacheBackgroundColor = colorPicked;
+            //CurrentTask.setBackgroundColor(colorStr);        
         }
 
         private void SetBackColor()
@@ -479,7 +481,7 @@ namespace ProjTaskReminder
                  txtDetailsDescription.Text==bkuDescription &&
                  lblDateTime.Text == bkuDateDue))
             {
-                if (CurrentTask.getBackgroundColor() != null && bkuBackColor != null && CurrentTask.getBackgroundColor() != bkuBackColor)
+                if (!string.IsNullOrEmpty(CurrentTask.getBackgroundColor()) && !string.IsNullOrEmpty(bkuBackColor) && CurrentTask.getBackgroundColor() != bkuBackColor)
                 {
                     return true;
                 }
@@ -497,6 +499,7 @@ namespace ProjTaskReminder
         //    //FillIn();
         //}
 
+        [Obsolete]
         private void SetObjectByControls()
         {
             CurrentTask.setTitle(txtDetailsTitle.Text);
@@ -520,8 +523,20 @@ namespace ProjTaskReminder
             }
 
             CurrentTask.setDate_last_update(MH_Utils.Utils.getDateFormattedString(MH_Utils.Utils.GetDateNow()));
+
+
+            Android.Graphics.Color colorDefault = new Android.Graphics.Color(ApplicationContext.GetColor(Resource.Color.DetailsBackgroundOtherFields));
+            Android.Graphics.Color color = txtDetailsDescription.DrawingCacheBackgroundColor;
+            string colorStr = color.ToArgb().ToString();
+
+            if (color!=colorDefault)
+            {
+                CurrentTask.setBackgroundColor(colorStr);
+            }
+
         }
 
+        [Obsolete]
         private void SetControlsByObject()
         {
             txtDetailsTitle.Text = bkuTitle = CurrentTask.getTitle();
@@ -529,14 +544,27 @@ namespace ProjTaskReminder
             lblDateTime.Text = bkuDateDue = CurrentTask.getDate_due() + " " + CurrentTask.getTime_due();
             txtDetailsDate.Text = CurrentTask.getDate_due();
             txtDetailsTime.Text = CurrentTask.getTime_due();
-            bkuBackColor = "";
+            //bkuBackColor = "";
 
-            if (CurrentTask.getBackgroundColor()!=null && !CurrentTask.getBackgroundColor().Trim().Equals(""))
+            Android.Graphics.Color colorDefault = new Android.Graphics.Color(ApplicationContext.GetColor(Resource.Color.DetailsBackgroundOtherFields));
+
+            if (!string.IsNullOrEmpty(CurrentTask.getBackgroundColor()))
             {
-                int colorInt = int.Parse(CurrentTask.getBackgroundColor().Trim());
-                Android.Graphics.Color color = new Android.Graphics.Color(colorInt);
-                txtDetailsDescription.SetBackgroundColor(color);
-                bkuBackColor = colorInt.ToString();
+                Android.Graphics.Color colorWhite = new Android.Graphics.Color(ApplicationContext.GetColor(Resource.Color.CardBackgroundColor));
+                int colorTask = int.Parse(CurrentTask.getBackgroundColor().Trim());
+                Android.Graphics.Color color = new Android.Graphics.Color(colorTask);
+                bkuBackColor = colorTask.ToString();
+                if (colorTask != colorWhite)
+                {
+                    txtDetailsDescription.SetBackgroundColor(color);
+                    txtDetailsDescription.DrawingCacheBackgroundColor = color;
+                }
+            }
+            else
+            {
+                txtDetailsDescription.SetBackgroundColor(colorDefault);
+                txtDetailsDescription.DrawingCacheBackgroundColor = colorDefault;
+                bkuBackColor = colorDefault.ToArgb().ToString();
             }
         }
 
