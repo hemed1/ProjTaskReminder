@@ -18,7 +18,7 @@
         android:layout_marginBottom="1dp"
         android:layoutDirection="ltr"
         android:textDirection="rtl"
-        app:cardBackgroundColor="#f1efef"
+        app:cardBackgroundColor="@color/details_background_main"
         app:cardCornerRadius="7dp"
         app:cardElevation="2dp"
         app:cardMaxElevation="10dp">
@@ -28,6 +28,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.000">
+        app:cardBackgroundColor="@color/CardListBackgroundColor"
+        DetailsBackgroundOtherFields
 -->
 
         <RelativeLayout
