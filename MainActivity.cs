@@ -997,6 +997,9 @@ namespace ProjTaskReminder
                     task.setDate_due(record.DateDue.Trim().Substring(0, 10));
                     task.setTime_due(record.DateDue.Trim().Substring(11, 5));
                 }
+                task.setBackgroundColor(record.CardBackColor);
+                task.setDate_last_update(record.LastUpdateDate);
+
                 task.TableRecord = record;
 
                 TasksList.Add(task);
@@ -2127,7 +2130,7 @@ namespace ProjTaskReminder
                     MH_Utils.Utils.WriteToLog(message);
                     Toast.MakeText(this, message, ToastLength.Long).Show();
 
-                    StopService(ServiceKeppAliveIntent);
+               //     StopService(ServiceKeppAliveIntent);
 
                     ServiceKeppAliveIntent = null;
                 //}

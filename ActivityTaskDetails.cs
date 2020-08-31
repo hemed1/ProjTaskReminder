@@ -281,7 +281,6 @@ namespace ProjTaskReminder
 
             txtDetailsDescription.SetBackgroundColor(colorPicked);
             txtDetailsDescription.DrawingCacheBackgroundColor = colorPicked;
-            //CurrentTask.setBackgroundColor(colorStr);        
         }
 
         private void SetBackColor()
@@ -528,11 +527,11 @@ namespace ProjTaskReminder
             CurrentTask.setDate_last_update(MH_Utils.Utils.getDateFormattedString(MH_Utils.Utils.GetDateNow()));
 
 
-            Android.Graphics.Color colorDefault = new Android.Graphics.Color(ApplicationContext.GetColor(Resource.Color.DetailsBackgroundOtherFields));
+            Android.Graphics.Color colorDefault = new Android.Graphics.Color(ApplicationContext.GetColor(Resource.Color.details_background_main));
             Android.Graphics.Color colorNow = txtDetailsDescription.DrawingCacheBackgroundColor;
             string colorStr = colorNow.ToArgb().ToString();
 
-            if (color!=colorDefault)
+            if (colorNow != colorDefault)
             {
                 CurrentTask.setBackgroundColor(colorStr);
             }
@@ -549,7 +548,7 @@ namespace ProjTaskReminder
             txtDetailsTime.Text = CurrentTask.getTime_due();
             //bkuBackColor = "";
 
-            Android.Graphics.Color colorDefault = new Android.Graphics.Color(ApplicationContext.GetColor(Resource.Color.DetailsBackgroundOtherFields));
+            Android.Graphics.Color colorDefault = new Android.Graphics.Color(ApplicationContext.GetColor(Resource.Color.details_background_main));
 
             if (!string.IsNullOrEmpty(CurrentTask.getBackgroundColor()))
             {
