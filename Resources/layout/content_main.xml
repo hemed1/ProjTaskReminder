@@ -1,0 +1,448 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/details_background_main"
+    tools:showIn="@layout/activity_main">
+
+    <!--android:background="@drawable/gradient1"-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:id="@+id/layMainButtons">
+
+
+        <ImageButton
+            android:id="@+id/btnMainEmail"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="17dp"
+            android:scaleType="fitXY"
+            android:background="@mipmap/news4"
+            android:soundEffectsEnabled="true" />
+            <!--android:background="@mipmap/weather2mail_read8"-->
+
+        <ImageButton
+            android:id="@+id/bntMainMusic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="50dp"
+            android:scaleType="fitXY"
+            android:background="@mipmap/music1"
+            android:soundEffectsEnabled="true"/>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardWeather"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="50dp">
+
+            <HorizontalScrollView
+                android:id="@+id/scrollWeather"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layoutDirection="ltr"
+                android:paddingEnd="1dp"
+                android:paddingStart="1dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginTop="0dp">
+
+                <LinearLayout
+                    android:id="@+id/layoutWeather"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp">
+
+
+                    <LinearLayout
+                        android:id="@+id/layoutWeather1"
+                        android:layout_width="115dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_alignParentTop="true"
+                        android:foregroundGravity="top"
+                        android:layout_gravity="top"
+                        android:paddingTop="0dp"
+                        android:paddingBottom="1dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="1dp">
+                        
+
+                        <TextView
+                            android:id="@+id/txtWeatherPlace1"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:text="New-York"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherTemperture1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:text="17 C"
+                            android:layout_below="@id/txtWeatherPlace1"
+                            android:layout_marginTop="1dp"
+                            android:textColor="@android:color/holo_blue_dark"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherDescription1"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:text="Cloudy"
+                            android:textSize="15sp"
+                            android:textColor="#616060"
+                            android:layout_below="@id/txtWeatherTemperture1"
+                            android:layout_marginTop="1dp"/>
+
+
+                        <ImageButton
+                            android:id="@+id/btnMainWeather1"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:scaleType="fitXY"
+                            android:baselineAlignBottom="true"
+                            android:background="@mipmap/weather2"
+                            android:soundEffectsEnabled="true"/>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/layoutWeather2"
+                        android:layout_width="115dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_alignParentTop="true"
+                        android:foregroundGravity="top"
+                        android:layout_gravity="top"
+                        android:paddingTop="0dp"
+                        android:paddingBottom="1dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="1dp">
+
+                        <TextView
+                            android:id="@+id/txtWeatherPlace2"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:text="New-York"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherTemperture2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:text="17 C"
+                            android:layout_below="@id/txtWeatherPlace2"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/holo_blue_dark"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherDescription2"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:text="Cloudy"
+                            android:textSize="15sp"
+                            android:textColor="#616060"
+                            android:layout_below="@id/txtWeatherTemperture2"
+                            android:layout_marginTop="0dp"/>
+
+                        <ImageButton
+                            android:id="@+id/btnMainWeather2"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:scaleType="fitXY"
+                            android:baselineAlignBottom="true"
+                            android:background="@mipmap/weather2"
+                            android:soundEffectsEnabled="true"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/layoutWeather3"
+                        android:layout_width="115dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_alignParentTop="true"
+                        android:foregroundGravity="top"
+                        android:layout_gravity="top"
+                        android:paddingTop="0dp"
+                        android:paddingBottom="1dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="1dp">
+
+                        <TextView
+                            android:id="@+id/txtWeatherPlace3"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:text="New-York"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherTemperture3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:text="17 C"
+                            android:layout_below="@id/txtWeatherPlace3"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/holo_blue_dark"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherDescription3"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:text="Cloudy"
+                            android:textSize="15sp"
+                            android:textColor="#616060"
+                            android:layout_below="@id/txtWeatherTemperture3"
+                            android:layout_marginTop="0dp"/>
+                        <!--android:textColor="@android:color/black"-->
+
+                        <ImageButton
+                            android:id="@+id/btnMainWeather3"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:scaleType="fitXY"
+                            android:baselineAlignBottom="true"
+                            android:background="@mipmap/weather2"
+                            android:soundEffectsEnabled="true"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/layoutWeather4"
+                        android:layout_width="115dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_alignParentTop="true"
+                        android:foregroundGravity="top"
+                        android:layout_gravity="top"
+                        android:paddingTop="0dp"
+                        android:paddingBottom="1dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="1dp">
+
+                        <TextView
+                            android:id="@+id/txtWeatherPlace4"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="18sp"
+                            android:text="New-York"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/black"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherTemperture4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="17sp"
+                            android:text="17 C"
+                            android:layout_below="@id/txtWeatherPlace4"
+                            android:layout_marginTop="0dp"
+                            android:textColor="@android:color/holo_blue_dark"/>
+
+                        <TextView
+                            android:id="@+id/txtWeatherDescription4"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:text="Cloudy"
+                            android:textSize="15sp"
+                            android:textColor="#616060"
+                            android:layout_below="@id/txtWeatherTemperture4"
+                            android:layout_marginTop="0dp"/>
+                        <!--android:textColor="@android:color/black"-->
+
+                        <ImageButton
+                            android:id="@+id/btnMainWeather4"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:scaleType="fitXY"
+                            android:baselineAlignBottom="true"
+                            android:background="@mipmap/weather2"
+                            android:soundEffectsEnabled="true"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="3dp"
+        android:id="@+id/layRssNews">
+
+        <ImageView
+            android:id="@+id/imageTimerPointWeater"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="top"
+            android:layout_marginTop="1dp"
+            android:layout_marginStart="10dp"
+            android:visibility="visible"
+            android:background="@android:color/holo_red_dark"/>
+                
+            <!--android:src="@drawable/point1"/>-->
+            <!--android:background="@android:color/holo_red_dark"/>-->
+            <!--android:background="@drawable/point1"-->
+
+        <HorizontalScrollView
+            android:id="@+id/scrollNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:textDirection="rtl"
+            android:paddingEnd="3dp"
+            android:paddingStart="3dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginTop="9dp">
+
+            <TextView
+                android:id="@+id/txtRssNews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="19sp"
+                android:textDirection="rtl"
+                android:text=""
+                android:inputType="text"
+                android:scrollbars="none"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp"
+                android:textColor="#080a8b"/>
+
+        </HorizontalScrollView>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layList"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:orientation="vertical"
+        android:layoutDirection="ltr"
+        android:layout_marginBottom="35dp"
+        android:layout_marginTop="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnRefreshList"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="10dp"
+                android:background="@android:drawable/star_on"/>
+
+            <Button
+                android:id="@+id/btnSearch"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_toEndOf="@+id/btnRefreshList"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="2dp"
+                android:background="@android:drawable/ic_menu_search"/>
+
+            <TextView
+                android:id="@+id/lblMainCaption"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:textSize="17sp"
+                android:textAlignment="center"
+                android:layout_marginStart="9dp"
+                android:layout_marginEnd="9dp"
+                android:paddingTop="3dp"
+                android:layout_alignParentTop="true"
+                android:background="#0d6ac7"
+                android:textColor="@android:color/white"
+                android:text="@string/list_title"/>
+
+        </RelativeLayout>
+
+
+        <ListView
+            android:id="@+id/lstTasks"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="6.5dp"
+            android:layout_marginEnd="6.5dp"
+            android:listSelector="@android:color/holo_purple"
+            android:divider="@color/material_blue_grey_800"
+            android:dividerHeight="0dp"
+            android:background="@color/CardListBackgroundColor"
+            android:layout_gravity="bottom"/>
+
+        <!--android:background="@color/CardListBackgroundColor" android:color/transparent-->
+
+    </LinearLayout>
+
+    <!--android.support.v7.widget.RecyclerView-->
+
+</LinearLayout>
