@@ -75,11 +75,11 @@
             <Button
                 android:id="@+id/btnDelete"
                 style="@android:style/Widget.Material.Button.Colored"
-                android:layout_width="80dp"
+                android:layout_width="70dp"
                 android:layout_height="40dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginStart="2dp"
+                android:layout_marginStart="1dp"
                 android:layout_marginBottom="0dp"
                 android:text="מחיקה"
                 android:textColor="@android:color/black"
@@ -92,11 +92,11 @@
             <Button
                 android:id="@+id/btnSave"
                 style="@android:style/Widget.Material.Button.Colored"
-                android:layout_width="80dp"
+                android:layout_width="70dp"
                 android:layout_height="40dp"
                 android:layout_alignBottom="@id/btnDelete"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="2dp"
+                android:layout_marginEnd="1dp"
                 android:text="שמירה"
                 android:textColor="@android:color/black"
                 android:backgroundTint="@android:color/white"
@@ -107,7 +107,7 @@
 
             <EditText
                 android:id="@+id/lblDateTime"
-                android:layout_width="170dp"
+                android:layout_width="175dp"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/btnDelete"
                 android:layout_alignEnd="@id/btnSetDate"
@@ -123,7 +123,7 @@
             <Button
                 android:id="@+id/btnSetDate"
                 style="@android:style/Widget.Material.Button.Colored"
-                android:layout_width="45dp"
+                android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignBottom="@id/btnDelete"
                 android:layout_alignStart="@id/btnSave"
@@ -140,8 +140,8 @@
             <Button
                 android:id="@+id/btnSetColor"
                 style="@android:style/Widget.Material.Button.Colored"
-                android:layout_width="35dp"
-                android:layout_height="31dp"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
                 android:layout_alignBottom="@id/btnDelete"
                 android:layout_alignEnd="@id/btnDelete"
                 android:layout_marginEnd="-25dp"

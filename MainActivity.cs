@@ -1817,6 +1817,8 @@ namespace ProjTaskReminder
 
 
 
+
+
             string fileName = Path.Combine(MH_Utils.Utils.LOG_FILE_PATH, WRITE_LIST_FILE_NAME);
 
             data = MH_Utils.Utils.TextFileRead(fileName, false);
@@ -1831,7 +1833,7 @@ namespace ProjTaskReminder
             for (int i = 0; i < TasksList.Count; i++)
             {
                 task = TasksList[i];
-                DBTaskReminder.DeleteRecord(MainActivity.DB_TABLE_NAME, task.getTaskID());
+                DBTaskReminder.DeleteRecord(MainActivity.DB_TABLE_NAME, "ID", task.getTaskID());
             }
 
 
@@ -1852,53 +1854,71 @@ namespace ProjTaskReminder
                         i++;
                         line = data[i];
                         posLine = line.IndexOf(WRITE_DB_PREFIX_ID) + WRITE_DB_PREFIX_ID.Length;
-                        tmpStr = tmpStr.Substring(posLine);
-                        task.setTaskID(int.Parse(line));
+                        tmpStr = line.Substring(posLine);
+                        task.setTaskID(int.Parse(tmpStr));
 
                         i++;
+                        line = data[i];
                         posLine = line.IndexOf(WRITE_DB_PREFIX_TITLE) + WRITE_DB_PREFIX_TITLE.Length;
-                        tmpStr = tmpStr.Substring(posLine);
-                        task.setTitle(line);
+                        tmpStr = line.Substring(posLine);
+                        task.setTitle(tmpStr);
 
                         i++;
+                        line = data[i];
                         posLine = line.IndexOf(WRITE_DB_PREFIX_DESC) + WRITE_DB_PREFIX_DESC.Length;
-                        tmpStr = tmpStr.Substring(posLine);
-                        task.setDescription(line);
+                        tmpStr = line.Substring(posLine);
+                        task.setDescription(tmpStr);
 
                         i++;
+                        line = data[i];
                         posLine = line.IndexOf(WRITE_DB_PREFIX_DATE) + WRITE_DB_PREFIX_DATE.Length;
-                        tmpStr = tmpStr.Substring(posLine);
-                        task.setDate_due(line);
+                        tmpStr = line.Substring(posLine);
+                        task.setDate_due(tmpStr);
 
                         i++;
+                        line = data[i];
                         posLine = line.IndexOf(WRITE_DB_PREFIX_TIME) + WRITE_DB_PREFIX_TIME.Length;
-                        tmpStr = tmpStr.Substring(posLine);
-                        task.setTime_due(line);
+                        tmpStr = line.Substring(posLine);
+                        task.setTime_due(tmpStr);
 
                         i++;
+                        line = data[i];
                         posLine = line.IndexOf(WRITE_DB_PREFIX_REPEAT) + WRITE_DB_PREFIX_REPEAT.Length;
-                        tmpStr = tmpStr.Substring(posLine);
-                        task.setRepeat(line);
+                        tmpStr = line.Substring(posLine);
+                        task.setRepeat(tmpStr);
 
                         i++;
+                        line = data[i];
                         posLine = line.IndexOf(WRITE_DB_PREFIX_LAST_UPDATE) + WRITE_DB_PREFIX_LAST_UPDATE.Length;
-                        tmpStr = tmpStr.Substring(posLine);
-                        task.setDate_last_update(line);
+                        tmpStr = line.Substring(posLine);
+                        task.setDate_last_update(tmpStr);
 
                         i++;
+                        line = data[i];
                         posLine = line.IndexOf(WRITE_DB_PREFIX_BACKGROUND_COLOR) + WRITE_DB_PREFIX_BACKGROUND_COLOR.Length;
-                        tmpStr = tmpStr.Substring(posLine);
-                        task.setBackgroundColor(line);
+                        tmpStr = line.Substring(posLine);
+                        task.setBackgroundColor(tmpStr);
 
 
                         TasksList.Add(task);
 
-                        long recorsWasEffected = DBTaskReminder.RecordInser(task, MainActivity.DB_TABLE_NAME);
+                        TBL_Tasks record = new TBL_Tasks();
+
+                        record.Title = task.getTitle();
+                        record.Description = task.getDescriptionWithHtml();
+                        record.DateDue = task.getDate_due() + " " + task.getTime_due();
+                        record.CardBackColor = task.getBackgroundColor();
+                        record.LastUpdateDate = task.getDate_last_update();
+
+                        long recorsWasEffected = MainActivity.DBTaskReminder.RecordInser(record, MainActivity.DB_TABLE_NAME);
+
+                        //long recorsWasEffected = DBTaskReminder.RecordInser(task, MainActivity.DB_TABLE_NAME);
                     }
                     catch (Exception ex)
                     {
                         result = false;
                         MH_Utils.Utils.WriteToLog("Error in readDBFromTextFile: " + ex.Message + "\n" + ex.StackTrace);
+                        Toast.MakeText(this, "פעולת ייבוא מקובץ נכשלה" + " - בפתק מספר " + task.getTaskID().ToString() + "  " + ex.Message, ToastLength.Long).Show();
                         result = false;
                         return result;
                     }
@@ -1981,6 +2001,16 @@ namespace ProjTaskReminder
 
                 if (result)
                 {
+                    string backupFolderName = Android.OS.Environment.DirectoryMusic; 
+                    string targetPath = Android.OS.Environment.GetExternalStoragePublicDirectory(backupFolderName).AbsolutePath;
+                    //targetPath = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
+                    //targetPath = MainContext.GetExternalFilesDir("").AbsolutePath;;
+
+                    string fullPathSource = Path.Combine(MH_Utils.Utils.LOG_FILE_PATH, WRITE_LIST_FILE_NAME);
+                    string fullPathTarget = Path.Combine(targetPath, WRITE_LIST_FILE_NAME);
+
+                    result = MH_Utils.Utils.CopyFile(fullPathSource, fullPathTarget);
+
                     Toast.MakeText(this, "פעולת ייצוא לקובץ עברה בהצלחה", ToastLength.Long).Show();
                 }
             }
@@ -2126,11 +2156,11 @@ namespace ProjTaskReminder
                 // If not null, mea Service was start in begining - Must stop him
                 //if (isServiceRestartOnServiceDestroy)
                 //{
-                    message = "Task Reminder:OnDestroy - Going to Stop Service";
-                    MH_Utils.Utils.WriteToLog(message);
-                    Toast.MakeText(this, message, ToastLength.Long).Show();
+//                    message = "Task Reminder:OnDestroy - Going to Stop Service";
+//                    MH_Utils.Utils.WriteToLog(message);
+//                    Toast.MakeText(this, message, ToastLength.Long).Show();
 
-               //     StopService(ServiceKeppAliveIntent);
+//                    StopService(ServiceKeppAliveIntent);
 
                     ServiceKeppAliveIntent = null;
                 //}

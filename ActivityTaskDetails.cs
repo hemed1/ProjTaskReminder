@@ -358,7 +358,8 @@ namespace ProjTaskReminder
 
             MainActivity.isShowTimerReminder = true;
 
-            if (MainActivity.DBTaskReminder.DeleteRecord(currentTask.getTaskID()))
+            if (MainActivity.DBTaskReminder.DeleteRecord(MainActivity.DB_TABLE_NAME, "ID", currentTask.getTaskID()))
+            //if (MainActivity.DBTaskReminder.DeleteRecord(currentTask.getTaskID()))
             {
                 MainActivity.MainMessageText = "נמחק";
             }
@@ -387,7 +388,7 @@ namespace ProjTaskReminder
         {
             bool result = true;
             long recorsWasEffected = 0;
-            TBL_Tasks item = null;
+            TBL_Tasks record = null;
 
 
 
@@ -405,32 +406,32 @@ namespace ProjTaskReminder
             // only insert the data if it doesn't already exist
             if (isNewMode)
             {
-                item = new TBL_Tasks();
+                record = new TBL_Tasks();
             }
             else
             {
-                item = (TBL_Tasks)MainActivity.DBTaskReminder.GetRecordByID(task.getTaskID(), MainActivity.DB_TABLE_NAME);
+                record = (TBL_Tasks)MainActivity.DBTaskReminder.GetRecordByID(task.getTaskID(), MainActivity.DB_TABLE_NAME);
             }
 
 
             try
             {
-                item.Title = task.getTitle();
-                item.Description = task.getDescriptionWithHtml();
-                item.DateDue = task.getDate_due() + " " + task.getTime_due();
-                item.CardBackColor = task.getBackgroundColor();
-                item.LastUpdateDate = task.getDate_last_update();
+                record.Title = task.getTitle();
+                record.Description = task.getDescriptionWithHtml();
+                record.DateDue = task.getDate_due() + " " + task.getTime_due();
+                record.CardBackColor = task.getBackgroundColor();
+                record.LastUpdateDate = task.getDate_last_update();
 
                 if (isNewMode)
                 {
-                    recorsWasEffected = MainActivity.DBTaskReminder.RecordInser(item, MainActivity.DB_TABLE_NAME);
-                    //MainActivity.DBTaskReminder.DB.Insert(item);
+                    recorsWasEffected = MainActivity.DBTaskReminder.RecordInser(record, MainActivity.DB_TABLE_NAME);
+                    //MainActivity.DBTaskReminder.DB.Insert(record);
                 }
                 else
                 {
-                    recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(item);
-                    item = (TBL_Tasks)MainActivity.DBTaskReminder.GetRecordByID(task.getTaskID(), MainActivity.DB_TABLE_NAME);
-                    task.TableRecord = item;
+                    recorsWasEffected = MainActivity.DBTaskReminder.RecordUpdate(record);
+                    record = (TBL_Tasks)MainActivity.DBTaskReminder.GetRecordByID(task.getTaskID(), MainActivity.DB_TABLE_NAME);
+                    task.TableRecord = record;
                 }
 
 
