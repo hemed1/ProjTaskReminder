@@ -105,7 +105,7 @@ namespace ProjTaskReminder
         private bool isServiceStarted;
         private  Intent ServiceKeppAliveIntent;
         private Bundle InputSavedInstanceState { get; set; }
-
+        private MHServiceKeepAlive.ServiceStayAlive serviceStayAlive { get; set; }
 
         private MH_SearchDialog             mh_SearchDialog { get; set; }
 
@@ -171,7 +171,7 @@ namespace ProjTaskReminder
             ServiceKeppAliveIntent.SetFlags(ActivityFlags.NewTask);
 
             // Just tto use same constants values
-            MHServiceKeepAlive.ServiceStayAlive serviceStayAlive = new MHServiceKeepAlive.ServiceStayAlive();
+            serviceStayAlive = new MHServiceKeepAlive.ServiceStayAlive();
 
             Bundle bundle = new Bundle();
             bundle.PutString(serviceStayAlive.INTENT_KEY_CALLER_PACKAGE_NAME, this.PackageName);
@@ -181,6 +181,10 @@ namespace ProjTaskReminder
             bundle.PutString(serviceStayAlive.INTENT_KEY_CALLER_LOG_FILE_PATH, MainContext.GetExternalFilesDir("").AbsolutePath);
 
             ServiceKeppAliveIntent.PutExtra(serviceStayAlive.INTENT_KEY_CALLER_BUNDLE, bundle);
+
+            //serviceStayAlive.OnCreate();
+            //serviceStayAlive.OnStartCommand(null, StartCommandFlags.Retry, 0);
+
 
             StartService(ServiceKeppAliveIntent);
 
@@ -293,38 +297,49 @@ namespace ProjTaskReminder
                 return;
             }
 
-            Task task = TasksList[position];
 
-            listViewHolder.FirstLine.SetText(task.getTitle(), TextView.BufferType.Normal);
-            listViewHolder.SecondLine.SetText(task.getDescriptionWithHtml(), TextView.BufferType.Normal);
 
-            if (!task.getDate_due().Equals(""))
+            try
             {
-                listViewHolder.ThirdLine.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + MH_Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
-            }
-            else
-            {
-                listViewHolder.ThirdLine.SetText(task.getDate_last_update() + " יום " + MH_Utils.Utils.getDateDayName(MH_Utils.Utils.getDateFromString(task.getDate_last_update())), TextView.BufferType.Normal);
-            }
+                Task task = TasksList[position];
 
-            Android.Graphics.Color colorDefault = new Android.Graphics.Color(MainContext.GetColor(Resource.Color.CardBackgroundColor));
+                listViewHolder.FirstLine.SetText(task.getTitle(), TextView.BufferType.Normal);
+                listViewHolder.SecondLine.SetText(task.getDescriptionWithHtml(), TextView.BufferType.Normal);
 
-            if (!string.IsNullOrEmpty(task.getBackgroundColor()))
-            {
-                int colorInt = int.Parse(task.getBackgroundColor().Trim());
-                Android.Graphics.Color color = new Android.Graphics.Color(colorInt);
-                if (colorDefault != color)
+                if (!task.getDate_due().Equals(""))
                 {
-                    listViewHolder.cardView.SetBackgroundColor(color);
+                    listViewHolder.ThirdLine.SetText(task.getDate_due() + "  " + task.getTime_due() + " יום " + MH_Utils.Utils.getDateDayName(task.getDate().Value), TextView.BufferType.Normal);
+                }
+                else
+                {
+                    listViewHolder.ThirdLine.SetText(task.getDate_last_update() + " יום " + MH_Utils.Utils.getDateDayName(MH_Utils.Utils.getDateFromString(task.getDate_last_update())), TextView.BufferType.Normal);
+                }
+
+                // Card backcolor
+                Android.Graphics.Color colorDefault = new Android.Graphics.Color(MainContext.GetColor(Resource.Color.CardBackgroundColor));
+
+                if (!string.IsNullOrEmpty(task.getBackgroundColor()))
+                {
+                    int colorInt = int.Parse(task.getBackgroundColor().Trim());
+                    Android.Graphics.Color color = new Android.Graphics.Color(colorInt);
+                    if (colorDefault != color)
+                    {
+                        listViewHolder.cardView.SetBackgroundColor(color);
+                    }
+                    else
+                    {
+                        listViewHolder.cardView.SetBackgroundColor(colorDefault);
+                    }
                 }
                 else
                 {
                     listViewHolder.cardView.SetBackgroundColor(colorDefault);
                 }
+
             }
-            else
+            catch (Exception ex)
             {
-                listViewHolder.cardView.SetBackgroundColor(colorDefault);
+                MH_Utils.Utils.WriteToLog("Error - SetTaskItemControlsInView():" + MH_Utils.Utils.LINE_SEPERATOR + ex.InnerException.Message);
             }
 
         }
@@ -1808,9 +1823,7 @@ namespace ProjTaskReminder
         {
             bool result = true;
             List<string> data;
-            int pos;
             int posLine;
-            int start;
             string line;
             string tmpStr = "";
             Task task = null;
@@ -1843,61 +1856,99 @@ namespace ProjTaskReminder
             {
                 line = data[i];
 
+                if (string.IsNullOrEmpty(line.Trim()))
+                {
+                    continue;
+                }
+
                 task = new Task();
 
-                pos = line.IndexOf(CARD_SEPERATOR);     // + LINE_SEPARATOR);
+                posLine = line.IndexOf(CARD_SEPERATOR);     // + LINE_SEPARATOR);
 
-                if (pos > -1)
+                if (posLine > -1)
                 {
                     try
                     {
                         i++;
                         line = data[i];
-                        posLine = line.IndexOf(WRITE_DB_PREFIX_ID) + WRITE_DB_PREFIX_ID.Length;
-                        tmpStr = line.Substring(posLine);
-                        task.setTaskID(int.Parse(tmpStr));
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_ID);
+                        if (posLine > -1)
+                        {
+                            posLine += WRITE_DB_PREFIX_ID.Length;
+                            tmpStr = line.Substring(posLine);
+                            task.setTitle(tmpStr);
+                        }
 
                         i++;
                         line = data[i];
-                        posLine = line.IndexOf(WRITE_DB_PREFIX_TITLE) + WRITE_DB_PREFIX_TITLE.Length;
-                        tmpStr = line.Substring(posLine);
-                        task.setTitle(tmpStr);
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_TITLE);
+                        if (posLine > -1)
+                        {
+                            posLine += WRITE_DB_PREFIX_TITLE.Length;
+                            tmpStr = line.Substring(posLine);
+                            task.setTitle(tmpStr);
+                        }
 
                         i++;
                         line = data[i];
-                        posLine = line.IndexOf(WRITE_DB_PREFIX_DESC) + WRITE_DB_PREFIX_DESC.Length;
-                        tmpStr = line.Substring(posLine);
-                        task.setDescription(tmpStr);
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_DESC);
+                        if (posLine > -1)
+                        {
+                            posLine += WRITE_DB_PREFIX_DESC.Length;
+                            tmpStr = line.Substring(posLine);
+                            task.setDescription(tmpStr);
+                        }
+
 
                         i++;
                         line = data[i];
-                        posLine = line.IndexOf(WRITE_DB_PREFIX_DATE) + WRITE_DB_PREFIX_DATE.Length;
-                        tmpStr = line.Substring(posLine);
-                        task.setDate_due(tmpStr);
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_DATE);
+                        if (posLine > -1)
+                        {
+                            posLine += WRITE_DB_PREFIX_DATE.Length;
+                            tmpStr = line.Substring(posLine);
+                            task.setDate_due(tmpStr);
+                        }
 
                         i++;
                         line = data[i];
-                        posLine = line.IndexOf(WRITE_DB_PREFIX_TIME) + WRITE_DB_PREFIX_TIME.Length;
-                        tmpStr = line.Substring(posLine);
-                        task.setTime_due(tmpStr);
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_TIME);
+                        if (posLine>-1)
+                        {
+                            posLine += WRITE_DB_PREFIX_TIME.Length;
+                            tmpStr = line.Substring(posLine);
+                            task.setTime_due(tmpStr);
+                        }
 
                         i++;
                         line = data[i];
-                        posLine = line.IndexOf(WRITE_DB_PREFIX_REPEAT) + WRITE_DB_PREFIX_REPEAT.Length;
-                        tmpStr = line.Substring(posLine);
-                        task.setRepeat(tmpStr);
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_REPEAT);
+                        if (posLine > -1)
+                        {
+                            posLine += WRITE_DB_PREFIX_REPEAT.Length;
+                            tmpStr = line.Substring(posLine);
+                            task.setRepeat(tmpStr);
+                        }
 
                         i++;
                         line = data[i];
-                        posLine = line.IndexOf(WRITE_DB_PREFIX_LAST_UPDATE) + WRITE_DB_PREFIX_LAST_UPDATE.Length;
-                        tmpStr = line.Substring(posLine);
-                        task.setDate_last_update(tmpStr);
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_LAST_UPDATE);
+                        if (posLine > -1)
+                        {
+                            posLine += WRITE_DB_PREFIX_LAST_UPDATE.Length;
+                            tmpStr = line.Substring(posLine);
+                            task.setDate_last_update(tmpStr);
+                        }
 
                         i++;
                         line = data[i];
-                        posLine = line.IndexOf(WRITE_DB_PREFIX_BACKGROUND_COLOR) + WRITE_DB_PREFIX_BACKGROUND_COLOR.Length;
-                        tmpStr = line.Substring(posLine);
-                        task.setBackgroundColor(tmpStr);
+                        posLine = line.IndexOf(WRITE_DB_PREFIX_BACKGROUND_COLOR);
+                        if (posLine > -1)
+                        {
+                            posLine += WRITE_DB_PREFIX_BACKGROUND_COLOR.Length;
+                            tmpStr = line.Substring(posLine);
+                            task.setBackgroundColor(tmpStr);
+                        }
 
 
                         TasksList.Add(task);
@@ -1913,14 +1964,15 @@ namespace ProjTaskReminder
                         long recorsWasEffected = MainActivity.DBTaskReminder.RecordInser(record, MainActivity.DB_TABLE_NAME);
 
                         //long recorsWasEffected = DBTaskReminder.RecordInser(task, MainActivity.DB_TABLE_NAME);
+
                     }
                     catch (Exception ex)
                     {
                         result = false;
                         MH_Utils.Utils.WriteToLog("Error in readDBFromTextFile: " + ex.Message + "\n" + ex.StackTrace);
-                        Toast.MakeText(this, "פעולת ייבוא מקובץ נכשלה" + " - בפתק מספר " + task.getTaskID().ToString() + "  " + ex.Message, ToastLength.Long).Show();
+                        Toast.MakeText(this, "פעולת ייבוא מקובץ נכשלה" + " - בפתק מספר " + task.getDescription() + "  " + ex.Message, ToastLength.Long).Show();
                         result = false;
-                        return result;
+                        //return result;
                     }
                 }
             }
@@ -2133,7 +2185,15 @@ namespace ProjTaskReminder
 
 
             // Just tto use same constants values
-            MHServiceKeepAlive.ServiceStayAlive serviceStayAlive = new MHServiceKeepAlive.ServiceStayAlive();
+            if (this.serviceStayAlive != null)
+            {
+                serviceStayAlive.OnDestroy();
+                serviceStayAlive = null;
+            }
+            else
+            {
+                serviceStayAlive = new MHServiceKeepAlive.ServiceStayAlive();
+            }
 
             // The latter may seem rather peculiar: why do we want to stop exactly the service that we want to keep alive? 
             // Because if we do not stop it, the service will die with our app.Instead, by stopping the service, 
@@ -2156,11 +2216,11 @@ namespace ProjTaskReminder
                 // If not null, mea Service was start in begining - Must stop him
                 //if (isServiceRestartOnServiceDestroy)
                 //{
-//                    message = "Task Reminder:OnDestroy - Going to Stop Service";
-//                    MH_Utils.Utils.WriteToLog(message);
-//                    Toast.MakeText(this, message, ToastLength.Long).Show();
+                    message = "Task Reminder:OnDestroy - Going to Stop Service";
+                    MH_Utils.Utils.WriteToLog(message);
+                    Toast.MakeText(this, message, ToastLength.Long).Show();
 
-//                    StopService(ServiceKeppAliveIntent);
+                    StopService(ServiceKeppAliveIntent);
 
                     ServiceKeppAliveIntent = null;
                 //}

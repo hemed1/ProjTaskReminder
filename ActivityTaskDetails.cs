@@ -326,21 +326,25 @@ namespace ProjTaskReminder
             if (!txtDetailsDate.Text.Trim().Equals(""))
             {
                 IsUpdateDialogDate = false;
-                DateTime currentDate= MH_Utils.Utils.getDateFormatUSA(txtDetailsDate.Text.Trim()).AddMonths(-1);
+                DateTime currentDate = MH_Utils.Utils.getDateFromString(txtDetailsDate.Text.Trim()).AddMonths(-1);
                 datePicker1.UpdateDate(currentDate.Year, currentDate.Month, currentDate.Day);
             }
+
             datePicker1.Visibility = ViewStates.Visible;
             datePicker1.BringToFront();
         }
 
+        [Obsolete]
         private void OpenTimePicker()
         {
             if (!txtDetailsDate.Text.Trim().Equals("") && !txtDetailsTime.Text.Trim().Equals(""))
             {
-                //DateTime currentDate = MH_Utils.Utils.getDateFormatUSA(txtDetailsDate.Text.Trim()+" " + txtDetailsTime.Text.Trim());
-                //timePicker1.UpdateDate(currentDate.Year, currentDate.Month, currentDate.Day);
+                DateTime currentDate = MH_Utils.Utils.getDateFromString(txtDetailsDate.Text.Trim() + " " + txtDetailsTime.Text.Trim());
+                timePicker1.CurrentHour = (Java.Lang.Integer)currentDate.Hour;
+                timePicker1.CurrentMinute = (Java.Lang.Integer)currentDate.Minute;
             }
-            timePicker1.Visibility = ViewStates.Visible;    //(timePicker1.Visibility == ViewStates.Invisible) ? ViewStates.Visible : ViewStates.Invisible;
+
+            timePicker1.Visibility = ViewStates.Visible;    
             timePicker1.BringToFront();
         }
 
@@ -547,7 +551,7 @@ namespace ProjTaskReminder
             lblDateTime.Text = bkuDateDue = CurrentTask.getDate_due() + " " + CurrentTask.getTime_due();
             txtDetailsDate.Text = CurrentTask.getDate_due();
             txtDetailsTime.Text = CurrentTask.getTime_due();
-            //bkuBackColor = "";
+
 
             Android.Graphics.Color colorDefault = new Android.Graphics.Color(ApplicationContext.GetColor(Resource.Color.details_background_main));
 

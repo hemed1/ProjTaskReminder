@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="4" android:versionName="4.0.6" package="com.meirhemed.projtaskreminder" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="4" android:versionName="4.0.7" package="com.meirhemed.projtaskreminder" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="25" android:targetSdkVersion="28" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
@@ -12,7 +12,7 @@
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
-	<application android:allowBackup="true" android:label="@string/app_name" android:roundIcon="@mipmap/font_backcolor1" android:supportsRtl="true" android:theme="@style/AppTheme" android:name="android.app.Application" android:debuggable="true">
+	<application android:allowBackup="true" android:label="@string/app_name" android:roundIcon="@mipmap/note1" android:supportsRtl="true" android:theme="@style/AppTheme" android:name="android.app.Application" android:debuggable="true" android:icon="@mipmap/note1">
 		<activity android:label="ActivityMusic" android:theme="@style/AppTheme.NoActionBar" android:name="ActivityMusic" />
 		<activity android:label="ActivitySettings" android:theme="@style/AppTheme.NoActionBar" android:name="ActivitySettings" />
 		<activity android:label="ActivityTaskDetails" android:name="ActivityTaskDetails" />
@@ -22,7 +22,7 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<service android:exported="true" android:isolatedProcess="true" android:name="com.meirhemed.mhservicekeepalive.servicestayalive" />
+		<service android:exported="true" android:isolatedProcess="false" android:name="com.meirhemed.mhservicekeepalive.servicestayalive" />
 		<provider android:authorities="com.meirhemed.projtaskreminder.fileProvider" android:exported="false" android:grantUriPermissions="true" android:name="xamarin.essentials.fileProvider">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/xamarin_essentials_fileprovider_file_paths" />
 		</provider>
