@@ -275,6 +275,11 @@ namespace ProjTaskReminder.Data
             return recordsEffected;
         }
 
+        /// <summary>
+        /// Not Generic
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool DeleteRecord(int id)
         {
             bool result = true;
@@ -294,12 +299,12 @@ namespace ProjTaskReminder.Data
             return result;
         }
 
-        public bool DeleteRecord(string tableName, int id)
+        public bool DeleteRecord(string tableName, string fieldNameForID, int id)
         {
             bool result = true;
 
             string sqlScript = "DELETE FROM " + tableName + " " +
-                               "WHERE TaskID=" + id.ToString();
+                               "WHERE " + fieldNameForID + "=" + id.ToString();
 
             try
             {
@@ -311,6 +316,29 @@ namespace ProjTaskReminder.Data
                 result = false;
                 //Log.d("DataBase", "Error in 'deleteRecord()': " + ex.getMessage());
                 MH_Utils.Utils.WriteToLog("DataBase - Error in 'deleteRecord()': \n" + ex.Message, true);
+                //throw ex;
+            }
+
+            return result;
+        }
+
+        public bool ExecuteSqlScript(string tableName, string whereScript)
+        {
+            bool result = true;
+
+            string sqlScript = "DELETE FROM " + tableName + " " + whereScript;
+
+
+            try
+            {
+                DB.Execute(sqlScript);
+                //DB.Close();
+            }
+            catch (Exception ex)
+            {
+                result = false;
+                //Log.d("DataBase", "Error in 'deleteRecord()': " + ex.getMessage());
+                MH_Utils.Utils.WriteToLog("DataBase - Error in 'ExecuteSqlScript()': \n" + ex.Message, true);
                 //throw ex;
             }
 
