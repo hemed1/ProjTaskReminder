@@ -184,7 +184,7 @@ namespace ProjTaskReminder
 
             //serviceStayAlive.OnCreate();
             //serviceStayAlive.OnStartCommand(null, StartCommandFlags.Retry, 0);
-
+            serviceStayAlive = null;
 
             StartService(ServiceKeppAliveIntent);
 
@@ -2185,7 +2185,7 @@ namespace ProjTaskReminder
 
 
             // Just tto use same constants values
-            if (this.serviceStayAlive != null)
+            if (this.serviceStayAlive != null && ServiceKeppAliveIntent==null)
             {
                 serviceStayAlive.OnDestroy();
                 serviceStayAlive = null;
