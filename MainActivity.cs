@@ -869,8 +869,8 @@ namespace ProjTaskReminder
             //lstTasks.SetAdapter(listViewAdapter);
 
             listViewAdapter.NotifyDataSetChanged();
-        }
-
+        } 
+         
         private void focusListByID(int id)
         {
             if (TasksList.Count == 0 || id == -1)
