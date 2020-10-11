@@ -827,7 +827,7 @@ namespace ProjTaskReminder
                 focusListByID(id);
             }
 
-        }
+        } 
 
         [Obsolete]
         private void SetListAdapter()
