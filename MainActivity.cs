@@ -826,7 +826,7 @@ namespace ProjTaskReminder
                 // Scroll to handled task
                 focusListByID(id);
             }
-
+             
         } 
 
         [Obsolete]
