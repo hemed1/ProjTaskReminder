@@ -73,6 +73,7 @@ namespace ProjTaskReminder
         private ListViewAdapter listViewAdapter;
         public static DBTaskReminder DBTaskReminder;
         private static List<Task> TasksList = new List<Task>();
+        private static List<Task> TasksListBackup = new List<Task>();
         private List<Weather> WeatherList = new List<Weather>();
         private int WeatherCounter = 0;
         private MH_Weather mH_Weather;
@@ -507,9 +508,9 @@ namespace ProjTaskReminder
         {
             if (!string.IsNullOrEmpty(changedText))
             {
-                TasksList = GetTasksFromDB();
+                TasksList = RestoreTaskList();  // GetTasksFromDB();
                 searchInListByText(changedText);
-                FillList();
+                FillList(false);
             }
             else
             {
@@ -755,7 +756,7 @@ namespace ProjTaskReminder
             FillList();
         }
 
-        private void FillList()
+        private void FillList(bool showMessage = true)
         {
 
             //Toast.MakeText(this, "Fill list with items...", ToastLength.Short).Show();
@@ -783,7 +784,7 @@ namespace ProjTaskReminder
 
             SetListAdapter();
 
-            SortList();
+            SortList(showMessage);
 
 
 
@@ -800,13 +801,16 @@ namespace ProjTaskReminder
             //lstTasks.SetAdapter(arrayAdapter);
         }
 
-        private void SortList()
+        private void SortList(bool showMessage = true)
         {
             int id = -1;
 
 
 
-            Toast.MakeText(this, "Refresh items...", ToastLength.Short).Show();
+            if (showMessage)
+            {
+                Toast.MakeText(this, "Refresh items...", ToastLength.Short).Show();
+            }
 
             TasksList = TasksList.OrderByDescending(a => a.getDate()).ToList();
 
@@ -822,8 +826,8 @@ namespace ProjTaskReminder
                 // Scroll to handled task
                 focusListByID(id);
             }
-
-        }
+             
+        } 
 
         [Obsolete]
         private void SetListAdapter()
@@ -865,8 +869,8 @@ namespace ProjTaskReminder
             //lstTasks.SetAdapter(listViewAdapter);
 
             listViewAdapter.NotifyDataSetChanged();
-        }
-
+        } 
+         
         private void focusListByID(int id)
         {
             if (TasksList.Count == 0 || id == -1)
@@ -993,12 +997,10 @@ namespace ProjTaskReminder
 
 
             TasksList.Clear();
+            TasksListBackup = new List<Task>();
+
 
             TableQuery<TBL_Tasks> table = DBTaskReminder.DB.Table<TBL_Tasks>();
-
-            //var stock = DBTaskReminder.DB.Get<TBL_Tasks>(2); // primary key id of 5
-            //var stockList = DBTaskReminder.DB.Table<TBL_Tasks>();
-
 
             foreach (TBL_Tasks record in table)
             {
@@ -1017,6 +1019,21 @@ namespace ProjTaskReminder
 
                 task.TableRecord = record;
 
+                TasksList.Add(task);
+                TasksListBackup.Add(task);
+            }
+
+            return TasksList;
+        }
+
+        private List<Task> RestoreTaskList()
+        {
+
+            TasksList.Clear();
+
+            for (int i=0; i<TasksListBackup.Count; i++)
+            {
+                Task task = TasksListBackup[i];
                 TasksList.Add(task);
             }
 
@@ -1756,15 +1773,6 @@ namespace ProjTaskReminder
             TasksList = TasksList.Where(a => a.getTitle().IndexOf(textToSearch) > -1 || a.getDescriptionWithHtml().IndexOf(textToSearch) > -1).ToList();
 
             result = TasksList;
-
-            //for (int i = 0; i < TasksList.Count; i++)
-            //{
-            //    Task task = TasksList[i];
-            //    if (task.getTitle().IndexOf(textToSearch) > -1 || task.getDescriptionWithHtml().IndexOf(textToSearch) > -1)
-            //    {
-            //        result.Add(task);
-            //    }
-            //}
 
             return result;
         }
