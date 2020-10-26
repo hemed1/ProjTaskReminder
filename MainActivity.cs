@@ -178,7 +178,7 @@ namespace ProjTaskReminder
             bundle.PutString(serviceStayAlive.INTENT_KEY_CALLER_PACKAGE_NAME, this.PackageName);
             bundle.PutString(serviceStayAlive.INTENT_KEY_CALLER_COMPONENT_ACTIVITY_NAME, this.ComponentName.ClassName);     // "com.meirhemed.executeanotheractivity.mainactivity"
             bundle.PutBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_ON_START, true);
-            bundle.PutBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_ON_DESTROY, false);
+            bundle.PutBoolean(serviceStayAlive.INTENT_KEY_CALLER_IS_RESTART_ON_DESTROY, true);
             bundle.PutString(serviceStayAlive.INTENT_KEY_CALLER_LOG_FILE_PATH, MainContext.GetExternalFilesDir("").AbsolutePath);
 
             ServiceKeppAliveIntent.PutExtra(serviceStayAlive.INTENT_KEY_CALLER_BUNDLE, bundle);
